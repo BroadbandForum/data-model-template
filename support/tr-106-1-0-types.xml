@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <!--
-  STRAW BALLOT RESOLUTION
   TR-069 Data Model Data Types
 
   Copyright (c) 2008-2017, Broadband Forum
@@ -47,7 +46,14 @@
     TR-069 Data Model Data Types.  Contains normative definitions of named 
     (i.e. not built-in) data types that can be used in data model definitions.
 
-  Version History:
+  Editor:
+    William Lupton, Cisco
+
+  BroadbandHome™ Working Group Chairs:
+    John Blackford, Pace
+    Jason Walls, UNH
+
+  Issue History:
     November 2008: tr-106-1-0-0-types.xml, corresponds to parts of TR-106
             section 3.2, with some updates from Amendments 1 and 2.
     September 2009: tr-106-1-0-0-types.xml (name unchanged)
@@ -61,12 +67,22 @@
             - Added new types IPv4Prefix, IPv6Address, IPv6Prefix, 
               StatsCounter32, StatsCounter64
             - Added new entity definition ipv4PrefixRange
-
-  Draft Revision History:
-    January 2011: tr-106-1-0-0-types_rev-00.xml
-            - Added new type Alias (PD-199) 
-    March 2011  : tr-106-1-0-0-types_rev-03.xml
-            - STRAW BALLOT RESOLUTION 
+    July 2011: tr-106-1-0-0-types.xml (name unchanged)
+            - Added new type Alias 
+    November 2011: tr-106-1-0-0-types.xml (name unchanged)
+            - Added new type Dbm1000
+            - Updated StatsCounter32 and StatsCounter64 types to indicate that
+              "maxval" indicates "no data available"
+    November 2012: tr-106-1-0-0-types.xml (name unchanged)
+            - Added new type UUID
+            - Modified description for IPPrefix to better describe processing of
+              unspecified or unapplicable IP prefixes.
+            - Added new pattern to IPv4Prefix for IP ranges
+    September 2013: tr-106-1-0-0-types.xml (name unchanged)
+            - Clarified use of the "cpe-" prefix for the Alias type
+			
+  Publication Date:
+   October 7, 2013: tr-106-1-0-0-types.xml (name unchanged)
 -->
 
 <!DOCTYPE cwmp-datamodel-entities [
@@ -106,11 +122,9 @@ Unspecified or inapplicable addresses (or IPv4 subnet masks) MUST be represented
   <dataType name="IPv4Address" base="IPAddress">
     <description>IPv4 address (or subnet mask).
 Can be any IPv4 address that is permitted by the ''IPAddress'' data type.</description>
-    <string>
-      <size maxLength="15"/>
-      <pattern value=""/>
-      <pattern value="(&octet;&dot;){3}&octet;"/>
-    </string>
+    <size maxLength="15"/>
+    <pattern value=""/>
+    <pattern value="(&octet;&dot;){3}&octet;"/>
   </dataType>
   
   <dataType name="IPv6Address" base="IPAddress">
@@ -120,9 +134,10 @@ Can be any IPv6 address that is permitted by the ''IPAddress'' data type.</descr
 
   <dataType name="IPPrefix">
     <description>IPv4 or IPv6 routing prefix in Classless Inter-Domain Routing (CIDR) notation {{bibref|RFC4632}}. This is specified as an IP address followed by an appended "/n" suffix, where ''n'' (the prefix size) is an integer in the range 0-32 (for IPv4) or 0-128 (for IPv6) that indicates the number of (leftmost) '1' bits of the routing prefix. 
-IPv4 example: 192.168.1.0/24
-IPv6 example: 2001:edff:fe6a:f76::/64
-Unspecified or inapplicable IP prefixes MUST be represented as empty strings unless otherwise specified by the parameter definition.</description>
+* IPv4 example: 192.168.1.0/24
+* IPv6 example: 2001:edff:fe6a:f76::/64
+If the IP address part is unspecified or inapplicable, it MUST be {{empty}} unless otherwise specified by the parameter definition.  In this case the IP prefix will be of the form "/n".
+If the entire IP prefix is unspecified or inapplicable, it MUST be {{empty}} unless otherwise specified by the parameter definition.</description>
     <string>
       <size maxLength="49"/>
     </string>
@@ -131,11 +146,11 @@ Unspecified or inapplicable IP prefixes MUST be represented as empty strings unl
   <dataType name="IPv4Prefix" base="IPPrefix">
     <description>IPv4 address prefix. 
 Can be any IPv4 prefix that is permitted by the ''IPPrefix'' data type.</description>
-    <string>
-      <size maxLength="18"/>
-      <pattern value=""/>
-      <pattern value="(&octet;&dot;){3}&octet;/&ipv4PrefixRange;"/>
-    </string>
+    <size maxLength="18"/>
+    <pattern value=""/>
+    <pattern value="/&ipv4PrefixRange;"/>
+    <pattern value="(&octet;&dot;){3}&octet;/&ipv4PrefixRange;"/>
+
   </dataType>
 
   <dataType name="IPv6Prefix" base="IPPrefix">
@@ -151,18 +166,20 @@ Can be any IPv6 prefix that is permitted by the ''IPPrefix'' data type.</descrip
       <pattern value="([0-9A-Fa-f][0-9A-Fa-f]:){5}([0-9A-Fa-f][0-9A-Fa-f])"/>
     </string>
   </dataType>
-  
+
   <dataType name="StatsCounter32">
     <description>A 32-bit statistics parameter, e.g. a byte counter.
-This data type SHOULD NOT be used for statistics parameters whose values might become greater than the maximum value that can be represented as an ''unsignedInt''. ''StatsCounter64'' SHOULD be used for such parameters.
-The actual value of the statistic might be greater than the maximum value that can be represented as an ''unsignedInt''. Such values SHOULD wrap around through zero.
+This data type SHOULD NOT be used for statistics parameters whose values might become greater than the maximum value that can be represented as an ''unsignedInt'' (i.e. 0xffffffff, referred to below as ''maxval''). ''StatsCounter64'' SHOULD be used for such parameters.
+The value ''maxval'' indicates that no data is available for this parameter.  In the unlikely event that the actual value of the statistic is ''maxval'', the CPE SHOULD return ''maxval - 1''.
+The actual value of the statistic might be greater than ''maxval''. Such values SHOULD wrap around through zero.
 The term ''packet'' is to be interpreted as the transmission unit appropriate to the protocol layer in question, e.g. an IP packet or an Ethernet frame.</description>
     <unsignedInt/>
   </dataType>
-  
+
   <dataType name="StatsCounter64">
     <description>A 64-bit statistics parameter, e.g. a byte counter.
 This data type SHOULD be used for all statistics parameters whose values might become greater than the maximum value that can be represented as an ''unsignedInt''.
+The maximum value that can be represented as an ''unsignedLong'' (i.e. 0xffffffffffffffff) indicates that no data is available for this parameter.
 The term ''packet'' is to be interpreted as the transmission unit appropriate to the protocol layer in question, e.g. an IP packet or an Ethernet frame.</description>
     <unsignedLong/>
   </dataType>
@@ -172,8 +189,8 @@ The term ''packet'' is to be interpreted as the transmission unit appropriate to
 A non-volatile handle used to reference this instance. Alias provides a mechanism for an ACS to label this instance for future reference.
 If the CPE supports the Alias-based Addressing feature as defined in {{bibref|TR-069a4|3.6.1}} and described in {{bibref|TR-069a4|Appendix II}}, the following mandatory constraints MUST be enforced:
 *Its value MUST NOT be empty.
-*Its value MUST NOT start with a number.
-*If its instance object is created by the CPE, the initial value MUST start with a "cpe-" prefix.
+*Its value MUST start with a letter.
+*If its value is not assigned by the ACS, it MUST start with a "cpe-" prefix.
 *The CPE MUST NOT change the parameter value.
     </description>
     <string>
@@ -181,4 +198,18 @@ If the CPE supports the Alias-based Addressing feature as defined in {{bibref|TR
     </string>
   </dataType>
 
+  <dataType name="Dbm1000">
+    <description>The value is measured in ''dBm/1000'', i.e. the value divided by 1000 is dB relative to 1 mW.  For example, -12345 means -12.345 dBm, 0 means 0 dBm (1 mW) and 12345 means 12.345 dBm.</description>
+    <int/>
+  </dataType>
+  <dataType name="UUID">
+    <description>
+      Universally Unique Identifier.  See {{bibref|RFC4122}}.
+    </description>
+    <string>
+      <size minLength="36" maxLength="36"/>
+      <pattern value="[A-Fa-f0-9]{8}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{12}"/>
+    </string>
+  </dataType>
 </dm:document>
+

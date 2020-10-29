@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  TR-069 Data Model Definition Schema (DM Schema) v1.4
+  TR-069 Data Model Definition Schema (DM Schema) v1.5
 
   Copyright (c) 2008-2017, Broadband Forum
   
@@ -48,45 +48,15 @@
     types, complex types etc), and are in alphabetical order within each
     category.
 
-
-  Editors:
-    Sarah Banks, Cisco
-    Andrea Colmegna, FASTWEB
-    Tim Spets, Motorola Mobility
-
-  Editors Object Addressing Extensions:
-    Sarah Banks, Cisco
-    Andrea Colmegna, FASTWEB
-    Ping Fang, Huawei Technologies
-    Nils Magnusson, TeliaSonera
-    Anton Okmyanskiy, Cisco
-    Staffan Ungsgard, TeliaSonera
-
-  Editors Remote Management of non-TR-069 devices:
-    John Blackford, Pace
-    Ping Fang, Huawei Technologies
-    Tim Spets, Motorola Mobility
-
-  BroadbandHome™ Working Group Chairs:
-    Greg Bathrick, PMC-Sierra
-    Heather Kirksey, Alcatel-Lucent
-
-  Vice Chair: 
-    Jason Walls, UNH
-
-  Chief Editor: 
-    Michael Hanrahan, Huawei Technologies
-
-
-  Version History:
-    November  2008: cwmp-datamodel-1-0.xsd, corresponds to TR-106 Amendment 2
-    September 2009: cwmp-datamodel-1-1.xsd, corresponds to TR-106 Amendment 3
+  Issue History:
+    * November 2008: cwmp-datamodel-1-0.xsd, corresponds to TR-106 Amendment 2
+    * September 2009: cwmp-datamodel-1-1.xsd, corresponds to TR-106 Amendment 3
       - made import/@file a URI and optional (in line with DT Schema)
       - added RangeFacet step attribute
-    March 2010: cwmp-datamodel-1-2.xsd, corresponds to TR-106 Amendment 4
+    * March 2010: cwmp-datamodel-1-2.xsd, corresponds to TR-106 Amendment 4
       - added uniqueKey/@functional attribute
       - supported #.A relative path syntax (parent)
-    November 2010: cwmp-datamodel-1-3.xsd, corresponds to TR-106 Amendment 5
+    * November 2010: cwmp-datamodel-1-3.xsd, corresponds to TR-106 Amendment 5
       - removed the referential check done on object/@enableParameter
       - removed the referential check done on object/uniqueKey/parameter/@ref
       - updated all of the unique parameter-name constraints so that the
@@ -98,9 +68,21 @@
       - removed size facet's default maxLength on string/base64/hexBinary 
         parameters
       - added syntax/@command attribute to the syntax element
-    July 2011: cwmp-datamodel-1-4.xsd, corresponds to TR-106 Amendment 6
+    * July 2011: cwmp-datamodel-1-4.xsd, corresponds to TR-106 Amendment 6
       - added top-level @file attribute
- 
+    * September 2013: cwmp-datamodel-1-5.xsd, corresponds to TR-106 Amendment 7
+      - added profile/@minVersion attribute
+      - allowed uniqueKey parameters to be in sub-objects
+      - defined BibliographyReference type (previously anonymous)
+      - clarified encoding and character set requirements
+      - clarified that unique key parameters can't be lists
+      - added UUID data type
+      - added ListNesting data type, nestedBrackets attribute, and allowed
+        use of the list facet in named data type definitions
+
+  Publication Date:
+   * October 7 2013: cwmp-datamodel-1-5.xsd, corresponds to TR-106 Amendment 7
+
 -->
 
 <!DOCTYPE cwmp-datamodel [
@@ -113,8 +95,14 @@
   <!ENTITY num "(\d+)">
 ]>
 
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:broadband-forum-org:cwmp:datamodel-1-4" targetNamespace="urn:broadband-forum-org:cwmp:datamodel-1-4" elementFormDefault="unqualified" attributeFormDefault="unqualified">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:broadband-forum-org:cwmp:datamodel-1-5" targetNamespace="urn:broadband-forum-org:cwmp:datamodel-1-5" elementFormDefault="unqualified" attributeFormDefault="unqualified">
   <!-- Simple types -->
+  <xs:simpleType name="AbbrefId">
+    <xs:annotation>
+      <xs:documentation>Abbreviation item ID; SHOULD uniquely identify this item across all instance documents.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token"/>
+  </xs:simpleType>
   <xs:simpleType name="ActiveNotify">
     <xs:annotation>
       <xs:documentation>Parameter active notify support.</xs:documentation>
@@ -160,7 +148,9 @@ The type hierarchy is as for XML Schema, with "any" and "base64" mapping to the 
   </xs:simpleType>
   <xs:simpleType name="ComponentName">
     <xs:annotation>
-      <xs:documentation>Component name; the same as xs:NCName except that dots are not permitted.</xs:documentation>
+      <xs:documentation>Component name; the same as xs:NCName except that dots are not permitted.
+A component which has a name beginning with an underscore is internal and cannot be imported by another DM Instance.
+In BBF standards, a component name MUST NOT include any hyphens.</xs:documentation>
     </xs:annotation>
     <xs:restriction base="xs:token">
       <xs:pattern value="&name;"/>
@@ -168,7 +158,9 @@ The type hierarchy is as for XML Schema, with "any" and "base64" mapping to the 
   </xs:simpleType>
   <xs:simpleType name="DataTypeName">
     <xs:annotation>
-      <xs:documentation>Data type name; the same as xs:NCName except that cannot start with lower-case letter (to avoid conflict with built-in data type names) and dots are not permitted.</xs:documentation>
+      <xs:documentation>Data type name; the same as xs:NCName except that cannot start with lower-case letter (to avoid conflict with built-in data type names) and dots are not permitted.
+A data type which has a name beginning with an underscore is internal and cannot be imported by another DM Instance.
+In BBF standards, a data type name MUST NOT include any hyphens.</xs:documentation>
     </xs:annotation>
     <xs:restriction base="xs:token">
       <xs:pattern value="&Name;"/>
@@ -202,6 +194,34 @@ The type hierarchy is as for XML Schema, with "any" and "base64" mapping to the 
       <xs:enumeration value="replace"/>
     </xs:restriction>
   </xs:simpleType>
+  <xs:simpleType name="GlorefId">
+    <xs:annotation>
+      <xs:documentation>Glossary item ID; SHOULD uniquely identify this item across all instance documents.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token"/>
+  </xs:simpleType>
+  <xs:simpleType name="ListNesting">
+    <xs:annotation>
+      <xs:documentation>Nested list escaping requirements.  See section 3.2.3.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="legacy">
+        <xs:annotation>
+          <xs:documentation>MUST escape inner comma separators.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="permitted">
+        <xs:annotation>
+          <xs:documentation>MAY escape inner comma separators; MAY use bracketed nested list syntax.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="required">
+        <xs:annotation>
+          <xs:documentation>MUST use bracketed nested list syntax.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
   <xs:simpleType name="MaxEntries">
     <xs:annotation>
       <xs:documentation>Positive integer or "unbounded".</xs:documentation>
@@ -216,15 +236,25 @@ The type hierarchy is as for XML Schema, with "any" and "base64" mapping to the 
   </xs:simpleType>
   <xs:simpleType name="ModelName">
     <xs:annotation>
-      <xs:documentation>Model name, including major and minor versions.  The name part is the same as xs:NCName except that dots are not permitted.</xs:documentation>
+      <xs:documentation>Model name, including major and minor versions.  The name part is the same as xs:NCName except that dots are not permitted.
+A model which has a name beginning with an underscore is internal and cannot be imported by another DM Instance.
+In BBF standards, a model name MUST NOT include any hyphens.</xs:documentation>
     </xs:annotation>
     <xs:restriction base="xs:token">
       <xs:pattern value="&name;&colon;&num;&dot;&num;"/>
     </xs:restriction>
   </xs:simpleType>
+  <xs:simpleType name="ModelNames">
+    <xs:annotation>
+      <xs:documentation>List of model names.</xs:documentation>
+    </xs:annotation>
+    <xs:list itemType="tns:ModelName"/>
+  </xs:simpleType>
   <xs:simpleType name="ObjectName">
     <xs:annotation>
-      <xs:documentation>Object name (maximum length 256).  Each component is the same as xs:NCName except that dots are not permitted.  This name MUST in addition follow the vendor-specific object name requirements of section 3.3.</xs:documentation>
+      <xs:documentation>Object name (maximum length 256).  Each component is the same as xs:NCName except that dots are not permitted.  This name MUST in addition follow the vendor-specific object name requirements of section 3.3.
+An object name component SHOULD NOT start with an underscore or include any hyphens.
+In BBF standards, an object name component MUST NOT start with an underscore or include any hyphens.</xs:documentation>
     </xs:annotation>
     <xs:restriction base="xs:token">
       <xs:maxLength value="256"/>
@@ -263,7 +293,9 @@ The type hierarchy is as for XML Schema, with "any" and "base64" mapping to the 
   </xs:simpleType>
   <xs:simpleType name="ParameterName">
     <xs:annotation>
-      <xs:documentation>Parameter name (maximum length 256); the same as xs:NCName except that dots are not permitted.  This name MUST in addition follow the vendor-specific parameter name requirements of section 3.3.</xs:documentation>
+      <xs:documentation>Parameter name (maximum length 256); the same as xs:NCName except that dots are not permitted.  This name MUST in addition follow the vendor-specific parameter name requirements of section 3.3.
+A parameter name SHOULD NOT start with an underscore or include any hyphens.
+In BBF standards, a parameter name  MUST NOT start with an underscore or include any hyphens.</xs:documentation>
     </xs:annotation>
     <xs:restriction base="xs:token">
       <xs:maxLength value="256"/>
@@ -290,7 +322,9 @@ The type hierarchy is as for XML Schema, with "any" and "base64" mapping to the 
   </xs:simpleType>
   <xs:simpleType name="ProfileName">
     <xs:annotation>
-      <xs:documentation>Profile name, including version.  The name part is the same as xs:NCName except that dots are not permitted.</xs:documentation>
+      <xs:documentation>Profile name, including version.  The name part is the same as xs:NCName except that dots are not permitted.
+A profile name SHOULD NOT start with an underscore or include any hyphens.
+In BBF standards, a profile name MUST NOT start with an underscore or include any hyphens.</xs:documentation>
     </xs:annotation>
     <xs:restriction base="xs:token">
       <xs:pattern value="&name;&colon;&num;"/>
@@ -356,12 +390,28 @@ The type hierarchy is as for XML Schema, with "any" and "base64" mapping to the 
       <xs:enumeration value="row"/>
     </xs:restriction>
   </xs:simpleType>
+  <xs:simpleType name="UniqueKeyReference">
+    <xs:annotation>
+      <xs:documentation>Relative parameter path name that cannot contain "{i}" placeholders and that therefore represents a valid uniqueKey parameter name.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:pattern value="(&name;&dot;)*&name;"/>
+    </xs:restriction>
+  </xs:simpleType>
   <xs:simpleType name="UnitsString">
     <xs:annotation>
       <xs:documentation>Units string.</xs:documentation>
     </xs:annotation>
     <xs:restriction base="xs:token">
       <xs:maxLength value="32"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="UUID">
+    <xs:annotation>
+      <xs:documentation>Universally Unique IDentifier (see RFC 4122).</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:pattern value="[A-Fa-f0-9]{8}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{12}"/>
     </xs:restriction>
   </xs:simpleType>
   <!-- Model groups -->
@@ -549,6 +599,32 @@ The units facet MUST NOT be specified for data types that are not numeric, i.e. 
     </xs:choice>
   </xs:group>
   <!-- Complex types -->
+  <xs:complexType name="Abbreviations">
+    <xs:annotation>
+      <xs:documentation>Abbreviations definition.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="description" type="tns:Description" minOccurs="0"/>
+      <xs:element name="item" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="description" type="tns:Description">
+              <xs:annotation>
+                <xs:documentation>The description of the item.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:any namespace="##other" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+          <xs:attribute name="id" type="tns:AbbrefId" use="required">
+            <xs:annotation>
+              <xs:documentation>Uniquely identifies the item (this is checked by schema validation).  Can be referenced from descriptions by using the {{abbref}} template.  See A.2.2.4.</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+          <xs:anyAttribute namespace="##other"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
   <xs:complexType name="BaseStatusFacet" abstract="true">
     <xs:annotation>
       <xs:documentation>Base facet (status attribute).</xs:documentation>
@@ -577,44 +653,46 @@ The units facet MUST NOT be specified for data types that are not numeric, i.e. 
     </xs:annotation>
     <xs:sequence>
       <xs:element name="description" type="tns:Description" minOccurs="0"/>
-      <xs:element name="reference" minOccurs="0" maxOccurs="unbounded">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element name="name" type="xs:token">
-              <xs:annotation>
-                <xs:documentation>Name by which the referenced document is usually known, e.g. TR-069, RFC 2863.</xs:documentation>
-              </xs:annotation>
-            </xs:element>
-            <xs:element name="title" type="xs:token" minOccurs="0"/>
-            <xs:element name="organization" type="xs:token" minOccurs="0">
-              <xs:annotation>
-                <xs:documentation>Organization that published the referenced document, e.g. BBF, IEEE, IETF.</xs:documentation>
-              </xs:annotation>
-            </xs:element>
-            <xs:element name="category" type="xs:token" minOccurs="0">
-              <xs:annotation>
-                <xs:documentation>Document category, e.g. TR (BBF), RFC (IETF).</xs:documentation>
-              </xs:annotation>
-            </xs:element>
-            <xs:element name="date" type="xs:token" minOccurs="0">
-              <xs:annotation>
-                <xs:documentation>Publication date.</xs:documentation>
-              </xs:annotation>
-            </xs:element>
-            <xs:choice minOccurs="0" maxOccurs="unbounded">
-              <xs:element name="hyperlink" type="xs:anyURI"/>
-            </xs:choice>
-            <xs:any namespace="##other" minOccurs="0" maxOccurs="unbounded"/>
-          </xs:sequence>
-          <xs:attribute name="id" type="tns:BibrefId" use="required">
-            <xs:annotation>
-              <xs:documentation>Uniquely identifies the reference (this is checked by schema validation).  Can be referenced from descriptions by using the {{bibref}} template.  See A.2.2.4.</xs:documentation>
-            </xs:annotation>
-          </xs:attribute>
-          <xs:anyAttribute namespace="##other"/>
-        </xs:complexType>
-      </xs:element>
+      <xs:element name="reference" type="tns:BibliographyReference" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BibliographyReference">
+    <xs:annotation>
+      <xs:documentation>Bibliography reference definition.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="name" type="xs:token">
+        <xs:annotation>
+          <xs:documentation>Name by which the referenced document is usually known, e.g. TR-069, RFC 2863.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="title" type="xs:token" minOccurs="0"/>
+      <xs:element name="organization" type="xs:token" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Organization that published the referenced document, e.g. BBF, IEEE, IETF.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="category" type="xs:token" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Document category, e.g. TR (BBF), RFC (IETF).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="date" type="xs:token" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Publication date.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="hyperlink" type="xs:anyURI"/>
+      </xs:choice>
+      <xs:any namespace="##other" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="id" type="tns:BibrefId" use="required">
+      <xs:annotation>
+        <xs:documentation>Uniquely identifies the reference (this is checked by schema validation).  Can be referenced from descriptions by using the {{bibref}} template.  See A.2.2.4.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:anyAttribute namespace="##other"/>    
   </xs:complexType>
   <xs:complexType name="ComponentDefinition">
     <xs:annotation>
@@ -668,6 +746,7 @@ The units facet MUST NOT be specified for data types that are not numeric, i.e. 
     </xs:annotation>
     <xs:sequence>
       <xs:element name="description" type="tns:Description" minOccurs="0"/>
+      <xs:element name="list" type="tns:ListFacet" minOccurs="0"/>
       <xs:choice>
         <xs:group ref="tns:AllFacets" minOccurs="0" maxOccurs="unbounded">
           <xs:annotation>
@@ -736,8 +815,7 @@ Cannot begin with a lower-case letter, in order to avoid confusion with built-in
   <xs:complexType name="Description">
     <xs:annotation>
       <xs:documentation>Description: free text which MAY contain a limited amount of mediawiki-like markup as specified in A.2.2.  For example, use "*" at the start of a line to indicate a bulleted list.
-To avoid confusion, the description SHOULD NOT contain tab characters.
-For BBF standards, the character set MUST be restricted to printable characters in the Basic Latin Unicode block, i.e. to characters whose decimal ASCII representations are in the (inclusive) ranges 9-10 and 32-126.</xs:documentation>
+To avoid confusion, the description SHOULD NOT contain tab characters.</xs:documentation>
     </xs:annotation>
     <xs:simpleContent>
       <xs:extension base="xs:string">
@@ -785,6 +863,32 @@ Specify "prefix" to prefix to the previous description, "append" to append to th
         </xs:attribute>
       </xs:extension>
     </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Glossary">
+    <xs:annotation>
+      <xs:documentation>Glossary definition.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="description" type="tns:Description" minOccurs="0"/>
+      <xs:element name="item" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="description" type="tns:Description">
+              <xs:annotation>
+                <xs:documentation>The description of the item.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:any namespace="##other" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+          <xs:attribute name="id" type="tns:GlorefId" use="required">
+            <xs:annotation>
+              <xs:documentation>Uniquely identifies the item (this is checked by schema validation).  Can be referenced from descriptions by using the {{gloref}} template.  See A.2.2.4.</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+          <xs:anyAttribute namespace="##other"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
   </xs:complexType>
   <xs:complexType name="Import">
     <xs:annotation>
@@ -879,6 +983,7 @@ The optional ref attribute MAY be used in order to avoid name conflicts between 
         </xs:sequence>
         <xs:attribute name="minItems" type="xs:nonNegativeInteger" default="0"/>
         <xs:attribute name="maxItems" type="tns:MaxEntries" default="unbounded"/>
+        <xs:attribute name="nestedBrackets" type="tns:ListNesting" default="legacy"/>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
@@ -928,6 +1033,7 @@ The optional ref attribute MAY be used in order to avoid name conflicts between 
         <xs:annotation>
           <xs:documentation>MUST NOT be present if the object is not a table (see maxEntries).
 The parameters referenced by each unique key element MUST constitute a unique key.
+All of the referenced parameters MUST be single-valued (i.e. not list-valued).
 For a non-functional key, or if the table has no enableParameter, the uniqueness requirement always applies.
 For a functional key, and if the table has an enableParameter, the uniqueness requirement applies only to enabled table entries.</xs:documentation>
         </xs:annotation>
@@ -935,7 +1041,7 @@ For a functional key, and if the table has an enableParameter, the uniqueness re
           <xs:sequence>
             <xs:element name="parameter" maxOccurs="unbounded">
               <xs:complexType>
-                <xs:attribute name="ref" type="tns:ParameterName" use="required"/>
+                <xs:attribute name="ref" type="tns:UniqueKeyReference" use="required"/>
               </xs:complexType>
             </xs:element>
           </xs:sequence>
@@ -1099,6 +1205,11 @@ MUST be present if and only if defining a new profile.</xs:documentation>
         <xs:documentation>MUST specify extends if the profile extends other profile(s).</xs:documentation>
       </xs:annotation>
     </xs:attribute>
+    <xs:attribute name="minVersion" type="tns:ModelNames">
+      <xs:annotation>
+        <xs:documentation>MUST specify minVersion if the profile is defined in a Component.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
     <xs:attribute name="status" type="tns:Status" default="current"/>
     <xs:attribute name="id" type="tns:OpaqueID"/>
     <xs:anyAttribute namespace="##other"/>
@@ -1222,7 +1333,8 @@ See section 3.2 for comma-separated list formatting rules.</xs:documentation>
 * Root Object definitions (including profiles)
 * Service Object definitions (including profiles)
 * Component definitions
-* Vendor extension definitions</xs:documentation>
+* Vendor extension definitions
+BBF standard DM Schema instance documents MUST use UTF-8 encoding and their character set MUST be restricted to printable characters in the Basic Latin Unicode block, i.e. to characters whose decimal ASCII representations are in the (inclusive) ranges 9-10 and 32-126.</xs:documentation>
     </xs:annotation>
     <xs:complexType>
       <xs:sequence>
@@ -1248,6 +1360,16 @@ See section 3.2 for comma-separated list formatting rules.</xs:documentation>
             <xs:selector xpath="pattern"/>
             <xs:field xpath="@value"/>
           </xs:unique>
+        </xs:element>
+        <xs:element name="glossary" type="tns:Glossary" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation>Glossary items.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="abbreviations" type="tns:Abbreviations" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation>Abbreviation items.</xs:documentation>
+          </xs:annotation>
         </xs:element>
         <xs:element name="bibliography" type="tns:Bibliography" minOccurs="0">
           <xs:annotation>
