@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  TR-069 Data Model Data Types
+
+  Copyright (c) 2008-2017, Broadband Forum
+  
+  Redistribution and use in source and binary forms, with or
+  without modification, are permitted provided that the following
+  conditions are met:
+  
+  1. Redistributions of source code must retain the above copyright
+     notice, this list of conditions and the following disclaimer.
+  
+  2. Redistributions in binary form must reproduce the above
+     copyright notice, this list of conditions and the following
+     disclaimer in the documentation and/or other materials
+     provided with the distribution.
+  
+  3. Neither the name of the copyright holder nor the names of its
+     contributors may be used to endorse or promote products
+     derived from this software without specific prior written
+     permission.
+  
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND
+  CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+  INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+  MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+  DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+  CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
+  STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  
+  The above license is used as a license under copyright only.
+  Please reference the Forum IPR Policy for patent licensing terms
+  <https://www.broadband-forum.org/ipr-policy>.
+  
+  Any moral rights which are necessary to exercise under the above
+  license grant are also deemed granted under this license.
+  
+  Summary:
+  TR-069 Data Model Data Types.  Contains normative definitions of named (i.e.
+  not built-in) data types that can be used in data model definitions.
+
+  Version History:
+  November 2008: tr-106-1-0-0-types.xml, corresponds to parts of TR-106
+                 section 3.2, with some updates from Amendments 1 and 2.
+  September 2009: tr-106-1-0-0-types.xml (name unchanged)
+                 - replaced bibrefs with import from biblio file
+                 - fixed cwmp-datamodel.xsd to be cwmp-datamodel-1-0.xsd
+  May 2010: tr-106-1-0-0-types.xml (name unchanged)
+                 - defined the IPPrefix and IPv4Address data types
+                 - specified doctype entities to help simplify data type definitions
+-->
+
+<!DOCTYPE cwmp-datamodel-entities [
+  <!ENTITY colon ":">
+  <!ENTITY hash "#">
+  <!ENTITY caret "\^">
+  <!ENTITY dot "\.">
+  <!ENTITY num "(\d+)">
+  <!ENTITY octet "(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])">  <!-- 0 to 255 -->
+]>
+
+<dm:document xmlns:dm="urn:broadband-forum-org:cwmp:datamodel-1-2"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="urn:broadband-forum-org:cwmp:datamodel-1-2 cwmp-datamodel-1-2.xsd"
+             spec="urn:broadband-forum-org:tr-106-1-0-0">
+
+  <import file="tr-069-biblio.xml" spec="urn:broadband-forum-org:tr-069-biblio"/>
+
+  <dataType name="IPAddress">
+    <description>All IPv4 addresses and subnet masks are represented as strings in IPv4 dotted-decimal notation.  All IPv6 addresses MUST be represented using any of the 3 standard textual representations as defined in {{bibref|RFC3513}} Sections 2.2.1, 2.2.2 and 2.2.3.  Both lower-case and upper-case letters can be used.  Use of the lower-case letters is RECOMMENDED.  Examples of valid IPv6 address textual representations:
+* 1080:0:0:800:ba98:3210:11aa:12dd
+* 1080::800:ba98:3210:11aa:12dd
+* 0:0:0:0:0:0:13.1.68.3
+Unspecified or inapplicable IP addresses and subnet masks MUST be represented as empty strings unless otherwise specified by the parameter definition.</description>
+    <string>
+      <size maxLength="45"/>
+    </string>
+  </dataType>
+
+  <dataType name="IPv4Address">
+    <description>IPv4 addresses and subnet masks are represented as strings in IPv4 dotted-decimal notation.  
+Unspecified or inapplicable IP addresses and subnet masks MUST be represented as empty strings unless otherwise specified by the parameter definition.</description>
+    <string>
+      <size maxLength="15"/>
+      <pattern value=""/>
+      <pattern value="(&octet;&dot;){3}&octet;"/>
+    </string>
+  </dataType>
+
+  <dataType name="IPPrefix">
+    <description>IPv4 or IPv6 routing prefix in Classless Inter-Domain Routing (CIDR) notation {{bibref|RFC4632}}. This is specified as an IP address followed by an appended "/n" suffix, where ''n'' (the prefix size) is an integer in the range 0-32 (for IPv4) or 0-128 (for IPv6) that indicates the number of (leftmost) '1' bits of the routing prefix. 
+IPv4 example: 192.168.1.0/24
+IPv6 example: 2001:edff:fe6a:f76::/64
+Unspecified or inapplicable IP prefixes MUST be represented as empty strings unless otherwise specified by the parameter definition.</description>
+    <string>
+      <size maxLength="49"/>
+    </string>
+  </dataType>
+
+  <dataType name="MACAddress">
+    <description>All MAC addresses are represented as strings of 12 hexadecimal digits (digits 0-9, letters A-F or a-f) displayed as six pairs of digits separated by colons.  Unspecified or inapplicable MAC addresses MUST be represented as empty strings unless otherwise specified by the parameter definition.</description>
+    <string>
+      <size maxLength="17"/>
+      <pattern value=""/>
+      <pattern value="([0-9A-Fa-f][0-9A-Fa-f]:){5}([0-9A-Fa-f][0-9A-Fa-f])"/>
+    </string>
+  </dataType>
+
+</dm:document>

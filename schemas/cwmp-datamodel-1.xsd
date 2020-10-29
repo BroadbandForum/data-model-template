@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  TR-069 Data Model Definition Schema (DM Schema) v1.1
+  TR-069 Data Model Definition Schema (DM Schema) v1.2
 
   Copyright (c) 2008-2017, Broadband Forum
   
@@ -54,16 +54,20 @@
                   - made import/@file a URI and optional (in line with
                     DT Schema)
                   - added RangeFacet step attribute
+  March 2010:     cwmp-datamodel-1-2.xsd, corresponds to TR-106 Amendment 4
+                  - added uniqueKey/@functional attribute
+                  - supported #.A relative path syntax (parent)
 -->
 <!DOCTYPE cwmp-datamodel [
   <!ENTITY colon ":">
+  <!ENTITY hash "#">
   <!ENTITY dot "\.">
   <!ENTITY inst "(\{i\})">
   <!ENTITY name "([\i-[:]][\c-[:\.]]*)">
   <!ENTITY Name "([\i-[a-z:]][\c-[:\.]]*)">
   <!ENTITY num "(\d+)">
 ]>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:broadband-forum-org:cwmp:datamodel-1-1" targetNamespace="urn:broadband-forum-org:cwmp:datamodel-1-1" elementFormDefault="unqualified" attributeFormDefault="unqualified">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:broadband-forum-org:cwmp:datamodel-1-2" targetNamespace="urn:broadband-forum-org:cwmp:datamodel-1-2" elementFormDefault="unqualified" attributeFormDefault="unqualified">
   <!-- Simple types -->
   <xs:simpleType name="ActiveNotify">
     <xs:annotation>
@@ -185,7 +189,7 @@ The type hierarchy is as for XML Schema, with "any" and "base64" mapping to the 
       <xs:documentation>Object path that cannot contain "{i}" placeholders and that therefore references a single object.  The path MUST follow the requirements of A.2.3.4 (its scope will typically be specified via an attribute of type PathScope).</xs:documentation>
     </xs:annotation>
     <xs:restriction base="xs:token">
-      <xs:pattern value="&dot;?(&name;&dot;)*"/>
+      <xs:pattern value="&hash;*&dot;?(&name;&dot;)*"/>
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="ObjectReferencePattern">
@@ -193,7 +197,7 @@ The type hierarchy is as for XML Schema, with "any" and "base64" mapping to the 
       <xs:documentation>Object path that can contain "{i}" placeholders and that can therefore references multiple objects.  The path MUST follow the requirements of A.2.3.4 (its scope will typically be specified via an attribute of type PathScope).</xs:documentation>
     </xs:annotation>
     <xs:restriction base="xs:token">
-      <xs:pattern value="&dot;?(&name;&dot;(&inst;&dot;)?)*"/>
+      <xs:pattern value="&hash;*&dot;?(&name;&dot;(&inst;&dot;)?)*"/>
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="ObjectReferencePatterns">
@@ -224,7 +228,7 @@ The type hierarchy is as for XML Schema, with "any" and "base64" mapping to the 
       <xs:documentation>Parameter path that cannot contain "{i}" placeholders and that therefore references a single parameter.  The path MUST follow the requirements of A.2.3.4 (its scope will typically be specified via an attribute of type PathScope).</xs:documentation>
     </xs:annotation>
     <xs:restriction base="xs:token">
-      <xs:pattern value="&dot;?(&name;&dot;)*&name;?"/>
+      <xs:pattern value="&hash;*&dot;?(&name;&dot;)*&name;"/>
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="PathScope">
@@ -894,7 +898,8 @@ If file is not specified, this MUST be specified and be used to locate the DM In
         <xs:annotation>
           <xs:documentation>MUST NOT be present if the object is not a table (see maxEntries).
 The parameters referenced by each unique key element MUST constitute a unique key.
-For a table in which there is an enableParameter, the uniqueness requirement applies only to enabled table entries.</xs:documentation>
+For a non-functional key, or if the table has no enableParameter, the uniqueness requirement always applies.
+For a functional key, and if the table has an enableParameter, the uniqueness requirement applies only to enabled table entries.</xs:documentation>
         </xs:annotation>
         <xs:complexType>
           <xs:sequence>
@@ -904,6 +909,11 @@ For a table in which there is an enableParameter, the uniqueness requirement app
               </xs:complexType>
             </xs:element>
           </xs:sequence>
+          <xs:attribute name="functional" type="xs:boolean" default="true">
+            <xs:annotation>
+              <xs:documentation>Indicates whether this is a functional (true) or non-functional (false) key.</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
         </xs:complexType>
         <xs:unique name="uniqueKeyParameterRef">
           <xs:selector xpath="parameter"/>
@@ -949,7 +959,7 @@ If the object is a table (see maxEntries), the final part of the name MUST be "{
     </xs:attribute>
     <xs:attribute name="enableParameter" type="tns:ParameterName">
       <xs:annotation>
-        <xs:documentation>MUST be specified for a table in which the ACS can create entries and which has one or more uniqueKey elements.</xs:documentation>
+        <xs:documentation>MUST be specified for a table in which the ACS can create entries and which has one or more uniqueKey elements that define functional keys.</xs:documentation>
       </xs:annotation>
     </xs:attribute>
     <xs:attribute name="status" type="tns:Status" default="current"/>
