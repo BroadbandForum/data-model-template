@@ -48,10 +48,10 @@
   -->
 
 <dm:document
-  xmlns:dm="urn:broadband-forum-org:cwmp:datamodel-1-6"
+  xmlns:dm="urn:broadband-forum-org:cwmp:datamodel-1-7"
   xmlns:dmr="urn:broadband-forum-org:cwmp:datamodel-report-0-1"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="urn:broadband-forum-org:cwmp:datamodel-1-6
+  xsi:schemaLocation="urn:broadband-forum-org:cwmp:datamodel-1-7
                         ../schemas/cwmp-datamodel-1.xsd
                       urn:broadband-forum-org:cwmp:datamodel-report-0-1
                         http://www.broadband-forum.org/cwmp/cwmp-datamodel-report.xsd"
@@ -181,9 +181,11 @@
         </syntax>
       </parameter>
     </event>
+    <!-- XXX Top-level event within a profile isn't supported...
     <profile name="CWMPTransferComplete:1">
       <event ref="CWMPTransferComplete!"/>
     </profile>
+    -->
   </component>
 
   <component name="BootEvent">

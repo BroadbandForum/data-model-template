@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<dm:document xmlns:dm="urn:broadband-forum-org:cwmp:datamodel-1-4"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="urn:broadband-forum-org:cwmp:datamodel-1-4
+  http://www.broadband-forum.org/cwmp/cwmp-datamodel-1-4.xsd"
+  spec="urn:broadband-forum-org:datatype-define-test" file="datatype-define-test.xml">
+  
+  <dataType name="_AliasCommon">
+    <description>
+      A non-volatile handle used to reference this instance.
+      '''This is intended only for use in protocol-independent "common" definitions, and MUST NOT be used in protocol-specific definitions.'''
+    </description>
+    <string>
+      <size maxLength="64"/>
+    </string>
+  </dataType>
+  
+  <dataType name="_AliasCWMP" base="_AliasCommon">
+    <description action="replace">
+      A non-volatile handle used to reference this instance. Alias provides a mechanism for an ACS to label this instance for future reference.
+      If the CPE supports the Alias-based Addressing feature as defined in {{bibref|TR-069a4|3.6.1}} and described in {{bibref|TR-069a4|Appendix II}}, the following mandatory constraints MUST be enforced:
+      * Its value MUST NOT be empty.
+      * Its value MUST start with a letter.
+      * If its value is not assigned by the ACS, it MUST start with a "cpe-" prefix.
+      * The CPE MUST NOT change the parameter value.
+    </description>
+  </dataType>
+  
+  <dataType name="_AliasUSP" base="_AliasCommon">
+    <description action="replace">
+      A non-volatile unique key used to reference this instance. Alias provides a mechanism for a Controller to label this instance for future reference.
+      The following mandatory constraints MUST be enforced:
+      * The value MUST NOT be empty.
+      * The value MUST start with a letter.
+      * If the value is not assigned by the Controller at creation time, the Agent MUST assign a value with an "cpe-" prefix.
+      The value MUST NOT change once it's been assigned.
+    </description>
+  </dataType>
+  
+  <!-- For backwards compatibility, "Alias" means "_AliasCWMP" -->
+  <dataType name="Alias" base="_AliasCWMP"/>
+  
+</dm:document>

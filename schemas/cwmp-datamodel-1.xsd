@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  Data Model Definition Schema (DM Schema) v1.6
+  Data Model Definition Schema (DM Schema) v1.7
 
-  Copyright (c) 2008-2018, Broadband Forum
+  Copyright (c) 2008-2019, Broadband Forum
   
   Redistribution and use in source and binary forms, with or
   without modification, are permitted provided that the following
@@ -47,15 +47,15 @@
     or USP data models.  Within the schema, elements are grouped by category (simple
     types, complex types etc), and are in alphabetical order within each category.
 
-  Issue History:
-    * November 2008: cwmp-datamodel-1-0.xsd, corresponds to TR-106 Amendment 2
-    * September 2009: cwmp-datamodel-1-1.xsd, corresponds to TR-106 Amendment 3
+  Issue History (Filename: Approval Date: Publication Date: Changes):
+    * cwmp-datamodel-1-0.xsd: November 2008: corresponds to TR-106 Amendment 2
+    * cwmp-datamodel-1-1.xsd: September 2009: corresponds to TR-106 Amendment 3
       - made import/@file a URI and optional (in line with DT Schema)
       - added RangeFacet step attribute
-    * March 2010: cwmp-datamodel-1-2.xsd, corresponds to TR-106 Amendment 4
+    * cwmp-datamodel-1-2.xsd: March 2010: corresponds to TR-106 Amendment 4
       - added uniqueKey/@functional attribute
       - supported #.A relative path syntax (parent)
-    * November 2010: cwmp-datamodel-1-3.xsd, corresponds to TR-106 Amendment 5
+    * cwmp-datamodel-1-3.xsd: November 2010: corresponds to TR-106 Amendment 5
       - removed the referential check done on object/@enableParameter
       - removed the referential check done on object/uniqueKey/parameter/@ref
       - updated all of the unique parameter-name constraints so that the
@@ -67,9 +67,9 @@
       - removed size facet's default maxLength on string/base64/hexBinary 
         parameters
       - added syntax/@command attribute to the syntax element
-    * July 2011: cwmp-datamodel-1-4.xsd, corresponds to TR-106 Amendment 6
+    * cwmp-datamodel-1-4.xsd: July 2011: corresponds to TR-106 Amendment 6
       - added top-level @file attribute
-    * September 2013: cwmp-datamodel-1-5.xsd, corresponds to TR-106 Amendment 7
+    * cwmp-datamodel-1-5.xsd: September 2013: October 7 2013: corresponds to TR-106 Amendment 7
       - added profile/@minVersion attribute
       - allowed uniqueKey parameters to be in sub-objects
       - defined BibliographyReference type (previously anonymous)
@@ -78,12 +78,11 @@
       - added UUID data type
       - added ListNesting data type, nestedBrackets attribute, and allowed
         use of the list facet in named data type definitions
-    * March 2018: cwmp-datamodel-1-6.xsd, corresponds to TR-106 Amendment 8
+    * cwmp-datamodel-1-6.xsd: March 2018: March 26 2018: corresponds to TR-106 Amendment 8
       - supported USP commands, events and mount points
-
-  Publication Date:
-   * October 7 2013: cwmp-datamodel-1-5.xsd, corresponds to TR-106 Amendment 7
-   * March 26 2018:  cwmp-datamodel-1-6.xsd, corresponds to TR-106 Amendment 8
+    * cwmp-datamodel-1-7.xsd: September 13 2019: September 13 2019:
+      - supported implementation defaults, version attribute, description templates,
+        writeOnceReadOnly access type and the decimal datatype
 -->
 
 <!DOCTYPE cwmp-datamodel [
@@ -99,8 +98,8 @@
 ]>
 
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-  xmlns:tns="urn:broadband-forum-org:cwmp:datamodel-1-6"
-  targetNamespace="urn:broadband-forum-org:cwmp:datamodel-1-6" elementFormDefault="unqualified"
+  xmlns:tns="urn:broadband-forum-org:cwmp:datamodel-1-7"
+  targetNamespace="urn:broadband-forum-org:cwmp:datamodel-1-7" elementFormDefault="unqualified"
   attributeFormDefault="unqualified">
   <!-- Simple types -->
   <xs:simpleType name="AbbrefId">
@@ -126,6 +125,18 @@
     </xs:annotation>
     <xs:union memberTypes="tns:BuiltinTypeName tns:DataTypeName"/>
   </xs:simpleType>
+  <xs:simpleType name="ArgumentDefaultType">
+    <xs:annotation>
+      <xs:documentation>Type of argument parameter default.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="parameter">
+        <xs:annotation>
+          <xs:documentation>Default if argument parameter isn't supported.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
   <xs:simpleType name="BibrefId">
     <xs:annotation>
       <xs:documentation>Bibliographic reference ID; SHOULD uniquely identify this reference across all instance documents.
@@ -143,6 +154,7 @@ The type hierarchy is as for XML Schema, with "any" and "base64" mapping to the 
       <xs:enumeration value="base64"/>
       <xs:enumeration value="boolean"/>
       <xs:enumeration value="dateTime"/>
+      <xs:enumeration value="decimal"/>
       <xs:enumeration value="hexBinary"/>
       <xs:enumeration value="integer"/>
       <xs:enumeration value="int"/>
@@ -181,28 +193,6 @@ In BBF standards, a data type name MUST NOT include any hyphens.</xs:documentati
     </xs:annotation>
     <xs:restriction base="xs:token">
       <xs:pattern value="&Name;"/>
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:simpleType name="DefaultType">
-    <xs:annotation>
-      <xs:documentation>Type of default.</xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="xs:token">
-      <xs:enumeration value="factory">
-        <xs:annotation>
-          <xs:documentation>Default from standard, e.g. RFC.  Also applies on object creation.</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="object">
-        <xs:annotation>
-          <xs:documentation>Default on object creation.</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="parameter">
-        <xs:annotation>
-          <xs:documentation>Default if parameter isn't supported.</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="DescriptionAction">
@@ -334,6 +324,28 @@ In BBF standards, an object name component MUST NOT start with an underscore or 
       <xs:maxLength value="256"/>
     </xs:restriction>
   </xs:simpleType>
+  <xs:simpleType name="ModelDefaultType">
+    <xs:annotation>
+      <xs:documentation>Type of model parameter default.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="factory">
+        <xs:annotation>
+          <xs:documentation>Default from standard, e.g. RFC.  Also applies on object creation.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="object">
+        <xs:annotation>
+          <xs:documentation>Default on object creation.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="implementation">
+        <xs:annotation>
+          <xs:documentation>Informational default that is likely after a reset or if no other value is available.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
   <xs:simpleType name="ParameterName">
     <xs:annotation>
       <xs:documentation>Parameter name (maximum length 256); the same as xs:NCName except that dots are not permitted.  This name MUST in addition follow the vendor-specific parameter name requirements of section 3.3.
@@ -400,6 +412,18 @@ In BBF standards, a profile name MUST NOT start with an underscore or include an
       <xs:enumeration value="readWrite"/>
     </xs:restriction>
   </xs:simpleType>
+  
+  <xs:simpleType name="ParameterAccess">
+    <xs:annotation>
+      <xs:documentation>Parameter access options.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="readOnly"/>
+      <xs:enumeration value="readWrite"/>
+      <xs:enumeration value="writeOnceReadOnly"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
   <xs:simpleType name="ReferenceType">
     <xs:annotation>
       <xs:documentation>Reference type (A.2.3.6).</xs:documentation>
@@ -458,6 +482,15 @@ In BBF standards, a profile name MUST NOT start with an underscore or include an
         value="[A-Fa-f0-9]{8}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{12}"/>
     </xs:restriction>
   </xs:simpleType>
+  <xs:simpleType name="Version">
+    <xs:annotation>
+      <xs:documentation>Version (major.minor) in which this item was first defined.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:pattern value="&num;&dot;&num;"/>
+    </xs:restriction>
+  </xs:simpleType>
+
   <!-- Model groups -->
   <xs:group name="AllBuiltinDataTypes">
     <xs:annotation>
@@ -504,6 +537,18 @@ In BBF standards, a profile name MUST NOT start with an underscore or include an
                   <xs:documentation>Length is that of the actual string, not the hexBinary-encoded string.  See A.2.3.3.</xs:documentation>
                 </xs:annotation>
               </xs:element>
+            </xs:choice>
+            <xs:any namespace="##other" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+          <xs:anyAttribute namespace="##other"/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="decimal">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+              <xs:element name="range" type="tns:DecimalRangeFacet"/>
+              <xs:element name="units" type="tns:UnitsFacet"/>
             </xs:choice>
             <xs:any namespace="##other" minOccurs="0" maxOccurs="unbounded"/>
           </xs:sequence>
@@ -608,9 +653,15 @@ The instanceRef facet MUST NOT be specified for data types that are not derived 
 The pathRef facet MUST NOT be specified for data types that are not derived from string.</xs:documentation>
         </xs:annotation>
       </xs:element>
+      <xs:element name="decimalRange" type="tns:DecimalRangeFacet">
+        <xs:annotation>
+          <xs:documentation>Decimal range facets, taken together, define the valid value ranges, e.g. [-1:-1] and [2.6:63.7] mean that the value has to be -1 or between 2.6:63.7 inclusive (it cannot be 0).
+The decimal range facet MUST NOT be specified for non-decimal data types, i.e. data types that are not derived from decimal types.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
       <xs:element name="range" type="tns:RangeFacet">
         <xs:annotation>
-          <xs:documentation>Range facets, taken together, define the valid value  ranges, e.g. [-1:-1] and [1:4094] mean that the value has to be -1 or 1:4094 (it cannot be 0).
+          <xs:documentation>Range facets taken together, define the valid value ranges with an optional step value, e.g. [-1:-1] and [1:4094] mean that the value has to be -1 or 1:4094 (it cannot be 0), [2:1024 step 2] mean all even values between 2 and 1024 inclusive.
 The range facet MUST NOT be specified for non-numeric data types, i.e. data types that are not derived from one of the integer types.</xs:documentation>
         </xs:annotation>
       </xs:element>
@@ -631,7 +682,7 @@ The enumerationRef facet MUST NOT be specified for data types that are not deriv
         <xs:annotation>
           <xs:documentation>Pattern attributes, taken together, define valid patterns, e.g. "" and "[0-9A-Fa-f]{6}" means that the value has to be empty or a 6 digit hex string.
 The pattern facet MUST NOT be specified for data types that are not derived from string. 
-Pattern syntax is the same as for XML Schema regular expressions.  See http://www.w3.org/TR/xmlschema-2/#regexs.</xs:documentation>
+Pattern syntax is the same as for XML Schema regular expressions.  See https://www.w3.org/TR/xmlschema-2/#regexs.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="units" type="tns:UnitsFacet">
@@ -669,16 +720,32 @@ The units facet MUST NOT be specified for data types that are not numeric, i.e. 
       </xs:element>
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="BaseStatusFacet" abstract="true">
+  <xs:complexType name="ArgumentDefaultFacet">
     <xs:annotation>
-      <xs:documentation>Base facet (status attribute).</xs:documentation>
+      <xs:documentation>Argument parameter default facet.</xs:documentation>
     </xs:annotation>
-    <xs:sequence>
-      <xs:element name="description" type="tns:Description" minOccurs="0"/>
-      <xs:any namespace="##other" minOccurs="0" maxOccurs="unbounded"/>
-    </xs:sequence>
-    <xs:attribute name="status" type="tns:Status" default="current"/>
-    <xs:anyAttribute namespace="##other"/>
+    <xs:complexContent>
+      <xs:extension base="tns:BaseStatusFacet">
+        <xs:attribute name="type" type="tns:ArgumentDefaultType" use="required"/>
+        <xs:attribute name="value" type="xs:string" use="required">
+          <xs:annotation>
+            <xs:documentation>Value MUST be valid for the data type.</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ArgumentSyntax">
+    <xs:annotation>
+      <xs:documentation>Argument parameter syntax specification.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="tns:BaseSyntax">
+        <xs:sequence>
+          <xs:element name="default" type="tns:ArgumentDefaultFacet" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
   </xs:complexType>
   <xs:complexType name="BaseAccessFacet" abstract="true">
     <xs:annotation>
@@ -697,8 +764,6 @@ The units facet MUST NOT be specified for data types that are not numeric, i.e. 
     </xs:annotation>
     <xs:sequence>
       <xs:element name="description" type="tns:Description" minOccurs="0"/>
-      <xs:element name="syntax" type="tns:Syntax" minOccurs="0"/>
-      <xs:any namespace="##other" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
     <xs:attribute name="name" type="tns:ParameterName">
       <xs:annotation>
@@ -712,6 +777,7 @@ MUST be present if and only if defining a new parameter.</xs:documentation>
       </xs:annotation>
     </xs:attribute>
     <xs:attribute name="status" type="tns:Status" default="current"/>
+    <xs:attribute name="version" type="tns:Version"/>
     <xs:attribute name="id" type="tns:OpaqueID"/>
     <xs:anyAttribute namespace="##other"/>
   </xs:complexType>
@@ -775,10 +841,69 @@ If the object is a table (see maxEntries), the final part of the name MUST be "{
       </xs:annotation>
     </xs:attribute>
     <xs:attribute name="status" type="tns:Status" default="current"/>
+    <xs:attribute name="version" type="tns:Version"/>
     <xs:attribute name="id" type="tns:OpaqueID"/>
     <xs:attribute name="discriminatorParameter" type="tns:ParameterName">
       <xs:annotation>
         <xs:documentation>MUST be present and specified for all single-instance objects which are part of a union and point to the same parameter specifying the name of the object which is currently in use, i.e. only one object which is part of a union can exist at the same time.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:anyAttribute namespace="##other"/>
+  </xs:complexType>
+  <xs:complexType name="BaseStatusFacet" abstract="true">
+    <xs:annotation>
+      <xs:documentation>Base facet (status attribute).</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="description" type="tns:Description" minOccurs="0"/>
+      <xs:any namespace="##other" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="status" type="tns:Status" default="current"/>
+    <xs:attribute name="version" type="tns:Version"/>
+    <xs:anyAttribute namespace="##other"/>
+  </xs:complexType>
+  <xs:complexType name="BaseSyntax">
+    <xs:annotation>
+      <xs:documentation>Base parameter syntax specification (omits defaults).</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:choice>
+        <xs:element name="list" type="tns:ListFacet" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation>For lists, the TR-069 parameter is always a string and the data type specification applies to individual list items, not to the parameter value.
+              See section 3.2 for comma-separated list formatting rules.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:choice>
+      <xs:choice>
+        <xs:group ref="tns:AllBuiltinDataTypes">
+          <xs:annotation>
+            <xs:documentation>Direct use of built-in data type, possibly modified via use of facets.</xs:documentation>
+          </xs:annotation>
+        </xs:group>
+        <xs:element name="dataType" type="tns:DataTypeReference">
+          <xs:annotation>
+            <xs:documentation>Use of named data type, possibly modified via use of facets.</xs:documentation>
+          </xs:annotation>
+          <xs:unique name="dtRefEnumerationValue">
+            <xs:selector xpath="enumeration"/>
+            <xs:field xpath="@value"/>
+          </xs:unique>
+          <xs:unique name="dtRefPatternValue">
+            <xs:selector xpath="pattern"/>
+            <xs:field xpath="@value"/>
+          </xs:unique>
+        </xs:element>
+      </xs:choice>
+    </xs:sequence>
+    <xs:attribute name="hidden" type="xs:boolean" default="false">
+      <xs:annotation>
+        <xs:documentation>If true, MUST always read back as the null value for the parameter's base data type (A.2.3.5).</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="command" type="xs:boolean" default="false">
+      <xs:annotation>
+        <xs:documentation>If true, setting this parameter triggers an Agent action. Such a parameter is not part of the device configuration and MUST always read back as the null value for the parameter's base data type (A.2.3.5).</xs:documentation>
       </xs:annotation>
     </xs:attribute>
     <xs:anyAttribute namespace="##other"/>
@@ -865,6 +990,10 @@ If the object is a table (see maxEntries), the final part of the name MUST be "{
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="tns:BaseParameter">
+        <xs:sequence>
+          <xs:element name="syntax" type="tns:ArgumentSyntax" minOccurs="0"/>
+          <xs:any namespace="##other" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
         <xs:attribute default="false" name="mandatory" type="xs:boolean">
           <xs:annotation>
             <xs:documentation>If true, the parameter MUST be present in the command.</xs:documentation>
@@ -885,7 +1014,7 @@ If the object is a table (see maxEntries), the final part of the name MUST be "{
         <xs:element name="object" type="tns:ModelObject">
           <xs:unique name="componentObjectParameterName">
             <xs:selector xpath="parameter"/>
-            <xs:field xpath="@name|@base"/>
+            <xs:field xpath="@name | @base"/>
           </xs:unique>
         </xs:element>
         <xs:element name="command" type="tns:ModelCommand"/>
@@ -902,6 +1031,7 @@ If the object is a table (see maxEntries), the final part of the name MUST be "{
       </xs:annotation>
     </xs:attribute>
     <xs:attribute name="status" type="tns:Status" default="current"/>
+    <xs:attribute name="version" type="tns:Version"/>
     <xs:attribute name="id" type="tns:OpaqueID"/>
     <xs:anyAttribute namespace="##other"/>
   </xs:complexType>
@@ -957,6 +1087,7 @@ Cannot begin with a lower-case letter, in order to avoid confusion with built-in
       </xs:annotation>
     </xs:attribute>
     <xs:attribute name="status" type="tns:Status" default="current"/>
+    <xs:attribute name="version" type="tns:Version"/>
     <xs:attribute name="id" type="tns:OpaqueID"/>
     <xs:anyAttribute namespace="##other"/>
   </xs:complexType>
@@ -980,21 +1111,6 @@ Cannot begin with a lower-case letter, in order to avoid confusion with built-in
     </xs:attribute>
     <xs:anyAttribute namespace="##other"/>
   </xs:complexType>
-  <xs:complexType name="DefaultFacet">
-    <xs:annotation>
-      <xs:documentation>Default facet.</xs:documentation>
-    </xs:annotation>
-    <xs:complexContent>
-      <xs:extension base="tns:BaseStatusFacet">
-        <xs:attribute name="type" type="tns:DefaultType" use="required"/>
-        <xs:attribute name="value" type="xs:string" use="required">
-          <xs:annotation>
-            <xs:documentation>Value MUST be valid for the data type.</xs:documentation>
-          </xs:annotation>
-        </xs:attribute>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
   <xs:complexType name="Description">
     <xs:annotation>
       <xs:documentation>Description: free text which MAY contain a limited amount of mediawiki-like markup as specified in A.2.2.  For example, use "*" at the start of a line to indicate a bulleted list.
@@ -1009,6 +1125,17 @@ Specify "prefix" to prefix to the previous description, "append" to append to th
           </xs:annotation>
         </xs:attribute>
         <xs:anyAttribute namespace="##other"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="DescriptionTemplate">
+    <xs:annotation>
+      <xs:documentation>DescriptionTemplate: free text with a length up to 256 characters, which can be added in multiple descriptions and MAY contain a limited amount of mediawiki-like markup as 
+specified in A.2.2 (same restrictions as tns:Description type</xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="id" type="xs:string"/>
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
@@ -1066,6 +1193,10 @@ Specify "prefix" to prefix to the previous description, "append" to append to th
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="tns:BaseParameter">
+        <xs:sequence>
+          <xs:element name="syntax" type="tns:ArgumentSyntax" minOccurs="0"/>
+          <xs:any namespace="##other" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
         <xs:attribute default="false" name="mandatory" type="xs:boolean">
           <xs:annotation>
             <xs:documentation>If true, the parameter MUST be present in the event.</xs:documentation>
@@ -1209,7 +1340,7 @@ The optional ref attribute MAY be used in order to avoid name conflicts between 
         <xs:element name="object" type="tns:ModelObject">
           <xs:unique name="objectParameterName">
             <xs:selector xpath="parameter"/>
-            <xs:field xpath="@name|@base"/>
+            <xs:field xpath="@name | @base"/>
           </xs:unique>
         </xs:element>
       </xs:choice>
@@ -1230,6 +1361,7 @@ The optional ref attribute MAY be used in order to avoid name conflicts between 
     </xs:attribute>
     <xs:attribute name="isService" type="xs:boolean" default="false"/>
     <xs:attribute name="status" type="tns:Status" default="current"/>
+    <xs:attribute name="version" type="tns:Version"/>
     <xs:attribute name="id" type="tns:OpaqueID"/>
     <xs:anyAttribute namespace="##other"/>
   </xs:complexType>
@@ -1255,9 +1387,25 @@ MUST be present if and only if defining a new command.</xs:documentation>
       </xs:annotation>
     </xs:attribute>
     <xs:attribute name="status" type="tns:Status" default="current"/>
+    <xs:attribute name="version" type="tns:Version"/>
     <xs:attribute name="id" type="tns:OpaqueID"/>
     <xs:attribute default="false" name="async" type="xs:boolean"/>
     <xs:anyAttribute namespace="##other"/>
+  </xs:complexType>
+  <xs:complexType name="ModelDefaultFacet">
+    <xs:annotation>
+      <xs:documentation>Model parameter default facet.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="tns:BaseStatusFacet">
+        <xs:attribute name="type" type="tns:ModelDefaultType" use="required"/>
+        <xs:attribute name="value" type="xs:string" use="required">
+          <xs:annotation>
+            <xs:documentation>Value MUST be valid for the data type.</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
   </xs:complexType>
   <xs:complexType name="ModelEvent">
     <xs:annotation>
@@ -1284,6 +1432,7 @@ MUST be present if and only if defining a new event.</xs:documentation>
       </xs:annotation>
     </xs:attribute>
     <xs:attribute name="status" type="tns:Status" default="current"/>
+    <xs:attribute name="version" type="tns:Version"/>
     <xs:attribute name="id" type="tns:OpaqueID"/>
     <xs:anyAttribute namespace="##other"/>
   </xs:complexType>
@@ -1323,9 +1472,25 @@ MUST be present if and only if defining a new event.</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="tns:BaseParameter">
-        <xs:attribute name="access" type="tns:ReadWriteAccess" use="required"/>
+        <xs:sequence>
+          <xs:element name="syntax" type="tns:ModelSyntax" minOccurs="0"/>
+          <xs:any namespace="##other" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="access" type="tns:ParameterAccess" use="required"/>
         <xs:attribute name="activeNotify" type="tns:ActiveNotify" default="normal"/>
         <xs:attribute name="forcedInform" type="xs:boolean" default="false"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ModelSyntax">
+    <xs:annotation>
+      <xs:documentation>Model parameter syntax specification.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="tns:BaseSyntax">
+        <xs:sequence>
+          <xs:element name="default" type="tns:ModelDefaultFacet" minOccurs="0"/>
+        </xs:sequence>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
@@ -1411,6 +1576,7 @@ MUST be present if and only if defining a new profile.</xs:documentation>
       </xs:annotation>
     </xs:attribute>
     <xs:attribute name="status" type="tns:Status" default="current"/>
+    <xs:attribute name="version" type="tns:Version"/>
     <xs:attribute name="id" type="tns:OpaqueID"/>
     <xs:anyAttribute namespace="##other"/>
   </xs:complexType>
@@ -1473,6 +1639,7 @@ MUST be present if and only if defining a new profile.</xs:documentation>
     </xs:sequence>
     <xs:attribute name="ref" type="tns:CommandName" use="required"/>
     <xs:attribute name="status" type="tns:Status" default="current"/>
+    <xs:attribute name="version" type="tns:Version"/>
     <xs:anyAttribute namespace="##other"/>
   </xs:complexType>
   <xs:complexType name="ProfileEvent">
@@ -1507,6 +1674,7 @@ MUST be present if and only if defining a new profile.</xs:documentation>
     </xs:sequence>
     <xs:attribute name="ref" type="tns:EventName" use="required"/>
     <xs:attribute name="status" type="tns:Status" default="current"/>
+    <xs:attribute name="version" type="tns:Version"/>
     <xs:anyAttribute namespace="##other"/>
   </xs:complexType>
   <xs:complexType name="ProfileObject">
@@ -1538,6 +1706,7 @@ MUST be present if and only if defining a new profile.</xs:documentation>
     <xs:attribute name="ref" type="tns:ObjectName" use="required"/>
     <xs:attribute name="requirement" type="tns:ProfileObjectAccess" use="required"/>
     <xs:attribute name="status" type="tns:Status" default="current"/>
+    <xs:attribute name="version" type="tns:Version"/>
     <xs:anyAttribute namespace="##other"/>
   </xs:complexType>
   <xs:complexType name="ProfileParameter">
@@ -1552,13 +1721,32 @@ MUST be present if and only if defining a new profile.</xs:documentation>
       </xs:element>
     </xs:sequence>
     <xs:attribute name="ref" type="tns:ParameterName" use="required"/>
-    <xs:attribute name="requirement" type="tns:ReadWriteAccess" use="required"/>
+    <xs:attribute name="requirement" type="tns:ParameterAccess" use="required"/>
     <xs:attribute name="status" type="tns:Status" default="current"/>
+    <xs:attribute name="version" type="tns:Version"/>
     <xs:anyAttribute namespace="##other"/>
+  </xs:complexType>
+  <xs:complexType name="DecimalRangeFacet">
+    <xs:annotation>
+      <xs:documentation>Decimal range facet.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="tns:BaseAccessFacet">
+        <xs:attribute name="minInclusive" type="xs:decimal"/>
+        <xs:attribute name="maxInclusive" type="xs:decimal"/>
+        <xs:attribute name="step" default="1">
+          <xs:simpleType>
+            <xs:restriction base="xs:decimal">
+              <xs:minExclusive value="0"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:attribute>  
+      </xs:extension>
+    </xs:complexContent>
   </xs:complexType>
   <xs:complexType name="RangeFacet">
     <xs:annotation>
-      <xs:documentation>Range facet.</xs:documentation>
+      <xs:documentation>Integer range facet with optional step.</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="tns:BaseAccessFacet">
@@ -1588,53 +1776,6 @@ MUST be present if and only if defining a new profile.</xs:documentation>
         <xs:attribute name="value" type="tns:UnitsString" use="required"/>
       </xs:extension>
     </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="Syntax">
-    <xs:annotation>
-      <xs:documentation>Parameter syntax specification.</xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:choice>
-        <xs:element name="list" type="tns:ListFacet" minOccurs="0">
-          <xs:annotation>
-            <xs:documentation>For lists, the TR-069 parameter is always a string and the data type specification applies to individual list items, not to the parameter value.
-See section 3.2 for comma-separated list formatting rules.</xs:documentation>
-          </xs:annotation>
-        </xs:element>
-      </xs:choice>
-      <xs:choice>
-        <xs:group ref="tns:AllBuiltinDataTypes">
-          <xs:annotation>
-            <xs:documentation>Direct use of built-in data type, possibly modified via use of facets.</xs:documentation>
-          </xs:annotation>
-        </xs:group>
-        <xs:element name="dataType" type="tns:DataTypeReference">
-          <xs:annotation>
-            <xs:documentation>Use of named data type, possibly modified via use of facets.</xs:documentation>
-          </xs:annotation>
-          <xs:unique name="dtRefEnumerationValue">
-            <xs:selector xpath="enumeration"/>
-            <xs:field xpath="@value"/>
-          </xs:unique>
-          <xs:unique name="dtRefPatternValue">
-            <xs:selector xpath="pattern"/>
-            <xs:field xpath="@value"/>
-          </xs:unique>
-        </xs:element>
-      </xs:choice>
-      <xs:element name="default" type="tns:DefaultFacet" minOccurs="0"/>
-    </xs:sequence>
-    <xs:attribute name="hidden" type="xs:boolean" default="false">
-      <xs:annotation>
-        <xs:documentation>If true, MUST always read back as the null value for the parameter's base data type (A.2.3.5).</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-    <xs:attribute name="command" type="xs:boolean" default="false">
-      <xs:annotation>
-        <xs:documentation>If true, setting this parameter triggers an Agent action. Such a parameter is not part of the device configuration and MUST always read back as the null value for the parameter's base data type (A.2.3.5).</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-    <xs:anyAttribute namespace="##other"/>
   </xs:complexType>
   <!-- Elements -->
   <xs:element name="document">
@@ -1688,6 +1829,15 @@ BBF standard DM Schema instance documents MUST use UTF-8 encoding and their char
             <xs:documentation>Bibliographic references.</xs:documentation>
           </xs:annotation>
         </xs:element>
+        <xs:element name="template" type="tns:DescriptionTemplate" minOccurs="0" maxOccurs="unbounded">
+          <xs:annotation>
+            <xs:documentation>Templates used in descriptions.</xs:documentation>
+          </xs:annotation>
+          <xs:unique name="TemplateID">
+            <xs:selector xpath="id"/>
+            <xs:field xpath="@value"/>
+          </xs:unique>
+        </xs:element>
         <xs:choice minOccurs="0" maxOccurs="unbounded">
           <xs:element name="component" type="tns:ComponentDefinition">
             <xs:annotation>
@@ -1695,11 +1845,11 @@ BBF standard DM Schema instance documents MUST use UTF-8 encoding and their char
             </xs:annotation>
             <xs:unique name="componentParameterName">
               <xs:selector xpath="parameter"/>
-              <xs:field xpath="@name|@base"/>
+              <xs:field xpath="@name | @base"/>
             </xs:unique>
             <xs:unique name="componentObjectName">
               <xs:selector xpath="object"/>
-              <xs:field xpath="@name|@base"/>
+              <xs:field xpath="@name | @base"/>
             </xs:unique>
             <xs:unique name="componentProfileName">
               <xs:selector xpath="profile"/>
@@ -1712,11 +1862,11 @@ BBF standard DM Schema instance documents MUST use UTF-8 encoding and their char
             </xs:annotation>
             <xs:unique name="modelParameterName">
               <xs:selector xpath="parameter"/>
-              <xs:field xpath="@name|@base"/>
+              <xs:field xpath="@name | @base"/>
             </xs:unique>
             <xs:unique name="modelObjectName">
               <xs:selector xpath="object"/>
-              <xs:field xpath="@name|@base"/>
+              <xs:field xpath="@name | @base"/>
             </xs:unique>
             <xs:unique name="modelProfileName">
               <xs:selector xpath="profile"/>
@@ -1751,15 +1901,15 @@ Where the specification is a BBF document, the file naming rules specified in A.
       <xs:anyAttribute namespace="##other"/>
     </xs:complexType>
     <xs:unique name="dataTypeName">
-      <xs:selector xpath="dataType|import/dataType"/>
+      <xs:selector xpath="dataType | import/dataType"/>
       <xs:field xpath="@name"/>
     </xs:unique>
     <xs:unique name="componentName">
-      <xs:selector xpath="component|import/component"/>
+      <xs:selector xpath="component | import/component"/>
       <xs:field xpath="@name"/>
     </xs:unique>
     <xs:unique name="modelName">
-      <xs:selector xpath="model|import/model"/>
+      <xs:selector xpath="model | import/model"/>
       <xs:field xpath="@name"/>
     </xs:unique>
     <xs:unique name="bibId">
@@ -1767,7 +1917,7 @@ Where the specification is a BBF document, the file naming rules specified in A.
       <xs:field xpath="@id"/>
     </xs:unique>
     <xs:keyref name="dataTypeBase" refer="tns:dataTypeName">
-      <xs:selector xpath="dataType|.//parameter/syntax/dataType"/>
+      <xs:selector xpath="dataType | .//parameter/syntax/dataType"/>
       <xs:field xpath="@base"/>
     </xs:keyref>
     <xs:keyref name="dataTypeRef" refer="tns:dataTypeName">

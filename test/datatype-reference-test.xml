@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<dm:document xmlns:dm="urn:broadband-forum-org:cwmp:datamodel-1-4"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="urn:broadband-forum-org:cwmp:datamodel-1-4
+  http://www.broadband-forum.org/cwmp/cwmp-datamodel-1-4.xsd"
+  spec="urn:broadband-forum-org:datatype-reference-test" file="datatype-reference-test.xml">
+  
+  <import file="datatype-define-test.xml">
+    <dataType name="AliasMyName" ref="_AliasUSP"/>
+  </import>
+  
+  <model name="datatype-reference-test:1.0">
+    <parameter name="datatype-reference-test" access="readOnly">
+      <description>
+        {{datatype|expand}}
+      </description>
+      <syntax>
+        <dataType ref="AliasMyName"/>
+      </syntax>
+    </parameter>
+  </model>
+  
+</dm:document>

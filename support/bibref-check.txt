@@ -1,0 +1,465 @@
+https://www.3gpp.org/technologies/keywords-acronyms/99-hspa: 
+https://www.3gpp.org/ftp/Specs/html-info/0303.htm: 
+https://www.3gpp.org/ftp/Specs/html-info/0505.htm: 
+https://www.3gpp.org/ftp/Specs/html-info/22011.htm: 
+https://www.3gpp.org/ftp/Specs/html-info/22220.htm: 
+https://www.3gpp.org/ftp/Specs/html-info/23003.htm: 
+https://www.3gpp.org/ftp/Specs/html-info/23032.htm: 
+https://www.3gpp.org/ftp/Specs/html-info/23060.htm: 
+https://www.3gpp.org/ftp/Specs/html-info/23107.htm: 
+https://www.3gpp.org/ftp/Specs/html-info/23203.htm: 
+https://www.3gpp.org/ftp/Specs/html-info/23401.htm: 
+https://www.3gpp.org/ftp/Specs/html-info/24008.htm: 
+https://www.3gpp.org/ftp/Specs/html-info/24229.htm: 
+https://www.3gpp.org/ftp/Specs/html-info/25104.htm: 
+https://www.3gpp.org/ftp/Specs/html-info/25133.htm: 
+https://www.3gpp.org/ftp/Specs/html-info/25171.htm: 
+https://www.3gpp.org/ftp/Specs/html-info/25214.htm: 
+https://www.3gpp.org/ftp/Specs/html-info/25304.htm: 
+https://www.3gpp.org/ftp/Specs/html-info/25331.htm: 
+https://www.3gpp.org/ftp/Specs/html-info/25401.htm: 
+https://www.3gpp.org/ftp/Specs/html-info/25413.htm: 
+https://www.3gpp.org/ftp/Specs/html-info/25433.htm: 
+https://www.3gpp.org/ftp/Specs/html-info/25469.htm: 
+https://www.3gpp.org/ftp/Specs/html-info/25967.htm: 
+https://www.3gpp.org/ftp/Specs/html-info/29281.htm: 
+https://www.3gpp.org/ftp/Specs/html-info/32300.htm: 
+https://www.3gpp.org/ftp/Specs/html-info/32405.htm: 
+https://www.3gpp.org/DynaReport/32452.htm: 
+https://www.3gpp.org/DynaReport/32453.htm: 
+https://www.3gpp.org/ftp/Specs/html-info/32582.htm: 
+https://www.3gpp.org/ftp/Specs/html-info/32584.htm: 
+https://www.3gpp.org/ftp/Specs/html-info/32592.htm: 
+https://www.3gpp.org/ftp/Specs/html-info/32642.htm: 
+https://www.3gpp.org/ftp/Specs/html-info/33401.htm: 
+https://www.3gpp.org/ftp/Specs/html-info/36101.htm: 
+https://www.3gpp.org/ftp/Specs/html-info/36104.htm: 
+https://www.3gpp.org/ftp/Specs/html-info/36133.htm: 
+https://www.3gpp.org/ftp/Specs/html-info/36211.htm: 
+https://www.3gpp.org/ftp/Specs/html-info/36212.htm: 
+https://www.3gpp.org/ftp/Specs/html-info/36213.htm: 
+https://www.3gpp.org/ftp/Specs/html-info/36214.htm: 
+https://www.3gpp.org/ftp/Specs/html-info/36300.htm: 
+https://www.3gpp.org/ftp/Specs/html-info/36304.htm: 
+https://www.3gpp.org/DynaReport/36314.htm: 
+https://www.3gpp.org/ftp/Specs/html-info/36321.htm: 
+https://www.3gpp.org/ftp/Specs/html-info/36322.htm: 
+https://www.3gpp.org/ftp/Specs/html-info/36331.htm: 
+https://www.3gpp.org/ftp/Specs/html-info/36413.htm: 
+https://www.3gpp.org/ftp/Specs/html-info/45005.htm: 
+https://www.3gpp.org/ftp/Specs/html-info/45008.htm: 
+https://www.3gpp2.org/Public_html/Specs/A.S0008-C_v2.0_090106.pdf: 
+https://www.3gpp2.org/Public_html/Specs/A.S0009-C_v2.0_090106.pdf: 
+https://www.3gpp2.org/Public_html/Specs/A.S0013-D_v2.0_090825.pdf: 
+https://www.3gpp2.org/Public_html/Specs/A.S0014-D_v2.0_090825.pdf: 
+https://www.3gpp2.org/Public_html/Specs/A.S0024-0_v1.0_100302.pdf: 
+https://www.3gpp2.org/Public_html/Specs/C.S0002-A_v6.0.pdf: 
+https://www.3gpp2.org/Public_html/Specs/C.S0005-E_v1.0_cdma200_1x_Layer_3-090925.pdf: 
+https://www.3gpp2.org/Public_html/Specs/C.S0005-A.pdf: 
+https://www.3gpp2.org/Public_html/Specs/C.S0024-B_v3.0_HRPD.pdf: 
+https://www.3gpp2.org/Public_html/Specs/C.S0024-A_v3.0_060912.pdf: 
+https://www.3gpp2.org/Public_html/Specs/C.S0024-B_v3.0_HRPD.pdf: 
+https://www.3gpp2.org/Public_html/Specs/C.S0057-D_v1.0%20Band%20Class%20.pdf: 
+https://www.3gpp2.org/Public_html/Specs/C.S0057-B%20v1.0_060814.pdf: 
+https://www.3gpp2.org/Public_html/Specs/C.R1001-G_v1.0_Param_Administration.pdf: 
+https://www.3gpp2.org/Public_html/Specs/N.S0010-0_v1.0.pdf: 
+https://www.3gpp2.org/Public_html/Specs/S.S0132-0_v1.0_Femtocell_Security_Framework.pdf: 
+https://www.3gpp2.org/Public_html/Specs/X.S0011-005-C_v1.0_110703.pdf: 
+https://www.3gpp2.org/Public_html/Specs/X.S0059-000-0_v1.0_100216.pdf: 
+https://standards.ieee.org/faqs/OUI.html: curl: (22) The requested URL returned error: 404 Not Found
+http://standards.ieee.org/faqs/OUI.html 
+https://standards.ieee.org/regauth/oui/tutorials/EUI64.html: curl: (22) The requested URL returned error: 404 Not Found
+http://standards.ieee.org/regauth/oui/tutorials/EUI64.html 
+https://standards.ieee.org/getieee802/download/802.1AB-2009.pdf: curl: (22) The requested URL returned error: 404 Not Found
+http://standards.ieee.org/getieee802/download/802.1AB-2009.pdf 
+https://standards.ieee.org/getieee802/download/802.1ad-2005.pdf: curl: (22) The requested URL returned error: 404 Not Found
+http://standards.ieee.org/getieee802/download/802.1ad-2005.pdf 
+https://ieeexplore.ieee.org/servlet/opac?punumber=6997981: 
+https://standards.ieee.org/getieee802/download/802.1D-2004.pdf: curl: (22) The requested URL returned error: 404 Not Found
+http://standards.ieee.org/getieee802/download/802.1D-2004.pdf 
+https://standards.ieee.org/getieee802/download/802.1Q-2005.pdf: curl: (22) The requested URL returned error: 404 Not Found
+http://standards.ieee.org/getieee802/download/802.1Q-2005.pdf 
+https://standards.ieee.org/getieee802/download/802.1Q-2011.pdf: curl: (22) The requested URL returned error: 404 Not Found
+http://standards.ieee.org/getieee802/download/802.1Q-2011.pdf 
+https://standards.ieee.org/getieee802/download/802.1X-2004.pdf: curl: (22) The requested URL returned error: 404 Not Found
+http://standards.ieee.org/getieee802/download/802.1X-2004.pdf 
+https://standards.ieee.org/about/get/802/802.3.html: curl: (22) The requested URL returned error: 404 Not Found
+http://standards.ieee.org/about/get/802/802.3.html 
+https://ieeexplore.ieee.org/servlet/opac?punumber=7428774: 
+https://standards.ieee.org/getieee802/download/802.3-2012_section1.pdf: curl: (22) The requested URL returned error: 404 Not Found
+http://standards.ieee.org/getieee802/download/802.3-2012_section1.pdf 
+https://standards.ieee.org/getieee802/download/802.3-2012_section2.pdf: curl: (22) The requested URL returned error: 404 Not Found
+http://standards.ieee.org/getieee802/download/802.3-2012_section2.pdf 
+https://standards.ieee.org/getieee802/download/802.3-2012_section3.pdf: curl: (22) The requested URL returned error: 404 Not Found
+http://standards.ieee.org/getieee802/download/802.3-2012_section3.pdf 
+https://standards.ieee.org/getieee802/download/802.3-2012_section4.pdf: curl: (22) The requested URL returned error: 404 Not Found
+http://standards.ieee.org/getieee802/download/802.3-2012_section4.pdf 
+https://standards.ieee.org/getieee802/download/802.3-2012_section5.pdf: curl: (22) The requested URL returned error: 404 Not Found
+http://standards.ieee.org/getieee802/download/802.3-2012_section5.pdf 
+https://standards.ieee.org/getieee802/download/802.3-2012_section6.pdf: curl: (22) The requested URL returned error: 404 Not Found
+http://standards.ieee.org/getieee802/download/802.3-2012_section6.pdf 
+https://standards.ieee.org/getieee802/download/802.11-2007.pdf: curl: (22) The requested URL returned error: 404 Not Found
+http://standards.ieee.org/getieee802/download/802.11-2007.pdf 
+https://standards.ieee.org/getieee802/download/802.11-2012.pdf: curl: (22) The requested URL returned error: 404 Not Found
+http://standards.ieee.org/getieee802/download/802.11-2012.pdf 
+https://ieeexplore.ieee.org/document/7786995: 
+https://standards.ieee.org/getieee802/download/802.11a-1999.pdf: curl: (22) The requested URL returned error: 404 Not Found
+http://standards.ieee.org/getieee802/download/802.11a-1999.pdf 
+https://www.ieee802.org/11/Reports/tgac_update.htm: curl: (35) LibreSSL SSL_connect: SSL_ERROR_SYSCALL in connection to www.ieee802.org:443 
+http://www.ieee802.org/11/Reports/tgac_update.htm 
+https://standards.ieee.org/getieee802/download/802.11b-1999.pdf: curl: (22) The requested URL returned error: 404 Not Found
+http://standards.ieee.org/getieee802/download/802.11b-1999.pdf 
+https://standards.ieee.org/getieee802/download/802.11g-2003.pdf: curl: (22) The requested URL returned error: 404 Not Found
+http://standards.ieee.org/getieee802/download/802.11g-2003.pdf 
+https://standards.ieee.org/getieee802/download/802.11h-2003.pdf: curl: (22) The requested URL returned error: 404 Not Found
+http://standards.ieee.org/getieee802/download/802.11h-2003.pdf 
+https://ieeexplore.ieee.org/xpl/freeabs_all.jsp?reload=true&amp;arnumber=5307322: 
+https://www.IEEE.org: 
+https://webapp.etsi.org/workprogram/Report_WorkItem.asp?WKI_ID=27769: 
+https://www.etsi.org/deliver/etsi_en/301800_301899/301893/01.08.01_60/en_301893v010801p.pdf: 
+https://www.etsi.org/deliver/etsi_en/300100_300199/30017505/02.05.01_60/en_30017505v020501p.pdf: 
+https://www.etsi.org/deliver/etsi_en/300100_300199/30017506/02.05.01_60/en_30017506v020501p.pdf: 
+https://www.etsi.org/deliver/etsi_en/300100_300199/30017507/02.05.01_60/en_30017507v020501p.pdf: 
+https://www.etsi.org/deliver/etsi_en/300100_300199/30017508/02.05.01_60/en_30017508v020501p.pdf: 
+https://www.etsi.org/deliver/etsi_en/300400_300499/300444/02.04.01_60/en_300444v020401p.pdf: 
+https://www.etsi.org/deliver/etsi_es/201900_201999/201970/01.01.01_60/es_201970v010101p.pdf: 
+https://www.etsi.org/WebSite/Technologies/analogueline.aspx: 
+https://docbox.etsi.org/M2M/Open/Latest_Drafts/00002ed121v116.pdf: curl: (22) The requested URL returned error: 404 Not Found
+http://docbox.etsi.org/M2M/Open/Latest_Drafts/00002ed121v116.pdf 
+https://docbox.etsi.org/M2M/Open/Latest_Drafts/00010ed121v116.pdf: curl: (22) The requested URL returned error: 404 Not Found
+http://docbox.etsi.org/M2M/Open/Latest_Drafts/00010ed121v116.pdf 
+https://www.etsi.org/deliver/etsi_tr/101100_101199/101183/01.01.01_60/tr_101183v010101p.pdf: 
+https://www.etsi.org/deliver/etsi_ts/102500_102599/10252701/01.03.01_60/ts_10252701v010301p.pdf: 
+https://www.etsi.org/deliver/etsi_ts/102500_102599/10252703/01.05.01_60/ts_10252703v010501p.pdf: 
+https://www.etsi.org/deliver/etsi_ts/102500_102599/10252704/01.01.01_60/ts_10252704v010101p.pdf: 
+https://www.etsi.org/deliver/etsi_ts/102500_102599/10252705/01.01.01_60/ts_10252705v010101p.pdf: 
+https://www.etsi.org/deliver/etsi_ts/181000_181099/181019/02.00.00_60/ts_181019v020000p.pdf: 
+https://www.itu.int/rec/T-REC-E.118-200605-I/en: 
+https://www.itu.int/rec/T-REC-E.164-201011-I/en: 
+https://www.itu.int/rec/T-REC-G.988-201010-P/en: 
+https://www.itu.int/rec/T-REC-G.992.1: 
+https://www.itu.int/rec/T-REC-G.992.2: 
+https://www.itu.int/rec/T-REC-G.992.3: 
+https://www.itu.int/rec/T-REC-G.992.4: 
+https://www.itu.int/rec/T-REC-G.992.5: 
+https://www.itu.int/rec/T-REC-G.993.1: 
+https://www.itu.int/rec/T-REC-G.993.2: 
+https://www.itu.int/rec/T-REC-G.994.1: 
+https://www.itu.int/rec/T-REC-G.996.2: 
+https://www.itu.int/rec/T-REC-G.997.1: 
+https://www.itu.int/rec/T-REC-G.997.2-201505-I: 
+https://www.itu.int/rec/T-REC-G.998.1: 
+https://www.itu.int/rec/T-REC-G.998.2: 
+https://www.itu.int/rec/T-REC-G.998.2: 
+https://www.itu.int/rec/T-REC-G.9954/en: 
+https://www.itu.int/rec/T-REC-G.9960-201006-P: 
+https://www.itu.int/rec/T-REC-G.9961-201006-P: 
+https://www.itu.int/rec/T-REC-G.9962-201308-P: 
+https://www.itu.int/rec/T-REC-G.9962-201308-P: 
+https://www.itu.int/rec/T-REC-G.9973-201110-I/en: 
+https://www.itu.int/rec/T-REC-G.9701-201412-P: 
+https://www.itu.int/rec/T-REC-H.235.1: 
+https://www.itu.int/rec/T-REC-H.323-200912-I: 
+https://www.itu.int/rec/T-REC-I.251.1: 
+https://www.itu.int/rec/T-REC-I.251.2: 
+https://www.itu.int/rec/T-REC-I.251.7: 
+https://www.itu.int/rec/T-REC-I.252.7: 
+https://www.itu.int/rec/T-REC-I.256.2a: 
+https://www.itu.int/rec/T-REC-I.256.2b: 
+https://www.itu.int/rec/T-REC-I.256.2c: 
+https://www.itu.int/rec/T-REC-Q.931: 
+https://www.itu.int/rec/T-REC-T.38-201009-I: 
+https://www.itu.int/rec/T-REC-X.731/en: 
+https://www.itu.int/rec/T-REC-X.733/en: 
+https://www.itu.int/rec/T-REC-Y.1540: 
+https://www.iana.org/assignments/ianaiftype-mib/ianaiftype-mib: 
+https://www.iana.org/assignments/sip-events/sip-events.xhtml#sip-events-2: 
+https://www.iana.org/protocols: 
+https://www.iana.org/assignments/protocol-numbers: 
+https://www.iana.org/assignments/port-numbers: 
+https://www.iana.org/assignments/sip-parameters/sip-parameters.xhtml#sip-parameters-6: 
+https://www.iana.org/assignments/uri-schemes: 
+https://www.iana.org/assignments/ikev2-parameters/ikev2-parameters.xml: 
+https://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=25039: 
+https://www.iso.org/iso/language_codes: 
+https://www.iso.org/iso/country_codes.htm: 
+https://datatracker.ietf.org/doc/draft-ietf-ippm-metric-registry/: 
+https://tools.ietf.org/html/rfc7648: 
+https://tools.ietf.org/html/rfc793: 
+https://tools.ietf.org/html/rfc862: 
+https://tools.ietf.org/html/rfc958: 
+https://tools.ietf.org/html/rfc1035: 
+https://tools.ietf.org/html/rfc1323: 
+https://tools.ietf.org/html/rfc1332: 
+https://tools.ietf.org/html/rfc1350: 
+https://tools.ietf.org/html/rfc1378: 
+https://tools.ietf.org/html/rfc1552: 
+https://tools.ietf.org/html/rfc1661: 
+https://tools.ietf.org/html/rfc1877: 
+https://tools.ietf.org/html/rfc1974: 
+https://tools.ietf.org/html/rfc2080: 
+https://tools.ietf.org/html/rfc2097: 
+https://tools.ietf.org/html/rfc2119: 
+https://tools.ietf.org/html/rfc2131: 
+https://tools.ietf.org/html/rfc2132: 
+https://tools.ietf.org/html/rfc2198: 
+https://tools.ietf.org/html/rfc2225: 
+https://tools.ietf.org/html/rfc2228: 
+https://tools.ietf.org/html/rfc2326: 
+https://tools.ietf.org/html/rfc2364: 
+https://tools.ietf.org/html/rfc2474: 
+https://tools.ietf.org/html/rfc2516: 
+https://tools.ietf.org/html/rfc2581: 
+https://tools.ietf.org/html/rfc2582: 
+https://tools.ietf.org/html/rfc2616: 
+https://tools.ietf.org/html/rfc2634: 
+https://tools.ietf.org/html/rfc2662: 
+https://tools.ietf.org/html/rfc2684: 
+https://tools.ietf.org/html/rfc2697: 
+https://tools.ietf.org/html/rfc2698: 
+https://tools.ietf.org/html/rfc2782: 
+https://tools.ietf.org/html/rfc2784: 
+https://tools.ietf.org/html/rfc2818: 
+https://tools.ietf.org/html/rfc2863: 
+https://tools.ietf.org/html/rfc2865: 
+https://tools.ietf.org/html/rfc2890: 
+https://tools.ietf.org/html/rfc2898: 
+https://tools.ietf.org/html/rfc2960: 
+https://tools.ietf.org/html/rfc2974: 
+https://tools.ietf.org/html/rfc3004: 
+https://tools.ietf.org/html/rfc3066: 
+https://tools.ietf.org/html/rfc3174: 
+https://tools.ietf.org/html/rfc3232: 
+https://www.ietf.org/rfc/rfc3261.txt: 
+https://tools.ietf.org/html/rfc3315: 
+https://tools.ietf.org/html/rfc3339: 
+https://tools.ietf.org/html/rfc3376: 
+https://tools.ietf.org/html/rfc3435: 
+https://www.ietf.org/rfc/rfc3455.txt: 
+https://tools.ietf.org/html/rfc3489: 
+https://tools.ietf.org/html/rfc3513: 
+https://www.ietf.org/rfc/rfc3550.txt: 
+https://tools.ietf.org/html/rfc3596: 
+https://tools.ietf.org/html/rfc3611: 
+https://tools.ietf.org/html/rfc3633: 
+https://tools.ietf.org/html/rfc3646: 
+https://tools.ietf.org/html/rfc3775: 
+https://www.ietf.org/rfc/rfc3873.txt: 
+https://tools.ietf.org/html/rfc3925: 
+https://tools.ietf.org/html/rfc3926: 
+https://tools.ietf.org/html/rfc3927: 
+https://tools.ietf.org/html/rfc3948: 
+https://tools.ietf.org/html/rfc3986: 
+https://tools.ietf.org/html/rfc4028: 
+https://tools.ietf.org/html/rfc4078: 
+https://tools.ietf.org/html/rfc4122: 
+https://tools.ietf.org/html/rfc4180: 
+https://tools.ietf.org/html/rfc4191: 
+https://tools.ietf.org/html/rfc4193: 
+https://tools.ietf.org/html/rfc4242: 
+https://tools.ietf.org/html/rfc4291: 
+https://tools.ietf.org/html/rfc4292: 
+https://tools.ietf.org/html/rfc4293: 
+https://www.ietf.org/rfc/rfc4301.txt: 
+https://tools.ietf.org/html/rfc4302: 
+https://tools.ietf.org/html/rfc4303: 
+https://www.ietf.org/rfc/rfc4307.txt: 
+https://tools.ietf.org/html/rfc4340: 
+https://tools.ietf.org/html/rfc4389: 
+https://tools.ietf.org/html/rfc4585: 
+https://tools.ietf.org/html/rfc4588: 
+https://tools.ietf.org/html/rfc4632: 
+https://tools.ietf.org/html/rfc4733: 
+https://tools.ietf.org/html/rfc4835: 
+https://tools.ietf.org/html/rfc4861: 
+https://tools.ietf.org/html/rfc4862: 
+https://www.ietf.org/rfc/rfc4960.txt: 
+https://tools.ietf.org/html/rfc5072: 
+https://tools.ietf.org/html/rfc5139: 
+https://datatracker.ietf.org/doc/rfc5280/: 
+https://tools.ietf.org/html/rfc5491: 
+https://tools.ietf.org/html/rfc5625: 
+https://tools.ietf.org/html/rfc5969: 
+https://tools.ietf.org/html/rfc5996: 
+https://tools.ietf.org/html/rfc6106: 
+https://datatracker.ietf.org/doc/rfc6120/: 
+https://tools.ietf.org/html/rfc6140: 
+https://tools.ietf.org/html/rfc6234: 
+https://datatracker.ietf.org/doc/rfc6335/: 
+https://tools.ietf.org/html/rfc6455: 
+https://tools.ietf.org/html/rfc6762: 
+https://tools.ietf.org/html/rfc6763: 
+https://tools.ietf.org/html/rfc6838: 
+https://www.ietf.org/rfc/rfc6887.txt: 
+https://www.ietf.org/rfc/rfc6970.txt: 
+https://tools.ietf.org/html/rfc7159: 
+https://tools.ietf.org/html/rfc7230: 
+https://tools.ietf.org/html/rfc7252: 
+https://www.ietf.org/rfc/rfc7291.txt: 
+https://tools.ietf.org/html/rfc7395: 
+https://tools.ietf.org/html/rfc7398: 
+http://tools.ietf.org/html/rfc7468: 
+https://tools.ietf.org/html/rfc7594: 
+https://tools.ietf.org/html/rfc7597: 
+https://tools.ietf.org/html/rfc7598: 
+https://tools.ietf.org/html/rfc7599: 
+https://tools.ietf.org/html/rfc8141: 
+https://tools.ietf.org/html/rfc8193: 
+https://tools.ietf.org/html/draft-ietf-babel-rfc6126bis: 
+https://tools.ietf.org/html/draft-ietf-babel-dtls: 
+https://tools.ietf.org/html/draft-ietf-babel-hmac: 
+https://tools.ietf.org/html/draft-ietf-babel-information-model: 
+https://www.broadband-forum.org/technical/download/TR-069_Amendment-5.pdf: 
+https://www.broadband-forum.org/technical/download/TR-135.pdf: 
+https://www.broadband-forum.org/technical/download/TR-140.pdf: 
+https://www.broadband-forum.org/technical/download/TR-157.pdf: 
+https://www.broadband-forum.org/technical/download/TR-232.pdf: 
+https://usp.technology/specification: 
+https://www.thefengs.com/wuchang/work/blue: 
+https://www.freebsd.org/cgi/man.cgi?query=bpf: 
+https://www.wi-fi.org/discover-wi-fi/specifications: 
+https://www.dlna.org/industry/certification/guidelines/: 
+https://www.homeplug.org: curl: (35) LibreSSL SSL_connect: SSL_ERROR_SYSCALL in connection to www.homeplug.org:443 
+http://www.homeplug.org curl: (52) Empty reply from server
+
+https://www.w3.org/TR/html4: 
+https://www.icsalabs.com/sites/default/files/baseline.pdf: 
+https://www.icsalabs.com/sites/default/files/SMB4.0.pdf: 
+https://www.icsalabs.com/sites/default/files/residential.pdf: 
+https://www.ipdr.org/public/: curl: (6) Could not resolve host: www.ipdr.org
+http://www.ipdr.org/public/ curl: (6) Could not resolve host: www.ipdr.org
+
+https://www.ipdr.org/public/: curl: (6) Could not resolve host: www.ipdr.org
+http://www.ipdr.org/public/ curl: (6) Could not resolve host: www.ipdr.org
+
+https://www.ipdr.org/public/: curl: (6) Could not resolve host: www.ipdr.org
+http://www.ipdr.org/public/ curl: (6) Could not resolve host: www.ipdr.org
+
+https://www.ipdr.org/public/: curl: (6) Could not resolve host: www.ipdr.org
+http://www.ipdr.org/public/ curl: (6) Could not resolve host: www.ipdr.org
+
+https://www.ttc.or.jp/jp/document_list/pdf/e/STD/JJ-300.00(E)v1.1.pdf: 
+https://www.ttc.or.jp/jp/document_list/pdf/e/STD/JJ-300.01(E)v1.1.pdf: 
+https://wiki.wireshark.org/Development/LibpcapFileFormat: 
+https://www.wi-fi.org/discover-wi-fi/specifications: 
+https://www.mocalliance.org: curl: (51) SSL: no alternative certificate subject name matches target host name 'www.mocalliance.org'
+http://www.mocalliance.org 
+https://www.mocalliance.org: curl: (51) SSL: no alternative certificate subject name matches target host name 'www.mocalliance.org'
+http://www.mocalliance.org 
+https://www.mocalliance.org: curl: (51) SSL: no alternative certificate subject name matches target host name 'www.mocalliance.org'
+http://www.mocalliance.org 
+https://www.ibm.com/developerworks/webservices/library/ws-mqtt/index.html: 
+https://www.oasis-open.org/standards#mqttv3.1.1: 
+https://docs.oasis-open.org/mqtt/mqtt/v5.0/mqtt-v5.0.html: 
+https://www.icir.org/floyd/red.html: 
+https://www.rsasecurity.com/rsalabs/pkcs/pkcs-7/index.html: curl: (35) LibreSSL SSL_connect: SSL_ERROR_SYSCALL in connection to www.rsasecurity.com:443 
+http://www.rsasecurity.com/rsalabs/pkcs/pkcs-7/index.html curl: (22) The requested URL returned error: 404 Not Found
+
+https://ieeexplore.ieee.org/xpl/mostRecentIssue.jsp?punumber=4694974: 
+https://www.w3.org/TR/2000/NOTE-SOAP-20000508: 
+https://tools.ietf.org/wg/secsh/draft-ietf-secsh-filexfer: 
+https://stomp.github.io/stomp-specification-1.2.html: 
+https://www.upaplc.org: curl: (60) SSL certificate problem: self signed certificate
+More details here: https://curl.haxx.se/docs/sslcerts.html
+
+curl performs SSL certificate verification by default, using a "bundle"
+ of Certificate Authority (CA) public keys (CA certs). If the default
+ bundle file isn't adequate, you can specify an alternate file
+ using the --cacert option.
+If this HTTPS server uses a certificate signed by a CA represented in
+ the bundle, the certificate verification probably failed due to a
+ problem with the certificate (it might be expired, or the name might
+ not match the domain name in the URL).
+If you'd like to turn off curl's verification of the certificate, use
+ the -k (or --insecure) option.
+HTTPS-proxy has similar options --proxy-cacert and --proxy-insecure.
+http://www.upaplc.org 
+https://www.upnp.org/specs/arch/UPnP-arch-DeviceArchitecture-v1.0-20080424.pdf: curl: (60) SSL certificate problem: self signed certificate
+More details here: https://curl.haxx.se/docs/sslcerts.html
+
+curl performs SSL certificate verification by default, using a "bundle"
+ of Certificate Authority (CA) public keys (CA certs). If the default
+ bundle file isn't adequate, you can specify an alternate file
+ using the --cacert option.
+If this HTTPS server uses a certificate signed by a CA represented in
+ the bundle, the certificate verification probably failed due to a
+ problem with the certificate (it might be expired, or the name might
+ not match the domain name in the URL).
+If you'd like to turn off curl's verification of the certificate, use
+ the -k (or --insecure) option.
+HTTPS-proxy has similar options --proxy-cacert and --proxy-insecure.
+http://www.upnp.org/specs/arch/UPnP-arch-DeviceArchitecture-v1.0-20080424.pdf 
+https://www.upnp.org/specs/arch/UPnP-arch-DeviceArchitecture-v1.1.pdf: curl: (60) SSL certificate problem: self signed certificate
+More details here: https://curl.haxx.se/docs/sslcerts.html
+
+curl performs SSL certificate verification by default, using a "bundle"
+ of Certificate Authority (CA) public keys (CA certs). If the default
+ bundle file isn't adequate, you can specify an alternate file
+ using the --cacert option.
+If this HTTPS server uses a certificate signed by a CA represented in
+ the bundle, the certificate verification probably failed due to a
+ problem with the certificate (it might be expired, or the name might
+ not match the domain name in the URL).
+If you'd like to turn off curl's verification of the certificate, use
+ the -k (or --insecure) option.
+HTTPS-proxy has similar options --proxy-cacert and --proxy-insecure.
+http://www.upnp.org/specs/arch/UPnP-arch-DeviceArchitecture-v1.1.pdf 
+https://upnp.org/specs/dm/dm1/: curl: (60) SSL certificate problem: self signed certificate
+More details here: https://curl.haxx.se/docs/sslcerts.html
+
+curl performs SSL certificate verification by default, using a "bundle"
+ of Certificate Authority (CA) public keys (CA certs). If the default
+ bundle file isn't adequate, you can specify an alternate file
+ using the --cacert option.
+If this HTTPS server uses a certificate signed by a CA represented in
+ the bundle, the certificate verification probably failed due to a
+ problem with the certificate (it might be expired, or the name might
+ not match the domain name in the URL).
+If you'd like to turn off curl's verification of the certificate, use
+ the -k (or --insecure) option.
+HTTPS-proxy has similar options --proxy-cacert and --proxy-insecure.
+http://upnp.org/specs/dm/dm1/ curl: (22) The requested URL returned error: 404 Not Found
+
+https://upnp.org/specs/gw/UPnP-gw-InternetGatewayDevice-v1-Device.pdf: curl: (60) SSL certificate problem: self signed certificate
+More details here: https://curl.haxx.se/docs/sslcerts.html
+
+curl performs SSL certificate verification by default, using a "bundle"
+ of Certificate Authority (CA) public keys (CA certs). If the default
+ bundle file isn't adequate, you can specify an alternate file
+ using the --cacert option.
+If this HTTPS server uses a certificate signed by a CA represented in
+ the bundle, the certificate verification probably failed due to a
+ problem with the certificate (it might be expired, or the name might
+ not match the domain name in the URL).
+If you'd like to turn off curl's verification of the certificate, use
+ the -k (or --insecure) option.
+HTTPS-proxy has similar options --proxy-cacert and --proxy-insecure.
+http://upnp.org/specs/gw/UPnP-gw-InternetGatewayDevice-v1-Device.pdf 
+https://upnp.org/specs/gw/UPnP-gw-InternetGatewayDevice-v2-Device.pdf: curl: (60) SSL certificate problem: self signed certificate
+More details here: https://curl.haxx.se/docs/sslcerts.html
+
+curl performs SSL certificate verification by default, using a "bundle"
+ of Certificate Authority (CA) public keys (CA certs). If the default
+ bundle file isn't adequate, you can specify an alternate file
+ using the --cacert option.
+If this HTTPS server uses a certificate signed by a CA represented in
+ the bundle, the certificate verification probably failed due to a
+ problem with the certificate (it might be expired, or the name might
+ not match the domain name in the URL).
+If you'd like to turn off curl's verification of the certificate, use
+ the -k (or --insecure) option.
+HTTPS-proxy has similar options --proxy-cacert and --proxy-insecure.
+http://upnp.org/specs/gw/UPnP-gw-InternetGatewayDevice-v2-Device.pdf 
+https://www.usb.org/developers/docs/: 
+https://www.usb.org/developers/docs/usb_20_122208.zip: curl: (22) The requested URL returned error: 404 Not Found
+http://www.usb.org/developers/docs/usb_20_122208.zip 
+https://www.usb.org/developers/docs/usb_30_spec.zip: curl: (22) The requested URL returned error: 404 Not Found
+http://www.usb.org/developers/docs/usb_30_spec.zip 
+https://www.wi-fi.org: 
+https://www.wi-fi.org/discover-wi-fi/wi-fi-protected-setup: 
+https://www.z-wave.com: 
+https://www.zigbee.org: 
+https://www.zigbee.org/Specifications/ZigBee/download.aspx: curl: (22) The requested URL returned error: 404 
+http://www.zigbee.org/Specifications/ZigBee/download.aspx 
+https://www.zigbee.org/Products/ZigBeeClusterLibraryDownload.aspx: curl: (22) The requested URL returned error: 404 
+http://www.zigbee.org/Products/ZigBeeClusterLibraryDownload.aspx 
