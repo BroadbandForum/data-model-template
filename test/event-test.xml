@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Note that in order to process this file you may need to use a version of the BBF Report Tool
+  from a feature branch that has not yet been merged into master. For example:
+  
+  https://github.com/BroadbandForum/cwmp-xml-tools/blob/feature/event-and-command-extensions/Report_Tool/report.pl
+  
+  Copyright (c) 2017, Broadband Forum
+  
+  Redistribution and use in source and binary forms, with or
+  without modification, are permitted provided that the following
+  conditions are met:
+  
+  1. Redistributions of source code must retain the above copyright
+     notice, this list of conditions and the following disclaimer.
+  
+  2. Redistributions in binary form must reproduce the above
+     copyright notice, this list of conditions and the following
+     disclaimer in the documentation and/or other materials
+     provided with the distribution.
+  
+  3. Neither the name of the copyright holder nor the names of its
+     contributors may be used to endorse or promote products
+     derived from this software without specific prior written
+     permission.
+  
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND
+  CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+  INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+  MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+  DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+  CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
+  STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  
+  The above license is used as a license under copyright only.
+  Please reference the Forum IPR Policy for patent licensing terms
+  <https://www.broadband-forum.org/ipr-policy>.
+  
+  Any moral rights which are necessary to exercise under the above
+  license grant are also deemed granted under this license.
+  -->
+
+<dm:document
+  xmlns:dm="urn:broadband-forum-org:cwmp:datamodel-1-6"
+  xmlns:dmr="urn:broadband-forum-org:cwmp:datamodel-report-0-1"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="urn:broadband-forum-org:cwmp:datamodel-1-6
+                        ../schemas/cwmp-datamodel-1.xsd
+                      urn:broadband-forum-org:cwmp:datamodel-report-0-1
+                        http://www.broadband-forum.org/cwmp/cwmp-datamodel-report.xsd"
+  spec="urn:bbf:usp:event-test"
+  file="event-test.xml">
+
+  <description>
+    DM instance that illustrates USP events.
+  </description>
+
+  <import file="tr-069-biblio.xml"/>
+
+  <!-- This is an older example: a re-working of the CWMP TransferComplete CPE -> ACS RPC -->
+  <component name="CWMPTransferCompleteEvent">
+    <event name="CWMPTransferComplete!">
+      <description>
+        Inform the ACS of the completion (either successful or unsuccessful) of a file transfer that was not specifically requested by the ACS...
+        {{issue|Argument names are shown with leading "#" characters as a reminder that they don't exist in the data model.}}
+      </description>
+      <parameter name="AnnounceURL">
+        <description>
+          The URL on which the CPE listened to the announcements that led to this transfer being performed, or an empty string if this transfer was not performed as a result of an announcement, or {{empty}} if no such URL is available.
+        </description>
+        <syntax>
+          <string>
+            <size maxLength="1024"/>
+          </string>
+          <default type="parameter" value=""/>
+        </syntax>
+      </parameter>
+      <parameter name="TransferURL">
+        <description>
+          The URL from or to which this transfer was performed, or {{empty}} if no such URL is available.
+        </description>
+        <syntax>
+          <string>
+            <size maxLength="1024"/>
+          </string>
+          <default type="parameter" value=""/>
+        </syntax>
+      </parameter>
+      <parameter name="IsDownload">
+        <description>
+          Indicates whether the autonomous transfer was a download ({{true}}) or an upload ({{false}}).
+        </description>
+        <syntax>
+          <boolean/>
+          <default type="parameter" value="true"/>
+        </syntax>
+      </parameter>
+      <parameter name="FileType">
+        <description>
+          An integer followed by a space followed by the file type description. Only the following values are currently defined for the {{param}} argument:
+          {{enum}}
+          The following format is defined to allow the unique definition of vendor-specific file types:
+          * "X &lt;VENDOR&gt; &lt;Vendor-specific identifier&gt;"
+          ...
+        </description>
+        <syntax>
+          <string>
+            <size maxLength="64"/>
+            <enumeration value="1 Firmware Upgrade Image"/>
+            <enumeration value="2 Web Content"/>
+            <enumeration value="3 Vendor Configuration File"/>
+            <enumeration value="4 Tone File"/>
+            <enumeration value="5 Ringer File"/>
+          </string>
+          <default type="parameter" value="1 Firmware Upgrade Image"/>
+        </syntax>
+      </parameter>
+      <parameter name="FileSize">
+        <description>
+          The size of the file in bytes, or zero if this information is not available or if the CPE chooses not to make it available.
+        </description>
+        <syntax>
+          <unsignedInt/>
+          <default type="parameter" value="0"/>
+        </syntax>
+      </parameter>
+      <parameter name="TargetFileName">
+        <description>
+          The name of the file on the target (CPE) file system...
+        </description>
+        <syntax>
+          <string>
+            <size maxLength="256"/>
+          </string>
+          <default type="parameter" value=""/>
+        </syntax>
+      </parameter>
+      <parameter name="FaultCode">
+        <description>
+          The numerical fault code as defined in {{bibref|TR-069a5|Section A.5.1}}...
+        </description>
+        <syntax>
+          <unsignedInt/>
+          <default type="parameter" value="0"/>
+        </syntax>
+      </parameter>
+      <parameter name="FaultString">
+        <description>
+          A human-readable text description of the fault. This field SHOULD be {{empty}} if the {{param|FaultCode}} equals 0 (zero).
+        </description>
+        <syntax>
+          <string>
+            <size maxLength="256"/>
+          </string>
+          <default type="parameter" value=""/>
+        </syntax>
+      </parameter>
+      <parameter name="StartTime">
+        <description>
+          The date and time transfer was started in UTC...
+        </description>
+        <syntax>
+          <dateTime/>
+          <default type="parameter" value="0001-01-01T00:00:00Z"/>
+        </syntax>
+      </parameter>
+      <parameter name="CompleteTime">
+        <description>
+          The date and time the transfer was fully completed and applied in UTC...
+        </description>
+        <syntax>
+          <dateTime/>
+          <default type="parameter" value="0001-01-01T00:00:00Z"/>
+        </syntax>
+      </parameter>
+    </event>
+    <profile name="CWMPTransferComplete:1">
+      <event ref="CWMPTransferComplete!"/>
+    </profile>
+  </component>
+
+  <component name="BootEvent">
+    <parameter name="BootParameterNumberOfEntries" access="readOnly">
+      <description>
+        {{numentries}}
+      </description>
+      <syntax>
+        <unsignedInt/>
+      </syntax>
+    </parameter>
+    <object name="BootParameter.{i}." access="readWrite" minEntries="0" maxEntries="unbounded" numEntriesParameter="BootParameterNumberOfEntries">
+      <description>
+        ...provides the Controller with the ability to dictate the Parameters that are delivered by the Boot Notification...
+      </description>
+      <parameter name="Enable" access="readWrite">
+        <description>
+          Enables or disables this {{object}}.
+        </description>
+        <syntax>
+          <boolean/>
+        </syntax>
+      </parameter>
+      <parameter name="ParameterName" access="readWrite">
+        <description>
+          A pattern that describes the Parameter(s) to be included in the {{object|#.Boot!}} Event...
+          {{issue|We need an ''event'' template for referencing events; for now ''object'' works.}}
+        </description>
+        <syntax>
+          <string>
+            <size maxLength="256"/>
+          </string>
+        </syntax>
+      </parameter>
+    </object>
+    <event name="Boot!">
+      <description>
+        Boot event configured via the {{object|BootParameter}} table and maybe requested via a USP operation.
+      </description>
+      <parameter name="CommandKey">
+        <description>
+          The ''command_key'' supplied when requesting the boot, or {{empty}} if the boot was not requested via a USP operation.
+        </description>
+        <syntax>
+          <string/>
+        </syntax>
+      </parameter>
+      <parameter name="Cause">
+        <description>
+          The cause of the boot.
+        </description>
+        <syntax>
+          <string>
+            <enumeration value="LocalReboot"/>
+            <enumeration value="RemoteReboot"/>
+            <enumeration value="LocalFactoryReset"/>
+            <enumeration value="RemoteFactoryReset"/>
+          </string>
+        </syntax>
+      </parameter>
+      <object name="Parameter.{i}." minEntries="0" maxEntries="unbounded">
+        <description>
+          Boot parameters configured via the {{object|##.BootParameter}} table.
+        </description>
+        <uniqueKey functional="true">
+          <parameter ref="Path"/>
+        </uniqueKey>
+        <parameter name="Path">
+          <description>
+            Full parameter path.
+          </description>
+          <syntax>
+            <string/>
+          </syntax>
+        </parameter>
+        <parameter name="Value">
+          <description>
+            Parameter value (as a string).
+          </description>
+          <syntax>
+            <string/>
+          </syntax>
+        </parameter>
+      </object>
+    </event>
+  </component>
+
+  <component name="PeriodicEvent">
+    <parameter name="PeriodicNotifInterval" access="readWrite">
+      <description>
+        ...the duration in seconds of the interval...
+      </description>
+      <syntax>
+        <unsignedInt>
+          <range minInclusive="1"/>
+        </unsignedInt>
+      </syntax>
+    </parameter>
+    <parameter name="PeriodicNotifTime" access="readWrite">
+      <description>
+        ...determine when the USP Agent will issue a Periodic Notification...
+      </description>
+      <syntax>
+        <dateTime/>
+      </syntax>
+    </parameter>
+    <event name="Periodic!">
+      <description>
+        Periodic event configured via the {{param|PeriodicNotifInterval}} and {{param|PeriodicNotifTime}} parameters.
+      </description>
+    </event>
+  </component>
+
+  <component name="TimerEvent">
+    <event name="Timer!">
+      <description>
+        Timer event requested via a USP operation.
+      </description>
+      <parameter name="CommandKey">
+        <description>
+          The ''command_key'' supplied when requesting the timer event.
+        </description>
+        <syntax>
+          <string/>
+        </syntax>
+      </parameter>
+    </event>
+  </component>
+
+  <component name="TransferCompleteEvent">
+    <event name="TransferComplete!">
+      <description>
+        Transfer complete event for tranfer maybe requested via a USP operation.
+        {{issue|Several arguments illustrate "parameter defaults". These haven't yet been discussed.}}
+        {{issue|Several argument descriptions were taken from CWMP TransferComplete.}}
+      </description>
+      <parameter name="CommandKey">
+        <description>
+          The ''command_key'' supplied when requesting the transfer, or {{empty}} if the transfer was not requested via a USP operation.
+        </description>
+        <syntax>
+          <string/>
+          <default type="parameter" value=""/>
+        </syntax>
+      </parameter>
+      <parameter name="TransferType">
+        <description>
+          The type of transfer.
+        </description>
+        <syntax>
+          <string>
+            <enumeration value="Download"/>
+            <enumeration value="Upload"/>
+            <enumeration value="Install"/>
+            <enumeration value="Update"/>
+            <enumeration value="Uninstall">
+              <description>
+                {{issue|An uninstall isn't really a "transfer".}}
+              </description>
+            </enumeration>
+          </string>
+          <default type="parameter" value="Download"/>
+        </syntax>
+      </parameter>
+      <parameter name="FileType">
+        <description>
+          An integer followed by a space followed by the file type description. Only the following values are currently defined for the {{param}} argument:
+          {{enum}}
+          The following format is defined to allow the unique definition of vendor-specific file types:
+          * "X &lt;VENDOR&gt; &lt;Vendor-specific identifier&gt;"
+          ...
+        </description>
+        <syntax>
+          <string>
+            <size maxLength="64"/>
+            <enumeration value="1 Firmware Upgrade Image"/>
+            <enumeration value="2 Web Content"/>
+            <enumeration value="3 Vendor Configuration File"/>
+            <enumeration value="4 Tone File"/>
+            <enumeration value="5 Ringer File"/>
+          </string>
+          <default type="parameter" value="1 Firmware Upgrade Image"/>
+        </syntax>
+      </parameter>
+      <parameter name="TransferURL">
+        <description>
+          The URL from or to which this transfer was performed, or {{empty}} if no such URL is available.
+        </description>
+        <syntax>
+          <string>
+            <size maxLength="1024"/>
+          </string>
+          <default type="parameter" value=""/>
+        </syntax>
+      </parameter>
+      <parameter name="StartTime">
+        <description>
+          The date and time transfer was started in UTC...
+        </description>
+        <syntax>
+          <dateTime/>
+          <default type="parameter" value="0001-01-01T00:00:00Z"/>
+        </syntax>
+      </parameter>
+      <parameter name="CompleteTime">
+        <description>
+          The date and time the transfer was fully completed and applied in UTC...
+        </description>
+        <syntax>
+          <dateTime/>
+          <default type="parameter" value="0001-01-01T00:00:00Z"/>
+        </syntax>
+      </parameter>
+      <parameter name="Requestor">
+        <description>
+          ID of Controller that requested the transfer, or {{empty}} if no Controller requested it.
+          {{issue|This is called ''operation_source'' in the protobuf schema.}}
+        </description>
+        <syntax>
+          <string/>
+          <default type="parameter" value=""/>            
+        </syntax>
+      </parameter>
+      <parameter name="FaultCode">
+        <description>
+          The numerical fault code as defined in...
+          {{issue|This is what it's called in CWMP TransferComplete. It's called ''xfer_err.err_code'' in the protobuf schema.}}
+        </description>
+        <syntax>
+          <unsignedInt/>
+          <default type="parameter" value="0"/>
+        </syntax>
+      </parameter>
+      <parameter name="FaultString">
+        <description>
+          A human-readable text description of the fault. This field SHOULD be {{empty}} if the {{param|FaultCode}} equals 0 (zero).
+          {{issue|This is what it's called in CWMP TransferComplete. It's called ''xfer_err.err_msg'' in the protobuf schema.}}
+        </description>
+        <syntax>
+          <string>
+            <size maxLength="256"/>
+          </string>
+          <default type="parameter" value=""/>
+        </syntax>
+      </parameter>
+    </event>
+  </component>
+
+  <component name="WakeUpEvent">
+    <event name="WakeUp!">
+      <description>
+        Wake-up event.
+      </description>
+    </event>
+  </component>
+  
+  
+  <model name="Event:1.0">
+    <object name="Device." access="readOnly" minEntries="1" maxEntries="1">
+      <description>
+        The top-level object for a Device.
+      </description>
+    </object>
+
+    <object name="Device.LocalAgent." access="readOnly" minEntries="1" maxEntries="1">
+      <description>
+        This object contains general information about the USP Agent itself...
+      </description>
+      <parameter name="ControllerNumberOfEntries" access="readOnly">
+        <description>
+          {{numentries}}
+        </description>
+        <syntax>
+          <unsignedInt/>
+        </syntax>
+      </parameter>
+    </object>
+
+    <object name="Device.LocalAgent.Controller.{i}." access="readWrite" minEntries="0" maxEntries="unbounded" numEntriesParameter="ControllerNumberOfEntries">
+      <description>
+        Each instance of this table represents a USP Controller that has access to this USP Agent...
+      </description>
+      <component ref="BootEvent"/>
+      <component ref="PeriodicEvent"/>
+      <component ref="TimerEvent"/>
+      <component ref="TransferCompleteEvent"/>
+      <component ref="WakeUpEvent"/>
+    </object>
+    
+    <profile name="Core:1">
+      <description>
+        Core data model objects, parameters and events that MUST be supported by all Agents.
+      </description>
+      <object ref="Device.LocalAgent.Controller.{i}." requirement="present">
+        <event ref="Boot!"/>
+        <event ref="Periodic!"/>
+        <event ref="Timer!"/>
+        <event ref="TransferComplete!"/>
+        <event ref="WakeUp!"/>
+      </object>
+    </profile>
+  </model>
+</dm:document>

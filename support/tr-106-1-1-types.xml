@@ -48,34 +48,42 @@
 
   Editor:
     * Klaus Wich, Axiros
+    * William Lupton, Broadband Forum
 
   BroadbandHome Working Group Chairs:
     * Jason Walls, QA Cafe
-    * John Blackford, Pace
+    * John Blackford, Arris
 
   Issue History (Filename: Approval Date: Publication Date: Changes):
     * tr-106-1-0-0-types.xml: March 2009 - June 2014:
       - many updates
     * tr-106-1-1-0-types.xml: 9 November 2015: 13 November 2015
       - added data type "DiagnosticsState"
+    * tr-106-1-1-1-types.xml: TBD: TBD
+      - added missing imports of tr-106-1-0-types.xml data types
 -->
 
 <dm:document xmlns:dm="urn:broadband-forum-org:cwmp:datamodel-1-5" 
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
              xsi:schemaLocation="urn:broadband-forum-org:cwmp:datamodel-1-5
                                    http://www.broadband-forum.org/cwmp/cwmp-datamodel-1-5.xsd" 
-             spec="urn:broadband-forum-org:tr-106-1-1-0" file="tr-106-1-1-0-types.xml">
+             spec="urn:broadband-forum-org:tr-106-1-1-0" file="tr-106-1-1-1-types.xml">
 
   <import file="tr-106-1-0-types.xml" spec="urn:broadband-forum-org:tr-106-1-0">
     <dataType name="Alias"/>
+    <dataType name="Dbm1000"/>
     <dataType name="IPAddress"/>
     <dataType name="IPv4Address"/>
     <dataType name="IPv6Address"/>
+    <dataType name="IPPrefix"/>
     <dataType name="IPv4Prefix"/>
     <dataType name="IPv6Prefix"/>
     <dataType name="MACAddress"/>
     <dataType name="StatsCounter32"/>
     <dataType name="StatsCounter64"/>
+    <dataType name="UUID"/>
+    <dataType name="IEEE_EUI64"/>
+    <dataType name="ZigBeeNetworkAddress"/>
   </import>
 
   <dataType name="DiagnosticsState">

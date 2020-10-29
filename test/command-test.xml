@@ -1,0 +1,706 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Note that in order to process this file you may need to use a version of the BBF Report Tool
+  from a feature branch that has not yet been merged into master. For example:
+  
+  https://github.com/BroadbandForum/cwmp-xml-tools/blob/feature/event-and-command-extensions/Report_Tool/report.pl
+  
+  Copyright (c) 2017, Broadband Forum
+  
+  Redistribution and use in source and binary forms, with or
+  without modification, are permitted provided that the following
+  conditions are met:
+  
+  1. Redistributions of source code must retain the above copyright
+     notice, this list of conditions and the following disclaimer.
+  
+  2. Redistributions in binary form must reproduce the above
+     copyright notice, this list of conditions and the following
+     disclaimer in the documentation and/or other materials
+     provided with the distribution.
+  
+  3. Neither the name of the copyright holder nor the names of its
+     contributors may be used to endorse or promote products
+     derived from this software without specific prior written
+     permission.
+  
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND
+  CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+  INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+  MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+  DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+  CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
+  STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  
+  The above license is used as a license under copyright only.
+  Please reference the Forum IPR Policy for patent licensing terms
+  <https://www.broadband-forum.org/ipr-policy>.
+  
+  Any moral rights which are necessary to exercise under the above
+  license grant are also deemed granted under this license.
+  -->
+
+<dm:document
+  xmlns:dm="urn:broadband-forum-org:cwmp:datamodel-1-6"
+  xmlns:dmr="urn:broadband-forum-org:cwmp:datamodel-report-0-1"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="urn:broadband-forum-org:cwmp:datamodel-1-6
+                        ../schemas/cwmp-datamodel-1.xsd
+                      urn:broadband-forum-org:cwmp:datamodel-report-0-1
+                        http://www.broadband-forum.org/cwmp/cwmp-datamodel-report.xsd"
+  spec="urn:bbf:usp:command-test"
+  file="command-test.xml">
+
+  <description>
+    DM instance that illustrates USP commands.
+    {{issue|We need to decide what spec URN prefix to use (going forward) for CWMP/USP data models.}}
+  </description>
+
+  <import file="tr-069-biblio.xml"/>
+
+  <import file="tr-106-1-0-types.xml">
+    <dataType name="UUID"/>
+  </import>
+
+  <component name="RebootCommand">
+    <command name="Reboot()">
+      <description>
+        Reboot the entity associated with the containing {{object}}.
+      </description>
+    </command>
+  </component>
+  
+  <component name="FactoryResetCommand">
+    <command name="FactoryReset()">
+      <description>
+        Factory reset the entity associated with the containing {{object}}.
+      </description>
+    </command>
+  </component>
+
+  <component name="DownloadCommand">
+    <command name="Download()" async="true">
+      <description>
+        Download a file to the entity associated with the containing {{object}}.
+        {{issue|Need to include all necessary normative text that (for CWMP) is in A.3.2.8.}}
+      </description>
+      <input>
+        <description>
+          {{issue|The CWMP ''FileType'' input argument is omitted because it will be implied by the command's location in the data model.}}
+          {{issue|The CWMP ''SuccessURL'' and ''FailureURL'' input arguments are omitted because they are no longer relevant (if they ever were).}}
+        </description>
+        <parameter name="URL" mandatory="true">
+          <description>
+            URL, as defined in {{bibref|RFC3986}}, specifying the source file location...
+          </description>
+          <syntax>
+            <string>
+              <size maxLength="256"/>
+            </string>
+          </syntax>
+        </parameter>
+        <parameter name="Username">
+          <description>
+            Username to be used by the CPE to authenticate with the file server. This string is set to {{empty}} if no authentication is required.
+          </description>
+          <syntax>
+            <string>
+              <size maxLength="256"/>
+            </string>
+            <default type="parameter" value=""/>
+          </syntax>
+        </parameter>
+        <parameter name="Password">
+          <description>
+            Password to be used by the CPE to authenticate with the file server. This string is set to {{empty}} if no authentication is required.
+          </description>
+          <syntax>
+            <string>
+              <size maxLength="256"/>
+            </string>
+            <default type="parameter" value=""/>
+          </syntax>
+        </parameter>
+        <parameter name="FileSize">
+          <description>
+            The size of the file to be downloaded in bytes.
+            The {{param}} argument is intended as a hint to the CPE, which the CPE MAY use to determine if it has sufficient space for the file to be downloaded, or to prepare space to accept the file.
+            ...
+          </description>
+          <syntax>
+            <unsignedInt/>
+            <default type="parameter" value="0"/>
+          </syntax>
+        </parameter>
+        <parameter name="TargetFileName">
+          <description>
+            The name of the file to be used on the target file system...
+          </description>
+          <syntax>
+            <string>
+              <size maxLength="256"/>
+            </string>
+            <default type="parameter" value=""/>
+          </syntax>
+        </parameter>
+        <parameter name="DelaySeconds">
+          <description>
+            This argument has different meanings for Unicast and Multicast downloads...
+          </description>
+          <syntax>
+            <unsignedInt>
+              <units value="seconds"/>
+            </unsignedInt>
+            <default type="parameter" value="0"/>
+          </syntax>
+        </parameter>
+      </input>
+      <output>
+        <description>
+          {{issue|These definitions are taken from ''TransferComplete''.}}
+        </description>
+        <parameter name="StartTime">
+          <description>
+            The date and time transfer was started in UTC. The CPE SHOULD record this information and report it in this argument, but if this information is not available, the value of this argument MUST be set to the Unknown Time value.
+          </description>
+          <syntax>
+            <dateTime/>
+          </syntax>
+        </parameter>
+        <parameter name="CompleteTime">
+          <description>
+            The date and time the transfer was fully completed and applied in UTC. This need only be filled in if the transfer has been fully completed and applied. The CPE SHOULD record this information and report it in this argument, but if this information is not available or the transfer has not completed, the value of this argument MUST be set to the Unknown Time value.
+          </description>
+          <syntax>
+            <dateTime/>
+          </syntax>
+        </parameter>
+        <object name="FaultStruct." minEntries="1" maxEntries="1">
+          <description>
+            Fault Structure. If the transfer was successful, the {{param|FaultCode}} is set to zero. Otherwise a non-zero {{param|FaultCode}} is specified along with a {{param|FaultString}} indicating the failure reason.
+          </description>
+          <parameter name="FaultCode">
+            <description>
+              The numerical fault code...
+            </description>
+            <syntax>
+              <unsignedInt/>
+            </syntax>
+          </parameter>
+          <parameter name="FaultString">
+            <description>
+              A human-readable text description of the fault. This field SHOULD be empty if the FaultCode equals 0 (zero).
+            </description>
+            <syntax>
+              <string>
+                <size maxLength="256"/>
+              </string>
+            </syntax>
+          </parameter>
+        </object>
+      </output>
+    </command>
+  </component>
+  
+  <component name="UploadCommand">
+    <command name="Upload()" async="true">
+      <description>
+        Upload a file from the entity associated with the containing {{object}}.
+        {{issue|Need to include all necessary normative text that (for CWMP) is in A.4.1.5.}}
+      </description>
+      <input>
+        <description>
+          {{issue|The CWMP ''FileType'' input argument is omitted because it will be implied by the command's location in the data model.}}
+        </description>
+        <parameter name="URL" mandatory="true">
+          <description>
+            URL, as defined in {{bibref|RFC3986}}, specifying the destination file location...
+          </description>
+          <syntax>
+            <string>
+              <size maxLength="256"/>
+            </string>
+          </syntax>
+        </parameter>
+        <parameter name="Username">
+          <description>
+            Username to be used by the CPE to authenticate with the file server. This string is set to {{empty}} if no authentication is required.
+          </description>
+          <syntax>
+            <string>
+              <size maxLength="256"/>
+            </string>
+            <default type="parameter" value=""/>
+          </syntax>
+        </parameter>
+        <parameter name="Password">
+          <description>
+            Password to be used by the CPE to authenticate with the file server. This string is set to {{empty}} if no authentication is required.
+          </description>
+          <syntax>
+            <string>
+              <size maxLength="256"/>
+            </string>
+            <default type="parameter" value=""/>
+          </syntax>
+        </parameter>
+        <parameter name="DelaySeconds">
+          <description>
+            The number of seconds from the time this method is called to the time the CPE is requested to initiate the upload...
+          </description>
+          <syntax>
+            <unsignedInt>
+              <units value="seconds"/>
+            </unsignedInt>
+            <default type="parameter" value="0"/>
+          </syntax>
+        </parameter>
+      </input>
+      <output>
+        <description>
+          {{issue|These definitions are taken from ''TransferComplete''.}}
+        </description>
+        <parameter name="StartTime">
+          <description>
+            The date and time transfer was started in UTC. The CPE SHOULD record this information and report it in this argument, but if this information is not available, the value of this argument MUST be set to the Unknown Time value.
+          </description>
+          <syntax>
+            <dateTime/>
+          </syntax>
+        </parameter>
+        <parameter name="CompleteTime">
+          <description>
+            The date and time the transfer was fully completed and applied in UTC. This need only be filled in if the transfer has been fully completed and applied. The CPE SHOULD record this information and report it in this argument, but if this information is not available or the transfer has not completed, the value of this argument MUST be set to the Unknown Time value.
+          </description>
+          <syntax>
+            <dateTime/>
+          </syntax>
+        </parameter>
+        <object name="FaultStruct." minEntries="1" maxEntries="1">
+          <description>
+            Fault Structure. If the transfer was successful, the {{param|FaultCode}} is set to zero. Otherwise a non-zero {{param|FaultCode}} is specified along with a {{param|FaultString}} indicating the failure reason.
+          </description>
+          <parameter name="FaultCode">
+            <description>
+              The numerical fault code...
+            </description>
+            <syntax>
+              <unsignedInt/>
+            </syntax>
+          </parameter>
+          <parameter name="FaultString">
+            <description>
+              A human-readable text description of the fault. This field SHOULD be empty if the FaultCode equals 0 (zero).
+            </description>
+            <syntax>
+              <string>
+                <size maxLength="256"/>
+              </string>
+            </syntax>
+          </parameter>
+        </object>
+      </output>
+    </command>
+  </component>
+  
+  <component name="InstallCommand">
+    <command name="Install()" async="true">
+      <description>
+        Install one or more Deployment Units (DUs) to the associated {{object}}.
+        {{issue|I've called this ''Install()'' rather than ''InstallDU()'' partly for consistency with ''Update()'' and ''Uninstall()'' and partly to make the point that very little (if anything) is specific to DUs.}}
+        {{issue|Given that ''Update()'' and ''Uninstall()'' can operate only on single DUs, do we need/want this to be able to install multiple DUs?}}
+        {{issue|For ''Install()'', ''Update()'' and ''Uninstall()'', need to include all necessary normative text that (for CWMP) is in A.4.1.10.}}
+        {{issue|The CWMP ''ChangeDUState'' method can leave ''ExecutionEnvRef'' empty to ask the CPE to choose the execution environment. This isn't possible if the command's defined within the ''ExecEnv'' table.}}
+        {{issue|Defining ''Update()'' and ''Uninstall()'' on the DU changes CWMP behavior, e.g. CWMP allows empty UUID and/or URL for update (which means that new DU instances could get created if a new Version is available?), and CWMP allows empty Version for uninstall (which means that multiple DU instances could get deleted).}}
+        {{issue|Need to specify which events indicate completion (in addition to ''OperationComplete'' of course). Should this be a formal part of the command definitions?}}
+      </description>
+      <input>
+        <object name="Operation.{i}." minEntries="1" maxEntries="unbounded">
+          <description>
+            The requested install operations.
+          </description>
+          <parameter name="URL" mandatory="true">
+            <description>
+              The URL, as defined in {{bibref|RFC3986}}, that specifies the location of the DU to be installed...
+            </description>
+            <syntax>
+              <string>
+                <size maxLength="256"/>
+              </string>
+            </syntax>
+          </parameter>
+          <parameter name="UUID">
+            <description>
+              The UUID (see {{bibref|RFC4122}}) of the DU to be installed...
+            </description>
+            <syntax>
+              <dataType ref="UUID"/>
+            </syntax>
+          </parameter>
+          <parameter name="Username">
+            <description>
+              Username to be used by the CPE to authenticate with the file server, if authentication is required.
+            </description>
+            <syntax>
+              <string>
+                <size maxLength="256"/>
+              </string>
+              <default type="parameter" value=""/>
+            </syntax>
+          </parameter>
+          <parameter name="Password">
+            <description>
+              Password to be used by the CPE to authenticate with the file server, if authentication is required.
+            </description>
+            <syntax>
+              <string>
+                <size maxLength="256"/>
+              </string>
+              <default type="parameter" value=""/>
+            </syntax>
+          </parameter>          
+        </object>
+      </input>
+      <output>
+        <description>
+          {{issue|These definitions are taken from ''DUStateChangeComplete''.}}
+        </description>
+        <object name="Operation.{i}." minEntries="1" maxEntries="unbounded">
+          <description>
+            The results of Operations performed against DUs.
+            {{issue|Is ''UUID'' a unique key?}}
+          </description>
+          <uniqueKey functional="true">
+            <parameter ref="UUID"/>
+          </uniqueKey>
+          <parameter name="UUID">
+            <description>
+              The UUID as defined in {{bibref|RFC4122}} of the DU that was created.
+            </description>
+            <syntax>
+              <dataType ref="UUID"/>
+            </syntax>
+          </parameter>
+          <parameter name="DeploymentUnitRef">
+            <description>
+              A reference to the DU that was created.
+            </description>
+            <syntax>
+              <string>
+                <pathRef refType="strong" targetParent=".SoftwareModules.DeploymentUnit." targetType="row"/>
+              </string>
+            </syntax>
+          </parameter>
+          <parameter name="Version">
+            <description>
+              The version of the DU created. This MUST match the {{param|.SoftwareModules.DeploymentUnit.{i}.Version}} Parameter contained within the instance of the DeploymentUnit that is contained within the {{param|DeploymentUnitRef}} argument.
+            </description>
+            <syntax>
+              <string>
+                <size maxLength="32"/>
+              </string>
+            </syntax>
+          </parameter>
+          <parameter name="CurrentState">
+            <description>
+              The current state of the created DU.
+            </description>
+            <syntax>
+              <string>
+                <enumeration value="Installed">
+                  <description>
+                    The DU is in an Installed state due to a successful Install.
+                  </description>
+                </enumeration>
+                <enumeration value="Failed">
+                  <description>
+                    The DU could not be installed in which case a DU instance MUST NOT be created in the Data Model.
+                  </description>
+                </enumeration>
+              </string>
+            </syntax>
+          </parameter>
+          <parameter name="Resolved">
+            <description>
+              Whether or not the DU operation resolved all of its dependencies.
+            </description>
+            <syntax>
+              <boolean/>
+            </syntax>
+          </parameter>
+          <parameter name="ExecutionUnitRefList">
+            <description>
+              The Execution Units that were created as a result of the DU's installation.
+            </description>
+            <syntax>
+              <list/>
+              <string>
+                <pathRef refType="strong" targetParent=".SoftwareModules.ExecutionUnit." targetType="row"/>
+              </string>
+            </syntax>
+          </parameter>
+          <parameter name="StartTime">
+            <description>
+              The date and time transfer was started in UTC. The CPE SHOULD record this information and report it in this argument, but if this information is not available, the value of this argument MUST be set to the Unknown Time value.
+            </description>
+            <syntax>
+              <dateTime/>
+            </syntax>
+          </parameter>
+          <parameter name="CompleteTime">
+            <description>
+              The date and time the transfer was fully completed and applied in UTC. This need only be filled in if the transfer has been fully completed and applied. The CPE SHOULD record this information and report it in this argument, but if this information is not available or the transfer has not completed, the value of this argument MUST be set to the Unknown Time value.
+            </description>
+            <syntax>
+              <dateTime/>
+            </syntax>
+          </parameter>
+        </object>
+        <object name="Operation.{i}.Fault." minEntries="1" maxEntries="1">
+          <description>
+            Fault Structure. If the operation was successful, the {{param|FaultCode}} MUST be zero. Otherwise a non-zero {{param|FaultCode}} is specified along with a {{param|FaultString}} indicating the failure reason.
+          </description>
+          <parameter name="FaultCode">
+            <description>
+              The numerical fault code...
+            </description>
+            <syntax>
+              <unsignedInt/>
+            </syntax>
+          </parameter>
+          <parameter name="FaultString">
+            <description>
+              A human-readable text description of the fault. This field SHOULD be empty if the FaultCode equals 0 (zero).
+            </description>
+            <syntax>
+              <string>
+                <size maxLength="256"/>
+              </string>
+            </syntax>
+          </parameter>
+        </object>
+      </output>
+    </command>
+  </component>
+  
+  <component name="UpdateCommand">
+    <command name="Update()" async="true">
+      <description>
+        Update the associated {{object}}.
+        {{issue|Output arguments are not shown. They are similar to those for ''Install()'', which are taken from ''DUStateChangeComplete''.}}
+      </description>
+      <input>
+        <parameter name="URL" mandatory="true">
+          <description>
+            The URL, as defined in {{bibref|RFC3986}}, that specifies the location of the update to be applied to the existing DU...
+          </description>
+          <syntax>
+            <string>
+              <size maxLength="256"/>
+            </string>
+          </syntax>
+        </parameter>
+        <parameter name="Username">
+          <description>
+            Username to be used by the CPE to authenticate with the file server, if authentication is required.
+          </description>
+          <syntax>
+            <string>
+              <size maxLength="256"/>
+            </string>
+            <default type="parameter" value=""/>
+          </syntax>
+        </parameter>
+        <parameter name="Password">
+          <description>
+            Password to be used by the CPE to authenticate with the file server, if authentication is required.
+          </description>
+          <syntax>
+            <string>
+              <size maxLength="256"/>
+            </string>
+            <default type="parameter" value=""/>
+          </syntax>
+        </parameter>          
+      </input>
+    </command>
+  </component>
+  
+  <component name="UninstallCommand">
+    <command name="Uninstall()" async="true">
+      <description>
+        Uninstall the associated {{object}}.
+        {{issue|Does it make sense to define an uninstall operation on the object to be uninstalled? Maybe it's OK as long as the data model behavior (and timing) is defined carefully?}}
+        {{issue|Output arguments are not shown. They are similar to those for ''Install()'', which are taken from ''DUStateChangeComplete''.}}
+      </description>
+    </command>
+  </component>
+  
+  <component name="ScheduleTimerCommand">
+    <command name="ScheduleTimer()">
+      <description>
+        Schedule a ''Timer!'' event on the associated {{object}}.
+        {{issue|Is it obvious that this should be a synchronous command that requests a ''Timer!'' event rather than an asynchronous command (perhaps with ''persist''={{true}}) that delivers ''OperationComplete'' on completion? I feel that we haven't got the relationship between (unsolicited) events and (solicited) asynchronous command completion quite right yet.}}
+        {{issue|It will be quite common for commands to be associated with events (sometimes the relationship will be 1:n, e.g. multiple commands currently make use of the ''TransferComplete!'' event). Should this relationship be formally indicated in the data model?}}
+      </description>
+      <input>
+        <parameter name="DelaySeconds">
+          <description>
+            The number of seconds from the time this method is called to the time the CPE is requested to initiate a one-time...
+            {{issue|CWMP ''ScheduleInform'' uses ''DelaySeconds'', but should this use an absolute time?}}
+          </description>
+          <syntax>
+            <unsignedInt>
+              <range minInclusive="1"/>
+              <units value="seconds"/>
+            </unsignedInt>
+            <default type="parameter" value="0"/>
+          </syntax>
+        </parameter>
+      </input>
+    </command>
+  </component>
+  
+  <model name="Command:1.0">
+    <object name="Device." access="readOnly" minEntries="1" maxEntries="1">
+      <description>
+        The top-level object for a Device.
+      </description>
+
+      <component ref="RebootCommand"/>
+
+    </object>
+
+    <object name="Device.LocalAgent." access="readOnly" minEntries="1" maxEntries="1">
+      <description>
+        This object contains general information about the USP Agent itself...
+      </description>
+
+      <component ref="RebootCommand"/>
+      <component ref="FactoryResetCommand"/>
+      <component ref="DownloadCommand"/>
+      <component ref="UploadCommand"/>
+      <component ref="ScheduleTimerCommand"/>
+      
+      <parameter name="ControllerNumberOfEntries" access="readOnly">
+        <description>
+          {{numentries}}
+        </description>
+        <syntax>
+          <unsignedInt/>
+        </syntax>
+      </parameter>
+      <parameter name="RequestNumberOfEntries" access="readOnly">
+        <description>
+          {{numentries}}
+        </description>
+        <syntax>
+          <unsignedInt/>
+        </syntax>
+      </parameter>
+    </object>
+
+    <object name="Device.LocalAgent.Controller.{i}." access="readWrite" minEntries="0" maxEntries="unbounded" numEntriesParameter="ControllerNumberOfEntries">
+      <description>
+        Each instance of this table represents a USP Controller that has access to this USP Agent...
+      </description>
+    </object>
+    
+    <object name="Device.LocalAgent.Request.{i}." access="readOnly" minEntries="0" maxEntries="unbounded" numEntriesParameter="RequestNumberOfEntries">
+      <description>
+        {{object}} instances are created using USP Operate messages. Only Operate messages with ''async''={{true}} will create a {{object}} instance in the data model...
+      </description>
+    </object>
+    
+    <object name="Device.LocalAgent.Request.{i}.Transfer." access="readOnly" minEntries="0" maxEntries="1">
+      <description>
+        {{issue|Experimental illustration of how the ''Request'' table could include command-specific information.}}
+        {{issue|This is closely related to the ''TransferComplete!'' event, but exists only for transfers requested via USP... which perhaps makes the point that if this information is needed then it should be in a table that lists information about all transfers, regardless of whether they were requested via USP?}}
+      </description>
+      
+    </object>
+    
+    <object name="Device.SoftwareModules." access="readOnly" minEntries="1" maxEntries="1">
+      <description>
+        Top level object for dynamically managed software applications.
+      </description>
+      <parameter name="ExecEnvNumberOfEntries" access="readOnly">
+        <description>
+          {{numentries}}
+        </description>
+        <syntax>
+          <unsignedInt/>
+        </syntax>
+      </parameter>
+      <parameter name="DeploymentUnitNumberOfEntries" access="readOnly">
+        <description>
+          {{numentries}}
+        </description>
+        <syntax>
+          <unsignedInt/>
+        </syntax>
+      </parameter>
+      <parameter name="ExecutionUnitNumberOfEntries" access="readOnly">
+        <description>
+          {{numentries}}
+        </description>
+        <syntax>
+          <unsignedInt/>
+        </syntax>
+      </parameter>
+    </object>
+
+    <object name="Device.SoftwareModules.ExecEnv.{i}." access="readOnly" minEntries="0" maxEntries="unbounded" numEntriesParameter="ExecEnvNumberOfEntries">
+      <description>
+        The Execution Environments that are available on the device, along with their properties and configurable settings.
+      </description>
+
+      <component ref="InstallCommand"/>
+
+    </object>
+    
+    <object name="Device.SoftwareModules.DeploymentUnit.{i}." access="readOnly" minEntries="0" maxEntries="unbounded" numEntriesParameter="DeploymentUnitNumberOfEntries">
+      <description>
+        This table serves as the Deployment Unit inventory and contains status information about each Deployment Unit...
+      </description>
+      <parameter name="Version" access="readOnly">
+        <description>
+          Version of this {{object}}. The format of this value is Execution Environment specific.	
+        </description>
+        <syntax>
+          <string>
+            <size maxLength="32"/>
+          </string>
+        </syntax>
+      </parameter>
+      
+      <component ref="UpdateCommand"/>
+      <component ref="UninstallCommand"/>
+
+    </object>
+    
+    <object name="Device.SoftwareModules.ExecutionUnit.{i}." access="readOnly" minEntries="0" maxEntries="unbounded" numEntriesParameter="ExecutionUnitNumberOfEntries">
+      <description>
+        This table serves as the Execution Unit inventory and contains both status information about each Execution Unit...
+      </description>
+    </object>
+
+    <profile name="MandatoryCommands:1">
+      <description>
+        Mandatory commands that MUST be supported by all Agents.
+        {{issue|This is just an example.}}
+      </description>
+      <object ref="Device.LocalAgent." requirement="present">
+        <command ref="Reboot()"/>                
+        <command ref="Download()"/>        
+      </object>
+    </profile>
+  </model>
+</dm:document>
