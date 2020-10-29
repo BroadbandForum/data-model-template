@@ -42,4 +42,6 @@ TOPDIR = ..
 
 include $(TOPDIR)/defs.mk
 
+INSTALLCWMP += catalog.xml
+
 include $(TOPDIR)/rules.mk

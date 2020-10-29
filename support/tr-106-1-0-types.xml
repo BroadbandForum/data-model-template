@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!--
   TR-069 Data Model Data Types
 
@@ -51,7 +51,7 @@
 
   BroadbandHome™ Working Group Chairs:
     John Blackford, Pace
-    Jason Walls, UNH
+    Jason Walls, QA Cafe
 
   Issue History:
     November 2008: tr-106-1-0-0-types.xml, corresponds to parts of TR-106
@@ -80,9 +80,12 @@
             - Added new pattern to IPv4Prefix for IP ranges
     September 2013: tr-106-1-0-0-types.xml (name unchanged)
             - Clarified use of the "cpe-" prefix for the Alias type
-			
+    November 2013: tr-106-1-0-0-types.xml (name unchanged)
+            - Added new types IEEE_EUI64 and ZigBeeNetworkAddress
+
   Publication Date:
-   October 7, 2013: tr-106-1-0-0-types.xml (name unchanged)
+    January 17, 2014
+
 -->
 
 <!DOCTYPE cwmp-datamodel-entities [
@@ -211,5 +214,28 @@ If the CPE supports the Alias-based Addressing feature as defined in {{bibref|TR
       <pattern value="[A-Fa-f0-9]{8}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{12}"/>
     </string>
   </dataType>
+
+  <dataType name="IEEE_EUI64">
+    <description>The IEEE EUI 64-bit identifier as defined in {{bibref|EUI64}}. The IEEE defined 64-bit extended unique identifier (EUI-64) is a concatenation of:
+* The 24-bit (OUI-24) or 36-bit (OUI-36) company_id value assigned by the IEEE Registration Authority (IEEE-RA), and
+* The extension identifier (40 bits for OUI-24 or 28 bits for OUI-36) assigned by the organization with that company_id assignment.
+    </description>
+    <string>
+      <size maxLength="23"></size>
+      <pattern value=""></pattern>
+      <pattern value="([0-9A-Fa-f][0-9A-Fa-f]:){7}([0-9A-Fa-f][0-9A-Fa-f])"></pattern>
+    </string>
+  </dataType>
+
+  <dataType name="ZigBeeNetworkAddress">
+    <description>The ZigBee 16-bit network address (NWK) as defined in {{bibref|ZigBee2007}}. The address is assigned to a device by the network layer and used by the network layer for routing messages between devices.
+    </description>
+    <string>
+      <size maxLength="4"></size>
+      <pattern value=""></pattern>
+      <pattern value="([0-9A-Fa-f]){4}"></pattern>
+    </string>
+  </dataType>
+
 </dm:document>
 
