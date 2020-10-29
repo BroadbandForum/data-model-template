@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  TR-069 Data Model Definition Schema (DM Schema) v1.0
+  TR-069 Data Model Definition Schema (DM Schema) v1.1
 
   Copyright (c) 2008-2017, Broadband Forum
   
@@ -45,10 +45,15 @@
   Summary:
   TR-069 Data Model Definition Schema (DM Schema).  DM Instances define TR-069
   data models.  Within the schema, elements are grouped by category (simple
-  types, complex types etc), and are in alphabetical order within each category.
+  types, complex types etc), and are in alphabetical order within each
+  category.
 
   Version History:
-  November 2008: cwmp-datamodel-1-0.xsd, corresponds to TR-106 Amendment 2
+  November  2008: cwmp-datamodel-1-0.xsd, corresponds to TR-106 Amendment 2
+  September 2009: cwmp-datamodel-1-1.xsd, corresponds to TR-106 Amendment 3
+                  - made import/@file a URI and optional (in line with
+                    DT Schema)
+                  - added RangeFacet step attribute
 -->
 <!DOCTYPE cwmp-datamodel [
   <!ENTITY colon ":">
@@ -58,7 +63,7 @@
   <!ENTITY Name "([\i-[a-z:]][\c-[:\.]]*)">
   <!ENTITY num "(\d+)">
 ]>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:broadband-forum-org:cwmp:datamodel-1-0" targetNamespace="urn:broadband-forum-org:cwmp:datamodel-1-0" elementFormDefault="unqualified" attributeFormDefault="unqualified">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:broadband-forum-org:cwmp:datamodel-1-1" targetNamespace="urn:broadband-forum-org:cwmp:datamodel-1-1" elementFormDefault="unqualified" attributeFormDefault="unqualified">
   <!-- Simple types -->
   <xs:simpleType name="ActiveNotify">
     <xs:annotation>
@@ -778,14 +783,15 @@ The optional ref attribute MAY be used in order to avoid name conflicts between 
       </xs:choice>
       <xs:any namespace="##other" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
-    <xs:attribute name="file" type="xs:string" use="required">
+    <xs:attribute name="file" type="xs:anyURI">
       <xs:annotation>
-        <xs:documentation>Only the file name part SHOULD be specified (the processing tool is assumed to support a search path).</xs:documentation>
+        <xs:documentation>If specified, MUST be used to locate the DM Instance (A.2.1).</xs:documentation>
       </xs:annotation>
     </xs:attribute>
     <xs:attribute name="spec" type="xs:anyURI">
       <xs:annotation>
-        <xs:documentation>If specified, the processing tool MUST regard a mismatch between this and the external document's spec attribute as an error.</xs:documentation>
+        <xs:documentation>If file is specified, this MAY be specified, in which case processing tools MUST regard a mismatch between this and the external document's spec attribute as an error.
+If file is not specified, this MUST be specified and be used to locate the DM Instance (A.2.1).</xs:documentation>
       </xs:annotation>
     </xs:attribute>
     <xs:anyAttribute namespace="##other"/>
@@ -1098,6 +1104,7 @@ MUST be present if and only if defining a new profile.</xs:documentation>
       <xs:extension base="tns:BaseAccessFacet">
         <xs:attribute name="minInclusive" type="xs:integer"/>
         <xs:attribute name="maxInclusive" type="xs:integer"/>
+        <xs:attribute name="step" type="xs:positiveInteger" default="1"/>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
@@ -1243,7 +1250,7 @@ See section 3.2 for comma-separated list formatting rules.</xs:documentation>
       <xs:attribute name="spec" use="required">
         <xs:annotation>
           <xs:documentation>URI of the associated specification document, e.g. the BBF Technical Report.  This URI SHOULD uniquely identify the specification.  More than one DM Schema instance document MAY reference the same specification.
-Where the specification is a BBF document, the URI naming rules specified in A.2.1 MUST be used.  For example, to reference TR-106 Issue 1 Amendment 2, the value of this attribute would be urn:broadband-forum-org:tr-106-1-2.</xs:documentation>
+Where the specification is a BBF document, the URI naming rules specified in A.2.1.1 MUST be used.  For example, to reference TR-106 Issue 1 Amendment 2, the value of this attribute would be urn:broadband-forum-org:tr-106-1-2.</xs:documentation>
         </xs:annotation>
         <xs:simpleType>
           <xs:restriction base="xs:anyURI">
