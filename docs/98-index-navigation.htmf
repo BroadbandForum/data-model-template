@@ -1,0 +1,15 @@
+<nav>
+<p>
+   <a href="00-index-contents.html#contents">Cover Page</a>
+ | <a href="01-index-executive-summary.html#sec:executive-summary">Executive Summary</a>
+ | <a href="02-index-introduction.html#sec:introduction">1 Introduction</a>
+ | <a href="03-index-architecture.html#sec:architecture">2 Architecture</a>
+ | <a href="04-index-object-definitions.html#sec:object-definitions">3 Object Definitions</a>
+ | <a href="05-index-normative-references.html#sec:normative-references">4 Normative References</a>
+ | <a href="06-index-cwmp-data-model-definition-xml-schema.html#sec:cwmp-data-model-definition-xml-schema">Annex A: CWMP Data Model Definition XML Schema</a>
+ | <a href="07-index-cwmp-device-type-xml-schema.html#sec:cwmp-device-type-xml-schema">Annex B: CWMP Device Type XML Schema</a>
+ | <a href="08-index-requirements-for-bbf-standard-data-models.html#sec:requirements-for-bbf-standard-data-models">Annex C: Requirements for BBF Standard Data Models</a>
+ | <a href="09-index-html-data-model-reports.html#sec:html-data-model-reports">Appendix I: HTML Data Model Reports</a>
+</p>
+</nav>
+

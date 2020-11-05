@@ -1,0 +1,176 @@
+/* BBF CSS to be used in addition to GitHub CSS */
+
+/* experimental "note" style */
+
+div.note {
+     margin-top: 5px;
+     -moz-border-radius: 6px;
+     -webkit-border-radius: 6px;
+     background-color: #f1f8fc;
+     background-image: url(pencil.png);
+     background-size: 16px;
+     background-position: 20px 20px;
+     background-repeat: no-repeat;
+     border: solid 1px #3498db;
+     border-radius: 6px;
+     line-height: 18px;
+     overflow: hidden;
+     padding: 15px 60px;
+}
+
+/* experimental "left" and "right" styles */
+
+div.left {
+    width: 49%;
+    float: left;
+    /* border: solid 1px; */
+}
+
+div.right {
+    width: 49%;
+    float: right;
+    /* border: solid 1px; */
+}
+
+div.clear {
+    clear: both;
+}
+
+/* experimental headerlink logic derived from Sphinx basic.css */
+
+a.headerlink,
+nav li > a > span {
+    display: none;
+}
+
+h1:hover > a.headerlink,
+h2:hover > a.headerlink,
+h3:hover > a.headerlink,
+h4:hover > a.headerlink,
+h5:hover > a.headerlink,
+h6:hover > a.headerlink,
+div:hover > a.headerlink,
+span:hover > a.headerlink,
+caption:hover > a.headerlink,
+figcaption:hover > a.headerlink {
+    display: inline;
+}
+
+/* experimental definition list support based on ideas from
+   https://www.the-art-of-web.com/css/format-dl */
+
+dl {
+    border: 3px double #ccc;
+    margin-bottom: 1em;
+}
+
+dt {
+    float: left;
+    clear: left;
+    width: 15%;
+    font-weight: bold;
+    margin-bottom: .8em;
+}
+
+/* BBF: TBD work out how to handle multi-paragraph dd elements */
+dd {
+    margin: 0 0 .8em 2em;
+}
+
+dd:last-child {
+    margin-bottom: 0;
+}
+
+/* this makes elements invisible */
+.display-none {
+    display: none;
+}
+
+/* media settings originally from https://gist.github.com/killercup/5917178 */
+
+@media only screen and (min-width: 480px) {
+    body {
+        font-size: 14px;
+    }
+}
+@media only screen and (min-width: 768px) {
+    body {
+        font-size: 16px;
+    }
+}
+
+@media print {
+    * {
+        /* BBF: this hid the pencil icon in notes
+        background: transparent !important; */
+        color: black !important;
+        filter: none !important;
+        -ms-filter: none !important;
+    }
+
+    body {
+        font-size: 12pt;
+        max-width: 100%;
+    }
+
+    a, a:visited {
+        text-decoration: underline;
+    }
+
+    hr {
+        height: 1px;
+        border: 0;
+        border-bottom: 1px solid black;
+    }
+
+    /* BBF: this isn't desirable
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+   */
+
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+
+    .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after {
+        content: "";
+    }
+
+    pre, blockquote {
+        /* BBF: this doesn't look nice
+        border: 1px solid #999; */
+        padding-right: 1em;
+        page-break-inside: avoid;
+    }
+
+    tr, img {
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    @page :left {
+        margin: 15mm 20mm 15mm 10mm;
+    }
+
+    @page :right {
+        margin: 15mm 10mm 15mm 20mm;
+    }
+
+    p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2, h3 {
+        page-break-after: avoid;
+    }
+
+    /* page break control is a BBF addition */
+    .annex1, .appendix1, .new-page {
+        page-break-before: always;
+    }
+}

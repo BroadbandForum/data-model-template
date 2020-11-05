@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  Data Model Definition Schema (DM Schema) v1.7
+  Data Model Definition Schema (DM Schema) v1.8
 
-  Copyright (c) 2008-2019, Broadband Forum
-  
+  Copyright (c) 2008-2020, Broadband Forum
+
   Redistribution and use in source and binary forms, with or
   without modification, are permitted provided that the following
   conditions are met:
-  
+
   1. Redistributions of source code must retain the above copyright
      notice, this list of conditions and the following disclaimer.
-  
+
   2. Redistributions in binary form must reproduce the above
      copyright notice, this list of conditions and the following
      disclaimer in the documentation and/or other materials
      provided with the distribution.
-  
+
   3. Neither the name of the copyright holder nor the names of its
      contributors may be used to endorse or promote products
      derived from this software without specific prior written
      permission.
-  
+
   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND
   CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
   INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
@@ -34,14 +34,14 @@
   STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
   ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
   ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-  
+
   The above license is used as a license under copyright only.
   Please reference the Forum IPR Policy for patent licensing terms
   <https://www.broadband-forum.org/ipr-policy>.
-  
+
   Any moral rights which are necessary to exercise under the above
   license grant are also deemed granted under this license.
-  
+
   Summary:
     CWMP and USP Data Model Definition Schema (DM Schema). DM Instances define CWMP
     or USP data models.  Within the schema, elements are grouped by category (simple
@@ -63,8 +63,8 @@
       - updated all of the unique object-name constraints so that the
         object/@base attribute is also considered.
       - added "prefix" option to the description/@action attribute
-      - made import/@file attribute required for import element 
-      - removed size facet's default maxLength on string/base64/hexBinary 
+      - made import/@file attribute required for import element
+      - removed size facet's default maxLength on string/base64/hexBinary
         parameters
       - added syntax/@command attribute to the syntax element
     * cwmp-datamodel-1-4.xsd: July 2011: corresponds to TR-106 Amendment 6
@@ -83,6 +83,8 @@
     * cwmp-datamodel-1-7.xsd: September 13 2019: September 13 2019:
       - supported implementation defaults, version attribute, description templates,
         writeOnceReadOnly access type and the decimal datatype
+    * cwmp-datamodel-1-8.xsd: November 5 2020: November 5 2020: corresponds to TR-106 Amendment 10
+      - allowed command attributes, e.g. mandatory, in component definitions
 -->
 
 <!DOCTYPE cwmp-datamodel [
@@ -98,21 +100,21 @@
 ]>
 
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-  xmlns:tns="urn:broadband-forum-org:cwmp:datamodel-1-7"
-  targetNamespace="urn:broadband-forum-org:cwmp:datamodel-1-7" elementFormDefault="unqualified"
+  xmlns:tns="urn:broadband-forum-org:cwmp:datamodel-1-8"
+  targetNamespace="urn:broadband-forum-org:cwmp:datamodel-1-8" elementFormDefault="unqualified"
   attributeFormDefault="unqualified">
   <!-- Simple types -->
   <xs:simpleType name="AbbrefId">
     <xs:annotation>
       <xs:documentation>Abbreviation item ID; SHOULD uniquely identify this item across all instance documents.</xs:documentation>
     </xs:annotation>
-    <xs:restriction base="xs:token"/>
+    <xs:restriction base="tns:String"/>
   </xs:simpleType>
   <xs:simpleType name="ActiveNotify">
     <xs:annotation>
       <xs:documentation>Parameter active notify support.</xs:documentation>
     </xs:annotation>
-    <xs:restriction base="xs:token">
+    <xs:restriction base="tns:String">
       <xs:enumeration value="normal"/>
       <xs:enumeration value="forceEnabled"/>
       <xs:enumeration value="forceDefaultEnabled"/>
@@ -129,7 +131,7 @@
     <xs:annotation>
       <xs:documentation>Type of argument parameter default.</xs:documentation>
     </xs:annotation>
-    <xs:restriction base="xs:token">
+    <xs:restriction base="tns:String">
       <xs:enumeration value="parameter">
         <xs:annotation>
           <xs:documentation>Default if argument parameter isn't supported.</xs:documentation>
@@ -142,14 +144,14 @@
       <xs:documentation>Bibliographic reference ID; SHOULD uniquely identify this reference across all instance documents.
 For BBF DM Instances, the bibliographic reference ID rules specified in A.2.4 MUST be used.  For example, to reference TR-106 Issue 1 Amendment 2, the value of this attribute would be TR-106a2.</xs:documentation>
     </xs:annotation>
-    <xs:restriction base="xs:token"/>
+    <xs:restriction base="tns:String"/>
   </xs:simpleType>
   <xs:simpleType name="BuiltinTypeName">
     <xs:annotation>
       <xs:documentation>Built-in type name.
 The type hierarchy is as for XML Schema, with "any" and "base64" mapping to the "anySimpleType" and "base64Binary" XML Schema types respectively.</xs:documentation>
     </xs:annotation>
-    <xs:restriction base="xs:token">
+    <xs:restriction base="tns:String">
       <xs:enumeration value="any"/>
       <xs:enumeration value="base64"/>
       <xs:enumeration value="boolean"/>
@@ -170,7 +172,7 @@ The type hierarchy is as for XML Schema, with "any" and "base64" mapping to the 
         A command name SHOULD NOT start with an underscore or include any hyphens.
         In BBF standards, a command name MUST NOT start with an underscore or include any hyphens.</xs:documentation>
     </xs:annotation>
-    <xs:restriction base="xs:token">
+    <xs:restriction base="tns:String">
       <xs:maxLength value="256"/>
       <xs:pattern value="&name;&parens;"/>
     </xs:restriction>
@@ -181,7 +183,7 @@ The type hierarchy is as for XML Schema, with "any" and "base64" mapping to the 
 A component which has a name beginning with an underscore is internal and cannot be imported by another DM Instance.
 In BBF standards, a component name MUST NOT include any hyphens.</xs:documentation>
     </xs:annotation>
-    <xs:restriction base="xs:token">
+    <xs:restriction base="tns:String">
       <xs:pattern value="&name;"/>
     </xs:restriction>
   </xs:simpleType>
@@ -191,7 +193,7 @@ In BBF standards, a component name MUST NOT include any hyphens.</xs:documentati
 A data type which has a name beginning with an underscore is internal and cannot be imported by another DM Instance.
 In BBF standards, a data type name MUST NOT include any hyphens.</xs:documentation>
     </xs:annotation>
-    <xs:restriction base="xs:token">
+    <xs:restriction base="tns:String">
       <xs:pattern value="&Name;"/>
     </xs:restriction>
   </xs:simpleType>
@@ -199,7 +201,7 @@ In BBF standards, a data type name MUST NOT include any hyphens.</xs:documentati
     <xs:annotation>
       <xs:documentation>Description action.</xs:documentation>
     </xs:annotation>
-    <xs:restriction base="xs:token">
+    <xs:restriction base="tns:String">
       <xs:enumeration value="create"/>
       <xs:enumeration value="prefix"/>
       <xs:enumeration value="append"/>
@@ -212,7 +214,7 @@ In BBF standards, a data type name MUST NOT include any hyphens.</xs:documentati
         An event name SHOULD NOT start with an underscore or include any hyphens.
         In BBF standards, an event name MUST NOT start with an underscore or include any hyphens.</xs:documentation>
     </xs:annotation>
-    <xs:restriction base="xs:token">
+    <xs:restriction base="tns:String">
       <xs:maxLength value="256"/>
       <xs:pattern value="&name;&exclam;"/>
     </xs:restriction>
@@ -221,13 +223,13 @@ In BBF standards, a data type name MUST NOT include any hyphens.</xs:documentati
     <xs:annotation>
       <xs:documentation>Glossary item ID; SHOULD uniquely identify this item across all instance documents.</xs:documentation>
     </xs:annotation>
-    <xs:restriction base="xs:token"/>
+    <xs:restriction base="tns:String"/>
   </xs:simpleType>
   <xs:simpleType name="ListNesting">
     <xs:annotation>
       <xs:documentation>Nested list escaping requirements.  See section 3.2.3.</xs:documentation>
     </xs:annotation>
-    <xs:restriction base="xs:token">
+    <xs:restriction base="tns:String">
       <xs:enumeration value="legacy">
         <xs:annotation>
           <xs:documentation>MUST escape inner comma separators.</xs:documentation>
@@ -251,7 +253,7 @@ In BBF standards, a data type name MUST NOT include any hyphens.</xs:documentati
     </xs:annotation>
     <xs:union memberTypes="xs:positiveInteger">
       <xs:simpleType>
-        <xs:restriction base="xs:token">
+        <xs:restriction base="tns:String">
           <xs:enumeration value="unbounded"/>
         </xs:restriction>
       </xs:simpleType>
@@ -263,7 +265,7 @@ In BBF standards, a data type name MUST NOT include any hyphens.</xs:documentati
 A model which has a name beginning with an underscore is internal and cannot be imported by another DM Instance.
 In BBF standards, a model name MUST NOT include any hyphens.</xs:documentation>
     </xs:annotation>
-    <xs:restriction base="xs:token">
+    <xs:restriction base="tns:String">
       <xs:pattern value="&name;&colon;&num;&dot;&num;"/>
     </xs:restriction>
   </xs:simpleType>
@@ -277,7 +279,7 @@ In BBF standards, a model name MUST NOT include any hyphens.</xs:documentation>
     <xs:annotation>
       <xs:documentation>Indicates whether an object is mountable or a mount point.  Mountable objects MUST be top-level children of the Root Object (other objects are not permitted to be mounted).</xs:documentation>
     </xs:annotation>
-    <xs:restriction base="xs:token">
+    <xs:restriction base="tns:String">
       <xs:enumeration value="none"/>
       <xs:enumeration value="mountable"/>
       <xs:enumeration value="mountPoint"/>
@@ -289,7 +291,7 @@ In BBF standards, a model name MUST NOT include any hyphens.</xs:documentation>
 An object name component SHOULD NOT start with an underscore or include any hyphens.
 In BBF standards, an object name component MUST NOT start with an underscore or include any hyphens.</xs:documentation>
     </xs:annotation>
-    <xs:restriction base="xs:token">
+    <xs:restriction base="tns:String">
       <xs:maxLength value="256"/>
       <xs:pattern value="(&name;&dot;(&inst;&dot;)?)+"/>
     </xs:restriction>
@@ -298,7 +300,7 @@ In BBF standards, an object name component MUST NOT start with an underscore or 
     <xs:annotation>
       <xs:documentation>Object path that cannot contain "{i}" placeholders and that therefore references a single object.  The path MUST follow the requirements of A.2.3.4 (its scope will typically be specified via an attribute of type PathScope).</xs:documentation>
     </xs:annotation>
-    <xs:restriction base="xs:token">
+    <xs:restriction base="tns:String">
       <xs:pattern value="&hash;*&dot;?(&name;&dot;)*"/>
     </xs:restriction>
   </xs:simpleType>
@@ -306,7 +308,7 @@ In BBF standards, an object name component MUST NOT start with an underscore or 
     <xs:annotation>
       <xs:documentation>Object path that can contain "{i}" placeholders and that can therefore references multiple objects.  The path MUST follow the requirements of A.2.3.4 (its scope will typically be specified via an attribute of type PathScope).</xs:documentation>
     </xs:annotation>
-    <xs:restriction base="xs:token">
+    <xs:restriction base="tns:String">
       <xs:pattern value="&hash;*&dot;?(&name;&dot;(&inst;&dot;)?)*"/>
     </xs:restriction>
   </xs:simpleType>
@@ -320,7 +322,7 @@ In BBF standards, an object name component MUST NOT start with an underscore or 
     <xs:annotation>
       <xs:documentation>Opaque ID.</xs:documentation>
     </xs:annotation>
-    <xs:restriction base="xs:token">
+    <xs:restriction base="tns:String">
       <xs:maxLength value="256"/>
     </xs:restriction>
   </xs:simpleType>
@@ -328,7 +330,7 @@ In BBF standards, an object name component MUST NOT start with an underscore or 
     <xs:annotation>
       <xs:documentation>Type of model parameter default.</xs:documentation>
     </xs:annotation>
-    <xs:restriction base="xs:token">
+    <xs:restriction base="tns:String">
       <xs:enumeration value="factory">
         <xs:annotation>
           <xs:documentation>Default from standard, e.g. RFC.  Also applies on object creation.</xs:documentation>
@@ -352,7 +354,7 @@ In BBF standards, an object name component MUST NOT start with an underscore or 
 A parameter name SHOULD NOT start with an underscore or include any hyphens.
 In BBF standards, a parameter name  MUST NOT start with an underscore or include any hyphens.</xs:documentation>
     </xs:annotation>
-    <xs:restriction base="xs:token">
+    <xs:restriction base="tns:String">
       <xs:maxLength value="256"/>
       <xs:pattern value="&name;"/>
     </xs:restriction>
@@ -361,7 +363,7 @@ In BBF standards, a parameter name  MUST NOT start with an underscore or include
     <xs:annotation>
       <xs:documentation>Parameter path that cannot contain "{i}" placeholders and that therefore references a single parameter.  The path MUST follow the requirements of A.2.3.4 (its scope will typically be specified via an attribute of type PathScope).</xs:documentation>
     </xs:annotation>
-    <xs:restriction base="xs:token">
+    <xs:restriction base="tns:String">
       <xs:pattern value="&hash;*&dot;?(&name;&dot;)*&name;"/>
     </xs:restriction>
   </xs:simpleType>
@@ -369,7 +371,7 @@ In BBF standards, a parameter name  MUST NOT start with an underscore or include
     <xs:annotation>
       <xs:documentation>Object / parameter path name scope (A.2.3.4).</xs:documentation>
     </xs:annotation>
-    <xs:restriction base="xs:token">
+    <xs:restriction base="tns:String">
       <xs:enumeration value="normal"/>
       <xs:enumeration value="model"/>
       <xs:enumeration value="object"/>
@@ -381,7 +383,7 @@ In BBF standards, a parameter name  MUST NOT start with an underscore or include
 A profile name SHOULD NOT start with an underscore or include any hyphens.
 In BBF standards, a profile name MUST NOT start with an underscore or include any hyphens.</xs:documentation>
     </xs:annotation>
-    <xs:restriction base="xs:token">
+    <xs:restriction base="tns:String">
       <xs:pattern value="&name;&colon;&num;"/>
     </xs:restriction>
   </xs:simpleType>
@@ -395,7 +397,7 @@ In BBF standards, a profile name MUST NOT start with an underscore or include an
     <xs:annotation>
       <xs:documentation>Object access (within profile).</xs:documentation>
     </xs:annotation>
-    <xs:restriction base="xs:token">
+    <xs:restriction base="tns:String">
       <xs:enumeration value="notSpecified"/>
       <xs:enumeration value="present"/>
       <xs:enumeration value="create"/>
@@ -407,28 +409,28 @@ In BBF standards, a profile name MUST NOT start with an underscore or include an
     <xs:annotation>
       <xs:documentation>Read-write access.</xs:documentation>
     </xs:annotation>
-    <xs:restriction base="xs:token">
+    <xs:restriction base="tns:String">
       <xs:enumeration value="readOnly"/>
       <xs:enumeration value="readWrite"/>
     </xs:restriction>
   </xs:simpleType>
-  
+
   <xs:simpleType name="ParameterAccess">
     <xs:annotation>
       <xs:documentation>Parameter access options.</xs:documentation>
     </xs:annotation>
-    <xs:restriction base="xs:token">
+    <xs:restriction base="tns:String">
       <xs:enumeration value="readOnly"/>
       <xs:enumeration value="readWrite"/>
       <xs:enumeration value="writeOnceReadOnly"/>
     </xs:restriction>
   </xs:simpleType>
-  
+
   <xs:simpleType name="ReferenceType">
     <xs:annotation>
       <xs:documentation>Reference type (A.2.3.6).</xs:documentation>
     </xs:annotation>
-    <xs:restriction base="xs:token">
+    <xs:restriction base="tns:String">
       <xs:enumeration value="weak"/>
       <xs:enumeration value="strong"/>
     </xs:restriction>
@@ -437,18 +439,29 @@ In BBF standards, a profile name MUST NOT start with an underscore or include an
     <xs:annotation>
       <xs:documentation>Item status (applies to most types of item).</xs:documentation>
     </xs:annotation>
-    <xs:restriction base="xs:token">
+    <xs:restriction base="tns:String">
       <xs:enumeration value="current"/>
       <xs:enumeration value="deprecated"/>
       <xs:enumeration value="obsoleted"/>
       <xs:enumeration value="deleted"/>
     </xs:restriction>
   </xs:simpleType>
+  <xs:simpleType name="String">
+    <xs:annotation>
+      <xs:documentation>Base string (can't have leading or trailing whitespace).</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <!-- empty string is ignored by some tools, so use () -->
+      <xs:pattern value="()"/>
+      <xs:pattern value="\S"/>
+      <xs:pattern value="\S.*\S"/>
+    </xs:restriction>
+  </xs:simpleType>
   <xs:simpleType name="TargetType">
     <xs:annotation>
       <xs:documentation>(Reference) target type (used in path references).</xs:documentation>
     </xs:annotation>
-    <xs:restriction base="xs:token">
+    <xs:restriction base="tns:String">
       <xs:enumeration value="any"/>
       <xs:enumeration value="parameter"/>
       <xs:enumeration value="object"/>
@@ -461,7 +474,7 @@ In BBF standards, a profile name MUST NOT start with an underscore or include an
     <xs:annotation>
       <xs:documentation>Relative parameter path name that cannot contain "{i}" placeholders and that therefore represents a valid uniqueKey parameter name.</xs:documentation>
     </xs:annotation>
-    <xs:restriction base="xs:token">
+    <xs:restriction base="tns:String">
       <xs:pattern value="(&name;&dot;)*&name;"/>
     </xs:restriction>
   </xs:simpleType>
@@ -469,7 +482,7 @@ In BBF standards, a profile name MUST NOT start with an underscore or include an
     <xs:annotation>
       <xs:documentation>Units string.</xs:documentation>
     </xs:annotation>
-    <xs:restriction base="xs:token">
+    <xs:restriction base="tns:String">
       <xs:maxLength value="32"/>
     </xs:restriction>
   </xs:simpleType>
@@ -477,19 +490,43 @@ In BBF standards, a profile name MUST NOT start with an underscore or include an
     <xs:annotation>
       <xs:documentation>Universally Unique IDentifier (see RFC 4122).</xs:documentation>
     </xs:annotation>
-    <xs:restriction base="xs:token">
+    <xs:restriction base="tns:String">
       <xs:pattern
         value="[A-Fa-f0-9]{8}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{12}"/>
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="Version">
     <xs:annotation>
-      <xs:documentation>Version (major.minor) in which this item was first defined.</xs:documentation>
+      <xs:documentation>Version (major.minor) or (major.minor.patch) in which this item was first defined.</xs:documentation>
     </xs:annotation>
-    <xs:restriction base="xs:token">
+    <xs:restriction base="tns:String">
       <xs:pattern value="&num;&dot;&num;"/>
+      <xs:pattern value="&num;&dot;&num;&dot;&num;"/>
     </xs:restriction>
   </xs:simpleType>
+
+  <!-- Attribute groups -->
+  <xs:attributeGroup name="CommandAndEventParameterAttributes">
+    <xs:attribute default="false" name="mandatory" type="xs:boolean">
+      <xs:annotation>
+        <xs:documentation>If true, the parameter MUST be present.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="ModelObjectAttributes">
+    <xs:attribute name="access" type="tns:ReadWriteAccess" use="required"/>
+    <xs:attribute name="mountType" type="tns:MountType" default="none"/>
+    <xs:attribute name="enableParameter" type="tns:ParameterName">
+      <xs:annotation>
+        <xs:documentation>MUST be specified for a table in which the Controller can create entries and which has one or more uniqueKey elements that define functional keys.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="numEntriesParameter" type="tns:ParameterName">
+      <xs:annotation>
+        <xs:documentation>MUST be specified for a table with a variable number of entries, i.e. for which maxEntries is greater than minEntries ("unbounded" is regarded as being greater than all values).</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
 
   <!-- Model groups -->
   <xs:group name="AllBuiltinDataTypes">
@@ -668,7 +705,7 @@ The range facet MUST NOT be specified for non-numeric data types, i.e. data type
       <xs:element name="enumeration" type="tns:EnumerationFacet">
         <xs:annotation>
           <xs:documentation>Enumeration facets, taken together, define the valid values, e.g. "a" and "b" mean that the value has to be a or b.
-The enumeration facet MUST NOT be specified for data types that are not derived from string. 
+The enumeration facet MUST NOT be specified for data types that are not derived from string.
 Derived types MAY add additional enumeration values.  See A.2.5.</xs:documentation>
         </xs:annotation>
       </xs:element>
@@ -681,7 +718,7 @@ The enumerationRef facet MUST NOT be specified for data types that are not deriv
       <xs:element name="pattern" type="tns:PatternFacet">
         <xs:annotation>
           <xs:documentation>Pattern attributes, taken together, define valid patterns, e.g. "" and "[0-9A-Fa-f]{6}" means that the value has to be empty or a 6 digit hex string.
-The pattern facet MUST NOT be specified for data types that are not derived from string. 
+The pattern facet MUST NOT be specified for data types that are not derived from string.
 Pattern syntax is the same as for XML Schema regular expressions.  See https://www.w3.org/TR/xmlschema-2/#regexs.</xs:documentation>
         </xs:annotation>
       </xs:element>
@@ -994,11 +1031,7 @@ If the object is a table (see maxEntries), the final part of the name MUST be "{
           <xs:element name="syntax" type="tns:ArgumentSyntax" minOccurs="0"/>
           <xs:any namespace="##other" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
-        <xs:attribute default="false" name="mandatory" type="xs:boolean">
-          <xs:annotation>
-            <xs:documentation>If true, the parameter MUST be present in the command.</xs:documentation>
-          </xs:annotation>
-        </xs:attribute>
+        <xs:attributeGroup ref="tns:CommandAndEventParameterAttributes"/>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
@@ -1010,8 +1043,8 @@ If the object is a table (see maxEntries), the final part of the name MUST be "{
       <xs:element name="description" type="tns:Description" minOccurs="0"/>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:element name="component" type="tns:ComponentReference"/>
-        <xs:element name="parameter" type="tns:ModelParameter"/>
-        <xs:element name="object" type="tns:ModelObject">
+        <xs:element name="parameter" type="tns:ComponentParameter"/>
+        <xs:element name="object" type="tns:ComponentObject">
           <xs:unique name="componentObjectParameterName">
             <xs:selector xpath="parameter"/>
             <xs:field xpath="@name | @base"/>
@@ -1034,6 +1067,35 @@ If the object is a table (see maxEntries), the final part of the name MUST be "{
     <xs:attribute name="version" type="tns:Version"/>
     <xs:attribute name="id" type="tns:OpaqueID"/>
     <xs:anyAttribute namespace="##other"/>
+  </xs:complexType>
+  <xs:complexType name="ComponentObject">
+    <xs:annotation>
+      <xs:documentation>Component Object definition and reference.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="tns:BaseObject">
+        <xs:sequence>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="component" type="tns:ComponentReference"/>
+            <xs:element name="parameter" type="tns:ComponentParameter"/>
+            <xs:element name="command" type="tns:ModelCommand"/>
+            <xs:element name="event" type="tns:ModelEvent"/>
+          </xs:choice>
+          <xs:any namespace="##other" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attributeGroup ref="tns:ModelObjectAttributes"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ComponentParameter">
+    <xs:annotation>
+      <xs:documentation>Component Parameter definition and reference.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="tns:ModelParameter">
+        <xs:attributeGroup ref="tns:CommandAndEventParameterAttributes"/>
+      </xs:extension>
+    </xs:complexContent>
   </xs:complexType>
   <xs:complexType name="ComponentReference">
     <xs:annotation>
@@ -1130,12 +1192,12 @@ Specify "prefix" to prefix to the previous description, "append" to append to th
   </xs:complexType>
   <xs:complexType name="DescriptionTemplate">
     <xs:annotation>
-      <xs:documentation>DescriptionTemplate: free text with a length up to 256 characters, which can be added in multiple descriptions and MAY contain a limited amount of mediawiki-like markup as 
+      <xs:documentation>DescriptionTemplate: free text with a length up to 256 characters, which can be added in multiple descriptions and MAY contain a limited amount of mediawiki-like markup as
 specified in A.2.2 (same restrictions as tns:Description type</xs:documentation>
     </xs:annotation>
     <xs:simpleContent>
       <xs:extension base="xs:string">
-        <xs:attribute name="id" type="xs:string"/>
+        <xs:attribute name="id" type="tns:String"/>
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
@@ -1145,7 +1207,7 @@ specified in A.2.2 (same restrictions as tns:Description type</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="tns:BaseAccessFacet">
-        <xs:attribute name="value" type="xs:string" use="required"/>
+        <xs:attribute name="value" type="tns:String" use="required"/>
         <xs:attribute name="code" type="xs:integer"/>
       </xs:extension>
     </xs:complexContent>
@@ -1166,7 +1228,7 @@ specified in A.2.2 (same restrictions as tns:Description type</xs:documentation>
             <xs:documentation>Specifies the point in the naming hierarchy relative to which targetParam applies (A.2.3.4).</xs:documentation>
           </xs:annotation>
         </xs:attribute>
-        <xs:attribute name="nullValue" type="xs:token">
+        <xs:attribute name="nullValue" type="tns:String">
           <xs:annotation>
             <xs:documentation>Specifies the value that indicates that none of the values of the referenced parameter currently apply.</xs:documentation>
           </xs:annotation>
@@ -1197,11 +1259,7 @@ specified in A.2.2 (same restrictions as tns:Description type</xs:documentation>
           <xs:element name="syntax" type="tns:ArgumentSyntax" minOccurs="0"/>
           <xs:any namespace="##other" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
-        <xs:attribute default="false" name="mandatory" type="xs:boolean">
-          <xs:annotation>
-            <xs:documentation>If true, the parameter MUST be present in the event.</xs:documentation>
-          </xs:annotation>
-        </xs:attribute>
+        <xs:attributeGroup ref="tns:CommandAndEventParameterAttributes"/>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
@@ -1451,18 +1509,7 @@ MUST be present if and only if defining a new event.</xs:documentation>
           </xs:choice>
           <xs:any namespace="##other" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
-        <xs:attribute name="access" type="tns:ReadWriteAccess" use="required"/>
-        <xs:attribute name="mountType" type="tns:MountType" default="none"/>
-        <xs:attribute name="enableParameter" type="tns:ParameterName">
-          <xs:annotation>
-            <xs:documentation>MUST be specified for a table in which the Controller can create entries and which has one or more uniqueKey elements that define functional keys.</xs:documentation>
-          </xs:annotation>
-        </xs:attribute>
-        <xs:attribute name="numEntriesParameter" type="tns:ParameterName">
-          <xs:annotation>
-            <xs:documentation>MUST be specified for a table with a variable number of entries, i.e. for which maxEntries is greater than minEntries ("unbounded" is regarded as being greater than all values).</xs:documentation>
-          </xs:annotation>
-        </xs:attribute>
+        <xs:attributeGroup ref="tns:ModelObjectAttributes"/>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
@@ -1740,7 +1787,7 @@ MUST be present if and only if defining a new profile.</xs:documentation>
               <xs:minExclusive value="0"/>
             </xs:restriction>
           </xs:simpleType>
-        </xs:attribute>  
+        </xs:attribute>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
