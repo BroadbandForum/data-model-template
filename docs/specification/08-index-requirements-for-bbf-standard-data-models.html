@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<!-- BBF GitHub Pages pandoc template; modified from default.html template -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="generator" content="pandoc"/>
+  <meta name="description" content="WT-106 – Data Model Template for CWMP Endpoints and USP Agents: How to use the data model schema"/>
+  <meta name="theme-color" content="#157878"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"/>
+  <title>BBF – Annex C: Requirements for BBF Standard Data Models</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="github.css"/>
+  <link rel="stylesheet" href="extra.css"/>
+  <link rel="stylesheet" href="toc.css"/>
+  <link rel="stylesheet" href="watermark.css"/>
+  <link rel="stylesheet" href="release.css"/>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <!-- XXX header includes are included just before the ToC (below) -->
+</head>
+
+<body>
+  <section class="page-header">
+    <h1 class="project-name">
+      <a href="../index.html" style="text-decoration: none; color: white;">
+        <img src="bbflogo-bw.png"/><br>
+        Data Model Template for CWMP Endpoints and USP Agents
+      </a>
+    </h1>
+    <h2 class="project-tagline">How to use the data model schema</h2>
+    <p></p>
+    <p></p>
+    <div class="project-buttons">
+      <a class="btn" href="../specification/index.html" title="Data Model Template Specification (WT-106)">Specification</a>
+      <a class="btn" href="https://www.broadband-forum.org/technical/download/TR-069.pdf">CWMP</a>
+      <a class="btn" href="https://cwmp-data-models.broadband-forum.org">CWMP Data Models</a>
+      <a class="btn" href="https://usp.technology">USP</a>
+      <a class="btn" href="https://usp-data-models.broadband-forum.org">USP Data Models</a>
+      <a class="btn" href="../resources/01-index-data-modeling-resources.html" title="Data Modeling Resources">Resources</a>
+      <a class="btn" href="../faq/01-index-faq.html" title="Data Modeling Frequently Asked Questions">FAQ</a>
+      <a class="btn" href="../specification/index.htm" title="Data Model Template Specification (WT-106) Single-file HTML">HTML</a>
+      <a class="btn" href="../specification/index.pdf" title="Data Model Template Specification (WT-106) PDF">PDF</a>
+    </div>
+  </section>
+
+  <section class="main-content">
+<nav>
+<p>
+   <a href="00-index-contents.html#contents">Cover Page</a>
+ | <a href="01-index-executive-summary.html#sec:executive-summary">Executive Summary</a>
+ | <a href="02-index-introduction.html#sec:introduction">1 Introduction</a>
+ | <a href="03-index-architecture.html#sec:architecture">2 Architecture</a>
+ | <a href="04-index-object-definitions.html#sec:object-definitions">3 Object Definitions</a>
+ | <a href="05-index-normative-references.html#sec:normative-references">4 Normative References</a>
+ | <a href="06-index-cwmp-data-model-definition-xml-schema.html#sec:cwmp-data-model-definition-xml-schema">Annex A: CWMP Data Model Definition XML Schema</a>
+ | <a href="07-index-cwmp-device-type-xml-schema.html#sec:cwmp-device-type-xml-schema">Annex B: CWMP Device Type XML Schema</a>
+ | <a href="08-index-requirements-for-bbf-standard-data-models.html#sec:requirements-for-bbf-standard-data-models">Annex C: Requirements for BBF Standard Data Models</a>
+ | <a href="09-index-html-data-model-reports.html#sec:html-data-model-reports">Appendix I: HTML Data Model Reports</a>
+</p>
+</nav>
+
+<nav id="TOCFULL">
+<ul>
+  <li><a href="00-index-contents.html#contents">Cover Page</a></li>
+  <li><a href="02-index-introduction.html#sec:introduction">1 Introduction</a></li>
+  <ul>
+    <li><a href="02-index-introduction.html#sec:terminology">1.1 Terminology</a></li>
+    <li><a href="02-index-introduction.html#sec:document-conventions">1.2 Document Conventions</a></li>
+  </ul>
+  <li><a href="03-index-architecture.html#sec:architecture">2 Architecture</a></li>
+  <ul>
+    <li><a href="03-index-architecture.html#sec:data-hierarchy">2.1 Data Hierarchy</a></li>
+    <ul>
+      <li><a href="03-index-architecture.html#sec:data-hierarchy-requirements">2.1.1 Data Hierarchy Requirements</a></li>
+      <li><a href="03-index-architecture.html#sec:the-supported-data-model-and-the-instantiated-data-model">2.1.2 The Supported Data Model and the Instantiated Data Model</a></li>
+    </ul>
+    <li><a href="03-index-architecture.html#sec:object-versioning">2.2 Object Versioning</a></li>
+    <ul>
+      <li><a href="03-index-architecture.html#sec:requirements-for-compatible-versions">2.2.1 Requirements for Compatible Versions</a></li>
+      <li><a href="03-index-architecture.html#sec:version-notation">2.2.2 Version Notation</a></li>
+    </ul>
+    <li><a href="03-index-architecture.html#sec:profiles">2.3 Profiles</a></li>
+    <ul>
+      <li><a href="03-index-architecture.html#sec:scope-of-profiles">2.3.1 Scope of Profiles</a></li>
+      <li><a href="03-index-architecture.html#sec:multiple-profile-support">2.3.2 Multiple Profile Support</a></li>
+      <li><a href="03-index-architecture.html#sec:profile-versions">2.3.3 Profile Versions</a></li>
+      <li><a href="03-index-architecture.html#sec:baseline-profiles">2.3.4 Baseline Profiles</a></li>
+      <li><a href="03-index-architecture.html#sec:types-of-requirements-in-a-profile">2.3.5 Types of Requirements in a Profile</a></li>
+    </ul>
+    <li><a href="03-index-architecture.html#sec:deprecated-and-obsoleted-items">2.4 DEPRECATED and OBSOLETED Items</a></li>
+    <ul>
+      <li><a href="03-index-architecture.html#sec:requirements-for-deprecated-items">2.4.1 Requirements for DEPRECATED Items</a></li>
+      <li><a href="03-index-architecture.html#sec:requirements-for-obsoleted-items">2.4.2 Requirements for OBSOLETED Items</a></li>
+    </ul>
+  </ul>
+  <li><a href="04-index-object-definitions.html#sec:object-definitions">3 Object Definitions</a></li>
+  <ul>
+    <li><a href="04-index-object-definitions.html#sec:general-notation">3.1 General Notation</a></li>
+    <li><a href="04-index-object-definitions.html#sec:data-types-and-representation">3.2 Data Types and Representation</a></li>
+    <ul>
+      <li><a href="04-index-object-definitions.html#sec:date-and-time-rules">3.2.1 Date and Time Rules</a></li>
+      <li><a href="04-index-object-definitions.html#sec:comma-separated-lists">3.2.2 Comma-separated Lists</a></li>
+      <li><a href="04-index-object-definitions.html#sec:parameters-that-reference-parameters-or-objects">3.2.3 Parameters that Reference Parameters or Objects</a></li>
+      <li><a href="04-index-object-definitions.html#sec:units-conventions">3.2.4 Units Conventions</a></li>
+      <li><a href="04-index-object-definitions.html#sec:default-maximum-string-length">3.2.5 Default Maximum String Length</a></li>
+    </ul>
+    <li><a href="04-index-object-definitions.html#sec:vendor-specific-elements">3.3 Vendor-Specific Elements</a></li>
+  </ul>
+  <li><a href="05-index-normative-references.html#sec:normative-references">4 Normative References</a></li>
+  <li><a href="06-index-cwmp-data-model-definition-xml-schema.html#sec:cwmp-data-model-definition-xml-schema">Annex A: CWMP Data Model Definition XML Schema</a></li>
+  <ul>
+    <li><a href="06-index-cwmp-data-model-definition-xml-schema.html#sec:introduction-1">A.1 Introduction</a></li>
+    <ul>
+      <li><a href="06-index-cwmp-data-model-definition-xml-schema.html#sec:character-encoding-and-character-set">A.1.1 Character Encoding and Character Set</a></li>
+    </ul>
+    <li><a href="06-index-cwmp-data-model-definition-xml-schema.html#sec:normative-information">A.2 Normative Information</a></li>
+    <ul>
+      <li><a href="06-index-cwmp-data-model-definition-xml-schema.html#sec:importing-dm-instances">A.2.1 Importing DM Instances</a></li>
+      <li><a href="06-index-cwmp-data-model-definition-xml-schema.html#sec:descriptions">A.2.2 Descriptions</a></li>
+      <li><a href="06-index-cwmp-data-model-definition-xml-schema.html#sec:data-types">A.2.3 Data Types</a></li>
+      <li><a href="06-index-cwmp-data-model-definition-xml-schema.html#sec:glossary-abbreviations-bibliography-and-templates">A.2.4 Glossary, Abbreviations, Bibliography and Templates</a></li>
+      <li><a href="06-index-cwmp-data-model-definition-xml-schema.html#sec:components">A.2.5 Components</a></li>
+      <li><a href="06-index-cwmp-data-model-definition-xml-schema.html#sec:root-and-service-objects">A.2.6 Root and Service Objects</a></li>
+      <li><a href="06-index-cwmp-data-model-definition-xml-schema.html#sec:parameters">A.2.7 Parameters</a></li>
+      <li><a href="06-index-cwmp-data-model-definition-xml-schema.html#sec:commands-usp-only">A.2.8 Commands (USP Only)</a></li>
+      <li><a href="06-index-cwmp-data-model-definition-xml-schema.html#sec:events-usp-only">A.2.9 Events (USP Only)</a></li>
+      <li><a href="06-index-cwmp-data-model-definition-xml-schema.html#sec:objects">A.2.10 Objects</a></li>
+      <li><a href="06-index-cwmp-data-model-definition-xml-schema.html#sec:profiles-1">A.2.11 Profiles</a></li>
+      <li><a href="06-index-cwmp-data-model-definition-xml-schema.html#sec:modifications">A.2.12 Modifications</a></li>
+    </ul>
+    <li><a href="06-index-cwmp-data-model-definition-xml-schema.html#sec:dm-schema">A.3 DM Schema</a></li>
+  </ul>
+  <li><a href="07-index-cwmp-device-type-xml-schema.html#sec:cwmp-device-type-xml-schema">Annex B: CWMP Device Type XML Schema</a></li>
+  <ul>
+    <li><a href="07-index-cwmp-device-type-xml-schema.html#sec:introduction-2">B.1 Introduction</a></li>
+    <li><a href="07-index-cwmp-device-type-xml-schema.html#sec:normative-information-1">B.2 Normative Information</a></li>
+    <ul>
+      <li><a href="07-index-cwmp-device-type-xml-schema.html#sec:importing-dm-instances-1">B.2.1 Importing DM Instances</a></li>
+      <li><a href="07-index-cwmp-device-type-xml-schema.html#sec:features">B.2.2 Features</a></li>
+    </ul>
+    <li><a href="07-index-cwmp-device-type-xml-schema.html#sec:dt-schema">B.3 DT Schema</a></li>
+  </ul>
+  <li><a href="08-index-requirements-for-bbf-standard-data-models.html#sec:requirements-for-bbf-standard-data-models">Annex C: Requirements for BBF Standard Data Models</a></li>
+  <ul>
+    <li><a href="08-index-requirements-for-bbf-standard-data-models.html#sec:introduction-3">C.1 Introduction</a></li>
+    <li><a href="08-index-requirements-for-bbf-standard-data-models.html#sec:character-encoding-and-character-set-1">C.2 Character Encoding and Character Set</a></li>
+    <li><a href="08-index-requirements-for-bbf-standard-data-models.html#sec:xml-usage">C.3 XML Usage</a></li>
+    <ul>
+      <li><a href="08-index-requirements-for-bbf-standard-data-models.html#sec:data-model-item-names">C.3.1 Data Model Item Names</a></li>
+      <li><a href="08-index-requirements-for-bbf-standard-data-models.html#sec:dm-and-dmr-schema-versions">C.3.2 DM and DMR Schema Versions</a></li>
+      <li><a href="08-index-requirements-for-bbf-standard-data-models.html#sec:schemalocation-attribute">C.3.3 SchemaLocation Attribute</a></li>
+      <li><a href="08-index-requirements-for-bbf-standard-data-models.html#sec:spec-attribute">C.3.4 Spec Attribute</a></li>
+      <li><a href="08-index-requirements-for-bbf-standard-data-models.html#sec:file-attribute">C.3.5 File Attribute</a></li>
+      <li><a href="08-index-requirements-for-bbf-standard-data-models.html#sec:import-element">C.3.6 Import Element</a></li>
+      <li><a href="08-index-requirements-for-bbf-standard-data-models.html#sec:bibliography-reference-element">C.3.7 Bibliography Reference Element</a></li>
+      <li><a href="08-index-requirements-for-bbf-standard-data-models.html#sec:general-formatting">C.3.8 General Formatting</a></li>
+    </ul>
+    <li><a href="08-index-requirements-for-bbf-standard-data-models.html#sec:initial-xml-comment-formatting">C.4 Initial XML Comment Formatting</a></li>
+    <ul>
+      <li><a href="08-index-requirements-for-bbf-standard-data-models.html#sec:one-line-summary">C.4.1 One-line Summary</a></li>
+      <li><a href="08-index-requirements-for-bbf-standard-data-models.html#sec:summary-section">C.4.2 Summary Section</a></li>
+    </ul>
+  </ul>
+  <li><a href="09-index-html-data-model-reports.html#sec:html-data-model-reports">Appendix I: HTML Data Model Reports</a></li>
+  <ul>
+    <li><a href="09-index-html-data-model-reports.html#sec:introduction-4">I.1 Introduction</a></li>
+    <li><a href="09-index-html-data-model-reports.html#sec:report-types">I.2 Report Types</a></li>
+    <li><a href="09-index-html-data-model-reports.html#sec:report-layout">I.3 Report Layout</a></li>
+    <li><a href="09-index-html-data-model-reports.html#sec:data-model-definition">I.4 Data Model Definition</a></li>
+  </ul>
+</ul>
+</nav>
+
+    <header id="title-block-header">
+      <h1 class="title" id="sec:requirements-for-bbf-standard-data-models">Annex C: Requirements for BBF Standard Data Models<a href="#sec:requirements-for-bbf-standard-data-models" class="headerlink" title="Permalink to this header"> <img src="permalink.png" style="width: 0.8em"/></a></h1>
+    </header>
+    <nav id="_TOC" role="doc-toc">
+<ul>
+<li><a href="#sec:introduction-3">C.1 Introduction <span><img src="permalink.png" style="width:0.8em" /></span></a></li>
+<li><a href="#sec:character-encoding-and-character-set-1">C.2 Character Encoding and Character Set <span><img src="permalink.png" style="width:0.8em" /></span></a></li>
+<li><a href="#sec:xml-usage">C.3 XML Usage <span><img src="permalink.png" style="width:0.8em" /></span></a>
+<ul>
+<li><a href="#sec:data-model-item-names">C.3.1 Data Model Item Names <span><img src="permalink.png" style="width:0.8em" /></span></a></li>
+<li><a href="#sec:dm-and-dmr-schema-versions">C.3.2 DM and DMR Schema Versions <span><img src="permalink.png" style="width:0.8em" /></span></a></li>
+<li><a href="#sec:schemalocation-attribute">C.3.3 SchemaLocation Attribute <span><img src="permalink.png" style="width:0.8em" /></span></a></li>
+<li><a href="#sec:spec-attribute">C.3.4 Spec Attribute <span><img src="permalink.png" style="width:0.8em" /></span></a></li>
+<li><a href="#sec:file-attribute">C.3.5 File Attribute <span><img src="permalink.png" style="width:0.8em" /></span></a></li>
+<li><a href="#sec:import-element">C.3.6 Import Element <span><img src="permalink.png" style="width:0.8em" /></span></a></li>
+<li><a href="#sec:bibliography-reference-element">C.3.7 Bibliography Reference Element <span><img src="permalink.png" style="width:0.8em" /></span></a></li>
+<li><a href="#sec:general-formatting">C.3.8 General Formatting <span><img src="permalink.png" style="width:0.8em" /></span></a></li>
+</ul></li>
+<li><a href="#sec:initial-xml-comment-formatting">C.4 Initial XML Comment Formatting <span><img src="permalink.png" style="width:0.8em" /></span></a>
+<ul>
+<li><a href="#sec:one-line-summary">C.4.1 One-line Summary <span><img src="permalink.png" style="width:0.8em" /></span></a></li>
+<li><a href="#sec:summary-section">C.4.2 Summary Section <span><img src="permalink.png" style="width:0.8em" /></span></a></li>
+</ul></li>
+</ul>
+    </nav>
+<h2 class="annex2" id="sec:introduction-3">C.1 Introduction <a href="08-index-requirements-for-bbf-standard-data-models.html#sec:introduction-3" class="headerlink" title="Permalink to this header"><img src="permalink.png" style="width:0.8em" /></a></h2>
+<p>This Annex defines requirements that apply to all standard BBF DM Instances. These requirements extend the normative requirements of the DM Schema (<a href="06-index-cwmp-data-model-definition-xml-schema.html#sec:cwmp-data-model-definition-xml-schema" class="heading">Annex A</a>).</p>
+<h2 class="annex2" id="sec:character-encoding-and-character-set-1">C.2 Character Encoding and Character Set <a href="08-index-requirements-for-bbf-standard-data-models.html#sec:character-encoding-and-character-set-1" class="headerlink" title="Permalink to this header"><img src="permalink.png" style="width:0.8em" /></a></h2>
+<p>The file MUST use UTF-8 encoding, indicated by the following Initial line:</p>
+<pre><code>  &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</code></pre>
+<p>The file MUST use only a subset of the printable characters in the Basic Latin Unicode block, namely characters whose decimal ASCII representation is 10 (<code>#xA</code>), 13 (<code>#xD</code>) or is in the (inclusive) range 32-126.</p>
+<p><em>Note – writing LF (LINE FEED) for <code>#xA</code> and <code>CR</code> (CARRIAGE RETURN) for <code>#xD</code>, the XML specification <span class="cite" data-citation-ids="XML"><a href="05-index-normative-references.html#ref-XML">[2.11/8]</a></span> states that XML processors have to behave as if all CR LF sequences, or any CR characters not followed by LF, are translated to LF.</em></p>
+<p><em>Note – TAB (<code>#x9</code>) is not permitted. This is because no standard indentation level is defined for TAB characters, so the indentation is ambiguous when there is a mixture of SPACE <code>(#x20</code>) and TAB characters.</em></p>
+<p><em>Note – it is not permissible to include a non-printable ASCII character by using a character reference such as “<code>&amp;#xe8;</code>”. Such a character reference will always be replaced with the referenced character before being passed to the application, so use of the reference is no different from direct use of the referenced character (in this case the letter “è”, an “e” with a grave accent).</em></p>
+<h2 class="annex2" id="sec:xml-usage">C.3 XML Usage <a href="08-index-requirements-for-bbf-standard-data-models.html#sec:xml-usage" class="headerlink" title="Permalink to this header"><img src="permalink.png" style="width:0.8em" /></a></h2>
+<h3 class="annex3" id="sec:data-model-item-names">C.3.1 Data Model Item Names <a href="08-index-requirements-for-bbf-standard-data-models.html#sec:data-model-item-names" class="headerlink" title="Permalink to this header"><img src="permalink.png" style="width:0.8em" /></a></h3>
+<p>All data model item names, i.e. data type, component, data model, object, parameter and profile names, MUST start with an upper-case letter (or an underscore for an internal data type, component, model or profile) and MUST NOT contain hyphens or non-initial underscores.</p>
+<h3 class="annex3" id="sec:dm-and-dmr-schema-versions">C.3.2 DM and DMR Schema Versions <a href="08-index-requirements-for-bbf-standard-data-models.html#sec:dm-and-dmr-schema-versions" class="headerlink" title="Permalink to this header"><img src="permalink.png" style="width:0.8em" /></a></h3>
+<p>The file SHOULD use the most recent approved versions of the DM and DMR Schemas.</p>
+<p><em>Note – the DMR Schema is a non-normative XML Schema that can be used to give hints to processing tools that generate reports from DM Instances.</em></p>
+<h3 class="annex3" id="sec:schemalocation-attribute">C.3.3 SchemaLocation Attribute <a href="08-index-requirements-for-bbf-standard-data-models.html#sec:schemalocation-attribute" class="headerlink" title="Permalink to this header"><img src="permalink.png" style="width:0.8em" /></a></h3>
+<p>The top-level <code>xsi:schemaLocation</code> attribute defines the location of all of the referenced BBF-published XML Schemas. All URLs MUST be absolute ones that reference the published XML Schema on the <a href="https://cwmp-data-models.broadband-forum.org">BBF web site</a>.</p>
+<p>Example:</p>
+<pre><code>    xsi:schemaLocation=&quot;urn:broadband-forum-org:cwmp:datamodel-1-5
+                          http://www.broadband-forum.org/cwmp/cwmp-datamodel-1-5.xsd
+                        urn:broadband-forum-org:cwmp:datamodel-report-0-1
+                          http://www.broadband-forum.org/cwmp/cwmp-datamodel-report.xsd&quot;</code></pre>
+<h3 class="annex3" id="sec:spec-attribute">C.3.4 Spec Attribute <a href="08-index-requirements-for-bbf-standard-data-models.html#sec:spec-attribute" class="headerlink" title="Permalink to this header"><img src="permalink.png" style="width:0.8em" /></a></h3>
+<p>The top-level spec attribute (<a href="06-index-cwmp-data-model-definition-xml-schema.html#sec:uri-conventions" class="heading">A.2.1.1</a>) indicates the specification with which the file is associated. It MUST be of the form “urn:broadband-forum-org:tr-nnn-i-a-c”, where nnn is the specification number (including leading zeros), i is the issue number, a is the amendment number, and c is the corrigendum number. The issue, amendment and corrigendum numbers do not include leading zeros. For example, “urn:broadband-forum-org:tr-106-1-0-0” refers to TR-106 (Issue 1 Amendment 0), and “urn:broadband-forum-org:tr-106-1-2-1” refers to TR-106 (Issue 1) Amendment 2 Corrigendum 1.</p>
+<p>Example:</p>
+<pre><code>    spec=&quot;urn:broadband-forum-org:tr-181-2-5-0&quot;</code></pre>
+<h3 class="annex3" id="sec:file-attribute">C.3.5 File Attribute <a href="08-index-requirements-for-bbf-standard-data-models.html#sec:file-attribute" class="headerlink" title="Permalink to this header"><img src="permalink.png" style="width:0.8em" /></a></h3>
+<p>The top-level file attribute (<a href="06-index-cwmp-data-model-definition-xml-schema.html#sec:uri-conventions" class="heading">A.2.1.1</a>) indicates the file name. It MUST be of the form “tr-nnn-i-a-c.xml” or “tr-nnn-i-a-c-label.xml”, where nnn, i, a and c are the same as in the spec attribute. The label, which MUST NOT begin with a digit, is only needed if more than one DM Instance is associated with a given specification.</p>
+<p>Example:</p>
+<pre><code>    file=&quot;tr-181-2-5-0.xml&quot;</code></pre>
+<h3 class="annex3" id="sec:import-element">C.3.6 Import Element <a href="08-index-requirements-for-bbf-standard-data-models.html#sec:import-element" class="headerlink" title="Permalink to this header"><img src="permalink.png" style="width:0.8em" /></a></h3>
+<p>The import element’s spec and file attributes MUST NOT specify the corrigendum number. This means that an import element always references the latest corrigendum (<a href="06-index-cwmp-data-model-definition-xml-schema.html#sec:uri-conventions" class="heading">A.2.1.1</a>).</p>
+<h3 class="annex3" id="sec:bibliography-reference-element">C.3.7 Bibliography Reference Element <a href="08-index-requirements-for-bbf-standard-data-models.html#sec:bibliography-reference-element" class="headerlink" title="Permalink to this header"><img src="permalink.png" style="width:0.8em" /></a></h3>
+<div class="note">
+<p>Bibliographic references in the <code>tr-069-biblio.xml</code> file MUST be grouped by organization and MUST be sorted “naturally” (more-or-less alphabetically, but avoiding surprises, e.g., “TR-181a9” would be listed before “TR-181a10”). The main rule is “follow existing practice”.</p>
+</div>
+<p>The bibliography reference id attribute is intended to uniquely identify this reference across all instance documents. Therefore, this attribute MUST obey the following rules:</p>
+<p>For a BBF Technical Report, it MUST be of the form “TR-nnnixaycz”, where TR is the literal “TR”, nnn is the Technical Report number (including leading zeros), i, a and c are literal letters, and x, y, and z are the issue, amendment and corrigendum numbers (respectively). Omitted issue, amendment or corrigendum numbers refer to the most recent issue, amendment or corrigendum, so “TR-nnn” is the most recent corrigendum of the most recent amendment of the most recent issue, “TR-nnni2” is the most recent corrigendum of the most recent amendment of issue 2, etc.. Literal i1, a0 and/or c0 can be used, if needed, to refer specifically to the initial version.</p>
+<div class="note">
+<p>When using the <code>{{bibref}}</code> template to refer to bibliographic references, the plain “TR-nnn” form SHOULD be used by default; more specific forms can be used where the reference is to a specific version.</p>
+</div>
+<p>For an IETF RFC, it MUST be of the form “RFCnnn”, where RFC is the literal “RFC” and nnn is the RFC number (no leading zeros).</p>
+<p>For an IEEE specification, it SHOULD be of the form “nnn.ml-dddd”, where nnn.m is the IEEE group, l is the spec letter(s), and dddd is the publication year. For example, “802.1D-2004”.</p>
+<p>For an ETSI specification (which includes DVB specifications), it SHOULD be of the form “TTnnnnnnva.b.c” where TT is the specification type, usually “TS” (Technical Specification), nnnnnn is the specification number, and a.b.c is the version number.</p>
+<p>For specifications issued by other standards organizations, or by vendors, it SHOULD be of a standard form if one is defined.</p>
+<p>Formally, bibliographic reference IDs in instance documents that are published by the BBF and the other organizations mentioned above are defined as follows:</p>
+<pre><code>    ReferenceID = BBFID
+                | RFCID
+                | IEEEID
+                | ETSIID
+                | OtherID
+
+    BBFID = &quot;TR-&quot; BBFNumber BBFIssue BBFAmendment BBFCorrigendum
+
+    BBFNumber = DIGIT{3,} // including leading zeros, e.g. 069
+
+    BBFIssue = &quot;i&quot; &lt;number greater than one&gt;
+             | &quot;&quot; // empty means the most recent Issue
+
+    BBFAmendment = &quot;a&quot; &lt;number greater than zero&gt;
+                 | &quot;&quot; // empty means the most recent Amendment
+
+    BBFCorrigendum = &quot;c&quot; &lt;number greater than zero&gt;
+                   | &quot;&quot; // empty means the most recent Corrigendum
+
+    RFCID = &quot;RFC&quot; RFCNumber
+
+    RFCNumber = NONZERODIGIT [DIGIT]*
+                              // no leading zeros, e.g. 123
+
+    IEEEID = IEEEGroup IEEESpec IEEEDate
+           | &lt;for other IEEE specifications, of a standard form if one is defined&gt;
+
+    IEEEGroup = &lt;group number&gt; &quot;.&quot; &lt;group sub-number&gt;
+                                // e.g. 802.1
+
+    IEEESpec = &lt;spec letter(s)&gt; // e.g. D
+
+    IEEEDate = &quot;-&quot; &lt;publication year&gt;
+                                // e.g. -2004
+             | &quot;&quot;               // can be empty
+
+    ETSIID = ETSISpecType ETSINumber ETSIVersion
+           | &lt;for other ETSI specifications, of a standard form if one is defined&gt;
+
+    ETSISpecType = &quot;TR&quot; // Technical Report
+                 | &quot;TS&quot; // Technical Specification
+                 | &quot;ES&quot; // ETSI Specification
+                 | &quot;EN&quot; // European Standard
+
+    ETSINumber = [DIGIT]{6} // e.g. 102034
+
+    ETSIVersion = &quot;v&quot; &lt;version number as specified by ETSI&gt;
+                | &quot;&quot;            // can be empty
+
+    OtherURI = &lt;of a standard form if one is defined&gt;</code></pre>
+<h3 class="annex3" id="sec:general-formatting">C.3.8 General Formatting <a href="08-index-requirements-for-bbf-standard-data-models.html#sec:general-formatting" class="headerlink" title="Permalink to this header"><img src="permalink.png" style="width:0.8em" /></a></h3>
+<p>The file MUST use 2 SPACE characters for indentation.</p>
+<p>The file MUST be consistently indented, including within XML comments.</p>
+<p>XML comment lines SHOULD NOT be longer than 79 characters. This avoids line wrap in most text editors.</p>
+<p>All description elements MUST be formatted as follows:</p>
+<ul>
+<li><p>Single-line descriptions MAY be indented and formatted on separate lines (as for multi-line descriptions) or inline, as in:</p>
+<p>&lt;description&gt;One line description.&lt;/description&gt;</p></li>
+<li><p>Multi-line descriptions MUST be indented relative to the description element and formatted on separate lines, as in:</p></li>
+</ul>
+<pre><code>    &lt;description&gt;
+      First line of multi-line description.
+      Second line of multi-line description.
+    &lt;/description&gt;</code></pre>
+<h2 class="annex2" id="sec:initial-xml-comment-formatting">C.4 Initial XML Comment Formatting <a href="08-index-requirements-for-bbf-standard-data-models.html#sec:initial-xml-comment-formatting" class="headerlink" title="Permalink to this header"><img src="permalink.png" style="width:0.8em" /></a></h2>
+<p>The Initial Line (the <code>&lt;?xml&gt;</code> line) MUST be immediately followed by an Initial XML comment that consists of the following (separated by blank lines):</p>
+<ul>
+<li><p>One-line summary.</p></li>
+<li><p>Notice section.</p></li>
+<li><p>Summary section.</p></li>
+<li><p>Issue History section.</p></li>
+</ul>
+<p>The three sections MUST be introduced by a line that consists of two SPACE characters followed by the section name and a colon.</p>
+<pre><code>    &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+    &lt;!--
+      ...One-line summary...
+
+    Notice:
+      ...standard notice...
+
+    Summary:
+      ...multi-line summary...
+
+    Issue History:
+      ...summary of changes in each approved version...
+
+    --&gt;</code></pre>
+<h3 class="annex3" id="sec:one-line-summary">C.4.1 One-line Summary <a href="08-index-requirements-for-bbf-standard-data-models.html#sec:one-line-summary" class="headerlink" title="Permalink to this header"><img src="permalink.png" style="width:0.8em" /></a></h3>
+<p>The One-line summary MUST contain a brief description of the reason for the creation of this version. It SHOULD NOT be terminated with a period (it is not a sentence).</p>
+<p>Example:</p>
+<pre><code>    &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+    &lt;!-- Added support for IPsec --&gt;</code></pre>
+<h3 class="annex3" id="sec:summary-section">C.4.2 Summary Section <a href="08-index-requirements-for-bbf-standard-data-models.html#sec:summary-section" class="headerlink" title="Permalink to this header"><img src="permalink.png" style="width:0.8em" /></a></h3>
+<p>The Summary section MAY extend the information in the One-line summary.</p>
+    <div style="clear: both;"/>
+    <footer class="site-footer">
+<nav>
+<p>
+   <a href="00-index-contents.html#contents">Cover Page</a>
+ | <a href="01-index-executive-summary.html#sec:executive-summary">Executive Summary</a>
+ | <a href="02-index-introduction.html#sec:introduction">1 Introduction</a>
+ | <a href="03-index-architecture.html#sec:architecture">2 Architecture</a>
+ | <a href="04-index-object-definitions.html#sec:object-definitions">3 Object Definitions</a>
+ | <a href="05-index-normative-references.html#sec:normative-references">4 Normative References</a>
+ | <a href="06-index-cwmp-data-model-definition-xml-schema.html#sec:cwmp-data-model-definition-xml-schema">Annex A: CWMP Data Model Definition XML Schema</a>
+ | <a href="07-index-cwmp-device-type-xml-schema.html#sec:cwmp-device-type-xml-schema">Annex B: CWMP Device Type XML Schema</a>
+ | <a href="08-index-requirements-for-bbf-standard-data-models.html#sec:requirements-for-bbf-standard-data-models">Annex C: Requirements for BBF Standard Data Models</a>
+ | <a href="09-index-html-data-model-reports.html#sec:html-data-model-reports">Appendix I: HTML Data Model Reports</a>
+</p>
+</nav>
+
+      <span class="site-footer-owner">
+        WT-106 is developed and maintained
+        by <a href="https://www.broadband-forum.org">The Broadband Forum</a>.
+        &copy; The Broadband Forum 2021</a>. All Rights Reserved.
+      </span>
+      <span class="site-footer-credits">
+        This page was generated by <a href="https://pandoc.org">pandoc</a>
+        and <a href="https://pages.github.com">GitHub Pages</a>.
+        View the <a href="https://github.com/BroadbandForum/data-model-template">specification source on GitHub</a>.
+        <span class="release"/>
+      </span>
+    </footer>
+  </section>
+</body>
+</html>

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <!-- BBF GitHub Pages pandoc template; modified from default.html template -->
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
   <meta charset="utf-8"/>
   <meta name="generator" content="pandoc"/>
-  <meta name="description" content="TR-106 – Data Model Template for CWMP Endpoints and USP Agents: How to use the data model schema"/>
+  <meta name="description" content="TR-106 – Data Model Template for CWMP Endpoints and USP Agents: How to use the data model schema to understand and develop CWMP/USP data models"/>
   <meta name="theme-color" content="#157878"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"/>
   <title>BBF – TR-106 – Data Model Template for CWMP Endpoints and USP Agents</title>
@@ -15,10 +15,12 @@
     div.column{display: inline-block; vertical-align: top; width: 50%;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
   </style>
   <link rel="stylesheet" href="github.css"/>
   <link rel="stylesheet" href="extra.css"/>
   <link rel="stylesheet" href="toc.css"/>
+  <link rel="stylesheet" href="release.css"/>
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
@@ -33,17 +35,15 @@
         Data Model Template for CWMP Endpoints and USP Agents
       </a>
     </h1>
-    <h2 class="project-tagline">How to use the data model schema</h2>
+    <h2 class="project-tagline">How to use the data model schema to understand and develop CWMP/USP data models</h2>
     <p></p>
     <p></p>
-    <p>
-      <a class="btn" href="https://www.broadband-forum.org/technical/download/TR-069.pdf">CWMP</a>
+    <div class="project-buttons">
+      <a class="btn" href="index.htm" title="TR-106 Single-file HTML">HTML</a>
+      <a class="btn" href="index.pdf" title="TR-106 PDF">PDF</a>
       <a class="btn" href="https://cwmp-data-models.broadband-forum.org">CWMP Data Models</a>
-      <a class="btn" href="https://usp.technology">USP</a>
       <a class="btn" href="https://usp-data-models.broadband-forum.org">USP Data Models</a>
-      <a class="btn" href="index.htm">HTML</a>
-      <a class="btn" href="index.pdf">PDF</a>
-    </p>
+    </div>
   </section>
 
   <section class="main-content">
@@ -176,8 +176,8 @@
 
     <header id="title-block-header">
       <h1 class="title" id="contents">TR-106 – Data Model Template for CWMP Endpoints and USP Agents<a href="#contents" class="headerlink" title="Permalink to this header"> <img src="permalink.png" style="width: 0.8em"/></a></h1>
-      <p class="subtitle">Issue: 1 Amendment 10</p>
-      <p class="date">Issue Date: November 2020</p>
+      <p class="subtitle">Issue: 1 Amendment 11 <span class="release"></span></p>
+      <p class="date">Issue Date: January 2022</p>
     </header>
   <h3 class="unnumbered unlisted" id="table-of-contents">Table of Contents<a class="headerlink" href="09-index-html-data-model-reports.html#table-of-contents" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h3>
 
@@ -292,7 +292,13 @@
   </ul>
   </nav>
 
-  <!-- XXX these will be going away, so include them here to hide them -->
+  <h3 class="unnumbered unlisted" id="list-of-figures">List of Figures<a class="headerlink" href="09-index-html-data-model-reports.html#list-of-figures" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h3>
+
+  <ol>
+  <li><a href='02-index-introduction.html#fig:cwmp-positioning' title=''>CWMP Positioning in the End-to-End Architecture</a></li>
+  <li><a href='02-index-introduction.html#fig:usp-architecture' title=''>USP Architecture Overview</a></li>
+  <li><a href='02-index-introduction.html#fig:spec-structure' title=''>Specification Structure</a></li>
+  </ol>
 
   <h3 class="unnumbered unlisted" id="list-of-tables">List of Tables<a class="headerlink" href="09-index-html-data-model-reports.html#list-of-tables" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h3>
 
@@ -325,14 +331,6 @@
   <li><a href='06-index-cwmp-data-model-definition-xml-schema.html#tbl:xml-object-modification' title=''>XML Object Modification</a></li>
   <li><a href='06-index-cwmp-data-model-definition-xml-schema.html#tbl:xml-profile-modification' title=''>XML Profile Modification</a></li>
   <li><a href='06-index-cwmp-data-model-definition-xml-schema.html#tbl:xml-description-modification' title=''>XML Description Modification</a></li>
-  </ol>
-
-  <h3 class="unnumbered unlisted" id="list-of-figures">List of Figures<a class="headerlink" href="09-index-html-data-model-reports.html#list-of-figures" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h3>
-
-  <ol>
-  <li><a href='02-index-introduction.html#fig:cwmp-positioning' title=''>CWMP Positioning in the End-to-End Architecture</a></li>
-  <li><a href='02-index-introduction.html#fig:usp-architecture' title=''>USP Architecture Overview</a></li>
-  <li><a href='02-index-introduction.html#fig:spec-structure' title=''>Specification Structure</a></li>
   </ol>
 
   <h3 class="unnumbered unlisted new-page" id="sec:notice">Notice<a class="headerlink" href="00-index-contents.html#sec:notice" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h3>
@@ -423,35 +421,35 @@
   <td align="left">Original</td>
   </tr>
   <tr class="even">
-  <td align="left">Issue 1 Amendment 1</td>
+  <td align="left"><a href='https://www.broadband-forum.org/download/TR-106_Amendment-1.pdf' title=''>Issue 1 Amendment 1</a></td>
   <td align="left">November 2006</td>
   <td align="left"></td>
   <td align="left">Jeff Bernstein, 2Wire<br/>John Blackford, 2Wire<br/>Mike Digdon, SupportSoft<br/>Heather Kirksey, Motive<br/>William Lupton, 2Wire<br/>Anton Okmianski, Cisco</td>
   <td align="left">Clarification of original document</td>
   </tr>
   <tr class="odd">
-  <td align="left">Issue 1 Amendment 2</td>
+  <td align="left"><a href='https://www.broadband-forum.org/download/TR-106_Amendment-2.pdf' title=''>Issue 1 Amendment 2</a></td>
   <td align="left">November 2008</td>
   <td align="left"></td>
   <td align="left">William Lupton, 2Wire<br/>Håkan Westin, Tilgin</td>
   <td align="left">Addition of data model definition XML Schema and normative XML common object and component definitions</td>
   </tr>
   <tr class="even">
-  <td align="left">Issue 1 Amendment 3</td>
+  <td align="left"><a href='https://www.broadband-forum.org/download/TR-106_Amendment-3.pdf' title=''>Issue 1 Amendment 3</a></td>
   <td align="left">September 2009</td>
   <td align="left"></td>
   <td align="left">William Lupton, 2Wire<br/>Håkan Westin, Tilgin</td>
   <td align="left">Addition of device type XML Schema</td>
   </tr>
   <tr class="odd">
-  <td align="left">Issue 1 Amendment 4</td>
+  <td align="left"><a href='https://www.broadband-forum.org/download/TR-106_Amendment-4.pdf' title=''>Issue 1 Amendment 4</a></td>
   <td align="left">February 2010</td>
   <td align="left"></td>
   <td align="left">William Lupton, 2Wire<br/>Paul Sigurdson, Broadband Forum</td>
   <td align="left">Moved data model definitions to TR-181 Issue 1</td>
   </tr>
   <tr class="even">
-  <td align="left">Issue 1 Amendment 5</td>
+  <td align="left"><a href='https://www.broadband-forum.org/download/TR-106_Amendment-5.pdf' title=''>Issue 1 Amendment 5</a></td>
   <td align="left">November 2010</td>
   <td align="left"></td>
   <td align="left">Paul Sigurdson, Broadband Forum</td>
@@ -459,14 +457,14 @@
   references to normative XML.<br/>Minor changes to DM Schema (v1.3) and DT Schema (v1.1).</td>
   </tr>
   <tr class="odd">
-  <td align="left">Issue 1 Amendment 6</td>
+  <td align="left"><a href='https://www.broadband-forum.org/download/TR-106_Amendment-6.pdf' title=''>Issue 1 Amendment 6</a></td>
   <td align="left">July 2011</td>
   <td align="left"></td>
   <td align="left">Sarah Banks, Cisco<br/>Andrea Colmegna, FASTWEB<br/>Tim Spets, Motorola Mobility</td>
   <td align="left">Removed definition of proxying, now defined in TR-069.<br/>Removed Common objects.<br/>Alias Parameter Requirements added.</td>
   </tr>
   <tr class="even">
-  <td align="left">Issue 1 Amendment 7</td>
+  <td align="left"><a href='https://www.broadband-forum.org/download/TR-106_Amendment-7.pdf' title=''>Issue 1 Amendment 7</a></td>
   <td align="left">September 2013</td>
   <td align="left">7 October 2013</td>
   <td align="left">William Lupton, Cisco</td>
@@ -475,7 +473,7 @@
   models.</td>
   </tr>
   <tr class="odd">
-  <td align="left">Issue 1 Amendment 8</td>
+  <td align="left"><a href='https://www.broadband-forum.org/download/TR-106_Amendment-8.pdf' title=''>Issue 1 Amendment 8</a></td>
   <td align="left">16 March 2018</td>
   <td align="left">10 May 2018</td>
   <td align="left">Jean-Didier Ott, Orange<br/>William Lupton, Broadband Forum</td>
@@ -489,16 +487,23 @@
   <td align="left">Schema updates; document not updated.</td>
   </tr>
   <tr class="odd">
-  <td align="left">Issue 1 Amendment 10</td>
+  <td align="left"><a href='https://www.broadband-forum.org/download/TR-106_Amendment-10.pdf' title=''>Issue 1 Amendment 10</a></td>
   <td align="left">5 November 2020</td>
   <td align="left">5 November 2020</td>
   <td align="left">William Lupton, Broadband Forum</td>
   <td align="left">Converted document to markdown.<br/>Various editorial improvements.</td>
   </tr>
+  <tr class="even">
+  <td align="left"><a href='https://www.broadband-forum.org/download/TR-106_Amendment-11.pdf' title=''>Issue 1 Amendment 11</a></td>
+  <td align="left">27 January 2022</td>
+  <td align="left">27 January 2022</td>
+  <td align="left">William Lupton, Broadband Forum</td>
+  <td align="left">Clarified forcedEnabled and forceDefaultEnabled for USP.<br/>Clarified impact of deprecating or obsoleting profile items.<br/>Documented new description templates.<br/>Documented new <code>secured</code> attribute.</td>
+  </tr>
   </table></div>
 
   <p>Comments or questions about this Broadband Forum Technical Report should be
-  directed to <a href='mailto:info@broadband-forum.org' title=''>info@broadband-forum.org</a>.</p>
+  directed to <a href='mailto:info@broadband-forum.org' title='' class="email">info@broadband-forum.org</a>.</p>
 
   <div bbfTable="uspRevisionHistory">
   </div>
@@ -549,10 +554,13 @@
       <span class="site-footer-owner">
         TR-106 is developed and maintained
         by <a href="https://www.broadband-forum.org">The Broadband Forum</a>.
-        &copy; The Broadband Forum 2020</a>. All Rights Reserved.
+        &copy; The Broadband Forum 2022</a>. All Rights Reserved.
       </span>
-        <span class="site-footer-credits">
-          This page was generated by <a href="https://pandoc.org">pandoc</a>.
+      <span class="site-footer-credits">
+        This page was generated by <a href="https://pandoc.org">pandoc</a>
+        and <a href="https://pages.github.com">GitHub Pages</a>.
+        View the <a href="https://github.com/BroadbandForum/data-model-template">specification source on GitHub</a>.
+        <span class="release"/>
       </span>
     </footer>
   </section>

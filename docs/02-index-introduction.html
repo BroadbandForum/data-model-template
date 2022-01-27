@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <!-- BBF GitHub Pages pandoc template; modified from default.html template -->
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
   <meta charset="utf-8"/>
   <meta name="generator" content="pandoc"/>
-  <meta name="description" content="TR-106 – Data Model Template for CWMP Endpoints and USP Agents: How to use the data model schema"/>
+  <meta name="description" content="TR-106 – Data Model Template for CWMP Endpoints and USP Agents: How to use the data model schema to understand and develop CWMP/USP data models"/>
   <meta name="theme-color" content="#157878"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"/>
   <title>BBF – 1 Introduction</title>
@@ -15,10 +15,12 @@
     div.column{display: inline-block; vertical-align: top; width: 50%;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
   </style>
   <link rel="stylesheet" href="github.css"/>
   <link rel="stylesheet" href="extra.css"/>
   <link rel="stylesheet" href="toc.css"/>
+  <link rel="stylesheet" href="release.css"/>
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
@@ -33,17 +35,15 @@
         Data Model Template for CWMP Endpoints and USP Agents
       </a>
     </h1>
-    <h2 class="project-tagline">How to use the data model schema</h2>
+    <h2 class="project-tagline">How to use the data model schema to understand and develop CWMP/USP data models</h2>
     <p></p>
     <p></p>
-    <p>
-      <a class="btn" href="https://www.broadband-forum.org/technical/download/TR-069.pdf">CWMP</a>
+    <div class="project-buttons">
+      <a class="btn" href="index.htm" title="TR-106 Single-file HTML">HTML</a>
+      <a class="btn" href="index.pdf" title="TR-106 PDF">PDF</a>
       <a class="btn" href="https://cwmp-data-models.broadband-forum.org">CWMP Data Models</a>
-      <a class="btn" href="https://usp.technology">USP</a>
       <a class="btn" href="https://usp-data-models.broadband-forum.org">USP Data Models</a>
-      <a class="btn" href="index.htm">HTML</a>
-      <a class="btn" href="index.pdf">PDF</a>
-    </p>
+    </div>
   </section>
 
   <section class="main-content">
@@ -184,7 +184,7 @@
 </ul>
     </nav>
 <p><strong>CWMP</strong></p>
-<p>TR-069 <span class="cite" data-citation-ids="TR-069">[<a href="05-index-normative-references.html#ref-TR-069">1</a>]</span> defines the generic requirements of the CPE WAN Management Protocol (CWMP) methods which can be applied to any CWMP Endpoint. It is intended to support a variety of different functionalities to manage a collection of CPE, including the following primary capabilities:</p>
+<p>TR-069 <span class="cite" data-citation-ids="TR-069"><a href="05-index-normative-references.html#ref-TR-069">[7]</a></span> defines the generic requirements of the CPE WAN Management Protocol (CWMP) methods which can be applied to any CWMP Endpoint. It is intended to support a variety of different functionalities to manage a collection of CPE, including the following primary capabilities:</p>
 <ul>
 <li><p>Auto-configuration and dynamic service provisioning</p></li>
 <li><p>Software/firmware image management</p></li>
@@ -194,11 +194,11 @@
 <p>The ability to manage the home network remotely has a number of benefits including reducing the costs associated with activation and support of broadband services, improving time-to-market for new products and services, and improving the user experience.</p>
 <p>The following figure places TR-069 in the end-to-end management architecture:</p>
 <figure>
-<img src="images/figure-1.png" id="fig:cwmp-positioning" alt="" /><figcaption>Figure 1: CWMP Positioning in the End-to-End Architecture <a href="02-index-introduction.html#fig:cwmp-positioning" class="headerlink" title="Permalink to this figure"><img src="permalink.png" style="width:0.8em" /></a></figcaption>
+<img src="images/figure-1.png" id="fig:cwmp-positioning" alt="Figure 1: CWMP Positioning in the End-to-End Architecture " /><figcaption aria-hidden="true">Figure 1: CWMP Positioning in the End-to-End Architecture <a href="02-index-introduction.html#fig:cwmp-positioning" class="headerlink" title="Permalink to this figure"><img src="permalink.png" style="width:0.8em" /></a></figcaption>
 </figure>
 <p>The ACS is a server that resides in the network and manages devices in the subscriber premises. It uses the methods, or RPCs, defined in TR-069 to get and set the state of the device, initiate diagnostic tests, download and upload files, and manage events. Some portions of this state are common across managed devices and some are relevant only to certain device types or services.</p>
 <p><strong>USP</strong></p>
-<p>The <a href="http://usp.technology">User Services Platform</a> is made of a network of USP Controllers and USP Agents to allow applications to manipulate service elements (i.e. objects). It represents the evolution of CWMP into the following use cases:</p>
+<p>The <a href="http://usp.technology">User Services Platform</a> supports a network of USP Controllers and USP Agents to allow applications to manipulate service elements (i.e. objects). It represents the evolution of CWMP into the following use cases:</p>
 <ul>
 <li><p>Improvements on TR-069 based on deployment experience</p></li>
 <li><p>Multi-tenant management of a given endpoint (that is, manipulation by multiple controllers)</p></li>
@@ -206,16 +206,16 @@
 </ul>
 <p>An agent exposes service elements to one or more controllers, either directly or by proxy. An application could use a Controller to manage a provider controlled system, as in a CWMP ACS, or to act as a user portal in the cloud, on a gateway, or accessed through a smart phone. Agents and controllers can also be used in tandem to create a peer-to-peer network of smart applications, such as an automated smart home.</p>
 <figure>
-<img src="images/figure-2.png" id="fig:usp-architecture" alt="" /><figcaption>Figure 2: USP Architecture Overview <a href="02-index-introduction.html#fig:usp-architecture" class="headerlink" title="Permalink to this figure"><img src="permalink.png" style="width:0.8em" /></a></figcaption>
+<img src="images/figure-2.png" id="fig:usp-architecture" alt="Figure 2: USP Architecture Overview " /><figcaption aria-hidden="true">Figure 2: USP Architecture Overview <a href="02-index-introduction.html#fig:usp-architecture" class="headerlink" title="Permalink to this figure"><img src="permalink.png" style="width:0.8em" /></a></figcaption>
 </figure>
 <p>USP was designed in a modular manner, and can make use of the CWMP data model and data model schema in order to represent an evolution of CWMP into the world of consumer electronics, virtual services, and the Internet of Things. As such, this document describes how to use the data model schema in both the context of CWMP and USP.</p>
 <p><strong>Specification Structure</strong></p>
-<p><a href="02-index-introduction.html#fig:spec-structure">Figure 3</a> shows the overall specification structure for the CWMP <span class="cite" data-citation-ids="TR-069">[<a href="05-index-normative-references.html#ref-TR-069">1</a>]</span> and USP <span class="cite" data-citation-ids="TR-369">[<a href="05-index-normative-references.html#ref-TR-369">2</a>]</span> family of standards (as currently defined). Please note that this will gradually become out of date as new documents are published.</p>
+<p><a href="02-index-introduction.html#fig:spec-structure" class="figure">Figure 3</a> shows the overall specification structure for the CWMP <span class="cite" data-citation-ids="TR-069"><a href="05-index-normative-references.html#ref-TR-069">[7]</a></span> and USP <span class="cite" data-citation-ids="TR-369"><a href="05-index-normative-references.html#ref-TR-369">[11]</a></span> family of standards (as currently defined). Please note that this will gradually become out of date as new documents are published.</p>
 <figure>
-<img src="images/figure-3.png" id="fig:spec-structure" alt="" /><figcaption>Figure 3: Specification Structure <a href="02-index-introduction.html#fig:spec-structure" class="headerlink" title="Permalink to this figure"><img src="permalink.png" style="width:0.8em" /></a></figcaption>
+<img src="images/figure-3.png" id="fig:spec-structure" alt="Figure 3: Specification Structure " /><figcaption aria-hidden="true">Figure 3: Specification Structure <a href="02-index-introduction.html#fig:spec-structure" class="headerlink" title="Permalink to this figure"><img src="permalink.png" style="width:0.8em" /></a></figcaption>
 </figure>
-<p>TR-069 <span class="cite" data-citation-ids="TR-069">[<a href="05-index-normative-references.html#ref-TR-069">1</a>]</span> defines the generic requirements of the CWMP methods which can be applied to any CWMP Endpoint. TR-369 <span class="cite" data-citation-ids="TR-369">[<a href="05-index-normative-references.html#ref-TR-369">2</a>]</span> does the same for USP Agents. TR-106 (this document) specifies a baseline object structure to be supported by any CWMP Endpoint or USP Agent (referred to generically as an <em>Agent</em>). It specifies how to structure and define data models, which are collections of objects and parameters on which the generic methods act to configure, diagnose, and monitor the state of specific devices and services. The actual data models are defined in their own specifications.</p>
-<p>For a particular type of device, it is expected that the baseline defined in a document such as TR-181i2 <span class="cite" data-citation-ids="TR-181i2">[<a href="05-index-normative-references.html#ref-TR-181i2">3</a>]</span> would be augmented with additional objects and parameters specific to the device type. The data model used in any Agent MUST follow the guidelines described in this document. These guidelines include the following aspects:</p>
+<p>TR-069 <span class="cite" data-citation-ids="TR-069"><a href="05-index-normative-references.html#ref-TR-069">[7]</a></span> defines the generic requirements of the CWMP methods which can be applied to any CWMP Endpoint. TR-369 <span class="cite" data-citation-ids="TR-369"><a href="05-index-normative-references.html#ref-TR-369">[11]</a></span> does the same for USP Agents. TR-106 (this document) specifies a baseline object structure to be supported by any CWMP Endpoint or USP Agent (referred to generically as an <em>Agent</em>). It specifies how to structure and define data models, which are collections of objects and parameters on which the generic methods act to configure, diagnose, and monitor the state of specific devices and services. The actual data models are defined in their own specifications.</p>
+<p>For a particular type of device, it is expected that the baseline defined in a document such as TR-181i2 <span class="cite" data-citation-ids="TR-181i2"><a href="05-index-normative-references.html#ref-TR-181i2">[10]</a></span> would be augmented with additional objects and parameters specific to the device type. The data model used in any Agent MUST follow the guidelines described in this document. These guidelines include the following aspects:</p>
 <ul>
 <li><p>Structural requirements for the data hierarchy</p></li>
 <li><p>Requirements for versioning of data models</p></li>
@@ -225,7 +225,7 @@
 <ul>
 <li><p>An XML Schema that as far as possible embodies these guidelines, and which is used for defining all CWMP and USP data models. This makes data model definitions rigorous, and helps to reduce the danger that different implementations will interpret data model definitions in different ways.</p></li>
 <li><p>An XML Schema that allows a device to describe its supported CWMP data models. This description is both specific and detailed, allowing an ACS to know exactly what is supported by the CPE, including any vendor-specific objects and parameters. Use of this Schema enhances interoperability and significantly eases the integration of new devices with an ACS.</p>
-<p>Please note that USP uses a different mechanism (GetSupportedDM message) for the same purpose. It is specified in TR-369 <span class="cite" data-citation-ids="TR-369">[<a href="05-index-normative-references.html#ref-TR-369">2</a>]</span>.</p></li>
+<p>Please note that USP uses a different mechanism (GetSupportedDM message) for the same purpose. It is specified in TR-369 <span class="cite" data-citation-ids="TR-369"><a href="05-index-normative-references.html#ref-TR-369">[11]</a></span>.</p></li>
 </ul>
 <h2 id="sec:terminology">1.1 Terminology <a href="02-index-introduction.html#sec:terminology" class="headerlink" title="Permalink to this header"><img src="permalink.png" style="width:0.8em" /></a></h2>
 <p>The following terminology is used throughout this Technical Report.</p>
@@ -235,170 +235,170 @@
 <col style="width: 76%" />
 </colgroup>
 <tbody>
-<tr class="odd">
+<tr class="odd odd">
 <td style="text-align: left;"><strong>ACS</strong></td>
 <td style="text-align: left;">Auto-Configuration Server. This is a component in the broadband network responsible for <em>CWMP</em> auto-configuration of the <em>CPE</em> for advanced services.</td>
 </tr>
-<tr class="even">
+<tr class="even even">
 <td style="text-align: left;"><strong>Agent</strong></td>
 <td style="text-align: left;">A generic term that refers (as appropriate) to either a <em>CWMP Endpoint</em> or to a <em>USP Agent</em>.</td>
 </tr>
-<tr class="odd">
+<tr class="odd odd">
 <td style="text-align: left;"><strong>BBF</strong></td>
 <td style="text-align: left;">The Broadband Forum.</td>
 </tr>
-<tr class="even">
+<tr class="even even">
 <td style="text-align: left;"><strong>Base Supported Data Model</strong></td>
 <td style="text-align: left;">The <em>Data Model</em> that is supported by all <em>CPE</em> of a given make, model and firmware version. This refers to the <em>Objects,</em> <em>Parameters, Commands</em> and/or <em>Events</em> that have code support in the current firmware.</td>
 </tr>
-<tr class="odd">
+<tr class="odd odd">
 <td style="text-align: left;"><strong>CPE</strong></td>
-<td style="text-align: left;">Customer Premises Equipment; refers (as appropriate) to any <em>CWMP</em>-enabled <span class="cite" data-citation-ids="TR-069">[<a href="05-index-normative-references.html#ref-TR-069">1</a>]</span> or <em>USP</em>-enabled <span class="cite" data-citation-ids="TR-369">[<a href="05-index-normative-references.html#ref-TR-369">2</a>]</span> device and therefore covers both Internet Gateway devices and LAN-side end devices.</td>
+<td style="text-align: left;">Customer Premises Equipment; refers (as appropriate) to any <em>CWMP</em>-enabled <span class="cite" data-citation-ids="TR-069"><a href="05-index-normative-references.html#ref-TR-069">[7]</a></span> or <em>USP</em>-enabled <span class="cite" data-citation-ids="TR-369"><a href="05-index-normative-references.html#ref-TR-369">[11]</a></span> device and therefore covers both Internet Gateway devices and LAN-side end devices.</td>
 </tr>
-<tr class="even">
+<tr class="even even">
 <td style="text-align: left;"><strong>Command</strong></td>
 <td style="text-align: left;">A named element allowing a <em>USP Controller</em> to execute an operation on a <em>USP Agent</em>. This concept does not apply to <em>CWMP</em>, which uses <em>Objects</em> and/or <em>Parameters</em> to simulate operations.</td>
 </tr>
-<tr class="odd">
+<tr class="odd odd">
 <td style="text-align: left;"><strong>Component</strong></td>
 <td style="text-align: left;">A named collection of <em>Objects,</em> <em>Parameters, Commands, Events</em> and/or <em>Profiles</em> that can be included anywhere within a <em>Data Model</em>.</td>
 </tr>
-<tr class="even">
+<tr class="even even">
 <td style="text-align: left;"><strong>Controller</strong></td>
 <td style="text-align: left;">A generic term that refers (as appropriate) to either a <em>CWMP ACS</em> or a <em>USP Controller</em>.</td>
 </tr>
-<tr class="odd">
+<tr class="odd odd">
 <td style="text-align: left;"><strong>Current Supported Data Model</strong></td>
 <td style="text-align: left;">The <em>Data Model</em> that is currently supported by an individual <em>CPE</em>, i.e. the <em>Base Supported Data Model</em> plus any additional <em>Objects</em>, <em>Parameters</em>, <em>Commands</em> and/or <em>Events</em> supported by extra modules that have been installed on the <em>CPE</em>. This refers to the <em>Objects</em>, <em>Parameters,</em> <em>Commands</em> and/or <em>Events</em> that have code support in the <em>CPE</em>.</td>
 </tr>
-<tr class="even">
+<tr class="even even">
 <td style="text-align: left;"><strong>CWMP</strong></td>
-<td style="text-align: left;"><em>CPE</em> WAN Management Protocol. Defined in TR-069 <span class="cite" data-citation-ids="TR-069">[<a href="05-index-normative-references.html#ref-TR-069">1</a>]</span>, CWMP is a communication protocol between an <em>ACS</em> and CWMP-enabled <em>CPE</em> that defines a mechanism for secure auto-configuration of a <em>CPE</em> and other <em>CPE</em> management functions in a common framework.</td>
+<td style="text-align: left;"><em>CPE</em> WAN Management Protocol. Defined in TR-069 <span class="cite" data-citation-ids="TR-069"><a href="05-index-normative-references.html#ref-TR-069">[7]</a></span>, CWMP is a communication protocol between an <em>ACS</em> and CWMP-enabled <em>CPE</em> that defines a mechanism for secure auto-configuration of a <em>CPE</em> and other <em>CPE</em> management functions in a common framework.</td>
 </tr>
-<tr class="odd">
+<tr class="odd odd">
 <td style="text-align: left;"><strong>CWMP Endpoint</strong></td>
 <td style="text-align: left;">A <em>CWMP</em> termination point used by a CWMP-enabled <em>CPE</em> for communication with the <em>ACS.</em></td>
 </tr>
-<tr class="even">
+<tr class="even even">
 <td style="text-align: left;"><strong>Data Model</strong></td>
 <td style="text-align: left;">A hierarchical set of <em>Objects</em>, <em>Parameters</em>, <em>Commands</em> and/or <em>Events</em> that define the managed <em>Objects</em> accessible via a particular <em>Agent</em>.</td>
 </tr>
-<tr class="odd">
+<tr class="odd odd">
 <td style="text-align: left;"><strong>Device</strong></td>
 <td style="text-align: left;">Used here as a synonym for <em>CPE</em>.</td>
 </tr>
-<tr class="even">
+<tr class="even even">
 <td style="text-align: left;"><strong>DM Instance</strong></td>
 <td style="text-align: left;">Data Model Schema instance document. This is an XML document that conforms to the <em>DM Schema</em> and to any additional rules specified in or referenced by the <em>DM Schema</em>.</td>
 </tr>
-<tr class="odd">
+<tr class="odd odd">
 <td style="text-align: left;"><strong>DM Schema</strong></td>
-<td style="text-align: left;">Data Model Schema. This is the XML Schema <span class="cite" data-citation-ids="XML-Schema-Primer">[<a href="05-index-normative-references.html#ref-XML-Schema-Primer">4</a>]</span> that is used for defining data models for use with <em>CWMP</em> and <em>USP</em>.</td>
+<td style="text-align: left;">Data Model Schema. This is the XML Schema <span class="cite" data-citation-ids="XML-Schema-Primer"><a href="05-index-normative-references.html#ref-XML-Schema-Primer">[12]</a></span> that is used for defining data models for use with <em>CWMP</em> and <em>USP</em>.</td>
 </tr>
-<tr class="even">
+<tr class="even even">
 <td style="text-align: left;"><strong>DT Instance</strong></td>
-<td style="text-align: left;">Device Type Schema instance document. This is an XML document that conforms to the <em>DT Schema</em> and to any additional rules specified in or referenced by the <em>DT Schema</em>. This concept is useful for both CWMP and USP as an offline design tool, but only CWMP uses it at run-time (via the SupportedDataModel Object; see <a href="03-index-architecture.html#sec:the-supported-data-model-and-the-instantiated-data-model">Section 2.1.2</a>).</td>
+<td style="text-align: left;">Device Type Schema instance document. This is an XML document that conforms to the <em>DT Schema</em> and to any additional rules specified in or referenced by the <em>DT Schema</em>. This concept is useful for both CWMP and USP as an offline design tool, but only CWMP uses it at run-time (via the SupportedDataModel Object; see <a href="03-index-architecture.html#sec:the-supported-data-model-and-the-instantiated-data-model" class="heading">Section 2.1.2</a>).</td>
 </tr>
-<tr class="odd">
+<tr class="odd odd">
 <td style="text-align: left;"><strong>DT Schema</strong></td>
-<td style="text-align: left;">Device Type Schema. This is the XML Schema <span class="cite" data-citation-ids="XML-Schema-Primer">[<a href="05-index-normative-references.html#ref-XML-Schema-Primer">4</a>]</span> that is used for describing a <em>Device</em>’s <em>Supported Data Model</em>. This concept is useful for both CWMP and USP as an offline design tool, but only CWMP uses it at run-time (via the SupportedDataModel Object; see <a href="03-index-architecture.html#sec:the-supported-data-model-and-the-instantiated-data-model">Section 2.1.2</a>).</td>
+<td style="text-align: left;">Device Type Schema. This is the XML Schema <span class="cite" data-citation-ids="XML-Schema-Primer"><a href="05-index-normative-references.html#ref-XML-Schema-Primer">[12]</a></span> that is used for describing a <em>Device</em>’s <em>Supported Data Model</em>. This concept is useful for both CWMP and USP as an offline design tool, but only CWMP uses it at run-time (via the SupportedDataModel Object; see <a href="03-index-architecture.html#sec:the-supported-data-model-and-the-instantiated-data-model" class="heading">Section 2.1.2</a>).</td>
 </tr>
-<tr class="even">
+<tr class="even even">
 <td style="text-align: left;"><strong>Event</strong></td>
 <td style="text-align: left;">An indication that something of interest has happened that requires the <em>Agent</em> to notify the <em>Controller</em>.</td>
 </tr>
-<tr class="odd">
+<tr class="odd odd">
 <td style="text-align: left;"><strong>Instantiated Data Model</strong></td>
 <td style="text-align: left;">The <em>Data Model</em> that currently exists on an individual <em>CPE</em>. This refers to the <em>Object</em> instances, <em>Parameters</em>, <em>Commands</em> and/or <em>Events</em> that currently exist within the data model. It can be thought of as the <em>Current Supported Data Model</em> with all the “{i}” placeholders expanded to be the actual <em>Instance Numbers</em>. For example, “Device.Services.ABCService.{i}.” in the <em>Current Supported Data Model</em> might correspond to “Device.Services.ABCService.1.” and “Device.Services.ABCService.2.” in the <em>Instantiated Data Model</em>.</td>
 </tr>
-<tr class="even">
+<tr class="even even">
 <td style="text-align: left;"><strong>Instance Alias</strong></td>
 <td style="text-align: left;">A writeable string that uniquely identifies an instance within a <em>Multi-Instance Object</em></td>
 </tr>
-<tr class="odd">
+<tr class="odd odd">
 <td style="text-align: left;"><strong>Instance Identifier</strong></td>
 <td style="text-align: left;">A value that uniquely identifies an instance within a <em>Multi-Instance Object</em>. It is either an <em>Instance Number</em> or an <em>Instance Alias</em>.</td>
 </tr>
-<tr class="even">
+<tr class="even even">
 <td style="text-align: left;"><strong>Instance Number</strong></td>
 <td style="text-align: left;">A read-only positive integer (&gt;=1) that uniquely identifies an instance within a <em>Multi-Instance Object.</em></td>
 </tr>
-<tr class="odd">
+<tr class="odd odd">
 <td style="text-align: left;"><strong>Mountable Object</strong></td>
 <td style="text-align: left;">An <em>Object</em> that is defined in a <em>DM Instance</em> as a direct child of the <em>Root Object</em>, but that can also exist as a child of a <em>Mount Point</em> in the <em>Instantiated Data Model</em> of a <em>USP Agent</em>. This concept does not apply to <em>CWMP</em>.</td>
 </tr>
-<tr class="even">
+<tr class="even even">
 <td style="text-align: left;"><strong>Mount Point</strong></td>
 <td style="text-align: left;">An <em>Object</em> that is defined in a <em>DM Instance</em> as being able to have <em>Mountable Objects</em> as children in the <em>Instantiated Data Model</em> of a <em>USP Agent</em>. By extension, one of the instances of that object in the <em>Instantiated Data Model</em>. This concept does not apply to <em>CWMP</em>.</td>
 </tr>
-<tr class="odd">
+<tr class="odd odd">
 <td style="text-align: left;"><strong>Multi-Instance Object</strong></td>
 <td style="text-align: left;">An <em>Object</em> that can have multiple instances, all of which are located at the same level within the name hierarchy. Each instance is identified by an <em>Instance Identifier</em>.</td>
 </tr>
-<tr class="even">
+<tr class="even even">
 <td style="text-align: left;"><strong>Object</strong></td>
 <td style="text-align: left;">An internal node in the name hierarchy, i.e., a node that can have <em>Object</em>, <em>Parameter</em>, <em>Command</em> and/or <em>Event</em> children. An <em>Object</em> name is a <em>Path Name</em>.</td>
 </tr>
-<tr class="odd">
+<tr class="odd odd">
 <td style="text-align: left;"><strong>Parameter</strong></td>
 <td style="text-align: left;">A name-value pair that represents part of a <em>CPE</em> or <em>USP Agent</em>’s configuration or status. A Parameter name is a <em>Path Name</em>.</td>
 </tr>
-<tr class="even">
+<tr class="even even">
 <td style="text-align: left;"><strong>Path Name</strong></td>
 <td style="text-align: left;">A name that has a hierarchical structure similar to files in a directory, with each level separated by a “.” (dot). References an <em>Object</em>, <em>Parameter,</em> <em>Command</em> or <em>Event</em>.</td>
 </tr>
-<tr class="odd">
+<tr class="odd odd">
 <td style="text-align: left;"><strong>Profile</strong></td>
 <td style="text-align: left;">A named collection of requirements relating to a given <em>Root Object</em>, <em>Service Object</em> or <em>Component</em>.</td>
 </tr>
-<tr class="even">
+<tr class="even even">
 <td style="text-align: left;"><strong>RPC</strong></td>
 <td style="text-align: left;">Remote Procedure Call.</td>
 </tr>
-<tr class="odd">
+<tr class="odd odd">
 <td style="text-align: left;"><strong>Root Object</strong></td>
 <td style="text-align: left;">The top-level <em>Object</em> of a <em>CPE</em>’s <em>Data Model</em> that contains all of the manageable <em>Objects</em>. The name of the Root <em>Object</em> is “Device.”.</td>
 </tr>
-<tr class="even">
+<tr class="even even">
 <td style="text-align: left;"><strong>Service Element</strong></td>
 <td style="text-align: left;">A Service Element represents a piece of service functionality that is exposed by an Agent, usually represented by one or more Objects.</td>
 </tr>
-<tr class="odd">
+<tr class="odd odd">
 <td style="text-align: left;"><strong>Service Object</strong></td>
 <td style="text-align: left;">The top-most <em>Object</em> associated with a specific service within which all <em>Objects</em>, <em>Parameters,</em> <em>Commands</em> and <em>Events</em> associated with the service are contained.</td>
 </tr>
-<tr class="even">
+<tr class="even even">
 <td style="text-align: left;"><strong>Supported Data Model</strong></td>
 <td style="text-align: left;">Refers to either <em>Base Supported Data Model</em> or <em>Current Supported Data Model</em>, depending on the context.</td>
 </tr>
-<tr class="odd">
+<tr class="odd odd">
 <td style="text-align: left;"><strong>URI</strong></td>
 <td style="text-align: left;">Uniform Resource Identifier.</td>
 </tr>
-<tr class="even">
+<tr class="even even">
 <td style="text-align: left;"><strong>URL</strong></td>
 <td style="text-align: left;">Uniform Resource Locator.</td>
 </tr>
-<tr class="odd">
+<tr class="odd odd">
 <td style="text-align: left;"><strong>USP</strong></td>
 <td style="text-align: left;">Universal Service Platform. Defined in TR-369, USP is an evolution of CWMP that allows applications to manipulate Service Elements in a network of Controllers and Agents.</td>
 </tr>
-<tr class="even">
+<tr class="even even">
 <td style="text-align: left;"><strong>USP Agent</strong></td>
 <td style="text-align: left;">A USP Agent is a USP Endpoint that exposes Service Elements to one or more USP Controllers.</td>
 </tr>
-<tr class="odd">
+<tr class="odd odd">
 <td style="text-align: left;"><strong>USP Controller</strong></td>
 <td style="text-align: left;">A USP Controller is a USP Endpoint that manipulates Service Elements through one or more USP Agents.</td>
 </tr>
-<tr class="even">
+<tr class="even even">
 <td style="text-align: left;"><strong>USP Endpoint</strong></td>
 <td style="text-align: left;">A USP Endpoint is a termination point for a USP message.</td>
 </tr>
 </tbody>
 </table>
 <h2 id="sec:document-conventions">1.2 Document Conventions <a href="02-index-introduction.html#sec:document-conventions" class="headerlink" title="Permalink to this header"><img src="permalink.png" style="width:0.8em" /></a></h2>
-<p>The key words “MUST”, “MUST NOT”, “REQUIRED”, “SHALL”, “SHALL NOT”, “SHOULD”, “SHOULD NOT”, “RECOMMENDED”, “MAY”, and “OPTIONAL” in this document are to be interpreted as described in <span class="cite" data-citation-ids="RFC2119">[<a href="05-index-normative-references.html#ref-RFC2119">5</a>]</span>.</p>
+<p>The key words “MUST”, “MUST NOT”, “REQUIRED”, “SHALL”, “SHALL NOT”, “SHOULD”, “SHOULD NOT”, “RECOMMENDED”, “MAY”, and “OPTIONAL” in this document are to be interpreted as described in <span class="cite" data-citation-ids="RFC2119"><a href="05-index-normative-references.html#ref-RFC2119">[3]</a></span>.</p>
     <div style="clear: both;"/>
     <footer class="site-footer">
 <nav>
@@ -419,10 +419,13 @@
       <span class="site-footer-owner">
         TR-106 is developed and maintained
         by <a href="https://www.broadband-forum.org">The Broadband Forum</a>.
-        &copy; The Broadband Forum 2020</a>. All Rights Reserved.
+        &copy; The Broadband Forum 2022</a>. All Rights Reserved.
       </span>
-        <span class="site-footer-credits">
-          This page was generated by <a href="https://pandoc.org">pandoc</a>.
+      <span class="site-footer-credits">
+        This page was generated by <a href="https://pandoc.org">pandoc</a>
+        and <a href="https://pages.github.com">GitHub Pages</a>.
+        View the <a href="https://github.com/BroadbandForum/data-model-template">specification source on GitHub</a>.
+        <span class="release"/>
       </span>
     </footer>
   </section>

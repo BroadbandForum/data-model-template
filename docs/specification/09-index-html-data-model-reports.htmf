@@ -1,0 +1,137 @@
+<!-- <h1 class="appendix1 display-none" id="sec:html-data-model-reports">Appendix I: HTML Data Model Reports<a class="headerlink" href="09-index-html-data-model-reports.html#sec:html-data-model-reports" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h1> -->
+
+<h2 class="appendix2" id="sec:introduction-4">I.1 Introduction<a class="headerlink" href="09-index-html-data-model-reports.html#sec:introduction-4" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h2>
+
+<p>TR-106 Amendment 2 published the first version of the DM Schema. Since
+then the normative definitions of all CWMP data models have been
+published as DM Instances (XML documents that conform to the DM Schema).
+Since these XML data models might not be easily read by a human,
+corresponding non-normative HTML data model reports have also been
+published.</p>
+
+<p>This appendix briefly discusses these HTML reports.</p>
+
+<h2 class="appendix2" id="sec:report-types">I.2 Report Types<a class="headerlink" href="09-index-html-data-model-reports.html#sec:report-types" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h2>
+
+<p>There are two types of HTML reports published for a given version of a
+data model:</p>
+
+<ul>
+<li><p>a full report, covering the given version and all preceding versions
+of the data model</p></li>
+<li><p>a partial report, covering only the given version of the data model
+(i.e. excluding content specific to earlier versions of the data
+model); i.e. last only changes</p></li>
+</ul>
+
+<p>For example, TR-181 Issue 2 Amendment 11 defined the Device:2.11 data
+model revision, declared in tr-181-2-11-0.xml. The full report is in
+tr-181-2-11-0.html, and includes the aggregate data model definitions
+from Device:2.11 and earlier (back to Device:2.0 inclusive). The partial
+report is in tr-181-2-11-0-diffs.html, and only includes the data model
+definitions added or changed by TR-181 Issue 2 Amendment 11.</p>
+
+<h2 class="appendix2" id="sec:report-layout">I.3 Report Layout<a class="headerlink" href="09-index-html-data-model-reports.html#sec:report-layout" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h2>
+
+<p>Each HTML data model report contains the following sections:</p>
+
+<table>
+<col width="15%" />
+<col width="85%" />
+<tr class="odd">
+<td align="left">Notice</td>
+<td align="left">The legal notice, lifted from the top of the associated XML data model file.</td>
+</tr>
+<tr class="even">
+<td align="left">Summary</td>
+<td align="left">Describes the reason for this data model version. This is lifted from the associated XML data model file’s document description.</td>
+</tr>
+<tr class="odd">
+<td align="left">Table of Contents</td>
+<td align="left">Hyperlinks to the various sections within the report, as well as links to each Object and Profile definition within the report.</td>
+</tr>
+<tr class="even">
+<td align="left">Data Types</td>
+<td align="left">Named data type definitions (i.e. not built-in types) that are used to define Parameters within the report. Each data type definition consists of name, type, and description.</td>
+</tr>
+<tr class="odd">
+<td align="left">References</td>
+<td align="left">Hyperlinks to external bibliography references cited by Object, Parameter, and Profile descriptions within the report.</td>
+</tr>
+<tr class="even">
+<td align="left">Data model definition</td>
+<td align="left">Object and Parameter definitions. Which Object and Parameter definitions are included depends on whether it is a full or partial (last only) report.</td>
+</tr>
+<tr class="odd">
+<td align="left">Inform and Notification Requirements</td>
+<td align="left">Lists those Parameters within the report that are: forced inform parameters, forced active notification parameters, and parameters for which active notification can be denied.</td>
+</tr>
+<tr class="even">
+<td align="left">Profile Definitions</td>
+<td align="left">Profile definitions, showing Object and Parameter requirements. Which Profiles are included depends on whether it is a full or partial (last only) report.</td>
+</tr>
+</table>
+
+<h2 class="appendix2" id="sec:data-model-definition">I.4 Data Model Definition<a class="headerlink" href="09-index-html-data-model-reports.html#sec:data-model-definition" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h2>
+
+<p>Parameters make use of a limited subset of the default SOAP data types <span class="cite" data-citation-ids="SOAP"><a href='05-index-normative-references.html#ref-SOAP' title=''>[13]</a></span>. The
+notation used to represent these types within the report is
+listed in the following table.</p>
+
+<table>
+<col width="15%" />
+<col width="85%" />
+<tr class="header">
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+<tr class="odd">
+<td align="left">object</td>
+<td align="left">A container for parameters and/or other objects. The full Path Name of a parameter is given by the parameter name appended to the full Path Name of the object it is contained within.</td>
+</tr>
+<tr class="even">
+<td align="left">string</td>
+<td align="left">For strings, a minimum and maximum allowed length can be indicated using the form string(Min:Max), where Min and Max are the minimum and maximum string length in characters. If either Min or Max are missing, this indicates no limit, and if Min is missing the colon can also be omitted, as in string(Max). Multiple comma-separated ranges can be specified, in which case the string length will be in one of the ranges.</td>
+</tr>
+<tr class="odd">
+<td align="left">int</td>
+<td align="left">Integer in the range -2147483648 to +2147483647, inclusive. For some int types, a value range is given using the form int(Min:Max) or int(Min:Max step Step) where the Min and Max values are inclusive. If either Min or Max are missing, this indicates no limit. If Step is missing, this indicates a step of 1. Multiple comma-separated ranges can be specified, in which case the value will be in one of the ranges.</td>
+</tr>
+<tr class="even">
+<td align="left">long</td>
+<td align="left">Long integer in the range -9223372036854775808 to 9223372036854775807, inclusive. For some long types, a value range is given using the form long(Min:Max) or long(Min:Max step Step), where the Min and Max values are inclusive. If either Min or Max are missing, this indicates no limit. If Step is missing, this indicates a step of 1. Multiple comma-separated ranges can be specified, in which case the value will be in one of the ranges.</td>
+</tr>
+<tr class="odd">
+<td align="left">unsignedInt</td>
+<td align="left">Unsigned integer in the range 0 to 4294967295, inclusive. For some unsignedInt types, a value range is given using the form unsignedInt(Min:Max) or unsigned(Min:Max step Step), where the Min and Max values are inclusive. If either Min or Max are missing, this indicates no limit. If Step is missing, this indicates a step of 1. Multiple comma-separated ranges can be specified, in which case the value will be in one of the ranges.</td>
+</tr>
+<tr class="even">
+<td align="left">unsignedLong</td>
+<td align="left">Unsigned long integer in the range 0 to 18446744073709551615, inclusive. For some unsignedLong types, a value range is given using the form unsignedLong(Min:Max) or unsignedLong(Min:Max step Step), where the Min and Max values are inclusive. If either Min or Max are missing, this indicates no limit. If Step is missing, this indicates a step of 1. Multiple comma-separated ranges can be specified, in which case the value will be in one of the ranges.</td>
+</tr>
+<tr class="odd">
+<td align="left">boolean</td>
+<td align="left">Boolean, where the allowed values are &ldquo;0&rdquo; or &ldquo;1&rdquo; (or equivalently, &ldquo;true&rdquo; or &ldquo;false&rdquo;).</td>
+</tr>
+<tr class="even">
+<td align="left">dateTime</td>
+<td align="left">The subset of the ISO 8601 date-time format defined by the SOAP dateTime type <span class="cite" data-citation-ids="SOAP"><a href='05-index-normative-references.html#ref-SOAP' title=''>[13]</a></span>.</td>
+</tr>
+<tr class="odd">
+<td align="left">base64</td>
+<td align="left">Base64 encoded binary (no line-length limitation). A minimum and maximum allowed length can be indicated using the form base64(Min:Max), where Min and Max are the minimum and maximum length in characters before Base64 encoding. If either Min or Max are missing, this indicates no limit, and if Min is missing the colon can also be omitted, as in base64(Max). Multiple comma-separate ranges can be specified, in which case the length MUST be in one of the ranges.</td>
+</tr>
+<tr class="even">
+<td align="left">hexBinary</td>
+<td align="left">Hex encoded binary. A minimum and maximum allowed length can be indicated using the form hexBinary(Min:Max), where Min and Max are the minimum and maximum length in characters before Hex Binary encoding. If either Min or Max are missing, this indicates no limit, and if Min is missing the colon can also be omitted, as in hexBinary(Max). Multiple comma-separated ranges can be specified, in which case the length MUST be in one of the ranges.</td>
+</tr>
+</table>
+
+<p>Note: A Parameter that is defined to be one of the named data types, is
+reported as such at the beginning of the Parameter’s description via a
+reference back to the associated data type definition (e.g.
+[MacAddress]). However, such parameters still indicate their SOAP
+data type (as discussed in the table above).</p>
+
+<div class="note">
+<p>End of Broadband Forum Working Text WT-106</p></div>

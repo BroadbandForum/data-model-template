@@ -4,14 +4,14 @@
 
 <p>This Annex defines requirements that apply to all standard BBF DM
 Instances. These requirements extend the normative requirements of the
-DM Schema (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:cwmp-data-model-definition-xml-schema' title=''>Annex A</a>).</p>
+DM Schema (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:cwmp-data-model-definition-xml-schema' title='' class="heading">Annex A</a>).</p>
 
 <h2 class="annex2" id="sec:character-encoding-and-character-set-1">C.2 Character Encoding and Character Set<a class="headerlink" href="08-index-requirements-for-bbf-standard-data-models.html#sec:character-encoding-and-character-set-1" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h2>
 
 <p>The file MUST use UTF-8 encoding, indicated by the following Initial
 line:</p>
 
-<pre><code>  &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</code></pre>
+<pre><code>  &lt;?xml version="1.0" encoding="UTF-8"?&gt;</code></pre>
 
 <p>The file MUST use only a subset of the printable characters in the Basic
 Latin Unicode block, namely characters whose decimal ASCII
@@ -19,7 +19,7 @@ representation is 10 (<code>#xA</code>), 13 (<code>#xD</code>) or is in the (inc
 32-126.</p>
 
 <p><em>Note – writing LF (LINE FEED) for <code>#xA</code> and <code>CR</code> (CARRIAGE RETURN) for
-<code>#xD</code>, the XML specification <span class="cite" data-citation-ids="XML">[Section 2.11/<a href='05-index-normative-references.html#ref-XML' title=''>8</a>]</span> states that XML
+<code>#xD</code>, the XML specification <span class="cite" data-citation-ids="XML"><a href='05-index-normative-references.html#ref-XML' title=''>[2.11/1]</a></span> states that XML
 processors have to behave as if all CR LF sequences, or any CR
 characters not followed by LF, are translated to LF.</em></p>
 
@@ -62,14 +62,14 @@ reference the published XML Schema on the
 
 <p>Example:</p>
 
-<pre><code>    xsi:schemaLocation=&quot;urn:broadband-forum-org:cwmp:datamodel-1-5
+<pre><code>    xsi:schemaLocation="urn:broadband-forum-org:cwmp:datamodel-1-5
                           http://www.broadband-forum.org/cwmp/cwmp-datamodel-1-5.xsd
                         urn:broadband-forum-org:cwmp:datamodel-report-0-1
-                          http://www.broadband-forum.org/cwmp/cwmp-datamodel-report.xsd&quot;</code></pre>
+                          http://www.broadband-forum.org/cwmp/cwmp-datamodel-report.xsd"</code></pre>
 
 <h3 class="annex3" id="sec:spec-attribute">C.3.4 Spec Attribute<a class="headerlink" href="08-index-requirements-for-bbf-standard-data-models.html#sec:spec-attribute" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h3>
 
-<p>The top-level spec attribute (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:uri-conventions' title=''>A.2.1.1</a>) indicates the specification with
+<p>The top-level spec attribute (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:uri-conventions' title='' class="heading">A.2.1.1</a>) indicates the specification with
 which the file is associated. It MUST be of the form
 &ldquo;urn:broadband-forum-org:tr-nnn-i-a-c&rdquo;, where nnn is the specification
 number (including leading zeros), i is the issue number, a is the
@@ -81,11 +81,11 @@ TR-106 (Issue 1) Amendment 2 Corrigendum 1.</p>
 
 <p>Example:</p>
 
-<pre><code>    spec=&quot;urn:broadband-forum-org:tr-181-2-5-0&quot;</code></pre>
+<pre><code>    spec="urn:broadband-forum-org:tr-181-2-5-0"</code></pre>
 
 <h3 class="annex3" id="sec:file-attribute">C.3.5 File Attribute<a class="headerlink" href="08-index-requirements-for-bbf-standard-data-models.html#sec:file-attribute" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h3>
 
-<p>The top-level file attribute (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:uri-conventions' title=''>A.2.1.1</a>) indicates the file name. It MUST
+<p>The top-level file attribute (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:uri-conventions' title='' class="heading">A.2.1.1</a>) indicates the file name. It MUST
 be of the form &ldquo;tr-nnn-i-a-c.xml&rdquo; or &ldquo;tr-nnn-i-a-c-label.xml&rdquo;, where
 nnn, i, a and c are the same as in the spec attribute. The label, which
 MUST NOT begin with a digit, is only needed if more than one DM Instance
@@ -93,13 +93,13 @@ is associated with a given specification.</p>
 
 <p>Example:</p>
 
-<pre><code>    file=&quot;tr-181-2-5-0.xml&quot;</code></pre>
+<pre><code>    file="tr-181-2-5-0.xml"</code></pre>
 
 <h3 class="annex3" id="sec:import-element">C.3.6 Import Element<a class="headerlink" href="08-index-requirements-for-bbf-standard-data-models.html#sec:import-element" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h3>
 
 <p>The import element’s spec and file attributes MUST NOT specify the
 corrigendum number. This means that an import element always references
-the latest corrigendum (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:uri-conventions' title=''>A.2.1.1</a>).</p>
+the latest corrigendum (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:uri-conventions' title='' class="heading">A.2.1.1</a>).</p>
 
 <h3 class="annex3" id="sec:bibliography-reference-element">C.3.7 Bibliography Reference Element<a class="headerlink" href="08-index-requirements-for-bbf-standard-data-models.html#sec:bibliography-reference-element" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h3>
 
@@ -153,20 +153,20 @@ defined as follows:</p>
                 | ETSIID
                 | OtherID
 
-    BBFID = &quot;TR-&quot; BBFNumber BBFIssue BBFAmendment BBFCorrigendum
+    BBFID = "TR-" BBFNumber BBFIssue BBFAmendment BBFCorrigendum
 
     BBFNumber = DIGIT{3,} // including leading zeros, e.g. 069
 
-    BBFIssue = &quot;i&quot; &lt;number greater than one&gt;
-             | &quot;&quot; // empty means the most recent Issue
+    BBFIssue = "i" &lt;number greater than one&gt;
+             | "" // empty means the most recent Issue
 
-    BBFAmendment = &quot;a&quot; &lt;number greater than zero&gt;
-                 | &quot;&quot; // empty means the most recent Amendment
+    BBFAmendment = "a" &lt;number greater than zero&gt;
+                 | "" // empty means the most recent Amendment
 
-    BBFCorrigendum = &quot;c&quot; &lt;number greater than zero&gt;
-                   | &quot;&quot; // empty means the most recent Corrigendum
+    BBFCorrigendum = "c" &lt;number greater than zero&gt;
+                   | "" // empty means the most recent Corrigendum
 
-    RFCID = &quot;RFC&quot; RFCNumber
+    RFCID = "RFC" RFCNumber
 
     RFCNumber = NONZERODIGIT [DIGIT]*
                               // no leading zeros, e.g. 123
@@ -174,27 +174,27 @@ defined as follows:</p>
     IEEEID = IEEEGroup IEEESpec IEEEDate
            | &lt;for other IEEE specifications, of a standard form if one is defined&gt;
 
-    IEEEGroup = &lt;group number&gt; &quot;.&quot; &lt;group sub-number&gt;
+    IEEEGroup = &lt;group number&gt; "." &lt;group sub-number&gt;
                                 // e.g. 802.1
 
     IEEESpec = &lt;spec letter(s)&gt; // e.g. D
 
-    IEEEDate = &quot;-&quot; &lt;publication year&gt;
+    IEEEDate = "-" &lt;publication year&gt;
                                 // e.g. -2004
-             | &quot;&quot;               // can be empty
+             | ""               // can be empty
 
     ETSIID = ETSISpecType ETSINumber ETSIVersion
            | &lt;for other ETSI specifications, of a standard form if one is defined&gt;
 
-    ETSISpecType = &quot;TR&quot; // Technical Report
-                 | &quot;TS&quot; // Technical Specification
-                 | &quot;ES&quot; // ETSI Specification
-                 | &quot;EN&quot; // European Standard
+    ETSISpecType = "TR" // Technical Report
+                 | "TS" // Technical Specification
+                 | "ES" // ETSI Specification
+                 | "EN" // European Standard
 
     ETSINumber = [DIGIT]{6} // e.g. 102034
 
-    ETSIVersion = &quot;v&quot; &lt;version number as specified by ETSI&gt;
-                | &quot;&quot;            // can be empty
+    ETSIVersion = "v" &lt;version number as specified by ETSI&gt;
+                | ""            // can be empty
 
     OtherURI = &lt;of a standard form if one is defined&gt;</code></pre>
 
@@ -239,7 +239,7 @@ lines):</p>
 <p>The three sections MUST be introduced by a line that consists of two
 SPACE characters followed by the section name and a colon.</p>
 
-<pre><code>    &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+<pre><code>    &lt;?xml version="1.0" encoding="UTF-8"?&gt;
     &lt;!--
       ...One-line summary...
 
@@ -262,7 +262,7 @@ the creation of this version. It SHOULD NOT be terminated with a period
 
 <p>Example:</p>
 
-<pre><code>    &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+<pre><code>    &lt;?xml version="1.0" encoding="UTF-8"?&gt;
     &lt;!-- Added support for IPsec --&gt;</code></pre>
 
 <h3 class="annex3" id="sec:summary-section">C.4.2 Summary Section<a class="headerlink" href="08-index-requirements-for-bbf-standard-data-models.html#sec:summary-section" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h3>

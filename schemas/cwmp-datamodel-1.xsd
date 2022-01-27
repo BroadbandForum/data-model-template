@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  Data Model Definition Schema (DM Schema) v1.8
+  Data Model Definition Schema (DM Schema) v1.9
 
-  Copyright (c) 2008-2020, Broadband Forum
+  Copyright (c) 2008-2022, Broadband Forum
 
   Redistribution and use in source and binary forms, with or
   without modification, are permitted provided that the following
@@ -85,6 +85,11 @@
         writeOnceReadOnly access type and the decimal datatype
     * cwmp-datamodel-1-8.xsd: November 5 2020: November 5 2020: corresponds to TR-106 Amendment 10
       - allowed command attributes, e.g. mandatory, in component definitions
+    * cwmp-datamodel-1-9.xsd: January 27 2022: January 27 2022: corresponds to TR-106 Amendment 11
+      - allowed the version attribute in component references
+      - allowed minEntries and maxEntries in command and event argument objects
+      - allowed status attribute in profile command/event arguments
+      - added 'secured' attribute
 -->
 
 <!DOCTYPE cwmp-datamodel [
@@ -100,8 +105,8 @@
 ]>
 
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-  xmlns:tns="urn:broadband-forum-org:cwmp:datamodel-1-8"
-  targetNamespace="urn:broadband-forum-org:cwmp:datamodel-1-8" elementFormDefault="unqualified"
+  xmlns:tns="urn:broadband-forum-org:cwmp:datamodel-1-9"
+  targetNamespace="urn:broadband-forum-org:cwmp:datamodel-1-9" elementFormDefault="unqualified"
   attributeFormDefault="unqualified">
   <!-- Simple types -->
   <xs:simpleType name="AbbrefId">
@@ -938,6 +943,11 @@ If the object is a table (see maxEntries), the final part of the name MUST be "{
         <xs:documentation>If true, MUST always read back as the null value for the parameter's base data type (A.2.3.5).</xs:documentation>
       </xs:annotation>
     </xs:attribute>
+    <xs:attribute name="secured" type="xs:boolean" default="false">
+      <xs:annotation>
+        <xs:documentation>The same as "hidden", except that it has no effect if the management protocol permits the Controller to read the parameter value.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
     <xs:attribute name="command" type="xs:boolean" default="false">
       <xs:annotation>
         <xs:documentation>If true, setting this parameter triggers an Agent action. Such a parameter is not part of the device configuration and MUST always read back as the null value for the parameter's base data type (A.2.3.5).</xs:documentation>
@@ -1111,6 +1121,7 @@ If the object is a table (see maxEntries), the final part of the name MUST be "{
         <xs:documentation>If specified, is relative path between point of reference (inclusion) and the component's items.  If not specified, behavior is as if an empty relative path was specified.</xs:documentation>
       </xs:annotation>
     </xs:attribute>
+    <xs:attribute name="version" type="tns:Version"/>
     <xs:anyAttribute namespace="##other"/>
   </xs:complexType>
   <xs:complexType name="DataTypeDefinition">
@@ -1192,12 +1203,15 @@ Specify "prefix" to prefix to the previous description, "append" to append to th
   </xs:complexType>
   <xs:complexType name="DescriptionTemplate">
     <xs:annotation>
-      <xs:documentation>DescriptionTemplate: free text with a length up to 256 characters, which can be added in multiple descriptions and MAY contain a limited amount of mediawiki-like markup as
-specified in A.2.2 (same restrictions as tns:Description type</xs:documentation>
+      <xs:documentation>Named block of text that can be included in descriptions.</xs:documentation>
     </xs:annotation>
     <xs:simpleContent>
       <xs:extension base="xs:string">
-        <xs:attribute name="id" type="tns:String"/>
+        <xs:attribute name="id" type="tns:String">
+          <xs:annotation>
+            <xs:documentation>Uniquely identifies the item (this is checked by schema validation).  Can be referenced from descriptions by using the {{template}} template.  See A.2.2.4.</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
@@ -1643,6 +1657,8 @@ MUST be present if and only if defining a new profile.</xs:documentation>
             <xs:element name="parameter">
               <xs:complexType>
                 <xs:attribute name="ref" type="tns:ParameterName"/>
+                <xs:attribute name="status" type="tns:Status" default="current"/>
+                <xs:attribute name="version" type="tns:Version"/>
               </xs:complexType>
             </xs:element>
             <xs:element name="object">
@@ -1651,10 +1667,14 @@ MUST be present if and only if defining a new profile.</xs:documentation>
                   <xs:element name="parameter">
                     <xs:complexType>
                       <xs:attribute name="ref" type="tns:ParameterName"/>
+                      <xs:attribute name="status" type="tns:Status" default="current"/>
+                      <xs:attribute name="version" type="tns:Version"/>
                     </xs:complexType>
                   </xs:element>
                 </xs:sequence>
                 <xs:attribute name="ref" type="tns:ObjectName"/>
+                <xs:attribute name="status" type="tns:Status" default="current"/>
+                <xs:attribute name="version" type="tns:Version"/>
               </xs:complexType>
             </xs:element>
           </xs:choice>
@@ -1666,6 +1686,8 @@ MUST be present if and only if defining a new profile.</xs:documentation>
             <xs:element name="parameter">
               <xs:complexType>
                 <xs:attribute name="ref" type="tns:ParameterName"/>
+                <xs:attribute name="status" type="tns:Status" default="current"/>
+                <xs:attribute name="version" type="tns:Version"/>
               </xs:complexType>
             </xs:element>
             <xs:element name="object">
@@ -1674,10 +1696,14 @@ MUST be present if and only if defining a new profile.</xs:documentation>
                   <xs:element name="parameter">
                     <xs:complexType>
                       <xs:attribute name="ref" type="tns:ParameterName"/>
+                      <xs:attribute name="status" type="tns:Status" default="current"/>
+                      <xs:attribute name="version" type="tns:Version"/>
                     </xs:complexType>
                   </xs:element>
                 </xs:sequence>
                 <xs:attribute name="ref" type="tns:ObjectName"/>
+                <xs:attribute name="status" type="tns:Status" default="current"/>
+                <xs:attribute name="version" type="tns:Version"/>
               </xs:complexType>
             </xs:element>
           </xs:choice>
@@ -1703,6 +1729,8 @@ MUST be present if and only if defining a new profile.</xs:documentation>
         <xs:element name="parameter">
           <xs:complexType>
             <xs:attribute name="ref" type="tns:ParameterName"/>
+            <xs:attribute name="status" type="tns:Status" default="current"/>
+            <xs:attribute name="version" type="tns:Version"/>
           </xs:complexType>
         </xs:element>
         <xs:element name="object">
@@ -1711,10 +1739,14 @@ MUST be present if and only if defining a new profile.</xs:documentation>
               <xs:element name="parameter">
                 <xs:complexType>
                   <xs:attribute name="ref" type="tns:ParameterName"/>
+                  <xs:attribute name="status" type="tns:Status" default="current"/>
+                  <xs:attribute name="version" type="tns:Version"/>
                 </xs:complexType>
               </xs:element>
             </xs:sequence>
             <xs:attribute name="ref" type="tns:ObjectName"/>
+            <xs:attribute name="status" type="tns:Status" default="current"/>
+            <xs:attribute name="version" type="tns:Version"/>
           </xs:complexType>
         </xs:element>
       </xs:choice>

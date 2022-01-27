@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  TR-069 Device Type Schema (DT Schema) v1.5
+  TR-069 Device Type Schema (DT Schema) v1.6
 
-  Copyright (c) 2009-2020, Broadband Forum
+  Copyright (c) 2009-2022, Broadband Forum
 
   Redistribution and use in source and binary forms, with or
   without modification, are permitted provided that the following
@@ -71,19 +71,21 @@
       - added ListNesting data type and nestedBrackets attribute
     * cwmp-devicetype-1-4.xsd: September 13 2019: September 13 2019: corresponds to TR-106 Amendment 8
       - updated to reference latest published DM Schema version (v1.7)
-    * cwmp-devicetype-1-5.xsd: November 5 2020: November 5 2020: corresponds to TR-106 Amendment 9
+    * cwmp-devicetype-1-5.xsd: November 5 2020: November 5 2020: corresponds to TR-106 Amendment 10
       - updated to reference latest published DM Schema version (v1.8)
       - supported event and command structures in device type files
+    * cwmp-devicetype-1-6.xsd: January 27 2022: January 27 2022: corresponds to TR-106 Amendment 11
+      - updated to reference latest published DM Schema version (v1.9)
 -->
 
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-  xmlns:tns="urn:broadband-forum-org:cwmp:devicetype-1-5"
-  xmlns:dm="urn:broadband-forum-org:cwmp:datamodel-1-8"
+  xmlns:tns="urn:broadband-forum-org:cwmp:devicetype-1-6"
+  xmlns:dm="urn:broadband-forum-org:cwmp:datamodel-1-9"
   xmlns:dtf="urn:broadband-forum-org:cwmp:devicetype-features"
-  targetNamespace="urn:broadband-forum-org:cwmp:devicetype-1-5" elementFormDefault="unqualified"
+  targetNamespace="urn:broadband-forum-org:cwmp:devicetype-1-6" elementFormDefault="unqualified"
   attributeFormDefault="unqualified">
-  <xs:import namespace="urn:broadband-forum-org:cwmp:datamodel-1-8"
-    schemaLocation="https://www.broadband-forum.org/cwmp/cwmp-datamodel-1-8.xsd"/>
+  <xs:import namespace="urn:broadband-forum-org:cwmp:datamodel-1-9"
+    schemaLocation="https://www.broadband-forum.org/cwmp/cwmp-datamodel-1-9.xsd"/>
   <xs:import namespace="urn:broadband-forum-org:cwmp:devicetype-features"
     schemaLocation="https://www.broadband-forum.org/cwmp/cwmp-devicetype-features.xsd"/>
   <!-- Simple types -->
@@ -469,6 +471,16 @@
       <xs:any namespace="##other" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
     <xs:attribute name="ref" type="dm:ObjectName" use="required"/>
+    <xs:attribute name="minEntries" type="xs:nonNegativeInteger" use="required">
+      <xs:annotation>
+        <xs:documentation>minEntries MUST be greater than or equal to minEntries(DM), and less than or equal to maxEntries (all values are regarded as being less than "unbounded").</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="maxEntries" type="dm:MaxEntries" use="required">
+      <xs:annotation>
+        <xs:documentation>maxEntries MUST be less than or equal to maxEntries(DM) (all values are regarded as being less than "unbounded").</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
     <xs:anyAttribute namespace="##other"/>
   </xs:complexType>
   <xs:complexType name="ModelEventParameter">
@@ -524,6 +536,16 @@
       <xs:any namespace="##other" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
     <xs:attribute name="ref" type="dm:ObjectName" use="required"/>
+    <xs:attribute name="minEntries" type="xs:nonNegativeInteger" use="required">
+      <xs:annotation>
+        <xs:documentation>minEntries MUST be greater than or equal to minEntries(DM), and less than or equal to maxEntries (all values are regarded as being less than "unbounded").</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="maxEntries" type="dm:MaxEntries" use="required">
+      <xs:annotation>
+        <xs:documentation>maxEntries MUST be less than or equal to maxEntries(DM) (all values are regarded as being less than "unbounded").</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
     <xs:anyAttribute namespace="##other"/>
   </xs:complexType>
   <xs:complexType name="ModelCommandArgParameter">

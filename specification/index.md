@@ -3,143 +3,44 @@
 bbfNumber: TR-106
 bbfTitle: Data Model Template for CWMP Endpoints and USP Agents
 bbfIssue: Issue
-bbfVersion: 1 Amendment 10
-bbfMonth: November
-bbfYear: 2020
+bbfVersion: 1 Amendment 11
+bbfMonth: January
+bbfYear: 2022
 bbfType: Technical Report
 bbfStatus:
 bbfContrib:
 
 # information shown on each page header
-tagline: How to use the data model schema
+siteurl: index.html
 
-# navigation buttons shown on each page header
-buttons:
-- label: CWMP
-  url: https://www.broadband-forum.org/technical/download/TR-069.pdf
-- label: CWMP Data Models
-  url: https://cwmp-data-models.broadband-forum.org
-- label: USP
-  url: https://usp.technology
-- label: USP Data Models
-  url: https://usp-data-models.broadband-forum.org
-- label: HTML
-  url: index.htm
-- label: PDF
-  url: index.pdf
+tagline: How to use the data model schema to understand and develop CWMP/USP
+         data models
+
+# displayed version number
+# XXX needs to be aligned with bbfNumber; should have only one version number
+versionNumber: 1.11
 
 # don't display these in the banner
 version: ''
 status: ''
 
-# div templates
-bbfRevisionHistory:
+# information shown in the footer
+# XXX what short name should we use?
+shortname: '%bbfNumber%'
+reponame: data-model-template
 
-- number: Issue 1
-  approval: September 2005
-  editors: |
-      Jeff Bernstein, 2Wire \
-      Christele Bouchat, Alcatel \
-      Tim Spets, Westell
-  changes: Original
-
-- number: Issue 1 Amendment 1
-  approval: November 2006
-  editors: |
-      Jeff Bernstein, 2Wire \
-      John Blackford, 2Wire \
-      Mike Digdon, SupportSoft \
-      Heather Kirksey, Motive \
-      William Lupton, 2Wire \
-      Anton Okmianski, Cisco
-  changes: Clarification of original document
-
-- number: Issue 1 Amendment 2
-  approval: November 2008
-  editors: |
-      William Lupton, 2Wire \
-      H&aring;kan Westin, Tilgin
-  changes: Addition of data model definition XML Schema and normative
-           XML common object and component definitions
-
-- number: Issue 1 Amendment 3
-  approval: September 2009
-  editors: |
-      William Lupton, 2Wire \
-      H&aring;kan Westin, Tilgin
-  changes: Addition of device type XML Schema
-
-- number: Issue 1 Amendment 4
-  approval: February 2010
-  editors: |
-      William Lupton, 2Wire \
-      Paul Sigurdson, Broadband Forum
-  changes: Moved data model definitions to TR-181 Issue 1
-
-- number: Issue 1 Amendment 5
-  approval: November 2010
-  editors: Paul Sigurdson, Broadband Forum
-  changes: |
-      Replaced definitions of named data types such as IPAddress with
-      references to normative XML. \
-      Minor changes to DM Schema (v1.3) and DT Schema (v1.1).
-
-- number: Issue 1 Amendment 6
-  approval: July 2011
-  editors: |
-      Sarah Banks, Cisco \
-      Andrea Colmegna, FASTWEB \
-      Tim Spets, Motorola Mobility
-  changes: |
-      Removed definition of proxying, now defined in TR-069. \
-      Removed Common objects.\
-      Alias Parameter Requirements added.
-
-- number: Issue 1 Amendment 7
-  approval: September 2013
-  publication: 7 October 2013
-  editors: William Lupton, Cisco
-  changes: |
-      Added descriptions of new features in DM Schema (v1.4 & v1.5) and DT
-      Schema (v1.2 & v1.3). \
-      Added Annex defining additional requirements for BBF standard data
-      models.
-
-- number: Issue 1 Amendment 8
-  approval: 16 March 2018
-  publication: 10 May 2018
-  editors: |
-      Jean-Didier Ott, Orange \
-      William Lupton, Broadband Forum
-  changes: |
-      Added support of USP (mountable objects). \
-      Removed references to obsolete data models. \
-      Moved device requirements to TR-069.
-
-- number: Issue 1 Amendment 9
-  changes: |
-      Schema updates; document not updated.
-
-- number: Issue 1 Amendment 10
-  approval: 5 November 2020
-  publication: 5 November 2020
-  editors: |
-      William Lupton, Broadband Forum
-  changes: |
-      Converted document to markdown. \
-      Various editorial improvements.
-
-bbfEditors:
-- William Lupton, Broadband Forum
-
-# this shows how to override a div template spec (to add BUS)
-bbfWADsSpec:
-  title: |
-    ### Broadband User Services Work Area Director(s) {.unnumbered .unlisted}
-
-bbfWADs:
-- Jason Walls, QA Cafe
-- John Blackford, CommScope
+# navigation buttons shown on each page header
+buttons:
+- label: HTML
+  title: '%bbfNumber% Single-file HTML'
+  url: index.htm
+- label: PDF
+  title: '%bbfNumber% PDF'
+  url: index.pdf
+- label: CWMP Data Models
+  url: https://cwmp-data-models.broadband-forum.org
+- label: USP Data Models
+  url: https://usp-data-models.broadband-forum.org
 
 # these references assume use of bbf.csl; please follow the existing style
 references:
@@ -166,10 +67,10 @@ references:
   URL: https://tools.ietf.org/html/rfc3986
 
 - id: TR-069
-  call-number: TR-069 Amendment 6
+  call-number: TR-069 Amendment 6 Corrigendum 1
   title: CPE WAN Management Protocol
   publisher: Broadband Forum
-  issued: {year: 2018}
+  issued: {year: 2020}
   URL: https://www.broadband-forum.org/technical/download/TR-069.pdf
 
 - id: TR-140
@@ -187,17 +88,15 @@ references:
   URL: https://www.broadband-forum.org/technical/download/TR-143.pdf
 
 - id: TR-181i2
-  call-number: TR-181 Issue 2 Amendment 12
-  title: Device Data Model for TR-069
+  call-number: TR-181 Issue 2
+  title: Device Data Model
   publisher: Broadband Forum
-  issued: {year: 2018}
-  URL: https://www.broadband-forum.org/technical/download/TR-181_Issue-2.pdf
+  URL: https://usp-data-models.broadband-forum.org#Device:2
 
 - id: TR-369
   call-number: TR-369
   title: User Services Platform
-  issued: {year: 2018}
-  URL: https://www.broadband-forum.org/technical/download/TR-369.pdf
+  URL: https://usp.technology/specification
 
 - id: OUI
   title: Organizationally Unique Identifiers (OUIs)
@@ -227,6 +126,128 @@ references:
   publisher: W3C
   issued: {year: 2004}
   URL: https://www.w3.org/TR/xmlschema-2
+
+# div templates
+myBaseURL: 'https://www.broadband-forum.org/download'
+
+bbfRevisionHistory:
+
+- number: Issue 1
+  approval: September 2005
+  editors: |
+      Jeff Bernstein, 2Wire \
+      Christele Bouchat, Alcatel \
+      Tim Spets, Westell
+  changes: Original
+
+- number: '[Issue 1 Amendment 1](%myBaseURL%/TR-106_Amendment-1.pdf)'
+  approval: November 2006
+  editors: |
+      Jeff Bernstein, 2Wire \
+      John Blackford, 2Wire \
+      Mike Digdon, SupportSoft \
+      Heather Kirksey, Motive \
+      William Lupton, 2Wire \
+      Anton Okmianski, Cisco
+  changes: Clarification of original document
+
+- number: '[Issue 1 Amendment 2](%myBaseURL%/TR-106_Amendment-2.pdf)'
+  approval: November 2008
+  editors: |
+      William Lupton, 2Wire \
+      H&aring;kan Westin, Tilgin
+  changes: Addition of data model definition XML Schema and normative
+           XML common object and component definitions
+
+- number: '[Issue 1 Amendment 3](%myBaseURL%/TR-106_Amendment-3.pdf)'
+  approval: September 2009
+  editors: |
+      William Lupton, 2Wire \
+      H&aring;kan Westin, Tilgin
+  changes: Addition of device type XML Schema
+
+- number: '[Issue 1 Amendment 4](%myBaseURL%/TR-106_Amendment-4.pdf)'
+  approval: February 2010
+  editors: |
+      William Lupton, 2Wire \
+      Paul Sigurdson, Broadband Forum
+  changes: Moved data model definitions to TR-181 Issue 1
+
+- number: '[Issue 1 Amendment 5](%myBaseURL%/TR-106_Amendment-5.pdf)'
+  approval: November 2010
+  editors: Paul Sigurdson, Broadband Forum
+  changes: |
+      Replaced definitions of named data types such as IPAddress with
+      references to normative XML. \
+      Minor changes to DM Schema (v1.3) and DT Schema (v1.1).
+
+- number: '[Issue 1 Amendment 6](%myBaseURL%/TR-106_Amendment-6.pdf)'
+  approval: July 2011
+  editors: |
+      Sarah Banks, Cisco \
+      Andrea Colmegna, FASTWEB \
+      Tim Spets, Motorola Mobility
+  changes: |
+      Removed definition of proxying, now defined in TR-069. \
+      Removed Common objects.\
+      Alias Parameter Requirements added.
+
+- number: '[Issue 1 Amendment 7](%myBaseURL%/TR-106_Amendment-7.pdf)'
+  approval: September 2013
+  publication: 7 October 2013
+  editors: William Lupton, Cisco
+  changes: |
+      Added descriptions of new features in DM Schema (v1.4 & v1.5) and DT
+      Schema (v1.2 & v1.3). \
+      Added Annex defining additional requirements for BBF standard data
+      models.
+
+- number: '[Issue 1 Amendment 8](%myBaseURL%/TR-106_Amendment-8.pdf)'
+  approval: 16 March 2018
+  publication: 10 May 2018
+  editors: |
+      Jean-Didier Ott, Orange \
+      William Lupton, Broadband Forum
+  changes: |
+      Added support of USP (mountable objects). \
+      Removed references to obsolete data models. \
+      Moved device requirements to TR-069.
+
+- number: Issue 1 Amendment 9
+  changes: |
+      Schema updates; document not updated.
+
+- number: '[Issue 1 Amendment 10](%myBaseURL%/TR-106_Amendment-10.pdf)'
+  approval: 5 November 2020
+  publication: 5 November 2020
+  editors: |
+      William Lupton, Broadband Forum
+  changes: |
+      Converted document to markdown. \
+      Various editorial improvements.
+
+- number: '[Issue 1 Amendment 11](%myBaseURL%/TR-106_Amendment-11.pdf)'
+  approval: 27 January 2022
+  publication: 27 January 2022
+  editors: |
+      William Lupton, Broadband Forum
+  changes: |
+      Clarified forcedEnabled and forceDefaultEnabled for USP. \
+      Clarified impact of deprecating or obsoleting profile items. \
+      Documented new description templates. \
+      Documented new `secured` attribute.
+
+bbfEditors:
+- William Lupton, Broadband Forum
+
+# this shows how to override a div template spec (to add BUS)
+bbfWADsSpec:
+  title: |
+    ### Broadband User Services Work Area Director(s) {.unnumbered .unlisted}
+
+bbfWADs:
+- Jason Walls, QA Cafe
+- John Blackford, CommScope
 
 # end of metadata
 ---
@@ -311,7 +332,7 @@ certain device types or services.
 
 **USP**
 
-The [User Services Platform](http://usp.technology) is made of a network
+The [User Services Platform](http://usp.technology) supports a network
 of USP Controllers and USP Agents to allow applications to manipulate
 service elements (i.e. objects). It represents the evolution of CWMP
 into the following use cases:
@@ -788,6 +809,10 @@ parameters or parameter values are given below. For more information on
 how to interpret or implement specific obsoleted objects, parameters or
 parameter values, refer to the definition of the object or parameter.
 
+If any items within a profile are DEPRECATED or OBSOLETED, then the profile
+MUST be (correspondingly) DEPRECATED or OBSOLETED, and it will be necessary to
+define a new profile version that omits any DEPRECATED or OBSOLETED items.
+
 ### Requirements for DEPRECATED Items
 
 This section defines requirements that apply to all DEPRECATED objects,
@@ -906,7 +931,7 @@ The supported data types are defined by the DM Schema and are
 also listed in @sec:data-types.
 
 The named data types that specify the representations of IP addresses,
-MAC addresses etc, are defined in a DM Instance document (see Annex A).
+MAC addresses etc., are defined in a DM Instance document (see @sec:cwmp-data-model-definition-xml-schema).
 The XML file with those definitions and the corresponding HTML file can
 be found in the [data model resources
 page](https://cwmp-data-models.broadband-forum.org/#Data%20Model%20Data%20Types).
@@ -1557,17 +1582,34 @@ Markup examples:\
 This template SHOULD be used for all such parameters.  It will be expanded to something like "The number of entries in the \<table> table.".\
 In most cases, the description will consist only of `{{numentries}}` but it MAY be followed by additional text if desired. |\
 
-| Parameter and object reference | `{{param|ref}}`\
+| Deprecated, obsoleted or deleted indication | `{{deprecated|version|reason}}`\
+`{{obsoleted|version}}`\
+`{{obsoleted|version|reason}}`\
+`{{deleted|version}}`\
+`{{deleted|version|reason}}` | An indication that a parameter, command, event, object, enumeration value or pattern was deprecated (or obsoleted or deleted) in the specified data model version, for the specified reason.\
+The reason argument is a fragment of text that SHOULD be incorporated into the template expansion. It's OPTIONAL when obsoleting or deleting an item.\
+Typically, processing tools will (a) validate that use of the template is consistent with the item status, (b) check for late (overdue) or too-early item status transitions, and (c) replace the template reference with text of the form "This \<itemType> was \<transition> in \<version> \<reason>." (where \<itemType> is parameter, object etc., and \<transition> is the capitalized template name, i.e. DEPRECATED, OBSOLETED or DELETED). |\
+
+| Parameter, command, event and object reference | `{{param}}`\
+`{{param|ref}}`\
 `{{param|ref|scope}}`\
-`{{param}}`\
+`{{command}}`\
+`{{command|ref}}`\
+`{{command|ref|scope}}`\
+`{{event}}`\
+`{{event|ref}}`\
+`{{event|ref|scope}}`\
+`{{object}}`\
 `{{object|ref}}`\
-`{{object|ref|scope}}`\
-`{{object}}` | A reference to the specified parameter or object.\
-The OPTIONAL ref and scope arguments reference a parameter or object. Scope defaults to normal. Parameter and object names SHOULD adhere to the rules of @sec:reference-path-names.\
-Typically, processing tools will (a) validate the reference, and (b) replace the template reference with the ref argument or, if it is omitted, the current parameter or object name, possibly rendered in a distinctive font.\
+`{{object|ref|scope}}` | A reference to the specified parameter, command, event or object.\
+The OPTIONAL ref and scope arguments reference the specified item (scope defaults to normal). Item names SHOULD adhere to the rules of @sec:reference-path-names.\
+The scope argument can include a deprecated, obsoleted or deleted status, e.g. it might be deprecated or normal,deprecated. Such a status value can be specified in order to suppress processing tool warnings when an item references a "more deprecated" item. For example, `{{param|ref|deprecated}}` allows a non-deprecated item to reference a deprecated parameter without a warning.\
+Typically, processing tools will (a) validate the reference, and (b) replace the template reference with the ref argument or, if it is omitted, the current item name, possibly rendered in a distinctive font.\
 Processing tools can use the scope to convert a relative path into an absolute path in order, for example, to generate a hyperlink.\
 Markup examples:\
 `{{param|Enable}}`\
+`{{command|Reset()}}`\
+`{{event|Boot!}}`\
 `{{object|Stats.}}` |\
 
 | Profile reference | `{{profile|ref}}`\
@@ -1620,7 +1662,7 @@ Typically processing tools will generate text of the form "This table defines th
 `{{enum}}`\
 `{{noenum}}` | A reference to the specified enumeration value.\
 The OPTIONAL value argument specifies one of the enumeration values for the referenced parameter.  If present, it MUST be a valid enumeration value for that parameter.\
-The OPTIONAL param and scope arguments identify the referenced parameter.  Scope defaults to normal.  If present, param SHOULD adhere to the rules of @sec:reference-path-names.  If omitted, the current parameter is assumed.\
+The OPTIONAL param and scope arguments identify the referenced parameter (scope defaults to normal).  If present, param SHOULD adhere to the rules of @sec:reference-path-names.  If omitted, the current parameter is assumed.\
 If the arguments are omitted, this is a hint to processing tools to replace the template reference with a list of the parameter's enumerations, possibly preceded by text such as "Enumeration of:".  This overrides processing tools' expected default behavior (unless suppressed by `{{noenum}}`) of listing the parameter's enumerations after the rest of the description.\
 Otherwise, typically processing tools will (a) validate that the enumeration value is valid, and (b) replace the template reference with the value and/or param arguments, appropriately formatted and with the value possibly rendered in a distinctive font. Processing tools can use the scope to convert a relative path into an absolute path in order, for example, to generate a hyperlink.\
 Markup examples:\
@@ -1632,7 +1674,7 @@ Markup examples:\
 `{{pattern|value|param|scope}}`\
 `{{pattern}}`\
 `{{nopattern}}` | A reference to the specified pattern value.\
-The OPTIONAL value argument specifies one of the pattern values for the referenced parameter.  If present, it MUST be a valid pattern value for that parameter.  The OPTIONAL param and scope arguments identify the referenced parameter.  Scope   defaults to normal.  If present, param SHOULD adhere to the rules of @sec:reference-path-names. If omitted, the current parameter is   assumed.\
+The OPTIONAL value argument specifies one of the pattern values for the referenced parameter.  If present, it MUST be a valid pattern value for that parameter.  The OPTIONAL param and scope arguments identify the referenced parameter (scope defaults to normal).  If present, param SHOULD adhere to the rules of @sec:reference-path-names. If omitted, the current parameter is   assumed.\
 If the arguments are omitted, this is a hint to processing tools to replace the template reference with a list of the parameter's patterns, possibly preceded by text such as "Possible   patterns:".  This overrides processing tools' expected default behavior (unless suppressed by `{{nopattern}}`) of listing the parameter's patterns after the rest of the description.\
 Otherwise, typically processing tools will (a) validate that the pattern value is valid, and (b) replace the template reference with the value and/or param arguments, appropriately formatted and with the value possibly rendered in a distinctive font. Processing tools can use the scope to convert a relative path into an absolute path in order, for example, to generate a hyperlink.\
 Markup examples:\
@@ -1641,14 +1683,22 @@ Markup examples:\
 
 | Hidden value | `{{hidden}}`\
 `{{hidden|value}}`\
-`{{nohidden}}` | Text explaining that the value of the current parameter is hidden and cannot be read. This template SHOULD only be used within the description of a hidden parameter (@sec:parameter-syntax).\
-This is a hint to processing tools to replace the template reference with text explaining that the value of the current parameter is hidden and cannot be read.  This overrides processing tools' expected default behavior (unless suppressed by `{{nohidden}}`) of placing this text after the rest of the description.\
+`{{nohidden}}` | Text explaining that the value of the current parameter is hidden. This template SHOULD only be used within the description of a hidden parameter (@sec:parameter-syntax).\
+This is a hint to processing tools to replace the template reference with text explaining that the value of the current parameter is hidden.  This overrides processing tools' expected default behavior (unless suppressed by `{{nohidden}}`) of placing this text after the rest of the description.\
 The OPTIONAL argument indicates the value that is returned when the current parameter is read.  If omitted this defaults to the expansion of the `{{null}}` template.\
 Typically, processing tools will generate text of the form "When read, this parameter returns \<arg>, regardless of the actual value.". |\
 
+| Secured value | `{{secured}}`\
+`{{secured|value}}`\
+`{{nosecured}}` | Text explaining that the value of the current parameter is secured. This template SHOULD only be used within the description of a secured parameter (@sec:parameter-syntax).\
+This is a hint to processing tools to replace the template reference with text explaining that the value of the current parameter is secured.  This overrides processing tools' expected default behavior (unless suppressed by `{{nosecured}}`) of placing this text after the rest of the description.\
+The OPTIONAL argument indicates the value that is returned when the Controller is not permitted to see the value.  If omitted this defaults to the expansion of the `{{null}}` template.\
+Typically, processing tools will generate text of the form "When read, this parameter returns \<arg>, regardless of the actual value, unless the Controller has a 'secured' role.". |\
+
 | Command parameter | `{{command}}`\
 `{{nocommand}}` | Text explaining that the current parameter is a command parameter that triggers an Agent action.  This template SHOULD only be used within the description of such a command parameter (@sec:parameter-syntax).\
-This is a hint to processing tools to replace the template reference with text explaining that the current parameter is a command parameter that always reads back as `{{null}}`.  This overrides processing tools' expected default behavior (unless suppressed by `{{nocommand}}`) of placing this text after the rest of the description.   Typically, processing tools will generate text of the form "The value is not part of the device configuration and is always `{{null}}` when read.". |\
+This is a hint to processing tools to replace the template reference with text explaining that the current parameter is a command parameter that always reads back as `{{null}}`.  This overrides processing tools' expected default behavior (unless suppressed by `{{nocommand}}`) of placing this text after the rest of the description.   Typically, processing tools will generate text of the form "The value is not part of the device configuration and is always `{{null}}` when read.".\
+Note that the same `{{command}}` template can also be used by a USP command to refer to itself. |\
 
 | Factory default value | `{{factory}}`\
 `{{nofactory}}` | Text listing the factory default for the current parameter.   This template SHOULD only be used within the description of a parameter that has a factory default value.\
@@ -1668,9 +1718,9 @@ Typically, processing tools will substitute the value False or True, possibly re
 
 | Discriminator parameter description | `{{union}}`\
 `{{nounion}}` | Text explaining the available options and use for the sub-objects which are part of the union.\
-This template SHOULD only be used within the description of a parameter declared as a discriminatorParameter (@sec:tables).\
-This is a hint to processing tools to replace the template reference with text explaining the union and possible choices of sub-objects. This overrides processing tools' expected default behavior (unless suppressed by ``{{nounion}}`) of placing this text after the rest of the description.\
-Typically, processing tools will generate text of the form "This parameter defines the name of the currently active sub-object of a union, members of the union are \<objects>." but it MAY be followed by additional text, explaining the use of the available options, if desired. |\
+This template SHOULD only be used within the description of (a) a parameter referenced as a discriminatorParameter, or (b) an object that references a discriminatorParameter (@sec:tables).\
+This is a hint to processing tools to replace the template reference with text explaining the union and possible choices of sub-objects. This overrides processing tools' expected default behavior (unless suppressed by `{{nounion}}`) of placing this text after the rest of the description.\
+Typically, processing tools will generate text of the form (a) "This parameter discriminates between the \<objects> union objects.", or (b) "This object MUST be present if, and only if, \<param> is \<object>.", but it MAY be followed by additional text, explaining the use of the available options, if desired. |\
 
 | Miscellaneous | `{{issue|descr}}`\
 `{{issue|opts|descr}}` | An open issue.\
@@ -1908,7 +1958,7 @@ reasons:
 #### Reference Path Names
 
 Some description templates (@sec:description-templates), and all reference facets
-(@sec:reference-facets), need to specify parameter or object names. It is always
+(@sec:reference-facets), need to specify parameter, command, event or object names. It is always
 possible to specify a full Path Name, but it is frequently necessary or
 convenient to specify a relative Path Name. For example, it might be
 necessary to reference another parameter in the current object. Any
@@ -2300,7 +2350,7 @@ The base type restriction requirements for each facet are as follows:
 - By "promoting" status to a "higher" value, as described for pathRef.\
 - By "promoting" optional from False to True.\
 - By adding a code, if none was previously specified.\
-- By using the action attribute to prefix, extend or replace the description (see below and @sec:description-modifications).
+- By using the action attribute to prefix, extend or replace the description (see below and @sec:description-modifications).\
 The derived data type can add new enumeration values. |
 | enumerationRef          | The derived data type can modify the data type by "promoting" status to a "higher" value, as described for pathRef. |
 | pattern                 | The derived data type can modify existing pattern values by changing access, status, optional and description exactly as for enumerations.\
@@ -2608,9 +2658,10 @@ requirements are specified in the schema).
 |-------------------|-------------------------------------------------------------------------------------------------------------|
 | name              | The parameter name (@sec:general-notation). |
 | access            | Whether the parameter is writable (readWrite), read-only (readOnly), or writable once then read-only (writeOnceReadOnly). |
+| version           | The data model version (of the form m.n or m.n.p) in which this parameter was first defined. |
 | status            | The parameter's {current, deprecated, obsoleted, deleted} status.  This defaults to current, and so is not likely to be specified for a new parameter. |
 | activeNotify      | The parameter's {normal, forceEnabled, forceDefault, canDeny} Active Notification status.  This defaults to normal, and so is not often specified for a new parameter.\
-Note that in USP, forceEnabled and forceDefault are equivalent to normal. |
+Note that in USP, forceEnabled and forceDefault are not applicable and thus are equivalent to normal. |
 | forcedInform      | For CWMP only, the parameter's Forced Inform status.  This defaults to False, and so is not often specified for a new parameter. |
 | description       | The parameter's description (@sec:descriptions). |
 | syntax            | The parameter's syntax (@sec:parameter-syntax). |
@@ -2627,6 +2678,7 @@ are specified in the schema).
 | Name              | Description                                                                                                 |
 |-------------------|-------------------------------------------------------------------------------------------------------------|
 | hidden            | Whether the value is hidden on readback.  This defaults to False, and so is not often specified for a new parameter. |
+| secured           | For USP only, whether the value is secured, i.e. is hidden on readback unless the Controller has a "secured" role (if both hidden and secured are True, secured takes precedence). This defaults to False. |
 | command           | For CWMP only, whether setting the parameter triggers an Agent action as opposed to changing the configuration. This defaults to False.\
 Note that this is an CWMP-only attribute (not an element) and is   different from the USP-only command element (@sec:commands-usp-only). |
 | list\
@@ -2662,6 +2714,7 @@ commands.
 |-------------------|-------------------------------------------------------------------------------------------------------------|
 | name              | The command name (@sec:general-notation). |
 | async             | Whether this command is asynchronous or not. This defaults to false. |
+| version           | The data model version (of the form m.n or m.n.p) in which this command was first defined. |
 | status            | The command's {current, deprecated, obsoleted, deleted} status.  This defaults to current, and so is not likely to be specified for a new command. |
 | description       | The command's description (@sec:descriptions). |
 | input             | The command's input arguments (can be omitted if there are none). |
@@ -2703,6 +2756,7 @@ to CWMP.
 | Name              | Description                                                                                                 |
 |-------------------|-------------------------------------------------------------------------------------------------------------|
 | name              | The event name (@sec:general-notation). |
+| version           | The data model version (of the form m.n or m.n.p) in which this event was first defined. |
 | status            | The event's {current, deprecated, obsoleted, deleted} status.  This defaults to current, and so is not likely to be specified for a new event. |
 | description       | The event's description (@sec:descriptions). |
 | component         | The arguments defined by components that are referenced (included) by the event (@sec:components). |
@@ -2745,7 +2799,8 @@ specified in the schema).
 - **mountable**: this object is a Mountable Object. Such an object appears only right under the Root Object.\
 - **mountPoint**: this object is a Mount Point.\
 - **none (default)**: this object is neither a Mountable Object nor a Mount Point. |
-|  status           | The object's {current, deprecated, obsoleted, deleted} status.  This defaults to current, and so is not likely to be specified for a new object. |
+| version           | The data model version (of the form m.n or m.n.p) in which this object was first defined. |
+| status            | The object's {current, deprecated, obsoleted, deleted} status.  This defaults to current, and so is not likely to be specified for a new object. |
 | description       | The object's description (@sec:descriptions). |
 | component         | The components that are referenced (included) by the object (@sec:components). |
 | parameter         | The object's parameter definitions (@sec:parameters). |
@@ -2766,7 +2821,7 @@ relevant (normative requirements are specified in the schema).
 | enableParameter   | For CWMP only, the name of the parameter (in each table entry) that enables and disables that table entry.  Such a parameter is needed whenever access is readWrite (so the Controller might be able to create entries) and at least one uniqueKey element that defines a functional key is present. |
 | uniqueKey         | An element that specifies a unique key by referencing those parameters that constitute the unique key (all of these parameters are single-valued, i.e. not list-valued).\
 In CWMP only, for a non-functional key, or if the table has no enableParameter, the uniqueness requirement always applies; for a functional key, and if the table has an enableParameter, the uniqueness requirement applies only to enabled table entries. |
-| discriminatorParameter | The name of the parameter (in the parent object) that selects which of the available objects that are part of the same union to use. Such a discrimination parameter is needed whenever there are multiple alternative sub-objects, i.e. objects where minEntries=0 and maxEntries=1. |
+| discriminatorParameter | The name of the parameter (in the parent object) that selects which of the available objects that are part of the same union to use. Such a discriminator parameter is needed whenever there are multiple alternative sub-objects, i.e. objects where minEntries=0 and maxEntries=1. |
 
 Each unique key is either functional or non-functional:
 
@@ -2810,7 +2865,8 @@ specified in the schema).
 | name              | The profile name, including its version number (@sec:profile-versions). |
 | base              | The name of the previous version of the profile (for use when the profile version is greater than 1). |
 | extends           | A list of the names of the profiles that this profile extends. |
-| minVersion        | A list of the model names that define the minimum versions for which this profile can be defined.  Note that it is only necessary to specify this if   the profile is defined within a component element. |
+| version           | The data model version (of the form m.n or m.n.p) in which this profile was first defined. |
+| minVersion        | A list of the model names that define the minimum versions for which this profile can be defined.  Note that it is only necessary to specify this if the profile is defined within a component element. |
 | description       | The profile's description (@sec:descriptions). |
 | parameter         | The profile's parameter requirements, which can include descriptions, references to the parameters in question, and the parameter access requirement. |
 | object            | The profile's object requirements, which can include descriptions, references to the objects in question, the object access requirements, and requirements for the object's parameters, commands and events, including requirements for command and event arguments. |
@@ -2846,11 +2902,14 @@ The following rules govern parameter modifications.
 | Name              | Description                                                                                                 |
 |-------------------|-------------------------------------------------------------------------------------------------------------|
 | access            | Can be "promoted" from readOnly to readWrite or writeOnceReadOnly. |
+| version           | Cannot be changed. |
 | status            | Can be "promoted" to a "higher" value, where the lowest to highest ordering is: current, deprecated, obsoleted, deleted.  For example, current can be changed to deprecated, and obsoleted can be changed to deleted, but deleted cannot be changed back to obsoleted.  When promoting status, the deprecation, obsoletion and deletion rules of @sec:deprecated-and-obsoleted-items MUST be obeyed. |
 | activeNotify      | Can be changed from forceEnabled to forceDefault.  No other changes are permitted. |
 | forcedInform      | Cannot be changed. |
 | description       | Can be prefixed, extended or replaced via use of the action attribute (@sec:description-modifications).  When changing the description, behavioral backwards compatibility MUST be preserved. |
 | syntax/hidden     | Cannot be changed. |
+| syntax/secured    | Cannot be changed. |
+| syntax/command    | Cannot be changed. |
 | syntax/list       | Can add or modify the list element in the following ways:\
 - Can convert a non-list string parameter to a list provided that an empty string was already a valid value with the appropriate meaning.\
 - Can adjust limits on numbers of items, and on the list size, provided that the new rules do not permit any values that were not valid for the previous version of the parameter. |
@@ -2872,6 +2931,7 @@ The following rules govern command modifications.
 | Name              | Description                                                                                                 |
 |-------------------|-------------------------------------------------------------------------------------------------------------|
 | async             | Can be changed. |
+| version           | Cannot be changed. |
 | status            | Can be "promoted" to a "higher" value, where the lowest to highest ordering is: current, deprecated, obsoleted, deleted.  For example, current can be changed to deprecated, and obsoleted can be changed to deleted, but deleted cannot be changed back to obsoleted.  When promoting status, the deprecation, obsoletion and deletion rules of @sec:deprecated-and-obsoleted-items MUST be obeyed. |
 | description       | Can be prefixed, extended or replaced via use of the action attribute (@sec:description-modifications).  When changing the description, behavioral backwards compatibility MUST be preserved. |
 | input             | Can modify input arguments according to the rules for modifying data model parameters and objects. Can add new input arguments, either directly or by referencing (including) new components. |
@@ -2890,6 +2950,7 @@ The following rules govern command modifications.
 
 | Name              | Description                                                                                                 |
 |-------------------|-------------------------------------------------------------------------------------------------------------|
+| version           | Cannot be changed. |
 | status            | Can be "promoted" to a "higher" value, where the lowest to highest ordering is: current, deprecated, obsoleted, deleted.  For example, current can be changed to deprecated, and obsoleted can be changed to deleted, but deleted cannot be changed back to obsoleted.  When promoting status, the deprecation, obsoletion and deletion rules of @sec:deprecated-and-obsoleted-items MUST be obeyed. |
 | description       | Can be prefixed, extended or replaced via use of the action attribute (@sec:description-modifications).  When changing the description, behavioral backwards compatibility MUST be preserved. |
 | component         | Can add new arguments by referencing (including) new components. |
@@ -2914,13 +2975,14 @@ The following rules govern object modifications.
 | maxEntries        | Cannot be changed. |
 | numEntriesParameter | Cannot be changed, unless was previously missing, in which case can be added. |
 | enableParameter   | For CWMP only, cannot be changed, unless was previously missing, in which case can be added. |
+| version           | Cannot be changed. |
 | status            | Can be "promoted" to a "higher" value, where the lowest to highest ordering is: current, deprecated, obsoleted, deleted.  For example, current can be changed to deprecated, and obsoleted can be changed to deleted, but deleted cannot be changed back to obsoleted.  When promoting status, the deprecation, obsoletion and deletion rules of @sec:deprecated-and-obsoleted-items MUST be obeyed. |
 | description       | Can be prefixed, extended or replaced via use of the action attribute (@sec:description-modifications).  When changing the description, behavioral backwards compatibility MUST be preserved. |
 | uniqueKey         | Cannot be changed, but new unique keys can be added. |
-| component         |    Can reference (include) new components.  |
-| parameter         |    Can add new parameters. |
-| command           |    For USP only, can add new commands. |
-| event             |    For USP only, can add new events. |
+| component         | Can reference (include) new components.  |
+| parameter         | Can add new parameters. |
+| command           | For USP only, can add new commands. |
+| event             | For USP only, can add new events. |
 
 Most of the above requirements are non-normative, because it has to be
 possible to correct errors in a previous version of an object.
@@ -2937,6 +2999,7 @@ elements.
 
 | Name              | Description                                                                                                 |
 |-------------------|-------------------------------------------------------------------------------------------------------------|
+| version           | Cannot be changed. |
 | status            | Can be "promoted" to a "higher" value, where the lowest to highest ordering is: current, deprecated, obsoleted, deleted. For example, current can be changed to deprecated, and obsoleted can be changed to deleted, but deleted cannot be changed back to obsoleted. When promoting status, the deprecation, obsoletion and deletion rules of @sec:deprecated-and-obsoleted-items MUST be obeyed. |
 | description       | Can be prefixed, extended or replaced via use of the action attribute (@sec:description-modifications). When changing the description, behavioral backwards compatibility MUST be preserved. |
 

@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<!-- BBF GitHub Pages pandoc template; modified from default.html template -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="generator" content="pandoc"/>
+  <meta name="description" content="WT-106 – Data Model Template for CWMP Endpoints and USP Agents: How to use the data model schema"/>
+  <meta name="theme-color" content="#157878"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"/>
+  <title>BBF – 2 Architecture</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="github.css"/>
+  <link rel="stylesheet" href="extra.css"/>
+  <link rel="stylesheet" href="toc.css"/>
+  <link rel="stylesheet" href="watermark.css"/>
+  <link rel="stylesheet" href="release.css"/>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <!-- XXX header includes are included just before the ToC (below) -->
+</head>
+
+<body>
+  <section class="page-header">
+    <h1 class="project-name">
+      <a href="../index.html" style="text-decoration: none; color: white;">
+        <img src="bbflogo-bw.png"/><br>
+        Data Model Template for CWMP Endpoints and USP Agents
+      </a>
+    </h1>
+    <h2 class="project-tagline">How to use the data model schema</h2>
+    <p></p>
+    <p></p>
+    <div class="project-buttons">
+      <a class="btn" href="../specification/index.html" title="Data Model Template Specification (WT-106)">Specification</a>
+      <a class="btn" href="https://www.broadband-forum.org/technical/download/TR-069.pdf">CWMP</a>
+      <a class="btn" href="https://cwmp-data-models.broadband-forum.org">CWMP Data Models</a>
+      <a class="btn" href="https://usp.technology">USP</a>
+      <a class="btn" href="https://usp-data-models.broadband-forum.org">USP Data Models</a>
+      <a class="btn" href="../resources/01-index-data-modeling-resources.html" title="Data Modeling Resources">Resources</a>
+      <a class="btn" href="../faq/01-index-faq.html" title="Data Modeling Frequently Asked Questions">FAQ</a>
+      <a class="btn" href="../specification/index.htm" title="Data Model Template Specification (WT-106) Single-file HTML">HTML</a>
+      <a class="btn" href="../specification/index.pdf" title="Data Model Template Specification (WT-106) PDF">PDF</a>
+    </div>
+  </section>
+
+  <section class="main-content">
+<nav>
+<p>
+   <a href="00-index-contents.html#contents">Cover Page</a>
+ | <a href="01-index-executive-summary.html#sec:executive-summary">Executive Summary</a>
+ | <a href="02-index-introduction.html#sec:introduction">1 Introduction</a>
+ | <a href="03-index-architecture.html#sec:architecture">2 Architecture</a>
+ | <a href="04-index-object-definitions.html#sec:object-definitions">3 Object Definitions</a>
+ | <a href="05-index-normative-references.html#sec:normative-references">4 Normative References</a>
+ | <a href="06-index-cwmp-data-model-definition-xml-schema.html#sec:cwmp-data-model-definition-xml-schema">Annex A: CWMP Data Model Definition XML Schema</a>
+ | <a href="07-index-cwmp-device-type-xml-schema.html#sec:cwmp-device-type-xml-schema">Annex B: CWMP Device Type XML Schema</a>
+ | <a href="08-index-requirements-for-bbf-standard-data-models.html#sec:requirements-for-bbf-standard-data-models">Annex C: Requirements for BBF Standard Data Models</a>
+ | <a href="09-index-html-data-model-reports.html#sec:html-data-model-reports">Appendix I: HTML Data Model Reports</a>
+</p>
+</nav>
+
+<nav id="TOCFULL">
+<ul>
+  <li><a href="00-index-contents.html#contents">Cover Page</a></li>
+  <li><a href="02-index-introduction.html#sec:introduction">1 Introduction</a></li>
+  <ul>
+    <li><a href="02-index-introduction.html#sec:terminology">1.1 Terminology</a></li>
+    <li><a href="02-index-introduction.html#sec:document-conventions">1.2 Document Conventions</a></li>
+  </ul>
+  <li><a href="03-index-architecture.html#sec:architecture">2 Architecture</a></li>
+  <ul>
+    <li><a href="03-index-architecture.html#sec:data-hierarchy">2.1 Data Hierarchy</a></li>
+    <ul>
+      <li><a href="03-index-architecture.html#sec:data-hierarchy-requirements">2.1.1 Data Hierarchy Requirements</a></li>
+      <li><a href="03-index-architecture.html#sec:the-supported-data-model-and-the-instantiated-data-model">2.1.2 The Supported Data Model and the Instantiated Data Model</a></li>
+    </ul>
+    <li><a href="03-index-architecture.html#sec:object-versioning">2.2 Object Versioning</a></li>
+    <ul>
+      <li><a href="03-index-architecture.html#sec:requirements-for-compatible-versions">2.2.1 Requirements for Compatible Versions</a></li>
+      <li><a href="03-index-architecture.html#sec:version-notation">2.2.2 Version Notation</a></li>
+    </ul>
+    <li><a href="03-index-architecture.html#sec:profiles">2.3 Profiles</a></li>
+    <ul>
+      <li><a href="03-index-architecture.html#sec:scope-of-profiles">2.3.1 Scope of Profiles</a></li>
+      <li><a href="03-index-architecture.html#sec:multiple-profile-support">2.3.2 Multiple Profile Support</a></li>
+      <li><a href="03-index-architecture.html#sec:profile-versions">2.3.3 Profile Versions</a></li>
+      <li><a href="03-index-architecture.html#sec:baseline-profiles">2.3.4 Baseline Profiles</a></li>
+      <li><a href="03-index-architecture.html#sec:types-of-requirements-in-a-profile">2.3.5 Types of Requirements in a Profile</a></li>
+    </ul>
+    <li><a href="03-index-architecture.html#sec:deprecated-and-obsoleted-items">2.4 DEPRECATED and OBSOLETED Items</a></li>
+    <ul>
+      <li><a href="03-index-architecture.html#sec:requirements-for-deprecated-items">2.4.1 Requirements for DEPRECATED Items</a></li>
+      <li><a href="03-index-architecture.html#sec:requirements-for-obsoleted-items">2.4.2 Requirements for OBSOLETED Items</a></li>
+    </ul>
+  </ul>
+  <li><a href="04-index-object-definitions.html#sec:object-definitions">3 Object Definitions</a></li>
+  <ul>
+    <li><a href="04-index-object-definitions.html#sec:general-notation">3.1 General Notation</a></li>
+    <li><a href="04-index-object-definitions.html#sec:data-types-and-representation">3.2 Data Types and Representation</a></li>
+    <ul>
+      <li><a href="04-index-object-definitions.html#sec:date-and-time-rules">3.2.1 Date and Time Rules</a></li>
+      <li><a href="04-index-object-definitions.html#sec:comma-separated-lists">3.2.2 Comma-separated Lists</a></li>
+      <li><a href="04-index-object-definitions.html#sec:parameters-that-reference-parameters-or-objects">3.2.3 Parameters that Reference Parameters or Objects</a></li>
+      <li><a href="04-index-object-definitions.html#sec:units-conventions">3.2.4 Units Conventions</a></li>
+      <li><a href="04-index-object-definitions.html#sec:default-maximum-string-length">3.2.5 Default Maximum String Length</a></li>
+    </ul>
+    <li><a href="04-index-object-definitions.html#sec:vendor-specific-elements">3.3 Vendor-Specific Elements</a></li>
+  </ul>
+  <li><a href="05-index-normative-references.html#sec:normative-references">4 Normative References</a></li>
+  <li><a href="06-index-cwmp-data-model-definition-xml-schema.html#sec:cwmp-data-model-definition-xml-schema">Annex A: CWMP Data Model Definition XML Schema</a></li>
+  <ul>
+    <li><a href="06-index-cwmp-data-model-definition-xml-schema.html#sec:introduction-1">A.1 Introduction</a></li>
+    <ul>
+      <li><a href="06-index-cwmp-data-model-definition-xml-schema.html#sec:character-encoding-and-character-set">A.1.1 Character Encoding and Character Set</a></li>
+    </ul>
+    <li><a href="06-index-cwmp-data-model-definition-xml-schema.html#sec:normative-information">A.2 Normative Information</a></li>
+    <ul>
+      <li><a href="06-index-cwmp-data-model-definition-xml-schema.html#sec:importing-dm-instances">A.2.1 Importing DM Instances</a></li>
+      <li><a href="06-index-cwmp-data-model-definition-xml-schema.html#sec:descriptions">A.2.2 Descriptions</a></li>
+      <li><a href="06-index-cwmp-data-model-definition-xml-schema.html#sec:data-types">A.2.3 Data Types</a></li>
+      <li><a href="06-index-cwmp-data-model-definition-xml-schema.html#sec:glossary-abbreviations-bibliography-and-templates">A.2.4 Glossary, Abbreviations, Bibliography and Templates</a></li>
+      <li><a href="06-index-cwmp-data-model-definition-xml-schema.html#sec:components">A.2.5 Components</a></li>
+      <li><a href="06-index-cwmp-data-model-definition-xml-schema.html#sec:root-and-service-objects">A.2.6 Root and Service Objects</a></li>
+      <li><a href="06-index-cwmp-data-model-definition-xml-schema.html#sec:parameters">A.2.7 Parameters</a></li>
+      <li><a href="06-index-cwmp-data-model-definition-xml-schema.html#sec:commands-usp-only">A.2.8 Commands (USP Only)</a></li>
+      <li><a href="06-index-cwmp-data-model-definition-xml-schema.html#sec:events-usp-only">A.2.9 Events (USP Only)</a></li>
+      <li><a href="06-index-cwmp-data-model-definition-xml-schema.html#sec:objects">A.2.10 Objects</a></li>
+      <li><a href="06-index-cwmp-data-model-definition-xml-schema.html#sec:profiles-1">A.2.11 Profiles</a></li>
+      <li><a href="06-index-cwmp-data-model-definition-xml-schema.html#sec:modifications">A.2.12 Modifications</a></li>
+    </ul>
+    <li><a href="06-index-cwmp-data-model-definition-xml-schema.html#sec:dm-schema">A.3 DM Schema</a></li>
+  </ul>
+  <li><a href="07-index-cwmp-device-type-xml-schema.html#sec:cwmp-device-type-xml-schema">Annex B: CWMP Device Type XML Schema</a></li>
+  <ul>
+    <li><a href="07-index-cwmp-device-type-xml-schema.html#sec:introduction-2">B.1 Introduction</a></li>
+    <li><a href="07-index-cwmp-device-type-xml-schema.html#sec:normative-information-1">B.2 Normative Information</a></li>
+    <ul>
+      <li><a href="07-index-cwmp-device-type-xml-schema.html#sec:importing-dm-instances-1">B.2.1 Importing DM Instances</a></li>
+      <li><a href="07-index-cwmp-device-type-xml-schema.html#sec:features">B.2.2 Features</a></li>
+    </ul>
+    <li><a href="07-index-cwmp-device-type-xml-schema.html#sec:dt-schema">B.3 DT Schema</a></li>
+  </ul>
+  <li><a href="08-index-requirements-for-bbf-standard-data-models.html#sec:requirements-for-bbf-standard-data-models">Annex C: Requirements for BBF Standard Data Models</a></li>
+  <ul>
+    <li><a href="08-index-requirements-for-bbf-standard-data-models.html#sec:introduction-3">C.1 Introduction</a></li>
+    <li><a href="08-index-requirements-for-bbf-standard-data-models.html#sec:character-encoding-and-character-set-1">C.2 Character Encoding and Character Set</a></li>
+    <li><a href="08-index-requirements-for-bbf-standard-data-models.html#sec:xml-usage">C.3 XML Usage</a></li>
+    <ul>
+      <li><a href="08-index-requirements-for-bbf-standard-data-models.html#sec:data-model-item-names">C.3.1 Data Model Item Names</a></li>
+      <li><a href="08-index-requirements-for-bbf-standard-data-models.html#sec:dm-and-dmr-schema-versions">C.3.2 DM and DMR Schema Versions</a></li>
+      <li><a href="08-index-requirements-for-bbf-standard-data-models.html#sec:schemalocation-attribute">C.3.3 SchemaLocation Attribute</a></li>
+      <li><a href="08-index-requirements-for-bbf-standard-data-models.html#sec:spec-attribute">C.3.4 Spec Attribute</a></li>
+      <li><a href="08-index-requirements-for-bbf-standard-data-models.html#sec:file-attribute">C.3.5 File Attribute</a></li>
+      <li><a href="08-index-requirements-for-bbf-standard-data-models.html#sec:import-element">C.3.6 Import Element</a></li>
+      <li><a href="08-index-requirements-for-bbf-standard-data-models.html#sec:bibliography-reference-element">C.3.7 Bibliography Reference Element</a></li>
+      <li><a href="08-index-requirements-for-bbf-standard-data-models.html#sec:general-formatting">C.3.8 General Formatting</a></li>
+    </ul>
+    <li><a href="08-index-requirements-for-bbf-standard-data-models.html#sec:initial-xml-comment-formatting">C.4 Initial XML Comment Formatting</a></li>
+    <ul>
+      <li><a href="08-index-requirements-for-bbf-standard-data-models.html#sec:one-line-summary">C.4.1 One-line Summary</a></li>
+      <li><a href="08-index-requirements-for-bbf-standard-data-models.html#sec:summary-section">C.4.2 Summary Section</a></li>
+    </ul>
+  </ul>
+  <li><a href="09-index-html-data-model-reports.html#sec:html-data-model-reports">Appendix I: HTML Data Model Reports</a></li>
+  <ul>
+    <li><a href="09-index-html-data-model-reports.html#sec:introduction-4">I.1 Introduction</a></li>
+    <li><a href="09-index-html-data-model-reports.html#sec:report-types">I.2 Report Types</a></li>
+    <li><a href="09-index-html-data-model-reports.html#sec:report-layout">I.3 Report Layout</a></li>
+    <li><a href="09-index-html-data-model-reports.html#sec:data-model-definition">I.4 Data Model Definition</a></li>
+  </ul>
+</ul>
+</nav>
+
+    <header id="title-block-header">
+      <h1 class="title" id="sec:architecture">2 Architecture<a href="#sec:architecture" class="headerlink" title="Permalink to this header"> <img src="permalink.png" style="width: 0.8em"/></a></h1>
+    </header>
+    <nav id="_TOC" role="doc-toc">
+<ul>
+<li><a href="#sec:data-hierarchy">2.1 Data Hierarchy <span><img src="permalink.png" style="width:0.8em" /></span></a>
+<ul>
+<li><a href="#sec:data-hierarchy-requirements">2.1.1 Data Hierarchy Requirements <span><img src="permalink.png" style="width:0.8em" /></span></a></li>
+<li><a href="#sec:the-supported-data-model-and-the-instantiated-data-model">2.1.2 The Supported Data Model and the Instantiated Data Model <span><img src="permalink.png" style="width:0.8em" /></span></a></li>
+</ul></li>
+<li><a href="#sec:object-versioning">2.2 Object Versioning <span><img src="permalink.png" style="width:0.8em" /></span></a>
+<ul>
+<li><a href="#sec:requirements-for-compatible-versions">2.2.1 Requirements for Compatible Versions <span><img src="permalink.png" style="width:0.8em" /></span></a></li>
+<li><a href="#sec:version-notation">2.2.2 Version Notation <span><img src="permalink.png" style="width:0.8em" /></span></a></li>
+</ul></li>
+<li><a href="#sec:profiles">2.3 Profiles <span><img src="permalink.png" style="width:0.8em" /></span></a>
+<ul>
+<li><a href="#sec:scope-of-profiles">2.3.1 Scope of Profiles <span><img src="permalink.png" style="width:0.8em" /></span></a></li>
+<li><a href="#sec:multiple-profile-support">2.3.2 Multiple Profile Support <span><img src="permalink.png" style="width:0.8em" /></span></a></li>
+<li><a href="#sec:profile-versions">2.3.3 Profile Versions <span><img src="permalink.png" style="width:0.8em" /></span></a></li>
+<li><a href="#sec:baseline-profiles">2.3.4 Baseline Profiles <span><img src="permalink.png" style="width:0.8em" /></span></a></li>
+<li><a href="#sec:types-of-requirements-in-a-profile">2.3.5 Types of Requirements in a Profile <span><img src="permalink.png" style="width:0.8em" /></span></a></li>
+</ul></li>
+<li><a href="#sec:deprecated-and-obsoleted-items">2.4 DEPRECATED and OBSOLETED Items <span><img src="permalink.png" style="width:0.8em" /></span></a>
+<ul>
+<li><a href="#sec:requirements-for-deprecated-items">2.4.1 Requirements for DEPRECATED Items <span><img src="permalink.png" style="width:0.8em" /></span></a></li>
+<li><a href="#sec:requirements-for-obsoleted-items">2.4.2 Requirements for OBSOLETED Items <span><img src="permalink.png" style="width:0.8em" /></span></a></li>
+</ul></li>
+</ul>
+    </nav>
+<p>All elements described hereunder apply to both CWMP and USP, unless specifically mentioned otherwise.</p>
+<h2 id="sec:data-hierarchy">2.1 Data Hierarchy <a href="03-index-architecture.html#sec:data-hierarchy" class="headerlink" title="Permalink to this header"><img src="permalink.png" style="width:0.8em" /></a></h2>
+<p>The data model for a Agent will follow a common set of structural requirements. The detailed structure depends on the nature of the Agent.</p>
+<p>An Agent’s data model will always have a single Root Object, which will be called “Device.”.</p>
+<p>The Root Object contains three types of sub-elements: the Objects defined in TR-181i2 <span class="cite" data-citation-ids="TR-181i2"><a href="05-index-normative-references.html#ref-TR-181i2">[3]</a></span>, Components defined in TR-181i2 or other specifications such as TR-143 <span class="cite" data-citation-ids="TR-143"><a href="05-index-normative-references.html#ref-TR-143">[6]</a></span>, and a single “Services” object that contains all Service Objects associated with specific services.</p>
+<p>A single Agent might include more than one Service Object. For example, a device that serves both as a VoIP endpoint and a game device, might include both VoIP-specific and game-specific Service Objects.</p>
+<p>A single Agent might also include more than one instance of the same type of Service Object. An example of when this might be appropriate is an Agent that provides an instance of the TR-140 <span class="cite" data-citation-ids="TR-140"><a href="05-index-normative-references.html#ref-TR-140">[7]</a></span> StorageService for each of the device’s attached disks.</p>
+<h3 id="sec:data-hierarchy-requirements">2.1.1 Data Hierarchy Requirements <a href="03-index-architecture.html#sec:data-hierarchy-requirements" class="headerlink" title="Permalink to this header"><img src="permalink.png" style="width:0.8em" /></a></h3>
+<p>A CWMP or USP data model MUST adhere to the following structural requirements:</p>
+<ol>
+<li><p>A root data model definition MUST contain exactly one Root Object, called “Device.”.</p></li>
+<li><p>A Root Object definition MUST contain exactly one “Services.” object.</p></li>
+<li><p>A service data model definition MUST define an object hierarchy that starts just under the “Device.Services.” object.</p></li>
+<li><p>For each Multi-Instance Object defined, a data model MUST also define a corresponding parameter indicating the number of instances of the Multi-Instance Object. The name of this parameter MUST be the name of the object concatenated with “NumberOfEntries”. This parameter MUST appear in the same object as the Multi-Instance Object it is related to.</p></li>
+</ol>
+<p>Formally, the top level of the data hierarchy is defined as follows:</p>
+<pre><code>    Element = &quot;Device&quot;
+            | &quot;Device.&quot; TR-181DeviceObject
+            | &quot;Device.Services.&quot; ServiceObject &quot;NumberOfEntries&quot;
+            | &quot;Device.Services.&quot; ServiceObject &quot;.{i}&quot;
+
+    TR-181DeviceObject = // As defined in TR-181i2, e.g. &quot;UserInterface&quot; or &quot;ManagementServer&quot;
+
+    ServiceObject = // As defined in other specs, e.g. TR-140</code></pre>
+<h3 id="sec:the-supported-data-model-and-the-instantiated-data-model">2.1.2 The Supported Data Model and the Instantiated Data Model <a href="03-index-architecture.html#sec:the-supported-data-model-and-the-instantiated-data-model" class="headerlink" title="Permalink to this header"><img src="permalink.png" style="width:0.8em" /></a></h3>
+<p>There is a distinction between an Agent’s Supported Data Model and its Instantiated Data Model.</p>
+<ul>
+<li><p>The Supported Data Model is those Objects and/or Parameters that have code support in the Agent.</p></li>
+<li><p>The Instantiated Data Model is those Object instances and/or Parameters that currently exist.</p></li>
+</ul>
+<p>TR-181i2 <span class="cite" data-citation-ids="TR-181i2"><a href="05-index-normative-references.html#ref-TR-181i2">[3]</a></span> defines a SupportedDataModel Object that allows an Agent to indicate its Supported Data Model to a Controller, which assists the Controller in managing that device.</p>
+<p>The SupportedDataModel object has the following properties:</p>
+<ol>
+<li><p>It contains a list of URLs, each of which allows the Controller to determine details of part of the Supported Data Model.</p></li>
+<li><p>When the Supported Data Model changes, e.g. because software is loaded or unloaded, entries are added to or removed from this list of URLs.</p></li>
+</ol>
+<p>This object is not used with USP. TR-369 <span class="cite" data-citation-ids="TR-369"><a href="05-index-normative-references.html#ref-TR-369">[2]</a></span> defines the GetSupportedDM message to provide this information.</p>
+<h2 id="sec:object-versioning">2.2 Object Versioning <a href="03-index-architecture.html#sec:object-versioning" class="headerlink" title="Permalink to this header"><img src="permalink.png" style="width:0.8em" /></a></h2>
+<p>To allow the definition of a Service Object or Root Object to change over time, the definition of a Service Object or Root Object MUST have an explicitly specified version.</p>
+<p>Version numbering of Service Objects and Root Objects is defined to use a major/minor version numbering convention. The object version is defined as a pair of integers, where one integer represents the major version, and the second integer represents the minor version. The version MUST be written with the two integers separated by a dot (Major.Minor).</p>
+<p>The first version of a given object SHOULD be defined as version “1.0”.</p>
+<p>For each subsequent version of the object, if the later version is compatible with the previous version, then the major version SHOULD remain unchanged, and the minor version SHOULD be incremented by one. For example, the next compatible version after “2.17” would be “2.18”. The requirements for a version to be considered compatible with an earlier version are described in <a href="03-index-architecture.html#sec:requirements-for-compatible-versions" class="heading">Section 2.2.1</a>.</p>
+<p>For each subsequent version of the object, if the later version is not compatible with the previous version, then the major version MUST increment by one, and the minor version MAY reset back to zero. For example, the next incompatible version after “2.17” might be “3.0”.</p>
+<h3 id="sec:requirements-for-compatible-versions">2.2.1 Requirements for Compatible Versions <a href="03-index-architecture.html#sec:requirements-for-compatible-versions" class="headerlink" title="Permalink to this header"><img src="permalink.png" style="width:0.8em" /></a></h3>
+<p>For one version of an object to be considered compatible with another version, the later version MUST be a strict superset of the earlier version. Using major/minor versioning, this requirement applies only between minor versions that share the same major version.</p>
+<p>More specifically, this requires the following of the later version with respect to all earlier versions to which it is to be compatible:</p>
+<ul>
+<li><p>The later version MAY add objects and parameters not previously in any earlier version, but MUST NOT remove objects or parameters already defined in earlier versions.</p></li>
+<li><p>The later version MUST NOT modify the definition of any parameter or object already defined in an earlier version (unless the original definition was clearly in error and has to be modified as an erratum or clarified through a corrigendum process).</p></li>
+<li><p>The later version MUST NOT require any of the objects or parameters that have been added since the earliest compatible version to be explicitly operated upon by the Controller to ensure proper operation of the device (except those functions specifically associated with functionality added in later versions). That is, the later version will accommodate a Controller that knows nothing of elements added in later versions.</p></li>
+</ul>
+<p>The goal of the above definition of compatibility is intended to ensure bi-directional compatibility between a Controller and Agent. Specifically that:</p>
+<ul>
+<li><p>If a Controller supports only an earlier version of an object as compared to the version supported by the Agent, the Controller can successfully manage that object in the Agent as if it were the earlier version.</p></li>
+<li><p>If an Agent supports only an earlier version of an object as compared to the version supported by a Controller, the Controller can successfully manage that object in the Agent as if it were the later version (without support for new components defined only in later versions).</p></li>
+</ul>
+<h3 id="sec:version-notation">2.2.2 Version Notation <a href="03-index-architecture.html#sec:version-notation" class="headerlink" title="Permalink to this header"><img src="permalink.png" style="width:0.8em" /></a></h3>
+<p>For objects, the following notation is defined to identify specific versions:</p>
+<table>
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 51%" />
+<col style="width: 18%" />
+</colgroup>
+<thead>
+<tr class="header header">
+<th style="text-align: left;">Notation</th>
+<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd odd">
+<td style="text-align: left;">ObjectName:Major.Minor</td>
+<td style="text-align: left;">Refers to a specific version of the object.</td>
+<td style="text-align: left;">Device:2.0</td>
+</tr>
+<tr class="even even">
+<td style="text-align: left;">ObjectName:Major</td>
+<td style="text-align: left;">Refers to any minor version of the object with the specified major version.</td>
+<td style="text-align: left;">Device:2</td>
+</tr>
+<tr class="odd odd">
+<td style="text-align: left;">ObjectName</td>
+<td style="text-align: left;">Refers to any version of the object.</td>
+<td style="text-align: left;">Device</td>
+</tr>
+</tbody>
+</table>
+<p>Note that the version notation defined here is <em>only</em> to be used for purposes of documentation. The actual names of objects and parameters in the data model MUST NOT include version numbers.</p>
+<h2 id="sec:profiles">2.3 Profiles <a href="03-index-architecture.html#sec:profiles" class="headerlink" title="Permalink to this header"><img src="permalink.png" style="width:0.8em" /></a></h2>
+<p>Note: Originally, profiles were seen as a means of limiting the variability that a Controller needs to accommodate among various devices that it might manage. This feature is now provided:</p>
+<ul>
+<li><p>For CWMP, by the TR-181i2 <span class="cite" data-citation-ids="TR-181i2"><a href="05-index-normative-references.html#ref-TR-181i2">[3]</a></span> SupportedDataModel object (see <a href="03-index-architecture.html#sec:the-supported-data-model-and-the-instantiated-data-model" class="heading">Section 2.1.2</a>) and associated Device Type XML documents (DT Instances).</p></li>
+<li><p>For USP, by the TR-369 <span class="cite" data-citation-ids="TR-369"><a href="05-index-normative-references.html#ref-TR-369">[2]</a></span> GetSupportedDM message.</p></li>
+</ul>
+<p>A profile is a named collection of requirements associated with a given object. An Agent can adhere to zero or more profiles. Adherence to a profile means that the Agent supports all of the requirements defined by that profile. The use of profiles gives Service Providers a shorthand means of specifying data model support requirements.</p>
+<p>The following sections define the conventions to be used when defining profiles associated with Data Models.</p>
+<h3 id="sec:scope-of-profiles">2.3.1 Scope of Profiles <a href="03-index-architecture.html#sec:scope-of-profiles" class="headerlink" title="Permalink to this header"><img src="permalink.png" style="width:0.8em" /></a></h3>
+<p>A given profile is defined only in the context of a specific Service Object or Root Object with a specific major version. For each profile definition, the specific object name and major version to which the profile is to apply MUST be explicitly identified.</p>
+<p>A profile’s name MUST be unique among profiles defined for the same object and major version, but a name MAY be reused to define a different profile for a distinct combination of object name and major version. For example, if we define profile “A” associated with object “X:2” (major version 2 of object X), the same name “A” might be used to define a different profile for object “Y:1” or for object “X:3”.</p>
+<p>A given profile is defined in association with a minimum minor version of a given object. The minimum REQUIRED version of an object is the minimum version that includes all of the REQUIRED elements defined by the profile. For each profile definition, the specific minimum version MUST be explicitly identified.</p>
+<h3 id="sec:multiple-profile-support">2.3.2 Multiple Profile Support <a href="03-index-architecture.html#sec:multiple-profile-support" class="headerlink" title="Permalink to this header"><img src="permalink.png" style="width:0.8em" /></a></h3>
+<p>For a given type of Service Object or Root Object, multiple profiles MAY be defined. Profiles MAY be defined that have either independent or overlapping requirements.</p>
+<h3 id="sec:profile-versions">2.3.3 Profile Versions <a href="03-index-architecture.html#sec:profile-versions" class="headerlink" title="Permalink to this header"><img src="permalink.png" style="width:0.8em" /></a></h3>
+<p>To allow the definition of a profile to change over time, the definition of every profile MUST have an associated version number.</p>
+<p>Version numbering of profiles is defined to use a minor-only version numbering convention. That is, for a given profile name, each successive version MUST be compatible with all earlier versions. Any incompatible change to a profile MUST use a different profile name.</p>
+<p>For one version of a profile to be considered compatible with another version, the later version MUST be a strict superset of the earlier version. This requires the following of the later version with respect to all earlier versions to which it is to be compatible:</p>
+<ul>
+<li><p>The later version MAY add requirements that were not in earlier versions of the profile, but MUST NOT remove requirements.</p></li>
+<li><p>The later version MAY remove one or more conditions that had previously been placed on a requirement. For example, if a previous profile REQUIRED X only if condition A was True, then the later profile might require X unconditionally.</p></li>
+</ul>
+<p>For profiles, the following notation is defined to identify specific versions:</p>
+<table>
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 51%" />
+<col style="width: 18%" />
+</colgroup>
+<thead>
+<tr class="header header">
+<th style="text-align: left;">Notation</th>
+<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd odd">
+<td style="text-align: left;">ProfileName:Version</td>
+<td style="text-align: left;">Refers to a specific version of the profile.</td>
+<td style="text-align: left;">Baseline:1</td>
+</tr>
+<tr class="even even">
+<td style="text-align: left;">ProfileName</td>
+<td style="text-align: left;">Refers to any version of the profile.</td>
+<td style="text-align: left;">Baseline</td>
+</tr>
+</tbody>
+</table>
+<p>ProfileName MUST start with a letter or underscore, and subsequent characters MUST be letters, digits, underscores or hyphens. The terms “letter” and “digit” are as defined in the XML specification <span class="cite" data-citation-ids="XML"><a href="05-index-normative-references.html#ref-XML">[Appendix B/8]</a></span>.</p>
+<p>Hyphens can easily be confused with the discretionary hyphens that are sometimes inserted by hyphenation algorithms. For this reason, ProfileName SHOULD NOT include any hyphens. In BBF standards, ProfileName will always start with an upper-case letter (or an underscore for an internal profile) and will never include any hyphens (see <a href="08-index-requirements-for-bbf-standard-data-models.html#sec:data-model-item-names" class="heading">C.3.1</a> for the corresponding normative requirement).</p>
+<h3 id="sec:baseline-profiles">2.3.4 Baseline Profiles <a href="03-index-architecture.html#sec:baseline-profiles" class="headerlink" title="Permalink to this header"><img src="permalink.png" style="width:0.8em" /></a></h3>
+<p>For every Service Object (and Root Object) there SHOULD be at least one profile defined. In many cases it is desirable to define a Baseline profile that indicates the minimum requirements REQUIRED for any device that supports that Object.</p>
+<h3 id="sec:types-of-requirements-in-a-profile">2.3.5 Types of Requirements in a Profile <a href="03-index-architecture.html#sec:types-of-requirements-in-a-profile" class="headerlink" title="Permalink to this header"><img src="permalink.png" style="width:0.8em" /></a></h3>
+<p>Because a profile is defined within the context of a single Object (and major version), all of the requirements associated with the profile MUST be specific to the data model associated with that object.</p>
+<p>Profile requirements can include any of the following types of requirements associated with an Object’s data model:</p>
+<ul>
+<li><p>A requirement for read support of a Parameter.</p></li>
+<li><p>A requirement for write support of a Parameter.</p></li>
+<li><p>A requirement for support of a Command.</p></li>
+<li><p>A requirement for support of a sub-Object contained within the overall Object.</p></li>
+<li><p>A requirement for the ability to add or remove instances of a sub-Object.</p></li>
+<li><p>A requirement to support active notification for a Parameter.</p></li>
+<li><p>A requirement to support access control for a given Parameter.</p></li>
+</ul>
+<p>For each of the requirement categories listed above, a profile can define the requirement unconditionally, or can place one or more conditions on the requirement. For example, a profile might require that a Parameter be supported for reading only if the device supports some other Parameter or Object (one that is not itself REQUIRED by the profile). Such conditions will be directly related to the data model of the overall object associated with the profile.</p>
+<p>Because a device has to be able to support multiple profiles, all profiles MUST be defined such that they are non-contradictory. As a result, profiles MUST only define minimum requirements to be met, and MUST NOT specify negative requirements. That is, profiles will not include requirements that specify something that is not to be supported by the device, or requirements that exclude a range of values.</p>
+<h2 id="sec:deprecated-and-obsoleted-items">2.4 DEPRECATED and OBSOLETED Items <a href="03-index-architecture.html#sec:deprecated-and-obsoleted-items" class="headerlink" title="Permalink to this header"><img src="permalink.png" style="width:0.8em" /></a></h2>
+<p>The key word “DEPRECATED” in a data model definition is to be interpreted as follows: This term refers to an object, parameter or parameter value that is defined in the current version of the standard but is meaningless, inappropriate, or otherwise unnecessary. It is intended that such objects, parameters or parameter values will be removed from the next major version of the data model. Requirements on how to interpret or implement deprecated objects, parameters or parameter values are given below. For more information on how to interpret or implement specific deprecated objects, parameters or parameter values, refer to the definition of the object or parameter.</p>
+<p>The key word “OBSOLETED” in a data model definition is to be interpreted as follows: This term refers to an object, parameter or parameter value that meets the requirements for being deprecated, and in addition is obsolete. Such objects, parameters or parameter values can be removed from a later minor version of a data model, or from a later version of a profile, without this being regarded as breaking backwards compatibility rules. Requirements on how to interpret or implement obsoleted objects, parameters or parameter values are given below. For more information on how to interpret or implement specific obsoleted objects, parameters or parameter values, refer to the definition of the object or parameter.</p>
+<p>If any items within a profile are DEPRECATED or OBSOLETED, then the profile MUST be (correspondingly) DEPRECATED or OBSOLETED, and it will be necessary to define a new profile version that omits any DEPRECATED or OBSOLETED items.</p>
+<h3 id="sec:requirements-for-deprecated-items">2.4.1 Requirements for DEPRECATED Items <a href="03-index-architecture.html#sec:requirements-for-deprecated-items" class="headerlink" title="Permalink to this header"><img src="permalink.png" style="width:0.8em" /></a></h3>
+<p>This section defines requirements that apply to all DEPRECATED objects, parameters and parameter values unless specifically overridden by the object or parameter definition.</p>
+<p>Data model requirements:</p>
+<ol>
+<li><p>The definition of a DEPRECATED parameter, object or parameter value MUST include an explanation of why the item is deprecated.</p></li>
+<li><p>The definition of a DEPRECATED parameter, object or parameter value MAY specify further requirements relating to the item; such requirements MAY override general Agent or Controller requirements regarding DEPRECATED elements specified in TR-069 <span class="cite" data-citation-ids="TR-069"><a href="05-index-normative-references.html#ref-TR-069">[1]</a></span> or TR-369 <span class="cite" data-citation-ids="TR-369"><a href="05-index-normative-references.html#ref-TR-369">[2]</a></span>.</p></li>
+</ol>
+<p>Agent requirements:</p>
+<ol>
+<li><p>A DEPRECATED parameter MUST have a value which is valid for its data type and fulfils any range (for numeric parameters), length (for string, base64 or hexBinary parameters) and enumerated value (for string parameters) requirements.</p></li>
+<li><p>Detailed behavioral requirements for a DEPRECATED parameter, e.g. that its value is a unique key, MAY be ignored by the Agent.</p></li>
+<li><p>The Agent MUST, if such operations are permitted by the data model definition, permit creation of DEPRECATED objects, modification of DEPRECATED parameters, and setting of DEPRECATED parameter values. However, it MAY choose not to apply such changes to its operational state.</p></li>
+<li><p>Regardless of whether DEPRECATED changes are applied to the Agent’s operational state, a read of a DEPRECATED writable parameter SHOULD return the value that was last written, i.e. the Agent is expected to store the value even if it chooses not to apply it to its operational state.</p></li>
+<li><p>The Agent MAY reject an attempt by a Controller to set any parameter to a DEPRECATED value.</p></li>
+</ol>
+<p>Controller requirements:</p>
+<ol>
+<li><p>The Controller SHOULD NOT create DEPRECATED objects, modify DEPRECATED parameters, or set DEPRECATED parameter values.</p></li>
+<li><p>The Controller SHOULD ignore DEPRECATED objects, parameters and parameter values.</p></li>
+<li><p>The Controller SHOULD NOT set a DEPRECATED parameter to a value that is invalid for its data type or fails to fulfill any range (for numeric parameters), length (for string, base64 or hexBinary parameters) or enumerated value (for string parameters) requirements.</p></li>
+<li><p>The Controller SHOULD NOT set any parameter to a DEPRECATED value.</p></li>
+</ol>
+<h3 id="sec:requirements-for-obsoleted-items">2.4.2 Requirements for OBSOLETED Items <a href="03-index-architecture.html#sec:requirements-for-obsoleted-items" class="headerlink" title="Permalink to this header"><img src="permalink.png" style="width:0.8em" /></a></h3>
+<p>This section defines requirements that apply to all OBSOLETED objects, parameters or parameter values unless specifically overridden by the object or parameter definition.</p>
+<p>An OBSOLETED object, parameter or parameter value MUST meet all the requirements of the previous section. In addition, the following requirements apply.</p>
+<ol>
+<li><p>An OBSOLETED object, parameter or parameter value MAY be removed from a later minor version of a data model without this being regarded as breaking backwards compatibility rules.</p></li>
+<li><p>An OBSOLETED object, parameter or parameter value MUST NOT be removed from the current version of a profile, but MAY be removed from a later version of a profile without this being regarded as breaking backwards compatibility rules.</p></li>
+<li><p>A data model definition MUST include a list of those OBSOLETED objects, parameters or parameter values that have been removed from the data model or from its profiles. This is to prevent future namespace conflicts.</p></li>
+</ol>
+    <div style="clear: both;"/>
+    <footer class="site-footer">
+<nav>
+<p>
+   <a href="00-index-contents.html#contents">Cover Page</a>
+ | <a href="01-index-executive-summary.html#sec:executive-summary">Executive Summary</a>
+ | <a href="02-index-introduction.html#sec:introduction">1 Introduction</a>
+ | <a href="03-index-architecture.html#sec:architecture">2 Architecture</a>
+ | <a href="04-index-object-definitions.html#sec:object-definitions">3 Object Definitions</a>
+ | <a href="05-index-normative-references.html#sec:normative-references">4 Normative References</a>
+ | <a href="06-index-cwmp-data-model-definition-xml-schema.html#sec:cwmp-data-model-definition-xml-schema">Annex A: CWMP Data Model Definition XML Schema</a>
+ | <a href="07-index-cwmp-device-type-xml-schema.html#sec:cwmp-device-type-xml-schema">Annex B: CWMP Device Type XML Schema</a>
+ | <a href="08-index-requirements-for-bbf-standard-data-models.html#sec:requirements-for-bbf-standard-data-models">Annex C: Requirements for BBF Standard Data Models</a>
+ | <a href="09-index-html-data-model-reports.html#sec:html-data-model-reports">Appendix I: HTML Data Model Reports</a>
+</p>
+</nav>
+
+      <span class="site-footer-owner">
+        WT-106 is developed and maintained
+        by <a href="https://www.broadband-forum.org">The Broadband Forum</a>.
+        &copy; The Broadband Forum 2021</a>. All Rights Reserved.
+      </span>
+      <span class="site-footer-credits">
+        This page was generated by <a href="https://pandoc.org">pandoc</a>
+        and <a href="https://pages.github.com">GitHub Pages</a>.
+        View the <a href="https://github.com/BroadbandForum/data-model-template">specification source on GitHub</a>.
+        <span class="release"/>
+      </span>
+    </footer>
+  </section>
+</body>
+</html>

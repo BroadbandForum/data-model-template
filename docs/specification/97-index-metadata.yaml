@@ -1,0 +1,294 @@
+PYTHONDIR: '../../install/python/'
+ROOTDIR: '..'
+analyticstag: ''
+author: []
+autoSectionLabels: true
+bbfCertProductType: '<strong>&lt;type of product&gt;</strong>'
+bbfCertProgram: '<strong>&lt;BBF.NNN&gt;</strong>'
+bbfContrib: ''
+bbfEditors: 'William Lupton, Broadband Forum'
+bbfEditorsSpec: 
+  before: '<h3 class="unnumbered unlisted" id="editors">Editors<a class="headerlink" href="#editors" title="Permalink to this header"> <img src=''permalink.png'' title='''' width="0.8em"/></a></h3>'
+  optional: true
+bbfIssue: Issue
+bbfMonth: TBD
+bbfNumber: 'WT-106'
+bbfPSLsSpec: 
+  before: '<h3 class="unnumbered unlisted" id="bbfprojectstream-project-stream-leaders"> Project Stream Leader(s)<a class="headerlink" href="#bbfprojectstream-project-stream-leaders" title="Permalink to this header"> <img src=''permalink.png'' title='''' width="0.8em"/></a></h3>'
+  optional: true
+bbfProjectStream: ''
+bbfRevisionHistory: 
+  - approval: 'September 2005'
+    changes: Original
+    editors: '<p>Jeff Bernstein, 2Wire<br/>Christele Bouchat, Alcatel<br/>Tim Spets, Westell</p>'
+    number: 'Issue 1'
+  - approval: 'November 2006'
+    changes: 'Clarification of original document'
+    editors: '<p>Jeff Bernstein, 2Wire<br/>John Blackford, 2Wire<br/>Mike Digdon, SupportSoft<br/>Heather Kirksey, Motive<br/>William Lupton, 2Wire<br/>Anton Okmianski, Cisco</p>'
+    number: '<a href=''https://www.broadband-forum.org/download/TR-106_Amendment-1.pdf'' title=''''>Issue 1 Amendment 1</a>'
+  - approval: 'November 2008'
+    changes: 'Addition of data model definition XML Schema and normative XML common object and component definitions'
+    editors: '<p>William Lupton, 2Wire<br/>Håkan Westin, Tilgin</p>'
+    number: '<a href=''https://www.broadband-forum.org/download/TR-106_Amendment-2.pdf'' title=''''>Issue 1 Amendment 2</a>'
+  - approval: 'September 2009'
+    changes: 'Addition of device type XML Schema'
+    editors: '<p>William Lupton, 2Wire<br/>Håkan Westin, Tilgin</p>'
+    number: '<a href=''https://www.broadband-forum.org/download/TR-106_Amendment-3.pdf'' title=''''>Issue 1 Amendment 3</a>'
+  - approval: 'February 2010'
+    changes: 'Moved data model definitions to TR-181 Issue 1'
+    editors: '<p>William Lupton, 2Wire<br/>Paul Sigurdson, Broadband Forum</p>'
+    number: '<a href=''https://www.broadband-forum.org/download/TR-106_Amendment-4.pdf'' title=''''>Issue 1 Amendment 4</a>'
+  - approval: 'November 2010'
+    changes: '<p>Replaced definitions of named data types such as IPAddress with references to normative XML.<br/>Minor changes to DM Schema (v1.3) and DT Schema (v1.1).</p>'
+    editors: 'Paul Sigurdson, Broadband Forum'
+    number: '<a href=''https://www.broadband-forum.org/download/TR-106_Amendment-5.pdf'' title=''''>Issue 1 Amendment 5</a>'
+  - approval: 'July 2011'
+    changes: '<p>Removed definition of proxying, now defined in TR-069.<br/>Removed Common objects.<br/>Alias Parameter Requirements added.</p>'
+    editors: '<p>Sarah Banks, Cisco<br/>Andrea Colmegna, FASTWEB<br/>Tim Spets, Motorola Mobility</p>'
+    number: '<a href=''https://www.broadband-forum.org/download/TR-106_Amendment-6.pdf'' title=''''>Issue 1 Amendment 6</a>'
+  - approval: 'September 2013'
+    changes: '<p>Added descriptions of new features in DM Schema (v1.4 &amp; v1.5) and DT Schema (v1.2 &amp; v1.3).<br/>Added Annex defining additional requirements for BBF standard data models.</p>'
+    editors: 'William Lupton, Cisco'
+    number: '<a href=''https://www.broadband-forum.org/download/TR-106_Amendment-7.pdf'' title=''''>Issue 1 Amendment 7</a>'
+    publication: '7 October 2013'
+  - approval: '16 March 2018'
+    changes: '<p>Added support of USP (mountable objects).<br/>Removed references to obsolete data models.<br/>Moved device requirements to TR-069.</p>'
+    editors: '<p>Jean-Didier Ott, Orange<br/>William Lupton, Broadband Forum</p>'
+    number: '<a href=''https://www.broadband-forum.org/download/TR-106_Amendment-8.pdf'' title=''''>Issue 1 Amendment 8</a>'
+    publication: '10 May 2018'
+  - changes: '<p>Schema updates; document not updated.</p>'
+    number: 'Issue 1 Amendment 9'
+  - approval: '5 November 2020'
+    changes: '<p>Converted document to markdown.<br/>Various editorial improvements.</p>'
+    editors: '<p>William Lupton, Broadband Forum</p>'
+    number: '<a href=''https://www.broadband-forum.org/download/TR-106_Amendment-10.pdf'' title=''''>Issue 1 Amendment 10</a>'
+    publication: '5 November 2020'
+  - approval: 'TBD 2021'
+    changes: '<p>Clarified forcedEnabled and forceDefaultEnabled for USP.<br/>Clarified impact of deprecating or obsoleting profile items.<br/>Documented new description templates.<br/>Documented new <code>secured</code> attribute.</p>'
+    editors: '<p>William Lupton, Broadband Forum</p>'
+    number: '<a href=''https://www.broadband-forum.org/download/TR-106_Amendment-11.pdf'' title=''''>Issue 1 Amendment 11</a>'
+    publication: 'TBD 2021'
+bbfRevisionHistorySpec: 
+  after: '<p>Comments or questions about this Broadband Forum Working Text should be directed to <a href=''mailto:info@broadband-forum.org'' title='''' class="email">info@broadband-forum.org</a>.</p>'
+  before: '<h3 class="unnumbered unlisted new-page" id="bbfissue-history">Issue History<a class="headerlink" href="#bbfissue-history" title="Permalink to this header"> <img src=''permalink.png'' title='''' width="0.8em"/></a></h3>'
+  headers: 
+    - 'Issue Number!!!'
+    - 'Approval Date!!!!'
+    - 'Publication Date!'
+    - 'Issue Editor!!!!!'
+    - 'Changes!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'
+  labels: 
+    - number
+    - approval
+    - publication
+    - editors
+    - changes
+  optional: true
+bbfStatus: 'Straw Ballot'
+bbfTitle: 'Data Model Template for CWMP Endpoints and USP Agents'
+bbfType: 'Working Text'
+bbfVersion: '1 Amendment 11'
+bbfWADs: 
+  - 'Jason Walls, QA Cafe'
+  - 'John Blackford, CommScope'
+bbfWADsSpec: 
+  title: '<h3 class="unnumbered unlisted" id="broadband-user-services-work-area-directors">Broadband User Services Work Area Director(s)<a class="headerlink" href="#broadband-user-services-work-area-directors" title="Permalink to this header"> <img src=''permalink.png'' title='''' width="0.8em"/></a></h3>'
+bbfWorkArea: ''
+bbfYear: 2021
+bibliography: 
+  - 'tr-069-biblio-csl.json'
+  - 'extra-ietf-biblio-csl.json'
+  - 'extra-w3c-biblio-csl.json'
+  - 'extra-misc-biblio-csl.json'
+buttons: 
+  - label: Specification
+    title: 'Data Model Template Specification (WT-106)'
+    url: '../specification/index.html'
+  - label: CWMP
+    url: 'https://www.broadband-forum.org/technical/download/TR-069.pdf'
+  - label: 'CWMP Data Models'
+    url: 'https://cwmp-data-models.broadband-forum.org'
+  - label: USP
+    url: 'https://usp.technology'
+  - label: 'USP Data Models'
+    url: 'https://usp-data-models.broadband-forum.org'
+  - label: Resources
+    title: 'Data Modeling Resources'
+    url: '../resources/01-index-data-modeling-resources.html'
+  - label: FAQ
+    title: 'Data Modeling Frequently Asked Questions'
+    url: '../faq/01-index-faq.html'
+  - label: HTML
+    title: 'Data Model Template Specification (WT-106) Single-file HTML'
+    url: '../specification/index.htm'
+  - label: PDF
+    title: 'Data Model Template Specification (WT-106) PDF'
+    url: '../specification/index.pdf'
+citation-style: '../../install/pandoc/csl/bbf.csl'
+copydate: 2021
+date: 'Issue Date: TBD 2021'
+description: 'WT-106 – Data Model Template for CWMP Endpoints and USP Agents: How to use the data model schema'
+doctitle: 'WT-106 – Data Model Template for CWMP Endpoints and USP Agents'
+faqurl: '../faq/01-index-faq.html'
+figPrefix: 
+  - Figure
+  - Figures
+ignore: true
+lastDelim: ' and '
+link-citations: true
+linkReferences: true
+lofTitle: '<h3 class="unnumbered unlisted" id="list-of-figures">List of Figures<a class="headerlink" href="#list-of-figures" title="Permalink to this header"> <img src=''permalink.png'' title='''' width="0.8em"/></a></h3>'
+lolTitle: '<h3 class="unnumbered unlisted" id="list-of-listings">List of Listings<a class="headerlink" href="#list-of-listings" title="Permalink to this header"> <img src=''permalink.png'' title='''' width="0.8em"/></a></h3>'
+lotTitle: '<h3 class="unnumbered unlisted" id="list-of-tables">List of Tables<a class="headerlink" href="#list-of-tables" title="Permalink to this header"> <img src=''permalink.png'' title='''' width="0.8em"/></a></h3>'
+myBaseURL: 'https://www.broadband-forum.org/download'
+nameInLink: true
+numberSections: true
+pairDelim: ' and '
+permalinkicon: '<img src=''permalink.png'' title='''' width="0.8em"/>'
+permalinkicon-url: 'permalink.png'
+permalinkicon-width: '0.8em'
+project: 'Data Model Template for CWMP Endpoints and USP Agents'
+reference-section-title: References
+references: 
+  - URL: 'https://tools.ietf.org/html/rfc2119'
+    call-number: 'RFC 2119'
+    id: RFC2119
+    issued: 
+      year: 1997
+    publisher: IETF
+    title: 'Key words for use in RFCs to Indicate Requirement Levels'
+  - URL: 'https://tools.ietf.org/html/rfc2648'
+    call-number: 'RFC 2648'
+    id: RFC2648
+    issued: 
+      year: 1999
+    publisher: IETF
+    title: 'A URN Namespace for IETF Documents'
+  - URL: 'https://tools.ietf.org/html/rfc3986'
+    call-number: 'RFC 3986'
+    id: RFC3986
+    issued: 
+      year: 2005
+    publisher: IETF
+    title: 'Uniform Resource Identifier (URI): Generic Syntax'
+  - URL: 'https://www.broadband-forum.org/technical/download/TR-069.pdf'
+    call-number: 'TR-069 Amendment 6 Corrigendum 1'
+    id: 'TR-069'
+    issued: 
+      year: 2020
+    publisher: 'Broadband Forum'
+    title: 'CPE WAN Management Protocol'
+  - URL: 'https://www.broadband-forum.org/technical/download/TR-140.pdf'
+    call-number: 'TR-140 Amendment 3'
+    id: 'TR-140'
+    issued: 
+      year: 2017
+    publisher: 'Broadband Forum'
+    title: 'TR-069 Data Model for Storage Service Enabled Devices'
+  - URL: 'https://www.broadband-forum.org/technical/download/TR-143.pdf'
+    call-number: 'TR-143 Amendment 1 Corrigendum 1'
+    id: 'TR-143'
+    issued: 
+      year: 2015
+    publisher: 'Broadband Forum'
+    title: 'Enabling Network Throughput Performance Tests and Statistical Monitoring'
+  - URL: 'https://usp-data-models.broadband-forum.org#Device:2'
+    call-number: 'TR-181 Issue 2'
+    id: 'TR-181i2'
+    publisher: 'Broadband Forum'
+    title: 'Device Data Model'
+  - URL: 'https://usp.technology/specification'
+    call-number: 'TR-369'
+    id: 'TR-369'
+    title: 'User Services Platform'
+  - URL: 'https://standards.ieee.org/faqs/OUI.html'
+    id: OUI
+    publisher: IEEE
+    title: 'Organizationally Unique Identifiers (OUIs)'
+  - URL: 'https://www.w3.org/TR/2000/NOTE-SOAP-20000508'
+    id: SOAP
+    issued: 
+      year: 2000
+    publisher: W3C
+    title: 'Simple Object Access Protocol (SOAP) 1.1'
+  - URL: 'https://www.w3.org/TR/REC-xml'
+    id: XML
+    issued: 
+      year: 2008
+    publisher: W3C
+    title: 'Extensible Markup Language (XML) 1.0 (Fourth Edition)'
+  - URL: 'https://www.w3.org/TR/xmlschema-0'
+    id: 'XML-Schema-Primer'
+    issued: 
+      year: 2004
+    publisher: W3C
+    title: 'XML Schema Part 0: Primer Second Edition'
+  - URL: 'https://www.w3.org/TR/xmlschema-2'
+    id: 'XML-Schema-Datatypes'
+    issued: 
+      year: 2004
+    publisher: W3C
+    title: 'XML Schema Part 2: Datatypes Second Edition'
+repodesc: 'specification source'
+reponame: 'data-model-template'
+resurl: '../resources/01-index-data-modeling-resources.html'
+secPrefix: 
+  - Section
+  - Sections
+sectionsDepth: '-1'
+shortname: 'WT-106'
+siteurl: '../index.html'
+status: ''
+subtitle: 'Issue: 1 Amendment 11 Straw Ballot <span class="release"></span>'
+tagline: 'How to use the data model schema'
+tblPrefix: 
+  - Table
+  - Tables
+theme-color: '#157878'
+title: 'WT-106 – Data Model Template for CWMP Endpoints and USP Agents'
+title-prefix: BBF
+toc-depth: 3
+tocTitle: '<h3 class="unnumbered unlisted" id="table-of-contents">Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this header"> <img src=''permalink.png'' title='''' width="0.8em"/></a></h3>'
+uspAcknowledgmentsSpec: 
+  before: '<h3 class="unnumbered unlisted" id="acknowledgments">Acknowledgments<a class="headerlink" href="#acknowledgments" title="Permalink to this header"> <img src=''permalink.png'' title='''' width="0.8em"/></a></h3>  <p>The following individuals are being acknowledged for their efforts in the testing and development of this specification.</p>'
+  headers: 
+    - 'Name!!!!!!!!!!!!!!!!!!'
+    - 'Company!!!!'
+    - 'Email!!!!!!!!!!'
+  optional: true
+uspEditorsSpec: 
+  before: '<h3 class="unnumbered unlisted" id="editors-1">Editors<a class="headerlink" href="#editors-1" title="Permalink to this header"> <img src=''permalink.png'' title='''' width="0.8em"/></a></h3>'
+  headers: 
+    - 'Name!!!!!!!!'
+    - 'Company!!'
+    - 'Email!!!!!!!!!'
+    - 'Role!!!!!!!!!!!!!!!'
+  optional: true
+uspPSLsSpec: 
+  before: '<h3 class="unnumbered unlisted" id="bbfprojectstream-project-stream-leaders-1"> Project Stream Leaders<a class="headerlink" href="#bbfprojectstream-project-stream-leaders-1" title="Permalink to this header"> <img src=''permalink.png'' title='''' width="0.8em"/></a></h3>'
+  headers: 
+    - 'Name!!!!!!!!'
+    - 'Company!!'
+    - 'Email!!!!!!!!!'
+    - 'Role!!!!!!!!!!!!!!!'
+  optional: true
+uspRevisionHistorySpec: 
+  after: '<p>Comments or questions about this Broadband Forum Working Text should be directed to <a href=''mailto:info@broadband-forum.org'' title='''' class="email">info@broadband-forum.org</a>.</p>'
+  before: '<h3 class="unnumbered unlisted new-page" id="bbfissue-history-1">Issue History<a class="headerlink" href="#bbfissue-history-1" title="Permalink to this header"> <img src=''permalink.png'' title='''' width="0.8em"/></a></h3>'
+  headers: 
+    - 'Issue Number'
+    - 'Changes!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'
+  labels: 
+    - number
+    - changes
+  optional: true
+uspWADsSpec: 
+  before: '<h3 class="unnumbered unlisted" id="bbfworkarea-work-area-directors-1"> Work Area Directors<a class="headerlink" href="#bbfworkarea-work-area-directors-1" title="Permalink to this header"> <img src=''permalink.png'' title='''' width="0.8em"/></a></h3>'
+  headers: 
+    - 'Name!!!!!!!!'
+    - 'Company!!'
+    - 'Email!!!!!!!!!'
+    - 'Role!!!!!!!!!!!!!!!'
+  optional: true
+version: ''
+versionNumber: '1.11'

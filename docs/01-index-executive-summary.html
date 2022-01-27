@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <!-- BBF GitHub Pages pandoc template; modified from default.html template -->
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
   <meta charset="utf-8"/>
   <meta name="generator" content="pandoc"/>
-  <meta name="description" content="TR-106 – Data Model Template for CWMP Endpoints and USP Agents: How to use the data model schema"/>
+  <meta name="description" content="TR-106 – Data Model Template for CWMP Endpoints and USP Agents: How to use the data model schema to understand and develop CWMP/USP data models"/>
   <meta name="theme-color" content="#157878"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"/>
   <title>BBF – Executive Summary</title>
@@ -15,10 +15,12 @@
     div.column{display: inline-block; vertical-align: top; width: 50%;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
   </style>
   <link rel="stylesheet" href="github.css"/>
   <link rel="stylesheet" href="extra.css"/>
   <link rel="stylesheet" href="toc.css"/>
+  <link rel="stylesheet" href="release.css"/>
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
@@ -33,17 +35,15 @@
         Data Model Template for CWMP Endpoints and USP Agents
       </a>
     </h1>
-    <h2 class="project-tagline">How to use the data model schema</h2>
+    <h2 class="project-tagline">How to use the data model schema to understand and develop CWMP/USP data models</h2>
     <p></p>
     <p></p>
-    <p>
-      <a class="btn" href="https://www.broadband-forum.org/technical/download/TR-069.pdf">CWMP</a>
+    <div class="project-buttons">
+      <a class="btn" href="index.htm" title="TR-106 Single-file HTML">HTML</a>
+      <a class="btn" href="index.pdf" title="TR-106 PDF">PDF</a>
       <a class="btn" href="https://cwmp-data-models.broadband-forum.org">CWMP Data Models</a>
-      <a class="btn" href="https://usp.technology">USP</a>
       <a class="btn" href="https://usp-data-models.broadband-forum.org">USP Data Models</a>
-      <a class="btn" href="index.htm">HTML</a>
-      <a class="btn" href="index.pdf">PDF</a>
-    </p>
+    </div>
   </section>
 
   <section class="main-content">
@@ -177,9 +177,9 @@
     <header id="title-block-header">
       <h1 class="title" id="sec:executive-summary">Executive Summary<a href="#sec:executive-summary" class="headerlink" title="Permalink to this header"> <img src="permalink.png" style="width: 0.8em"/></a></h1>
     </header>
-<p>TR-106 specifies data model guidelines to be followed by all CWMP <span class="cite" data-citation-ids="TR-069">[<a href="05-index-normative-references.html#ref-TR-069">1</a>]</span> Endpoints and USP <span class="cite" data-citation-ids="TR-369">[<a href="05-index-normative-references.html#ref-TR-369">2</a>]</span> Agents. These guidelines include structural requirements for the data hierarchy, requirements for versioning of data models, and requirements for defining profiles.</p>
+<p>TR-106 specifies data model guidelines to be followed by all CWMP <span class="cite" data-citation-ids="TR-069"><a href="05-index-normative-references.html#ref-TR-069">[7]</a></span> Endpoints and USP <span class="cite" data-citation-ids="TR-369"><a href="05-index-normative-references.html#ref-TR-369">[11]</a></span> Agents. These guidelines include structural requirements for the data hierarchy, requirements for versioning of data models, and requirements for defining profiles.</p>
 <p>In addition, TR-106 defines an XML Schema that as far as possible embodies these guidelines, and which is used for defining all CWMP and USP data models. This makes data model definitions rigorous, and helps to reduce the danger that different implementations will interpret data model definitions in different ways.</p>
-<p>TR-106 also defines an XML Schema that allows a device to describe its supported CWMP data models. This description is both specific and detailed, allowing a Controller to know exactly what is supported by the device, including any vendor-specific objects and parameters. Use of this Schema enhances interoperability and significantly eases the integration of new devices with a Controller. USP uses a different mechanism (GetSupportedDM message) for the same purpose. That mechanism is specified in TR-369 <span class="cite" data-citation-ids="TR-369">[<a href="05-index-normative-references.html#ref-TR-369">2</a>]</span>.</p>
+<p>TR-106 also defines an XML Schema that allows a device to describe its supported CWMP data models. This description is both specific and detailed, allowing a Controller to know exactly what is supported by the device, including any vendor-specific objects and parameters. Use of this Schema enhances interoperability and significantly eases the integration of new devices with a Controller. USP uses a different mechanism (GetSupportedDM message) for the same purpose. That mechanism is specified in TR-369 <span class="cite" data-citation-ids="TR-369"><a href="05-index-normative-references.html#ref-TR-369">[11]</a></span>.</p>
 <div class="note">
 <p><strong>Important warning</strong></p>
 <p>The InternetGatewayDevice:1 (TR-098) and Device:1 (TR-181 Issue 1) Root Data Models are now DEPRECATED and any reference to elements specific to those models have been removed from this document.</p>
@@ -206,10 +206,13 @@
       <span class="site-footer-owner">
         TR-106 is developed and maintained
         by <a href="https://www.broadband-forum.org">The Broadband Forum</a>.
-        &copy; The Broadband Forum 2020</a>. All Rights Reserved.
+        &copy; The Broadband Forum 2022</a>. All Rights Reserved.
       </span>
-        <span class="site-footer-credits">
-          This page was generated by <a href="https://pandoc.org">pandoc</a>.
+      <span class="site-footer-credits">
+        This page was generated by <a href="https://pandoc.org">pandoc</a>
+        and <a href="https://pages.github.com">GitHub Pages</a>.
+        View the <a href="https://github.com/BroadbandForum/data-model-template">specification source on GitHub</a>.
+        <span class="release"/>
       </span>
     </footer>
   </section>

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <!-- BBF GitHub Pages pandoc template; modified from default.html template -->
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
   <meta charset="utf-8"/>
   <meta name="generator" content="pandoc"/>
-  <meta name="description" content="TR-106 – Data Model Template for CWMP Endpoints and USP Agents: How to use the data model schema"/>
+  <meta name="description" content="TR-106 – Data Model Template for CWMP Endpoints and USP Agents: How to use the data model schema to understand and develop CWMP/USP data models"/>
   <meta name="theme-color" content="#157878"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"/>
   <title>BBF – Appendix I: HTML Data Model Reports</title>
@@ -15,10 +15,12 @@
     div.column{display: inline-block; vertical-align: top; width: 50%;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
   </style>
   <link rel="stylesheet" href="github.css"/>
   <link rel="stylesheet" href="extra.css"/>
   <link rel="stylesheet" href="toc.css"/>
+  <link rel="stylesheet" href="release.css"/>
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
@@ -33,17 +35,15 @@
         Data Model Template for CWMP Endpoints and USP Agents
       </a>
     </h1>
-    <h2 class="project-tagline">How to use the data model schema</h2>
+    <h2 class="project-tagline">How to use the data model schema to understand and develop CWMP/USP data models</h2>
     <p></p>
     <p></p>
-    <p>
-      <a class="btn" href="https://www.broadband-forum.org/technical/download/TR-069.pdf">CWMP</a>
+    <div class="project-buttons">
+      <a class="btn" href="index.htm" title="TR-106 Single-file HTML">HTML</a>
+      <a class="btn" href="index.pdf" title="TR-106 PDF">PDF</a>
       <a class="btn" href="https://cwmp-data-models.broadband-forum.org">CWMP Data Models</a>
-      <a class="btn" href="https://usp.technology">USP</a>
       <a class="btn" href="https://usp-data-models.broadband-forum.org">USP Data Models</a>
-      <a class="btn" href="index.htm">HTML</a>
-      <a class="btn" href="index.pdf">PDF</a>
-    </p>
+    </div>
   </section>
 
   <section class="main-content">
@@ -185,17 +185,17 @@
 <li><a href="#sec:data-model-definition">I.4 Data Model Definition <span><img src="permalink.png" style="width:0.8em" /></span></a></li>
 </ul>
     </nav>
-<h2 class="appendix2" id="sec:introduction-4" class="appendix2">I.1 Introduction <a href="09-index-html-data-model-reports.html#sec:introduction-4" class="headerlink" title="Permalink to this header"><img src="permalink.png" style="width:0.8em" /></a></h2>
+<h2 class="appendix2" id="sec:introduction-4">I.1 Introduction <a href="09-index-html-data-model-reports.html#sec:introduction-4" class="headerlink" title="Permalink to this header"><img src="permalink.png" style="width:0.8em" /></a></h2>
 <p>TR-106 Amendment 2 published the first version of the DM Schema. Since then the normative definitions of all CWMP data models have been published as DM Instances (XML documents that conform to the DM Schema). Since these XML data models might not be easily read by a human, corresponding non-normative HTML data model reports have also been published.</p>
 <p>This appendix briefly discusses these HTML reports.</p>
-<h2 class="appendix2" id="sec:report-types" class="appendix2">I.2 Report Types <a href="09-index-html-data-model-reports.html#sec:report-types" class="headerlink" title="Permalink to this header"><img src="permalink.png" style="width:0.8em" /></a></h2>
+<h2 class="appendix2" id="sec:report-types">I.2 Report Types <a href="09-index-html-data-model-reports.html#sec:report-types" class="headerlink" title="Permalink to this header"><img src="permalink.png" style="width:0.8em" /></a></h2>
 <p>There are two types of HTML reports published for a given version of a data model:</p>
 <ul>
 <li><p>a full report, covering the given version and all preceding versions of the data model</p></li>
 <li><p>a partial report, covering only the given version of the data model (i.e. excluding content specific to earlier versions of the data model); i.e. last only changes</p></li>
 </ul>
 <p>For example, TR-181 Issue 2 Amendment 11 defined the Device:2.11 data model revision, declared in tr-181-2-11-0.xml. The full report is in tr-181-2-11-0.html, and includes the aggregate data model definitions from Device:2.11 and earlier (back to Device:2.0 inclusive). The partial report is in tr-181-2-11-0-diffs.html, and only includes the data model definitions added or changed by TR-181 Issue 2 Amendment 11.</p>
-<h2 class="appendix2" id="sec:report-layout" class="appendix2">I.3 Report Layout <a href="09-index-html-data-model-reports.html#sec:report-layout" class="headerlink" title="Permalink to this header"><img src="permalink.png" style="width:0.8em" /></a></h2>
+<h2 class="appendix2" id="sec:report-layout">I.3 Report Layout <a href="09-index-html-data-model-reports.html#sec:report-layout" class="headerlink" title="Permalink to this header"><img src="permalink.png" style="width:0.8em" /></a></h2>
 <p>Each HTML data model report contains the following sections:</p>
 <table>
 <colgroup>
@@ -203,91 +203,91 @@
 <col style="width: 85%" />
 </colgroup>
 <tbody>
-<tr class="odd">
+<tr class="odd odd">
 <td style="text-align: left;">Notice</td>
 <td style="text-align: left;">The legal notice, lifted from the top of the associated XML data model file.</td>
 </tr>
-<tr class="even">
+<tr class="even even">
 <td style="text-align: left;">Summary</td>
 <td style="text-align: left;">Describes the reason for this data model version. This is lifted from the associated XML data model file’s document description.</td>
 </tr>
-<tr class="odd">
+<tr class="odd odd">
 <td style="text-align: left;">Table of Contents</td>
 <td style="text-align: left;">Hyperlinks to the various sections within the report, as well as links to each Object and Profile definition within the report.</td>
 </tr>
-<tr class="even">
+<tr class="even even">
 <td style="text-align: left;">Data Types</td>
 <td style="text-align: left;">Named data type definitions (i.e. not built-in types) that are used to define Parameters within the report. Each data type definition consists of name, type, and description.</td>
 </tr>
-<tr class="odd">
+<tr class="odd odd">
 <td style="text-align: left;">References</td>
 <td style="text-align: left;">Hyperlinks to external bibliography references cited by Object, Parameter, and Profile descriptions within the report.</td>
 </tr>
-<tr class="even">
+<tr class="even even">
 <td style="text-align: left;">Data model definition</td>
 <td style="text-align: left;">Object and Parameter definitions. Which Object and Parameter definitions are included depends on whether it is a full or partial (last only) report.</td>
 </tr>
-<tr class="odd">
+<tr class="odd odd">
 <td style="text-align: left;">Inform and Notification Requirements</td>
 <td style="text-align: left;">Lists those Parameters within the report that are: forced inform parameters, forced active notification parameters, and parameters for which active notification can be denied.</td>
 </tr>
-<tr class="even">
+<tr class="even even">
 <td style="text-align: left;">Profile Definitions</td>
 <td style="text-align: left;">Profile definitions, showing Object and Parameter requirements. Which Profiles are included depends on whether it is a full or partial (last only) report.</td>
 </tr>
 </tbody>
 </table>
-<h2 class="appendix2" id="sec:data-model-definition" class="appendix2">I.4 Data Model Definition <a href="09-index-html-data-model-reports.html#sec:data-model-definition" class="headerlink" title="Permalink to this header"><img src="permalink.png" style="width:0.8em" /></a></h2>
-<p>Parameters make use of a limited subset of the default SOAP data types <span class="cite" data-citation-ids="SOAP">[<a href="05-index-normative-references.html#ref-SOAP">13</a>]</span>. The notation used to represent these types within the report is listed in the following table.</p>
+<h2 class="appendix2" id="sec:data-model-definition">I.4 Data Model Definition <a href="09-index-html-data-model-reports.html#sec:data-model-definition" class="headerlink" title="Permalink to this header"><img src="permalink.png" style="width:0.8em" /></a></h2>
+<p>Parameters make use of a limited subset of the default SOAP data types <span class="cite" data-citation-ids="SOAP"><a href="05-index-normative-references.html#ref-SOAP">[6]</a></span>. The notation used to represent these types within the report is listed in the following table.</p>
 <table>
 <colgroup>
 <col style="width: 15%" />
 <col style="width: 85%" />
 </colgroup>
 <thead>
-<tr class="header">
+<tr class="header header">
 <th style="text-align: left;">Type</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr class="odd odd">
 <td style="text-align: left;">object</td>
 <td style="text-align: left;">A container for parameters and/or other objects. The full Path Name of a parameter is given by the parameter name appended to the full Path Name of the object it is contained within.</td>
 </tr>
-<tr class="even">
+<tr class="even even">
 <td style="text-align: left;">string</td>
 <td style="text-align: left;">For strings, a minimum and maximum allowed length can be indicated using the form string(Min:Max), where Min and Max are the minimum and maximum string length in characters. If either Min or Max are missing, this indicates no limit, and if Min is missing the colon can also be omitted, as in string(Max). Multiple comma-separated ranges can be specified, in which case the string length will be in one of the ranges.</td>
 </tr>
-<tr class="odd">
+<tr class="odd odd">
 <td style="text-align: left;">int</td>
 <td style="text-align: left;">Integer in the range -2147483648 to +2147483647, inclusive. For some int types, a value range is given using the form int(Min:Max) or int(Min:Max step Step) where the Min and Max values are inclusive. If either Min or Max are missing, this indicates no limit. If Step is missing, this indicates a step of 1. Multiple comma-separated ranges can be specified, in which case the value will be in one of the ranges.</td>
 </tr>
-<tr class="even">
+<tr class="even even">
 <td style="text-align: left;">long</td>
 <td style="text-align: left;">Long integer in the range -9223372036854775808 to 9223372036854775807, inclusive. For some long types, a value range is given using the form long(Min:Max) or long(Min:Max step Step), where the Min and Max values are inclusive. If either Min or Max are missing, this indicates no limit. If Step is missing, this indicates a step of 1. Multiple comma-separated ranges can be specified, in which case the value will be in one of the ranges.</td>
 </tr>
-<tr class="odd">
+<tr class="odd odd">
 <td style="text-align: left;">unsignedInt</td>
 <td style="text-align: left;">Unsigned integer in the range 0 to 4294967295, inclusive. For some unsignedInt types, a value range is given using the form unsignedInt(Min:Max) or unsigned(Min:Max step Step), where the Min and Max values are inclusive. If either Min or Max are missing, this indicates no limit. If Step is missing, this indicates a step of 1. Multiple comma-separated ranges can be specified, in which case the value will be in one of the ranges.</td>
 </tr>
-<tr class="even">
+<tr class="even even">
 <td style="text-align: left;">unsignedLong</td>
 <td style="text-align: left;">Unsigned long integer in the range 0 to 18446744073709551615, inclusive. For some unsignedLong types, a value range is given using the form unsignedLong(Min:Max) or unsignedLong(Min:Max step Step), where the Min and Max values are inclusive. If either Min or Max are missing, this indicates no limit. If Step is missing, this indicates a step of 1. Multiple comma-separated ranges can be specified, in which case the value will be in one of the ranges.</td>
 </tr>
-<tr class="odd">
+<tr class="odd odd">
 <td style="text-align: left;">boolean</td>
 <td style="text-align: left;">Boolean, where the allowed values are “0” or “1” (or equivalently, “true” or “false”).</td>
 </tr>
-<tr class="even">
+<tr class="even even">
 <td style="text-align: left;">dateTime</td>
-<td style="text-align: left;">The subset of the ISO 8601 date-time format defined by the SOAP dateTime type <span class="cite" data-citation-ids="SOAP">[<a href="05-index-normative-references.html#ref-SOAP">13</a>]</span>.</td>
+<td style="text-align: left;">The subset of the ISO 8601 date-time format defined by the SOAP dateTime type <span class="cite" data-citation-ids="SOAP"><a href="05-index-normative-references.html#ref-SOAP">[6]</a></span>.</td>
 </tr>
-<tr class="odd">
+<tr class="odd odd">
 <td style="text-align: left;">base64</td>
 <td style="text-align: left;">Base64 encoded binary (no line-length limitation). A minimum and maximum allowed length can be indicated using the form base64(Min:Max), where Min and Max are the minimum and maximum length in characters before Base64 encoding. If either Min or Max are missing, this indicates no limit, and if Min is missing the colon can also be omitted, as in base64(Max). Multiple comma-separate ranges can be specified, in which case the length MUST be in one of the ranges.</td>
 </tr>
-<tr class="even">
+<tr class="even even">
 <td style="text-align: left;">hexBinary</td>
 <td style="text-align: left;">Hex encoded binary. A minimum and maximum allowed length can be indicated using the form hexBinary(Min:Max), where Min and Max are the minimum and maximum length in characters before Hex Binary encoding. If either Min or Max are missing, this indicates no limit, and if Min is missing the colon can also be omitted, as in hexBinary(Max). Multiple comma-separated ranges can be specified, in which case the length MUST be in one of the ranges.</td>
 </tr>
@@ -317,10 +317,13 @@
       <span class="site-footer-owner">
         TR-106 is developed and maintained
         by <a href="https://www.broadband-forum.org">The Broadband Forum</a>.
-        &copy; The Broadband Forum 2020</a>. All Rights Reserved.
+        &copy; The Broadband Forum 2022</a>. All Rights Reserved.
       </span>
-        <span class="site-footer-credits">
-          This page was generated by <a href="https://pandoc.org">pandoc</a>.
+      <span class="site-footer-credits">
+        This page was generated by <a href="https://pandoc.org">pandoc</a>
+        and <a href="https://pages.github.com">GitHub Pages</a>.
+        View the <a href="https://github.com/BroadbandForum/data-model-template">specification source on GitHub</a>.
+        <span class="release"/>
       </span>
     </footer>
   </section>

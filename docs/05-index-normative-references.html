@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <!-- BBF GitHub Pages pandoc template; modified from default.html template -->
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
   <meta charset="utf-8"/>
   <meta name="generator" content="pandoc"/>
-  <meta name="description" content="TR-106 – Data Model Template for CWMP Endpoints and USP Agents: How to use the data model schema"/>
+  <meta name="description" content="TR-106 – Data Model Template for CWMP Endpoints and USP Agents: How to use the data model schema to understand and develop CWMP/USP data models"/>
   <meta name="theme-color" content="#157878"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"/>
   <title>BBF – 4 Normative References</title>
@@ -15,10 +15,31 @@
     div.column{display: inline-block; vertical-align: top; width: 50%;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+    }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
   </style>
   <link rel="stylesheet" href="github.css"/>
   <link rel="stylesheet" href="extra.css"/>
   <link rel="stylesheet" href="toc.css"/>
+  <link rel="stylesheet" href="release.css"/>
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
@@ -33,17 +54,15 @@
         Data Model Template for CWMP Endpoints and USP Agents
       </a>
     </h1>
-    <h2 class="project-tagline">How to use the data model schema</h2>
+    <h2 class="project-tagline">How to use the data model schema to understand and develop CWMP/USP data models</h2>
     <p></p>
     <p></p>
-    <p>
-      <a class="btn" href="https://www.broadband-forum.org/technical/download/TR-069.pdf">CWMP</a>
+    <div class="project-buttons">
+      <a class="btn" href="index.htm" title="TR-106 Single-file HTML">HTML</a>
+      <a class="btn" href="index.pdf" title="TR-106 PDF">PDF</a>
       <a class="btn" href="https://cwmp-data-models.broadband-forum.org">CWMP Data Models</a>
-      <a class="btn" href="https://usp.technology">USP</a>
       <a class="btn" href="https://usp-data-models.broadband-forum.org">USP Data Models</a>
-      <a class="btn" href="index.htm">HTML</a>
-      <a class="btn" href="index.pdf">PDF</a>
-    </p>
+    </div>
   </section>
 
   <section class="main-content">
@@ -177,46 +196,46 @@
     <header id="title-block-header">
       <h1 class="title" id="sec:normative-references">4 Normative References<a href="#sec:normative-references" class="headerlink" title="Permalink to this header"> <img src="permalink.png" style="width: 0.8em"/></a></h1>
     </header>
-<p>A list of the currently valid Broadband Forum Technical Reports is published at <a href="https://www.broadband-forum.org">https://www.broadband-forum.org</a>. The following documents are referenced by this specification.</p>
-<div id="refs" class="references hanging-indent" role="doc-bibliography">
-<div id="ref-TR-069">
-<p>[1] <a href="https://www.broadband-forum.org/technical/download/TR-069.pdf">TR-069 Amendment 6</a>, <em>CPE WAN Management Protocol</em>, Broadband Forum, 2018</p>
+<p>A list of the currently valid Broadband Forum Technical Reports is published at <a href="https://www.broadband-forum.org" class="uri">https://www.broadband-forum.org</a>. The following documents are referenced by this specification.</p>
+<div id="refs" class="references csl-bib-body" role="doc-bibliography">
+<div id="ref-XML" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline"><em>Extensible Markup Language (XML) 1.0 (Fourth Edition)</em>, W3C, 2008, <a href="https://www.w3.org/TR/REC-xml">https://www.w3.org/TR/REC-xml</a></div>
 </div>
-<div id="ref-TR-369">
-<p>[2] <a href="https://www.broadband-forum.org/technical/download/TR-369.pdf">TR-369</a>, <em>User Services Platform</em>, 2018</p>
+<div id="ref-OUI" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline"><em>Organizationally Unique Identifiers (OUIs)</em>, IEEE, <a href="https://standards.ieee.org/faqs/OUI.html">https://standards.ieee.org/faqs/OUI.html</a></div>
 </div>
-<div id="ref-TR-181i2">
-<p>[3] <a href="https://www.broadband-forum.org/technical/download/TR-181_Issue-2.pdf">TR-181 Issue 2 Amendment 12</a>, <em>Device Data Model for TR-069</em>, Broadband Forum, 2018</p>
+<div id="ref-RFC2119" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[3] </div><div class="csl-right-inline"><a href="https://tools.ietf.org/html/rfc2119">RFC 2119</a>, <em>Key words for use in RFCs to Indicate Requirement Levels</em>, IETF, 1997</div>
 </div>
-<div id="ref-XML-Schema-Primer">
-<p>[4] <a href="https://www.w3.org/TR/xmlschema-0"><em>XML Schema Part 0: Primer Second Edition</em></a>, W3C, 2004</p>
+<div id="ref-RFC2648" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[4] </div><div class="csl-right-inline"><a href="https://tools.ietf.org/html/rfc2648">RFC 2648</a>, <em>A URN Namespace for IETF Documents</em>, IETF, 1999</div>
 </div>
-<div id="ref-RFC2119">
-<p>[5] <a href="https://tools.ietf.org/html/rfc2119">RFC 2119</a>, <em>Key words for use in RFCs to Indicate Requirement Levels</em>, IETF, 1997</p>
+<div id="ref-RFC3986" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[5] </div><div class="csl-right-inline"><a href="https://tools.ietf.org/html/rfc3986">RFC 3986</a>, <em>Uniform Resource Identifier (URI): Generic Syntax</em>, IETF, 2005</div>
 </div>
-<div id="ref-TR-143">
-<p>[6] <a href="https://www.broadband-forum.org/technical/download/TR-143.pdf">TR-143 Amendment 1 Corrigendum 1</a>, <em>Enabling Network Throughput Performance Tests and Statistical Monitoring</em>, Broadband Forum, 2015</p>
+<div id="ref-SOAP" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[6] </div><div class="csl-right-inline"><em>Simple Object Access Protocol (SOAP) 1.1</em>, W3C, 2000, <a href="https://www.w3.org/TR/2000/NOTE-SOAP-20000508">https://www.w3.org/TR/2000/NOTE-SOAP-20000508</a></div>
 </div>
-<div id="ref-TR-140">
-<p>[7] <a href="https://www.broadband-forum.org/technical/download/TR-140.pdf">TR-140 Amendment 3</a>, <em>TR-069 Data Model for Storage Service Enabled Devices</em>, Broadband Forum, 2017</p>
+<div id="ref-TR-069" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[7] </div><div class="csl-right-inline"><a href="https://www.broadband-forum.org/technical/download/TR-069.pdf">TR-069 Amendment 6 Corrigendum 1</a>, <em>CPE WAN Management Protocol</em>, Broadband Forum, 2020</div>
 </div>
-<div id="ref-XML">
-<p>[8] <a href="https://www.w3.org/TR/REC-xml"><em>Extensible Markup Language (XML) 1.0 (Fourth Edition)</em></a>, W3C, 2008</p>
+<div id="ref-TR-140" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[8] </div><div class="csl-right-inline"><a href="https://www.broadband-forum.org/technical/download/TR-140.pdf">TR-140 Amendment 3</a>, <em>TR-069 Data Model for Storage Service Enabled Devices</em>, Broadband Forum, 2017</div>
 </div>
-<div id="ref-RFC3986">
-<p>[9] <a href="https://tools.ietf.org/html/rfc3986">RFC 3986</a>, <em>Uniform Resource Identifier (URI): Generic Syntax</em>, IETF, 2005</p>
+<div id="ref-TR-143" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[9] </div><div class="csl-right-inline"><a href="https://www.broadband-forum.org/technical/download/TR-143.pdf">TR-143 Amendment 1 Corrigendum 1</a>, <em>Enabling Network Throughput Performance Tests and Statistical Monitoring</em>, Broadband Forum, 2015</div>
 </div>
-<div id="ref-OUI">
-<p>[10] <a href="https://standards.ieee.org/faqs/OUI.html"><em>Organizationally Unique Identifiers (OUIs)</em></a>, IEEE</p>
+<div id="ref-TR-181i2" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[10] </div><div class="csl-right-inline"><a href="https://usp-data-models.broadband-forum.org#Device:2">TR-181 Issue 2</a>, <em>Device Data Model</em>, Broadband Forum</div>
 </div>
-<div id="ref-RFC2648">
-<p>[11] <a href="https://tools.ietf.org/html/rfc2648">RFC 2648</a>, <em>A URN Namespace for IETF Documents</em>, IETF, 1999</p>
+<div id="ref-TR-369" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[11] </div><div class="csl-right-inline"><a href="https://usp.technology/specification">TR-369</a>, <em>User Services Platform</em></div>
 </div>
-<div id="ref-XML-Schema-Datatypes">
-<p>[12] <a href="https://www.w3.org/TR/xmlschema-2"><em>XML Schema Part 2: Datatypes Second Edition</em></a>, W3C, 2004</p>
+<div id="ref-XML-Schema-Primer" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[12] </div><div class="csl-right-inline"><em>XML Schema Part 0: Primer Second Edition</em>, W3C, 2004, <a href="https://www.w3.org/TR/xmlschema-0">https://www.w3.org/TR/xmlschema-0</a></div>
 </div>
-<div id="ref-SOAP">
-<p>[13] <a href="https://www.w3.org/TR/2000/NOTE-SOAP-20000508"><em>Simple Object Access Protocol (SOAP) 1.1</em></a>, W3C, 2000</p>
+<div id="ref-XML-Schema-Datatypes" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[13] </div><div class="csl-right-inline"><em>XML Schema Part 2: Datatypes Second Edition</em>, W3C, 2004, <a href="https://www.w3.org/TR/xmlschema-2">https://www.w3.org/TR/xmlschema-2</a></div>
 </div>
 </div>
     <div style="clear: both;"/>
@@ -239,10 +258,13 @@
       <span class="site-footer-owner">
         TR-106 is developed and maintained
         by <a href="https://www.broadband-forum.org">The Broadband Forum</a>.
-        &copy; The Broadband Forum 2020</a>. All Rights Reserved.
+        &copy; The Broadband Forum 2022</a>. All Rights Reserved.
       </span>
-        <span class="site-footer-credits">
-          This page was generated by <a href="https://pandoc.org">pandoc</a>.
+      <span class="site-footer-credits">
+        This page was generated by <a href="https://pandoc.org">pandoc</a>
+        and <a href="https://pages.github.com">GitHub Pages</a>.
+        View the <a href="https://github.com/BroadbandForum/data-model-template">specification source on GitHub</a>.
+        <span class="release"/>
       </span>
     </footer>
   </section>

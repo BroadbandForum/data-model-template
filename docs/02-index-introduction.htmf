@@ -2,7 +2,7 @@
 
 <p><strong>CWMP</strong></p>
 
-<p>TR-069 <span class="cite" data-citation-ids="TR-069">[<a href='05-index-normative-references.html#ref-TR-069' title=''>1</a>]</span> defines the generic requirements of the CPE WAN Management
+<p>TR-069 <span class="cite" data-citation-ids="TR-069"><a href='05-index-normative-references.html#ref-TR-069' title=''>[7]</a></span> defines the generic requirements of the CPE WAN Management
 Protocol (CWMP) methods which can be applied to any CWMP Endpoint. It is
 intended to support a variety of different functionalities to manage a
 collection of CPE, including the following primary capabilities:</p>
@@ -36,7 +36,7 @@ certain device types or services.</p>
 
 <p><strong>USP</strong></p>
 
-<p>The <a href='http://usp.technology' title=''>User Services Platform</a> is made of a network
+<p>The <a href='http://usp.technology' title=''>User Services Platform</a> supports a network
 of USP Controllers and USP Agents to allow applications to manipulate
 service elements (i.e. objects). It represents the evolution of CWMP
 into the following use cases:</p>
@@ -69,8 +69,8 @@ model schema in both the context of CWMP and USP.</p>
 
 <p><strong>Specification Structure</strong></p>
 
-<p><a href='02-index-introduction.html#fig:spec-structure' title=''>Figure 3</a> shows the overall specification structure for the CWMP <span class="cite" data-citation-ids="TR-069">[<a href='05-index-normative-references.html#ref-TR-069' title=''>1</a>]</span> and
-USP <span class="cite" data-citation-ids="TR-369">[<a href='05-index-normative-references.html#ref-TR-369' title=''>2</a>]</span> family of standards (as currently defined). Please note that
+<p><a href='02-index-introduction.html#fig:spec-structure' title='' class="figure">Figure 3</a> shows the overall specification structure for the CWMP <span class="cite" data-citation-ids="TR-069"><a href='05-index-normative-references.html#ref-TR-069' title=''>[7]</a></span> and
+USP <span class="cite" data-citation-ids="TR-369"><a href='05-index-normative-references.html#ref-TR-369' title=''>[11]</a></span> family of standards (as currently defined). Please note that
 this will gradually become out of date as new documents are published.</p>
 
 <figure>
@@ -78,8 +78,8 @@ this will gradually become out of date as new documents are published.</p>
 <figcaption>Figure 3: Specification Structure<a class="headerlink" href="02-index-introduction.html#fig:spec-structure" title="Permalink to this figure"> <img src='permalink.png' title='' width="0.8em"/></a></figcaption>
 </figure>
 
-<p>TR-069 <span class="cite" data-citation-ids="TR-069">[<a href='05-index-normative-references.html#ref-TR-069' title=''>1</a>]</span> defines the generic requirements of the CWMP methods which
-can be applied to any CWMP Endpoint. TR-369 <span class="cite" data-citation-ids="TR-369">[<a href='05-index-normative-references.html#ref-TR-369' title=''>2</a>]</span> does the same for USP
+<p>TR-069 <span class="cite" data-citation-ids="TR-069"><a href='05-index-normative-references.html#ref-TR-069' title=''>[7]</a></span> defines the generic requirements of the CWMP methods which
+can be applied to any CWMP Endpoint. TR-369 <span class="cite" data-citation-ids="TR-369"><a href='05-index-normative-references.html#ref-TR-369' title=''>[11]</a></span> does the same for USP
 Agents. TR-106 (this document) specifies a baseline object structure to
 be supported by any CWMP Endpoint or USP Agent (referred to generically
 as an <em>Agent</em>). It specifies how to structure and define data models,
@@ -89,7 +89,7 @@ devices and services. The actual data models are defined in their own
 specifications.</p>
 
 <p>For a particular type of device, it is expected that the baseline
-defined in a document such as TR-181i2 <span class="cite" data-citation-ids="TR-181i2">[<a href='05-index-normative-references.html#ref-TR-181i2' title=''>3</a>]</span> would be augmented with
+defined in a document such as TR-181i2 <span class="cite" data-citation-ids="TR-181i2"><a href='05-index-normative-references.html#ref-TR-181i2' title=''>[10]</a></span> would be augmented with
 additional objects and parameters specific to the device type. The data
 model used in any Agent MUST follow the guidelines described in this
 document. These guidelines include the following aspects:</p>
@@ -116,7 +116,7 @@ Schema enhances interoperability and significantly eases the
 integration of new devices with an ACS.</p>
 
 <p>Please note that USP uses a different mechanism (GetSupportedDM
-message) for the same purpose. It is specified in TR-369 <span class="cite" data-citation-ids="TR-369">[<a href='05-index-normative-references.html#ref-TR-369' title=''>2</a>]</span>.</p></li>
+message) for the same purpose. It is specified in TR-369 <span class="cite" data-citation-ids="TR-369"><a href='05-index-normative-references.html#ref-TR-369' title=''>[11]</a></span>.</p></li>
 </ul>
 
 <h2 id="sec:terminology">1.1 Terminology<a class="headerlink" href="02-index-introduction.html#sec:terminology" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h2>
@@ -144,7 +144,7 @@ message) for the same purpose. It is specified in TR-369 <span class="cite" data
 </tr>
 <tr class="odd">
 <td align="left"><strong>CPE</strong></td>
-<td align="left">Customer Premises Equipment; refers (as appropriate) to any <em>CWMP</em>-enabled <span class="cite" data-citation-ids="TR-069">[<a href='05-index-normative-references.html#ref-TR-069' title=''>1</a>]</span> or <em>USP</em>-enabled <span class="cite" data-citation-ids="TR-369">[<a href='05-index-normative-references.html#ref-TR-369' title=''>2</a>]</span> device and therefore covers both Internet Gateway devices and LAN-side end devices.</td>
+<td align="left">Customer Premises Equipment; refers (as appropriate) to any <em>CWMP</em>-enabled <span class="cite" data-citation-ids="TR-069"><a href='05-index-normative-references.html#ref-TR-069' title=''>[7]</a></span> or <em>USP</em>-enabled <span class="cite" data-citation-ids="TR-369"><a href='05-index-normative-references.html#ref-TR-369' title=''>[11]</a></span> device and therefore covers both Internet Gateway devices and LAN-side end devices.</td>
 </tr>
 <tr class="even">
 <td align="left"><strong>Command</strong></td>
@@ -164,7 +164,7 @@ message) for the same purpose. It is specified in TR-369 <span class="cite" data
 </tr>
 <tr class="even">
 <td align="left"><strong>CWMP</strong></td>
-<td align="left"><em>CPE</em> WAN Management Protocol. Defined in TR-069 <span class="cite" data-citation-ids="TR-069">[<a href='05-index-normative-references.html#ref-TR-069' title=''>1</a>]</span>, CWMP is a communication protocol between an <em>ACS</em> and CWMP-enabled <em>CPE</em> that defines a mechanism for secure auto-configuration of a <em>CPE</em> and other <em>CPE</em> management functions in a common framework.</td>
+<td align="left"><em>CPE</em> WAN Management Protocol. Defined in TR-069 <span class="cite" data-citation-ids="TR-069"><a href='05-index-normative-references.html#ref-TR-069' title=''>[7]</a></span>, CWMP is a communication protocol between an <em>ACS</em> and CWMP-enabled <em>CPE</em> that defines a mechanism for secure auto-configuration of a <em>CPE</em> and other <em>CPE</em> management functions in a common framework.</td>
 </tr>
 <tr class="odd">
 <td align="left"><strong>CWMP Endpoint</strong></td>
@@ -184,15 +184,15 @@ message) for the same purpose. It is specified in TR-369 <span class="cite" data
 </tr>
 <tr class="odd">
 <td align="left"><strong>DM Schema</strong></td>
-<td align="left">Data Model Schema. This is the XML Schema <span class="cite" data-citation-ids="XML-Schema-Primer">[<a href='05-index-normative-references.html#ref-XML-Schema-Primer' title=''>4</a>]</span> that is used for defining data models for use with <em>CWMP</em> and <em>USP</em>.</td>
+<td align="left">Data Model Schema. This is the XML Schema <span class="cite" data-citation-ids="XML-Schema-Primer"><a href='05-index-normative-references.html#ref-XML-Schema-Primer' title=''>[12]</a></span> that is used for defining data models for use with <em>CWMP</em> and <em>USP</em>.</td>
 </tr>
 <tr class="even">
 <td align="left"><strong>DT Instance</strong></td>
-<td align="left">Device Type Schema instance document. This is an XML document that conforms to the <em>DT Schema</em> and to any additional rules specified in or referenced by the <em>DT Schema</em>. This concept is useful for both CWMP and USP as an offline design tool, but only CWMP uses it at run-time (via the SupportedDataModel Object; see <a href='03-index-architecture.html#sec:the-supported-data-model-and-the-instantiated-data-model' title=''>Section 2.1.2</a>).</td>
+<td align="left">Device Type Schema instance document. This is an XML document that conforms to the <em>DT Schema</em> and to any additional rules specified in or referenced by the <em>DT Schema</em>. This concept is useful for both CWMP and USP as an offline design tool, but only CWMP uses it at run-time (via the SupportedDataModel Object; see <a href='03-index-architecture.html#sec:the-supported-data-model-and-the-instantiated-data-model' title='' class="heading">Section 2.1.2</a>).</td>
 </tr>
 <tr class="odd">
 <td align="left"><strong>DT Schema</strong></td>
-<td align="left">Device Type Schema. This is the XML Schema <span class="cite" data-citation-ids="XML-Schema-Primer">[<a href='05-index-normative-references.html#ref-XML-Schema-Primer' title=''>4</a>]</span> that is used for describing a <em>Device</em>’s <em>Supported Data Model</em>. This concept is useful for both CWMP and USP as an offline design tool, but only CWMP uses it at run-time (via the SupportedDataModel Object; see <a href='03-index-architecture.html#sec:the-supported-data-model-and-the-instantiated-data-model' title=''>Section 2.1.2</a>).</td>
+<td align="left">Device Type Schema. This is the XML Schema <span class="cite" data-citation-ids="XML-Schema-Primer"><a href='05-index-normative-references.html#ref-XML-Schema-Primer' title=''>[12]</a></span> that is used for describing a <em>Device</em>’s <em>Supported Data Model</em>. This concept is useful for both CWMP and USP as an offline design tool, but only CWMP uses it at run-time (via the SupportedDataModel Object; see <a href='03-index-architecture.html#sec:the-supported-data-model-and-the-instantiated-data-model' title='' class="heading">Section 2.1.2</a>).</td>
 </tr>
 <tr class="even">
 <td align="left"><strong>Event</strong></td>
@@ -292,5 +292,5 @@ message) for the same purpose. It is specified in TR-369 <span class="cite" data
 
 <p>The key words &ldquo;MUST&rdquo;, &ldquo;MUST NOT&rdquo;, &ldquo;REQUIRED&rdquo;, &ldquo;SHALL&rdquo;, &ldquo;SHALL
 NOT&rdquo;, &ldquo;SHOULD&rdquo;, &ldquo;SHOULD NOT&rdquo;, &ldquo;RECOMMENDED&rdquo;, &ldquo;MAY&rdquo;, and
-&ldquo;OPTIONAL&rdquo; in this document are to be interpreted as described in <span class="cite" data-citation-ids="RFC2119">[<a href='05-index-normative-references.html#ref-RFC2119' title=''>5</a>]</span>.</p>
+&ldquo;OPTIONAL&rdquo; in this document are to be interpreted as described in <span class="cite" data-citation-ids="RFC2119"><a href='05-index-normative-references.html#ref-RFC2119' title=''>[3]</a></span>.</p>
 

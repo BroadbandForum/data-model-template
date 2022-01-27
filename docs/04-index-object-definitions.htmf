@@ -13,7 +13,7 @@ hierarchy, the trailing &ldquo;.&rdquo; (dot) is always used as the last charact
 in the hierarchy MUST start with a letter or underscore, and subsequent
 characters MUST be letters, digits, underscores or hyphens. The terms
 &ldquo;letter&rdquo; and &ldquo;digit&rdquo; are as defined in the XML
-specification <span class="cite" data-citation-ids="XML">[Appendix B/<a href='05-index-normative-references.html#ref-XML' title=''>8</a>]</span>.</p>
+specification <span class="cite" data-citation-ids="XML"><a href='05-index-normative-references.html#ref-XML' title=''>[Appendix B/1]</a></span>.</p>
 
 <p>Hyphens can easily be confused with the discretionary hyphens that are
 sometimes inserted by hyphenation algorithms. For this reason, the names
@@ -21,7 +21,7 @@ of nodes in the hierarchy SHOULD NOT include any hyphens. Additionally,
 the names of nodes in the hierarchy SHOULD NOT start with underscores.
 In BBF standards, the names of nodes in the hierarchy always start with
 an upper-case letter and never include any hyphens or underscores (see
-<a href='08-index-requirements-for-bbf-standard-data-models.html#sec:data-model-item-names' title=''>C.3.1</a> for the corresponding normative requirement).</p>
+<a href='08-index-requirements-for-bbf-standard-data-models.html#sec:data-model-item-names' title='' class="heading">C.3.1</a> for the corresponding normative requirement).</p>
 
 <p>Where multiple instances of an object can occur, the placeholder node
 name {i} is shown. In actual use, this placeholder is to be replaced by
@@ -31,10 +31,10 @@ an Instance Identifier.</p>
 
 <p>Parameters make use of a limited subset of the default SOAP data types.
 The supported data types are defined by the DM Schema and are
-also listed in <a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:data-types' title=''>A.2.3</a>.</p>
+also listed in <a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:data-types' title='' class="heading">A.2.3</a>.</p>
 
 <p>The named data types that specify the representations of IP addresses,
-MAC addresses etc, are defined in a DM Instance document (see Annex A).
+MAC addresses etc., are defined in a DM Instance document (see <a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:cwmp-data-model-definition-xml-schema' title='' class="heading">Annex A</a>).
 The XML file with those definitions and the corresponding HTML file can
 be found in the <a href='https://cwmp-data-models.broadband-forum.org/#Data%20Model%20Data%20Types' title=''>data model resources
 page</a>.
@@ -80,7 +80,7 @@ list items it separates. The last item in a comma-separated list MUST
 NOT be followed with a separator. Individual items in a comma-separated
 list MUST NOT include a whitespace or comma character within them. Any
 whitespace or comma characters within an item value MUST be escaped
-using percent-encoding as specified in RFC 3986 <span class="cite" data-citation-ids="RFC3986">[Section 2.1/<a href='05-index-normative-references.html#ref-RFC3986' title=''>9</a>]</span>.</p>
+using percent-encoding as specified in RFC 3986 <span class="cite" data-citation-ids="RFC3986"><a href='05-index-normative-references.html#ref-RFC3986' title=''>[2.1/5]</a></span>.</p>
 
 <p>It is possible to create a list of lists, although other solutions
 SHOULD be preferred when possible. If a string contains a list of lists,
@@ -92,9 +92,9 @@ the inner separators, inner lists MAY be &ldquo;protected&rdquo; by placing them
 within square brackets, e.g. the above list could be represented as
 &ldquo;a,[b,c],d&rdquo;. In order to avoid ambiguity (a Controller that didn’t
 understand the new syntax would interpret &ldquo;a,[b,c],d&rdquo; as the four
-element list &ldquo;a&rdquo;, &ldquo;[b&quot;, &quot;c]&rdquo;, &ldquo;d&rdquo;), the data type and/or parameter
+element list &ldquo;a&rdquo;, &ldquo;[b”, ”c]&rdquo;, &ldquo;d&rdquo;), the data type and/or parameter
 definition MUST explicitly state that the new syntax is supported
-(<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:named-data-types' title=''>A.2.3.1</a>, <a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:parameter-syntax' title=''>A.2.7.1</a>).</p>
+(<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:named-data-types' title='' class="heading">A.2.3.1</a>, <a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:parameter-syntax' title='' class="heading">A.2.7.1</a>).</p>
 
 <h3 id="sec:parameters-that-reference-parameters-or-objects">3.2.3 Parameters that Reference Parameters or Objects<a class="headerlink" href="04-index-object-definitions.html#sec:parameters-that-reference-parameters-or-objects" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h3>
 
@@ -102,7 +102,7 @@ definition MUST explicitly state that the new syntax is supported
 Name of an object (or for each item in parameters that are defined to
 contain comma-separated lists of object Path Names), the representation
 of the object name MUST NOT include a trailing &ldquo;dot.&rdquo; An example of a
-parameter of this kind in the TR-181i2 <span class="cite" data-citation-ids="TR-181i2">[<a href='05-index-normative-references.html#ref-TR-181i2' title=''>3</a>]</span> Device:2 data model is
+parameter of this kind in the TR-181i2 <span class="cite" data-citation-ids="TR-181i2"><a href='05-index-normative-references.html#ref-TR-181i2' title=''>[10]</a></span> Device:2 data model is
 Device.InterfaceStack.{i}.LowerLayer. For this parameter, the following
 is an example of a properly formed value:</p>
 
@@ -115,7 +115,7 @@ Object, a parameter value of &ldquo;.DeviceInfo&rdquo; always means
 &ldquo;Device.DeviceInfo&rdquo;. NOTE: This exception does NOT hold for USP.</p>
 
 <p>In order to be able to use reference parameters as unique keys
-(<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:tables' title=''>A.2.10.1</a>), their Path Names MUST conceptually be converted to full Path
+(<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:tables' title='' class="heading">A.2.10.1</a>), their Path Names MUST conceptually be converted to full Path
 Names before being compared. For example, in the Device Root Object,
 &ldquo;.DeviceInfo.&rdquo; and &ldquo;Device.DeviceInfo.&rdquo; would compare as equal. If a
 reference parameter is list-valued, i.e. it is a list of Path Names or
@@ -164,7 +164,7 @@ be either an OUI or a domain name. The OUI or domain name used for a
 given vendor-specific parameter MUST be one that is assigned to the
 organization that defined this parameter (which is not necessarily the
 same as the vendor of the Agent). An OUI is an organizationally unique
-identifier as defined in <span class="cite" data-citation-ids="OUI">[<a href='05-index-normative-references.html#ref-OUI' title=''>10</a>]</span>, which MUST be formatted as a
+identifier as defined in <span class="cite" data-citation-ids="OUI"><a href='05-index-normative-references.html#ref-OUI' title=''>[2]</a></span>, which MUST be formatted as a
 six-hexadecimal-digit string using all upper-case letters and including
 any leading zeros. A domain name MUST be upper case with each dot (&ldquo;.&rdquo;)
 replaced with a hyphen or underscore.</p>

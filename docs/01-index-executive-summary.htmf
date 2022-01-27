@@ -1,7 +1,7 @@
 <!-- <h1 class="unnumbered unlisted new-page display-none" id="sec:executive-summary">Executive Summary<a class="headerlink" href="01-index-executive-summary.html#sec:executive-summary" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h1> -->
 
-<p>TR-106 specifies data model guidelines to be followed by all CWMP <span class="cite" data-citation-ids="TR-069">[<a href='05-index-normative-references.html#ref-TR-069' title=''>1</a>]</span>
-Endpoints and USP <span class="cite" data-citation-ids="TR-369">[<a href='05-index-normative-references.html#ref-TR-369' title=''>2</a>]</span> Agents. These guidelines include structural
+<p>TR-106 specifies data model guidelines to be followed by all CWMP <span class="cite" data-citation-ids="TR-069"><a href='05-index-normative-references.html#ref-TR-069' title=''>[7]</a></span>
+Endpoints and USP <span class="cite" data-citation-ids="TR-369"><a href='05-index-normative-references.html#ref-TR-369' title=''>[11]</a></span> Agents. These guidelines include structural
 requirements for the data hierarchy, requirements for versioning of data
 models, and requirements for defining profiles.</p>
 
@@ -18,7 +18,7 @@ device, including any vendor-specific objects and parameters. Use of
 this Schema enhances interoperability and significantly eases the
 integration of new devices with a Controller. USP uses a different
 mechanism (GetSupportedDM message) for the same purpose. That mechanism
-is specified in TR-369 <span class="cite" data-citation-ids="TR-369">[<a href='05-index-normative-references.html#ref-TR-369' title=''>2</a>]</span>.</p>
+is specified in TR-369 <span class="cite" data-citation-ids="TR-369"><a href='05-index-normative-references.html#ref-TR-369' title=''>[11]</a></span>.</p>
 
 <div class="note">
 <p><strong>Important warning</strong></p>

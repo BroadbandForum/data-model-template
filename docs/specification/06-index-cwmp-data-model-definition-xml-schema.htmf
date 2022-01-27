@@ -1,0 +1,2358 @@
+<!-- <h1 class="annex1 display-none" id="sec:cwmp-data-model-definition-xml-schema">Annex A: CWMP Data Model Definition XML Schema<a class="headerlink" href="06-index-cwmp-data-model-definition-xml-schema.html#sec:cwmp-data-model-definition-xml-schema" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h1> -->
+
+<h2 class="annex2" id="sec:introduction-1">A.1 Introduction<a class="headerlink" href="06-index-cwmp-data-model-definition-xml-schema.html#sec:introduction-1" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h2>
+
+<p>The CWMP Data Model Definition XML Schema <span class="cite" data-citation-ids="XML-Schema-Primer"><a href='05-index-normative-references.html#ref-XML-Schema-Primer' title=''>[4]</a></span>, or DM Schema, is used
+for defining CWMP <span class="cite" data-citation-ids="TR-069"><a href='05-index-normative-references.html#ref-TR-069' title=''>[1]</a></span> and USP <span class="cite" data-citation-ids="TR-369"><a href='05-index-normative-references.html#ref-TR-369' title=''>[2]</a></span> data models, and is specified in
+<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:description-modifications' title='' class="heading">A.2.12.6</a>.</p>
+
+<p>DM Schema instance documents can contain any or all of the following:</p>
+
+<ul>
+<li><p>Data type definitions</p></li>
+<li><p>Root Object definitions (including profiles)</p></li>
+<li><p>Service Object definitions (including profiles)</p></li>
+<li><p>Component definitions</p></li>
+<li><p>Vendor extension definitions</p></li>
+</ul>
+
+<p><a href='08-index-requirements-for-bbf-standard-data-models.html#sec:requirements-for-bbf-standard-data-models' title='' class="heading">Annex C</a> contains some additional normative requirements that apply only
+to BBF standard DM Schema instance documents.</p>
+
+<p>Most of the data model elements are common to CWMP and USP. Those that are specific to either protocol will be noted in the description.</p>
+
+<h3 class="annex3" id="sec:character-encoding-and-character-set">A.1.1 Character Encoding and Character Set<a class="headerlink" href="06-index-cwmp-data-model-definition-xml-schema.html#sec:character-encoding-and-character-set" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h3>
+
+<p>BBF standard DM Schema instance documents use UTF-8 encoding and their
+character set is restricted to printable ASCII characters. See
+<a href='08-index-requirements-for-bbf-standard-data-models.html#sec:character-encoding-and-character-set-1' title='' class="heading">C.2</a> for the corresponding normative
+requirements.</p>
+
+<h2 class="annex2" id="sec:normative-information">A.2 Normative Information<a class="headerlink" href="06-index-cwmp-data-model-definition-xml-schema.html#sec:normative-information" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h2>
+
+<p>It is possible to create instance documents that conform to the DM
+Schema but nevertheless are not valid data model definitions. This is
+because it is not possible to specify all the normative data model
+definition requirements using the XML Schema language. Therefore, the
+schema contains additional requirements written using the usual
+normative language. Instance documents that conform to the DM Schema and
+meet these additional requirements are referred to as DM Instances.</p>
+
+<p>For example, the definition of the parameter element includes the
+following additional requirements on the name and base attributes:</p>
+
+<pre><code>    &lt;xs:complexType name="ModelParameter"&gt;
+      &lt;xs:annotation&gt;
+        &lt;xs:documentation&gt;
+        Parameter definition and
+        reference.
+        &lt;/xs:documentation&gt;
+      &lt;/xs:annotation&gt;
+
+      ...
+
+      &lt;xs:attribute name="name" type="tns:ParameterName"&gt;
+        &lt;xs:annotation&gt;
+          &lt;xs:documentation&gt;
+          MUST be unique within the parent object
+          (this is checked by schema validation).
+
+          MUST be present if and only if defining a new
+          parameter.
+          &lt;/xs:documentation&gt;
+        &lt;/xs:annotation&gt;
+      &lt;/xs:attribute&gt;
+
+      &lt;xs:attribute name="base" type="tns:ParameterName"&gt;
+        &lt;xs:annotation&gt;
+          &lt;xs:documentation&gt;
+            MUST be present if and only if modifying an existing
+            parameter.
+          &lt;/xs:documentation&gt;
+        &lt;/xs:annotation&gt;
+      &lt;/xs:attribute&gt;
+
+      ...
+
+    &lt;/xs:complexType&gt;</code></pre>
+
+<p>In some cases, a requirement that is in fact implied by the DM Schema is
+emphasized within the schema via the xs:documentation element (the
+uniqueness requirement on the name is an example of this).</p>
+
+<p>In other cases, a schema-implied requirement is not highlighted. For
+example, the name and base attributes are of type tns:ParameterName:</p>
+
+<pre><code>    &lt;!DOCTYPE cwmp-datamodel [
+      ...
+      &lt;!ENTITY name "([\i-[:]][\c-[:\.]]*)"&gt;
+      ...
+    ]&gt;
+      ...
+      &lt;xs:simpleType name="ParameterName"&gt;
+        &lt;xs:annotation&gt;
+          &lt;xs:documentation&gt;Parameter name (maximum length 256); the same as xs:NCName except that periods are not permitted.  This name MUST in addition follow the vendor-specific parameter name requirements of Section 3.3.&lt;/xs:documentation&gt;
+        &lt;/xs:annotation&gt;
+        &lt;xs:restriction base="xs:token"&gt;
+          &lt;xs:maxLength value="256"/&gt;
+          &lt;xs:pattern value="&amp;name;"/&gt;
+        &lt;/xs:restriction&gt;
+      &lt;/xs:simpleType&gt;</code></pre>
+
+<p>This states that the parameter name is a string that follows the
+following rules:</p>
+
+<ul>
+<li><p>It is derived from xs:token, which has a whitespace facet of
+&ldquo;collapse&rdquo;, meaning that any leading whitespace in the name will be
+ignored.</p></li>
+<li><p>It has a maximum length of 256 characters.</p></li>
+<li><p>Its first character matches the pattern &ldquo;<code>[\i-:]]</code>&rdquo;, which means
+&ldquo;any character permitted as the first character of an XML name,
+except for a colon&rdquo;, and any subsequent characters match the pattern
+&ldquo;<code>[\c-[:\.]]</code>&rdquo;, which means &ldquo;any character permitted in an XML
+name, except for a colon and a dot&rdquo;.</p></li>
+<li><p>It follows the vendor-specific parameter name requirements of
+<a href='04-index-object-definitions.html#sec:vendor-specific-elements' title='' class="heading">Section 3.3</a>.</p></li>
+</ul>
+
+<p>The question of the location of the definitive normative information
+therefore arises. The answer is as follows:</p>
+
+<ul>
+<li><p>All the normative information in the main part of the document
+remains normative.</p></li>
+<li><p>The DM Schema, and the additional requirements therein, are
+normative. Some of these additional requirements are duplicated (for
+emphasis) in this Annex.</p></li>
+<li><p>The DM Schema references additional material in this Annex. Such
+material is normative.</p></li>
+<li><p>If the DM Schema conflicts with a normative requirement in the main
+part of the document, this is an error in the DM Schema, and the
+requirement in the main part of the document takes precedence.</p></li>
+</ul>
+
+<h3 class="annex3" id="sec:importing-dm-instances">A.2.1 Importing DM Instances<a class="headerlink" href="06-index-cwmp-data-model-definition-xml-schema.html#sec:importing-dm-instances" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h3>
+
+<p>DM Instances are imported using the top-level import element. The DM
+Schema specifies that the DM Instance is located via the file attribute.</p>
+
+<p>The rules governing the file attribute’s value and its use for locating
+the DM Instance are as follows:</p>
+
+<ul>
+<li><p>It MUST be a URL adhering to RFC 3986 <span class="cite" data-citation-ids="RFC3986"><a href='05-index-normative-references.html#ref-RFC3986' title=''>[9]</a></span>.</p></li>
+<li><p>If the URL includes a scheme, it MUST be http, https or ftp.</p></li>
+<li><p>If the URL includes an authority, it MUST NOT include credentials.</p></li>
+<li><p>For standard BBF DM Instances, the rules that apply to the filename
+part (final path segment) of the <a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:uri-conventions' title='' class="heading">A.2.1.1</a> BBFURL also apply to the
+filename part of this URL. This means that the corrigendum number
+can be omitted in order to refer to the latest corrigendum. See
+<a href='08-index-requirements-for-bbf-standard-data-models.html#sec:import-element' title='' class="heading">C.3.6</a> for the corresponding normative requirement.</p></li>
+<li><p>If the URL is a relative reference, processing tools MUST apply
+their own logic, e.g. apply a search path.</p></li>
+</ul>
+
+<h4 class="annex4" id="sec:uri-conventions">A.2.1.1 URI Conventions<a class="headerlink" href="06-index-cwmp-data-model-definition-xml-schema.html#sec:uri-conventions" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h4>
+
+<p>The top-level spec attribute contains the URI of the associated
+specification document, e.g. the BBF Technical Report.</p>
+
+<p>This URI SHOULD uniquely identify the specification. More than one DM
+Schema instance document MAY reference the same specification.</p>
+
+<p>The top-level file attribute contains the name of the DM Schema instance
+document, e.g. the XML file that defines a given version of a data
+model.</p>
+
+<p>The following rules apply to the value of the top-level spec attribute:</p>
+
+<ul>
+<li><p>For a BBF Technical Report, it will be of the form
+&ldquo;<code>urn:broadband-forum-org:tr-nnn-i-a-c</code>&rdquo;, where nnn is the
+specification number (including leading zeros), i is the issue
+number, a is the amendment number, and c is the corrigendum number.
+The issue, amendment and corrigendum numbers do not include leading
+zeros. For example, &ldquo;<code>urn:broadband-forum-org:tr-106-1-0</code>&rdquo; refers to
+TR-106 (Issue 1 Amendment 0), and
+&ldquo;<code>urn:broadband-forum-org:tr-106-1-2</code>&rdquo; refers to TR-106 (Issue 1)
+Amendment 2. See <a href='08-index-requirements-for-bbf-standard-data-models.html#sec:spec-attribute' title='' class="heading">C.3.4</a> for the corresponding normative requirement.</p></li>
+<li><p>For specifications issued by other standards organizations, or by
+vendors, it SHOULD be of a standard form if one is defined. For
+example, RFC 2648 <span class="cite" data-citation-ids="RFC2648"><a href='05-index-normative-references.html#ref-RFC2648' title=''>[11]</a></span> specifies a syntax for referencing RFCs.</p></li>
+<li><p>Note that processing tools are likely to assume that all files that
+share a spec value are related to each other. Therefore, use of
+meaningful spec values is RECOMMENDED.</p></li>
+</ul>
+
+<p>The following rules apply to the value of the top-level file attribute.</p>
+
+<ul>
+<li><p>For a BBF Technical Report, it will be of the form
+&ldquo;<code>tr-nnn-i-a-c.xml</code>&rdquo; or &ldquo;<code>tr-nnn-i-a-c-label.xml</code>&rdquo;, where nnn, i, a and
+c are the same as in the spec attribute. The label, which MUST NOT
+begin with a digit, is not needed if only one DM Schema instance
+document is associated with the specification. See <a href='08-index-requirements-for-bbf-standard-data-models.html#sec:file-attribute' title='' class="heading">C.3.5</a> for the
+corresponding normative requirement.</p></li>
+<li><p>It SHOULD be the same as the actual file name (omitting the
+directory name). Under some circumstances this will not be possible,
+e.g. because the content is stored in a database and not in a file
+system.</p></li>
+</ul>
+
+<p>Formally, the values of the spec and file attributes are defined as
+follows:</p>
+
+<pre><code>    SpecAttr = SpecURI
+    FileAttr = FileName
+    SpecURI = BBFURI
+            | OtherURI
+    BBFURI = "urn:broadband-forum-org:" BBFDoc
+    FileName = BBFDoc BBFSubDoc ".xml"
+    BBFDoc = "tr-" BBFNumber BBFIssue BBFAmendment BBFCorrigendum
+    BBFNumber = [DIGIT]{3,}     // including leading zeros, e.g. 069
+    BBFIssue = "-" NoLeadingZeroPositiveNumber
+    BBFAmendment = "-" NoLeadingZeroNumber
+    BBFCorrigendum = "-" NoLeadingZeroNumber
+    BBFSubDoc = "-" LABEL       // distinguishing label (not beginning with a digit)
+              | ""              // not needed if only one DM Instance is associated with spec
+    NoLeadingZeroNumber = [DIGIT]
+                        | [NONZERODIGIT] [DIGIT]*
+    NoLeadingZeroPositiveNumber = [NONZERODIGIT] [DIGIT]*
+    OtherURI = &lt;of a standard form if one is defined&gt;</code></pre>
+
+<p>Standard BBF DM Instances can be accessed at the following URL:</p>
+
+<pre><code>    BBFURL = "http://www.broadband-forum.org/cwmp/" FileName
+    FileName = &lt;as before, except that BBFCorrigendum is modified as follows:&gt;
+    BBFCorrigendum = "-" NoLeadingZeroNumber
+                   | ""         // if omitted, most recent corrigendum is assumed</code></pre>
+
+<p>For example, the DM Instance associated with TR-181 Issue 2 Amendment 11
+can be accessed at
+<a href='https://www.broadband-forum.org/cwmp/tr-181-2-11-0.xml' title='' class="uri">https://www.broadband-forum.org/cwmp/tr-181-2-11-0.xml</a>.</p>
+
+<h3 class="annex3" id="sec:descriptions">A.2.2 Descriptions<a class="headerlink" href="06-index-cwmp-data-model-definition-xml-schema.html#sec:descriptions" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h3>
+
+<p>Many elements have descriptions, and the same rules apply to all
+description elements in the DM Schema. A description is free text which
+can contain a limited amount of MediaWiki-like markup as specified in
+<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:markup' title='' class="heading">A.2.2.3</a>.</p>
+
+<h4 class="annex4" id="sec:character-set">A.2.2.1 Character Set<a class="headerlink" href="06-index-cwmp-data-model-definition-xml-schema.html#sec:character-set" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h4>
+
+<p>Character set requirements apply to the entire DM Instance, so the contents of
+this section have been moved to <a href='08-index-requirements-for-bbf-standard-data-models.html#sec:character-encoding-and-character-set-1' title='' class="heading">C.2</a>,
+which contains the normative requirements that apply to standard BBF DM
+Instances.</p>
+
+<h4 class="annex4" id="sec:description-pre-processing">A.2.2.2 Pre-processing<a class="headerlink" href="06-index-cwmp-data-model-definition-xml-schema.html#sec:description-pre-processing" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h4>
+
+<p>All DM Instance processing tools MUST conceptually perform the following
+pre-processing before interpreting the markup:</p>
+
+<ol>
+<li><p>Remove any leading whitespace up to and including the first line
+break. <em>Note: It can be assumed that all line breaks are represented by a
+single line feed, i.e. ASCII 10. See
+<a href='08-index-requirements-for-bbf-standard-data-models.html#sec:character-encoding-and-character-set-1' title='' class="heading">C.2</a>.</em></p></li>
+<li><p>Remove the longest common whitespace prefix (i.e. that occurs at the
+start of every line) from each line. See the example below, where
+three lines start with four spaces and one line starts with five
+spaces, so the longest whitespace prefix that occurs at start of
+each line is four spaces. In this calculation, a tab character
+counts as a single character. To avoid confusion, the description
+SHOULD NOT contain tab characters.</p></li>
+<li><p>Remove all trailing whitespace, including line breaks.</p></li>
+</ol>
+
+<p>This pre-processing is designed to permit a reasonable variety of layout
+styles while still retaining predictable behavior. For example, both the
+following:</p>
+
+<pre><code>    &lt;description&gt;This is the first line.
+    This is the second line.
+     This is the indented third line.
+    This is the fourth line.&lt;/description&gt;</code></pre>
+
+<p>And:</p>
+
+<pre><code>    &lt;description&gt;
+        This is the first line.
+        This is the second line.
+         This is the indented third line.
+        This is the fourth line.
+    &lt;/description&gt;</code></pre>
+
+<p>…result in the following:</p>
+
+<pre><code>    This is the first line.
+    This is the second line.
+      This is the indented third line.
+    This is the fourth line.</code></pre>
+
+<h4 class="annex4" id="sec:markup">A.2.2.3 Markup<a class="headerlink" href="06-index-cwmp-data-model-definition-xml-schema.html#sec:markup" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h4>
+
+<p>The pre-processed description can contain the following markup, which is
+inspired by, but is not identical to, MediaWiki markup. All DM Instance
+processing tools SHOULD support this markup to the best of their
+ability.</p>
+
+<div id="tbl:xml-description-markup">
+<table>
+<caption>Table 1: XML Description Markup<a class="headerlink" href="06-index-cwmp-data-model-definition-xml-schema.html#tbl:xml-description-markup" title="Permalink to this table"> <img src='permalink.png' title='' width="0.8em"/></a></caption>
+<col width="13%" />
+<col width="14%" />
+<col width="73%" />
+<tr class="header">
+<th align="left">Name</th>
+<th align="left">Markup Example</th>
+<th align="left">Description</th>
+</tr>
+<tr class="odd">
+<td align="left">Italics</td>
+<td align="left"><code>''italic text''</code></td>
+<td align="left">Two apostrophes on each side of some text will result in the contained text being emphasized in italics.</td>
+</tr>
+<tr class="even">
+<td align="left">Bold</td>
+<td align="left"><code>'''bold text'''</code></td>
+<td align="left">Three apostrophes on each side of some text will result in the contained text being emphasized in bold.</td>
+</tr>
+<tr class="odd">
+<td align="left">Bold italics</td>
+<td align="left"><code>'''''b+i text'''''</code></td>
+<td align="left">Five apostrophes on each side of some text will result in the contained text being emphasized in bold italics.</td>
+</tr>
+<tr class="even">
+<td align="left">Paragraph</td>
+<td align="left">This paragraph just ended.</td>
+<td align="left">A line break is interpreted as a paragraph break.</td>
+</tr>
+<tr class="odd">
+<td align="left">Bulleted lists</td>
+<td align="left"><code>* level one</code><br/><code>** level two</code><br/><code>* level one again</code><br/><code>** level two again</code><br/><code>*** level three</code><br/><code>*: level one continued</code><br/><code>outside of list</code></td>
+<td align="left">A line starting with one or more asterisks (*) denotes a bulleted list entry, whose indent depth is proportional to the number of asterisks specified.<br/>If the asterisks are followed by a colon (:), the previous item at that level is continued, as shown.<br/>An empty line, or a line that starts with a character other than an asterisk, indicates the end of the list.</td>
+</tr>
+<tr class="even">
+<td align="left">Numbered lists</td>
+<td align="left"><code># level one</code><br/><code>## level two</code><br/><code># level one again</code><br/><code>## level two again</code><br/><code>### level three</code><br/><code>#: level one continued</code><br/><code>outside of list</code></td>
+<td align="left">A line starting with one or more number signs (#) denotes a numbered list entry.<br/>All other conventions defined for bulleted lists apply here (using # rather than *), except that numbered list entries are prefixed with an integer decoration rather than a bullet.</td>
+</tr>
+<tr class="odd">
+<td align="left">Indented lists</td>
+<td align="left"><code>: level one</code><br/><code>:: level two</code><br/><code>: level one again</code><br/><code>:: level two again</code><br/><code>::: level three</code><br/><code>outside of list</code></td>
+<td align="left">A line starting with one or more colons (:) denotes an indented list entry.<br/>All other conventions defined for bulleted lists apply here (using : rather than *), except that indented list entries have no prefix decoration, and item continuation is not needed.</td>
+</tr>
+<tr class="even">
+<td align="left">Verbatim</td>
+<td align="left">code example:<br/><code>if (something)</code><br/><code>{</code><br/><code>/* do something */</code><br/><code>} else {</code><br/><code>/* do other */</code><br/><code>}</code></td>
+<td align="left">A block of lines each of which starts with a space is to be formatted exactly as typed, preferably in a fixed width font.<br/>This allows code fragments, simple tables etc. to be included in descriptions.<br/>Note that the pre-processing rules of <a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:description-pre-processing' title='' class="heading">A.2.2.2</a> imply that it is not possible to process an entire description as verbatim text (because all the leading whitespace would be removed). This is not expected to be a problem in practice.</td>
+</tr>
+<tr class="odd">
+<td align="left">Hyperlinks</td>
+<td align="left"><code>http://www.broadband-forum.org</code></td>
+<td align="left">URL links are specified as plain old text (no special markup).</td>
+</tr>
+<tr class="even">
+<td align="left">Templates</td>
+<td align="left"><code>{{bibref|1|section 2}}</code><br/><code>{{section|table}}</code><br/><code>{{param|Enable}}</code><br/><code>{{enum|Error}}</code></td>
+<td align="left">Text enclosed in double curly braces ({}) is a template reference, which is replaced by template-dependent text.<br/><a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:description-templates' title='' class="heading">A.2.2.4</a> specifies the standard templates.</td>
+</tr>
+</table></div>
+
+<h4 class="annex4" id="sec:description-templates">A.2.2.4 Templates<a class="headerlink" href="06-index-cwmp-data-model-definition-xml-schema.html#sec:description-templates" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h4>
+
+<div class="note">
+<p>The term &ldquo;template&rdquo; is used for both template elements (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:template-elements' title='' class="heading">A.2.4.4</a>)
+and for the description templates described here.</p></div>
+
+<p>A template invocation is encoded as two curly braces on either side of
+the template name and arguments. Arguments can follow the template name,
+separated by vertical pipe (<code>|</code>) characters. All whitespace is
+significant. For example:</p>
+
+<p><code>{{someTemplate|arg1|arg2|...|argN}}</code></p>
+
+<p>In some cases, one template can impact the behavior of another template,
+e.g. the definitions of both the <code>{{enum}}</code> and the <code>{{hidden}}</code> templates
+state that the template expansion can be automatically placed after the
+rest of the description, which raises the question of which template
+expansion would come first. This ambiguity is resolved by stating that
+processing tools SHOULD generate such automatic text in the same order
+that the templates are defined below. In the above example, <code>{{enum}}</code> is
+defined before <code>{{hidden}}</code>, so an automatically-generated list of
+enumeration values would be placed before an automatically-generated
+explanation that the parameter value is hidden.</p>
+
+<p>The following standard templates are defined. Any vendor-specific
+template names MUST obey the rules of <a href='04-index-object-definitions.html#sec:vendor-specific-elements' title='' class="heading">Section 3.3</a>.</p>
+
+<div id="tbl:xml-description-templates">
+<table>
+<caption>Table 2: XML Description Templates<a class="headerlink" href="06-index-cwmp-data-model-definition-xml-schema.html#tbl:xml-description-templates" title="Permalink to this table"> <img src='permalink.png' title='' width="0.8em"/></a></caption>
+<col width="15%" />
+<col width="17%" />
+<col width="67%" />
+<tr class="header">
+<th align="left">Name</th>
+<th align="left">Markup Definition</th>
+<th align="left">Description</th>
+</tr>
+<tr class="odd">
+<td align="left">Glossary reference</td>
+<td align="left"><code>{{gloref|id}}</code></td>
+<td align="left">Glossary reference. The id argument MUST match the id attribute of one of the current file’s (or an imported file’s) top-level glossary element’s item elements (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:glossary' title='' class="heading">A.2.4.1</a>).<br/>Typically, processing tools will (a) validate the id, and (b) replace the template reference with something like &ldquo;id&rdquo;.<br/>Markup examples:<br/><code>{{gloref|Parameter}}</code></td>
+</tr>
+<tr class="even">
+<td align="left">Abbreviation reference</td>
+<td align="left"><code>{{abbref|id}}</code></td>
+<td align="left">Abbreviation reference. The id argument MUST match the id attribute of one of the current file’s (or an imported file’s) top-level abbreviations element’s item elements (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:abbreviations' title='' class="heading">A.2.4.2</a>).<br/>Typically, processing tools will (a) validate the id, and (b) replace the template reference with something like &ldquo;id&rdquo;.<br/>Markup examples:<br/><code>{{abbref|CWMP}}</code></td>
+</tr>
+<tr class="odd">
+<td align="left">Approval date</td>
+<td align="left"><code>{{appdate|date}}</code></td>
+<td align="left">The date on which this file was approved.<br/>The date argument SHOULD be of the form &ldquo;day month year&rdquo; where &ldquo;day&rdquo; is the OPTIONAL day number (no leading zero), &ldquo;month&rdquo; is the full (capitalized) month name, and &ldquo;year&rdquo; is the year (including century).<br/>Markup examples:<br/><code>{{appdate|5 November 2011}}</code><br/><code>{{appdate|November 2012}}</code></td>
+</tr>
+<tr class="even">
+<td align="left">Document name</td>
+<td align="left"><code>{{docname|name}}</code></td>
+<td align="left">The DM Instance name or title.<br/>The name argument MUST distinguish this file from other different files but not from other versions of the same file or data model.<br/>Markup examples:<br/><code>{{docname|Device Data Model for TR-069}}</code></td>
+</tr>
+<tr class="odd">
+<td align="left">TR name</td>
+<td align="left"><code>{{trname|name}}</code></td>
+<td align="left">The name and version of the corresponding Word / PDF document.<br/>The name argument MUST identify the Word / PDF document corresponding to this DM Instance, and be of the form &ldquo;TR-nnnixaycz&rdquo; as defined in <a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:bibliography' title='' class="heading">A.2.4.3</a>.<br/>Markup examples:<br/><code>{{trname|TR-181i2a5}}</code></td>
+</tr>
+<tr class="even">
+<td align="left">XML reference</td>
+<td align="left"><code>{{xmlref|ref}}</code><br/><code>{{xmlref|ref|label}}</code></td>
+<td align="left">A reference to this or another DM Instance.<br/>The ref argument MUST identify a DM Instance and be the filename part of the referenced DM Instance (a) optionally omitting the corrigendum number, and (b) omitting the trailing &ldquo;.xml&rdquo;.<br/>The OPTIONAL label argument MAY be used by processing tools as a user-visible label; if it is omitted, processing tools will derive the label from the value of the ref argument.<br/>Typically, processing tools will (a) validate the reference, and (b) replace the template reference with the label, possibly rendered in a distinctive font, and (if referencing a different file) a hyperlink.<br/>Markup examples:<br/><code>{{xmlref|tr-181-2-5}}</code><br/><code>{{xmlref|tr-196-2-0-1|Corrigendum 1}}</code></td>
+</tr>
+<tr class="odd">
+<td align="left">Bibliographic reference</td>
+<td align="left"><code>{{bibref|id}}</code><br/><code>{{bibref|id|section}}</code></td>
+<td align="left">A bibliographic reference.<br/>The id argument MUST match the id attribute of one of the current file’s (or an imported file’s) top-level bibliography element’s reference elements (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:bibliography' title='' class="heading">A.2.4.3</a>).<br/>The OPTIONAL section argument specifies the section number, including any leading &ldquo;section&rdquo;, &ldquo;annex&rdquo; or &ldquo;appendix&rdquo; text.<br/>Typically, processing tools will (a) validate the id, and (b) replace the template reference with something like &ldquo;[id] section&rdquo;.<br/>Markup examples:<br/><code>{{bibref|RFC3986}}</code><br/><code>{{bibref|RFC3986|Section 3}}</code></td>
+</tr>
+<tr class="even">
+<td align="left">Template reference</td>
+<td align="left"><code>{{template|id}}</code></td>
+<td align="left">A template element reference.<br/>The id argument MUST match the id attribute of one of the current file’s (or an imported file’s) top-level template elements (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:template-elements' title='' class="heading">A.2.4.4</a>).<br/>Markup examples:<br/><code>{{template|BULK-DATA-HTTP-REF}}</code></td>
+</tr>
+<tr class="odd">
+<td align="left">Section separator</td>
+<td align="left"><code>{{section|category}}</code><br/><code>{{section}}</code></td>
+<td align="left">The beginning or end of a section or category. This is a way of splitting the description into sections.<br/>If the category argument is present, this marks the end of the previous section (if any), and the beginning of a section of the specified category. The &ldquo;table&rdquo;, &ldquo;row&rdquo; and &ldquo;examples&rdquo; categories are reserved for the obvious purposes.<br/>If the category argument is absent, this marks the end of the previous section (if any). Typically, processing tools will (a) validate the category, and (b) replace the template reference with a section marker.<br/>Markup examples:<br/><code>{{section|table}}</code><br/><code>{{section|row}}</code><br/><code>{{section|examples}}</code></td>
+</tr>
+<tr class="even">
+<td align="left">Number of entries parameter description</td>
+<td align="left"><code>{{numentries}}</code></td>
+<td align="left">A description of a &ldquo;NumberOfEntries&rdquo; parameter.<br/>This template SHOULD be used for all such parameters. It will be expanded to something like &ldquo;The number of entries in the &lt;table&gt; table.&rdquo;.<br/>In most cases, the description will consist only of <code>{{numentries}}</code> but it MAY be followed by additional text if desired.</td>
+</tr>
+<tr class="odd">
+<td align="left">Deprecated, obsoleted or deleted indication</td>
+<td align="left"><code>{{deprecated|version|reason}}</code><br/><code>{{obsoleted|version}}</code><br/><code>{{obsoleted|version|reason}}</code><br/><code>{{deleted|version}}</code><br/><code>{{deleted|version|reason}}</code></td>
+<td align="left">An indication that a parameter, command, event, object, enumeration value or pattern was deprecated (or obsoleted or deleted) in the specified data model version, for the specified reason.<br/>The reason argument is a fragment of text that SHOULD be incorporated into the template expansion. It’s OPTIONAL when obsoleting or deleting an item.<br/>Typically, processing tools will (a) validate that use of the template is consistent with the item status, (b) check for late (overdue) or too-early item status transitions, and (c) replace the template reference with text of the form &ldquo;This &lt;itemType&gt; was &lt;transition&gt; in &lt;version&gt; &lt;reason&gt;.&rdquo; (where &lt;itemType&gt; is parameter, object etc., and &lt;transition&gt; is the capitalized template name, i.e. DEPRECATED, OBSOLETED or DELETED).</td>
+</tr>
+<tr class="even">
+<td align="left">Parameter, command, event and object reference</td>
+<td align="left"><code>{{param}}</code><br/><code>{{param|ref}}</code><br/><code>{{param|ref|scope}}</code><br/><code>{{command}}</code><br/><code>{{command|ref}}</code><br/><code>{{command|ref|scope}}</code><br/><code>{{event}}</code><br/><code>{{event|ref}}</code><br/><code>{{event|ref|scope}}</code><br/><code>{{object}}</code><br/><code>{{object|ref}}</code><br/><code>{{object|ref|scope}}</code></td>
+<td align="left">A reference to the specified parameter, command, event or object.<br/>The OPTIONAL ref and scope arguments reference the specified item (scope defaults to normal). Item names SHOULD adhere to the rules of <a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:reference-path-names' title='' class="heading">A.2.3.4</a>.<br/>The scope argument can include a deprecated, obsoleted or deleted status, e.g. it might be deprecated or normal,deprecated. Such a status value can be specified in order to suppress processing tool warnings when an item references a &ldquo;more deprecated&rdquo; item. For example, <code>{{param|ref|deprecated}}</code> allows a non-deprecated item to reference a deprecated parameter without a warning.<br/>Typically, processing tools will (a) validate the reference, and (b) replace the template reference with the ref argument or, if it is omitted, the current item name, possibly rendered in a distinctive font.<br/>Processing tools can use the scope to convert a relative path into an absolute path in order, for example, to generate a hyperlink.<br/>Markup examples:<br/><code>{{param|Enable}}</code><br/><code>{{command|Reset()}}</code><br/><code>{{event|Boot!}}</code><br/><code>{{object|Stats.}}</code></td>
+</tr>
+<tr class="odd">
+<td align="left">Profile reference</td>
+<td align="left"><code>{{profile|ref}}</code><br/><code>{{profile}}</code></td>
+<td align="left">A reference to the specified profile.<br/>The OPTIONAL ref argument references a profile.<br/>Typically, processing tools will (a) validate the reference, and (b) replace the template reference with the ref argument or, if it is omitted, the current profile name, possibly rendered in a distinctive font.<br/>Markup examples:<br/><code>{{profile|Baseline:1}}</code><br/><code>{{profile}}</code></td>
+</tr>
+<tr class="even">
+<td align="left">List description</td>
+<td align="left"><code>{{list}}</code><br/><code>{{list|arg}}</code><br/><code>{{nolist}}</code></td>
+<td align="left">A description of the current parameter’s list attributes.<br/>This template SHOULD only be used within the description of a list-valued parameter (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:parameter-syntax' title='' class="heading">A.2.7.1</a>).<br/>This is a hint to processing tools to replace the template reference with a description of the parameter’s list attributes. This overrides processing tools’ expected default behavior (unless suppressed by <code>{{nolist}}</code>) of describing the list attributes before the rest of the description.<br/>The OPTIONAL argument specifies a fragment of text that describes the list and SHOULD be incorporated into the template expansion.<br/>Typically processing tools will generate text of the form &ldquo;Comma-separated list of &lt;dataType&gt;.&rdquo; or &ldquo;Comma-separated list of &lt;dataType&gt;, &lt;arg&gt;.&rdquo;.</td>
+</tr>
+<tr class="odd">
+<td align="left">Reference description</td>
+<td align="left"><code>{{reference}}</code><br/><code>{{reference|arg}}</code><br/><code>{{reference|arg|opts}}</code><br/><code>{{noreference}}</code></td>
+<td align="left">A description of the object or parameter that is referenced by the current parameter.<br/>This template SHOULD only be used within the description of a reference parameter (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:reference-facets' title='' class="heading">A.2.3.7</a>).<br/>This is a hint to processing tools to replace the template reference with a description of the parameter’s reference attributes. This overrides processing tools’ expected default behavior (unless suppressed by <code>{{noreference}}</code>) of describing the reference attributes after the list attributes (for a list-valued parameter) or before the rest of the description (otherwise).<br/>The OPTIONAL arg argument is relevant only for a pathRef; it specifies a fragment of text that describes the referenced item and SHOULD be incorporated into the template expansion.<br/>The OPTIONAL opts argument is a comma-separated list of keywords that give additional information about the reference and can affect the generated text. The following keywords are currently defined:<br/>- <strong>ignore</strong>: ignore any non-existent targetParents; this is useful when a parameter references different objects in different data models.<br/>- <strong>delete</strong>: this object (the referencing object) and the referenced object have the same lifetime, so this object will always be deleted when the referenced object is deleted; therefore the reference cannever be null.<br/>Typically processing tools will generate text of the form &ldquo;The value MUST be the full path name of &lt;arg&gt;…&rdquo;, in which the generated text can be expected to be sensitive to whether or not the parameter is list-valued.<br/>Markup examples:<br/><code>{{reference|a protocol object}}</code><br/><code>{{reference|all Host table entries|ignore}}</code></td>
+</tr>
+<tr class="even">
+<td align="left">Named data type</td>
+<td align="left"><code>{{datatype}}</code><br/><code>{{datatype|arg}}</code><br/><code>{{nodatatype}}</code></td>
+<td align="left">A description of the current parameter’s named data type.<br/>This template SHOULD only be used within the description of a parameter of a named data type (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:named-data-types' title='' class="heading">A.2.3.1</a>).<br/>This is a hint to processing tools to replace the template reference with an indication of the parameter’s named data type, possibly including additional details or a hyperlink to such details. This overrides processing tools’ expected default behavior (unless suppressed by <code>{{nodatatype}}</code>) of describing the named data type before the rest of the description.<br/>The OPTIONAL argument affects how the data type is described. If it has the literal value &ldquo;expand&rdquo;, processing tools SHOULD replace the template reference with the actual description of the named data type (as opposed to referencing the description of the named data type).</td>
+</tr>
+<tr class="odd">
+<td align="left">Profile description</td>
+<td align="left"><code>{{profdesc}}</code><br/><code>{{noprofdesc}}</code></td>
+<td align="left">An auto-generated description of a profile.<br/>This template SHOULD only be used within the description of a profile (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:profiles-1' title='' class="heading">A.2.11</a>).<br/>This is a hint to processing tools to replace the template reference with a description of the profile. This overrides processing tools’ expected default behavior (unless suppressed by <code>{{noprofdesc}}</code>) of describing the profile before the rest of the description.<br/>Typically processing tools will generate text of the form &ldquo;This table defines the &lt;profile:v&gt; profile for the &lt;object:m&gt; object. The minimum REQUIRED version for this profile is &lt;object:m.n&gt;.&rdquo; (or more complex text if the profile is based on or extends other profiles).</td>
+</tr>
+<tr class="even">
+<td align="left">Enumeration reference</td>
+<td align="left"><code>{{enum|value}}</code><br/><code>{{enum|value|param}}</code><br/><code>{{enum|value|param|scope}}</code><br/><code>{{enum}}</code><br/><code>{{noenum}}</code></td>
+<td align="left">A reference to the specified enumeration value.<br/>The OPTIONAL value argument specifies one of the enumeration values for the referenced parameter. If present, it MUST be a valid enumeration value for that parameter.<br/>The OPTIONAL param and scope arguments identify the referenced parameter (scope defaults to normal). If present, param SHOULD adhere to the rules of <a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:reference-path-names' title='' class="heading">A.2.3.4</a>. If omitted, the current parameter is assumed.<br/>If the arguments are omitted, this is a hint to processing tools to replace the template reference with a list of the parameter’s enumerations, possibly preceded by text such as &ldquo;Enumeration of:&rdquo;. This overrides processing tools’ expected default behavior (unless suppressed by <code>{{noenum}}</code>) of listing the parameter’s enumerations after the rest of the description.<br/>Otherwise, typically processing tools will (a) validate that the enumeration value is valid, and (b) replace the template reference with the value and/or param arguments, appropriately formatted and with the value possibly rendered in a distinctive font. Processing tools can use the scope to convert a relative path into an absolute path in order, for example, to generate a hyperlink.<br/>Markup examples:<br/><code>{{enum|None}}</code><br/><code>{{enum|None|OtherParam}}</code></td>
+</tr>
+<tr class="odd">
+<td align="left">Pattern reference</td>
+<td align="left"><code>{{pattern|value}}</code><br/><code>{{pattern|value|param}}</code><br/><code>{{pattern|value|param|scope}}</code><br/><code>{{pattern}}</code><br/><code>{{nopattern}}</code></td>
+<td align="left">A reference to the specified pattern value.<br/>The OPTIONAL value argument specifies one of the pattern values for the referenced parameter. If present, it MUST be a valid pattern value for that parameter. The OPTIONAL param and scope arguments identify the referenced parameter (scope defaults to normal). If present, param SHOULD adhere to the rules of <a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:reference-path-names' title='' class="heading">A.2.3.4</a>. If omitted, the current parameter is assumed.<br/>If the arguments are omitted, this is a hint to processing tools to replace the template reference with a list of the parameter’s patterns, possibly preceded by text such as &ldquo;Possible patterns:&rdquo;. This overrides processing tools’ expected default behavior (unless suppressed by <code>{{nopattern}}</code>) of listing the parameter’s patterns after the rest of the description.<br/>Otherwise, typically processing tools will (a) validate that the pattern value is valid, and (b) replace the template reference with the value and/or param arguments, appropriately formatted and with the value possibly rendered in a distinctive font. Processing tools can use the scope to convert a relative path into an absolute path in order, for example, to generate a hyperlink.<br/>Markup examples:<br/><code>{{pattern|None}}</code><br/><code>{{pattern|None|OtherParam}}</code></td>
+</tr>
+<tr class="even">
+<td align="left">Hidden value</td>
+<td align="left"><code>{{hidden}}</code><br/><code>{{hidden|value}}</code><br/><code>{{nohidden}}</code></td>
+<td align="left">Text explaining that the value of the current parameter is hidden. This template SHOULD only be used within the description of a hidden parameter (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:parameter-syntax' title='' class="heading">A.2.7.1</a>).<br/>This is a hint to processing tools to replace the template reference with text explaining that the value of the current parameter is hidden. This overrides processing tools’ expected default behavior (unless suppressed by <code>{{nohidden}}</code>) of placing this text after the rest of the description.<br/>The OPTIONAL argument indicates the value that is returned when the current parameter is read. If omitted this defaults to the expansion of the <code>{{null}}</code> template.<br/>Typically, processing tools will generate text of the form &ldquo;When read, this parameter returns &lt;arg&gt;, regardless of the actual value.&rdquo;.</td>
+</tr>
+<tr class="odd">
+<td align="left">Secured value</td>
+<td align="left"><code>{{secured}}</code><br/><code>{{secured|value}}</code><br/><code>{{nosecured}}</code></td>
+<td align="left">Text explaining that the value of the current parameter is secured. This template SHOULD only be used within the description of a secured parameter (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:parameter-syntax' title='' class="heading">A.2.7.1</a>).<br/>This is a hint to processing tools to replace the template reference with text explaining that the value of the current parameter is secured. This overrides processing tools’ expected default behavior (unless suppressed by <code>{{nosecured}}</code>) of placing this text after the rest of the description.<br/>The OPTIONAL argument indicates the value that is returned when the Controller is not permitted to see the value. If omitted this defaults to the expansion of the <code>{{null}}</code> template.<br/>Typically, processing tools will generate text of the form &ldquo;When read, this parameter returns &lt;arg&gt;, regardless of the actual value, unless the Controller has a &lsquo;secured&rsquo; role.&rdquo;.</td>
+</tr>
+<tr class="even">
+<td align="left">Command parameter</td>
+<td align="left"><code>{{command}}</code><br/><code>{{nocommand}}</code></td>
+<td align="left">Text explaining that the current parameter is a command parameter that triggers an Agent action. This template SHOULD only be used within the description of such a command parameter (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:parameter-syntax' title='' class="heading">A.2.7.1</a>).<br/>This is a hint to processing tools to replace the template reference with text explaining that the current parameter is a command parameter that always reads back as <code>{{null}}</code>. This overrides processing tools’ expected default behavior (unless suppressed by <code>{{nocommand}}</code>) of placing this text after the rest of the description. Typically, processing tools will generate text of the form &ldquo;The value is not part of the device configuration and is always <code>{{null}}</code> when read.&rdquo;.<br/>Note that the same <code>{{command}}</code> template can also be used by a USP command to refer to itself.</td>
+</tr>
+<tr class="odd">
+<td align="left">Factory default value</td>
+<td align="left"><code>{{factory}}</code><br/><code>{{nofactory}}</code></td>
+<td align="left">Text listing the factory default for the current parameter. This template SHOULD only be used within the description of a parameter that has a factory default value.<br/>This is a hint to processing tools to replace the template reference with text listing the factory default value. This overrides processing tools’ expected default behavior (unless suppressed by <code>{{nofactory}}</code>) of placing this text after the rest of the description. Typically, processing tools will generate text of the form &ldquo;The factory default value MUST be &lt;value&gt;.&rdquo;.</td>
+</tr>
+<tr class="even">
+<td align="left">Unique keys description</td>
+<td align="left"><code>{{keys}}</code><br/><code>{{nokeys}}</code></td>
+<td align="left">A description of the current object’s unique keys.<br/>This template SHOULD only be used within the description of a Multi-Instance Object (table) that defines one or more unique keys (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:tables' title='' class="heading">A.2.10.1</a>).<br/>This is a hint to processing tools to replace the template reference with a description of the object’s unique keys. This overrides processing tools’ expected default behavior (unless suppressed by <code>{{nokeys}}</code>) of describing the unique keys after the description.</td>
+</tr>
+<tr class="odd">
+<td align="left">Units reference</td>
+<td align="left"><code>{{units}}</code></td>
+<td align="left">The parameter’s units string.<br/>Typically, processing tools will (a) check that the parameter has a units string, and (b) substitute the value of its units string.</td>
+</tr>
+<tr class="even">
+<td align="left">Boolean values</td>
+<td align="left"><code>{{false}}</code><br/><code>{{true}}</code></td>
+<td align="left">Boolean values.<br/>Typically, processing tools will substitute the value False or True, possibly rendered in a distinctive font.</td>
+</tr>
+<tr class="odd">
+<td align="left">Discriminator parameter description</td>
+<td align="left"><code>{{union}}</code><br/><code>{{nounion}}</code></td>
+<td align="left">Text explaining the available options and use for the sub-objects which are part of the union.<br/>This template SHOULD only be used within the description of (a) a parameter referenced as a discriminatorParameter, or (b) an object that references a discriminatorParameter (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:tables' title='' class="heading">A.2.10.1</a>).<br/>This is a hint to processing tools to replace the template reference with text explaining the union and possible choices of sub-objects. This overrides processing tools’ expected default behavior (unless suppressed by <code>{{nounion}}</code>) of placing this text after the rest of the description.<br/>Typically, processing tools will generate text of the form (a) &ldquo;This parameter discriminates between the &lt;objects&gt; union objects.&rdquo;, or (b) &ldquo;This object MUST be present if, and only if, &lt;param&gt; is &lt;object&gt;.&rdquo;, but it MAY be followed by additional text, explaining the use of the available options, if desired.</td>
+</tr>
+<tr class="even">
+<td align="left">Miscellaneous</td>
+<td align="left"><code>{{issue|descr}}</code><br/><code>{{issue|opts|descr}}</code></td>
+<td align="left">An open issue.<br/>If only one argument is supplied, it is descr, which describes the open issue. If two arguments are supplied, they are opts and descr.<br/>The OPTIONAL opts argument is a comma-separated list of options:<br/>- The first list item is an issue category that defaults to &ldquo;XXX&rdquo;.<br/>- The second list item is an issue status that defaults to an empty string. Any non-empty status implies that the issue has been resolved.<br/>Typically, processing tools will assign a unique ID, e.g. a separate counter for each category of issue, and replace the template reference with the issue category, ID, status and description, possibly rendered in a distinctive font.<br/>Markup examples:<br/><code>{{issue|Will be labeled XXX.}}</code><br/><code>{{issue|IPsec|Will be labeled IPsec.}}</code><br/><code>{{issue|DNS,fixed|Resolved DNS issue.}}</code></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left"><code>{{empty}}</code></td>
+<td align="left">Represents an empty string. Typically, processing tools will render such values in a distinctive font, possibly using standard wording, such as &lt;Empty&gt; or &ldquo;an empty string&rdquo;.</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left"><code>{{null}}</code></td>
+<td align="left">Expands to the appropriate null value for the current parameter’s data type (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:null-values-and-references' title='' class="heading">A.2.3.5</a>), e.g. <code>{{empty}}</code>, <code>{{false}}</code> or 0.</td>
+</tr>
+</table></div>
+
+<h4 class="annex4" id="sec:html-example">A.2.2.5 HTML Example<a class="headerlink" href="06-index-cwmp-data-model-definition-xml-schema.html#sec:html-example" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h4>
+
+<p>This includes examples of most of the markup and templates.</p>
+
+<pre><code>    &lt;model name="Goo:1.1" base="Goo:1.0"&gt;
+      &lt;object name="GooTop." access="readOnly" minEntries="1" maxEntries="1"&gt;
+        &lt;parameter name="ExampleParam" access="readOnly"&gt;
+          &lt;description&gt;
+    {{section|Introduction}}This is an ''example'' parameter that
+    illustrates many of the '''formatting''' templates. For
+    '''''example''''', this references {{bibref|TR-106a1|section 3.2}}.
+
+    {{section|Usage}}This parameter is called {{object}}{{param}}. One can
+    also reference other parameters in the same object, such as
+    {{param|OtherParameter}}, and indicate that the parameter value is
+    measured in {{units}}.
+
+    One can also include bulleted lists:
+    * level one
+    ** level two
+    * level one again
+    ** level two again
+    *** level three
+    *: level one continued
+
+    and numbered lists:
+    # level one
+    ## level two
+    # level one again
+    ## level two again
+    ### level three
+    #: level one continued
+
+    and indented lists
+    : level one
+    :: level two
+    : level one again
+    :: level two again
+    ::: level three
+
+    and hyperlinks such as http://www.google.com
+
+    and code examples:
+     if (something) {
+       /* do something */
+     } else {
+       /* do other */
+     }
+
+    If the parameter was Boolean, one could refer to its values {{false}}
+    and {{true}}.
+
+    One can refer to its enumerations individually, e.g. {{enum|Disabled}},
+    or to other parameters' enumerations, such as {{enum|Value|OtherParam}},
+    or can list them all. {{enum}}
+
+    Finally, if there were any patterns they could be listed too. {{pattern}}
+          &lt;/description&gt;
+          &lt;syntax&gt;
+            &lt;string&gt;
+              &lt;enumeration value="A"/&gt;
+              &lt;enumeration value="B"/&gt;
+              &lt;units value="packets"/&gt;
+            &lt;/string&gt;
+          &lt;/syntax&gt;
+        &lt;/parameter&gt;</code></pre>
+
+<p>The resulting HTML would look something like this:</p>
+
+<img src="images/figure-4.png" alt=""/>
+
+<h3 class="annex3" id="sec:data-types">A.2.3 Data Types<a class="headerlink" href="06-index-cwmp-data-model-definition-xml-schema.html#sec:data-types" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h3>
+
+<p>CWMP <span class="cite" data-citation-ids="TR-069"><a href='05-index-normative-references.html#ref-TR-069' title=''>[1]</a></span> and USP <span class="cite" data-citation-ids="TR-369"><a href='05-index-normative-references.html#ref-TR-369' title=''>[2]</a></span> data models support only the primitive data
+types listed in the last row of <a href='06-index-cwmp-data-model-definition-xml-schema.html#tbl:xml-named-data-types' title='' class="table">Table 3</a> &ldquo;on the wire&rdquo;. However, the DM
+Schema allows data types to be derived from the primitive types or from
+other named data types. Such derived types can be named or anonymous.</p>
+
+<h4 class="annex4" id="sec:named-data-types">A.2.3.1 Named Data Types<a class="headerlink" href="06-index-cwmp-data-model-definition-xml-schema.html#sec:named-data-types" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h4>
+
+<p>Named data types are defined using the top-level dataType element. A DM
+Instance can contain zero or more top-level dataType elements.</p>
+
+<p>When defining a new named data type, the following attributes and
+elements are relevant (normative requirements are specified in the
+schema).</p>
+
+<div id="tbl:xml-named-data-types">
+<table>
+<caption>Table 3: XML Named Data Types<a class="headerlink" href="06-index-cwmp-data-model-definition-xml-schema.html#tbl:xml-named-data-types" title="Permalink to this table"> <img src='permalink.png' title='' width="0.8em"/></a></caption>
+<col width="9%" />
+<col width="91%" />
+<tr class="header">
+<th align="left">Name</th>
+<th align="left">Description</th>
+</tr>
+<tr class="odd">
+<td align="left">name</td>
+<td align="left">The data type name.</td>
+</tr>
+<tr class="even">
+<td align="left">base</td>
+<td align="left">The base type name, i.e. name of the data type from which this data type is derived. This is used only where the base type is itself a named data type, not a primitive type.</td>
+</tr>
+<tr class="odd">
+<td align="left">status</td>
+<td align="left">The data type’s {current, deprecated, obsoleted, deleted} status. This defaults to current, and so is not likely to be specified for a new data type.</td>
+</tr>
+<tr class="even">
+<td align="left">description</td>
+<td align="left">The data type’s description (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:descriptions' title='' class="heading">A.2.2</a>).</td>
+</tr>
+<tr class="odd">
+<td align="left">list<br/>minItems<br/>maxItems<br/>nestedBrackets<br/>size</td>
+<td align="left">If the data type is list-valued, details of the list value. This allows specification of the maximum and minimum number of items in the list, and of nested list behavior, and also supports a size facet for the list (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:data-type-facets' title='' class="heading">A.2.3.3</a>).<br/>Note that a list-valued data type is always a string as far as the protocol is concerned. For a list, the rest of the data type specification refers to the individual list items, not to the parameter value.</td>
+</tr>
+<tr class="even">
+<td align="left">size<br/>pathRef<br/>instanceRef<br/>range<br/>enumeration<br/>enumerationRef<br/>pattern<br/>units<br/>default</td>
+<td align="left">Data type facets (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:data-type-facets' title='' class="heading">A.2.3.3</a>). These are permitted only when the base type is a named data type, i.e. when the base attribute is specified.</td>
+</tr>
+<tr class="odd">
+<td align="left">base64<br/>boolean<br/>dateTime<br/>hexBinary<br/>int<br/>long<br/>string<br/>unsignedInt<br/>unsignedLong</td>
+<td align="left">Primitive data type definition. These are permitted only when the base type is primitive. There is an element for each primitive data type, and each element supports only the facets (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:data-type-facets' title='' class="heading">A.2.3.3</a>) that are appropriate to that data type.</td>
+</tr>
+</table></div>
+
+<p>For example:</p>
+
+<pre><code>    &lt;dataType name="String255"&gt;
+      &lt;description&gt;String of maximum length 255.&lt;/description&gt;
+      &lt;string&gt;
+        &lt;size maxLength="255"/&gt;
+      &lt;/string&gt;
+    &lt;/dataType&gt;
+
+    &lt;dataType name="String127" base="String255"&gt;
+      &lt;description&gt;String of maximum length 127.&lt;/description&gt;
+      &lt;size maxLength="127"/&gt;
+    &lt;/dataType&gt;
+
+    &lt;dataType name="String127List" base="String127"&gt;
+      &lt;description&gt;List of up to 7 strings, each of maximum length 127. If a
+      list item is itself a list, it will be "protected" by square
+      brackets.&lt;/description&gt;
+      &lt;list maxItems="7" nestedBrackets="required"/&gt;
+    &lt;/dataType&gt;</code></pre>
+
+<h4 class="annex4" id="sec:anonymous-data-types">A.2.3.2 Anonymous Data Types<a class="headerlink" href="06-index-cwmp-data-model-definition-xml-schema.html#sec:anonymous-data-types" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h4>
+
+<p>Anonymous data types are defined within parameter syntax elements
+(<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:parameter-syntax' title='' class="heading">A.2.7.1</a>), and can apply only to the parameters within which they are
+defined. For example:</p>
+
+<pre><code>    &lt;parameter name="Example1" access="readOnly"&gt;
+      &lt;syntax&gt;
+        &lt;string&gt;
+          &lt;size maxLength="127"/&gt;
+          &lt;/string&gt;
+      &lt;/syntax&gt;
+    &lt;/parameter&gt;
+
+    &lt;parameter name="Example2" access="readOnly"&gt;
+      &lt;syntax&gt;
+        &lt;dataType base="String255"&gt;
+          &lt;size maxLength="127"/&gt;
+        &lt;/dataType&gt;
+      &lt;/syntax&gt;
+    &lt;/parameter&gt;</code></pre>
+
+<p>If an anonymous data type is modified in a later version of a data
+model, the modified anonymous data type is regarded as being derived
+from the original anonymous data type. Therefore the base type
+restriction rules of <a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:base-type-restriction' title='' class="heading">A.2.3.8</a> MUST be obeyed.</p>
+
+<h4 class="annex4" id="sec:data-type-facets">A.2.3.3 Data Type Facets<a class="headerlink" href="06-index-cwmp-data-model-definition-xml-schema.html#sec:data-type-facets" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h4>
+
+<p>A facet specifies some aspect of a data type, e.g. its size, range or
+units.</p>
+
+<p>Note that XML Schema <span class="cite" data-citation-ids="XML-Schema-Primer"><a href='05-index-normative-references.html#ref-XML-Schema-Primer' title=''>[4]</a></span> also associates facets with data types. The
+XML Schema and DM Schema concepts are the same, but the set of facets is
+not identical.</p>
+
+<p>The DM Schema defines the following facets (normative requirements are
+specified in the schema):</p>
+
+<div id="tbl:xml-data-type-facets">
+<table>
+<caption>Table 4: XML Data Type Facets<a class="headerlink" href="06-index-cwmp-data-model-definition-xml-schema.html#tbl:xml-data-type-facets" title="Permalink to this table"> <img src='permalink.png' title='' width="0.8em"/></a></caption>
+<col width="19%" />
+<col width="81%" />
+<tr class="header">
+<th align="left">Name</th>
+<th align="left">Description</th>
+</tr>
+<tr class="odd">
+<td align="left">size</td>
+<td align="left">Size ranges for the data type (applies to string, base64, hexBinary and their derived types). Note that the size facet always refers to the actual value, not to the base64- or hexBinary-encoded value. Prior to the definition of the DM Schema, the maximum sizes of base64 parameters referred to the base64-encoded values.<br/>Processing tools that generate reports from DM Instances SHOULD include explicit clarification of whether the size ranges refer to the actual or encoded values.<br/>Note that the size facet is also used to specify the size range for list-valued parameters, which are always strings (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:parameter-syntax' title='' class="heading">A.2.7.1</a>).</td>
+</tr>
+<tr class="even">
+<td align="left">pathRef</td>
+<td align="left">Details of how to reference parameters and objects via their Path Names (applies to string and its derived types; <a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:reference-facets' title='' class="heading">A.2.3.7</a>).</td>
+</tr>
+<tr class="odd">
+<td align="left">instanceRef</td>
+<td align="left">Details of how to reference object instances (table rows) via their Instance Numbers (applies to int, unsignedInt and their derived types; <a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:reference-facets' title='' class="heading">A.2.3.7</a>).</td>
+</tr>
+<tr class="even">
+<td align="left">range</td>
+<td align="left">Value ranges and step (default step is 1) for the data type (applies to numeric data types and their derived types).</td>
+</tr>
+<tr class="odd">
+<td align="left">enumeration</td>
+<td align="left">Enumerations for the data type (applies to string and its derived types).</td>
+</tr>
+<tr class="even">
+<td align="left">enumerationRef</td>
+<td align="left">Enumerations for the data type, obtained at run-time from the value of a specified parameter (applies to string and its derived types; <a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:reference-facets' title='' class="heading">A.2.3.7</a>).</td>
+</tr>
+<tr class="odd">
+<td align="left">pattern</td>
+<td align="left">Patterns for the data type (applies to string and its derived types). Pattern value syntax is the same as for XML Schema regular expressions. See <span class="cite" data-citation-ids="XML-Schema-Datatypes"><a href='05-index-normative-references.html#ref-XML-Schema-Datatypes' title=''>[F/12]</a></span>.</td>
+</tr>
+<tr class="even">
+<td align="left">units</td>
+<td align="left">Units for the data type (applies to numeric data types and their derived types).</td>
+</tr>
+<tr class="odd">
+<td align="left">default</td>
+<td align="left">Object, factory, implementation or parameter default.<br/>- Object defaults apply only to parameters that can be created as a result of an AddObject RPC.<br/>- Factory defaults apply to all parameters (if a factory default is specified, it also acts as object default for applicable parameters).<br/>- Implementation defaults apply to all parameters (they are informational defaults that are likely after a reset or if no other value is available).<br/>- Parameter defaults apply only to command and event arguments.</td>
+</tr>
+</table></div>
+
+<p>It is important to note that the enumeration facet does not necessarily
+define all the valid values for a data type. This is for the following
+reasons:</p>
+
+<ul>
+<li><p>As specified in <a href='04-index-object-definitions.html#sec:vendor-specific-elements' title='' class="heading">Section 3.3</a>, vendors are allowed to add additional
+enumeration values.</p></li>
+<li><p>A future version of a data model may need to add additional
+enumeration values.</p></li>
+</ul>
+
+<h4 class="annex4" id="sec:reference-path-names">A.2.3.4 Reference Path Names<a class="headerlink" href="06-index-cwmp-data-model-definition-xml-schema.html#sec:reference-path-names" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h4>
+
+<p>Some description templates (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:description-templates' title='' class="heading">A.2.2.4</a>), and all reference facets
+(<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:reference-facets' title='' class="heading">A.2.3.7</a>), need to specify parameter, command, event or object names. It is always
+possible to specify a full Path Name, but it is frequently necessary or
+convenient to specify a relative Path Name. For example, it might be
+necessary to reference another parameter in the current object. Any
+Instance Numbers in the parameter’s full Path Name cannot be known at
+data model definition time, so this can only be done using a relative
+Path Name.</p>
+
+<p>The following rules apply to all Path Names that are used in data model
+definitions for referencing parameters or objects:</p>
+
+<ul>
+<li><p>Path Names MAY contain &ldquo;{i}&rdquo; placeholders, which MUST be interpreted
+as wild cards matching all Instance Numbers, e.g.
+&ldquo;Device.Ethernet.Interface.{i}.&rdquo; references all Ethernet.Interface
+instances.</p></li>
+<li><p>Path Names MUST NOT contain Instance Numbers.</p></li>
+</ul>
+
+<p>A Path Name is always associated with a path name scope, which defines
+the point in the naming hierarchy relative to which the Path Name
+applies.</p>
+
+<div id="tbl:path-name-scope-definition">
+<table>
+<caption>Table 5: Path Name Scope Definition<a class="headerlink" href="06-index-cwmp-data-model-definition-xml-schema.html#tbl:path-name-scope-definition" title="Permalink to this table"> <img src='permalink.png' title='' width="0.8em"/></a></caption>
+<col width="20%" />
+<col width="80%" />
+<tr class="header">
+<th align="left">Name</th>
+<th align="left">Description</th>
+</tr>
+<tr class="odd">
+<td align="left">normal</td>
+<td align="left">This is a hybrid scope which usually gives the desired behavior:<br/>- If the path begins with a &ldquo;Device&rdquo; component, it is relative to
+the top of the naming hierarchy.<br/>- If the path begins with a dot, it is relative to the Root or
+Service Object (c.f. scope=model).<br/>- Otherwise, the path is relative to the current object (c.f.
+scope=object).</td>
+</tr>
+<tr class="even">
+<td align="left">model</td>
+<td align="left">The path is relative to the Root or Service Object.</td>
+</tr>
+<tr class="odd">
+<td align="left">object</td>
+<td align="left">The path is relative to the current object.</td>
+</tr>
+</table></div>
+
+<p>Formally, if the path name scope is normal:</p>
+
+<ul>
+<li><p>If the path is empty, it MUST be regarded as referring to the top of
+the naming hierarchy.</p></li>
+<li><p>Otherwise, if the path begins with a &ldquo;Device&rdquo; component, it MUST be
+regarded as a full Path Name.</p></li>
+<li><p>Otherwise, if the path begins with a dot (&ldquo;.&rdquo;), it MUST be regarded
+as a path relative to the Root or Service Object. For example, in
+the Device Root Object &ldquo;.DeviceInfo.&rdquo; means &ldquo;Device.DeviceInfo.&rdquo;,
+and in the Device.Services.ABCService.1 Service Object it means
+&ldquo;Device.Services.ABCService.1.DeviceInfo.&rdquo;.</p></li>
+<li><p>Otherwise, it MUST be regarded as a path relative to the current
+object. Any leading hash characters (&ldquo;#&rdquo;) cause it to be relative
+to the parent of the current object (or the parent’s parent, and so
+on) as described below. For example, if the current object is
+&ldquo;Device.LAN.&rdquo;, &ldquo;IPAddress&rdquo; means &ldquo;Device.LAN.IPAddress&rdquo;,
+&ldquo;Stats.&rdquo; means &ldquo;Device.LAN.Stats.&rdquo; and &ldquo;#.DeviceInfo.&rdquo; means
+&ldquo;Device.DeviceInfo&rdquo; (see below for more &ldquo;#&rdquo; examples).</p></li>
+</ul>
+
+<p>If the path name scope is model:</p>
+
+<ul>
+<li><p>If the path is empty, it MUST be regarded as referring to the Root
+or Service Object.</p></li>
+<li><p>Otherwise, it MUST be regarded as a path relative to the Root or
+Service Object. Any leading dot MUST be ignored. Leading hash
+characters are not permitted.</p></li>
+</ul>
+
+<p>If the path name scope is object:</p>
+
+<ul>
+<li><p>If the path is empty, it MUST be regarded as referring to the
+current object.</p></li>
+<li><p>Otherwise, it MUST be regarded as a path relative to the current
+object. Any leading dot MUST be ignored. Leading hash characters are
+not permitted.</p></li>
+</ul>
+
+<p>As mentioned above, if the path name scope is normal, a leading hash
+character causes the path to be relative to the parent of the current
+object. Additional hash characters reference the parent’s parent, and so
+on, but they MUST NOT be used to reference beyond the Root or Service
+Object. Also, for object instances, &ldquo;#.&rdquo; always means the
+Multi-Instance Object’s (table’s) parent rather than the Multi-Instance
+Object (table).</p>
+
+<p>In addition, within a component definition, items that are defined
+outside the component MUST NOT be referenced via relative paths. This is
+because components can be included anywhere within the data model tree.</p>
+
+<p>For example, if the current object is &ldquo;Device.LAN.DHCPOption.{i}.&rdquo;:</p>
+
+<ul>
+<li><p>&ldquo;#.&rdquo; means &ldquo;Device.LAN.&rdquo; (the table’s parent, not the table).</p></li>
+<li><p>&ldquo;#.DHCPOption.&rdquo; means &ldquo;Device.LAN.DHCPOption.&rdquo; (the table).</p></li>
+<li><p>&ldquo;#.Stats.&rdquo; means &ldquo;Device.LAN.Stats.&rdquo;.</p></li>
+<li><p>&ldquo;#.Stats.TotalBytesSent&rdquo; means &ldquo;Device.LAN.Stats.TotalBytesSent&rdquo;.</p></li>
+</ul>
+
+<p>The following examples would be invalid if LAN was defined within a
+component:</p>
+
+<ul>
+<li><p>&ldquo;##.&rdquo; means &ldquo;Device.&rdquo;.</p></li>
+<li><p>&ldquo;##.DeviceInfo.&rdquo; means &ldquo;Device.DeviceInfo.&rdquo;.</p></li>
+<li><p>&ldquo;##.DeviceInfo.Manufacturer&rdquo; means
+&ldquo;Device.DeviceInfo.Manufacturer&rdquo;.</p></li>
+</ul>
+
+<p>The final example can never be valid:</p>
+
+<ul>
+<li>&ldquo;###.&rdquo; is not permitted (references beyond the Root Object).</li>
+</ul>
+
+<p>Note that the term &ldquo;Root or Service Object&rdquo;, which is used several times
+above, means &ldquo;if within a Service Object instance, the Service Object
+instance; otherwise, the Root Object&rdquo;.</p>
+
+<p>For example, the pathRef and instanceRef facets (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:reference-facets' title='' class="heading">A.2.3.7</a>) have a
+targetParent attribute which specifies the possible parent(s) of the
+referenced parameter or object, and a targetParentScope attribute
+(defaulted to normal) which specifies targetParent’s scope. If the
+current object is within a Service Object instance, setting
+targetParentScope to model forces the referenced parameter or object to
+be in the same Service Object instance. Similarly, setting
+targetParentScope to object forces the referenced parameter or object to
+be in the same object or in a sub-object.</p>
+
+<h4 class="annex4" id="sec:null-values-and-references">A.2.3.5 Null Values and References<a class="headerlink" href="06-index-cwmp-data-model-definition-xml-schema.html#sec:null-values-and-references" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h4>
+
+<p>Each primitive data type has an associated null value that is used, for
+example, as the expansion of the {{null}} template (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:description-templates' title='' class="heading">A.2.2.4</a>). These null
+values are defined as follows:</p>
+
+<ul>
+<li><p><strong>base64, hexBinary, string:</strong> an empty string</p></li>
+<li><p><strong>unsignedInt, unsignedLong:</strong> 0</p></li>
+<li><p><strong>int, long:</strong> -1</p></li>
+<li><p><strong>boolean:</strong> false</p></li>
+<li><p><strong>dateTime:</strong> 0001-01-01T00:00:00Z (the Unknown Time; see <a href='04-index-object-definitions.html#sec:date-and-time-rules' title='' class="heading">Section 3.2.1</a>)</p></li>
+</ul>
+
+<p>A null reference indicates that a reference parameter is not currently
+referencing anything. The value that indicates a null reference is the
+null value for the reference parameter’s base data type, i.e.:</p>
+
+<ul>
+<li><p><strong>string</strong>: an empty string</p></li>
+<li><p><strong>unsignedInt</strong>: 0</p></li>
+<li><p><strong>int</strong>: -1</p></li>
+</ul>
+
+<h4 class="annex4" id="sec:reference-types">A.2.3.6 Reference Types<a class="headerlink" href="06-index-cwmp-data-model-definition-xml-schema.html#sec:reference-types" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h4>
+
+<p>A reference to another parameter or object can be weak or strong:</p>
+
+<ul>
+<li><p><strong>weak</strong>: it does not necessarily reference an existing parameter or
+object. For example, if the referenced parameter or object is
+deleted, the value of the reference parameter might not get updated.
+All weak reference parameters MUST be declared as writable.</p></li>
+<li><p><strong>strong</strong>: it always either references a valid parameter or object,
+or else is a null reference (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:null-values-and-references' title='' class="heading">A.2.3.5</a>). If the referenced parameter
+or object is deleted, the value of the reference parameter is always
+set to a null reference.</p></li>
+</ul>
+
+<p>See <a href='04-index-object-definitions.html#sec:parameters-that-reference-parameters-or-objects' title='' class="heading">Section 3.2.3</a> for normative requirements relating to reference types
+and the associated Agent behavior.</p>
+
+<h4 class="annex4" id="sec:reference-facets">A.2.3.7 Reference Facets<a class="headerlink" href="06-index-cwmp-data-model-definition-xml-schema.html#sec:reference-facets" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h4>
+
+<p>A reference facet specifies how a parameter can reference another
+parameter or object. There are three sorts of reference:</p>
+
+<ul>
+<li><p><strong>Path reference</strong>: references another parameter or object via its
+Path Name. Details are specified via the pathRef facet, which
+applies to string and its derived types.</p></li>
+<li><p><strong>Instance reference</strong>: references an object instance (table row)
+via its Instance Number. Details are specified via the instanceRef
+facet, which applies to int, unsignedInt and their derived types.</p></li>
+<li><p><strong>Enumeration reference</strong>: references a list-valued parameter via
+its Path Name. The current value of the referenced parameter
+indicates the valid enumerations for this parameter. Details are
+specified via the enumerationRef facet, which applies to string and
+its derived types.</p></li>
+</ul>
+
+<p>When defining a path reference, the following attributes and elements
+are relevant (normative requirements are specified in the schema).</p>
+
+<div id="tbl:pathref-facet-definition">
+<table>
+<caption>Table 6: PathRef Facet Definition<a class="headerlink" href="06-index-cwmp-data-model-definition-xml-schema.html#tbl:pathref-facet-definition" title="Permalink to this table"> <img src='permalink.png' title='' width="0.8em"/></a></caption>
+<col width="18%" />
+<col width="82%" />
+<tr class="header">
+<th align="left">Name</th>
+<th align="left">Description</th>
+</tr>
+<tr class="odd">
+<td align="left">targetParent</td>
+<td align="left">An XML list of Path Names that can restrict the set of parameters and objects that can be referenced. If the list is empty (the default), then anything can be referenced. Otherwise, only the immediate children of one of the specified objects can be referenced.<br/>A &ldquo;{i}&rdquo; placeholder in a Path Name acts as a wild card, e.g. &ldquo;Device.DSL.BondingGroup.{i}.BondedChannel.{i}.Ethernet.&rdquo;. Path Names cannot contain explicit Instance Identifiers.</td>
+</tr>
+<tr class="even">
+<td align="left">targetParentScope</td>
+<td align="left">Specifies the point in the naming hierarchy relative to which targetParent applies (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:reference-path-names' title='' class="heading">A.2.3.4</a>): normal (default), model or object.</td>
+</tr>
+<tr class="odd">
+<td align="left">targetType</td>
+<td align="left">Specifies what types of item can be referenced:<br/>- <strong>any</strong>: any parameter or object can be referenced (default)<br/>- <strong>parameter</strong>: any parameter can be referenced<br/>- <strong>object</strong>: any object can be referenced<br/>- <strong>single</strong>: any single-instance object can be referenced<br/>- <strong>table</strong>: any Multi-Instance Object (table) can be referenced<br/>- <strong>row</strong>: any Multi-Instance Object (table) instance (row) can be referenced</td>
+</tr>
+<tr class="even">
+<td align="left">targetDataType</td>
+<td align="left">Specifies the valid data types for the referenced parameter. Is relevant only when targetType is any or parameter.<br/>Possible values are as follows:<br/>- <strong>any</strong>: a parameter of any data type can be referenced (default)<br/>- <strong>base64</strong>: only a base64 parameter can be referenced<br/>- <strong>boolean</strong>: only a boolean parameter can be referenced<br/>- <strong>dateTime</strong>: only a dateTime parameter can be referenced<br/>- <strong>hexBinary</strong>: only a hexBinary parameter can be referenced<br/>- <strong>integer</strong>: only an integer (int, long, unsignedInt or unsignedLong) parameter can be referenced<br/>- <strong>int</strong>: only an int parameter can be referenced<br/>- <strong>long</strong>: only a long (or int) parameter can be referenced<br/>- <strong>string</strong>: only a string parameter can be referenced<br/>- <strong>unsignedInt</strong>: only an unsignedInt parameter can be referenced<br/>- <strong>unsignedLong</strong>: only an unsignedLong (or unsignedInt) parameter can be referenced<br/>- <strong>&lt;named data type&gt;</strong>: only a parameter of the named data type can be referenced<br/>In addition, a parameter whose data type is derived from the specified data type can be referenced. The built-in type hierarchy (a simplified version of the XML Schema type hierarchy) is as follows:<br/><code>any</code><br/>  <code>base64</code><br/>  <code>boolean</code><br/>  <code>dateTime</code><br/>  <code>hexBinary</code><br/>  <code>integer</code><br/>    <code>long</code><br/>      <code>int</code><br/>    <code>unsignedLong</code><br/>      <code>unsignedInt</code><br/>  <code>string</code><br/>Note that any and integer are not valid parameter data types. They are included in order to support &ldquo;can reference any data type&rdquo; and &ldquo;can reference any numeric data type&rdquo;.</td>
+</tr>
+<tr class="odd">
+<td align="left">refType</td>
+<td align="left">Specifies the reference type (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:reference-types' title='' class="heading">A.2.3.6</a>): weak or strong.</td>
+</tr>
+</table></div>
+
+<p>When defining an instance reference, the following attributes and
+elements are relevant (normative requirements are specified in the
+schema).</p>
+
+<div id="tbl:instanceref-facet-definition">
+<table>
+<caption>Table 7: InstanceRef Facet Definition<a class="headerlink" href="06-index-cwmp-data-model-definition-xml-schema.html#tbl:instanceref-facet-definition" title="Permalink to this table"> <img src='permalink.png' title='' width="0.8em"/></a></caption>
+<col width="18%" />
+<col width="82%" />
+<tr class="header">
+<th align="left">Name</th>
+<th align="left">Description</th>
+</tr>
+<tr class="odd">
+<td align="left">targetParent</td>
+<td align="left">Specifies the Path Name of the Multi-Instance Object (table) of which an instance (row) is being referenced.<br/>&ldquo;{i}&rdquo; placeholders and explicit Instance Identifiers are not permitted in the Path Name. targetParentScope can be used to specify Path Names relative to the Root or Service Object or the current object.</td>
+</tr>
+<tr class="even">
+<td align="left">targetParentScope</td>
+<td align="left">Specifies the point in the naming hierarchy relative to which targetParent applies (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:reference-path-names' title='' class="heading">A.2.3.4</a>): normal (default), model or object.</td>
+</tr>
+<tr class="odd">
+<td align="left">refType</td>
+<td align="left">Specifies the reference type (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:reference-types' title='' class="heading">A.2.3.6</a>): weak or strong.</td>
+</tr>
+</table></div>
+
+<p>When defining an enumeration reference, the following attributes and
+elements are relevant (normative requirements are specified in the
+schema).</p>
+
+<div id="tbl:enumerationref-facet-definition">
+<table>
+<caption>Table 8: EnumerationRef Facet Definition<a class="headerlink" href="06-index-cwmp-data-model-definition-xml-schema.html#tbl:enumerationref-facet-definition" title="Permalink to this table"> <img src='permalink.png' title='' width="0.8em"/></a></caption>
+<col width="18%" />
+<col width="82%" />
+<tr class="header">
+<th align="left">Name</th>
+<th align="left">Description</th>
+</tr>
+<tr class="odd">
+<td align="left">targetParam</td>
+<td align="left">Specifies the Path Name of the list-valued parameter whose current value indicates the valid enumerations for this parameter.</td>
+</tr>
+<tr class="even">
+<td align="left">targetParamScope</td>
+<td align="left">Specifies the point in the naming hierarchy relative to which targetParam applies (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:reference-path-names' title='' class="heading">A.2.3.4</a>): normal (default), model or object.</td>
+</tr>
+<tr class="odd">
+<td align="left">nullValue</td>
+<td align="left">Specifies the parameter value that indicates that none of the values of the referenced parameter currently apply (if not specified, no such value is designated).<br/>Note that if this parameter is list-valued then nullValue is not relevant, because this condition will be indicated by an empty list.</td>
+</tr>
+</table></div>
+
+<p>The following examples illustrate the various possible types of
+reference.</p>
+
+<pre><code>    &lt;object name="PeriodicStatistics.SampleSet.{i}.Parameter.{i}." ...&gt;
+      ...
+      &lt;parameter name="Reference" access="readWrite"&gt;
+        &lt;description&gt;Reference to the parameter that is associated with this
+        object instance. This MUST be the parameter's full path name.&lt;/description&gt;
+        &lt;syntax&gt;
+          &lt;string&gt;
+            &lt;size maxLength="256"/&gt;
+            &lt;pathRef targetType="parameter" refType="weak"/&gt;
+          &lt;/string&gt;
+          &lt;default type="object" value=""/&gt;
+        &lt;/syntax&gt;
+      &lt;/parameter&gt;</code></pre>
+
+<pre><code>    &lt;object name="StorageService.{i}.StorageArray.{i}." ...&gt;
+      ...
+      &lt;parameter name="PhysicalMediumReference" access="readWrite"&gt;
+        &lt;description&gt;A comma-separated list of Physical Medium references.
+        Each Physical Medium referenced by this parameter MUST exist within the
+        same StorageService instance. A Physical Medium MUST only be referenced
+        by one Storage Array instance. Each reference can be either in the form
+        of ".PhysicalMedium.{i}" or a fully qualified object
+        name...&lt;/description&gt;
+        &lt;syntax&gt;
+          &lt;list&gt;
+            &lt;size maxLength="1024"/&gt;
+          &lt;/list&gt;
+          &lt;string&gt;
+            &lt;pathRef targetParent=".PhysicalMedium." targetParentScope="model"
+            targetType="row" refType="strong"/&gt;
+          &lt;/string&gt;
+        &lt;/syntax&gt;
+      &lt;/parameter&gt;</code></pre>
+
+<pre><code>    &lt;object name="STBService.{i}.Components.FrontEnd.{i}.IP.Inbound.{i}." ...&gt;
+      ...
+      &lt;parameter name="StreamingControlProtocol" access="readOnly"&gt;
+        &lt;description&gt;Network protocol currently used for controlling streaming
+        of the source content, or an empty string if the content is not being
+        streamed or is being streamed but is not being controlled. If non-empty,
+        the string MUST be one of the .Capabilities.FrontEnd.IP.StreamingControlProtocols
+        values.&lt;/description&gt;
+        &lt;syntax&gt;
+          &lt;string&gt;
+            &lt;enumerationRef
+            targetParam=".Capabilities.FrontEnd.IP.StreamingControlProtocols"
+            nullValue=""/&gt;
+          &lt;/string&gt;
+        &lt;/syntax&gt;
+      &lt;/parameter&gt;
+
+      &lt;parameter name="StreamingTransportProtocol" access="readOnly"&gt;
+        &lt;description&gt;Network protocol currently used for streaming the source
+        content, or an empty string if the content is not being streamed.
+        If non-empty, the string MUST be one of the
+        .Capabilities.FrontEnd.IP.StreamingTransportProtocols
+        values.&lt;/description&gt;
+        &lt;syntax&gt;
+          &lt;string&gt;
+            &lt;enumerationRef
+            targetParam=".Capabilities.FrontEnd.IP.StreamingTransportProtocols"
+            nullValue=""/&gt;
+          &lt;/string&gt;
+        &lt;/syntax&gt;
+      &lt;/parameter&gt;</code></pre>
+
+<pre><code>    &lt;object name="Device.WiFi.AccessPoint.{i}.Security." ...&gt;
+      ...
+      &lt;parameter name="ModeEnabled" access="readWrite"&gt;
+        &lt;description&gt;Indicates which security mode is enabled.&lt;/description&gt;
+        &lt;syntax&gt;
+          &lt;list/&gt;
+          &lt;string&gt;
+            &lt;enumerationRef targetParam="ModesSupported"/&gt;
+          &lt;/string&gt;
+        &lt;/syntax&gt;
+      &lt;/parameter&gt;</code></pre>
+
+<h4 class="annex4" id="sec:base-type-restriction">A.2.3.8 Base Type Restriction<a class="headerlink" href="06-index-cwmp-data-model-definition-xml-schema.html#sec:base-type-restriction" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h4>
+
+<p>A new data type MUST always be a restriction of its base type, meaning
+that a valid value of the new data type will always be a valid value for
+its base type. This is the case for the examples of <a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:named-data-types' title='' class="heading">A.2.3.1</a>, which
+involve three different data types:</p>
+
+<ul>
+<li><p>string of unlimited length</p></li>
+<li><p>string of maximum length 255</p></li>
+<li><p>string of maximum length 127</p></li>
+</ul>
+
+<p>Clearly a string of length 100 is valid for all three data types, but a
+string of length 200 is only valid for the first two data types.</p>
+
+<p>The examples of <a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:named-data-types' title='' class="heading">A.2.3.1</a> considered only the size facet, but in general
+all facets that are applicable to the data type have to be considered.
+The base type restriction requirements for each facet are as follows:</p>
+
+<div id="tbl:xml-facet-inheritance-rules">
+<table>
+<caption>Table 9: XML Facet Inheritance Rules<a class="headerlink" href="06-index-cwmp-data-model-definition-xml-schema.html#tbl:xml-facet-inheritance-rules" title="Permalink to this table"> <img src='permalink.png' title='' width="0.8em"/></a></caption>
+<col width="18%" />
+<col width="82%" />
+<tr class="header">
+<th align="left">Facet</th>
+<th align="left">Requirements</th>
+</tr>
+<tr class="odd">
+<td align="left">size</td>
+<td align="left">The derived data type can define sizes in any way, provided that the new sizes do not permit any values that are not valid for the base type.</td>
+</tr>
+<tr class="even">
+<td align="left">pathRef</td>
+<td align="left">The derived data type can modify the data type in the following ways:<br/>- By &ldquo;promoting&rdquo; status to a &ldquo;higher&rdquo; value, where the lowest to highest ordering is: current, deprecated, obsoleted, deleted. For example, current can be changed to deprecated, and obsoleted can be changed to deleted, but deleted cannot be changed back to obsoleted. When promoting status, the deprecation, obsoletion and deletion rules of <a href='03-index-architecture.html#sec:deprecated-and-obsoleted-items' title='' class="heading">Section 2.4</a> MUST be obeyed.<br/>- By changing targetParent to narrow the set of possible parent objects.<br/>- By changing targetType to narrow the set of possible target types.<br/>- By changing targetDataType to narrow the set of possible target data types.</td>
+</tr>
+<tr class="odd">
+<td align="left">instanceRef</td>
+<td align="left">The derived data type can modify the data type in the following ways:<br/>- By &ldquo;promoting&rdquo; status to a &ldquo;higher&rdquo; value, as described for pathRef.<br/>- By changing targetParent to narrow the set of possible parent objects.</td>
+</tr>
+<tr class="even">
+<td align="left">range</td>
+<td align="left">The derived data type can define ranges in any way, provided that the new ranges do not permit any values that are not valid for the base type.</td>
+</tr>
+<tr class="odd">
+<td align="left">enumeration</td>
+<td align="left">The derived data type can modify existing enumeration values in the following ways:<br/>- By &ldquo;promoting&rdquo; access from readOnly to readWrite or writeOnceReadOnly.<br/>- By &ldquo;promoting&rdquo; status to a &ldquo;higher&rdquo; value, as described for pathRef.<br/>- By &ldquo;promoting&rdquo; optional from False to True.<br/>- By adding a code, if none was previously specified.<br/>- By using the action attribute to prefix, extend or replace the description (see below and <a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:description-modifications' title='' class="heading">A.2.12.6</a>).<br/>The derived data type can add new enumeration values.</td>
+</tr>
+<tr class="even">
+<td align="left">enumerationRef</td>
+<td align="left">The derived data type can modify the data type by &ldquo;promoting&rdquo; status to a &ldquo;higher&rdquo; value, as described for pathRef.</td>
+</tr>
+<tr class="odd">
+<td align="left">pattern</td>
+<td align="left">The derived data type can modify existing pattern values by changing access, status, optional and description exactly as for enumerations.<br/>The derived data type can add new patterns and/or replace existing patterns with new patterns, provided that the new patterns do not permit any values that are not valid for the base type. For example a single pattern &ldquo;[AB]&rdquo; could be replaced with &ldquo;A&rdquo; and &ldquo;B&rdquo;, but &ldquo;C&rdquo; could not be added.</td>
+</tr>
+<tr class="even">
+<td align="left">units</td>
+<td align="left">The derived data type can add units if the base type did not specify any.</td>
+</tr>
+</table></div>
+
+<p>Most of the above requirements are non-normative, because it has to be
+possible to correct errors. For example, if the base type supports a
+range of [-1:4095] but the values 0 and 4095 were included in error,
+it would be permissible for a derived type to support ranges of
+[-1:-1] and [1:4094]. Processing tools SHOULD be able to detect and
+warn about such cases.</p>
+
+<p>When defining a new data type, if a facet is omitted, the new data type
+will inherit that facet from its base type. If a facet is present, it
+MUST be fully specified (except that special rules apply to
+descriptions; see below and <a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:description-modifications' title='' class="heading">A.2.12.6</a>). For example, this means that a
+derived type that adds additional enumeration values has also to
+re-declare the enumeration values of the base type.</p>
+
+<p>In the following example, the derived type inherits the units facet from its
+parent but it does not inherit the range facet, so the DataBlockSize range is
+[0:65535] and the DataBlockSize2 range is [40:1460].</p>
+
+<pre><code>   &lt;dataType name="DataBlockSize"&gt;
+     &lt;unsignedInt&gt;
+       &lt;range maxInclusive="65535"/&gt;
+       &lt;units value="bytes"/&gt;
+     &lt;/unsignedInt&gt;
+   &lt;/dataType&gt;
+
+   &lt;dataType name="DataBlockSize2" base="DataBlockSize"&gt;
+     &lt;range minInclusive="40" maxInclusive="1460"/&gt;
+   &lt;/dataType&gt;</code></pre>
+
+<p>Similarly, in the following, the enumeration values for ABCD are not A,
+B, C and D, but are just C and D. This is an error (because the derived
+type cannot remove enumeration values), and processing tools SHOULD
+detect and warn about such cases.</p>
+
+<pre><code>    &lt;dataType name="AB"&gt;
+      &lt;string&gt;
+        &lt;enumeration value="A"/&gt;
+        &lt;enumeration value="B"/&gt;
+      &lt;/string&gt;
+    &lt;/dataType&gt;
+
+    &lt;dataType name="ABCD" base="AB"&gt;
+      &lt;string&gt;
+        &lt;enumeration value="C"/&gt;
+        &lt;enumeration value="D"/&gt;
+      &lt;/string&gt;
+    &lt;/dataType&gt;</code></pre>
+
+<p>A derived data type and any of its facets that support descriptions will
+inherit those descriptions from the base type. Facet descriptions are
+inherited regardless of whether the facet is present in the derived
+type. For any descriptions that are explicitly specified in the derived
+type, the action attribute controls whether they will be prefixed,
+extended or replaced (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:description-modifications' title='' class="heading">A.2.12.6</a>).</p>
+
+<p>For example, in the following, the description of Z (which is not
+changed) does not have to be repeated.</p>
+
+<pre><code>    &lt;dataType name="XY"&gt;
+      &lt;description&gt;This is XY.&lt;/description&gt;
+      &lt;string&gt;
+        &lt;enumeration value="X"&gt;
+          &lt;description&gt;This is X.&lt;/description&gt;
+        &lt;/enumeration&gt;
+        &lt;enumeration value="Y"&gt;
+          &lt;description&gt;This is Y.&lt;/description&gt;
+        &lt;/enumeration&gt;
+        &lt;enumeration value="Z"&gt;
+          &lt;description&gt;This is Z.&lt;/description&gt;
+        &lt;/enumeration&gt;
+      &lt;/string&gt;
+    &lt;/dataType&gt;
+
+    &lt;dataType name="XY2" base="XY"&gt;
+      &lt;description action="replace"&gt;This is all about XY.&lt;/description&gt;
+      &lt;enumeration value="X"&gt;
+        &lt;description action="append"&gt;This is more about X, added at the
+        end.&lt;/description&gt;
+      &lt;/enumeration&gt;
+      &lt;enumeration value="Y"&gt;
+        &lt;description action="prefix"&gt;This is more about Y, inserted at the
+        beginning.&lt;/description&gt;
+      &lt;/enumeration&gt;
+      &lt;enumeration value="Z"/&gt;
+    &lt;/dataType&gt;</code></pre>
+
+<h3 class="annex3" id="sec:glossary-abbreviations-bibliography-and-templates">A.2.4 Glossary, Abbreviations, Bibliography and Templates<a class="headerlink" href="06-index-cwmp-data-model-definition-xml-schema.html#sec:glossary-abbreviations-bibliography-and-templates" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h3>
+
+<h4 class="annex4" id="sec:glossary">A.2.4.1 Glossary<a class="headerlink" href="06-index-cwmp-data-model-definition-xml-schema.html#sec:glossary" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h4>
+
+<p>The glossary is defined using the top-level glossary element, which can
+contain zero or more item elements.</p>
+
+<p>When defining a new glossary item, the following attributes and elements
+are relevant (normative requirements are specified in the schema).</p>
+
+<div id="tbl:xml-glossary-items">
+<table>
+<caption>Table 10: XML Glossary Items<a class="headerlink" href="06-index-cwmp-data-model-definition-xml-schema.html#tbl:xml-glossary-items" title="Permalink to this table"> <img src='permalink.png' title='' width="0.8em"/></a></caption>
+<col width="19%" />
+<col width="81%" />
+<tr class="header">
+<th align="left">Name</th>
+<th align="left">Description</th>
+</tr>
+<tr class="odd">
+<td align="left">id</td>
+<td align="left">The glossary item ID. This is the term that is being defined.</td>
+</tr>
+<tr class="even">
+<td align="left">description</td>
+<td align="left">The description of the glossary item. This can include appropriate markup and template references, e.g. it can include {{bibref}} and {{gloref}} template references.</td>
+</tr>
+</table></div>
+
+<h4 class="annex4" id="sec:abbreviations">A.2.4.2 Abbreviations<a class="headerlink" href="06-index-cwmp-data-model-definition-xml-schema.html#sec:abbreviations" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h4>
+
+<p>Abbreviations are defined using the top-level abbreviations element,
+which can contain zero or more item elements.</p>
+
+<p>When defining a new abbreviation, the following attributes and elements
+are relevant (normative requirements are specified in the schema).</p>
+
+<div id="tbl:xml-abbreviation-items">
+<table>
+<caption>Table 11: XML Abbreviation Items<a class="headerlink" href="06-index-cwmp-data-model-definition-xml-schema.html#tbl:xml-abbreviation-items" title="Permalink to this table"> <img src='permalink.png' title='' width="0.8em"/></a></caption>
+<col width="19%" />
+<col width="81%" />
+<tr class="header">
+<th align="left">Name</th>
+<th align="left">Description</th>
+</tr>
+<tr class="odd">
+<td align="left">id</td>
+<td align="left">The abbreviation item ID. This is the abbreviation that is being defined.</td>
+</tr>
+<tr class="even">
+<td align="left">description</td>
+<td align="left">The description of the abbreviation. This can include appropriate markup and template references, e.g. it can include {{bibref}} and {{gloref}} template references.</td>
+</tr>
+</table></div>
+
+<h4 class="annex4" id="sec:bibliography">A.2.4.3 Bibliography<a class="headerlink" href="06-index-cwmp-data-model-definition-xml-schema.html#sec:bibliography" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h4>
+
+<p>The bibliography is defined using the top-level bibliography element,
+which can contain zero or more (bibliographic) reference elements.</p>
+
+<p>When defining a new bibliographic reference, the following attributes
+and elements are relevant (normative requirements are specified in the
+schema).</p>
+
+<div id="tbl:xml-bibliographic-references">
+<table>
+<caption>Table 12: XML Bibliographic References<a class="headerlink" href="06-index-cwmp-data-model-definition-xml-schema.html#tbl:xml-bibliographic-references" title="Permalink to this table"> <img src='permalink.png' title='' width="0.8em"/></a></caption>
+<col width="19%" />
+<col width="81%" />
+<tr class="header">
+<th align="left">Name</th>
+<th align="left">Description</th>
+</tr>
+<tr class="odd">
+<td align="left">id</td>
+<td align="left">The bibliographic reference ID.</td>
+</tr>
+<tr class="even">
+<td align="left">name</td>
+<td align="left">The name by which the referenced document is usually known.</td>
+</tr>
+<tr class="odd">
+<td align="left">title</td>
+<td align="left">The document title.</td>
+</tr>
+<tr class="even">
+<td align="left">organization</td>
+<td align="left">The organization that published the referenced document, e.g. BBF, IEEE, IETF.</td>
+</tr>
+<tr class="odd">
+<td align="left">category</td>
+<td align="left">The document category, e.g. TR (BBF), RFC (IETF).</td>
+</tr>
+<tr class="even">
+<td align="left">date</td>
+<td align="left">The publication date.</td>
+</tr>
+<tr class="odd">
+<td align="left">hyperlink</td>
+<td align="left">Hyperlink(s) to the document.</td>
+</tr>
+</table></div>
+
+<p>For BBF standard DM Instances, the <a href='08-index-requirements-for-bbf-standard-data-models.html#sec:bibliography-reference-element' title='' class="heading">C.3.7</a> rules apply.</p>
+
+<p>Processing tools SHOULD be lenient when comparing bibliographic
+reference IDs. Specifically, they SHOULD ignore all whitespace,
+punctuation, leading zeros in numbers, and upper / lower case. So, for
+example, &ldquo;rfc 1234&rdquo; and &ldquo;RFC1234&rdquo; would be regarded as the same ID, as
+would &ldquo;TR-069&rdquo; and &ldquo;TR69&rdquo;.</p>
+
+<p>Processing tools SHOULD detect and report inconsistent bibliographic
+references, e.g. a reference with the same ID (i.e. an ID that compares
+as equal) as one that was encountered in a different file, but with a
+different name or hyperlink.</p>
+
+<h4 class="annex4" id="sec:template-elements">A.2.4.4 Templates<a class="headerlink" href="06-index-cwmp-data-model-definition-xml-schema.html#sec:template-elements" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h4>
+
+<div class="note">
+<p>The term &ldquo;template&rdquo; is used for both description templates
+(<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:description-templates' title='' class="heading">A.2.2.4</a>) such as <code>{{bibref}}</code> and (confusingly)
+<code>{{template}}</code>, and for the template elements described here.</p></div>
+
+<p>Template elements define named blocks of text that can be included (using
+<code>{{template}}</code> description templates) in descriptions.</p>
+
+<p>When defining a new template element, the following attributes and elements are
+relevant (normative requirements are specified in the schema).</p>
+
+<div id="tbl:xml-template-elements">
+<table>
+<caption>Table 13: XML Template Elements<a class="headerlink" href="06-index-cwmp-data-model-definition-xml-schema.html#tbl:xml-template-elements" title="Permalink to this table"> <img src='permalink.png' title='' width="0.8em"/></a></caption>
+<tr class="header">
+<th align="left">Name</th>
+<th align="left">Description</th>
+</tr>
+<tr class="odd">
+<td align="left">id</td>
+<td align="left">The template ID. This identifies the template that is being defined.</td>
+</tr>
+<tr class="even">
+<td align="left">&lt;body&gt;</td>
+<td align="left">The template body.</td>
+</tr>
+</table></div>
+
+<p>When including a template body in a description, processing tools MUST
+pre-process the value as for descriptions (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:description-pre-processing' title='' class="heading">A.2.2.2</a>) and
+then replace the <code>{{template}}</code> description template with the resulting
+text. The template body might contain markup, possibly including further
+<code>{{template}}</code> description templates, so processing tools MUST then process the
+expanded text.</p>
+
+<h3 class="annex3" id="sec:components">A.2.5 Components<a class="headerlink" href="06-index-cwmp-data-model-definition-xml-schema.html#sec:components" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h3>
+
+<p>A component is a way of defining a named set of parameters, objects
+and/or profiles to be used wherever such a group is needed in more than
+one place (or just to structure the definitions). A DM Instance can
+contain zero or more top-level component elements.</p>
+
+<p>When defining a new component, the following attributes and elements are
+relevant (normative requirements are specified in the schema).</p>
+
+<div id="tbl:xml-component-definition">
+<table>
+<caption>Table 14: XML Component Definition<a class="headerlink" href="06-index-cwmp-data-model-definition-xml-schema.html#tbl:xml-component-definition" title="Permalink to this table"> <img src='permalink.png' title='' width="0.8em"/></a></caption>
+<col width="19%" />
+<col width="81%" />
+<tr class="header">
+<th align="left">Name</th>
+<th align="left">Description</th>
+</tr>
+<tr class="odd">
+<td align="left">name</td>
+<td align="left">The component name.</td>
+</tr>
+<tr class="even">
+<td align="left">description</td>
+<td align="left">The component’s description (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:descriptions' title='' class="heading">A.2.2</a>).</td>
+</tr>
+<tr class="odd">
+<td align="left">component</td>
+<td align="left">The other components that are referenced (included) by this component.</td>
+</tr>
+<tr class="even">
+<td align="left">parameter</td>
+<td align="left">The component’s top-level parameter definitions (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:parameters' title='' class="heading">A.2.7</a>).</td>
+</tr>
+<tr class="odd">
+<td align="left">object</td>
+<td align="left">The component’s object definitions (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:objects' title='' class="heading">A.2.10</a>).</td>
+</tr>
+<tr class="even">
+<td align="left">profile</td>
+<td align="left">The component’s profile definitions (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:profiles-1' title='' class="heading">A.2.11</a>).</td>
+</tr>
+</table></div>
+
+<p>Referencing (including) a component can be thought of as textual
+substitution. A component has no version number and is not tied to a
+particular Root or Service Object.</p>
+
+<p>The following is a simple example of component definition and reference.</p>
+
+<pre><code>    &lt;component name="ByteStats"&gt;
+      &lt;parameter name="BytesSent" access="readOnly"&gt;
+        &lt;description&gt;Number of bytes sent.&lt;/description&gt;
+        &lt;syntax&gt;&lt;unsignedInt/&gt;&lt;/syntax&gt;
+      &lt;/parameter&gt;
+      &lt;parameter name="BytesReceived" access="readOnly"&gt;
+        &lt;description&gt;Number of bytes received.&lt;/description&gt;
+        &lt;syntax&gt;&lt;unsignedInt/&gt;&lt;/syntax&gt;
+      &lt;/parameter&gt;
+    &lt;/component&gt;</code></pre>
+
+<pre><code>    &lt;model name="Device:2.11"&gt;
+      &lt;object name="Device." access="readOnly" minEntries="1"
+      maxEntries="1"&gt;
+        ...
+        &lt;component ref="ByteStats"/&gt;
+        ...
+      &lt;/object&gt;
+      ...
+    &lt;/model&gt;</code></pre>
+
+<p>Here the component is referenced from within an object definition.
+Components can be referenced from within component, model, object,
+command and event definitions. Parameter, command, event, object and
+profile definitions within components are relative to the point of
+inclusion unless overridden using the path attribute.</p>
+
+<h3 class="annex3" id="sec:root-and-service-objects">A.2.6 Root and Service Objects<a class="headerlink" href="06-index-cwmp-data-model-definition-xml-schema.html#sec:root-and-service-objects" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h3>
+
+<p>Root and Service Objects are defined using the model element and an
+associated top-level object element. A DM Instance can contain zero or
+more top-level model elements.</p>
+
+<p>When defining a new model, the following attributes and elements are
+relevant (normative requirements are specified in the schema).</p>
+
+<div id="tbl:xml-root-and-service-objects">
+<table>
+<caption>Table 15: XML Root and Service Objects<a class="headerlink" href="06-index-cwmp-data-model-definition-xml-schema.html#tbl:xml-root-and-service-objects" title="Permalink to this table"> <img src='permalink.png' title='' width="0.8em"/></a></caption>
+<col width="15%" />
+<col width="85%" />
+<tr class="header">
+<th align="left">Name</th>
+<th align="left">Description</th>
+</tr>
+<tr class="odd">
+<td align="left">name</td>
+<td align="left">The model name, including its major and minor version numbers.</td>
+</tr>
+<tr class="even">
+<td align="left">base</td>
+<td align="left">The name of the previous version of the model (for use when the model version is greater than 1.0).</td>
+</tr>
+<tr class="odd">
+<td align="left">isService</td>
+<td align="left">Whether it is a Service Object. This defaults to False and so can be omitted for Root Objects.</td>
+</tr>
+<tr class="even">
+<td align="left">description</td>
+<td align="left">The model’s description (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:descriptions' title='' class="heading">A.2.2</a>).</td>
+</tr>
+<tr class="odd">
+<td align="left">component</td>
+<td align="left">The components that are referenced (included) by the model (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:components' title='' class="heading">A.2.5</a>).</td>
+</tr>
+<tr class="even">
+<td align="left">parameter</td>
+<td align="left">The model’s top-level parameter definitions (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:parameters' title='' class="heading">A.2.7</a>).</td>
+</tr>
+<tr class="odd">
+<td align="left">object</td>
+<td align="left">The model’s top-level and other object definitions (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:objects' title='' class="heading">A.2.10</a>).</td>
+</tr>
+<tr class="even">
+<td align="left">profile</td>
+<td align="left">The model’s profile definitions (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:profiles-1' title='' class="heading">A.2.11</a>).</td>
+</tr>
+</table></div>
+
+<p>Once a given version has been defined, it cannot be modified; instead, a
+new version of the object has to be defined. For example, the following
+example defines v1.0 and v1.1 of a notional Service Object.</p>
+
+<pre><code>    &lt;model name="DemoService:1.0" isService="true"&gt;
+      &lt;parameter name="DemoServiceNumberOfEntries" access="readOnly"/&gt;
+      &lt;object name="DemoService.{i}." access="readOnly" minEntries="0"
+      maxEntries="unbounded" entriesParameter="DemoServiceNumberOfEntries"/&gt;
+    &lt;/model&gt;</code></pre>
+
+<pre><code>    &lt;model name="DemoService:1.1" base="DemoService:1.0"
+    isService="true"&gt;
+      &lt;object base="DemoService.{i}." access="readOnly" minEntries="0"
+      maxEntries="unbounded"/&gt;
+    &lt;/model&gt;</code></pre>
+
+<h3 class="annex3" id="sec:parameters">A.2.7 Parameters<a class="headerlink" href="06-index-cwmp-data-model-definition-xml-schema.html#sec:parameters" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h3>
+
+<p>Parameters are defined using the parameter element, which can occur
+within component, model and object elements. When defining a new
+parameter, the following attributes and elements are relevant (normative
+requirements are specified in the schema).</p>
+
+<div id="tbl:xml-parameter-definition">
+<table>
+<caption>Table 16: XML Parameter Definition<a class="headerlink" href="06-index-cwmp-data-model-definition-xml-schema.html#tbl:xml-parameter-definition" title="Permalink to this table"> <img src='permalink.png' title='' width="0.8em"/></a></caption>
+<col width="15%" />
+<col width="85%" />
+<tr class="header">
+<th align="left">Name</th>
+<th align="left">Description</th>
+</tr>
+<tr class="odd">
+<td align="left">name</td>
+<td align="left">The parameter name (<a href='04-index-object-definitions.html#sec:general-notation' title='' class="heading">Section 3.1</a>).</td>
+</tr>
+<tr class="even">
+<td align="left">access</td>
+<td align="left">Whether the parameter is writable (readWrite), read-only (readOnly), or writable once then read-only (writeOnceReadOnly).</td>
+</tr>
+<tr class="odd">
+<td align="left">version</td>
+<td align="left">The data model version (of the form m.n or m.n.p) in which this parameter was first defined.</td>
+</tr>
+<tr class="even">
+<td align="left">status</td>
+<td align="left">The parameter’s {current, deprecated, obsoleted, deleted} status. This defaults to current, and so is not likely to be specified for a new parameter.</td>
+</tr>
+<tr class="odd">
+<td align="left">activeNotify</td>
+<td align="left">The parameter’s {normal, forceEnabled, forceDefault, canDeny} Active Notification status. This defaults to normal, and so is not often specified for a new parameter.<br/>Note that in USP, forceEnabled and forceDefault are not applicable and thus are equivalent to normal.</td>
+</tr>
+<tr class="even">
+<td align="left">forcedInform</td>
+<td align="left">For CWMP only, the parameter’s Forced Inform status. This defaults to False, and so is not often specified for a new parameter.</td>
+</tr>
+<tr class="odd">
+<td align="left">description</td>
+<td align="left">The parameter’s description (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:descriptions' title='' class="heading">A.2.2</a>).</td>
+</tr>
+<tr class="even">
+<td align="left">syntax</td>
+<td align="left">The parameter’s syntax (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:parameter-syntax' title='' class="heading">A.2.7.1</a>).</td>
+</tr>
+</table></div>
+
+<h4 class="annex4" id="sec:parameter-syntax">A.2.7.1 Parameter Syntax<a class="headerlink" href="06-index-cwmp-data-model-definition-xml-schema.html#sec:parameter-syntax" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h4>
+
+<p>Parameter syntax is defined using the syntax element, which can occur
+only within parameter elements. When defining a new parameter, the
+following attributes and elements are relevant (normative requirements
+are specified in the schema).</p>
+
+<div id="tbl:xml-parameter-syntax">
+<table>
+<caption>Table 17: XML Parameter Syntax<a class="headerlink" href="06-index-cwmp-data-model-definition-xml-schema.html#tbl:xml-parameter-syntax" title="Permalink to this table"> <img src='permalink.png' title='' width="0.8em"/></a></caption>
+<col width="15%" />
+<col width="85%" />
+<tr class="header">
+<th align="left">Name</th>
+<th align="left">Description</th>
+</tr>
+<tr class="odd">
+<td align="left">hidden</td>
+<td align="left">Whether the value is hidden on readback. This defaults to False, and so is not often specified for a new parameter.</td>
+</tr>
+<tr class="even">
+<td align="left">secured</td>
+<td align="left">For USP only, whether the value is secured, i.e. is hidden on readback unless the Controller has a &ldquo;secured&rdquo; role (if both hidden and secured are True, secured takes precedence). This defaults to False.</td>
+</tr>
+<tr class="odd">
+<td align="left">command</td>
+<td align="left">For CWMP only, whether setting the parameter triggers an Agent action as opposed to changing the configuration. This defaults to False.<br/>Note that this is an CWMP-only attribute (not an element) and is different from the USP-only command element (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:commands-usp-only' title='' class="heading">A.2.8</a>).</td>
+</tr>
+<tr class="even">
+<td align="left">list<br/>minItems<br/>maxItems<br/>nestedBrackets<br/>size</td>
+<td align="left">If the parameter is list-valued, details of the list value. This allows specification of the maximum and minimum number of items in the list, and of nested list behavior, and also supports a size facet for the list (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:data-type-facets' title='' class="heading">A.2.3.3</a>).<br/>Note that a list-valued parameter is always a string as far as the protocol is concerned. For a list, the rest of the syntax specification refers to the individual list items, not to the parameter value.</td>
+</tr>
+<tr class="odd">
+<td align="left">base64<br/>boolean<br/>dateTime<br/>hexBinary<br/>int<br/>long<br/>string<br/>unsignedInt<br/>unsignedLong</td>
+<td align="left">If the parameter is of a primitive data type, specifies a primitive data type reference, e.g. &lt;int&gt;. If the parameter data type is derived from a primitive data type, specifies an anonymous primitive data type definition (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:anonymous-data-types' title='' class="heading">A.2.3.2</a>), e.g. &lt;int&gt;&lt;range maxInclusive=&ldquo;255&rdquo;/&gt;&lt;/int&gt;. Each primitive data type element supports only the facets (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:data-type-facets' title='' class="heading">A.2.3.3</a>) that are appropriate to that data type.</td>
+</tr>
+<tr class="even">
+<td align="left">dataType</td>
+<td align="left">If the parameter is of a named data type, specifies a named data type (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:named-data-types' title='' class="heading">A.2.3.1</a>) reference, e.g. &lt;dataType ref=&ldquo;IPAddress&rdquo;/&gt;.<br/>If the parameter data type is derived from a named data type, specifies an anonymous named data type (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:anonymous-data-types' title='' class="heading">A.2.3.2</a>) definition, e.g. &lt;dataType base=&ldquo;IPAddress&rdquo;&gt;&lt;size maxLength=&ldquo;15&rdquo;/&gt;&lt;/dataType&gt;</td>
+</tr>
+</table></div>
+
+<h3 class="annex3" id="sec:commands-usp-only">A.2.8 Commands (USP Only)<a class="headerlink" href="06-index-cwmp-data-model-definition-xml-schema.html#sec:commands-usp-only" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h3>
+
+<p>Data Model Commands are defined using the command element, which can
+occur within component and object elements. When defining a new Data
+Model Command, the following attributes and elements are relevant
+(normative requirements are specified in the schema). This concept does
+not apply to CWMP, which uses Objects and/or Parameters to simulate
+commands.</p>
+
+<div id="tbl:xml-command-definition">
+<table>
+<caption>Table 18: XML Command Definition<a class="headerlink" href="06-index-cwmp-data-model-definition-xml-schema.html#tbl:xml-command-definition" title="Permalink to this table"> <img src='permalink.png' title='' width="0.8em"/></a></caption>
+<col width="15%" />
+<col width="85%" />
+<tr class="header">
+<th align="left">Name</th>
+<th align="left">Description</th>
+</tr>
+<tr class="odd">
+<td align="left">name</td>
+<td align="left">The command name (<a href='04-index-object-definitions.html#sec:general-notation' title='' class="heading">Section 3.1</a>).</td>
+</tr>
+<tr class="even">
+<td align="left">async</td>
+<td align="left">Whether this command is asynchronous or not. This defaults to false.</td>
+</tr>
+<tr class="odd">
+<td align="left">version</td>
+<td align="left">The data model version (of the form m.n or m.n.p) in which this command was first defined.</td>
+</tr>
+<tr class="even">
+<td align="left">status</td>
+<td align="left">The command’s {current, deprecated, obsoleted, deleted} status. This defaults to current, and so is not likely to be specified for a new command.</td>
+</tr>
+<tr class="odd">
+<td align="left">description</td>
+<td align="left">The command’s description (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:descriptions' title='' class="heading">A.2.2</a>).</td>
+</tr>
+<tr class="even">
+<td align="left">input</td>
+<td align="left">The command’s input arguments (can be omitted if there are none).</td>
+</tr>
+<tr class="odd">
+<td align="left">output</td>
+<td align="left">The command’s output arguments (can be omitted if there are none).</td>
+</tr>
+</table></div>
+
+<p>The input / output elements define the command’s input / output
+arguments (respectively).</p>
+
+<div id="tbl:xml-command-input-output-arguments-definition">
+<table>
+<caption>Table 19: XML Command Input / Output Arguments Definition<a class="headerlink" href="06-index-cwmp-data-model-definition-xml-schema.html#tbl:xml-command-input-output-arguments-definition" title="Permalink to this table"> <img src='permalink.png' title='' width="0.8em"/></a></caption>
+<col width="15%" />
+<col width="85%" />
+<tr class="header">
+<th align="left">Name</th>
+<th align="left">Description</th>
+</tr>
+<tr class="odd">
+<td align="left">component</td>
+<td align="left">The arguments defined by components that are referenced (included) by the command (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:components' title='' class="heading">A.2.5</a>).</td>
+</tr>
+<tr class="even">
+<td align="left">parameter</td>
+<td align="left">The command’s parameter arguments (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:parameters' title='' class="heading">A.2.7</a>).</td>
+</tr>
+<tr class="odd">
+<td align="left">object</td>
+<td align="left">The command’s object arguments (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:objects' title='' class="heading">A.2.10</a>).</td>
+</tr>
+</table></div>
+
+<p>Command argument parameter / object elements are similar to the
+corresponding data model parameter / object elements but support
+different attributes, e.g. they have no access or numEntriesParameter
+attributes, and they have a Boolean mandatory attribute (to indicate a
+mandatory argument).</p>
+
+<p>When a command references a component, any attributes not supported in
+command arguments are ignored. This allows a component that defines data
+model parameters / objects to be used for defining command parameter /
+object arguments.</p>
+
+<p>When a command argument is a table, its instance numbers MUST be 1, 2,
+3… (assigned sequentially without gaps).</p>
+
+<h3 class="annex3" id="sec:events-usp-only">A.2.9 Events (USP Only)<a class="headerlink" href="06-index-cwmp-data-model-definition-xml-schema.html#sec:events-usp-only" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h3>
+
+<p>Data Model Events are defined using the event element, which can occur
+within component and object elements. When defining a new Data Model
+Event, the following attributes and elements are relevant (normative
+requirements are specified in the schema). This concept does not apply
+to CWMP.</p>
+
+<table>
+<col width="15%" />
+<col width="85%" />
+<tr class="header">
+<th align="left">Name</th>
+<th align="left">Description</th>
+</tr>
+<tr class="odd">
+<td align="left">name</td>
+<td align="left">The event name (<a href='04-index-object-definitions.html#sec:general-notation' title='' class="heading">Section 3.1</a>).</td>
+</tr>
+<tr class="even">
+<td align="left">version</td>
+<td align="left">The data model version (of the form m.n or m.n.p) in which this event was first defined.</td>
+</tr>
+<tr class="odd">
+<td align="left">status</td>
+<td align="left">The event’s {current, deprecated, obsoleted, deleted} status. This defaults to current, and so is not likely to be specified for a new event.</td>
+</tr>
+<tr class="even">
+<td align="left">description</td>
+<td align="left">The event’s description (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:descriptions' title='' class="heading">A.2.2</a>).</td>
+</tr>
+<tr class="odd">
+<td align="left">component</td>
+<td align="left">The arguments defined by components that are referenced (included) by the event (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:components' title='' class="heading">A.2.5</a>).</td>
+</tr>
+<tr class="even">
+<td align="left">parameter</td>
+<td align="left">The event’s parameter arguments (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:parameters' title='' class="heading">A.2.7</a>).</td>
+</tr>
+<tr class="odd">
+<td align="left">object</td>
+<td align="left">The event’s object arguments (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:objects' title='' class="heading">A.2.10</a>).</td>
+</tr>
+</table>
+
+<p>Event argument parameter / object elements are similar to the
+corresponding data model parameter / object elements but support
+different attributes, e.g. they have no access or numEntriesParameter
+attributes, and they have a Boolean mandatory attribute (to indicate a
+mandatory argument).</p>
+
+<p>When an event references a component, any attributes not supported in
+event arguments are ignored. This allows a component that defines data
+model parameters / objects to be used for defining event parameter /
+object arguments.</p>
+
+<p>When an event argument is a table, its instance numbers MUST be 1, 2,
+3… (assigned sequentially without gaps).</p>
+
+<h3 class="annex3" id="sec:objects">A.2.10 Objects<a class="headerlink" href="06-index-cwmp-data-model-definition-xml-schema.html#sec:objects" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h3>
+
+<p>Objects are defined using the object element, which can occur within
+component and model elements. When defining a new object, the following
+attributes and elements are relevant (normative requirements are
+specified in the schema).</p>
+
+<div id="tbl:xml-object-definition">
+<table>
+<caption>Table 20: XML Object Definition<a class="headerlink" href="06-index-cwmp-data-model-definition-xml-schema.html#tbl:xml-object-definition" title="Permalink to this table"> <img src='permalink.png' title='' width="0.8em"/></a></caption>
+<col width="15%" />
+<col width="85%" />
+<tr class="header">
+<th align="left">Name</th>
+<th align="left">Description</th>
+</tr>
+<tr class="odd">
+<td align="left">name</td>
+<td align="left">The object name, specified as a partial path (<a href='04-index-object-definitions.html#sec:general-notation' title='' class="heading">Section 3.1</a>).</td>
+</tr>
+<tr class="even">
+<td align="left">access</td>
+<td align="left">Whether object instances can be Added or Deleted (readWrite) or not (readOnly). Adding or deleting instances is meaningful only for a Multi-Instance Object (table).</td>
+</tr>
+<tr class="odd">
+<td align="left">minEntries</td>
+<td align="left">The minimum number of instances of this object (always less than or equal to maxEntries).</td>
+</tr>
+<tr class="even">
+<td align="left">maxEntries</td>
+<td align="left">The maximum number of instances of this object (can be &ldquo;unbounded&rdquo;). minEntries and maxEntries allow the object to be placed into one of three categories:<br/>- <strong>minEntries=0, maxEntries=1</strong>: single-instance object which might not be allowed to exist, e.g. because only one of it and another object can exist at the same time. Note that this is not the same thing as an optional object (in a sense, all objects are optional; requirements are specified via profiles). For an object with minEntries=0, maxEntries=1, the description MUST explain why it might not be allowed to exist, e.g. referencing the other objects that constrain it.<br/>- <strong>minEntries=1, maxEntries=1</strong>: single-instance object that is always allowed to exist.<br/>- <strong>All other cases</strong>: Multi-Instance Object (table) (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:tables' title='' class="heading">A.2.10.1</a>).</td>
+</tr>
+<tr class="odd">
+<td align="left">mountType</td>
+<td align="left">For USP only, denotes whether this object is a Mountable Object, a Mount Point, or none. Possible values are:<br/>- <strong>mountable</strong>: this object is a Mountable Object. Such an object appears only right under the Root Object.<br/>- <strong>mountPoint</strong>: this object is a Mount Point.<br/>- <strong>none (default)</strong>: this object is neither a Mountable Object nor a Mount Point.</td>
+</tr>
+<tr class="even">
+<td align="left">version</td>
+<td align="left">The data model version (of the form m.n or m.n.p) in which this object was first defined.</td>
+</tr>
+<tr class="odd">
+<td align="left">status</td>
+<td align="left">The object’s {current, deprecated, obsoleted, deleted} status. This defaults to current, and so is not likely to be specified for a new object.</td>
+</tr>
+<tr class="even">
+<td align="left">description</td>
+<td align="left">The object’s description (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:descriptions' title='' class="heading">A.2.2</a>).</td>
+</tr>
+<tr class="odd">
+<td align="left">component</td>
+<td align="left">The components that are referenced (included) by the object (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:components' title='' class="heading">A.2.5</a>).</td>
+</tr>
+<tr class="even">
+<td align="left">parameter</td>
+<td align="left">The object’s parameter definitions (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:parameters' title='' class="heading">A.2.7</a>).</td>
+</tr>
+<tr class="odd">
+<td align="left">command</td>
+<td align="left">For USP only, the object’s command definitions (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:commands-usp-only' title='' class="heading">A.2.8</a>).</td>
+</tr>
+<tr class="even">
+<td align="left">event</td>
+<td align="left">For USP only, the object’s event definitions (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:events-usp-only' title='' class="heading">A.2.9</a>).</td>
+</tr>
+</table></div>
+
+<h4 class="annex4" id="sec:tables">A.2.10.1 Tables<a class="headerlink" href="06-index-cwmp-data-model-definition-xml-schema.html#sec:tables" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h4>
+
+<p>If an object is a table, several other attributes and elements are
+relevant (normative requirements are specified in the schema).</p>
+
+<div id="tbl:xml-table-definition">
+<table>
+<caption>Table 21: XML Table Definition<a class="headerlink" href="06-index-cwmp-data-model-definition-xml-schema.html#tbl:xml-table-definition" title="Permalink to this table"> <img src='permalink.png' title='' width="0.8em"/></a></caption>
+<col width="15%" />
+<col width="85%" />
+<tr class="header">
+<th align="left">Name</th>
+<th align="left">Description</th>
+</tr>
+<tr class="odd">
+<td align="left">name</td>
+<td align="left">For a table, the last part of the name has to be &ldquo;{i}.&rdquo; (<a href='04-index-object-definitions.html#sec:general-notation' title='' class="heading">Section 3.1</a>).</td>
+</tr>
+<tr class="even">
+<td align="left">numEntriesParameter</td>
+<td align="left">The name of the parameter (in the parent object) that contains the number of entries in the table. Such a parameter is needed whenever there is a variable number of entries, i.e. whenever maxEntries is unbounded or is greater than minEntries.</td>
+</tr>
+<tr class="odd">
+<td align="left">enableParameter</td>
+<td align="left">For CWMP only, the name of the parameter (in each table entry) that enables and disables that table entry. Such a parameter is needed whenever access is readWrite (so the Controller might be able to create entries) and at least one uniqueKey element that defines a functional key is present.</td>
+</tr>
+<tr class="even">
+<td align="left">uniqueKey</td>
+<td align="left">An element that specifies a unique key by referencing those parameters that constitute the unique key (all of these parameters are single-valued, i.e. not list-valued).<br/>In CWMP only, for a non-functional key, or if the table has no enableParameter, the uniqueness requirement always applies; for a functional key, and if the table has an enableParameter, the uniqueness requirement applies only to enabled table entries.</td>
+</tr>
+<tr class="odd">
+<td align="left">discriminatorParameter</td>
+<td align="left">The name of the parameter (in the parent object) that selects which of the available objects that are part of the same union to use. Such a discriminator parameter is needed whenever there are multiple alternative sub-objects, i.e. objects where minEntries=0 and maxEntries=1.</td>
+</tr>
+</table></div>
+
+<p>Each unique key is either functional or non-functional:</p>
+
+<ul>
+<li><p>A functional key references at least one parameter that is necessary for the correct operation of the table, e.g., a DHCP option tag in a DHCP option table, or an external port number in a port mapping table.</p></li>
+<li><p>A non-functional key references only parameters that are not necessary for the correct operation of the table, e.g., an Alias parameter or (sometimes) a Name parameter.</p></li>
+</ul>
+
+<p>A unique key is assumed to be functional unless explicitly marked as
+non-functional by setting the unique key’s functional attribute to
+false.</p>
+
+<p>As can be seen from the description in <a href='06-index-cwmp-data-model-definition-xml-schema.html#tbl:xml-table-definition' title='' class="table">Table 21</a>, in CWMP,
+non-functional keys are always required to be unique, regardless of whether the
+table has an enableParameter, or is enabled or disabled. Therefore, at most one
+entry in a given parent object can exist with a given value for a
+non-functional unique key. USP doesn’t require any different behavior for both
+functional and non-functional keys: all keys are always required to be unique.</p>
+
+<p>The uniqueness requirement means that the value of the unique key MUST
+be unique for all instances of a given parent object regardless of how
+instances got created.</p>
+
+<p>If a parameter (or group of parameters) is not defined as a unique key,
+an Agent MUST NOT expect or require those parameters to contain a value
+that is unique within the table. Such parameters MAY subsequently be
+defined as a vendor-specific data model composite unique key, but that
+composite unique key definition MUST include at least one
+vendor-specific parameter.</p>
+
+<h3 class="annex3" id="sec:profiles-1">A.2.11 Profiles<a class="headerlink" href="06-index-cwmp-data-model-definition-xml-schema.html#sec:profiles-1" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h3>
+
+<p>Profiles are defined using the profile element, which can occur within
+component and model elements. When defining a new profile, the following
+attributes and elements are always relevant (normative requirements are
+specified in the schema).</p>
+
+<div id="tbl:xml-profile-definition">
+<table>
+<caption>Table 22: XML Profile Definition<a class="headerlink" href="06-index-cwmp-data-model-definition-xml-schema.html#tbl:xml-profile-definition" title="Permalink to this table"> <img src='permalink.png' title='' width="0.8em"/></a></caption>
+<col width="15%" />
+<col width="85%" />
+<tr class="header">
+<th align="left">Name</th>
+<th align="left">Description</th>
+</tr>
+<tr class="odd">
+<td align="left">name</td>
+<td align="left">The profile name, including its version number (<a href='03-index-architecture.html#sec:profile-versions' title='' class="heading">Section 2.3.3</a>).</td>
+</tr>
+<tr class="even">
+<td align="left">base</td>
+<td align="left">The name of the previous version of the profile (for use when the profile version is greater than 1).</td>
+</tr>
+<tr class="odd">
+<td align="left">extends</td>
+<td align="left">A list of the names of the profiles that this profile extends.</td>
+</tr>
+<tr class="even">
+<td align="left">version</td>
+<td align="left">The data model version (of the form m.n or m.n.p) in which this profile was first defined.</td>
+</tr>
+<tr class="odd">
+<td align="left">minVersion</td>
+<td align="left">A list of the model names that define the minimum versions for which this profile can be defined. Note that it is only necessary to specify this if the profile is defined within a component element.</td>
+</tr>
+<tr class="even">
+<td align="left">description</td>
+<td align="left">The profile’s description (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:descriptions' title='' class="heading">A.2.2</a>).</td>
+</tr>
+<tr class="odd">
+<td align="left">parameter</td>
+<td align="left">The profile’s parameter requirements, which can include descriptions, references to the parameters in question, and the parameter access requirement.</td>
+</tr>
+<tr class="even">
+<td align="left">object</td>
+<td align="left">The profile’s object requirements, which can include descriptions, references to the objects in question, the object access requirements, and requirements for the object’s parameters, commands and events, including requirements for command and event arguments.</td>
+</tr>
+</table></div>
+
+<p>Note:</p>
+
+<ul>
+<li><p>If a command or event specifies no argument requirements, this is
+the same as if all of its mandatory arguments were listed.</p></li>
+<li><p>If a command or event specifies argument requirements, it has to
+list (at least) all its mandatory arguments.</p></li>
+</ul>
+
+<h3 class="annex3" id="sec:modifications">A.2.12 Modifications<a class="headerlink" href="06-index-cwmp-data-model-definition-xml-schema.html#sec:modifications" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h3>
+
+<p>New data types, components, models and profiles can be created based on
+existing items. This does not modify the existing item.</p>
+
+<p>Parameters, commands, events, objects and profiles can be modified &ldquo;in
+place&rdquo;, i.e. without creating a new item. This still uses the parameter,
+command, event, object and profile elements, and is indicated by using
+the base, rather than the name, attribute. The base attribute specifies
+the name of the existing item that is to be modified.</p>
+
+<p>The syntax for modifying an item is the same as for creating an item,
+but there are rules. These rules are not specified in the DM Schema.</p>
+
+<h4 class="annex4" id="sec:parameter-modifications">A.2.12.1 Parameter Modifications<a class="headerlink" href="06-index-cwmp-data-model-definition-xml-schema.html#sec:parameter-modifications" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h4>
+
+<p>The following rules govern parameter modifications.</p>
+
+<div id="tbl:xml-parameter-modification">
+<table>
+<caption>Table 23: XML Parameter Modification<a class="headerlink" href="06-index-cwmp-data-model-definition-xml-schema.html#tbl:xml-parameter-modification" title="Permalink to this table"> <img src='permalink.png' title='' width="0.8em"/></a></caption>
+<col width="15%" />
+<col width="85%" />
+<tr class="header">
+<th align="left">Name</th>
+<th align="left">Description</th>
+</tr>
+<tr class="odd">
+<td align="left">access</td>
+<td align="left">Can be &ldquo;promoted&rdquo; from readOnly to readWrite or writeOnceReadOnly.</td>
+</tr>
+<tr class="even">
+<td align="left">version</td>
+<td align="left">Cannot be changed.</td>
+</tr>
+<tr class="odd">
+<td align="left">status</td>
+<td align="left">Can be &ldquo;promoted&rdquo; to a &ldquo;higher&rdquo; value, where the lowest to highest ordering is: current, deprecated, obsoleted, deleted. For example, current can be changed to deprecated, and obsoleted can be changed to deleted, but deleted cannot be changed back to obsoleted. When promoting status, the deprecation, obsoletion and deletion rules of <a href='03-index-architecture.html#sec:deprecated-and-obsoleted-items' title='' class="heading">Section 2.4</a> MUST be obeyed.</td>
+</tr>
+<tr class="even">
+<td align="left">activeNotify</td>
+<td align="left">Can be changed from forceEnabled to forceDefault. No other changes are permitted.</td>
+</tr>
+<tr class="odd">
+<td align="left">forcedInform</td>
+<td align="left">Cannot be changed.</td>
+</tr>
+<tr class="even">
+<td align="left">description</td>
+<td align="left">Can be prefixed, extended or replaced via use of the action attribute (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:description-modifications' title='' class="heading">A.2.12.6</a>). When changing the description, behavioral backwards compatibility MUST be preserved.</td>
+</tr>
+<tr class="odd">
+<td align="left">syntax/hidden</td>
+<td align="left">Cannot be changed.</td>
+</tr>
+<tr class="even">
+<td align="left">syntax/secured</td>
+<td align="left">Cannot be changed.</td>
+</tr>
+<tr class="odd">
+<td align="left">syntax/command</td>
+<td align="left">Cannot be changed.</td>
+</tr>
+<tr class="even">
+<td align="left">syntax/list</td>
+<td align="left">Can add or modify the list element in the following ways:<br/>- Can convert a non-list string parameter to a list provided that an empty string was already a valid value with the appropriate meaning.<br/>- Can adjust limits on numbers of items, and on the list size, provided that the new rules do not permit any values that were not valid for the previous version of the parameter.</td>
+</tr>
+<tr class="odd">
+<td align="left">syntax/int etc.<br/>syntax/dataType</td>
+<td align="left">Can make any change that follows the base type restriction rules of <a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:base-type-restriction' title='' class="heading">A.2.3.8</a>, e.g. can add enumerations.</td>
+</tr>
+<tr class="even">
+<td align="left">syntax/default</td>
+<td align="left">A default can be added if the parameter did not already have one.</td>
+</tr>
+</table></div>
+
+<p>Most of the above requirements are non-normative, because it has to be
+possible to correct errors in a previous version of a parameter.
+Processing tools SHOULD be able to detect and warn when a parameter is
+modified in a way that contravenes the above rules.</p>
+
+<h4 class="annex4" id="sec:command-modifications-usp-only">A.2.12.2 Command Modifications (USP Only)<a class="headerlink" href="06-index-cwmp-data-model-definition-xml-schema.html#sec:command-modifications-usp-only" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h4>
+
+<p>The following rules govern command modifications.</p>
+
+<div id="tbl:xml-command-modification">
+<table>
+<caption>Table 24: XML Command Modification<a class="headerlink" href="06-index-cwmp-data-model-definition-xml-schema.html#tbl:xml-command-modification" title="Permalink to this table"> <img src='permalink.png' title='' width="0.8em"/></a></caption>
+<col width="15%" />
+<col width="85%" />
+<tr class="header">
+<th align="left">Name</th>
+<th align="left">Description</th>
+</tr>
+<tr class="odd">
+<td align="left">async</td>
+<td align="left">Can be changed.</td>
+</tr>
+<tr class="even">
+<td align="left">version</td>
+<td align="left">Cannot be changed.</td>
+</tr>
+<tr class="odd">
+<td align="left">status</td>
+<td align="left">Can be &ldquo;promoted&rdquo; to a &ldquo;higher&rdquo; value, where the lowest to highest ordering is: current, deprecated, obsoleted, deleted. For example, current can be changed to deprecated, and obsoleted can be changed to deleted, but deleted cannot be changed back to obsoleted. When promoting status, the deprecation, obsoletion and deletion rules of <a href='03-index-architecture.html#sec:deprecated-and-obsoleted-items' title='' class="heading">Section 2.4</a> MUST be obeyed.</td>
+</tr>
+<tr class="even">
+<td align="left">description</td>
+<td align="left">Can be prefixed, extended or replaced via use of the action attribute (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:description-modifications' title='' class="heading">A.2.12.6</a>). When changing the description, behavioral backwards compatibility MUST be preserved.</td>
+</tr>
+<tr class="odd">
+<td align="left">input</td>
+<td align="left">Can modify input arguments according to the rules for modifying data model parameters and objects. Can add new input arguments, either directly or by referencing (including) new components.</td>
+</tr>
+<tr class="even">
+<td align="left">output</td>
+<td align="left">Can modify output arguments according to the rules for modifying data model parameters and objects. Can add new output arguments, either directly or by referencing (including) new components.</td>
+</tr>
+</table></div>
+
+<p>Most of the above requirements are non-normative, because it has to be
+possible to correct errors in a previous version of a parameter.
+Processing tools SHOULD be able to detect and warn when a parameter is
+modified in a way that contravenes the above rules.</p>
+
+<h4 class="annex4" id="sec:event-modifications-usp-only">A.2.12.3 Event Modifications (USP Only)<a class="headerlink" href="06-index-cwmp-data-model-definition-xml-schema.html#sec:event-modifications-usp-only" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h4>
+
+<p>The following rules govern command modifications.</p>
+
+<div id="tbl:xml-event-modification">
+<table>
+<caption>Table 25: XML Event Modification<a class="headerlink" href="06-index-cwmp-data-model-definition-xml-schema.html#tbl:xml-event-modification" title="Permalink to this table"> <img src='permalink.png' title='' width="0.8em"/></a></caption>
+<col width="15%" />
+<col width="85%" />
+<tr class="header">
+<th align="left">Name</th>
+<th align="left">Description</th>
+</tr>
+<tr class="odd">
+<td align="left">version</td>
+<td align="left">Cannot be changed.</td>
+</tr>
+<tr class="even">
+<td align="left">status</td>
+<td align="left">Can be &ldquo;promoted&rdquo; to a &ldquo;higher&rdquo; value, where the lowest to highest ordering is: current, deprecated, obsoleted, deleted. For example, current can be changed to deprecated, and obsoleted can be changed to deleted, but deleted cannot be changed back to obsoleted. When promoting status, the deprecation, obsoletion and deletion rules of <a href='03-index-architecture.html#sec:deprecated-and-obsoleted-items' title='' class="heading">Section 2.4</a> MUST be obeyed.</td>
+</tr>
+<tr class="odd">
+<td align="left">description</td>
+<td align="left">Can be prefixed, extended or replaced via use of the action attribute (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:description-modifications' title='' class="heading">A.2.12.6</a>). When changing the description, behavioral backwards compatibility MUST be preserved.</td>
+</tr>
+<tr class="even">
+<td align="left">component</td>
+<td align="left">Can add new arguments by referencing (including) new components.</td>
+</tr>
+<tr class="odd">
+<td align="left">parameter</td>
+<td align="left">Can modify parameter arguments according to the rules for modifying data model parameters. Can add new parameter arguments.</td>
+</tr>
+<tr class="even">
+<td align="left">object</td>
+<td align="left">Can modify object arguments according to the rules for modifying data model objects. Can add new object arguments.</td>
+</tr>
+</table></div>
+
+<p>Most of the above requirements are non-normative, because it has to be
+possible to correct errors in a previous version of a parameter.
+Processing tools SHOULD be able to detect and warn when a parameter is
+modified in a way that contravenes the above rules.</p>
+
+<h4 class="annex4" id="sec:object-modifications">A.2.12.4 Object Modifications<a class="headerlink" href="06-index-cwmp-data-model-definition-xml-schema.html#sec:object-modifications" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h4>
+
+<p>The following rules govern object modifications.</p>
+
+<div id="tbl:xml-object-modification">
+<table>
+<caption>Table 26: XML Object Modification<a class="headerlink" href="06-index-cwmp-data-model-definition-xml-schema.html#tbl:xml-object-modification" title="Permalink to this table"> <img src='permalink.png' title='' width="0.8em"/></a></caption>
+<col width="15%" />
+<col width="85%" />
+<tr class="header">
+<th align="left">Name</th>
+<th align="left">Description</th>
+</tr>
+<tr class="odd">
+<td align="left">access</td>
+<td align="left">Can be &ldquo;promoted&rdquo; from readOnly to readWrite.</td>
+</tr>
+<tr class="even">
+<td align="left">minEntries</td>
+<td align="left">Cannot be changed.</td>
+</tr>
+<tr class="odd">
+<td align="left">maxEntries</td>
+<td align="left">Cannot be changed.</td>
+</tr>
+<tr class="even">
+<td align="left">numEntriesParameter</td>
+<td align="left">Cannot be changed, unless was previously missing, in which case can be added.</td>
+</tr>
+<tr class="odd">
+<td align="left">enableParameter</td>
+<td align="left">For CWMP only, cannot be changed, unless was previously missing, in which case can be added.</td>
+</tr>
+<tr class="even">
+<td align="left">version</td>
+<td align="left">Cannot be changed.</td>
+</tr>
+<tr class="odd">
+<td align="left">status</td>
+<td align="left">Can be &ldquo;promoted&rdquo; to a &ldquo;higher&rdquo; value, where the lowest to highest ordering is: current, deprecated, obsoleted, deleted. For example, current can be changed to deprecated, and obsoleted can be changed to deleted, but deleted cannot be changed back to obsoleted. When promoting status, the deprecation, obsoletion and deletion rules of <a href='03-index-architecture.html#sec:deprecated-and-obsoleted-items' title='' class="heading">Section 2.4</a> MUST be obeyed.</td>
+</tr>
+<tr class="even">
+<td align="left">description</td>
+<td align="left">Can be prefixed, extended or replaced via use of the action attribute (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:description-modifications' title='' class="heading">A.2.12.6</a>). When changing the description, behavioral backwards compatibility MUST be preserved.</td>
+</tr>
+<tr class="odd">
+<td align="left">uniqueKey</td>
+<td align="left">Cannot be changed, but new unique keys can be added.</td>
+</tr>
+<tr class="even">
+<td align="left">component</td>
+<td align="left">Can reference (include) new components.</td>
+</tr>
+<tr class="odd">
+<td align="left">parameter</td>
+<td align="left">Can add new parameters.</td>
+</tr>
+<tr class="even">
+<td align="left">command</td>
+<td align="left">For USP only, can add new commands.</td>
+</tr>
+<tr class="odd">
+<td align="left">event</td>
+<td align="left">For USP only, can add new events.</td>
+</tr>
+</table></div>
+
+<p>Most of the above requirements are non-normative, because it has to be
+possible to correct errors in a previous version of an object.
+Processing tools SHOULD be able to detect and warn when an object is
+modified in a way that contravenes the above rules.</p>
+
+<h4 class="annex4" id="sec:profile-modifications">A.2.12.5 Profile Modifications<a class="headerlink" href="06-index-cwmp-data-model-definition-xml-schema.html#sec:profile-modifications" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h4>
+
+<p>The following rules govern profile modifications. They apply to the
+profile element, and to its nested parameter, command, event and object
+elements.</p>
+
+<div id="tbl:xml-profile-modification">
+<table>
+<caption>Table 27: XML Profile Modification<a class="headerlink" href="06-index-cwmp-data-model-definition-xml-schema.html#tbl:xml-profile-modification" title="Permalink to this table"> <img src='permalink.png' title='' width="0.8em"/></a></caption>
+<col width="15%" />
+<col width="85%" />
+<tr class="header">
+<th align="left">Name</th>
+<th align="left">Description</th>
+</tr>
+<tr class="odd">
+<td align="left">version</td>
+<td align="left">Cannot be changed.</td>
+</tr>
+<tr class="even">
+<td align="left">status</td>
+<td align="left">Can be &ldquo;promoted&rdquo; to a &ldquo;higher&rdquo; value, where the lowest to highest ordering is: current, deprecated, obsoleted, deleted. For example, current can be changed to deprecated, and obsoleted can be changed to deleted, but deleted cannot be changed back to obsoleted. When promoting status, the deprecation, obsoletion and deletion rules of <a href='03-index-architecture.html#sec:deprecated-and-obsoleted-items' title='' class="heading">Section 2.4</a> MUST be obeyed.</td>
+</tr>
+<tr class="odd">
+<td align="left">description</td>
+<td align="left">Can be prefixed, extended or replaced via use of the action attribute (<a href='06-index-cwmp-data-model-definition-xml-schema.html#sec:description-modifications' title='' class="heading">A.2.12.6</a>). When changing the description, behavioral backwards compatibility MUST be preserved.</td>
+</tr>
+</table></div>
+
+<p>Most of the above requirements are non-normative, because it has to be
+possible to correct errors in a profile. Indeed, since profiles are
+immutable, the only valid reason for changing a profile is to correct
+errors. Processing tools SHOULD be able to detect and warn when a
+profile is modified in a way that contravenes the above rules.</p>
+
+<h4 class="annex4" id="sec:description-modifications">A.2.12.6 Description Modifications<a class="headerlink" href="06-index-cwmp-data-model-definition-xml-schema.html#sec:description-modifications" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h4>
+
+<p>The following rules govern description modifications. They apply to all
+description elements.</p>
+
+<div id="tbl:xml-description-modification">
+<table>
+<caption>Table 28: XML Description Modification<a class="headerlink" href="06-index-cwmp-data-model-definition-xml-schema.html#tbl:xml-description-modification" title="Permalink to this table"> <img src='permalink.png' title='' width="0.8em"/></a></caption>
+<col width="15%" />
+<col width="85%" />
+<tr class="header">
+<th align="left">Name</th>
+<th align="left">Description</th>
+</tr>
+<tr class="odd">
+<td align="left">action</td>
+<td align="left">Determines how the description will be modified; allowed values are:<br/>- <strong>create</strong>: create a new description (this is the default but is of course not permitted when modifying a description).<br/>- <strong>replace</strong>: replace the existing description with the new text.<br/>- <strong>append</strong>: append the new text to the existing description.<br/>- <strong>prefix</strong>: prefix the existing description with the new text.</td>
+</tr>
+</table></div>
+
+<p>In the case of <strong>prefix</strong> and <strong>append</strong>, processing tools SHOULD insert
+a line break between the existing description and the new text.</p>
+
+<h2 class="annex2" id="sec:dm-schema">A.3 DM Schema<a class="headerlink" href="06-index-cwmp-data-model-definition-xml-schema.html#sec:dm-schema" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h2>
+
+<p>The normative version of the DM Schema can be found at
+<a href='http://www.broadband-forum.org/cwmp/cwmp-datamodel-1-6.xsd' title='' class="uri">http://www.broadband-forum.org/cwmp/cwmp-datamodel-1-6.xsd</a>. Please be
+aware that a new version of the DM Schema might be published at any
+time, in which case the version referenced in this document would become
+out of date. Any conflict MUST be resolved in favor of the normative
+version on the web site.</p>
+

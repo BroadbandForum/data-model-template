@@ -1,4 +1,10 @@
-<!-- XXX these will be going away, so include them here to hide them -->
+<h3 class="unnumbered unlisted" id="list-of-figures">List of Figures<a class="headerlink" href="#list-of-figures" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h3>
+
+<ol>
+<li><a href='#fig:cwmp-positioning' title=''>CWMP Positioning in the End-to-End Architecture</a></li>
+<li><a href='#fig:usp-architecture' title=''>USP Architecture Overview</a></li>
+<li><a href='#fig:spec-structure' title=''>Specification Structure</a></li>
+</ol>
 
 <h3 class="unnumbered unlisted" id="list-of-tables">List of Tables<a class="headerlink" href="#list-of-tables" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h3>
 
@@ -31,14 +37,6 @@
 <li><a href='#tbl:xml-object-modification' title=''>XML Object Modification</a></li>
 <li><a href='#tbl:xml-profile-modification' title=''>XML Profile Modification</a></li>
 <li><a href='#tbl:xml-description-modification' title=''>XML Description Modification</a></li>
-</ol>
-
-<h3 class="unnumbered unlisted" id="list-of-figures">List of Figures<a class="headerlink" href="#list-of-figures" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h3>
-
-<ol>
-<li><a href='#fig:cwmp-positioning' title=''>CWMP Positioning in the End-to-End Architecture</a></li>
-<li><a href='#fig:usp-architecture' title=''>USP Architecture Overview</a></li>
-<li><a href='#fig:spec-structure' title=''>Specification Structure</a></li>
 </ol>
 
 <h3 class="unnumbered unlisted new-page" id="sec:notice">Notice<a class="headerlink" href="#sec:notice" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h3>
@@ -129,35 +127,35 @@ notices, legends, and other provisions set forth on this page.</p>
 <td align="left">Original</td>
 </tr>
 <tr class="even">
-<td align="left">Issue 1 Amendment 1</td>
+<td align="left"><a href='https://www.broadband-forum.org/download/TR-106_Amendment-1.pdf' title=''>Issue 1 Amendment 1</a></td>
 <td align="left">November 2006</td>
 <td align="left"></td>
 <td align="left">Jeff Bernstein, 2Wire<br/>John Blackford, 2Wire<br/>Mike Digdon, SupportSoft<br/>Heather Kirksey, Motive<br/>William Lupton, 2Wire<br/>Anton Okmianski, Cisco</td>
 <td align="left">Clarification of original document</td>
 </tr>
 <tr class="odd">
-<td align="left">Issue 1 Amendment 2</td>
+<td align="left"><a href='https://www.broadband-forum.org/download/TR-106_Amendment-2.pdf' title=''>Issue 1 Amendment 2</a></td>
 <td align="left">November 2008</td>
 <td align="left"></td>
 <td align="left">William Lupton, 2Wire<br/>Håkan Westin, Tilgin</td>
 <td align="left">Addition of data model definition XML Schema and normative XML common object and component definitions</td>
 </tr>
 <tr class="even">
-<td align="left">Issue 1 Amendment 3</td>
+<td align="left"><a href='https://www.broadband-forum.org/download/TR-106_Amendment-3.pdf' title=''>Issue 1 Amendment 3</a></td>
 <td align="left">September 2009</td>
 <td align="left"></td>
 <td align="left">William Lupton, 2Wire<br/>Håkan Westin, Tilgin</td>
 <td align="left">Addition of device type XML Schema</td>
 </tr>
 <tr class="odd">
-<td align="left">Issue 1 Amendment 4</td>
+<td align="left"><a href='https://www.broadband-forum.org/download/TR-106_Amendment-4.pdf' title=''>Issue 1 Amendment 4</a></td>
 <td align="left">February 2010</td>
 <td align="left"></td>
 <td align="left">William Lupton, 2Wire<br/>Paul Sigurdson, Broadband Forum</td>
 <td align="left">Moved data model definitions to TR-181 Issue 1</td>
 </tr>
 <tr class="even">
-<td align="left">Issue 1 Amendment 5</td>
+<td align="left"><a href='https://www.broadband-forum.org/download/TR-106_Amendment-5.pdf' title=''>Issue 1 Amendment 5</a></td>
 <td align="left">November 2010</td>
 <td align="left"></td>
 <td align="left">Paul Sigurdson, Broadband Forum</td>
@@ -165,14 +163,14 @@ notices, legends, and other provisions set forth on this page.</p>
 references to normative XML.<br/>Minor changes to DM Schema (v1.3) and DT Schema (v1.1).</td>
 </tr>
 <tr class="odd">
-<td align="left">Issue 1 Amendment 6</td>
+<td align="left"><a href='https://www.broadband-forum.org/download/TR-106_Amendment-6.pdf' title=''>Issue 1 Amendment 6</a></td>
 <td align="left">July 2011</td>
 <td align="left"></td>
 <td align="left">Sarah Banks, Cisco<br/>Andrea Colmegna, FASTWEB<br/>Tim Spets, Motorola Mobility</td>
 <td align="left">Removed definition of proxying, now defined in TR-069.<br/>Removed Common objects.<br/>Alias Parameter Requirements added.</td>
 </tr>
 <tr class="even">
-<td align="left">Issue 1 Amendment 7</td>
+<td align="left"><a href='https://www.broadband-forum.org/download/TR-106_Amendment-7.pdf' title=''>Issue 1 Amendment 7</a></td>
 <td align="left">September 2013</td>
 <td align="left">7 October 2013</td>
 <td align="left">William Lupton, Cisco</td>
@@ -181,7 +179,7 @@ Schema (v1.2 &amp; v1.3).<br/>Added Annex defining additional requirements for B
 models.</td>
 </tr>
 <tr class="odd">
-<td align="left">Issue 1 Amendment 8</td>
+<td align="left"><a href='https://www.broadband-forum.org/download/TR-106_Amendment-8.pdf' title=''>Issue 1 Amendment 8</a></td>
 <td align="left">16 March 2018</td>
 <td align="left">10 May 2018</td>
 <td align="left">Jean-Didier Ott, Orange<br/>William Lupton, Broadband Forum</td>
@@ -195,16 +193,23 @@ models.</td>
 <td align="left">Schema updates; document not updated.</td>
 </tr>
 <tr class="odd">
-<td align="left">Issue 1 Amendment 10</td>
+<td align="left"><a href='https://www.broadband-forum.org/download/TR-106_Amendment-10.pdf' title=''>Issue 1 Amendment 10</a></td>
 <td align="left">5 November 2020</td>
 <td align="left">5 November 2020</td>
 <td align="left">William Lupton, Broadband Forum</td>
 <td align="left">Converted document to markdown.<br/>Various editorial improvements.</td>
 </tr>
+<tr class="even">
+<td align="left"><a href='https://www.broadband-forum.org/download/TR-106_Amendment-11.pdf' title=''>Issue 1 Amendment 11</a></td>
+<td align="left">27 January 2022</td>
+<td align="left">27 January 2022</td>
+<td align="left">William Lupton, Broadband Forum</td>
+<td align="left">Clarified forcedEnabled and forceDefaultEnabled for USP.<br/>Clarified impact of deprecating or obsoleting profile items.<br/>Documented new description templates.<br/>Documented new <code>secured</code> attribute.</td>
+</tr>
 </table></div>
 
 <p>Comments or questions about this Broadband Forum Technical Report should be
-directed to <a href='mailto:info@broadband-forum.org' title=''>info@broadband-forum.org</a>.</p>
+directed to <a href='mailto:info@broadband-forum.org' title='' class="email">info@broadband-forum.org</a>.</p>
 
 <div bbfTable="uspRevisionHistory">
 </div>
@@ -236,8 +241,8 @@ directed to <a href='mailto:info@broadband-forum.org' title=''>info@broadband-fo
 
 <h1 class="unnumbered unlisted new-page" id="sec:executive-summary">Executive Summary<a class="headerlink" href="#sec:executive-summary" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h1>
 
-<p>TR-106 specifies data model guidelines to be followed by all CWMP <span class="cite" data-citation-ids="TR-069">[<a href='#ref-TR-069' title=''>1</a>]</span>
-Endpoints and USP <span class="cite" data-citation-ids="TR-369">[<a href='#ref-TR-369' title=''>2</a>]</span> Agents. These guidelines include structural
+<p>TR-106 specifies data model guidelines to be followed by all CWMP <span class="cite" data-citation-ids="TR-069"><a href='#ref-TR-069' title=''>[7]</a></span>
+Endpoints and USP <span class="cite" data-citation-ids="TR-369"><a href='#ref-TR-369' title=''>[11]</a></span> Agents. These guidelines include structural
 requirements for the data hierarchy, requirements for versioning of data
 models, and requirements for defining profiles.</p>
 
@@ -254,7 +259,7 @@ device, including any vendor-specific objects and parameters. Use of
 this Schema enhances interoperability and significantly eases the
 integration of new devices with a Controller. USP uses a different
 mechanism (GetSupportedDM message) for the same purpose. That mechanism
-is specified in TR-369 <span class="cite" data-citation-ids="TR-369">[<a href='#ref-TR-369' title=''>2</a>]</span>.</p>
+is specified in TR-369 <span class="cite" data-citation-ids="TR-369"><a href='#ref-TR-369' title=''>[11]</a></span>.</p>
 
 <div class="note">
 <p><strong>Important warning</strong></p>
@@ -273,7 +278,7 @@ TR-157 is therefore also DEPRECATED.</p></div>
 
 <p><strong>CWMP</strong></p>
 
-<p>TR-069 <span class="cite" data-citation-ids="TR-069">[<a href='#ref-TR-069' title=''>1</a>]</span> defines the generic requirements of the CPE WAN Management
+<p>TR-069 <span class="cite" data-citation-ids="TR-069"><a href='#ref-TR-069' title=''>[7]</a></span> defines the generic requirements of the CPE WAN Management
 Protocol (CWMP) methods which can be applied to any CWMP Endpoint. It is
 intended to support a variety of different functionalities to manage a
 collection of CPE, including the following primary capabilities:</p>
@@ -307,7 +312,7 @@ certain device types or services.</p>
 
 <p><strong>USP</strong></p>
 
-<p>The <a href='http://usp.technology' title=''>User Services Platform</a> is made of a network
+<p>The <a href='http://usp.technology' title=''>User Services Platform</a> supports a network
 of USP Controllers and USP Agents to allow applications to manipulate
 service elements (i.e. objects). It represents the evolution of CWMP
 into the following use cases:</p>
@@ -340,8 +345,8 @@ model schema in both the context of CWMP and USP.</p>
 
 <p><strong>Specification Structure</strong></p>
 
-<p><a href='#fig:spec-structure' title=''>Figure 3</a> shows the overall specification structure for the CWMP <span class="cite" data-citation-ids="TR-069">[<a href='#ref-TR-069' title=''>1</a>]</span> and
-USP <span class="cite" data-citation-ids="TR-369">[<a href='#ref-TR-369' title=''>2</a>]</span> family of standards (as currently defined). Please note that
+<p><a href='#fig:spec-structure' title='' class="figure">Figure 3</a> shows the overall specification structure for the CWMP <span class="cite" data-citation-ids="TR-069"><a href='#ref-TR-069' title=''>[7]</a></span> and
+USP <span class="cite" data-citation-ids="TR-369"><a href='#ref-TR-369' title=''>[11]</a></span> family of standards (as currently defined). Please note that
 this will gradually become out of date as new documents are published.</p>
 
 <figure>
@@ -349,8 +354,8 @@ this will gradually become out of date as new documents are published.</p>
 <figcaption>Figure 3: Specification Structure<a class="headerlink" href="#fig:spec-structure" title="Permalink to this figure"> <img src='permalink.png' title='' width="0.8em"/></a></figcaption>
 </figure>
 
-<p>TR-069 <span class="cite" data-citation-ids="TR-069">[<a href='#ref-TR-069' title=''>1</a>]</span> defines the generic requirements of the CWMP methods which
-can be applied to any CWMP Endpoint. TR-369 <span class="cite" data-citation-ids="TR-369">[<a href='#ref-TR-369' title=''>2</a>]</span> does the same for USP
+<p>TR-069 <span class="cite" data-citation-ids="TR-069"><a href='#ref-TR-069' title=''>[7]</a></span> defines the generic requirements of the CWMP methods which
+can be applied to any CWMP Endpoint. TR-369 <span class="cite" data-citation-ids="TR-369"><a href='#ref-TR-369' title=''>[11]</a></span> does the same for USP
 Agents. TR-106 (this document) specifies a baseline object structure to
 be supported by any CWMP Endpoint or USP Agent (referred to generically
 as an <em>Agent</em>). It specifies how to structure and define data models,
@@ -360,7 +365,7 @@ devices and services. The actual data models are defined in their own
 specifications.</p>
 
 <p>For a particular type of device, it is expected that the baseline
-defined in a document such as TR-181i2 <span class="cite" data-citation-ids="TR-181i2">[<a href='#ref-TR-181i2' title=''>3</a>]</span> would be augmented with
+defined in a document such as TR-181i2 <span class="cite" data-citation-ids="TR-181i2"><a href='#ref-TR-181i2' title=''>[10]</a></span> would be augmented with
 additional objects and parameters specific to the device type. The data
 model used in any Agent MUST follow the guidelines described in this
 document. These guidelines include the following aspects:</p>
@@ -387,7 +392,7 @@ Schema enhances interoperability and significantly eases the
 integration of new devices with an ACS.</p>
 
 <p>Please note that USP uses a different mechanism (GetSupportedDM
-message) for the same purpose. It is specified in TR-369 <span class="cite" data-citation-ids="TR-369">[<a href='#ref-TR-369' title=''>2</a>]</span>.</p></li>
+message) for the same purpose. It is specified in TR-369 <span class="cite" data-citation-ids="TR-369"><a href='#ref-TR-369' title=''>[11]</a></span>.</p></li>
 </ul>
 
 <h2 id="sec:terminology">1.1 Terminology<a class="headerlink" href="#sec:terminology" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h2>
@@ -415,7 +420,7 @@ message) for the same purpose. It is specified in TR-369 <span class="cite" data
 </tr>
 <tr class="odd">
 <td align="left"><strong>CPE</strong></td>
-<td align="left">Customer Premises Equipment; refers (as appropriate) to any <em>CWMP</em>-enabled <span class="cite" data-citation-ids="TR-069">[<a href='#ref-TR-069' title=''>1</a>]</span> or <em>USP</em>-enabled <span class="cite" data-citation-ids="TR-369">[<a href='#ref-TR-369' title=''>2</a>]</span> device and therefore covers both Internet Gateway devices and LAN-side end devices.</td>
+<td align="left">Customer Premises Equipment; refers (as appropriate) to any <em>CWMP</em>-enabled <span class="cite" data-citation-ids="TR-069"><a href='#ref-TR-069' title=''>[7]</a></span> or <em>USP</em>-enabled <span class="cite" data-citation-ids="TR-369"><a href='#ref-TR-369' title=''>[11]</a></span> device and therefore covers both Internet Gateway devices and LAN-side end devices.</td>
 </tr>
 <tr class="even">
 <td align="left"><strong>Command</strong></td>
@@ -435,7 +440,7 @@ message) for the same purpose. It is specified in TR-369 <span class="cite" data
 </tr>
 <tr class="even">
 <td align="left"><strong>CWMP</strong></td>
-<td align="left"><em>CPE</em> WAN Management Protocol. Defined in TR-069 <span class="cite" data-citation-ids="TR-069">[<a href='#ref-TR-069' title=''>1</a>]</span>, CWMP is a communication protocol between an <em>ACS</em> and CWMP-enabled <em>CPE</em> that defines a mechanism for secure auto-configuration of a <em>CPE</em> and other <em>CPE</em> management functions in a common framework.</td>
+<td align="left"><em>CPE</em> WAN Management Protocol. Defined in TR-069 <span class="cite" data-citation-ids="TR-069"><a href='#ref-TR-069' title=''>[7]</a></span>, CWMP is a communication protocol between an <em>ACS</em> and CWMP-enabled <em>CPE</em> that defines a mechanism for secure auto-configuration of a <em>CPE</em> and other <em>CPE</em> management functions in a common framework.</td>
 </tr>
 <tr class="odd">
 <td align="left"><strong>CWMP Endpoint</strong></td>
@@ -455,15 +460,15 @@ message) for the same purpose. It is specified in TR-369 <span class="cite" data
 </tr>
 <tr class="odd">
 <td align="left"><strong>DM Schema</strong></td>
-<td align="left">Data Model Schema. This is the XML Schema <span class="cite" data-citation-ids="XML-Schema-Primer">[<a href='#ref-XML-Schema-Primer' title=''>4</a>]</span> that is used for defining data models for use with <em>CWMP</em> and <em>USP</em>.</td>
+<td align="left">Data Model Schema. This is the XML Schema <span class="cite" data-citation-ids="XML-Schema-Primer"><a href='#ref-XML-Schema-Primer' title=''>[12]</a></span> that is used for defining data models for use with <em>CWMP</em> and <em>USP</em>.</td>
 </tr>
 <tr class="even">
 <td align="left"><strong>DT Instance</strong></td>
-<td align="left">Device Type Schema instance document. This is an XML document that conforms to the <em>DT Schema</em> and to any additional rules specified in or referenced by the <em>DT Schema</em>. This concept is useful for both CWMP and USP as an offline design tool, but only CWMP uses it at run-time (via the SupportedDataModel Object; see <a href='#sec:the-supported-data-model-and-the-instantiated-data-model' title=''>Section 2.1.2</a>).</td>
+<td align="left">Device Type Schema instance document. This is an XML document that conforms to the <em>DT Schema</em> and to any additional rules specified in or referenced by the <em>DT Schema</em>. This concept is useful for both CWMP and USP as an offline design tool, but only CWMP uses it at run-time (via the SupportedDataModel Object; see <a href='#sec:the-supported-data-model-and-the-instantiated-data-model' title='' class="heading">Section 2.1.2</a>).</td>
 </tr>
 <tr class="odd">
 <td align="left"><strong>DT Schema</strong></td>
-<td align="left">Device Type Schema. This is the XML Schema <span class="cite" data-citation-ids="XML-Schema-Primer">[<a href='#ref-XML-Schema-Primer' title=''>4</a>]</span> that is used for describing a <em>Device</em>’s <em>Supported Data Model</em>. This concept is useful for both CWMP and USP as an offline design tool, but only CWMP uses it at run-time (via the SupportedDataModel Object; see <a href='#sec:the-supported-data-model-and-the-instantiated-data-model' title=''>Section 2.1.2</a>).</td>
+<td align="left">Device Type Schema. This is the XML Schema <span class="cite" data-citation-ids="XML-Schema-Primer"><a href='#ref-XML-Schema-Primer' title=''>[12]</a></span> that is used for describing a <em>Device</em>’s <em>Supported Data Model</em>. This concept is useful for both CWMP and USP as an offline design tool, but only CWMP uses it at run-time (via the SupportedDataModel Object; see <a href='#sec:the-supported-data-model-and-the-instantiated-data-model' title='' class="heading">Section 2.1.2</a>).</td>
 </tr>
 <tr class="even">
 <td align="left"><strong>Event</strong></td>
@@ -563,7 +568,7 @@ message) for the same purpose. It is specified in TR-369 <span class="cite" data
 
 <p>The key words &ldquo;MUST&rdquo;, &ldquo;MUST NOT&rdquo;, &ldquo;REQUIRED&rdquo;, &ldquo;SHALL&rdquo;, &ldquo;SHALL
 NOT&rdquo;, &ldquo;SHOULD&rdquo;, &ldquo;SHOULD NOT&rdquo;, &ldquo;RECOMMENDED&rdquo;, &ldquo;MAY&rdquo;, and
-&ldquo;OPTIONAL&rdquo; in this document are to be interpreted as described in <span class="cite" data-citation-ids="RFC2119">[<a href='#ref-RFC2119' title=''>5</a>]</span>.</p>
+&ldquo;OPTIONAL&rdquo; in this document are to be interpreted as described in <span class="cite" data-citation-ids="RFC2119"><a href='#ref-RFC2119' title=''>[3]</a></span>.</p>
 
 <h1 id="sec:architecture">2 Architecture<a class="headerlink" href="#sec:architecture" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h1>
 
@@ -579,8 +584,8 @@ requirements. The detailed structure depends on the nature of the Agent.</p>
 be called &ldquo;Device.&rdquo;.</p>
 
 <p>The Root Object contains three types of sub-elements: the Objects
-defined in TR-181i2 <span class="cite" data-citation-ids="TR-181i2">[<a href='#ref-TR-181i2' title=''>3</a>]</span>, Components defined in TR-181i2 or other
-specifications such as TR-143 <span class="cite" data-citation-ids="TR-143">[<a href='#ref-TR-143' title=''>6</a>]</span>, and a single &ldquo;Services&rdquo; object that
+defined in TR-181i2 <span class="cite" data-citation-ids="TR-181i2"><a href='#ref-TR-181i2' title=''>[10]</a></span>, Components defined in TR-181i2 or other
+specifications such as TR-143 <span class="cite" data-citation-ids="TR-143"><a href='#ref-TR-143' title=''>[9]</a></span>, and a single &ldquo;Services&rdquo; object that
 contains all Service Objects associated with specific services.</p>
 
 <p>A single Agent might include more than one Service Object. For example,
@@ -589,7 +594,7 @@ include both VoIP-specific and game-specific Service Objects.</p>
 
 <p>A single Agent might also include more than one instance of the same
 type of Service Object. An example of when this might be appropriate is
-an Agent that provides an instance of the TR-140 <span class="cite" data-citation-ids="TR-140">[<a href='#ref-TR-140' title=''>7</a>]</span> StorageService
+an Agent that provides an instance of the TR-140 <span class="cite" data-citation-ids="TR-140"><a href='#ref-TR-140' title=''>[8]</a></span> StorageService
 for each of the device’s attached disks.</p>
 
 <h3 id="sec:data-hierarchy-requirements">2.1.1 Data Hierarchy Requirements<a class="headerlink" href="#sec:data-hierarchy-requirements" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h3>
@@ -614,12 +619,12 @@ Object it is related to.</p></li>
 
 <p>Formally, the top level of the data hierarchy is defined as follows:</p>
 
-<pre><code>    Element = &quot;Device&quot;
-            | &quot;Device.&quot; TR-181DeviceObject
-            | &quot;Device.Services.&quot; ServiceObject &quot;NumberOfEntries&quot;
-            | &quot;Device.Services.&quot; ServiceObject &quot;.{i}&quot;
+<pre><code>    Element = "Device"
+            | "Device." TR-181DeviceObject
+            | "Device.Services." ServiceObject "NumberOfEntries"
+            | "Device.Services." ServiceObject ".{i}"
 
-    TR-181DeviceObject = // As defined in TR-181i2, e.g. &quot;UserInterface&quot; or &quot;ManagementServer&quot;
+    TR-181DeviceObject = // As defined in TR-181i2, e.g. "UserInterface" or "ManagementServer"
 
     ServiceObject = // As defined in other specs, e.g. TR-140</code></pre>
 
@@ -635,7 +640,7 @@ have code support in the Agent.</p></li>
 Parameters that currently exist.</p></li>
 </ul>
 
-<p>TR-181i2 <span class="cite" data-citation-ids="TR-181i2">[<a href='#ref-TR-181i2' title=''>3</a>]</span> defines a SupportedDataModel Object that allows an Agent
+<p>TR-181i2 <span class="cite" data-citation-ids="TR-181i2"><a href='#ref-TR-181i2' title=''>[10]</a></span> defines a SupportedDataModel Object that allows an Agent
 to indicate its Supported Data Model to a Controller, which assists the
 Controller in managing that device.</p>
 
@@ -649,7 +654,7 @@ loaded or unloaded, entries are added to or removed from this list
 of URLs.</p></li>
 </ol>
 
-<p>This object is not used with USP. TR-369 <span class="cite" data-citation-ids="TR-369">[<a href='#ref-TR-369' title=''>2</a>]</span> defines the
+<p>This object is not used with USP. TR-369 <span class="cite" data-citation-ids="TR-369"><a href='#ref-TR-369' title=''>[11]</a></span> defines the
 GetSupportedDM message to provide this information.</p>
 
 <h2 id="sec:object-versioning">2.2 Object Versioning<a class="headerlink" href="#sec:object-versioning" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h2>
@@ -672,7 +677,7 @@ compatible with the previous version, then the major version SHOULD
 remain unchanged, and the minor version SHOULD be incremented by one.
 For example, the next compatible version after &ldquo;2.17&rdquo; would be &ldquo;2.18&rdquo;.
 The requirements for a version to be considered compatible with an
-earlier version are described in <a href='#sec:requirements-for-compatible-versions' title=''>Section 2.2.1</a>.</p>
+earlier version are described in <a href='#sec:requirements-for-compatible-versions' title='' class="heading">Section 2.2.1</a>.</p>
 
 <p>For each subsequent version of the object, if the later version is not
 compatible with the previous version, then the major version MUST
@@ -767,10 +772,10 @@ variability that a Controller needs to accommodate among various devices
 that it might manage. This feature is now provided:</p>
 
 <ul>
-<li><p>For CWMP, by the TR-181i2 <span class="cite" data-citation-ids="TR-181i2">[<a href='#ref-TR-181i2' title=''>3</a>]</span> SupportedDataModel object (see
-<a href='#sec:the-supported-data-model-and-the-instantiated-data-model' title=''>Section 2.1.2</a>) and associated Device Type XML documents (DT
+<li><p>For CWMP, by the TR-181i2 <span class="cite" data-citation-ids="TR-181i2"><a href='#ref-TR-181i2' title=''>[10]</a></span> SupportedDataModel object (see
+<a href='#sec:the-supported-data-model-and-the-instantiated-data-model' title='' class="heading">Section 2.1.2</a>) and associated Device Type XML documents (DT
 Instances).</p></li>
-<li><p>For USP, by the TR-369 <span class="cite" data-citation-ids="TR-369">[<a href='#ref-TR-369' title=''>2</a>]</span> GetSupportedDM message.</p></li>
+<li><p>For USP, by the TR-369 <span class="cite" data-citation-ids="TR-369"><a href='#ref-TR-369' title=''>[11]</a></span> GetSupportedDM message.</p></li>
 </ul>
 
 <p>A profile is a named collection of requirements associated with a given
@@ -860,13 +865,13 @@ profile.</td>
 <p>ProfileName MUST start with a letter or underscore, and subsequent
 characters MUST be letters, digits, underscores or hyphens. The terms
 &ldquo;letter&rdquo; and &ldquo;digit&rdquo; are as defined in the XML
-specification <span class="cite" data-citation-ids="XML">[Appendix B/<a href='#ref-XML' title=''>8</a>]</span>.</p>
+specification <span class="cite" data-citation-ids="XML"><a href='#ref-XML' title=''>[Appendix B/1]</a></span>.</p>
 
 <p>Hyphens can easily be confused with the discretionary hyphens that are
 sometimes inserted by hyphenation algorithms. For this reason,
 ProfileName SHOULD NOT include any hyphens. In BBF standards, ProfileName will
 always start with an upper-case letter (or an underscore for an internal profile) and will never include any
-hyphens (see <a href='#sec:data-model-item-names' title=''>C.3.1</a> for the corresponding normative
+hyphens (see <a href='#sec:data-model-item-names' title='' class="heading">C.3.1</a> for the corresponding normative
 requirement).</p>
 
 <h3 id="sec:baseline-profiles">2.3.4 Baseline Profiles<a class="headerlink" href="#sec:baseline-profiles" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h3>
@@ -936,6 +941,10 @@ parameters or parameter values are given below. For more information on
 how to interpret or implement specific obsoleted objects, parameters or
 parameter values, refer to the definition of the object or parameter.</p>
 
+<p>If any items within a profile are DEPRECATED or OBSOLETED, then the profile
+MUST be (correspondingly) DEPRECATED or OBSOLETED, and it will be necessary to
+define a new profile version that omits any DEPRECATED or OBSOLETED items.</p>
+
 <h3 id="sec:requirements-for-deprecated-items">2.4.1 Requirements for DEPRECATED Items<a class="headerlink" href="#sec:requirements-for-deprecated-items" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h3>
 
 <p>This section defines requirements that apply to all DEPRECATED objects,
@@ -950,8 +959,8 @@ MUST include an explanation of why the item is deprecated.</p></li>
 <li><p>The definition of a DEPRECATED parameter, object or parameter value
 MAY specify further requirements relating to the item; such
 requirements MAY override general Agent or Controller requirements
-regarding DEPRECATED elements specified in TR-069 <span class="cite" data-citation-ids="TR-069">[<a href='#ref-TR-069' title=''>1</a>]</span> or TR-369
-<span class="cite" data-citation-ids="TR-369">[<a href='#ref-TR-369' title=''>2</a>]</span>.</p></li>
+regarding DEPRECATED elements specified in TR-069 <span class="cite" data-citation-ids="TR-069"><a href='#ref-TR-069' title=''>[7]</a></span> or TR-369
+<span class="cite" data-citation-ids="TR-369"><a href='#ref-TR-369' title=''>[11]</a></span>.</p></li>
 </ol>
 
 <p>Agent requirements:</p>
@@ -1031,7 +1040,7 @@ hierarchy, the trailing &ldquo;.&rdquo; (dot) is always used as the last charact
 in the hierarchy MUST start with a letter or underscore, and subsequent
 characters MUST be letters, digits, underscores or hyphens. The terms
 &ldquo;letter&rdquo; and &ldquo;digit&rdquo; are as defined in the XML
-specification <span class="cite" data-citation-ids="XML">[Appendix B/<a href='#ref-XML' title=''>8</a>]</span>.</p>
+specification <span class="cite" data-citation-ids="XML"><a href='#ref-XML' title=''>[Appendix B/1]</a></span>.</p>
 
 <p>Hyphens can easily be confused with the discretionary hyphens that are
 sometimes inserted by hyphenation algorithms. For this reason, the names
@@ -1039,7 +1048,7 @@ of nodes in the hierarchy SHOULD NOT include any hyphens. Additionally,
 the names of nodes in the hierarchy SHOULD NOT start with underscores.
 In BBF standards, the names of nodes in the hierarchy always start with
 an upper-case letter and never include any hyphens or underscores (see
-<a href='#sec:data-model-item-names' title=''>C.3.1</a> for the corresponding normative requirement).</p>
+<a href='#sec:data-model-item-names' title='' class="heading">C.3.1</a> for the corresponding normative requirement).</p>
 
 <p>Where multiple instances of an object can occur, the placeholder node
 name {i} is shown. In actual use, this placeholder is to be replaced by
@@ -1049,10 +1058,10 @@ an Instance Identifier.</p>
 
 <p>Parameters make use of a limited subset of the default SOAP data types.
 The supported data types are defined by the DM Schema and are
-also listed in <a href='#sec:data-types' title=''>A.2.3</a>.</p>
+also listed in <a href='#sec:data-types' title='' class="heading">A.2.3</a>.</p>
 
 <p>The named data types that specify the representations of IP addresses,
-MAC addresses etc, are defined in a DM Instance document (see Annex A).
+MAC addresses etc., are defined in a DM Instance document (see <a href='#sec:cwmp-data-model-definition-xml-schema' title='' class="heading">Annex A</a>).
 The XML file with those definitions and the corresponding HTML file can
 be found in the <a href='https://cwmp-data-models.broadband-forum.org/#Data%20Model%20Data%20Types' title=''>data model resources
 page</a>.
@@ -1098,7 +1107,7 @@ list items it separates. The last item in a comma-separated list MUST
 NOT be followed with a separator. Individual items in a comma-separated
 list MUST NOT include a whitespace or comma character within them. Any
 whitespace or comma characters within an item value MUST be escaped
-using percent-encoding as specified in RFC 3986 <span class="cite" data-citation-ids="RFC3986">[Section 2.1/<a href='#ref-RFC3986' title=''>9</a>]</span>.</p>
+using percent-encoding as specified in RFC 3986 <span class="cite" data-citation-ids="RFC3986"><a href='#ref-RFC3986' title=''>[2.1/5]</a></span>.</p>
 
 <p>It is possible to create a list of lists, although other solutions
 SHOULD be preferred when possible. If a string contains a list of lists,
@@ -1110,9 +1119,9 @@ the inner separators, inner lists MAY be &ldquo;protected&rdquo; by placing them
 within square brackets, e.g. the above list could be represented as
 &ldquo;a,[b,c],d&rdquo;. In order to avoid ambiguity (a Controller that didn’t
 understand the new syntax would interpret &ldquo;a,[b,c],d&rdquo; as the four
-element list &ldquo;a&rdquo;, &ldquo;[b&quot;, &quot;c]&rdquo;, &ldquo;d&rdquo;), the data type and/or parameter
+element list &ldquo;a&rdquo;, &ldquo;[b”, ”c]&rdquo;, &ldquo;d&rdquo;), the data type and/or parameter
 definition MUST explicitly state that the new syntax is supported
-(<a href='#sec:named-data-types' title=''>A.2.3.1</a>, <a href='#sec:parameter-syntax' title=''>A.2.7.1</a>).</p>
+(<a href='#sec:named-data-types' title='' class="heading">A.2.3.1</a>, <a href='#sec:parameter-syntax' title='' class="heading">A.2.7.1</a>).</p>
 
 <h3 id="sec:parameters-that-reference-parameters-or-objects">3.2.3 Parameters that Reference Parameters or Objects<a class="headerlink" href="#sec:parameters-that-reference-parameters-or-objects" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h3>
 
@@ -1120,7 +1129,7 @@ definition MUST explicitly state that the new syntax is supported
 Name of an object (or for each item in parameters that are defined to
 contain comma-separated lists of object Path Names), the representation
 of the object name MUST NOT include a trailing &ldquo;dot.&rdquo; An example of a
-parameter of this kind in the TR-181i2 <span class="cite" data-citation-ids="TR-181i2">[<a href='#ref-TR-181i2' title=''>3</a>]</span> Device:2 data model is
+parameter of this kind in the TR-181i2 <span class="cite" data-citation-ids="TR-181i2"><a href='#ref-TR-181i2' title=''>[10]</a></span> Device:2 data model is
 Device.InterfaceStack.{i}.LowerLayer. For this parameter, the following
 is an example of a properly formed value:</p>
 
@@ -1133,7 +1142,7 @@ Object, a parameter value of &ldquo;.DeviceInfo&rdquo; always means
 &ldquo;Device.DeviceInfo&rdquo;. NOTE: This exception does NOT hold for USP.</p>
 
 <p>In order to be able to use reference parameters as unique keys
-(<a href='#sec:tables' title=''>A.2.10.1</a>), their Path Names MUST conceptually be converted to full Path
+(<a href='#sec:tables' title='' class="heading">A.2.10.1</a>), their Path Names MUST conceptually be converted to full Path
 Names before being compared. For example, in the Device Root Object,
 &ldquo;.DeviceInfo.&rdquo; and &ldquo;Device.DeviceInfo.&rdquo; would compare as equal. If a
 reference parameter is list-valued, i.e. it is a list of Path Names or
@@ -1182,7 +1191,7 @@ be either an OUI or a domain name. The OUI or domain name used for a
 given vendor-specific parameter MUST be one that is assigned to the
 organization that defined this parameter (which is not necessarily the
 same as the vendor of the Agent). An OUI is an organizationally unique
-identifier as defined in <span class="cite" data-citation-ids="OUI">[<a href='#ref-OUI' title=''>10</a>]</span>, which MUST be formatted as a
+identifier as defined in <span class="cite" data-citation-ids="OUI"><a href='#ref-OUI' title=''>[2]</a></span>, which MUST be formatted as a
 six-hexadecimal-digit string using all upper-case letters and including
 any leading zeros. A domain name MUST be upper case with each dot (&ldquo;.&rdquo;)
 replaced with a hyphen or underscore.</p>
@@ -1229,56 +1238,56 @@ string MUST NOT exceed 31 characters.</p>
 <h1 id="sec:normative-references">4 Normative References<a class="headerlink" href="#sec:normative-references" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h1>
 
 <p>A list of the currently valid Broadband Forum Technical Reports is
-published at <a href='https://www.broadband-forum.org' title=''>https://www.broadband-forum.org</a>. The following documents
+published at <a href='https://www.broadband-forum.org' title='' class="uri">https://www.broadband-forum.org</a>. The following documents
 are referenced by this specification.</p>
 
-<div class="references hanging-indent" id="refs">
-<div id="ref-TR-069">
-<p>[1] <a href='https://www.broadband-forum.org/technical/download/TR-069.pdf' title=''>TR-069 Amendment 6</a>, <em>CPE WAN Management Protocol</em>, Broadband Forum, 2018</p></div>
+<div class="references csl-bib-body" id="refs">
+<div class="csl-entry" id="ref-XML">
+<p><span class="csl-left-margin">[1] </span><span class="csl-right-inline"><em>Extensible Markup Language (XML) 1.0 (Fourth Edition)</em>, W3C, 2008, <a href='https://www.w3.org/TR/REC-xml' title=''>https://www.w3.org/TR/REC-xml</a></span></p></div>
 
-<div id="ref-TR-369">
-<p>[2] <a href='https://www.broadband-forum.org/technical/download/TR-369.pdf' title=''>TR-369</a>, <em>User Services Platform</em>, 2018</p></div>
+<div class="csl-entry" id="ref-OUI">
+<p><span class="csl-left-margin">[2] </span><span class="csl-right-inline"><em>Organizationally Unique Identifiers (OUIs)</em>, IEEE, <a href='https://standards.ieee.org/faqs/OUI.html' title=''>https://standards.ieee.org/faqs/OUI.html</a></span></p></div>
 
-<div id="ref-TR-181i2">
-<p>[3] <a href='https://www.broadband-forum.org/technical/download/TR-181_Issue-2.pdf' title=''>TR-181 Issue 2 Amendment 12</a>, <em>Device Data Model for TR-069</em>, Broadband Forum, 2018</p></div>
+<div class="csl-entry" id="ref-RFC2119">
+<p><span class="csl-left-margin">[3] </span><span class="csl-right-inline"><a href='https://tools.ietf.org/html/rfc2119' title=''>RFC 2119</a>, <em>Key words for use in RFCs to Indicate Requirement Levels</em>, IETF, 1997</span></p></div>
 
-<div id="ref-XML-Schema-Primer">
-<p>[4] <a href='https://www.w3.org/TR/xmlschema-0' title=''><em>XML Schema Part 0: Primer Second Edition</em></a>, W3C, 2004</p></div>
+<div class="csl-entry" id="ref-RFC2648">
+<p><span class="csl-left-margin">[4] </span><span class="csl-right-inline"><a href='https://tools.ietf.org/html/rfc2648' title=''>RFC 2648</a>, <em>A URN Namespace for IETF Documents</em>, IETF, 1999</span></p></div>
 
-<div id="ref-RFC2119">
-<p>[5] <a href='https://tools.ietf.org/html/rfc2119' title=''>RFC 2119</a>, <em>Key words for use in RFCs to Indicate Requirement Levels</em>, IETF, 1997</p></div>
+<div class="csl-entry" id="ref-RFC3986">
+<p><span class="csl-left-margin">[5] </span><span class="csl-right-inline"><a href='https://tools.ietf.org/html/rfc3986' title=''>RFC 3986</a>, <em>Uniform Resource Identifier (URI): Generic Syntax</em>, IETF, 2005</span></p></div>
 
-<div id="ref-TR-143">
-<p>[6] <a href='https://www.broadband-forum.org/technical/download/TR-143.pdf' title=''>TR-143 Amendment 1 Corrigendum 1</a>, <em>Enabling Network Throughput Performance Tests and Statistical Monitoring</em>, Broadband Forum, 2015</p></div>
+<div class="csl-entry" id="ref-SOAP">
+<p><span class="csl-left-margin">[6] </span><span class="csl-right-inline"><em>Simple Object Access Protocol (SOAP) 1.1</em>, W3C, 2000, <a href='https://www.w3.org/TR/2000/NOTE-SOAP-20000508' title=''>https://www.w3.org/TR/2000/NOTE-SOAP-20000508</a></span></p></div>
 
-<div id="ref-TR-140">
-<p>[7] <a href='https://www.broadband-forum.org/technical/download/TR-140.pdf' title=''>TR-140 Amendment 3</a>, <em>TR-069 Data Model for Storage Service Enabled Devices</em>, Broadband Forum, 2017</p></div>
+<div class="csl-entry" id="ref-TR-069">
+<p><span class="csl-left-margin">[7] </span><span class="csl-right-inline"><a href='https://www.broadband-forum.org/technical/download/TR-069.pdf' title=''>TR-069 Amendment 6 Corrigendum 1</a>, <em>CPE WAN Management Protocol</em>, Broadband Forum, 2020</span></p></div>
 
-<div id="ref-XML">
-<p>[8] <a href='https://www.w3.org/TR/REC-xml' title=''><em>Extensible Markup Language (XML) 1.0 (Fourth Edition)</em></a>, W3C, 2008</p></div>
+<div class="csl-entry" id="ref-TR-140">
+<p><span class="csl-left-margin">[8] </span><span class="csl-right-inline"><a href='https://www.broadband-forum.org/technical/download/TR-140.pdf' title=''>TR-140 Amendment 3</a>, <em>TR-069 Data Model for Storage Service Enabled Devices</em>, Broadband Forum, 2017</span></p></div>
 
-<div id="ref-RFC3986">
-<p>[9] <a href='https://tools.ietf.org/html/rfc3986' title=''>RFC 3986</a>, <em>Uniform Resource Identifier (URI): Generic Syntax</em>, IETF, 2005</p></div>
+<div class="csl-entry" id="ref-TR-143">
+<p><span class="csl-left-margin">[9] </span><span class="csl-right-inline"><a href='https://www.broadband-forum.org/technical/download/TR-143.pdf' title=''>TR-143 Amendment 1 Corrigendum 1</a>, <em>Enabling Network Throughput Performance Tests and Statistical Monitoring</em>, Broadband Forum, 2015</span></p></div>
 
-<div id="ref-OUI">
-<p>[10] <a href='https://standards.ieee.org/faqs/OUI.html' title=''><em>Organizationally Unique Identifiers (OUIs)</em></a>, IEEE</p></div>
+<div class="csl-entry" id="ref-TR-181i2">
+<p><span class="csl-left-margin">[10] </span><span class="csl-right-inline"><a href='https://usp-data-models.broadband-forum.org#Device:2' title=''>TR-181 Issue 2</a>, <em>Device Data Model</em>, Broadband Forum</span></p></div>
 
-<div id="ref-RFC2648">
-<p>[11] <a href='https://tools.ietf.org/html/rfc2648' title=''>RFC 2648</a>, <em>A URN Namespace for IETF Documents</em>, IETF, 1999</p></div>
+<div class="csl-entry" id="ref-TR-369">
+<p><span class="csl-left-margin">[11] </span><span class="csl-right-inline"><a href='https://usp.technology/specification' title=''>TR-369</a>, <em>User Services Platform</em></span></p></div>
 
-<div id="ref-XML-Schema-Datatypes">
-<p>[12] <a href='https://www.w3.org/TR/xmlschema-2' title=''><em>XML Schema Part 2: Datatypes Second Edition</em></a>, W3C, 2004</p></div>
+<div class="csl-entry" id="ref-XML-Schema-Primer">
+<p><span class="csl-left-margin">[12] </span><span class="csl-right-inline"><em>XML Schema Part 0: Primer Second Edition</em>, W3C, 2004, <a href='https://www.w3.org/TR/xmlschema-0' title=''>https://www.w3.org/TR/xmlschema-0</a></span></p></div>
 
-<div id="ref-SOAP">
-<p>[13] <a href='https://www.w3.org/TR/2000/NOTE-SOAP-20000508' title=''><em>Simple Object Access Protocol (SOAP) 1.1</em></a>, W3C, 2000</p></div></div>
+<div class="csl-entry" id="ref-XML-Schema-Datatypes">
+<p><span class="csl-left-margin">[13] </span><span class="csl-right-inline"><em>XML Schema Part 2: Datatypes Second Edition</em>, W3C, 2004, <a href='https://www.w3.org/TR/xmlschema-2' title=''>https://www.w3.org/TR/xmlschema-2</a></span></p></div></div>
 
 <h1 class="annex1" id="sec:cwmp-data-model-definition-xml-schema">Annex A: CWMP Data Model Definition XML Schema<a class="headerlink" href="#sec:cwmp-data-model-definition-xml-schema" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h1>
 
 <h2 class="annex2" id="sec:introduction-1">A.1 Introduction<a class="headerlink" href="#sec:introduction-1" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h2>
 
-<p>The CWMP Data Model Definition XML Schema <span class="cite" data-citation-ids="XML-Schema-Primer">[<a href='#ref-XML-Schema-Primer' title=''>4</a>]</span>, or DM Schema, is used
-for defining CWMP <span class="cite" data-citation-ids="TR-069">[<a href='#ref-TR-069' title=''>1</a>]</span> and USP <span class="cite" data-citation-ids="TR-369">[<a href='#ref-TR-369' title=''>2</a>]</span> data models, and is specified in
-<a href='#sec:description-modifications' title=''>A.2.12.6</a>.</p>
+<p>The CWMP Data Model Definition XML Schema <span class="cite" data-citation-ids="XML-Schema-Primer"><a href='#ref-XML-Schema-Primer' title=''>[12]</a></span>, or DM Schema, is used
+for defining CWMP <span class="cite" data-citation-ids="TR-069"><a href='#ref-TR-069' title=''>[7]</a></span> and USP <span class="cite" data-citation-ids="TR-369"><a href='#ref-TR-369' title=''>[11]</a></span> data models, and is specified in
+<a href='#sec:description-modifications' title='' class="heading">A.2.12.6</a>.</p>
 
 <p>DM Schema instance documents can contain any or all of the following:</p>
 
@@ -1290,7 +1299,7 @@ for defining CWMP <span class="cite" data-citation-ids="TR-069">[<a href='#ref-T
 <li><p>Vendor extension definitions</p></li>
 </ul>
 
-<p><a href='#sec:requirements-for-bbf-standard-data-models' title=''>Annex C</a> contains some additional normative requirements that apply only
+<p><a href='#sec:requirements-for-bbf-standard-data-models' title='' class="heading">Annex C</a> contains some additional normative requirements that apply only
 to BBF standard DM Schema instance documents.</p>
 
 <p>Most of the data model elements are common to CWMP and USP. Those that are specific to either protocol will be noted in the description.</p>
@@ -1299,7 +1308,7 @@ to BBF standard DM Schema instance documents.</p>
 
 <p>BBF standard DM Schema instance documents use UTF-8 encoding and their
 character set is restricted to printable ASCII characters. See
-<a href='#sec:character-encoding-and-character-set-1' title=''>C.2</a> for the corresponding normative
+<a href='#sec:character-encoding-and-character-set-1' title='' class="heading">C.2</a> for the corresponding normative
 requirements.</p>
 
 <h2 class="annex2" id="sec:normative-information">A.2 Normative Information<a class="headerlink" href="#sec:normative-information" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h2>
@@ -1315,7 +1324,7 @@ meet these additional requirements are referred to as DM Instances.</p>
 <p>For example, the definition of the parameter element includes the
 following additional requirements on the name and base attributes:</p>
 
-<pre><code>    &lt;xs:complexType name=&quot;ModelParameter&quot;&gt;
+<pre><code>    &lt;xs:complexType name="ModelParameter"&gt;
       &lt;xs:annotation&gt;
         &lt;xs:documentation&gt;
         Parameter definition and
@@ -1325,7 +1334,7 @@ following additional requirements on the name and base attributes:</p>
 
       ...
 
-      &lt;xs:attribute name=&quot;name&quot; type=&quot;tns:ParameterName&quot;&gt;
+      &lt;xs:attribute name="name" type="tns:ParameterName"&gt;
         &lt;xs:annotation&gt;
           &lt;xs:documentation&gt;
           MUST be unique within the parent object
@@ -1337,7 +1346,7 @@ following additional requirements on the name and base attributes:</p>
         &lt;/xs:annotation&gt;
       &lt;/xs:attribute&gt;
 
-      &lt;xs:attribute name=&quot;base&quot; type=&quot;tns:ParameterName&quot;&gt;
+      &lt;xs:attribute name="base" type="tns:ParameterName"&gt;
         &lt;xs:annotation&gt;
           &lt;xs:documentation&gt;
             MUST be present if and only if modifying an existing
@@ -1359,17 +1368,17 @@ example, the name and base attributes are of type tns:ParameterName:</p>
 
 <pre><code>    &lt;!DOCTYPE cwmp-datamodel [
       ...
-      &lt;!ENTITY name &quot;([\i-[:]][\c-[:\.]]*)&quot;&gt;
+      &lt;!ENTITY name "([\i-[:]][\c-[:\.]]*)"&gt;
       ...
     ]&gt;
       ...
-      &lt;xs:simpleType name=&quot;ParameterName&quot;&gt;
+      &lt;xs:simpleType name="ParameterName"&gt;
         &lt;xs:annotation&gt;
           &lt;xs:documentation&gt;Parameter name (maximum length 256); the same as xs:NCName except that periods are not permitted.  This name MUST in addition follow the vendor-specific parameter name requirements of Section 3.3.&lt;/xs:documentation&gt;
         &lt;/xs:annotation&gt;
-        &lt;xs:restriction base=&quot;xs:token&quot;&gt;
-          &lt;xs:maxLength value=&quot;256&quot;/&gt;
-          &lt;xs:pattern value=&quot;&amp;name;&quot;/&gt;
+        &lt;xs:restriction base="xs:token"&gt;
+          &lt;xs:maxLength value="256"/&gt;
+          &lt;xs:pattern value="&amp;name;"/&gt;
         &lt;/xs:restriction&gt;
       &lt;/xs:simpleType&gt;</code></pre>
 
@@ -1387,7 +1396,7 @@ except for a colon&rdquo;, and any subsequent characters match the pattern
 &ldquo;<code>[\c-[:\.]]</code>&rdquo;, which means &ldquo;any character permitted in an XML
 name, except for a colon and a dot&rdquo;.</p></li>
 <li><p>It follows the vendor-specific parameter name requirements of
-<a href='#sec:vendor-specific-elements' title=''>Section 3.3</a>.</p></li>
+<a href='#sec:vendor-specific-elements' title='' class="heading">Section 3.3</a>.</p></li>
 </ul>
 
 <p>The question of the location of the definitive normative information
@@ -1415,14 +1424,14 @@ Schema specifies that the DM Instance is located via the file attribute.</p>
 the DM Instance are as follows:</p>
 
 <ul>
-<li><p>It MUST be a URL adhering to RFC 3986 <span class="cite" data-citation-ids="RFC3986">[<a href='#ref-RFC3986' title=''>9</a>]</span>.</p></li>
+<li><p>It MUST be a URL adhering to RFC 3986 <span class="cite" data-citation-ids="RFC3986"><a href='#ref-RFC3986' title=''>[5]</a></span>.</p></li>
 <li><p>If the URL includes a scheme, it MUST be http, https or ftp.</p></li>
 <li><p>If the URL includes an authority, it MUST NOT include credentials.</p></li>
 <li><p>For standard BBF DM Instances, the rules that apply to the filename
-part (final path segment) of the <a href='#sec:uri-conventions' title=''>A.2.1.1</a> BBFURL also apply to the
+part (final path segment) of the <a href='#sec:uri-conventions' title='' class="heading">A.2.1.1</a> BBFURL also apply to the
 filename part of this URL. This means that the corrigendum number
 can be omitted in order to refer to the latest corrigendum. See
-<a href='#sec:import-element' title=''>C.3.6</a> for the corresponding normative requirement.</p></li>
+<a href='#sec:import-element' title='' class="heading">C.3.6</a> for the corresponding normative requirement.</p></li>
 <li><p>If the URL is a relative reference, processing tools MUST apply
 their own logic, e.g. apply a search path.</p></li>
 </ul>
@@ -1450,10 +1459,10 @@ The issue, amendment and corrigendum numbers do not include leading
 zeros. For example, &ldquo;<code>urn:broadband-forum-org:tr-106-1-0</code>&rdquo; refers to
 TR-106 (Issue 1 Amendment 0), and
 &ldquo;<code>urn:broadband-forum-org:tr-106-1-2</code>&rdquo; refers to TR-106 (Issue 1)
-Amendment 2. See <a href='#sec:spec-attribute' title=''>C.3.4</a> for the corresponding normative requirement.</p></li>
+Amendment 2. See <a href='#sec:spec-attribute' title='' class="heading">C.3.4</a> for the corresponding normative requirement.</p></li>
 <li><p>For specifications issued by other standards organizations, or by
 vendors, it SHOULD be of a standard form if one is defined. For
-example, RFC 2648 <span class="cite" data-citation-ids="RFC2648">[<a href='#ref-RFC2648' title=''>11</a>]</span> specifies a syntax for referencing RFCs.</p></li>
+example, RFC 2648 <span class="cite" data-citation-ids="RFC2648"><a href='#ref-RFC2648' title=''>[4]</a></span> specifies a syntax for referencing RFCs.</p></li>
 <li><p>Note that processing tools are likely to assume that all files that
 share a spec value are related to each other. Therefore, use of
 meaningful spec values is RECOMMENDED.</p></li>
@@ -1466,7 +1475,7 @@ meaningful spec values is RECOMMENDED.</p></li>
 &ldquo;<code>tr-nnn-i-a-c.xml</code>&rdquo; or &ldquo;<code>tr-nnn-i-a-c-label.xml</code>&rdquo;, where nnn, i, a and
 c are the same as in the spec attribute. The label, which MUST NOT
 begin with a digit, is not needed if only one DM Schema instance
-document is associated with the specification. See <a href='#sec:file-attribute' title=''>C.3.5</a> for the
+document is associated with the specification. See <a href='#sec:file-attribute' title='' class="heading">C.3.5</a> for the
 corresponding normative requirement.</p></li>
 <li><p>It SHOULD be the same as the actual file name (omitting the
 directory name). Under some circumstances this will not be possible,
@@ -1481,15 +1490,15 @@ follows:</p>
     FileAttr = FileName
     SpecURI = BBFURI
             | OtherURI
-    BBFURI = &quot;urn:broadband-forum-org:&quot; BBFDoc
-    FileName = BBFDoc BBFSubDoc &quot;.xml&quot;
-    BBFDoc = &quot;tr-&quot; BBFNumber BBFIssue BBFAmendment BBFCorrigendum
+    BBFURI = "urn:broadband-forum-org:" BBFDoc
+    FileName = BBFDoc BBFSubDoc ".xml"
+    BBFDoc = "tr-" BBFNumber BBFIssue BBFAmendment BBFCorrigendum
     BBFNumber = [DIGIT]{3,}     // including leading zeros, e.g. 069
-    BBFIssue = &quot;-&quot; NoLeadingZeroPositiveNumber
-    BBFAmendment = &quot;-&quot; NoLeadingZeroNumber
-    BBFCorrigendum = &quot;-&quot; NoLeadingZeroNumber
-    BBFSubDoc = &quot;-&quot; LABEL       // distinguishing label (not beginning with a digit)
-              | &quot;&quot;              // not needed if only one DM Instance is associated with spec
+    BBFIssue = "-" NoLeadingZeroPositiveNumber
+    BBFAmendment = "-" NoLeadingZeroNumber
+    BBFCorrigendum = "-" NoLeadingZeroNumber
+    BBFSubDoc = "-" LABEL       // distinguishing label (not beginning with a digit)
+              | ""              // not needed if only one DM Instance is associated with spec
     NoLeadingZeroNumber = [DIGIT]
                         | [NONZERODIGIT] [DIGIT]*
     NoLeadingZeroPositiveNumber = [NONZERODIGIT] [DIGIT]*
@@ -1497,26 +1506,26 @@ follows:</p>
 
 <p>Standard BBF DM Instances can be accessed at the following URL:</p>
 
-<pre><code>    BBFURL = &quot;http://www.broadband-forum.org/cwmp/&quot; FileName
+<pre><code>    BBFURL = "http://www.broadband-forum.org/cwmp/" FileName
     FileName = &lt;as before, except that BBFCorrigendum is modified as follows:&gt;
-    BBFCorrigendum = &quot;-&quot; NoLeadingZeroNumber
-                   | &quot;&quot;         // if omitted, most recent corrigendum is assumed</code></pre>
+    BBFCorrigendum = "-" NoLeadingZeroNumber
+                   | ""         // if omitted, most recent corrigendum is assumed</code></pre>
 
 <p>For example, the DM Instance associated with TR-181 Issue 2 Amendment 11
 can be accessed at
-<a href='https://www.broadband-forum.org/cwmp/tr-181-2-11-0.xml' title=''>https://www.broadband-forum.org/cwmp/tr-181-2-11-0.xml</a>.</p>
+<a href='https://www.broadband-forum.org/cwmp/tr-181-2-11-0.xml' title='' class="uri">https://www.broadband-forum.org/cwmp/tr-181-2-11-0.xml</a>.</p>
 
 <h3 class="annex3" id="sec:descriptions">A.2.2 Descriptions<a class="headerlink" href="#sec:descriptions" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h3>
 
 <p>Many elements have descriptions, and the same rules apply to all
 description elements in the DM Schema. A description is free text which
 can contain a limited amount of MediaWiki-like markup as specified in
-<a href='#sec:markup' title=''>A.2.2.3</a>.</p>
+<a href='#sec:markup' title='' class="heading">A.2.2.3</a>.</p>
 
 <h4 class="annex4" id="sec:character-set">A.2.2.1 Character Set<a class="headerlink" href="#sec:character-set" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h4>
 
 <p>Character set requirements apply to the entire DM Instance, so the contents of
-this section have been moved to <a href='#sec:character-encoding-and-character-set-1' title=''>C.2</a>,
+this section have been moved to <a href='#sec:character-encoding-and-character-set-1' title='' class="heading">C.2</a>,
 which contains the normative requirements that apply to standard BBF DM
 Instances.</p>
 
@@ -1529,7 +1538,7 @@ pre-processing before interpreting the markup:</p>
 <li><p>Remove any leading whitespace up to and including the first line
 break. <em>Note: It can be assumed that all line breaks are represented by a
 single line feed, i.e. ASCII 10. See
-<a href='#sec:character-encoding-and-character-set-1' title=''>C.2</a>.</em></p></li>
+<a href='#sec:character-encoding-and-character-set-1' title='' class="heading">C.2</a>.</em></p></li>
 <li><p>Remove the longest common whitespace prefix (i.e. that occurs at the
 start of every line) from each line. See the example below, where
 three lines start with four spaces and one line starts with five
@@ -1585,17 +1594,17 @@ ability.</p>
 </tr>
 <tr class="odd">
 <td align="left">Italics</td>
-<td align="left"><code>&#39;&#39;italic text&#39;&#39;</code></td>
+<td align="left"><code>''italic text''</code></td>
 <td align="left">Two apostrophes on each side of some text will result in the contained text being emphasized in italics.</td>
 </tr>
 <tr class="even">
 <td align="left">Bold</td>
-<td align="left"><code>&#39;&#39;&#39;bold text&#39;&#39;&#39;</code></td>
+<td align="left"><code>'''bold text'''</code></td>
 <td align="left">Three apostrophes on each side of some text will result in the contained text being emphasized in bold.</td>
 </tr>
 <tr class="odd">
 <td align="left">Bold italics</td>
-<td align="left"><code>&#39;&#39;&#39;&#39;&#39;b+i text&#39;&#39;&#39;&#39;&#39;</code></td>
+<td align="left"><code>'''''b+i text'''''</code></td>
 <td align="left">Five apostrophes on each side of some text will result in the contained text being emphasized in bold italics.</td>
 </tr>
 <tr class="even">
@@ -1621,7 +1630,7 @@ ability.</p>
 <tr class="even">
 <td align="left">Verbatim</td>
 <td align="left">code example:<br/><code>if (something)</code><br/><code>{</code><br/><code>/* do something */</code><br/><code>} else {</code><br/><code>/* do other */</code><br/><code>}</code></td>
-<td align="left">A block of lines each of which starts with a space is to be formatted exactly as typed, preferably in a fixed width font.<br/>This allows code fragments, simple tables etc. to be included in descriptions.<br/>Note that the pre-processing rules of <a href='#sec:description-pre-processing' title=''>A.2.2.2</a> imply that it is not possible to process an entire description as verbatim text (because all the leading whitespace would be removed). This is not expected to be a problem in practice.</td>
+<td align="left">A block of lines each of which starts with a space is to be formatted exactly as typed, preferably in a fixed width font.<br/>This allows code fragments, simple tables etc. to be included in descriptions.<br/>Note that the pre-processing rules of <a href='#sec:description-pre-processing' title='' class="heading">A.2.2.2</a> imply that it is not possible to process an entire description as verbatim text (because all the leading whitespace would be removed). This is not expected to be a problem in practice.</td>
 </tr>
 <tr class="odd">
 <td align="left">Hyperlinks</td>
@@ -1631,14 +1640,14 @@ ability.</p>
 <tr class="even">
 <td align="left">Templates</td>
 <td align="left"><code>{{bibref|1|section 2}}</code><br/><code>{{section|table}}</code><br/><code>{{param|Enable}}</code><br/><code>{{enum|Error}}</code></td>
-<td align="left">Text enclosed in double curly braces ({}) is a template reference, which is replaced by template-dependent text.<br/><a href='#sec:description-templates' title=''>A.2.2.4</a> specifies the standard templates.</td>
+<td align="left">Text enclosed in double curly braces ({}) is a template reference, which is replaced by template-dependent text.<br/><a href='#sec:description-templates' title='' class="heading">A.2.2.4</a> specifies the standard templates.</td>
 </tr>
 </table></div>
 
 <h4 class="annex4" id="sec:description-templates">A.2.2.4 Templates<a class="headerlink" href="#sec:description-templates" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h4>
 
 <div class="note">
-<p>The term &ldquo;template&rdquo; is used for both template elements (<a href='#sec:template-elements' title=''>A.2.4.4</a>)
+<p>The term &ldquo;template&rdquo; is used for both template elements (<a href='#sec:template-elements' title='' class="heading">A.2.4.4</a>)
 and for the description templates described here.</p></div>
 
 <p>A template invocation is encoded as two curly braces on either side of
@@ -1660,7 +1669,7 @@ enumeration values would be placed before an automatically-generated
 explanation that the parameter value is hidden.</p>
 
 <p>The following standard templates are defined. Any vendor-specific
-template names MUST obey the rules of <a href='#sec:vendor-specific-elements' title=''>Section 3.3</a>.</p>
+template names MUST obey the rules of <a href='#sec:vendor-specific-elements' title='' class="heading">Section 3.3</a>.</p>
 
 <div id="tbl:xml-description-templates">
 <table>
@@ -1676,12 +1685,12 @@ template names MUST obey the rules of <a href='#sec:vendor-specific-elements' ti
 <tr class="odd">
 <td align="left">Glossary reference</td>
 <td align="left"><code>{{gloref|id}}</code></td>
-<td align="left">Glossary reference. The id argument MUST match the id attribute of one of the current file’s (or an imported file’s) top-level glossary element’s item elements (<a href='#sec:glossary' title=''>A.2.4.1</a>).<br/>Typically, processing tools will (a) validate the id, and (b) replace the template reference with something like &ldquo;id&rdquo;.<br/>Markup examples:<br/><code>{{gloref|Parameter}}</code></td>
+<td align="left">Glossary reference. The id argument MUST match the id attribute of one of the current file’s (or an imported file’s) top-level glossary element’s item elements (<a href='#sec:glossary' title='' class="heading">A.2.4.1</a>).<br/>Typically, processing tools will (a) validate the id, and (b) replace the template reference with something like &ldquo;id&rdquo;.<br/>Markup examples:<br/><code>{{gloref|Parameter}}</code></td>
 </tr>
 <tr class="even">
 <td align="left">Abbreviation reference</td>
 <td align="left"><code>{{abbref|id}}</code></td>
-<td align="left">Abbreviation reference. The id argument MUST match the id attribute of one of the current file’s (or an imported file’s) top-level abbreviations element’s item elements (<a href='#sec:abbreviations' title=''>A.2.4.2</a>).<br/>Typically, processing tools will (a) validate the id, and (b) replace the template reference with something like &ldquo;id&rdquo;.<br/>Markup examples:<br/><code>{{abbref|CWMP}}</code></td>
+<td align="left">Abbreviation reference. The id argument MUST match the id attribute of one of the current file’s (or an imported file’s) top-level abbreviations element’s item elements (<a href='#sec:abbreviations' title='' class="heading">A.2.4.2</a>).<br/>Typically, processing tools will (a) validate the id, and (b) replace the template reference with something like &ldquo;id&rdquo;.<br/>Markup examples:<br/><code>{{abbref|CWMP}}</code></td>
 </tr>
 <tr class="odd">
 <td align="left">Approval date</td>
@@ -1696,7 +1705,7 @@ template names MUST obey the rules of <a href='#sec:vendor-specific-elements' ti
 <tr class="odd">
 <td align="left">TR name</td>
 <td align="left"><code>{{trname|name}}</code></td>
-<td align="left">The name and version of the corresponding Word / PDF document.<br/>The name argument MUST identify the Word / PDF document corresponding to this DM Instance, and be of the form &ldquo;TR-nnnixaycz&rdquo; as defined in <a href='#sec:bibliography' title=''>A.2.4.3</a>.<br/>Markup examples:<br/><code>{{trname|TR-181i2a5}}</code></td>
+<td align="left">The name and version of the corresponding Word / PDF document.<br/>The name argument MUST identify the Word / PDF document corresponding to this DM Instance, and be of the form &ldquo;TR-nnnixaycz&rdquo; as defined in <a href='#sec:bibliography' title='' class="heading">A.2.4.3</a>.<br/>Markup examples:<br/><code>{{trname|TR-181i2a5}}</code></td>
 </tr>
 <tr class="even">
 <td align="left">XML reference</td>
@@ -1706,12 +1715,12 @@ template names MUST obey the rules of <a href='#sec:vendor-specific-elements' ti
 <tr class="odd">
 <td align="left">Bibliographic reference</td>
 <td align="left"><code>{{bibref|id}}</code><br/><code>{{bibref|id|section}}</code></td>
-<td align="left">A bibliographic reference.<br/>The id argument MUST match the id attribute of one of the current file’s (or an imported file’s) top-level bibliography element’s reference elements (<a href='#sec:bibliography' title=''>A.2.4.3</a>).<br/>The OPTIONAL section argument specifies the section number, including any leading &ldquo;section&rdquo;, &ldquo;annex&rdquo; or &ldquo;appendix&rdquo; text.<br/>Typically, processing tools will (a) validate the id, and (b) replace the template reference with something like &ldquo;[id] section&rdquo;.<br/>Markup examples:<br/><code>{{bibref|RFC3986}}</code><br/><code>{{bibref|RFC3986|Section 3}}</code></td>
+<td align="left">A bibliographic reference.<br/>The id argument MUST match the id attribute of one of the current file’s (or an imported file’s) top-level bibliography element’s reference elements (<a href='#sec:bibliography' title='' class="heading">A.2.4.3</a>).<br/>The OPTIONAL section argument specifies the section number, including any leading &ldquo;section&rdquo;, &ldquo;annex&rdquo; or &ldquo;appendix&rdquo; text.<br/>Typically, processing tools will (a) validate the id, and (b) replace the template reference with something like &ldquo;[id] section&rdquo;.<br/>Markup examples:<br/><code>{{bibref|RFC3986}}</code><br/><code>{{bibref|RFC3986|Section 3}}</code></td>
 </tr>
 <tr class="even">
 <td align="left">Template reference</td>
 <td align="left"><code>{{template|id}}</code></td>
-<td align="left">A template element reference.<br/>The id argument MUST match the id attribute of one of the current file’s (or an imported file’s) top-level template elements (<a href='#sec:template-elements' title=''>A.2.4.4</a>).<br/>Markup examples:<br/><code>{{template|BULK-DATA-HTTP-REF}}</code></td>
+<td align="left">A template element reference.<br/>The id argument MUST match the id attribute of one of the current file’s (or an imported file’s) top-level template elements (<a href='#sec:template-elements' title='' class="heading">A.2.4.4</a>).<br/>Markup examples:<br/><code>{{template|BULK-DATA-HTTP-REF}}</code></td>
 </tr>
 <tr class="odd">
 <td align="left">Section separator</td>
@@ -1724,54 +1733,64 @@ template names MUST obey the rules of <a href='#sec:vendor-specific-elements' ti
 <td align="left">A description of a &ldquo;NumberOfEntries&rdquo; parameter.<br/>This template SHOULD be used for all such parameters. It will be expanded to something like &ldquo;The number of entries in the &lt;table&gt; table.&rdquo;.<br/>In most cases, the description will consist only of <code>{{numentries}}</code> but it MAY be followed by additional text if desired.</td>
 </tr>
 <tr class="odd">
-<td align="left">Parameter and object reference</td>
-<td align="left"><code>{{param|ref}}</code><br/><code>{{param|ref|scope}}</code><br/><code>{{param}}</code><br/><code>{{object|ref}}</code><br/><code>{{object|ref|scope}}</code><br/><code>{{object}}</code></td>
-<td align="left">A reference to the specified parameter or object.<br/>The OPTIONAL ref and scope arguments reference a parameter or object. Scope defaults to normal. Parameter and object names SHOULD adhere to the rules of <a href='#sec:reference-path-names' title=''>A.2.3.4</a>.<br/>Typically, processing tools will (a) validate the reference, and (b) replace the template reference with the ref argument or, if it is omitted, the current parameter or object name, possibly rendered in a distinctive font.<br/>Processing tools can use the scope to convert a relative path into an absolute path in order, for example, to generate a hyperlink.<br/>Markup examples:<br/><code>{{param|Enable}}</code><br/><code>{{object|Stats.}}</code></td>
+<td align="left">Deprecated, obsoleted or deleted indication</td>
+<td align="left"><code>{{deprecated|version|reason}}</code><br/><code>{{obsoleted|version}}</code><br/><code>{{obsoleted|version|reason}}</code><br/><code>{{deleted|version}}</code><br/><code>{{deleted|version|reason}}</code></td>
+<td align="left">An indication that a parameter, command, event, object, enumeration value or pattern was deprecated (or obsoleted or deleted) in the specified data model version, for the specified reason.<br/>The reason argument is a fragment of text that SHOULD be incorporated into the template expansion. It’s OPTIONAL when obsoleting or deleting an item.<br/>Typically, processing tools will (a) validate that use of the template is consistent with the item status, (b) check for late (overdue) or too-early item status transitions, and (c) replace the template reference with text of the form &ldquo;This &lt;itemType&gt; was &lt;transition&gt; in &lt;version&gt; &lt;reason&gt;.&rdquo; (where &lt;itemType&gt; is parameter, object etc., and &lt;transition&gt; is the capitalized template name, i.e. DEPRECATED, OBSOLETED or DELETED).</td>
 </tr>
 <tr class="even">
+<td align="left">Parameter, command, event and object reference</td>
+<td align="left"><code>{{param}}</code><br/><code>{{param|ref}}</code><br/><code>{{param|ref|scope}}</code><br/><code>{{command}}</code><br/><code>{{command|ref}}</code><br/><code>{{command|ref|scope}}</code><br/><code>{{event}}</code><br/><code>{{event|ref}}</code><br/><code>{{event|ref|scope}}</code><br/><code>{{object}}</code><br/><code>{{object|ref}}</code><br/><code>{{object|ref|scope}}</code></td>
+<td align="left">A reference to the specified parameter, command, event or object.<br/>The OPTIONAL ref and scope arguments reference the specified item (scope defaults to normal). Item names SHOULD adhere to the rules of <a href='#sec:reference-path-names' title='' class="heading">A.2.3.4</a>.<br/>The scope argument can include a deprecated, obsoleted or deleted status, e.g. it might be deprecated or normal,deprecated. Such a status value can be specified in order to suppress processing tool warnings when an item references a &ldquo;more deprecated&rdquo; item. For example, <code>{{param|ref|deprecated}}</code> allows a non-deprecated item to reference a deprecated parameter without a warning.<br/>Typically, processing tools will (a) validate the reference, and (b) replace the template reference with the ref argument or, if it is omitted, the current item name, possibly rendered in a distinctive font.<br/>Processing tools can use the scope to convert a relative path into an absolute path in order, for example, to generate a hyperlink.<br/>Markup examples:<br/><code>{{param|Enable}}</code><br/><code>{{command|Reset()}}</code><br/><code>{{event|Boot!}}</code><br/><code>{{object|Stats.}}</code></td>
+</tr>
+<tr class="odd">
 <td align="left">Profile reference</td>
 <td align="left"><code>{{profile|ref}}</code><br/><code>{{profile}}</code></td>
 <td align="left">A reference to the specified profile.<br/>The OPTIONAL ref argument references a profile.<br/>Typically, processing tools will (a) validate the reference, and (b) replace the template reference with the ref argument or, if it is omitted, the current profile name, possibly rendered in a distinctive font.<br/>Markup examples:<br/><code>{{profile|Baseline:1}}</code><br/><code>{{profile}}</code></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">List description</td>
 <td align="left"><code>{{list}}</code><br/><code>{{list|arg}}</code><br/><code>{{nolist}}</code></td>
-<td align="left">A description of the current parameter’s list attributes.<br/>This template SHOULD only be used within the description of a list-valued parameter (<a href='#sec:parameter-syntax' title=''>A.2.7.1</a>).<br/>This is a hint to processing tools to replace the template reference with a description of the parameter’s list attributes. This overrides processing tools’ expected default behavior (unless suppressed by <code>{{nolist}}</code>) of describing the list attributes before the rest of the description.<br/>The OPTIONAL argument specifies a fragment of text that describes the list and SHOULD be incorporated into the template expansion.<br/>Typically processing tools will generate text of the form &ldquo;Comma-separated list of &lt;dataType&gt;.&rdquo; or &ldquo;Comma-separated list of &lt;dataType&gt;, &lt;arg&gt;.&rdquo;.</td>
+<td align="left">A description of the current parameter’s list attributes.<br/>This template SHOULD only be used within the description of a list-valued parameter (<a href='#sec:parameter-syntax' title='' class="heading">A.2.7.1</a>).<br/>This is a hint to processing tools to replace the template reference with a description of the parameter’s list attributes. This overrides processing tools’ expected default behavior (unless suppressed by <code>{{nolist}}</code>) of describing the list attributes before the rest of the description.<br/>The OPTIONAL argument specifies a fragment of text that describes the list and SHOULD be incorporated into the template expansion.<br/>Typically processing tools will generate text of the form &ldquo;Comma-separated list of &lt;dataType&gt;.&rdquo; or &ldquo;Comma-separated list of &lt;dataType&gt;, &lt;arg&gt;.&rdquo;.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Reference description</td>
 <td align="left"><code>{{reference}}</code><br/><code>{{reference|arg}}</code><br/><code>{{reference|arg|opts}}</code><br/><code>{{noreference}}</code></td>
-<td align="left">A description of the object or parameter that is referenced by the current parameter.<br/>This template SHOULD only be used within the description of a reference parameter (<a href='#sec:reference-facets' title=''>A.2.3.7</a>).<br/>This is a hint to processing tools to replace the template reference with a description of the parameter’s reference attributes. This overrides processing tools’ expected default behavior (unless suppressed by <code>{{noreference}}</code>) of describing the reference attributes after the list attributes (for a list-valued parameter) or before the rest of the description (otherwise).<br/>The OPTIONAL arg argument is relevant only for a pathRef; it specifies a fragment of text that describes the referenced item and SHOULD be incorporated into the template expansion.<br/>The OPTIONAL opts argument is a comma-separated list of keywords that give additional information about the reference and can affect the generated text. The following keywords are currently defined:<br/>- <strong>ignore</strong>: ignore any non-existent targetParents; this is useful when a parameter references different objects in different data models.<br/>- <strong>delete</strong>: this object (the referencing object) and the referenced object have the same lifetime, so this object will always be deleted when the referenced object is deleted; therefore the reference cannever be null.<br/>Typically processing tools will generate text of the form &ldquo;The value MUST be the full path name of &lt;arg&gt;…&rdquo;, in which the generated text can be expected to be sensitive to whether or not the parameter is list-valued.<br/>Markup examples:<br/><code>{{reference|a protocol object}}</code><br/><code>{{reference|all Host table entries|ignore}}</code></td>
+<td align="left">A description of the object or parameter that is referenced by the current parameter.<br/>This template SHOULD only be used within the description of a reference parameter (<a href='#sec:reference-facets' title='' class="heading">A.2.3.7</a>).<br/>This is a hint to processing tools to replace the template reference with a description of the parameter’s reference attributes. This overrides processing tools’ expected default behavior (unless suppressed by <code>{{noreference}}</code>) of describing the reference attributes after the list attributes (for a list-valued parameter) or before the rest of the description (otherwise).<br/>The OPTIONAL arg argument is relevant only for a pathRef; it specifies a fragment of text that describes the referenced item and SHOULD be incorporated into the template expansion.<br/>The OPTIONAL opts argument is a comma-separated list of keywords that give additional information about the reference and can affect the generated text. The following keywords are currently defined:<br/>- <strong>ignore</strong>: ignore any non-existent targetParents; this is useful when a parameter references different objects in different data models.<br/>- <strong>delete</strong>: this object (the referencing object) and the referenced object have the same lifetime, so this object will always be deleted when the referenced object is deleted; therefore the reference cannever be null.<br/>Typically processing tools will generate text of the form &ldquo;The value MUST be the full path name of &lt;arg&gt;…&rdquo;, in which the generated text can be expected to be sensitive to whether or not the parameter is list-valued.<br/>Markup examples:<br/><code>{{reference|a protocol object}}</code><br/><code>{{reference|all Host table entries|ignore}}</code></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">Named data type</td>
 <td align="left"><code>{{datatype}}</code><br/><code>{{datatype|arg}}</code><br/><code>{{nodatatype}}</code></td>
-<td align="left">A description of the current parameter’s named data type.<br/>This template SHOULD only be used within the description of a parameter of a named data type (<a href='#sec:named-data-types' title=''>A.2.3.1</a>).<br/>This is a hint to processing tools to replace the template reference with an indication of the parameter’s named data type, possibly including additional details or a hyperlink to such details. This overrides processing tools’ expected default behavior (unless suppressed by <code>{{nodatatype}}</code>) of describing the named data type before the rest of the description.<br/>The OPTIONAL argument affects how the data type is described. If it has the literal value &ldquo;expand&rdquo;, processing tools SHOULD replace the template reference with the actual description of the named data type (as opposed to referencing the description of the named data type).</td>
+<td align="left">A description of the current parameter’s named data type.<br/>This template SHOULD only be used within the description of a parameter of a named data type (<a href='#sec:named-data-types' title='' class="heading">A.2.3.1</a>).<br/>This is a hint to processing tools to replace the template reference with an indication of the parameter’s named data type, possibly including additional details or a hyperlink to such details. This overrides processing tools’ expected default behavior (unless suppressed by <code>{{nodatatype}}</code>) of describing the named data type before the rest of the description.<br/>The OPTIONAL argument affects how the data type is described. If it has the literal value &ldquo;expand&rdquo;, processing tools SHOULD replace the template reference with the actual description of the named data type (as opposed to referencing the description of the named data type).</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">Profile description</td>
 <td align="left"><code>{{profdesc}}</code><br/><code>{{noprofdesc}}</code></td>
-<td align="left">An auto-generated description of a profile.<br/>This template SHOULD only be used within the description of a profile (<a href='#sec:profiles-1' title=''>A.2.11</a>).<br/>This is a hint to processing tools to replace the template reference with a description of the profile. This overrides processing tools’ expected default behavior (unless suppressed by <code>{{noprofdesc}}</code>) of describing the profile before the rest of the description.<br/>Typically processing tools will generate text of the form &ldquo;This table defines the &lt;profile:v&gt; profile for the &lt;object:m&gt; object. The minimum REQUIRED version for this profile is &lt;object:m.n&gt;.&rdquo; (or more complex text if the profile is based on or extends other profiles).</td>
-</tr>
-<tr class="odd">
-<td align="left">Enumeration reference</td>
-<td align="left"><code>{{enum|value}}</code><br/><code>{{enum|value|param}}</code><br/><code>{{enum|value|param|scope}}</code><br/><code>{{enum}}</code><br/><code>{{noenum}}</code></td>
-<td align="left">A reference to the specified enumeration value.<br/>The OPTIONAL value argument specifies one of the enumeration values for the referenced parameter. If present, it MUST be a valid enumeration value for that parameter.<br/>The OPTIONAL param and scope arguments identify the referenced parameter. Scope defaults to normal. If present, param SHOULD adhere to the rules of <a href='#sec:reference-path-names' title=''>A.2.3.4</a>. If omitted, the current parameter is assumed.<br/>If the arguments are omitted, this is a hint to processing tools to replace the template reference with a list of the parameter’s enumerations, possibly preceded by text such as &ldquo;Enumeration of:&rdquo;. This overrides processing tools’ expected default behavior (unless suppressed by <code>{{noenum}}</code>) of listing the parameter’s enumerations after the rest of the description.<br/>Otherwise, typically processing tools will (a) validate that the enumeration value is valid, and (b) replace the template reference with the value and/or param arguments, appropriately formatted and with the value possibly rendered in a distinctive font. Processing tools can use the scope to convert a relative path into an absolute path in order, for example, to generate a hyperlink.<br/>Markup examples:<br/><code>{{enum|None}}</code><br/><code>{{enum|None|OtherParam}}</code></td>
+<td align="left">An auto-generated description of a profile.<br/>This template SHOULD only be used within the description of a profile (<a href='#sec:profiles-1' title='' class="heading">A.2.11</a>).<br/>This is a hint to processing tools to replace the template reference with a description of the profile. This overrides processing tools’ expected default behavior (unless suppressed by <code>{{noprofdesc}}</code>) of describing the profile before the rest of the description.<br/>Typically processing tools will generate text of the form &ldquo;This table defines the &lt;profile:v&gt; profile for the &lt;object:m&gt; object. The minimum REQUIRED version for this profile is &lt;object:m.n&gt;.&rdquo; (or more complex text if the profile is based on or extends other profiles).</td>
 </tr>
 <tr class="even">
-<td align="left">Pattern reference</td>
-<td align="left"><code>{{pattern|value}}</code><br/><code>{{pattern|value|param}}</code><br/><code>{{pattern|value|param|scope}}</code><br/><code>{{pattern}}</code><br/><code>{{nopattern}}</code></td>
-<td align="left">A reference to the specified pattern value.<br/>The OPTIONAL value argument specifies one of the pattern values for the referenced parameter. If present, it MUST be a valid pattern value for that parameter. The OPTIONAL param and scope arguments identify the referenced parameter. Scope defaults to normal. If present, param SHOULD adhere to the rules of <a href='#sec:reference-path-names' title=''>A.2.3.4</a>. If omitted, the current parameter is assumed.<br/>If the arguments are omitted, this is a hint to processing tools to replace the template reference with a list of the parameter’s patterns, possibly preceded by text such as &ldquo;Possible patterns:&rdquo;. This overrides processing tools’ expected default behavior (unless suppressed by <code>{{nopattern}}</code>) of listing the parameter’s patterns after the rest of the description.<br/>Otherwise, typically processing tools will (a) validate that the pattern value is valid, and (b) replace the template reference with the value and/or param arguments, appropriately formatted and with the value possibly rendered in a distinctive font. Processing tools can use the scope to convert a relative path into an absolute path in order, for example, to generate a hyperlink.<br/>Markup examples:<br/><code>{{pattern|None}}</code><br/><code>{{pattern|None|OtherParam}}</code></td>
+<td align="left">Enumeration reference</td>
+<td align="left"><code>{{enum|value}}</code><br/><code>{{enum|value|param}}</code><br/><code>{{enum|value|param|scope}}</code><br/><code>{{enum}}</code><br/><code>{{noenum}}</code></td>
+<td align="left">A reference to the specified enumeration value.<br/>The OPTIONAL value argument specifies one of the enumeration values for the referenced parameter. If present, it MUST be a valid enumeration value for that parameter.<br/>The OPTIONAL param and scope arguments identify the referenced parameter (scope defaults to normal). If present, param SHOULD adhere to the rules of <a href='#sec:reference-path-names' title='' class="heading">A.2.3.4</a>. If omitted, the current parameter is assumed.<br/>If the arguments are omitted, this is a hint to processing tools to replace the template reference with a list of the parameter’s enumerations, possibly preceded by text such as &ldquo;Enumeration of:&rdquo;. This overrides processing tools’ expected default behavior (unless suppressed by <code>{{noenum}}</code>) of listing the parameter’s enumerations after the rest of the description.<br/>Otherwise, typically processing tools will (a) validate that the enumeration value is valid, and (b) replace the template reference with the value and/or param arguments, appropriately formatted and with the value possibly rendered in a distinctive font. Processing tools can use the scope to convert a relative path into an absolute path in order, for example, to generate a hyperlink.<br/>Markup examples:<br/><code>{{enum|None}}</code><br/><code>{{enum|None|OtherParam}}</code></td>
 </tr>
 <tr class="odd">
+<td align="left">Pattern reference</td>
+<td align="left"><code>{{pattern|value}}</code><br/><code>{{pattern|value|param}}</code><br/><code>{{pattern|value|param|scope}}</code><br/><code>{{pattern}}</code><br/><code>{{nopattern}}</code></td>
+<td align="left">A reference to the specified pattern value.<br/>The OPTIONAL value argument specifies one of the pattern values for the referenced parameter. If present, it MUST be a valid pattern value for that parameter. The OPTIONAL param and scope arguments identify the referenced parameter (scope defaults to normal). If present, param SHOULD adhere to the rules of <a href='#sec:reference-path-names' title='' class="heading">A.2.3.4</a>. If omitted, the current parameter is assumed.<br/>If the arguments are omitted, this is a hint to processing tools to replace the template reference with a list of the parameter’s patterns, possibly preceded by text such as &ldquo;Possible patterns:&rdquo;. This overrides processing tools’ expected default behavior (unless suppressed by <code>{{nopattern}}</code>) of listing the parameter’s patterns after the rest of the description.<br/>Otherwise, typically processing tools will (a) validate that the pattern value is valid, and (b) replace the template reference with the value and/or param arguments, appropriately formatted and with the value possibly rendered in a distinctive font. Processing tools can use the scope to convert a relative path into an absolute path in order, for example, to generate a hyperlink.<br/>Markup examples:<br/><code>{{pattern|None}}</code><br/><code>{{pattern|None|OtherParam}}</code></td>
+</tr>
+<tr class="even">
 <td align="left">Hidden value</td>
 <td align="left"><code>{{hidden}}</code><br/><code>{{hidden|value}}</code><br/><code>{{nohidden}}</code></td>
-<td align="left">Text explaining that the value of the current parameter is hidden and cannot be read. This template SHOULD only be used within the description of a hidden parameter (<a href='#sec:parameter-syntax' title=''>A.2.7.1</a>).<br/>This is a hint to processing tools to replace the template reference with text explaining that the value of the current parameter is hidden and cannot be read. This overrides processing tools’ expected default behavior (unless suppressed by <code>{{nohidden}}</code>) of placing this text after the rest of the description.<br/>The OPTIONAL argument indicates the value that is returned when the current parameter is read. If omitted this defaults to the expansion of the <code>{{null}}</code> template.<br/>Typically, processing tools will generate text of the form &ldquo;When read, this parameter returns &lt;arg&gt;, regardless of the actual value.&rdquo;.</td>
+<td align="left">Text explaining that the value of the current parameter is hidden. This template SHOULD only be used within the description of a hidden parameter (<a href='#sec:parameter-syntax' title='' class="heading">A.2.7.1</a>).<br/>This is a hint to processing tools to replace the template reference with text explaining that the value of the current parameter is hidden. This overrides processing tools’ expected default behavior (unless suppressed by <code>{{nohidden}}</code>) of placing this text after the rest of the description.<br/>The OPTIONAL argument indicates the value that is returned when the current parameter is read. If omitted this defaults to the expansion of the <code>{{null}}</code> template.<br/>Typically, processing tools will generate text of the form &ldquo;When read, this parameter returns &lt;arg&gt;, regardless of the actual value.&rdquo;.</td>
+</tr>
+<tr class="odd">
+<td align="left">Secured value</td>
+<td align="left"><code>{{secured}}</code><br/><code>{{secured|value}}</code><br/><code>{{nosecured}}</code></td>
+<td align="left">Text explaining that the value of the current parameter is secured. This template SHOULD only be used within the description of a secured parameter (<a href='#sec:parameter-syntax' title='' class="heading">A.2.7.1</a>).<br/>This is a hint to processing tools to replace the template reference with text explaining that the value of the current parameter is secured. This overrides processing tools’ expected default behavior (unless suppressed by <code>{{nosecured}}</code>) of placing this text after the rest of the description.<br/>The OPTIONAL argument indicates the value that is returned when the Controller is not permitted to see the value. If omitted this defaults to the expansion of the <code>{{null}}</code> template.<br/>Typically, processing tools will generate text of the form &ldquo;When read, this parameter returns &lt;arg&gt;, regardless of the actual value, unless the Controller has a &lsquo;secured&rsquo; role.&rdquo;.</td>
 </tr>
 <tr class="even">
 <td align="left">Command parameter</td>
 <td align="left"><code>{{command}}</code><br/><code>{{nocommand}}</code></td>
-<td align="left">Text explaining that the current parameter is a command parameter that triggers an Agent action. This template SHOULD only be used within the description of such a command parameter (<a href='#sec:parameter-syntax' title=''>A.2.7.1</a>).<br/>This is a hint to processing tools to replace the template reference with text explaining that the current parameter is a command parameter that always reads back as <code>{{null}}</code>. This overrides processing tools’ expected default behavior (unless suppressed by <code>{{nocommand}}</code>) of placing this text after the rest of the description. Typically, processing tools will generate text of the form &ldquo;The value is not part of the device configuration and is always <code>{{null}}</code> when read.&rdquo;.</td>
+<td align="left">Text explaining that the current parameter is a command parameter that triggers an Agent action. This template SHOULD only be used within the description of such a command parameter (<a href='#sec:parameter-syntax' title='' class="heading">A.2.7.1</a>).<br/>This is a hint to processing tools to replace the template reference with text explaining that the current parameter is a command parameter that always reads back as <code>{{null}}</code>. This overrides processing tools’ expected default behavior (unless suppressed by <code>{{nocommand}}</code>) of placing this text after the rest of the description. Typically, processing tools will generate text of the form &ldquo;The value is not part of the device configuration and is always <code>{{null}}</code> when read.&rdquo;.<br/>Note that the same <code>{{command}}</code> template can also be used by a USP command to refer to itself.</td>
 </tr>
 <tr class="odd">
 <td align="left">Factory default value</td>
@@ -1781,7 +1800,7 @@ template names MUST obey the rules of <a href='#sec:vendor-specific-elements' ti
 <tr class="even">
 <td align="left">Unique keys description</td>
 <td align="left"><code>{{keys}}</code><br/><code>{{nokeys}}</code></td>
-<td align="left">A description of the current object’s unique keys.<br/>This template SHOULD only be used within the description of a Multi-Instance Object (table) that defines one or more unique keys (<a href='#sec:tables' title=''>A.2.10.1</a>).<br/>This is a hint to processing tools to replace the template reference with a description of the object’s unique keys. This overrides processing tools’ expected default behavior (unless suppressed by <code>{{nokeys}}</code>) of describing the unique keys after the description.</td>
+<td align="left">A description of the current object’s unique keys.<br/>This template SHOULD only be used within the description of a Multi-Instance Object (table) that defines one or more unique keys (<a href='#sec:tables' title='' class="heading">A.2.10.1</a>).<br/>This is a hint to processing tools to replace the template reference with a description of the object’s unique keys. This overrides processing tools’ expected default behavior (unless suppressed by <code>{{nokeys}}</code>) of describing the unique keys after the description.</td>
 </tr>
 <tr class="odd">
 <td align="left">Units reference</td>
@@ -1796,7 +1815,7 @@ template names MUST obey the rules of <a href='#sec:vendor-specific-elements' ti
 <tr class="odd">
 <td align="left">Discriminator parameter description</td>
 <td align="left"><code>{{union}}</code><br/><code>{{nounion}}</code></td>
-<td align="left">Text explaining the available options and use for the sub-objects which are part of the union.<br/>This template SHOULD only be used within the description of a parameter declared as a discriminatorParameter (<a href='#sec:tables' title=''>A.2.10.1</a>).<br/>This is a hint to processing tools to replace the template reference with text explaining the union and possible choices of sub-objects. This overrides processing tools’ expected default behavior (unless suppressed by `<code>{{nounion}}</code>) of placing this text after the rest of the description.<br/>Typically, processing tools will generate text of the form &ldquo;This parameter defines the name of the currently active sub-object of a union, members of the union are &lt;objects&gt;.&rdquo; but it MAY be followed by additional text, explaining the use of the available options, if desired.</td>
+<td align="left">Text explaining the available options and use for the sub-objects which are part of the union.<br/>This template SHOULD only be used within the description of (a) a parameter referenced as a discriminatorParameter, or (b) an object that references a discriminatorParameter (<a href='#sec:tables' title='' class="heading">A.2.10.1</a>).<br/>This is a hint to processing tools to replace the template reference with text explaining the union and possible choices of sub-objects. This overrides processing tools’ expected default behavior (unless suppressed by <code>{{nounion}}</code>) of placing this text after the rest of the description.<br/>Typically, processing tools will generate text of the form (a) &ldquo;This parameter discriminates between the &lt;objects&gt; union objects.&rdquo;, or (b) &ldquo;This object MUST be present if, and only if, &lt;param&gt; is &lt;object&gt;.&rdquo;, but it MAY be followed by additional text, explaining the use of the available options, if desired.</td>
 </tr>
 <tr class="even">
 <td align="left">Miscellaneous</td>
@@ -1811,7 +1830,7 @@ template names MUST obey the rules of <a href='#sec:vendor-specific-elements' ti
 <tr class="even">
 <td align="left"></td>
 <td align="left"><code>{{null}}</code></td>
-<td align="left">Expands to the appropriate null value for the current parameter’s data type (<a href='#sec:null-values-and-references' title=''>A.2.3.5</a>), e.g. <code>{{empty}}</code>, <code>{{false}}</code> or 0.</td>
+<td align="left">Expands to the appropriate null value for the current parameter’s data type (<a href='#sec:null-values-and-references' title='' class="heading">A.2.3.5</a>), e.g. <code>{{empty}}</code>, <code>{{false}}</code> or 0.</td>
 </tr>
 </table></div>
 
@@ -1819,13 +1838,13 @@ template names MUST obey the rules of <a href='#sec:vendor-specific-elements' ti
 
 <p>This includes examples of most of the markup and templates.</p>
 
-<pre><code>    &lt;model name=&quot;Goo:1.1&quot; base=&quot;Goo:1.0&quot;&gt;
-      &lt;object name=&quot;GooTop.&quot; access=&quot;readOnly&quot; minEntries=&quot;1&quot; maxEntries=&quot;1&quot;&gt;
-        &lt;parameter name=&quot;ExampleParam&quot; access=&quot;readOnly&quot;&gt;
+<pre><code>    &lt;model name="Goo:1.1" base="Goo:1.0"&gt;
+      &lt;object name="GooTop." access="readOnly" minEntries="1" maxEntries="1"&gt;
+        &lt;parameter name="ExampleParam" access="readOnly"&gt;
           &lt;description&gt;
-    {{section|Introduction}}This is an &#39;&#39;example&#39;&#39; parameter that
-    illustrates many of the &#39;&#39;&#39;formatting&#39;&#39;&#39; templates. For
-    &#39;&#39;&#39;&#39;&#39;example&#39;&#39;&#39;&#39;&#39;, this references {{bibref|TR-106a1|section 3.2}}.
+    {{section|Introduction}}This is an ''example'' parameter that
+    illustrates many of the '''formatting''' templates. For
+    '''''example''''', this references {{bibref|TR-106a1|section 3.2}}.
 
     {{section|Usage}}This parameter is called {{object}}{{param}}. One can
     also reference other parameters in the same object, such as
@@ -1868,28 +1887,28 @@ template names MUST obey the rules of <a href='#sec:vendor-specific-elements' ti
     and {{true}}.
 
     One can refer to its enumerations individually, e.g. {{enum|Disabled}},
-    or to other parameters&#39; enumerations, such as {{enum|Value|OtherParam}},
+    or to other parameters' enumerations, such as {{enum|Value|OtherParam}},
     or can list them all. {{enum}}
 
     Finally, if there were any patterns they could be listed too. {{pattern}}
           &lt;/description&gt;
           &lt;syntax&gt;
             &lt;string&gt;
-              &lt;enumeration value=&quot;A&quot;/&gt;
-              &lt;enumeration value=&quot;B&quot;/&gt;
-              &lt;units value=&quot;packets&quot;/&gt;
+              &lt;enumeration value="A"/&gt;
+              &lt;enumeration value="B"/&gt;
+              &lt;units value="packets"/&gt;
             &lt;/string&gt;
           &lt;/syntax&gt;
         &lt;/parameter&gt;</code></pre>
 
 <p>The resulting HTML would look something like this:</p>
 
-<img src="images/figure-4.png" id="" alt=""/>
+<img src="images/figure-4.png" alt=""/>
 
 <h3 class="annex3" id="sec:data-types">A.2.3 Data Types<a class="headerlink" href="#sec:data-types" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h3>
 
-<p>CWMP <span class="cite" data-citation-ids="TR-069">[<a href='#ref-TR-069' title=''>1</a>]</span> and USP <span class="cite" data-citation-ids="TR-369">[<a href='#ref-TR-369' title=''>2</a>]</span> data models support only the primitive data
-types listed in the last row of <a href='#tbl:xml-named-data-types' title=''>Table 3</a> &ldquo;on the wire&rdquo;. However, the DM
+<p>CWMP <span class="cite" data-citation-ids="TR-069"><a href='#ref-TR-069' title=''>[7]</a></span> and USP <span class="cite" data-citation-ids="TR-369"><a href='#ref-TR-369' title=''>[11]</a></span> data models support only the primitive data
+types listed in the last row of <a href='#tbl:xml-named-data-types' title='' class="table">Table 3</a> &ldquo;on the wire&rdquo;. However, the DM
 Schema allows data types to be derived from the primitive types or from
 other named data types. Such derived types can be named or anonymous.</p>
 
@@ -1925,61 +1944,61 @@ schema).</p>
 </tr>
 <tr class="even">
 <td align="left">description</td>
-<td align="left">The data type’s description (<a href='#sec:descriptions' title=''>A.2.2</a>).</td>
+<td align="left">The data type’s description (<a href='#sec:descriptions' title='' class="heading">A.2.2</a>).</td>
 </tr>
 <tr class="odd">
 <td align="left">list<br/>minItems<br/>maxItems<br/>nestedBrackets<br/>size</td>
-<td align="left">If the data type is list-valued, details of the list value. This allows specification of the maximum and minimum number of items in the list, and of nested list behavior, and also supports a size facet for the list (<a href='#sec:data-type-facets' title=''>A.2.3.3</a>).<br/>Note that a list-valued data type is always a string as far as the protocol is concerned. For a list, the rest of the data type specification refers to the individual list items, not to the parameter value.</td>
+<td align="left">If the data type is list-valued, details of the list value. This allows specification of the maximum and minimum number of items in the list, and of nested list behavior, and also supports a size facet for the list (<a href='#sec:data-type-facets' title='' class="heading">A.2.3.3</a>).<br/>Note that a list-valued data type is always a string as far as the protocol is concerned. For a list, the rest of the data type specification refers to the individual list items, not to the parameter value.</td>
 </tr>
 <tr class="even">
 <td align="left">size<br/>pathRef<br/>instanceRef<br/>range<br/>enumeration<br/>enumerationRef<br/>pattern<br/>units<br/>default</td>
-<td align="left">Data type facets (<a href='#sec:data-type-facets' title=''>A.2.3.3</a>). These are permitted only when the base type is a named data type, i.e. when the base attribute is specified.</td>
+<td align="left">Data type facets (<a href='#sec:data-type-facets' title='' class="heading">A.2.3.3</a>). These are permitted only when the base type is a named data type, i.e. when the base attribute is specified.</td>
 </tr>
 <tr class="odd">
 <td align="left">base64<br/>boolean<br/>dateTime<br/>hexBinary<br/>int<br/>long<br/>string<br/>unsignedInt<br/>unsignedLong</td>
-<td align="left">Primitive data type definition. These are permitted only when the base type is primitive. There is an element for each primitive data type, and each element supports only the facets (<a href='#sec:data-type-facets' title=''>A.2.3.3</a>) that are appropriate to that data type.</td>
+<td align="left">Primitive data type definition. These are permitted only when the base type is primitive. There is an element for each primitive data type, and each element supports only the facets (<a href='#sec:data-type-facets' title='' class="heading">A.2.3.3</a>) that are appropriate to that data type.</td>
 </tr>
 </table></div>
 
 <p>For example:</p>
 
-<pre><code>    &lt;dataType name=&quot;String255&quot;&gt;
+<pre><code>    &lt;dataType name="String255"&gt;
       &lt;description&gt;String of maximum length 255.&lt;/description&gt;
       &lt;string&gt;
-        &lt;size maxLength=&quot;255&quot;/&gt;
+        &lt;size maxLength="255"/&gt;
       &lt;/string&gt;
     &lt;/dataType&gt;
 
-    &lt;dataType name=&quot;String127&quot; base=&quot;String255&quot;&gt;
+    &lt;dataType name="String127" base="String255"&gt;
       &lt;description&gt;String of maximum length 127.&lt;/description&gt;
-      &lt;size maxLength=&quot;127&quot;/&gt;
+      &lt;size maxLength="127"/&gt;
     &lt;/dataType&gt;
 
-    &lt;dataType name=&quot;String127List&quot; base=&quot;String127&quot;&gt;
+    &lt;dataType name="String127List" base="String127"&gt;
       &lt;description&gt;List of up to 7 strings, each of maximum length 127. If a
-      list item is itself a list, it will be &quot;protected&quot; by square
+      list item is itself a list, it will be "protected" by square
       brackets.&lt;/description&gt;
-      &lt;list maxItems=&quot;7&quot; nestedBrackets=&quot;required&quot;/&gt;
+      &lt;list maxItems="7" nestedBrackets="required"/&gt;
     &lt;/dataType&gt;</code></pre>
 
 <h4 class="annex4" id="sec:anonymous-data-types">A.2.3.2 Anonymous Data Types<a class="headerlink" href="#sec:anonymous-data-types" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h4>
 
 <p>Anonymous data types are defined within parameter syntax elements
-(<a href='#sec:parameter-syntax' title=''>A.2.7.1</a>), and can apply only to the parameters within which they are
+(<a href='#sec:parameter-syntax' title='' class="heading">A.2.7.1</a>), and can apply only to the parameters within which they are
 defined. For example:</p>
 
-<pre><code>    &lt;parameter name=&quot;Example1&quot; access=&quot;readOnly&quot;&gt;
+<pre><code>    &lt;parameter name="Example1" access="readOnly"&gt;
       &lt;syntax&gt;
         &lt;string&gt;
-          &lt;size maxLength=&quot;127&quot;/&gt;
+          &lt;size maxLength="127"/&gt;
           &lt;/string&gt;
       &lt;/syntax&gt;
     &lt;/parameter&gt;
 
-    &lt;parameter name=&quot;Example2&quot; access=&quot;readOnly&quot;&gt;
+    &lt;parameter name="Example2" access="readOnly"&gt;
       &lt;syntax&gt;
-        &lt;dataType base=&quot;String255&quot;&gt;
-          &lt;size maxLength=&quot;127&quot;/&gt;
+        &lt;dataType base="String255"&gt;
+          &lt;size maxLength="127"/&gt;
         &lt;/dataType&gt;
       &lt;/syntax&gt;
     &lt;/parameter&gt;</code></pre>
@@ -1987,14 +2006,14 @@ defined. For example:</p>
 <p>If an anonymous data type is modified in a later version of a data
 model, the modified anonymous data type is regarded as being derived
 from the original anonymous data type. Therefore the base type
-restriction rules of <a href='#sec:base-type-restriction' title=''>A.2.3.8</a> MUST be obeyed.</p>
+restriction rules of <a href='#sec:base-type-restriction' title='' class="heading">A.2.3.8</a> MUST be obeyed.</p>
 
 <h4 class="annex4" id="sec:data-type-facets">A.2.3.3 Data Type Facets<a class="headerlink" href="#sec:data-type-facets" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h4>
 
 <p>A facet specifies some aspect of a data type, e.g. its size, range or
 units.</p>
 
-<p>Note that XML Schema <span class="cite" data-citation-ids="XML-Schema-Primer">[<a href='#ref-XML-Schema-Primer' title=''>4</a>]</span> also associates facets with data types. The
+<p>Note that XML Schema <span class="cite" data-citation-ids="XML-Schema-Primer"><a href='#ref-XML-Schema-Primer' title=''>[12]</a></span> also associates facets with data types. The
 XML Schema and DM Schema concepts are the same, but the set of facets is
 not identical.</p>
 
@@ -2012,15 +2031,15 @@ specified in the schema):</p>
 </tr>
 <tr class="odd">
 <td align="left">size</td>
-<td align="left">Size ranges for the data type (applies to string, base64, hexBinary and their derived types). Note that the size facet always refers to the actual value, not to the base64- or hexBinary-encoded value. Prior to the definition of the DM Schema, the maximum sizes of base64 parameters referred to the base64-encoded values.<br/>Processing tools that generate reports from DM Instances SHOULD include explicit clarification of whether the size ranges refer to the actual or encoded values.<br/>Note that the size facet is also used to specify the size range for list-valued parameters, which are always strings (<a href='#sec:parameter-syntax' title=''>A.2.7.1</a>).</td>
+<td align="left">Size ranges for the data type (applies to string, base64, hexBinary and their derived types). Note that the size facet always refers to the actual value, not to the base64- or hexBinary-encoded value. Prior to the definition of the DM Schema, the maximum sizes of base64 parameters referred to the base64-encoded values.<br/>Processing tools that generate reports from DM Instances SHOULD include explicit clarification of whether the size ranges refer to the actual or encoded values.<br/>Note that the size facet is also used to specify the size range for list-valued parameters, which are always strings (<a href='#sec:parameter-syntax' title='' class="heading">A.2.7.1</a>).</td>
 </tr>
 <tr class="even">
 <td align="left">pathRef</td>
-<td align="left">Details of how to reference parameters and objects via their Path Names (applies to string and its derived types; <a href='#sec:reference-facets' title=''>A.2.3.7</a>).</td>
+<td align="left">Details of how to reference parameters and objects via their Path Names (applies to string and its derived types; <a href='#sec:reference-facets' title='' class="heading">A.2.3.7</a>).</td>
 </tr>
 <tr class="odd">
 <td align="left">instanceRef</td>
-<td align="left">Details of how to reference object instances (table rows) via their Instance Numbers (applies to int, unsignedInt and their derived types; <a href='#sec:reference-facets' title=''>A.2.3.7</a>).</td>
+<td align="left">Details of how to reference object instances (table rows) via their Instance Numbers (applies to int, unsignedInt and their derived types; <a href='#sec:reference-facets' title='' class="heading">A.2.3.7</a>).</td>
 </tr>
 <tr class="even">
 <td align="left">range</td>
@@ -2032,11 +2051,11 @@ specified in the schema):</p>
 </tr>
 <tr class="even">
 <td align="left">enumerationRef</td>
-<td align="left">Enumerations for the data type, obtained at run-time from the value of a specified parameter (applies to string and its derived types; <a href='#sec:reference-facets' title=''>A.2.3.7</a>).</td>
+<td align="left">Enumerations for the data type, obtained at run-time from the value of a specified parameter (applies to string and its derived types; <a href='#sec:reference-facets' title='' class="heading">A.2.3.7</a>).</td>
 </tr>
 <tr class="odd">
 <td align="left">pattern</td>
-<td align="left">Patterns for the data type (applies to string and its derived types). Pattern value syntax is the same as for XML Schema regular expressions. See <span class="cite" data-citation-ids="XML-Schema-Datatypes">[Section F/<a href='#ref-XML-Schema-Datatypes' title=''>12</a>]</span>.</td>
+<td align="left">Patterns for the data type (applies to string and its derived types). Pattern value syntax is the same as for XML Schema regular expressions. See <span class="cite" data-citation-ids="XML-Schema-Datatypes"><a href='#ref-XML-Schema-Datatypes' title=''>[F/13]</a></span>.</td>
 </tr>
 <tr class="even">
 <td align="left">units</td>
@@ -2053,7 +2072,7 @@ define all the valid values for a data type. This is for the following
 reasons:</p>
 
 <ul>
-<li><p>As specified in <a href='#sec:vendor-specific-elements' title=''>Section 3.3</a>, vendors are allowed to add additional
+<li><p>As specified in <a href='#sec:vendor-specific-elements' title='' class="heading">Section 3.3</a>, vendors are allowed to add additional
 enumeration values.</p></li>
 <li><p>A future version of a data model may need to add additional
 enumeration values.</p></li>
@@ -2061,8 +2080,8 @@ enumeration values.</p></li>
 
 <h4 class="annex4" id="sec:reference-path-names">A.2.3.4 Reference Path Names<a class="headerlink" href="#sec:reference-path-names" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h4>
 
-<p>Some description templates (<a href='#sec:description-templates' title=''>A.2.2.4</a>), and all reference facets
-(<a href='#sec:reference-facets' title=''>A.2.3.7</a>), need to specify parameter or object names. It is always
+<p>Some description templates (<a href='#sec:description-templates' title='' class="heading">A.2.2.4</a>), and all reference facets
+(<a href='#sec:reference-facets' title='' class="heading">A.2.3.7</a>), need to specify parameter, command, event or object names. It is always
 possible to specify a full Path Name, but it is frequently necessary or
 convenient to specify a relative Path Name. For example, it might be
 necessary to reference another parameter in the current object. Any
@@ -2193,7 +2212,7 @@ component:</p>
 above, means &ldquo;if within a Service Object instance, the Service Object
 instance; otherwise, the Root Object&rdquo;.</p>
 
-<p>For example, the pathRef and instanceRef facets (<a href='#sec:reference-facets' title=''>A.2.3.7</a>) have a
+<p>For example, the pathRef and instanceRef facets (<a href='#sec:reference-facets' title='' class="heading">A.2.3.7</a>) have a
 targetParent attribute which specifies the possible parent(s) of the
 referenced parameter or object, and a targetParentScope attribute
 (defaulted to normal) which specifies targetParent’s scope. If the
@@ -2206,7 +2225,7 @@ be in the same object or in a sub-object.</p>
 <h4 class="annex4" id="sec:null-values-and-references">A.2.3.5 Null Values and References<a class="headerlink" href="#sec:null-values-and-references" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h4>
 
 <p>Each primitive data type has an associated null value that is used, for
-example, as the expansion of the {{null}} template (<a href='#sec:description-templates' title=''>A.2.2.4</a>). These null
+example, as the expansion of the {{null}} template (<a href='#sec:description-templates' title='' class="heading">A.2.2.4</a>). These null
 values are defined as follows:</p>
 
 <ul>
@@ -2214,7 +2233,7 @@ values are defined as follows:</p>
 <li><p><strong>unsignedInt, unsignedLong:</strong> 0</p></li>
 <li><p><strong>int, long:</strong> -1</p></li>
 <li><p><strong>boolean:</strong> false</p></li>
-<li><p><strong>dateTime:</strong> 0001-01-01T00:00:00Z (the Unknown Time; see <a href='#sec:date-and-time-rules' title=''>Section 3.2.1</a>)</p></li>
+<li><p><strong>dateTime:</strong> 0001-01-01T00:00:00Z (the Unknown Time; see <a href='#sec:date-and-time-rules' title='' class="heading">Section 3.2.1</a>)</p></li>
 </ul>
 
 <p>A null reference indicates that a reference parameter is not currently
@@ -2237,12 +2256,12 @@ object. For example, if the referenced parameter or object is
 deleted, the value of the reference parameter might not get updated.
 All weak reference parameters MUST be declared as writable.</p></li>
 <li><p><strong>strong</strong>: it always either references a valid parameter or object,
-or else is a null reference (<a href='#sec:null-values-and-references' title=''>A.2.3.5</a>). If the referenced parameter
+or else is a null reference (<a href='#sec:null-values-and-references' title='' class="heading">A.2.3.5</a>). If the referenced parameter
 or object is deleted, the value of the reference parameter is always
 set to a null reference.</p></li>
 </ul>
 
-<p>See <a href='#sec:parameters-that-reference-parameters-or-objects' title=''>Section 3.2.3</a> for normative requirements relating to reference types
+<p>See <a href='#sec:parameters-that-reference-parameters-or-objects' title='' class="heading">Section 3.2.3</a> for normative requirements relating to reference types
 and the associated Agent behavior.</p>
 
 <h4 class="annex4" id="sec:reference-facets">A.2.3.7 Reference Facets<a class="headerlink" href="#sec:reference-facets" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h4>
@@ -2282,7 +2301,7 @@ are relevant (normative requirements are specified in the schema).</p>
 </tr>
 <tr class="even">
 <td align="left">targetParentScope</td>
-<td align="left">Specifies the point in the naming hierarchy relative to which targetParent applies (<a href='#sec:reference-path-names' title=''>A.2.3.4</a>): normal (default), model or object.</td>
+<td align="left">Specifies the point in the naming hierarchy relative to which targetParent applies (<a href='#sec:reference-path-names' title='' class="heading">A.2.3.4</a>): normal (default), model or object.</td>
 </tr>
 <tr class="odd">
 <td align="left">targetType</td>
@@ -2294,7 +2313,7 @@ are relevant (normative requirements are specified in the schema).</p>
 </tr>
 <tr class="odd">
 <td align="left">refType</td>
-<td align="left">Specifies the reference type (<a href='#sec:reference-types' title=''>A.2.3.6</a>): weak or strong.</td>
+<td align="left">Specifies the reference type (<a href='#sec:reference-types' title='' class="heading">A.2.3.6</a>): weak or strong.</td>
 </tr>
 </table></div>
 
@@ -2317,11 +2336,11 @@ schema).</p>
 </tr>
 <tr class="even">
 <td align="left">targetParentScope</td>
-<td align="left">Specifies the point in the naming hierarchy relative to which targetParent applies (<a href='#sec:reference-path-names' title=''>A.2.3.4</a>): normal (default), model or object.</td>
+<td align="left">Specifies the point in the naming hierarchy relative to which targetParent applies (<a href='#sec:reference-path-names' title='' class="heading">A.2.3.4</a>): normal (default), model or object.</td>
 </tr>
 <tr class="odd">
 <td align="left">refType</td>
-<td align="left">Specifies the reference type (<a href='#sec:reference-types' title=''>A.2.3.6</a>): weak or strong.</td>
+<td align="left">Specifies the reference type (<a href='#sec:reference-types' title='' class="heading">A.2.3.6</a>): weak or strong.</td>
 </tr>
 </table></div>
 
@@ -2344,7 +2363,7 @@ schema).</p>
 </tr>
 <tr class="even">
 <td align="left">targetParamScope</td>
-<td align="left">Specifies the point in the naming hierarchy relative to which targetParam applies (<a href='#sec:reference-path-names' title=''>A.2.3.4</a>): normal (default), model or object.</td>
+<td align="left">Specifies the point in the naming hierarchy relative to which targetParam applies (<a href='#sec:reference-path-names' title='' class="heading">A.2.3.4</a>): normal (default), model or object.</td>
 </tr>
 <tr class="odd">
 <td align="left">nullValue</td>
@@ -2355,43 +2374,43 @@ schema).</p>
 <p>The following examples illustrate the various possible types of
 reference.</p>
 
-<pre><code>    &lt;object name=&quot;PeriodicStatistics.SampleSet.{i}.Parameter.{i}.&quot; ...&gt;
+<pre><code>    &lt;object name="PeriodicStatistics.SampleSet.{i}.Parameter.{i}." ...&gt;
       ...
-      &lt;parameter name=&quot;Reference&quot; access=&quot;readWrite&quot;&gt;
+      &lt;parameter name="Reference" access="readWrite"&gt;
         &lt;description&gt;Reference to the parameter that is associated with this
-        object instance. This MUST be the parameter&#39;s full path name.&lt;/description&gt;
+        object instance. This MUST be the parameter's full path name.&lt;/description&gt;
         &lt;syntax&gt;
           &lt;string&gt;
-            &lt;size maxLength=&quot;256&quot;/&gt;
-            &lt;pathRef targetType=&quot;parameter&quot; refType=&quot;weak&quot;/&gt;
+            &lt;size maxLength="256"/&gt;
+            &lt;pathRef targetType="parameter" refType="weak"/&gt;
           &lt;/string&gt;
-          &lt;default type=&quot;object&quot; value=&quot;&quot;/&gt;
+          &lt;default type="object" value=""/&gt;
         &lt;/syntax&gt;
       &lt;/parameter&gt;</code></pre>
 
-<pre><code>    &lt;object name=&quot;StorageService.{i}.StorageArray.{i}.&quot; ...&gt;
+<pre><code>    &lt;object name="StorageService.{i}.StorageArray.{i}." ...&gt;
       ...
-      &lt;parameter name=&quot;PhysicalMediumReference&quot; access=&quot;readWrite&quot;&gt;
+      &lt;parameter name="PhysicalMediumReference" access="readWrite"&gt;
         &lt;description&gt;A comma-separated list of Physical Medium references.
         Each Physical Medium referenced by this parameter MUST exist within the
         same StorageService instance. A Physical Medium MUST only be referenced
         by one Storage Array instance. Each reference can be either in the form
-        of &quot;.PhysicalMedium.{i}&quot; or a fully qualified object
+        of ".PhysicalMedium.{i}" or a fully qualified object
         name...&lt;/description&gt;
         &lt;syntax&gt;
           &lt;list&gt;
-            &lt;size maxLength=&quot;1024&quot;/&gt;
+            &lt;size maxLength="1024"/&gt;
           &lt;/list&gt;
           &lt;string&gt;
-            &lt;pathRef targetParent=&quot;.PhysicalMedium.&quot; targetParentScope=&quot;model&quot;
-            targetType=&quot;row&quot; refType=&quot;strong&quot;/&gt;
+            &lt;pathRef targetParent=".PhysicalMedium." targetParentScope="model"
+            targetType="row" refType="strong"/&gt;
           &lt;/string&gt;
         &lt;/syntax&gt;
       &lt;/parameter&gt;</code></pre>
 
-<pre><code>    &lt;object name=&quot;STBService.{i}.Components.FrontEnd.{i}.IP.Inbound.{i}.&quot; ...&gt;
+<pre><code>    &lt;object name="STBService.{i}.Components.FrontEnd.{i}.IP.Inbound.{i}." ...&gt;
       ...
-      &lt;parameter name=&quot;StreamingControlProtocol&quot; access=&quot;readOnly&quot;&gt;
+      &lt;parameter name="StreamingControlProtocol" access="readOnly"&gt;
         &lt;description&gt;Network protocol currently used for controlling streaming
         of the source content, or an empty string if the content is not being
         streamed or is being streamed but is not being controlled. If non-empty,
@@ -2400,13 +2419,13 @@ reference.</p>
         &lt;syntax&gt;
           &lt;string&gt;
             &lt;enumerationRef
-            targetParam=&quot;.Capabilities.FrontEnd.IP.StreamingControlProtocols&quot;
-            nullValue=&quot;&quot;/&gt;
+            targetParam=".Capabilities.FrontEnd.IP.StreamingControlProtocols"
+            nullValue=""/&gt;
           &lt;/string&gt;
         &lt;/syntax&gt;
       &lt;/parameter&gt;
 
-      &lt;parameter name=&quot;StreamingTransportProtocol&quot; access=&quot;readOnly&quot;&gt;
+      &lt;parameter name="StreamingTransportProtocol" access="readOnly"&gt;
         &lt;description&gt;Network protocol currently used for streaming the source
         content, or an empty string if the content is not being streamed.
         If non-empty, the string MUST be one of the
@@ -2415,20 +2434,20 @@ reference.</p>
         &lt;syntax&gt;
           &lt;string&gt;
             &lt;enumerationRef
-            targetParam=&quot;.Capabilities.FrontEnd.IP.StreamingTransportProtocols&quot;
-            nullValue=&quot;&quot;/&gt;
+            targetParam=".Capabilities.FrontEnd.IP.StreamingTransportProtocols"
+            nullValue=""/&gt;
           &lt;/string&gt;
         &lt;/syntax&gt;
       &lt;/parameter&gt;</code></pre>
 
-<pre><code>    &lt;object name=&quot;Device.WiFi.AccessPoint.{i}.Security.&quot; ...&gt;
+<pre><code>    &lt;object name="Device.WiFi.AccessPoint.{i}.Security." ...&gt;
       ...
-      &lt;parameter name=&quot;ModeEnabled&quot; access=&quot;readWrite&quot;&gt;
+      &lt;parameter name="ModeEnabled" access="readWrite"&gt;
         &lt;description&gt;Indicates which security mode is enabled.&lt;/description&gt;
         &lt;syntax&gt;
           &lt;list/&gt;
           &lt;string&gt;
-            &lt;enumerationRef targetParam=&quot;ModesSupported&quot;/&gt;
+            &lt;enumerationRef targetParam="ModesSupported"/&gt;
           &lt;/string&gt;
         &lt;/syntax&gt;
       &lt;/parameter&gt;</code></pre>
@@ -2437,7 +2456,7 @@ reference.</p>
 
 <p>A new data type MUST always be a restriction of its base type, meaning
 that a valid value of the new data type will always be a valid value for
-its base type. This is the case for the examples of <a href='#sec:named-data-types' title=''>A.2.3.1</a>, which
+its base type. This is the case for the examples of <a href='#sec:named-data-types' title='' class="heading">A.2.3.1</a>, which
 involve three different data types:</p>
 
 <ul>
@@ -2449,7 +2468,7 @@ involve three different data types:</p>
 <p>Clearly a string of length 100 is valid for all three data types, but a
 string of length 200 is only valid for the first two data types.</p>
 
-<p>The examples of <a href='#sec:named-data-types' title=''>A.2.3.1</a> considered only the size facet, but in general
+<p>The examples of <a href='#sec:named-data-types' title='' class="heading">A.2.3.1</a> considered only the size facet, but in general
 all facets that are applicable to the data type have to be considered.
 The base type restriction requirements for each facet are as follows:</p>
 
@@ -2468,7 +2487,7 @@ The base type restriction requirements for each facet are as follows:</p>
 </tr>
 <tr class="even">
 <td align="left">pathRef</td>
-<td align="left">The derived data type can modify the data type in the following ways:<br/>- By &ldquo;promoting&rdquo; status to a &ldquo;higher&rdquo; value, where the lowest to highest ordering is: current, deprecated, obsoleted, deleted. For example, current can be changed to deprecated, and obsoleted can be changed to deleted, but deleted cannot be changed back to obsoleted. When promoting status, the deprecation, obsoletion and deletion rules of <a href='#sec:deprecated-and-obsoleted-items' title=''>Section 2.4</a> MUST be obeyed.<br/>- By changing targetParent to narrow the set of possible parent objects.<br/>- By changing targetType to narrow the set of possible target types.<br/>- By changing targetDataType to narrow the set of possible target data types.</td>
+<td align="left">The derived data type can modify the data type in the following ways:<br/>- By &ldquo;promoting&rdquo; status to a &ldquo;higher&rdquo; value, where the lowest to highest ordering is: current, deprecated, obsoleted, deleted. For example, current can be changed to deprecated, and obsoleted can be changed to deleted, but deleted cannot be changed back to obsoleted. When promoting status, the deprecation, obsoletion and deletion rules of <a href='#sec:deprecated-and-obsoleted-items' title='' class="heading">Section 2.4</a> MUST be obeyed.<br/>- By changing targetParent to narrow the set of possible parent objects.<br/>- By changing targetType to narrow the set of possible target types.<br/>- By changing targetDataType to narrow the set of possible target data types.</td>
 </tr>
 <tr class="odd">
 <td align="left">instanceRef</td>
@@ -2480,21 +2499,17 @@ The base type restriction requirements for each facet are as follows:</p>
 </tr>
 <tr class="odd">
 <td align="left">enumeration</td>
-<td align="left">The derived data type can modify existing enumeration values in the following ways:<br/>- By &ldquo;promoting&rdquo; access from readOnly to readWrite or writeOnceReadOnly.<br/>- By &ldquo;promoting&rdquo; status to a &ldquo;higher&rdquo; value, as described for pathRef.<br/>- By &ldquo;promoting&rdquo; optional from False to True.<br/>- By adding a code, if none was previously specified.<br/>- By using the action attribute to prefix, extend or replace the description (see below and <a href='#sec:description-modifications' title=''>A.2.12.6</a>).</td>
+<td align="left">The derived data type can modify existing enumeration values in the following ways:<br/>- By &ldquo;promoting&rdquo; access from readOnly to readWrite or writeOnceReadOnly.<br/>- By &ldquo;promoting&rdquo; status to a &ldquo;higher&rdquo; value, as described for pathRef.<br/>- By &ldquo;promoting&rdquo; optional from False to True.<br/>- By adding a code, if none was previously specified.<br/>- By using the action attribute to prefix, extend or replace the description (see below and <a href='#sec:description-modifications' title='' class="heading">A.2.12.6</a>).<br/>The derived data type can add new enumeration values.</td>
 </tr>
 <tr class="even">
-<td align="left">The derived data type can add new enumeration values.</td>
-<td align="left"></td>
-</tr>
-<tr class="odd">
 <td align="left">enumerationRef</td>
 <td align="left">The derived data type can modify the data type by &ldquo;promoting&rdquo; status to a &ldquo;higher&rdquo; value, as described for pathRef.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">pattern</td>
 <td align="left">The derived data type can modify existing pattern values by changing access, status, optional and description exactly as for enumerations.<br/>The derived data type can add new patterns and/or replace existing patterns with new patterns, provided that the new patterns do not permit any values that are not valid for the base type. For example a single pattern &ldquo;[AB]&rdquo; could be replaced with &ldquo;A&rdquo; and &ldquo;B&rdquo;, but &ldquo;C&rdquo; could not be added.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">units</td>
 <td align="left">The derived data type can add units if the base type did not specify any.</td>
 </tr>
@@ -2510,7 +2525,7 @@ warn about such cases.</p>
 <p>When defining a new data type, if a facet is omitted, the new data type
 will inherit that facet from its base type. If a facet is present, it
 MUST be fully specified (except that special rules apply to
-descriptions; see below and <a href='#sec:description-modifications' title=''>A.2.12.6</a>). For example, this means that a
+descriptions; see below and <a href='#sec:description-modifications' title='' class="heading">A.2.12.6</a>). For example, this means that a
 derived type that adds additional enumeration values has also to
 re-declare the enumeration values of the base type.</p>
 
@@ -2518,15 +2533,15 @@ re-declare the enumeration values of the base type.</p>
 parent but it does not inherit the range facet, so the DataBlockSize range is
 [0:65535] and the DataBlockSize2 range is [40:1460].</p>
 
-<pre><code>   &lt;dataType name=&quot;DataBlockSize&quot;&gt;
+<pre><code>   &lt;dataType name="DataBlockSize"&gt;
      &lt;unsignedInt&gt;
-       &lt;range maxInclusive=&quot;65535&quot;/&gt;
-       &lt;units value=&quot;bytes&quot;/&gt;
+       &lt;range maxInclusive="65535"/&gt;
+       &lt;units value="bytes"/&gt;
      &lt;/unsignedInt&gt;
    &lt;/dataType&gt;
 
-   &lt;dataType name=&quot;DataBlockSize2&quot; base=&quot;DataBlockSize&quot;&gt;
-     &lt;range minInclusive=&quot;40&quot; maxInclusive=&quot;1460&quot;/&gt;
+   &lt;dataType name="DataBlockSize2" base="DataBlockSize"&gt;
+     &lt;range minInclusive="40" maxInclusive="1460"/&gt;
    &lt;/dataType&gt;</code></pre>
 
 <p>Similarly, in the following, the enumeration values for ABCD are not A,
@@ -2534,17 +2549,17 @@ B, C and D, but are just C and D. This is an error (because the derived
 type cannot remove enumeration values), and processing tools SHOULD
 detect and warn about such cases.</p>
 
-<pre><code>    &lt;dataType name=&quot;AB&quot;&gt;
+<pre><code>    &lt;dataType name="AB"&gt;
       &lt;string&gt;
-        &lt;enumeration value=&quot;A&quot;/&gt;
-        &lt;enumeration value=&quot;B&quot;/&gt;
+        &lt;enumeration value="A"/&gt;
+        &lt;enumeration value="B"/&gt;
       &lt;/string&gt;
     &lt;/dataType&gt;
 
-    &lt;dataType name=&quot;ABCD&quot; base=&quot;AB&quot;&gt;
+    &lt;dataType name="ABCD" base="AB"&gt;
       &lt;string&gt;
-        &lt;enumeration value=&quot;C&quot;/&gt;
-        &lt;enumeration value=&quot;D&quot;/&gt;
+        &lt;enumeration value="C"/&gt;
+        &lt;enumeration value="D"/&gt;
       &lt;/string&gt;
     &lt;/dataType&gt;</code></pre>
 
@@ -2553,37 +2568,37 @@ inherit those descriptions from the base type. Facet descriptions are
 inherited regardless of whether the facet is present in the derived
 type. For any descriptions that are explicitly specified in the derived
 type, the action attribute controls whether they will be prefixed,
-extended or replaced (<a href='#sec:description-modifications' title=''>A.2.12.6</a>).</p>
+extended or replaced (<a href='#sec:description-modifications' title='' class="heading">A.2.12.6</a>).</p>
 
 <p>For example, in the following, the description of Z (which is not
 changed) does not have to be repeated.</p>
 
-<pre><code>    &lt;dataType name=&quot;XY&quot;&gt;
+<pre><code>    &lt;dataType name="XY"&gt;
       &lt;description&gt;This is XY.&lt;/description&gt;
       &lt;string&gt;
-        &lt;enumeration value=&quot;X&quot;&gt;
+        &lt;enumeration value="X"&gt;
           &lt;description&gt;This is X.&lt;/description&gt;
         &lt;/enumeration&gt;
-        &lt;enumeration value=&quot;Y&quot;&gt;
+        &lt;enumeration value="Y"&gt;
           &lt;description&gt;This is Y.&lt;/description&gt;
         &lt;/enumeration&gt;
-        &lt;enumeration value=&quot;Z&quot;&gt;
+        &lt;enumeration value="Z"&gt;
           &lt;description&gt;This is Z.&lt;/description&gt;
         &lt;/enumeration&gt;
       &lt;/string&gt;
     &lt;/dataType&gt;
 
-    &lt;dataType name=&quot;XY2&quot; base=&quot;XY&quot;&gt;
-      &lt;description action=&quot;replace&quot;&gt;This is all about XY.&lt;/description&gt;
-      &lt;enumeration value=&quot;X&quot;&gt;
-        &lt;description action=&quot;append&quot;&gt;This is more about X, added at the
+    &lt;dataType name="XY2" base="XY"&gt;
+      &lt;description action="replace"&gt;This is all about XY.&lt;/description&gt;
+      &lt;enumeration value="X"&gt;
+        &lt;description action="append"&gt;This is more about X, added at the
         end.&lt;/description&gt;
       &lt;/enumeration&gt;
-      &lt;enumeration value=&quot;Y&quot;&gt;
-        &lt;description action=&quot;prefix&quot;&gt;This is more about Y, inserted at the
+      &lt;enumeration value="Y"&gt;
+        &lt;description action="prefix"&gt;This is more about Y, inserted at the
         beginning.&lt;/description&gt;
       &lt;/enumeration&gt;
-      &lt;enumeration value=&quot;Z&quot;/&gt;
+      &lt;enumeration value="Z"/&gt;
     &lt;/dataType&gt;</code></pre>
 
 <h3 class="annex3" id="sec:glossary-abbreviations-bibliography-and-templates">A.2.4 Glossary, Abbreviations, Bibliography and Templates<a class="headerlink" href="#sec:glossary-abbreviations-bibliography-and-templates" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h3>
@@ -2690,7 +2705,7 @@ schema).</p>
 </tr>
 </table></div>
 
-<p>For BBF standard DM Instances, the <a href='#sec:bibliography-reference-element' title=''>C.3.7</a> rules apply.</p>
+<p>For BBF standard DM Instances, the <a href='#sec:bibliography-reference-element' title='' class="heading">C.3.7</a> rules apply.</p>
 
 <p>Processing tools SHOULD be lenient when comparing bibliographic
 reference IDs. Specifically, they SHOULD ignore all whitespace,
@@ -2707,7 +2722,7 @@ different name or hyperlink.</p>
 
 <div class="note">
 <p>The term &ldquo;template&rdquo; is used for both description templates
-(<a href='#sec:description-templates' title=''>A.2.2.4</a>) such as <code>{{bibref}}</code> and (confusingly)
+(<a href='#sec:description-templates' title='' class="heading">A.2.2.4</a>) such as <code>{{bibref}}</code> and (confusingly)
 <code>{{template}}</code>, and for the template elements described here.</p></div>
 
 <p>Template elements define named blocks of text that can be included (using
@@ -2734,7 +2749,7 @@ relevant (normative requirements are specified in the schema).</p>
 </table></div>
 
 <p>When including a template body in a description, processing tools MUST
-pre-process the value as for descriptions (<a href='#sec:description-pre-processing' title=''>A.2.2.2</a>) and
+pre-process the value as for descriptions (<a href='#sec:description-pre-processing' title='' class="heading">A.2.2.2</a>) and
 then replace the <code>{{template}}</code> description template with the resulting
 text. The template body might contain markup, possibly including further
 <code>{{template}}</code> description templates, so processing tools MUST then process the
@@ -2765,7 +2780,7 @@ relevant (normative requirements are specified in the schema).</p>
 </tr>
 <tr class="even">
 <td align="left">description</td>
-<td align="left">The component’s description (<a href='#sec:descriptions' title=''>A.2.2</a>).</td>
+<td align="left">The component’s description (<a href='#sec:descriptions' title='' class="heading">A.2.2</a>).</td>
 </tr>
 <tr class="odd">
 <td align="left">component</td>
@@ -2773,15 +2788,15 @@ relevant (normative requirements are specified in the schema).</p>
 </tr>
 <tr class="even">
 <td align="left">parameter</td>
-<td align="left">The component’s top-level parameter definitions (<a href='#sec:parameters' title=''>A.2.7</a>).</td>
+<td align="left">The component’s top-level parameter definitions (<a href='#sec:parameters' title='' class="heading">A.2.7</a>).</td>
 </tr>
 <tr class="odd">
 <td align="left">object</td>
-<td align="left">The component’s object definitions (<a href='#sec:objects' title=''>A.2.10</a>).</td>
+<td align="left">The component’s object definitions (<a href='#sec:objects' title='' class="heading">A.2.10</a>).</td>
 </tr>
 <tr class="even">
 <td align="left">profile</td>
-<td align="left">The component’s profile definitions (<a href='#sec:profiles-1' title=''>A.2.11</a>).</td>
+<td align="left">The component’s profile definitions (<a href='#sec:profiles-1' title='' class="heading">A.2.11</a>).</td>
 </tr>
 </table></div>
 
@@ -2791,22 +2806,22 @@ particular Root or Service Object.</p>
 
 <p>The following is a simple example of component definition and reference.</p>
 
-<pre><code>    &lt;component name=&quot;ByteStats&quot;&gt;
-      &lt;parameter name=&quot;BytesSent&quot; access=&quot;readOnly&quot;&gt;
+<pre><code>    &lt;component name="ByteStats"&gt;
+      &lt;parameter name="BytesSent" access="readOnly"&gt;
         &lt;description&gt;Number of bytes sent.&lt;/description&gt;
         &lt;syntax&gt;&lt;unsignedInt/&gt;&lt;/syntax&gt;
       &lt;/parameter&gt;
-      &lt;parameter name=&quot;BytesReceived&quot; access=&quot;readOnly&quot;&gt;
+      &lt;parameter name="BytesReceived" access="readOnly"&gt;
         &lt;description&gt;Number of bytes received.&lt;/description&gt;
         &lt;syntax&gt;&lt;unsignedInt/&gt;&lt;/syntax&gt;
       &lt;/parameter&gt;
     &lt;/component&gt;</code></pre>
 
-<pre><code>    &lt;model name=&quot;Device:2.11&quot;&gt;
-      &lt;object name=&quot;Device.&quot; access=&quot;readOnly&quot; minEntries=&quot;1&quot;
-      maxEntries=&quot;1&quot;&gt;
+<pre><code>    &lt;model name="Device:2.11"&gt;
+      &lt;object name="Device." access="readOnly" minEntries="1"
+      maxEntries="1"&gt;
         ...
-        &lt;component ref=&quot;ByteStats&quot;/&gt;
+        &lt;component ref="ByteStats"/&gt;
         ...
       &lt;/object&gt;
       ...
@@ -2850,23 +2865,23 @@ relevant (normative requirements are specified in the schema).</p>
 </tr>
 <tr class="even">
 <td align="left">description</td>
-<td align="left">The model’s description (<a href='#sec:descriptions' title=''>A.2.2</a>).</td>
+<td align="left">The model’s description (<a href='#sec:descriptions' title='' class="heading">A.2.2</a>).</td>
 </tr>
 <tr class="odd">
 <td align="left">component</td>
-<td align="left">The components that are referenced (included) by the model (<a href='#sec:components' title=''>A.2.5</a>).</td>
+<td align="left">The components that are referenced (included) by the model (<a href='#sec:components' title='' class="heading">A.2.5</a>).</td>
 </tr>
 <tr class="even">
 <td align="left">parameter</td>
-<td align="left">The model’s top-level parameter definitions (<a href='#sec:parameters' title=''>A.2.7</a>).</td>
+<td align="left">The model’s top-level parameter definitions (<a href='#sec:parameters' title='' class="heading">A.2.7</a>).</td>
 </tr>
 <tr class="odd">
 <td align="left">object</td>
-<td align="left">The model’s top-level and other object definitions (<a href='#sec:objects' title=''>A.2.10</a>).</td>
+<td align="left">The model’s top-level and other object definitions (<a href='#sec:objects' title='' class="heading">A.2.10</a>).</td>
 </tr>
 <tr class="even">
 <td align="left">profile</td>
-<td align="left">The model’s profile definitions (<a href='#sec:profiles-1' title=''>A.2.11</a>).</td>
+<td align="left">The model’s profile definitions (<a href='#sec:profiles-1' title='' class="heading">A.2.11</a>).</td>
 </tr>
 </table></div>
 
@@ -2874,16 +2889,16 @@ relevant (normative requirements are specified in the schema).</p>
 new version of the object has to be defined. For example, the following
 example defines v1.0 and v1.1 of a notional Service Object.</p>
 
-<pre><code>    &lt;model name=&quot;DemoService:1.0&quot; isService=&quot;true&quot;&gt;
-      &lt;parameter name=&quot;DemoServiceNumberOfEntries&quot; access=&quot;readOnly&quot;/&gt;
-      &lt;object name=&quot;DemoService.{i}.&quot; access=&quot;readOnly&quot; minEntries=&quot;0&quot;
-      maxEntries=&quot;unbounded&quot; entriesParameter=&quot;DemoServiceNumberOfEntries&quot;/&gt;
+<pre><code>    &lt;model name="DemoService:1.0" isService="true"&gt;
+      &lt;parameter name="DemoServiceNumberOfEntries" access="readOnly"/&gt;
+      &lt;object name="DemoService.{i}." access="readOnly" minEntries="0"
+      maxEntries="unbounded" entriesParameter="DemoServiceNumberOfEntries"/&gt;
     &lt;/model&gt;</code></pre>
 
-<pre><code>    &lt;model name=&quot;DemoService:1.1&quot; base=&quot;DemoService:1.0&quot;
-    isService=&quot;true&quot;&gt;
-      &lt;object base=&quot;DemoService.{i}.&quot; access=&quot;readOnly&quot; minEntries=&quot;0&quot;
-      maxEntries=&quot;unbounded&quot;/&gt;
+<pre><code>    &lt;model name="DemoService:1.1" base="DemoService:1.0"
+    isService="true"&gt;
+      &lt;object base="DemoService.{i}." access="readOnly" minEntries="0"
+      maxEntries="unbounded"/&gt;
     &lt;/model&gt;</code></pre>
 
 <h3 class="annex3" id="sec:parameters">A.2.7 Parameters<a class="headerlink" href="#sec:parameters" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h3>
@@ -2904,31 +2919,35 @@ requirements are specified in the schema).</p>
 </tr>
 <tr class="odd">
 <td align="left">name</td>
-<td align="left">The parameter name (<a href='#sec:general-notation' title=''>Section 3.1</a>).</td>
+<td align="left">The parameter name (<a href='#sec:general-notation' title='' class="heading">Section 3.1</a>).</td>
 </tr>
 <tr class="even">
 <td align="left">access</td>
 <td align="left">Whether the parameter is writable (readWrite), read-only (readOnly), or writable once then read-only (writeOnceReadOnly).</td>
 </tr>
 <tr class="odd">
+<td align="left">version</td>
+<td align="left">The data model version (of the form m.n or m.n.p) in which this parameter was first defined.</td>
+</tr>
+<tr class="even">
 <td align="left">status</td>
 <td align="left">The parameter’s {current, deprecated, obsoleted, deleted} status. This defaults to current, and so is not likely to be specified for a new parameter.</td>
 </tr>
-<tr class="even">
-<td align="left">activeNotify</td>
-<td align="left">The parameter’s {normal, forceEnabled, forceDefault, canDeny} Active Notification status. This defaults to normal, and so is not often specified for a new parameter.<br/>Note that in USP, forceEnabled and forceDefault are equivalent to normal.</td>
-</tr>
 <tr class="odd">
+<td align="left">activeNotify</td>
+<td align="left">The parameter’s {normal, forceEnabled, forceDefault, canDeny} Active Notification status. This defaults to normal, and so is not often specified for a new parameter.<br/>Note that in USP, forceEnabled and forceDefault are not applicable and thus are equivalent to normal.</td>
+</tr>
+<tr class="even">
 <td align="left">forcedInform</td>
 <td align="left">For CWMP only, the parameter’s Forced Inform status. This defaults to False, and so is not often specified for a new parameter.</td>
 </tr>
-<tr class="even">
-<td align="left">description</td>
-<td align="left">The parameter’s description (<a href='#sec:descriptions' title=''>A.2.2</a>).</td>
-</tr>
 <tr class="odd">
+<td align="left">description</td>
+<td align="left">The parameter’s description (<a href='#sec:descriptions' title='' class="heading">A.2.2</a>).</td>
+</tr>
+<tr class="even">
 <td align="left">syntax</td>
-<td align="left">The parameter’s syntax (<a href='#sec:parameter-syntax' title=''>A.2.7.1</a>).</td>
+<td align="left">The parameter’s syntax (<a href='#sec:parameter-syntax' title='' class="heading">A.2.7.1</a>).</td>
 </tr>
 </table></div>
 
@@ -2953,20 +2972,24 @@ are specified in the schema).</p>
 <td align="left">Whether the value is hidden on readback. This defaults to False, and so is not often specified for a new parameter.</td>
 </tr>
 <tr class="even">
-<td align="left">command</td>
-<td align="left">For CWMP only, whether setting the parameter triggers an Agent action as opposed to changing the configuration. This defaults to False.<br/>Note that this is an CWMP-only attribute (not an element) and is different from the USP-only command element (<a href='#sec:commands-usp-only' title=''>A.2.8</a>).</td>
+<td align="left">secured</td>
+<td align="left">For USP only, whether the value is secured, i.e. is hidden on readback unless the Controller has a &ldquo;secured&rdquo; role (if both hidden and secured are True, secured takes precedence). This defaults to False.</td>
 </tr>
 <tr class="odd">
-<td align="left">list<br/>minItems<br/>maxItems<br/>nestedBrackets<br/>size</td>
-<td align="left">If the parameter is list-valued, details of the list value. This allows specification of the maximum and minimum number of items in the list, and of nested list behavior, and also supports a size facet for the list (<a href='#sec:data-type-facets' title=''>A.2.3.3</a>).<br/>Note that a list-valued parameter is always a string as far as the protocol is concerned. For a list, the rest of the syntax specification refers to the individual list items, not to the parameter value.</td>
+<td align="left">command</td>
+<td align="left">For CWMP only, whether setting the parameter triggers an Agent action as opposed to changing the configuration. This defaults to False.<br/>Note that this is an CWMP-only attribute (not an element) and is different from the USP-only command element (<a href='#sec:commands-usp-only' title='' class="heading">A.2.8</a>).</td>
 </tr>
 <tr class="even">
-<td align="left">base64<br/>boolean<br/>dateTime<br/>hexBinary<br/>int<br/>long<br/>string<br/>unsignedInt<br/>unsignedLong</td>
-<td align="left">If the parameter is of a primitive data type, specifies a primitive data type reference, e.g. &lt;int&gt;. If the parameter data type is derived from a primitive data type, specifies an anonymous primitive data type definition (<a href='#sec:anonymous-data-types' title=''>A.2.3.2</a>), e.g. &lt;int&gt;&lt;range maxInclusive=&ldquo;255&rdquo;/&gt;&lt;/int&gt;. Each primitive data type element supports only the facets (<a href='#sec:data-type-facets' title=''>A.2.3.3</a>) that are appropriate to that data type.</td>
+<td align="left">list<br/>minItems<br/>maxItems<br/>nestedBrackets<br/>size</td>
+<td align="left">If the parameter is list-valued, details of the list value. This allows specification of the maximum and minimum number of items in the list, and of nested list behavior, and also supports a size facet for the list (<a href='#sec:data-type-facets' title='' class="heading">A.2.3.3</a>).<br/>Note that a list-valued parameter is always a string as far as the protocol is concerned. For a list, the rest of the syntax specification refers to the individual list items, not to the parameter value.</td>
 </tr>
 <tr class="odd">
+<td align="left">base64<br/>boolean<br/>dateTime<br/>hexBinary<br/>int<br/>long<br/>string<br/>unsignedInt<br/>unsignedLong</td>
+<td align="left">If the parameter is of a primitive data type, specifies a primitive data type reference, e.g. &lt;int&gt;. If the parameter data type is derived from a primitive data type, specifies an anonymous primitive data type definition (<a href='#sec:anonymous-data-types' title='' class="heading">A.2.3.2</a>), e.g. &lt;int&gt;&lt;range maxInclusive=&ldquo;255&rdquo;/&gt;&lt;/int&gt;. Each primitive data type element supports only the facets (<a href='#sec:data-type-facets' title='' class="heading">A.2.3.3</a>) that are appropriate to that data type.</td>
+</tr>
+<tr class="even">
 <td align="left">dataType</td>
-<td align="left">If the parameter is of a named data type, specifies a named data type (<a href='#sec:named-data-types' title=''>A.2.3.1</a>) reference, e.g. &lt;dataType ref=&ldquo;IPAddress&rdquo;/&gt;.<br/>If the parameter data type is derived from a named data type, specifies an anonymous named data type (<a href='#sec:anonymous-data-types' title=''>A.2.3.2</a>) definition, e.g. &lt;dataType base=&ldquo;IPAddress&rdquo;&gt;&lt;size maxLength=&ldquo;15&rdquo;/&gt;&lt;/dataType&gt;</td>
+<td align="left">If the parameter is of a named data type, specifies a named data type (<a href='#sec:named-data-types' title='' class="heading">A.2.3.1</a>) reference, e.g. &lt;dataType ref=&ldquo;IPAddress&rdquo;/&gt;.<br/>If the parameter data type is derived from a named data type, specifies an anonymous named data type (<a href='#sec:anonymous-data-types' title='' class="heading">A.2.3.2</a>) definition, e.g. &lt;dataType base=&ldquo;IPAddress&rdquo;&gt;&lt;size maxLength=&ldquo;15&rdquo;/&gt;&lt;/dataType&gt;</td>
 </tr>
 </table></div>
 
@@ -2990,25 +3013,29 @@ commands.</p>
 </tr>
 <tr class="odd">
 <td align="left">name</td>
-<td align="left">The command name (<a href='#sec:general-notation' title=''>Section 3.1</a>).</td>
+<td align="left">The command name (<a href='#sec:general-notation' title='' class="heading">Section 3.1</a>).</td>
 </tr>
 <tr class="even">
 <td align="left">async</td>
 <td align="left">Whether this command is asynchronous or not. This defaults to false.</td>
 </tr>
 <tr class="odd">
+<td align="left">version</td>
+<td align="left">The data model version (of the form m.n or m.n.p) in which this command was first defined.</td>
+</tr>
+<tr class="even">
 <td align="left">status</td>
 <td align="left">The command’s {current, deprecated, obsoleted, deleted} status. This defaults to current, and so is not likely to be specified for a new command.</td>
 </tr>
-<tr class="even">
-<td align="left">description</td>
-<td align="left">The command’s description (<a href='#sec:descriptions' title=''>A.2.2</a>).</td>
-</tr>
 <tr class="odd">
+<td align="left">description</td>
+<td align="left">The command’s description (<a href='#sec:descriptions' title='' class="heading">A.2.2</a>).</td>
+</tr>
+<tr class="even">
 <td align="left">input</td>
 <td align="left">The command’s input arguments (can be omitted if there are none).</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">output</td>
 <td align="left">The command’s output arguments (can be omitted if there are none).</td>
 </tr>
@@ -3028,15 +3055,15 @@ arguments (respectively).</p>
 </tr>
 <tr class="odd">
 <td align="left">component</td>
-<td align="left">The arguments defined by components that are referenced (included) by the command (<a href='#sec:components' title=''>A.2.5</a>).</td>
+<td align="left">The arguments defined by components that are referenced (included) by the command (<a href='#sec:components' title='' class="heading">A.2.5</a>).</td>
 </tr>
 <tr class="even">
 <td align="left">parameter</td>
-<td align="left">The command’s parameter arguments (<a href='#sec:parameters' title=''>A.2.7</a>).</td>
+<td align="left">The command’s parameter arguments (<a href='#sec:parameters' title='' class="heading">A.2.7</a>).</td>
 </tr>
 <tr class="odd">
 <td align="left">object</td>
-<td align="left">The command’s object arguments (<a href='#sec:objects' title=''>A.2.10</a>).</td>
+<td align="left">The command’s object arguments (<a href='#sec:objects' title='' class="heading">A.2.10</a>).</td>
 </tr>
 </table></div>
 
@@ -3071,27 +3098,31 @@ to CWMP.</p>
 </tr>
 <tr class="odd">
 <td align="left">name</td>
-<td align="left">The event name (<a href='#sec:general-notation' title=''>Section 3.1</a>).</td>
+<td align="left">The event name (<a href='#sec:general-notation' title='' class="heading">Section 3.1</a>).</td>
 </tr>
 <tr class="even">
+<td align="left">version</td>
+<td align="left">The data model version (of the form m.n or m.n.p) in which this event was first defined.</td>
+</tr>
+<tr class="odd">
 <td align="left">status</td>
 <td align="left">The event’s {current, deprecated, obsoleted, deleted} status. This defaults to current, and so is not likely to be specified for a new event.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">description</td>
-<td align="left">The event’s description (<a href='#sec:descriptions' title=''>A.2.2</a>).</td>
-</tr>
-<tr class="even">
-<td align="left">component</td>
-<td align="left">The arguments defined by components that are referenced (included) by the event (<a href='#sec:components' title=''>A.2.5</a>).</td>
+<td align="left">The event’s description (<a href='#sec:descriptions' title='' class="heading">A.2.2</a>).</td>
 </tr>
 <tr class="odd">
-<td align="left">parameter</td>
-<td align="left">The event’s parameter arguments (<a href='#sec:parameters' title=''>A.2.7</a>).</td>
+<td align="left">component</td>
+<td align="left">The arguments defined by components that are referenced (included) by the event (<a href='#sec:components' title='' class="heading">A.2.5</a>).</td>
 </tr>
 <tr class="even">
+<td align="left">parameter</td>
+<td align="left">The event’s parameter arguments (<a href='#sec:parameters' title='' class="heading">A.2.7</a>).</td>
+</tr>
+<tr class="odd">
 <td align="left">object</td>
-<td align="left">The event’s object arguments (<a href='#sec:objects' title=''>A.2.10</a>).</td>
+<td align="left">The event’s object arguments (<a href='#sec:objects' title='' class="heading">A.2.10</a>).</td>
 </tr>
 </table>
 
@@ -3127,7 +3158,7 @@ specified in the schema).</p>
 </tr>
 <tr class="odd">
 <td align="left">name</td>
-<td align="left">The object name, specified as a partial path (<a href='#sec:general-notation' title=''>Section 3.1</a>).</td>
+<td align="left">The object name, specified as a partial path (<a href='#sec:general-notation' title='' class="heading">Section 3.1</a>).</td>
 </tr>
 <tr class="even">
 <td align="left">access</td>
@@ -3139,35 +3170,39 @@ specified in the schema).</p>
 </tr>
 <tr class="even">
 <td align="left">maxEntries</td>
-<td align="left">The maximum number of instances of this object (can be &ldquo;unbounded&rdquo;). minEntries and maxEntries allow the object to be placed into one of three categories:<br/>- <strong>minEntries=0, maxEntries=1</strong>: single-instance object which might not be allowed to exist, e.g. because only one of it and another object can exist at the same time. Note that this is not the same thing as an optional object (in a sense, all objects are optional; requirements are specified via profiles). For an object with minEntries=0, maxEntries=1, the description MUST explain why it might not be allowed to exist, e.g. referencing the other objects that constrain it.<br/>- <strong>minEntries=1, maxEntries=1</strong>: single-instance object that is always allowed to exist.<br/>- <strong>All other cases</strong>: Multi-Instance Object (table) (<a href='#sec:tables' title=''>A.2.10.1</a>).</td>
+<td align="left">The maximum number of instances of this object (can be &ldquo;unbounded&rdquo;). minEntries and maxEntries allow the object to be placed into one of three categories:<br/>- <strong>minEntries=0, maxEntries=1</strong>: single-instance object which might not be allowed to exist, e.g. because only one of it and another object can exist at the same time. Note that this is not the same thing as an optional object (in a sense, all objects are optional; requirements are specified via profiles). For an object with minEntries=0, maxEntries=1, the description MUST explain why it might not be allowed to exist, e.g. referencing the other objects that constrain it.<br/>- <strong>minEntries=1, maxEntries=1</strong>: single-instance object that is always allowed to exist.<br/>- <strong>All other cases</strong>: Multi-Instance Object (table) (<a href='#sec:tables' title='' class="heading">A.2.10.1</a>).</td>
 </tr>
 <tr class="odd">
 <td align="left">mountType</td>
 <td align="left">For USP only, denotes whether this object is a Mountable Object, a Mount Point, or none. Possible values are:<br/>- <strong>mountable</strong>: this object is a Mountable Object. Such an object appears only right under the Root Object.<br/>- <strong>mountPoint</strong>: this object is a Mount Point.<br/>- <strong>none (default)</strong>: this object is neither a Mountable Object nor a Mount Point.</td>
 </tr>
 <tr class="even">
+<td align="left">version</td>
+<td align="left">The data model version (of the form m.n or m.n.p) in which this object was first defined.</td>
+</tr>
+<tr class="odd">
 <td align="left">status</td>
 <td align="left">The object’s {current, deprecated, obsoleted, deleted} status. This defaults to current, and so is not likely to be specified for a new object.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">description</td>
-<td align="left">The object’s description (<a href='#sec:descriptions' title=''>A.2.2</a>).</td>
+<td align="left">The object’s description (<a href='#sec:descriptions' title='' class="heading">A.2.2</a>).</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">component</td>
-<td align="left">The components that are referenced (included) by the object (<a href='#sec:components' title=''>A.2.5</a>).</td>
-</tr>
-<tr class="odd">
-<td align="left">parameter</td>
-<td align="left">The object’s parameter definitions (<a href='#sec:parameters' title=''>A.2.7</a>).</td>
+<td align="left">The components that are referenced (included) by the object (<a href='#sec:components' title='' class="heading">A.2.5</a>).</td>
 </tr>
 <tr class="even">
-<td align="left">command</td>
-<td align="left">For USP only, the object’s command definitions (<a href='#sec:commands-usp-only' title=''>A.2.8</a>).</td>
+<td align="left">parameter</td>
+<td align="left">The object’s parameter definitions (<a href='#sec:parameters' title='' class="heading">A.2.7</a>).</td>
 </tr>
 <tr class="odd">
+<td align="left">command</td>
+<td align="left">For USP only, the object’s command definitions (<a href='#sec:commands-usp-only' title='' class="heading">A.2.8</a>).</td>
+</tr>
+<tr class="even">
 <td align="left">event</td>
-<td align="left">For USP only, the object’s event definitions (<a href='#sec:events-usp-only' title=''>A.2.9</a>).</td>
+<td align="left">For USP only, the object’s event definitions (<a href='#sec:events-usp-only' title='' class="heading">A.2.9</a>).</td>
 </tr>
 </table></div>
 
@@ -3187,7 +3222,7 @@ relevant (normative requirements are specified in the schema).</p>
 </tr>
 <tr class="odd">
 <td align="left">name</td>
-<td align="left">For a table, the last part of the name has to be &ldquo;{i}.&rdquo; (<a href='#sec:general-notation' title=''>Section 3.1</a>).</td>
+<td align="left">For a table, the last part of the name has to be &ldquo;{i}.&rdquo; (<a href='#sec:general-notation' title='' class="heading">Section 3.1</a>).</td>
 </tr>
 <tr class="even">
 <td align="left">numEntriesParameter</td>
@@ -3203,7 +3238,7 @@ relevant (normative requirements are specified in the schema).</p>
 </tr>
 <tr class="odd">
 <td align="left">discriminatorParameter</td>
-<td align="left">The name of the parameter (in the parent object) that selects which of the available objects that are part of the same union to use. Such a discrimination parameter is needed whenever there are multiple alternative sub-objects, i.e. objects where minEntries=0 and maxEntries=1.</td>
+<td align="left">The name of the parameter (in the parent object) that selects which of the available objects that are part of the same union to use. Such a discriminator parameter is needed whenever there are multiple alternative sub-objects, i.e. objects where minEntries=0 and maxEntries=1.</td>
 </tr>
 </table></div>
 
@@ -3218,7 +3253,7 @@ relevant (normative requirements are specified in the schema).</p>
 non-functional by setting the unique key’s functional attribute to
 false.</p>
 
-<p>As can be seen from the description in <a href='#tbl:xml-table-definition' title=''>Table 21</a>, in CWMP,
+<p>As can be seen from the description in <a href='#tbl:xml-table-definition' title='' class="table">Table 21</a>, in CWMP,
 non-functional keys are always required to be unique, regardless of whether the
 table has an enableParameter, or is enabled or disabled. Therefore, at most one
 entry in a given parent object can exist with a given value for a
@@ -3254,7 +3289,7 @@ specified in the schema).</p>
 </tr>
 <tr class="odd">
 <td align="left">name</td>
-<td align="left">The profile name, including its version number (<a href='#sec:profile-versions' title=''>Section 2.3.3</a>).</td>
+<td align="left">The profile name, including its version number (<a href='#sec:profile-versions' title='' class="heading">Section 2.3.3</a>).</td>
 </tr>
 <tr class="even">
 <td align="left">base</td>
@@ -3265,18 +3300,22 @@ specified in the schema).</p>
 <td align="left">A list of the names of the profiles that this profile extends.</td>
 </tr>
 <tr class="even">
+<td align="left">version</td>
+<td align="left">The data model version (of the form m.n or m.n.p) in which this profile was first defined.</td>
+</tr>
+<tr class="odd">
 <td align="left">minVersion</td>
 <td align="left">A list of the model names that define the minimum versions for which this profile can be defined. Note that it is only necessary to specify this if the profile is defined within a component element.</td>
 </tr>
-<tr class="odd">
-<td align="left">description</td>
-<td align="left">The profile’s description (<a href='#sec:descriptions' title=''>A.2.2</a>).</td>
-</tr>
 <tr class="even">
+<td align="left">description</td>
+<td align="left">The profile’s description (<a href='#sec:descriptions' title='' class="heading">A.2.2</a>).</td>
+</tr>
+<tr class="odd">
 <td align="left">parameter</td>
 <td align="left">The profile’s parameter requirements, which can include descriptions, references to the parameters in question, and the parameter access requirement.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">object</td>
 <td align="left">The profile’s object requirements, which can include descriptions, references to the objects in question, the object access requirements, and requirements for the object’s parameters, commands and events, including requirements for command and event arguments.</td>
 </tr>
@@ -3323,34 +3362,46 @@ but there are rules. These rules are not specified in the DM Schema.</p>
 <td align="left">Can be &ldquo;promoted&rdquo; from readOnly to readWrite or writeOnceReadOnly.</td>
 </tr>
 <tr class="even">
-<td align="left">status</td>
-<td align="left">Can be &ldquo;promoted&rdquo; to a &ldquo;higher&rdquo; value, where the lowest to highest ordering is: current, deprecated, obsoleted, deleted. For example, current can be changed to deprecated, and obsoleted can be changed to deleted, but deleted cannot be changed back to obsoleted. When promoting status, the deprecation, obsoletion and deletion rules of <a href='#sec:deprecated-and-obsoleted-items' title=''>Section 2.4</a> MUST be obeyed.</td>
+<td align="left">version</td>
+<td align="left">Cannot be changed.</td>
 </tr>
 <tr class="odd">
+<td align="left">status</td>
+<td align="left">Can be &ldquo;promoted&rdquo; to a &ldquo;higher&rdquo; value, where the lowest to highest ordering is: current, deprecated, obsoleted, deleted. For example, current can be changed to deprecated, and obsoleted can be changed to deleted, but deleted cannot be changed back to obsoleted. When promoting status, the deprecation, obsoletion and deletion rules of <a href='#sec:deprecated-and-obsoleted-items' title='' class="heading">Section 2.4</a> MUST be obeyed.</td>
+</tr>
+<tr class="even">
 <td align="left">activeNotify</td>
 <td align="left">Can be changed from forceEnabled to forceDefault. No other changes are permitted.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">forcedInform</td>
 <td align="left">Cannot be changed.</td>
 </tr>
-<tr class="odd">
-<td align="left">description</td>
-<td align="left">Can be prefixed, extended or replaced via use of the action attribute (<a href='#sec:description-modifications' title=''>A.2.12.6</a>). When changing the description, behavioral backwards compatibility MUST be preserved.</td>
-</tr>
 <tr class="even">
+<td align="left">description</td>
+<td align="left">Can be prefixed, extended or replaced via use of the action attribute (<a href='#sec:description-modifications' title='' class="heading">A.2.12.6</a>). When changing the description, behavioral backwards compatibility MUST be preserved.</td>
+</tr>
+<tr class="odd">
 <td align="left">syntax/hidden</td>
 <td align="left">Cannot be changed.</td>
 </tr>
+<tr class="even">
+<td align="left">syntax/secured</td>
+<td align="left">Cannot be changed.</td>
+</tr>
 <tr class="odd">
+<td align="left">syntax/command</td>
+<td align="left">Cannot be changed.</td>
+</tr>
+<tr class="even">
 <td align="left">syntax/list</td>
 <td align="left">Can add or modify the list element in the following ways:<br/>- Can convert a non-list string parameter to a list provided that an empty string was already a valid value with the appropriate meaning.<br/>- Can adjust limits on numbers of items, and on the list size, provided that the new rules do not permit any values that were not valid for the previous version of the parameter.</td>
 </tr>
-<tr class="even">
-<td align="left">syntax/int etc.<br/>syntax/dataType</td>
-<td align="left">Can make any change that follows the base type restriction rules of <a href='#sec:base-type-restriction' title=''>A.2.3.8</a>, e.g. can add enumerations.</td>
-</tr>
 <tr class="odd">
+<td align="left">syntax/int etc.<br/>syntax/dataType</td>
+<td align="left">Can make any change that follows the base type restriction rules of <a href='#sec:base-type-restriction' title='' class="heading">A.2.3.8</a>, e.g. can add enumerations.</td>
+</tr>
+<tr class="even">
 <td align="left">syntax/default</td>
 <td align="left">A default can be added if the parameter did not already have one.</td>
 </tr>
@@ -3379,18 +3430,22 @@ modified in a way that contravenes the above rules.</p>
 <td align="left">Can be changed.</td>
 </tr>
 <tr class="even">
-<td align="left">status</td>
-<td align="left">Can be &ldquo;promoted&rdquo; to a &ldquo;higher&rdquo; value, where the lowest to highest ordering is: current, deprecated, obsoleted, deleted. For example, current can be changed to deprecated, and obsoleted can be changed to deleted, but deleted cannot be changed back to obsoleted. When promoting status, the deprecation, obsoletion and deletion rules of <a href='#sec:deprecated-and-obsoleted-items' title=''>Section 2.4</a> MUST be obeyed.</td>
+<td align="left">version</td>
+<td align="left">Cannot be changed.</td>
 </tr>
 <tr class="odd">
-<td align="left">description</td>
-<td align="left">Can be prefixed, extended or replaced via use of the action attribute (<a href='#sec:description-modifications' title=''>A.2.12.6</a>). When changing the description, behavioral backwards compatibility MUST be preserved.</td>
+<td align="left">status</td>
+<td align="left">Can be &ldquo;promoted&rdquo; to a &ldquo;higher&rdquo; value, where the lowest to highest ordering is: current, deprecated, obsoleted, deleted. For example, current can be changed to deprecated, and obsoleted can be changed to deleted, but deleted cannot be changed back to obsoleted. When promoting status, the deprecation, obsoletion and deletion rules of <a href='#sec:deprecated-and-obsoleted-items' title='' class="heading">Section 2.4</a> MUST be obeyed.</td>
 </tr>
 <tr class="even">
+<td align="left">description</td>
+<td align="left">Can be prefixed, extended or replaced via use of the action attribute (<a href='#sec:description-modifications' title='' class="heading">A.2.12.6</a>). When changing the description, behavioral backwards compatibility MUST be preserved.</td>
+</tr>
+<tr class="odd">
 <td align="left">input</td>
 <td align="left">Can modify input arguments according to the rules for modifying data model parameters and objects. Can add new input arguments, either directly or by referencing (including) new components.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">output</td>
 <td align="left">Can modify output arguments according to the rules for modifying data model parameters and objects. Can add new output arguments, either directly or by referencing (including) new components.</td>
 </tr>
@@ -3415,22 +3470,26 @@ modified in a way that contravenes the above rules.</p>
 <th align="left">Description</th>
 </tr>
 <tr class="odd">
-<td align="left">status</td>
-<td align="left">Can be &ldquo;promoted&rdquo; to a &ldquo;higher&rdquo; value, where the lowest to highest ordering is: current, deprecated, obsoleted, deleted. For example, current can be changed to deprecated, and obsoleted can be changed to deleted, but deleted cannot be changed back to obsoleted. When promoting status, the deprecation, obsoletion and deletion rules of <a href='#sec:deprecated-and-obsoleted-items' title=''>Section 2.4</a> MUST be obeyed.</td>
+<td align="left">version</td>
+<td align="left">Cannot be changed.</td>
 </tr>
 <tr class="even">
-<td align="left">description</td>
-<td align="left">Can be prefixed, extended or replaced via use of the action attribute (<a href='#sec:description-modifications' title=''>A.2.12.6</a>). When changing the description, behavioral backwards compatibility MUST be preserved.</td>
+<td align="left">status</td>
+<td align="left">Can be &ldquo;promoted&rdquo; to a &ldquo;higher&rdquo; value, where the lowest to highest ordering is: current, deprecated, obsoleted, deleted. For example, current can be changed to deprecated, and obsoleted can be changed to deleted, but deleted cannot be changed back to obsoleted. When promoting status, the deprecation, obsoletion and deletion rules of <a href='#sec:deprecated-and-obsoleted-items' title='' class="heading">Section 2.4</a> MUST be obeyed.</td>
 </tr>
 <tr class="odd">
+<td align="left">description</td>
+<td align="left">Can be prefixed, extended or replaced via use of the action attribute (<a href='#sec:description-modifications' title='' class="heading">A.2.12.6</a>). When changing the description, behavioral backwards compatibility MUST be preserved.</td>
+</tr>
+<tr class="even">
 <td align="left">component</td>
 <td align="left">Can add new arguments by referencing (including) new components.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">parameter</td>
 <td align="left">Can modify parameter arguments according to the rules for modifying data model parameters. Can add new parameter arguments.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">object</td>
 <td align="left">Can modify object arguments according to the rules for modifying data model objects. Can add new object arguments.</td>
 </tr>
@@ -3475,30 +3534,34 @@ modified in a way that contravenes the above rules.</p>
 <td align="left">For CWMP only, cannot be changed, unless was previously missing, in which case can be added.</td>
 </tr>
 <tr class="even">
-<td align="left">status</td>
-<td align="left">Can be &ldquo;promoted&rdquo; to a &ldquo;higher&rdquo; value, where the lowest to highest ordering is: current, deprecated, obsoleted, deleted. For example, current can be changed to deprecated, and obsoleted can be changed to deleted, but deleted cannot be changed back to obsoleted. When promoting status, the deprecation, obsoletion and deletion rules of <a href='#sec:deprecated-and-obsoleted-items' title=''>Section 2.4</a> MUST be obeyed.</td>
+<td align="left">version</td>
+<td align="left">Cannot be changed.</td>
 </tr>
 <tr class="odd">
-<td align="left">description</td>
-<td align="left">Can be prefixed, extended or replaced via use of the action attribute (<a href='#sec:description-modifications' title=''>A.2.12.6</a>). When changing the description, behavioral backwards compatibility MUST be preserved.</td>
+<td align="left">status</td>
+<td align="left">Can be &ldquo;promoted&rdquo; to a &ldquo;higher&rdquo; value, where the lowest to highest ordering is: current, deprecated, obsoleted, deleted. For example, current can be changed to deprecated, and obsoleted can be changed to deleted, but deleted cannot be changed back to obsoleted. When promoting status, the deprecation, obsoletion and deletion rules of <a href='#sec:deprecated-and-obsoleted-items' title='' class="heading">Section 2.4</a> MUST be obeyed.</td>
 </tr>
 <tr class="even">
+<td align="left">description</td>
+<td align="left">Can be prefixed, extended or replaced via use of the action attribute (<a href='#sec:description-modifications' title='' class="heading">A.2.12.6</a>). When changing the description, behavioral backwards compatibility MUST be preserved.</td>
+</tr>
+<tr class="odd">
 <td align="left">uniqueKey</td>
 <td align="left">Cannot be changed, but new unique keys can be added.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">component</td>
 <td align="left">Can reference (include) new components.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">parameter</td>
 <td align="left">Can add new parameters.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">command</td>
 <td align="left">For USP only, can add new commands.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">event</td>
 <td align="left">For USP only, can add new events.</td>
 </tr>
@@ -3525,12 +3588,16 @@ elements.</p>
 <th align="left">Description</th>
 </tr>
 <tr class="odd">
-<td align="left">status</td>
-<td align="left">Can be &ldquo;promoted&rdquo; to a &ldquo;higher&rdquo; value, where the lowest to highest ordering is: current, deprecated, obsoleted, deleted. For example, current can be changed to deprecated, and obsoleted can be changed to deleted, but deleted cannot be changed back to obsoleted. When promoting status, the deprecation, obsoletion and deletion rules of <a href='#sec:deprecated-and-obsoleted-items' title=''>Section 2.4</a> MUST be obeyed.</td>
+<td align="left">version</td>
+<td align="left">Cannot be changed.</td>
 </tr>
 <tr class="even">
+<td align="left">status</td>
+<td align="left">Can be &ldquo;promoted&rdquo; to a &ldquo;higher&rdquo; value, where the lowest to highest ordering is: current, deprecated, obsoleted, deleted. For example, current can be changed to deprecated, and obsoleted can be changed to deleted, but deleted cannot be changed back to obsoleted. When promoting status, the deprecation, obsoletion and deletion rules of <a href='#sec:deprecated-and-obsoleted-items' title='' class="heading">Section 2.4</a> MUST be obeyed.</td>
+</tr>
+<tr class="odd">
 <td align="left">description</td>
-<td align="left">Can be prefixed, extended or replaced via use of the action attribute (<a href='#sec:description-modifications' title=''>A.2.12.6</a>). When changing the description, behavioral backwards compatibility MUST be preserved.</td>
+<td align="left">Can be prefixed, extended or replaced via use of the action attribute (<a href='#sec:description-modifications' title='' class="heading">A.2.12.6</a>). When changing the description, behavioral backwards compatibility MUST be preserved.</td>
 </tr>
 </table></div>
 
@@ -3566,7 +3633,7 @@ a line break between the existing description and the new text.</p>
 <h2 class="annex2" id="sec:dm-schema">A.3 DM Schema<a class="headerlink" href="#sec:dm-schema" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h2>
 
 <p>The normative version of the DM Schema can be found at
-<a href='http://www.broadband-forum.org/cwmp/cwmp-datamodel-1-6.xsd' title=''>http://www.broadband-forum.org/cwmp/cwmp-datamodel-1-6.xsd</a>. Please be
+<a href='http://www.broadband-forum.org/cwmp/cwmp-datamodel-1-6.xsd' title='' class="uri">http://www.broadband-forum.org/cwmp/cwmp-datamodel-1-6.xsd</a>. Please be
 aware that a new version of the DM Schema might be published at any
 time, in which case the version referenced in this document would become
 out of date. Any conflict MUST be resolved in favor of the normative
@@ -3576,7 +3643,7 @@ version on the web site.</p>
 
 <h2 class="annex2" id="sec:introduction-2">B.1 Introduction<a class="headerlink" href="#sec:introduction-2" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h2>
 
-<p>The CWMP Device Type XML Schema <span class="cite" data-citation-ids="XML-Schema-Primer">[<a href='#ref-XML-Schema-Primer' title=''>4</a>]</span>, or DT Schema, is used for
+<p>The CWMP Device Type XML Schema <span class="cite" data-citation-ids="XML-Schema-Primer"><a href='#ref-XML-Schema-Primer' title=''>[12]</a></span>, or DT Schema, is used for
 describing a device’s supported data model.</p>
 
 <p>DT Schema instance documents can contain the following:</p>
@@ -3626,7 +3693,7 @@ models can be imported (components cannot be imported because they are
 not used in DT Instances).</p>
 
 <p>Note – the rules for importing DM Instances into DT Instances are
-consistent with those given in <a href='#sec:importing-dm-instances' title=''>A.2.1</a> for importing DM Instances into
+consistent with those given in <a href='#sec:importing-dm-instances' title='' class="heading">A.2.1</a> for importing DM Instances into
 other DM Instances. The only difference is an additional rule governing
 the use, when available, of the DT Instance URL.</p>
 
@@ -3637,11 +3704,11 @@ attribute.</p>
 the DM Instance are as follows:</p>
 
 <ul>
-<li><p>It MUST be a URL adhering to RFC 3986 <span class="cite" data-citation-ids="RFC3986">[<a href='#ref-RFC3986' title=''>9</a>]</span>.</p></li>
+<li><p>It MUST be a URL adhering to RFC 3986 <span class="cite" data-citation-ids="RFC3986"><a href='#ref-RFC3986' title=''>[5]</a></span>.</p></li>
 <li><p>If the URL includes a scheme, it MUST be http, https or ftp.</p></li>
 <li><p>If the URL includes an authority, it MUST NOT include credentials.</p></li>
 <li><p>For standard BBF DM Instances, the rules that apply to the filename
-part (final path segment) of the <a href='#sec:uri-conventions' title=''>A.2.1.1</a> BBFURL MUST be applied to
+part (final path segment) of the <a href='#sec:uri-conventions' title='' class="heading">A.2.1.1</a> BBFURL MUST be applied to
 the filename part of this URL. This means that the corrigendum
 number can be omitted in order to refer to the latest corrigendum.</p></li>
 <li><p>If the URL is a relative reference, processing tools MUST apply
@@ -3689,11 +3756,11 @@ features is as follows:</p>
 
 <p>Vendor-specific features MAY be supported, and if so the feature name
 MUST begin with <code>X_&lt;VENDOR&gt;_</code>, where <code>&lt;VENDOR&gt;</code> MUST be as defined in
-<a href='#sec:vendor-specific-elements' title=''>Section 3.3</a>.</p>
+<a href='#sec:vendor-specific-elements' title='' class="heading">Section 3.3</a>.</p>
 
 <p>This example feature declaration illustrates the use of annotation:</p>
 
-<pre><code>    &lt;feature name=&quot;DNSServer&quot;&gt;
+<pre><code>    &lt;feature name="DNSServer"&gt;
       &lt;annotation&gt;Supports a DNS Server and XYZ.&lt;/annotation&gt;
     &lt;/feature&gt;</code></pre>
 
@@ -3707,7 +3774,7 @@ compatibility, standard feature names, once added, MUST NOT ever be
 deleted.</p>
 
 <p>The normative version of the DT Features Schema can be found at
-<a href='http://www.broadband-forum.org/cwmp/cwmp-devicetype-features.xsd' title=''>http://www.broadband-forum.org/cwmp/cwmp-devicetype-features.xsd</a>.
+<a href='http://www.broadband-forum.org/cwmp/cwmp-devicetype-features.xsd' title='' class="uri">http://www.broadband-forum.org/cwmp/cwmp-devicetype-features.xsd</a>.
 Please be aware that a new version of the DT Features Schema might be
 published at any time, in which case the version referenced in this
 document would become out of date. Any conflict MUST be resolved in
@@ -3716,7 +3783,7 @@ favor of the normative version on the web site.</p>
 <h2 class="annex2" id="sec:dt-schema">B.3 DT Schema<a class="headerlink" href="#sec:dt-schema" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h2>
 
 <p>The normative version of the DT Schema can be found at
-<a href='http://www.broadband-forum.org/cwmp/cwmp-devicetype-1-3.xsd' title=''>http://www.broadband-forum.org/cwmp/cwmp-devicetype-1-3.xsd</a>. Please be
+<a href='http://www.broadband-forum.org/cwmp/cwmp-devicetype-1-3.xsd' title='' class="uri">http://www.broadband-forum.org/cwmp/cwmp-devicetype-1-3.xsd</a>. Please be
 aware that a new version of the DT Schema might be published at any
 time, in which case the version referenced in this document would become
 out of date. Any conflict MUST be resolved in favor of the normative
@@ -3728,14 +3795,14 @@ version on the web site.</p>
 
 <p>This Annex defines requirements that apply to all standard BBF DM
 Instances. These requirements extend the normative requirements of the
-DM Schema (<a href='#sec:cwmp-data-model-definition-xml-schema' title=''>Annex A</a>).</p>
+DM Schema (<a href='#sec:cwmp-data-model-definition-xml-schema' title='' class="heading">Annex A</a>).</p>
 
 <h2 class="annex2" id="sec:character-encoding-and-character-set-1">C.2 Character Encoding and Character Set<a class="headerlink" href="#sec:character-encoding-and-character-set-1" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h2>
 
 <p>The file MUST use UTF-8 encoding, indicated by the following Initial
 line:</p>
 
-<pre><code>  &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</code></pre>
+<pre><code>  &lt;?xml version="1.0" encoding="UTF-8"?&gt;</code></pre>
 
 <p>The file MUST use only a subset of the printable characters in the Basic
 Latin Unicode block, namely characters whose decimal ASCII
@@ -3743,7 +3810,7 @@ representation is 10 (<code>#xA</code>), 13 (<code>#xD</code>) or is in the (inc
 32-126.</p>
 
 <p><em>Note – writing LF (LINE FEED) for <code>#xA</code> and <code>CR</code> (CARRIAGE RETURN) for
-<code>#xD</code>, the XML specification <span class="cite" data-citation-ids="XML">[Section 2.11/<a href='#ref-XML' title=''>8</a>]</span> states that XML
+<code>#xD</code>, the XML specification <span class="cite" data-citation-ids="XML"><a href='#ref-XML' title=''>[2.11/1]</a></span> states that XML
 processors have to behave as if all CR LF sequences, or any CR
 characters not followed by LF, are translated to LF.</em></p>
 
@@ -3786,14 +3853,14 @@ reference the published XML Schema on the
 
 <p>Example:</p>
 
-<pre><code>    xsi:schemaLocation=&quot;urn:broadband-forum-org:cwmp:datamodel-1-5
+<pre><code>    xsi:schemaLocation="urn:broadband-forum-org:cwmp:datamodel-1-5
                           http://www.broadband-forum.org/cwmp/cwmp-datamodel-1-5.xsd
                         urn:broadband-forum-org:cwmp:datamodel-report-0-1
-                          http://www.broadband-forum.org/cwmp/cwmp-datamodel-report.xsd&quot;</code></pre>
+                          http://www.broadband-forum.org/cwmp/cwmp-datamodel-report.xsd"</code></pre>
 
 <h3 class="annex3" id="sec:spec-attribute">C.3.4 Spec Attribute<a class="headerlink" href="#sec:spec-attribute" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h3>
 
-<p>The top-level spec attribute (<a href='#sec:uri-conventions' title=''>A.2.1.1</a>) indicates the specification with
+<p>The top-level spec attribute (<a href='#sec:uri-conventions' title='' class="heading">A.2.1.1</a>) indicates the specification with
 which the file is associated. It MUST be of the form
 &ldquo;urn:broadband-forum-org:tr-nnn-i-a-c&rdquo;, where nnn is the specification
 number (including leading zeros), i is the issue number, a is the
@@ -3805,11 +3872,11 @@ TR-106 (Issue 1) Amendment 2 Corrigendum 1.</p>
 
 <p>Example:</p>
 
-<pre><code>    spec=&quot;urn:broadband-forum-org:tr-181-2-5-0&quot;</code></pre>
+<pre><code>    spec="urn:broadband-forum-org:tr-181-2-5-0"</code></pre>
 
 <h3 class="annex3" id="sec:file-attribute">C.3.5 File Attribute<a class="headerlink" href="#sec:file-attribute" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h3>
 
-<p>The top-level file attribute (<a href='#sec:uri-conventions' title=''>A.2.1.1</a>) indicates the file name. It MUST
+<p>The top-level file attribute (<a href='#sec:uri-conventions' title='' class="heading">A.2.1.1</a>) indicates the file name. It MUST
 be of the form &ldquo;tr-nnn-i-a-c.xml&rdquo; or &ldquo;tr-nnn-i-a-c-label.xml&rdquo;, where
 nnn, i, a and c are the same as in the spec attribute. The label, which
 MUST NOT begin with a digit, is only needed if more than one DM Instance
@@ -3817,13 +3884,13 @@ is associated with a given specification.</p>
 
 <p>Example:</p>
 
-<pre><code>    file=&quot;tr-181-2-5-0.xml&quot;</code></pre>
+<pre><code>    file="tr-181-2-5-0.xml"</code></pre>
 
 <h3 class="annex3" id="sec:import-element">C.3.6 Import Element<a class="headerlink" href="#sec:import-element" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h3>
 
 <p>The import element’s spec and file attributes MUST NOT specify the
 corrigendum number. This means that an import element always references
-the latest corrigendum (<a href='#sec:uri-conventions' title=''>A.2.1.1</a>).</p>
+the latest corrigendum (<a href='#sec:uri-conventions' title='' class="heading">A.2.1.1</a>).</p>
 
 <h3 class="annex3" id="sec:bibliography-reference-element">C.3.7 Bibliography Reference Element<a class="headerlink" href="#sec:bibliography-reference-element" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h3>
 
@@ -3877,20 +3944,20 @@ defined as follows:</p>
                 | ETSIID
                 | OtherID
 
-    BBFID = &quot;TR-&quot; BBFNumber BBFIssue BBFAmendment BBFCorrigendum
+    BBFID = "TR-" BBFNumber BBFIssue BBFAmendment BBFCorrigendum
 
     BBFNumber = DIGIT{3,} // including leading zeros, e.g. 069
 
-    BBFIssue = &quot;i&quot; &lt;number greater than one&gt;
-             | &quot;&quot; // empty means the most recent Issue
+    BBFIssue = "i" &lt;number greater than one&gt;
+             | "" // empty means the most recent Issue
 
-    BBFAmendment = &quot;a&quot; &lt;number greater than zero&gt;
-                 | &quot;&quot; // empty means the most recent Amendment
+    BBFAmendment = "a" &lt;number greater than zero&gt;
+                 | "" // empty means the most recent Amendment
 
-    BBFCorrigendum = &quot;c&quot; &lt;number greater than zero&gt;
-                   | &quot;&quot; // empty means the most recent Corrigendum
+    BBFCorrigendum = "c" &lt;number greater than zero&gt;
+                   | "" // empty means the most recent Corrigendum
 
-    RFCID = &quot;RFC&quot; RFCNumber
+    RFCID = "RFC" RFCNumber
 
     RFCNumber = NONZERODIGIT [DIGIT]*
                               // no leading zeros, e.g. 123
@@ -3898,27 +3965,27 @@ defined as follows:</p>
     IEEEID = IEEEGroup IEEESpec IEEEDate
            | &lt;for other IEEE specifications, of a standard form if one is defined&gt;
 
-    IEEEGroup = &lt;group number&gt; &quot;.&quot; &lt;group sub-number&gt;
+    IEEEGroup = &lt;group number&gt; "." &lt;group sub-number&gt;
                                 // e.g. 802.1
 
     IEEESpec = &lt;spec letter(s)&gt; // e.g. D
 
-    IEEEDate = &quot;-&quot; &lt;publication year&gt;
+    IEEEDate = "-" &lt;publication year&gt;
                                 // e.g. -2004
-             | &quot;&quot;               // can be empty
+             | ""               // can be empty
 
     ETSIID = ETSISpecType ETSINumber ETSIVersion
            | &lt;for other ETSI specifications, of a standard form if one is defined&gt;
 
-    ETSISpecType = &quot;TR&quot; // Technical Report
-                 | &quot;TS&quot; // Technical Specification
-                 | &quot;ES&quot; // ETSI Specification
-                 | &quot;EN&quot; // European Standard
+    ETSISpecType = "TR" // Technical Report
+                 | "TS" // Technical Specification
+                 | "ES" // ETSI Specification
+                 | "EN" // European Standard
 
     ETSINumber = [DIGIT]{6} // e.g. 102034
 
-    ETSIVersion = &quot;v&quot; &lt;version number as specified by ETSI&gt;
-                | &quot;&quot;            // can be empty
+    ETSIVersion = "v" &lt;version number as specified by ETSI&gt;
+                | ""            // can be empty
 
     OtherURI = &lt;of a standard form if one is defined&gt;</code></pre>
 
@@ -3963,7 +4030,7 @@ lines):</p>
 <p>The three sections MUST be introduced by a line that consists of two
 SPACE characters followed by the section name and a colon.</p>
 
-<pre><code>    &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+<pre><code>    &lt;?xml version="1.0" encoding="UTF-8"?&gt;
     &lt;!--
       ...One-line summary...
 
@@ -3986,7 +4053,7 @@ the creation of this version. It SHOULD NOT be terminated with a period
 
 <p>Example:</p>
 
-<pre><code>    &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+<pre><code>    &lt;?xml version="1.0" encoding="UTF-8"?&gt;
     &lt;!-- Added support for IPsec --&gt;</code></pre>
 
 <h3 class="annex3" id="sec:summary-section">C.4.2 Summary Section<a class="headerlink" href="#sec:summary-section" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h3>
@@ -4069,7 +4136,7 @@ definitions added or changed by TR-181 Issue 2 Amendment 11.</p>
 
 <h2 class="appendix2" id="sec:data-model-definition">I.4 Data Model Definition<a class="headerlink" href="#sec:data-model-definition" title="Permalink to this header"> <img src='permalink.png' title='' width="0.8em"/></a></h2>
 
-<p>Parameters make use of a limited subset of the default SOAP data types <span class="cite" data-citation-ids="SOAP">[<a href='#ref-SOAP' title=''>13</a>]</span>. The
+<p>Parameters make use of a limited subset of the default SOAP data types <span class="cite" data-citation-ids="SOAP"><a href='#ref-SOAP' title=''>[6]</a></span>. The
 notation used to represent these types within the report is
 listed in the following table.</p>
 
@@ -4110,7 +4177,7 @@ listed in the following table.</p>
 </tr>
 <tr class="even">
 <td align="left">dateTime</td>
-<td align="left">The subset of the ISO 8601 date-time format defined by the SOAP dateTime type <span class="cite" data-citation-ids="SOAP">[<a href='#ref-SOAP' title=''>13</a>]</span>.</td>
+<td align="left">The subset of the ISO 8601 date-time format defined by the SOAP dateTime type <span class="cite" data-citation-ids="SOAP"><a href='#ref-SOAP' title=''>[6]</a></span>.</td>
 </tr>
 <tr class="odd">
 <td align="left">base64</td>
