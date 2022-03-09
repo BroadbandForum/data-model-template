@@ -1,11 +1,12 @@
-make[1]: Entering directory '/root/bamboo-agent-home/xml-data/build-dir/BUSDM-DMSUPPREL-JOB1/WT-106'
+make[1]: Entering directory '/root/bamboo-agent-home/xml-data/build-dir/BUSDM-DMSUPPDEV62-JOB1/WT-106'
 make -C schemas dmhtml
-make[2]: Entering directory '/root/bamboo-agent-home/xml-data/build-dir/BUSDM-DMSUPPREL-JOB1/WT-106/schemas'
-make[2]: Nothing to be done for 'dmhtml'.
-make[2]: Leaving directory '/root/bamboo-agent-home/xml-data/build-dir/BUSDM-DMSUPPREL-JOB1/WT-106/schemas'
+make[2]: Entering directory '/root/bamboo-agent-home/xml-data/build-dir/BUSDM-DMSUPPDEV62-JOB1/WT-106/schemas'
+mkdir -p docs/
+make[2]: Leaving directory '/root/bamboo-agent-home/xml-data/build-dir/BUSDM-DMSUPPDEV62-JOB1/WT-106/schemas'
 make -C support dmhtml
-make[2]: Entering directory '/root/bamboo-agent-home/xml-data/build-dir/BUSDM-DMSUPPREL-JOB1/WT-106/support'
+make[2]: Entering directory '/root/bamboo-agent-home/xml-data/build-dir/BUSDM-DMSUPPDEV62-JOB1/WT-106/support'
+mkdir -p docs/
 report.pl --exitcode=fatals --include=../../install/cwmp/ --loglevel=error --allbibrefs --report=html --outfile=docs/tr-069-biblio.html tr-069-biblio.xml
 report.pl --exitcode=fatals --include=../../install/cwmp/ --loglevel=error --alldatatypes --report=html --outfile=docs/tr-106-types.html tr-106-types.xml
-make[2]: Leaving directory '/root/bamboo-agent-home/xml-data/build-dir/BUSDM-DMSUPPREL-JOB1/WT-106/support'
-make[1]: Leaving directory '/root/bamboo-agent-home/xml-data/build-dir/BUSDM-DMSUPPREL-JOB1/WT-106'
+make[2]: Leaving directory '/root/bamboo-agent-home/xml-data/build-dir/BUSDM-DMSUPPDEV62-JOB1/WT-106/support'
+make[1]: Leaving directory '/root/bamboo-agent-home/xml-data/build-dir/BUSDM-DMSUPPDEV62-JOB1/WT-106'
