@@ -1,0 +1,13 @@
+# see https://issues.broadband-forum.org/browse/DMSUPP-124 for background
+
+http://localhost:8000/cwmp.*
+
+# access to these URLs denied by robots.txt, so we couldn't check them
+https://webapp\.etsi\.org/workprogram/Report_WorkItem\.asp\?WKI_ID=\d+
+https://www\.icsalabs\.com/sites/default/files/.+\.pdf
+
+
+https://www\.3gpp\.org/DynaReport/\d+\.htm
+https://www\.3gpp\.org/ftp/Specs/html-info/\d+\.htm
+https://ieeexplore\.ieee\.org/(document|servlet)/.+
+https://www\.rfc-editor\.org/rfc/rfc\d+

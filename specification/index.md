@@ -1,33 +1,7 @@
 ---
-# BBF-specific metadata; c.f. Word properties
-bbfNumber: TR-106
-bbfTitle: Data Model Template for CWMP Endpoints and USP Agents
-bbfIssue: Issue
-bbfVersion: 1 Amendment 11
-bbfMonth: January
-bbfYear: 2022
-bbfType: Technical Report
-bbfStatus:
-bbfContrib:
-
-# information shown on each page header
-siteurl: index.html
-
-tagline: How to use the data model schema to understand and develop CWMP/USP
-         data models
-
-# displayed version number
-# XXX needs to be aligned with bbfNumber; should have only one version number
-versionNumber: 1.11
-
 # don't display these in the banner
 version: ''
 status: ''
-
-# information shown in the footer
-# XXX what short name should we use?
-shortname: '%bbfNumber%'
-reponame: data-model-template
 
 # navigation buttons shown on each page header
 buttons:
@@ -42,7 +16,7 @@ buttons:
 - label: USP Data Models
   url: https://usp-data-models.broadband-forum.org
 
-# these references assume use of bbf.csl; please follow the existing style
+# references assume use of bbf.csl; please follow the existing style
 references:
 
 - id: RFC2119
@@ -127,158 +101,18 @@ references:
   issued: {year: 2004}
   URL: https://www.w3.org/TR/xmlschema-2
 
-# div templates
-myBaseURL: 'https://www.broadband-forum.org/download'
-
-bbfRevisionHistory:
-
-- number: Issue 1
-  approval: September 2005
-  editors: |
-      Jeff Bernstein, 2Wire \
-      Christele Bouchat, Alcatel \
-      Tim Spets, Westell
-  changes: Original
-
-- number: '[Issue 1 Amendment 1](%myBaseURL%/TR-106_Amendment-1.pdf)'
-  approval: November 2006
-  editors: |
-      Jeff Bernstein, 2Wire \
-      John Blackford, 2Wire \
-      Mike Digdon, SupportSoft \
-      Heather Kirksey, Motive \
-      William Lupton, 2Wire \
-      Anton Okmianski, Cisco
-  changes: Clarification of original document
-
-- number: '[Issue 1 Amendment 2](%myBaseURL%/TR-106_Amendment-2.pdf)'
-  approval: November 2008
-  editors: |
-      William Lupton, 2Wire \
-      H&aring;kan Westin, Tilgin
-  changes: Addition of data model definition XML Schema and normative
-           XML common object and component definitions
-
-- number: '[Issue 1 Amendment 3](%myBaseURL%/TR-106_Amendment-3.pdf)'
-  approval: September 2009
-  editors: |
-      William Lupton, 2Wire \
-      H&aring;kan Westin, Tilgin
-  changes: Addition of device type XML Schema
-
-- number: '[Issue 1 Amendment 4](%myBaseURL%/TR-106_Amendment-4.pdf)'
-  approval: February 2010
-  editors: |
-      William Lupton, 2Wire \
-      Paul Sigurdson, Broadband Forum
-  changes: Moved data model definitions to TR-181 Issue 1
-
-- number: '[Issue 1 Amendment 5](%myBaseURL%/TR-106_Amendment-5.pdf)'
-  approval: November 2010
-  editors: Paul Sigurdson, Broadband Forum
-  changes: |
-      Replaced definitions of named data types such as IPAddress with
-      references to normative XML. \
-      Minor changes to DM Schema (v1.3) and DT Schema (v1.1).
-
-- number: '[Issue 1 Amendment 6](%myBaseURL%/TR-106_Amendment-6.pdf)'
-  approval: July 2011
-  editors: |
-      Sarah Banks, Cisco \
-      Andrea Colmegna, FASTWEB \
-      Tim Spets, Motorola Mobility
-  changes: |
-      Removed definition of proxying, now defined in TR-069. \
-      Removed Common objects.\
-      Alias Parameter Requirements added.
-
-- number: '[Issue 1 Amendment 7](%myBaseURL%/TR-106_Amendment-7.pdf)'
-  approval: September 2013
-  publication: 7 October 2013
-  editors: William Lupton, Cisco
-  changes: |
-      Added descriptions of new features in DM Schema (v1.4 & v1.5) and DT
-      Schema (v1.2 & v1.3). \
-      Added Annex defining additional requirements for BBF standard data
-      models.
-
-- number: '[Issue 1 Amendment 8](%myBaseURL%/TR-106_Amendment-8.pdf)'
-  approval: 16 March 2018
-  publication: 10 May 2018
-  editors: |
-      Jean-Didier Ott, Orange \
-      William Lupton, Broadband Forum
-  changes: |
-      Added support of USP (mountable objects). \
-      Removed references to obsolete data models. \
-      Moved device requirements to TR-069.
-
-- number: Issue 1 Amendment 9
-  changes: |
-      Schema updates; document not updated.
-
-- number: '[Issue 1 Amendment 10](%myBaseURL%/TR-106_Amendment-10.pdf)'
-  approval: 5 November 2020
-  publication: 5 November 2020
-  editors: |
-      William Lupton, Broadband Forum
-  changes: |
-      Converted document to markdown. \
-      Various editorial improvements.
-
-- number: '[Issue 1 Amendment 11](%myBaseURL%/TR-106_Amendment-11.pdf)'
-  approval: 27 January 2022
-  publication: 27 January 2022
-  editors: |
-      William Lupton, Broadband Forum
-  changes: |
-      Clarified forcedEnabled and forceDefaultEnabled for USP. \
-      Clarified impact of deprecating or obsoleting profile items. \
-      Documented new description templates. \
-      Documented new `secured` attribute.
-
-bbfEditors:
-- William Lupton, Broadband Forum
-
-# this shows how to override a div template spec (to add BUS)
-bbfWADsSpec:
-  title: |
-    ### Broadband User Services Work Area Director(s) {.unnumbered .unlisted}
-
-bbfWADs:
-- Jason Walls, QA Cafe
-- John Blackford, CommScope
-
 # end of metadata
 ---
 
 !include cover-page.md
 
-!include tr-notice.md
+!include %notice%-notice.md
 
-!include front-matter.md
+!include METADATA-%bbfMajor%.md
 
-# Executive Summary {.unnumbered .unlisted .new-page}
+# Executive Summary {.unnumbered .new-page}
 
-%bbfNumber% specifies data model guidelines to be followed by all CWMP [@TR-069]
-Endpoints and USP [@TR-369] Agents. These guidelines include structural
-requirements for the data hierarchy, requirements for versioning of data
-models, and requirements for defining profiles.
-
-In addition, %bbfNumber% defines an XML Schema that as far as possible
-embodies these guidelines, and which is used for defining all CWMP and
-USP data models. This makes data model definitions rigorous, and helps
-to reduce the danger that different implementations will interpret data
-model definitions in different ways.
-
-%bbfNumber% also defines an XML Schema that allows a device to describe its
-supported CWMP data models. This description is both specific and
-detailed, allowing a Controller to know exactly what is supported by the
-device, including any vendor-specific objects and parameters. Use of
-this Schema enhances interoperability and significantly eases the
-integration of new devices with a Controller. USP uses a different
-mechanism (GetSupportedDM message) for the same purpose. That mechanism
-is specified in TR-369 [@TR-369].
+%description%
 
 ::: note
 
@@ -332,7 +166,7 @@ certain device types or services.
 
 **USP**
 
-The [User Services Platform](http://usp.technology) supports a network
+The [User Services Platform](https://usp.technology) supports a network
 of USP Controllers and USP Agents to allow applications to manipulate
 service elements (i.e. objects). It represents the evolution of CWMP
 into the following use cases:
@@ -436,8 +270,12 @@ The following terminology is used throughout this %bbfType%.
 | **Instance Alias**                 | A writeable string that uniquely identifies an instance within a *Multi-Instance Object*
 | **Instance Identifier**            | A value that uniquely identifies an instance within a *Multi-Instance Object*. It is either an *Instance Number* or an *Instance Alias*.
 | **Instance Number**                | A read-only positive integer (\>=1) that uniquely identifies an instance within a *Multi-Instance Object.*
-| **Mountable Object**               | An *Object* that is defined in a *DM Instance* as a direct child of the *Root Object*, but that can also exist as a child of a *Mount Point* in the *Instantiated Data Model* of a *USP Agent*. This concept does not apply to *CWMP*.
-| **Mount Point**                    | An *Object* that is defined in a *DM Instance* as being able to have *Mountable Objects* as children in the *Instantiated Data Model* of a *USP Agent*. By extension, one of the instances of that object in the *Instantiated Data Model*. This concept does not apply to *CWMP*.
+| **Mountable Object**               | An *Object* that is a direct child of the *Root Object* or *Service Object*, but whose *DM Instance* does not declare it to be a *Mount Point*. Starting with *DM Schema* v1.10 (TR-106 Amendment 12), all qualifying *Objects* are automatically regarded as *Mountable Objects.*\
+For example, the TR-181 Device:2 *Data Model*'s Device.DeviceInfo. object is (a) a direct child of the Device. *Root Object*, and (b) not declared as a *Mount Point*, so it's a *Mountable Object*.\
+This concept does not apply to CWMP.
+| **Mount Point**                    | An *Object* whose *DM Instance* specifies (via a mountType="mountPoint" attribute) that all *Mountable Objects* are conceptually its direct children.\
+For example, the TR-181 Device:2 *Data Model*'s *DM Instance* specifies that Device.ProxiedDevice.{i}. is a *Mount Point*. This means that Device.ProxiedDevice.{i}.ABC. conceptually exists for all Mountable Objects ABC.\
+This concept does not apply to CWMP.
 | **Multi-Instance Object**          | An *Object* that can have multiple instances, all of which are located at the same level within the name hierarchy. Each instance is identified by an *Instance Identifier*.
 | **Object**                         | An internal node in the name hierarchy, i.e., a node that can have *Object*, *Parameter*, *Command* and/or *Event* children. An *Object* name is a *Path Name*.
 | **Parameter**                      | A name-value pair that represents part of a *CPE* or *USP Agent*'s configuration or status. A Parameter name is a *Path Name*.
@@ -550,8 +388,60 @@ The SupportedDataModel object has the following properties:
 This object is not used with USP. TR-369 [@TR-369] defines the
 GetSupportedDM message to provide this information.
 
+### Mount Points and Mountable Objects
 
-## Object Versioning
+As specified in @sec:terminology, a Mount Point is a place in the Data Model
+hierarchy where Mountable Objects can be mounted. A Data Model definition will
+typically define only a few Mount Points, but (starting with DM Schema v1.10)
+all top-level Objects other than Mount Points are Mountable Objects.
+
+For example, the TR-181i2 [@TR-181i2] Device:2 Data Model currently defines these
+three Mount Points:
+
+1)  Device.Node.{i}.
+2)  Device.ProxiedDevice.{i}.
+3)  Device.ProxiedDevice.{i}.Node.{i}.
+
+Apart from the Device.Node.{i}. and Device.ProxiedDevice.{i}. Mount Points,
+every direct child of the Device. Root Object is a Mountable Object. So, for
+example, these are all Mountable Objects:
+
+1)  Device.DeviceInfo.
+2)  Device.InterfaceStack.{i}.
+3)  Device.IP.
+4)  Device.QoS.
+
+Taking Device.DeviceInfo. as an example, this means that all of the following
+are valid Path Names:
+
+1)  Device.DeviceInfo.
+2)  Device.Node.{i}.DeviceInfo.
+3)  Device.ProxiedDevice.{i}.DeviceInfo.
+4)  Device.ProxiedDevice.{i}.Node.{i}.DeviceInfo.
+
+Only the first of these is defined explicitly in the DM Instance, but the
+others are equally valid, and indeed could be defined explicitly via
+Components.
+
+DM Instance authors need to ensure that Mountable Objects only use relative
+paths to reference other parts of the Data Model. If they used absolute paths
+(paths starting with "Device.") then they would be referencing one of the Root
+Object's or Service Object's top-level Objects. Therefore, as specified in
+@sec:reference-path-names, all such references will start with a dot (so
+they're relative to the Mount Point) or be relative to the current
+Object. Given that nearly all top-level Objects can be Mountable Objects, this
+implies that absolute paths will rarely (if ever) be used.
+
+Note that if a Mountable Object is a table then its "NumberOfEntries" parameter
+is regarded as part of the Mountable Object and will exist in the parent Mount
+Point. For example, if Device.InterfaceStack.{i}. is mounted at
+Device.ProxiedDevice.{i}. then both
+Device.ProxiedDevice.{i}.InterfaceStack.{i}. and
+Device.ProxiedDevice.{i}.InterfaceStackNumberOfEntries will be valid Path
+Names.
+
+
+## Object Versioning {#sec:data-model-versions}
 
 To allow the definition of a Service Object or Root Object to change
 over time, the definition of a Service Object or Root Object MUST have
@@ -933,8 +823,7 @@ also listed in @sec:data-types.
 The named data types that specify the representations of IP addresses,
 MAC addresses etc., are defined in a DM Instance document (see @sec:cwmp-data-model-definition-xml-schema).
 The XML file with those definitions and the corresponding HTML file can
-be found in the [data model resources
-page](https://cwmp-data-models.broadband-forum.org/#Data%20Model%20Data%20Types).
+be found in the [data model resources page](https://www.broadband-forum.org/cwmp).
 Note that this DM Instance defines named data types that are expected to
 be used in several data model definitions; it is possible to define
 local named data types in any DM Instance document.
@@ -1006,16 +895,13 @@ is an example of a properly formed value:
 
 `Device.Ethernet.Interface.1`
 
-Path Names in parameter values MUST always be full Path Names. For CWMP
-there is an exception such that a path that begins with a dot is
-relative to the Root or Service Object. For example, in the Device Root
-Object, a parameter value of ".DeviceInfo" always means
-"Device.DeviceInfo". NOTE: This exception does NOT hold for USP.
+Path Names in parameter values MUST always be full Path Names.
+NOTE: For CWMP there used to be an exception such that paths beginning
+with a dot were relative to the Root or Service Object, but this exception
+was removed in TR-106 Amendment 12.
 
 In order to be able to use reference parameters as unique keys
-(@sec:tables), their Path Names MUST conceptually be converted to full Path
-Names before being compared. For example, in the Device Root Object,
-".DeviceInfo." and "Device.DeviceInfo." would compare as equal. If a
+(@sec:tables), if a
 reference parameter is list-valued, i.e. it is a list of Path Names or
 Instance Numbers, the parameter value MUST conceptually be regarded as a
 set when being compared, i.e. the comparison has to ignore the item
@@ -1349,7 +1235,7 @@ follows:
 Standard BBF DM Instances can be accessed at the following URL:
 
 ```
-    BBFURL = "http://www.broadband-forum.org/cwmp/" FileName
+    BBFURL = "https://www.broadband-forum.org/cwmp/" FileName
     FileName = <as before, except that BBFCorrigendum is modified as follows:>
     BBFCorrigendum = "-" NoLeadingZeroNumber
                    | ""			// if omitted, most recent corrigendum is assumed
@@ -1477,7 +1363,7 @@ All other conventions defined for bulleted lists apply here (using : rather than
 This allows code fragments, simple tables etc. to be included in descriptions.\
 Note that the pre-processing rules of @sec:description-pre-processing imply that it is not possible to process an entire description as verbatim text (because all the leading whitespace would be removed). This is not expected to be a problem in practice. |\
 
-| Hyperlinks        | `http://www.broadband-forum.org` | URL links are specified as plain old text (no special markup). |\
+| Hyperlinks        | `https://www.broadband-forum.org` | URL links are specified as plain old text (no special markup). |\
 
 | Templates         | `{{bibref|1|section 2}}`\
 `{{section|table}}`\
@@ -1637,7 +1523,7 @@ This is a hint to processing tools to replace the template reference with a desc
 The OPTIONAL arg argument is relevant only for a pathRef; it specifies a fragment of text that describes the referenced item and SHOULD be incorporated into the template expansion.\
 The OPTIONAL opts argument is a comma-separated list of keywords that give additional information about the reference and can affect the generated text.  The following keywords are currently defined:\
 - **ignore**: ignore any non-existent targetParents; this is useful when a parameter references different objects in different data models.\
-- **delete**: this object (the referencing object) and the referenced object have the same lifetime, so this object will always be deleted when the referenced object is deleted; therefore the reference cannever be null.\
+- **delete**: this object (the referencing object) and the referenced object have the same lifetime, so this object will always be deleted when the referenced object is deleted; therefore the reference can never be null.\
 Typically processing tools will generate text of the form "The value MUST be the full path name of \<arg>...", in which the generated text can be expected to be sensitive to whether or not the parameter is list-valued.\
 Markup examples:\
 `{{reference|a protocol object}}`\
@@ -1652,7 +1538,7 @@ The OPTIONAL argument affects how the data type is described. If it has the lite
 
 | Profile description | `{{profdesc}}`\
 `{{noprofdesc}}` | An auto-generated description of a profile.\
-This template SHOULD only be used within the description of a profile (@sec:profiles-1).\
+This template SHOULD only be used within the description of a profile (@sec:profile-elements).\
 This is a hint to processing tools to replace the template reference with a description of the profile.  This overrides processing tools' expected default behavior (unless suppressed by `{{noprofdesc}}`) of describing the profile before the rest of the description.\
 Typically processing tools will generate text of the form "This table defines the \<profile:v> profile for the \<object:m> object. The minimum REQUIRED version for this profile is \<object:m.n>." (or more complex text if the profile is based on or extends other profiles). |\
 
@@ -1703,6 +1589,14 @@ Note that the same `{{command}}` template can also be used by a USP command to r
 | Factory default value | `{{factory}}`\
 `{{nofactory}}` | Text listing the factory default for the current parameter.   This template SHOULD only be used within the description of a parameter that has a factory default value.\
 This is a hint to processing tools to replace the template reference with text listing the factory default value.  This overrides processing tools' expected default behavior (unless suppressed by `{{nofactory}}`) of placing this text after the rest of the description. Typically, processing tools will generate text of  the form "The factory default value MUST be \<value>.". |\
+
+| Implementation default value | `{{impldef}}`\
+`{{noimpldef}}` | Text listing the implementation default for the current parameter.  This template SHOULD only be used within the description of a parameter that has an implementation default value.\
+This is a hint to processing tools to replace the template reference with text listing the implementation default value.  This overrides processing tools' expected default behavior (unless suppressed by `{{noimpldef}}`) of placing this text after the rest of the description. Typically, processing tools will generate text of  the form "The default value SHOULD be \<value>.". |\
+
+| Parameter default value | `{{paramdef}}`\
+`{{noparamdef}}` | Text listing the parameter default for the current argument.  This template SHOULD only be used within the description of an argument that has a parameter default value.\
+This is a hint to processing tools to replace the template reference with text listing the parameter default value.  This overrides processing tools' expected default behavior (unless suppressed by `{{noparamdef}}`) of placing this text after the rest of the description. Typically, processing tools will generate text of the form "The default value MUST be \<value>.". |\
 
 | Unique keys description | `{{keys}}`\
 `{{nokeys}}` | A description of the current object's unique keys.\
@@ -1780,7 +1674,7 @@ This includes examples of most of the markup and templates.
     :: level two again
     ::: level three
 
-    and hyperlinks such as http://www.google.com
+    and hyperlinks such as https://www.google.com
 
     and code examples:
      if (something) {
@@ -1908,11 +1802,6 @@ defined. For example:
     </parameter>
 ```
 
-If an anonymous data type is modified in a later version of a data
-model, the modified anonymous data type is regarded as being derived
-from the original anonymous data type. Therefore the base type
-restriction rules of @sec:base-type-restriction MUST be obeyed.
-
 #### Data Type Facets
 
 A facet specifies some aspect of a data type, e.g. its size, range or
@@ -1940,7 +1829,7 @@ Note that the size facet is also used to specify the size range for list-valued 
 | pattern          | Patterns for the data type (applies to string and its derived types). Pattern value syntax is the same as for XML Schema regular expressions. See [@XML-Schema-Datatypes, {Section F}]. |
 | units            | Units for the data type (applies to numeric data types and their derived types). |
 | default          | Object, factory, implementation or parameter default.\
-- Object defaults apply only to parameters that can be created as a result of an AddObject RPC.\
+- Object defaults apply only to parameters that can be created as a result of adding an Object.\
 - Factory defaults apply to all parameters (if a factory default is specified, it also acts as object default for applicable parameters).\
 - Implementation defaults apply to all parameters (they are informational defaults that are likely after a reset or if no other value is available).\
 - Parameter defaults apply only to command and event arguments. |
@@ -1988,8 +1877,8 @@ Name             Description
 normal           This is a hybrid scope which usually gives the desired behavior:\
                  - If the path begins with a "Device" component, it is relative to
                    the top of the naming hierarchy.\
-                 - If the path begins with a dot, it is relative to the Root or
-                   Service Object (c.f. scope=model).\
+                 - If the path begins with a dot, it is relative to the Mount Point
+                   (if mounted), or the Root or Service Object (otherwise).\
                  - Otherwise, the path is relative to the current object (c.f.
                    scope=object).
 
@@ -2007,19 +1896,29 @@ Formally, if the path name scope is normal:
 -   Otherwise, if the path begins with a "Device" component, it MUST be
     regarded as a full Path Name.
 
--   Otherwise, if the path begins with a dot ("."), it MUST be regarded
-    as a path relative to the Root or Service Object. For example, in
-    the Device Root Object ".DeviceInfo." means "Device.DeviceInfo.",
-    and in the Device.Services.ABCService.1 Service Object it means
-    "Device.Services.ABCService.1.DeviceInfo.".
+-   Otherwise, if the path begins with a dot ("."), it MUST be regarded as a
+    path relative to the Mount Point (if mounted) or to the
+    Root or Service Object (otherwise). For example:
+
+    - Device.LocalAgent.MTP.{i}.STOMP.Reference uses ".STOMP.Connection." to
+      reference the Device.STOMP.Connection. table, but if Device.LocalAgent
+      was mounted at Device.ProxiedDevice.{i}. then
+      Device.ProxiedDevice.{i}.LocalAgent.MTP.{i}.STOMP.Reference would
+      reference the Device.ProxiedDevice.{i}.STOMP.Connection. table.
+
+    - In the Device Root Object, ".DeviceInfo." means Device.DeviceInfo., but
+      in the Device.Services.ABCService.1 Service Object it means
+      Device.Services.ABCService.1.DeviceInfo..
 
 -   Otherwise, it MUST be regarded as a path relative to the current
     object. Any leading hash characters ("#") cause it to be relative
     to the parent of the current object (or the parent's parent, and so
-    on) as described below. For example, if the current object is
-    "Device.LAN.", "IPAddress" means "Device.LAN.IPAddress",
-    "Stats." means "Device.LAN.Stats." and "#.DeviceInfo." means
-    "Device.DeviceInfo" (see below for more "#" examples).
+    on) as described below. For example:
+
+    - If the current object is Device.LAN., "IPAddress" means
+      Device.LAN.IPAddress, "Stats." means Device.LAN.Stats. and
+      "#.DeviceInfo." means Device.DeviceInfo (see below for more "#"
+      examples).
 
 If the path name scope is model:
 
@@ -2564,7 +2463,7 @@ relevant (normative requirements are specified in the schema).
 | component         | The other components that are referenced (included) by this component. |
 | parameter         | The component's top-level parameter definitions (@sec:parameters). |
 | object            | The component's object definitions (@sec:objects). |
-| profile           | The component's profile definitions (@sec:profiles-1). |
+| profile           | The component's profile definitions (@sec:profile-elements). |
 
 Referencing (including) a component can be thought of as textual
 substitution. A component has no version number and is not tied to a
@@ -2603,7 +2502,19 @@ command and event definitions. Parameter, command, event, object and
 profile definitions within components are relative to the point of
 inclusion unless overridden using the path attribute.
 
-### Root and Service Objects
+::: note :::
+
+A given component might be used both within the main data model and within
+a command or event. Such a component might define a parameter that has some
+attributes (such as access) that are valid within the main data model but
+aren't permitted within command and event arguments. Where necessary,
+such invalid attributes will be ignored. Similarly object, factory and
+implementation defaults (@sec:data-type-facets) will be converted to parameter
+defaults when used with command and event arguments.
+
+:::
+
+### Root and Service Objects {#sec:model-elements}
 
 Root and Service Objects are defined using the model element and an
 associated top-level object element. A DM Instance can contain zero or
@@ -2618,12 +2529,13 @@ relevant (normative requirements are specified in the schema).
 |-------------------|-------------------------------------------------------------------------------------------------------------|
 | name              | The model name, including its major and minor version numbers. |
 | base              | The name of the previous version of the model (for use when the model version is greater than 1.0). |
+| version           | The data model version (of the form m.n or m.n.p) in which this model was first defined.  This MUST be specified when the corrigendum number (p) is greater than zero (@sec:versions). |
 | isService         | Whether it is a Service Object.  This defaults to False and so can be omitted for Root Objects. |
 | description       | The model's description (@sec:descriptions). |
 | component         | The components that are referenced (included) by the model (@sec:components). |
 | parameter         | The model's top-level parameter definitions (@sec:parameters). |
 | object            | The model's top-level and other object definitions (@sec:objects). |
-| profile           | The model's profile definitions (@sec:profiles-1). |
+| profile           | The model's profile definitions (@sec:profile-elements). |
 
 Once a given version has been defined, it cannot be modified; instead, a
 new version of the object has to be defined. For example, the following
@@ -2658,7 +2570,7 @@ requirements are specified in the schema).
 |-------------------|-------------------------------------------------------------------------------------------------------------|
 | name              | The parameter name (@sec:general-notation). |
 | access            | Whether the parameter is writable (readWrite), read-only (readOnly), or writable once then read-only (writeOnceReadOnly). |
-| version           | The data model version (of the form m.n or m.n.p) in which this parameter was first defined. |
+| version           | The data model version (of the form m.n or m.n.p) in which this parameter was first defined.  This MUST be present if, and only if, it's a later version than the parent object's version (@sec:versions). |
 | status            | The parameter's {current, deprecated, obsoleted, deleted} status.  This defaults to current, and so is not likely to be specified for a new parameter. |
 | activeNotify      | The parameter's {normal, forceEnabled, forceDefault, canDeny} Active Notification status.  This defaults to normal, and so is not often specified for a new parameter.\
 Note that in USP, forceEnabled and forceDefault are not applicable and thus are equivalent to normal. |
@@ -2677,8 +2589,11 @@ are specified in the schema).
 
 | Name              | Description                                                                                                 |
 |-------------------|-------------------------------------------------------------------------------------------------------------|
-| hidden            | Whether the value is hidden on readback.  This defaults to False, and so is not often specified for a new parameter. |
-| secured           | For USP only, whether the value is secured, i.e. is hidden on readback unless the Controller has a "secured" role (if both hidden and secured are True, secured takes precedence). This defaults to False. |
+| hidden            | Whether the value is hidden on readback.  This defaults to False, and so is not often specified for a new parameter.\
+Setting both hidden and secured to True is not permitted. |
+| secured           | For USP, whether the value is secured, i.e. is hidden on readback unless the Controller has a "secured" role. This defaults to False.\
+For CWMP, behaves the same as hidden (CWMP has no concept of a "secured" role).\
+Setting both hidden and secured to True is not permitted. |
 | command           | For CWMP only, whether setting the parameter triggers an Agent action as opposed to changing the configuration. This defaults to False.\
 Note that this is an CWMP-only attribute (not an element) and is   different from the USP-only command element (@sec:commands-usp-only). |
 | list\
@@ -2713,8 +2628,8 @@ commands.
 | Name              | Description                                                                                                 |
 |-------------------|-------------------------------------------------------------------------------------------------------------|
 | name              | The command name (@sec:general-notation). |
-| async             | Whether this command is asynchronous or not. This defaults to false. |
-| version           | The data model version (of the form m.n or m.n.p) in which this command was first defined. |
+| async             | Whether this command is asynchronous or not. |
+| version           | The data model version (of the form m.n or m.n.p) in which this command was first defined.  This MUST be present if, and only if, it's a later version than the parent object's version (@sec:versions). |
 | status            | The command's {current, deprecated, obsoleted, deleted} status.  This defaults to current, and so is not likely to be specified for a new command. |
 | description       | The command's description (@sec:descriptions). |
 | input             | The command's input arguments (can be omitted if there are none). |
@@ -2756,7 +2671,7 @@ to CWMP.
 | Name              | Description                                                                                                 |
 |-------------------|-------------------------------------------------------------------------------------------------------------|
 | name              | The event name (@sec:general-notation). |
-| version           | The data model version (of the form m.n or m.n.p) in which this event was first defined. |
+| version           | The data model version (of the form m.n or m.n.p) in which this event was first defined.  This MUST be present if, and only if, it's a later version than the parent object's version (@sec:versions). |
 | status            | The event's {current, deprecated, obsoleted, deleted} status.  This defaults to current, and so is not likely to be specified for a new event. |
 | description       | The event's description (@sec:descriptions). |
 | component         | The arguments defined by components that are referenced (included) by the event (@sec:components). |
@@ -2796,10 +2711,10 @@ specified in the schema).
 - **minEntries=1, maxEntries=1**: single-instance object that is always allowed to exist.\
 - **All other cases**: Multi-Instance Object (table) (@sec:tables). |
 | mountType         | For USP only, denotes whether this object is a Mountable Object, a Mount Point, or none. Possible values are:\
-- **mountable**: this object is a Mountable Object. Such an object appears only right under the Root Object.\
 - **mountPoint**: this object is a Mount Point.\
-- **none (default)**: this object is neither a Mountable Object nor a Mount Point. |
-| version           | The data model version (of the form m.n or m.n.p) in which this object was first defined. |
+- **mountable**: this object is a Mountable Object. Such an object has to be a direct child of the Root or Service Object (DEPRECATED in DM Schema v1.10 because Mountable Objects are now determined automatically).\
+**none**: this object is neither a Mountable Object nor a Mount Point (DEPRECATED in DM Schema v1.10, and no longer the default, because Mountable Objects are now determined automatically). |
+| version           | The data model version (of the form m.n or m.n.p) in which this object was first defined.  This MUST be specified, even if it's the same as the parent model or object's version (@sec:versions). |
 | status            | The object's {current, deprecated, obsoleted, deleted} status.  This defaults to current, and so is not likely to be specified for a new object. |
 | description       | The object's description (@sec:descriptions). |
 | component         | The components that are referenced (included) by the object (@sec:components). |
@@ -2851,7 +2766,7 @@ defined as a vendor-specific data model composite unique key, but that
 composite unique key definition MUST include at least one
 vendor-specific parameter.
 
-### Profiles
+### Profiles {#sec:profile-elements}
 
 Profiles are defined using the profile element, which can occur within
 component and model elements. When defining a new profile, the following
@@ -2865,7 +2780,7 @@ specified in the schema).
 | name              | The profile name, including its version number (@sec:profile-versions). |
 | base              | The name of the previous version of the profile (for use when the profile version is greater than 1). |
 | extends           | A list of the names of the profiles that this profile extends. |
-| version           | The data model version (of the form m.n or m.n.p) in which this profile was first defined. |
+| version           | The data model version (of the form m.n or m.n.p) in which this profile was first defined.  This MUST be specified, even if it's the same as the parent model's version (@sec:versions). |
 | minVersion        | A list of the model names that define the minimum versions for which this profile can be defined.  Note that it is only necessary to specify this if the profile is defined within a component element. |
 | description       | The profile's description (@sec:descriptions). |
 | parameter         | The profile's parameter requirements, which can include descriptions, references to the parameters in question, and the parameter access requirement. |
@@ -2880,6 +2795,11 @@ Note:
     list (at least) all its mandatory arguments.
 
 ### Modifications
+
+As experience is gained with a data model, it may be desirable to revise that
+model.  However, changes to published models are not allowed if they have any
+potential to cause interoperability problems between a Controller using an
+original specification and an Agent using an updated specification.
 
 New data types, components, models and profiles can be created based on
 existing items. This does not modify the existing item.
@@ -2907,14 +2827,14 @@ The following rules govern parameter modifications.
 | activeNotify      | Can be changed from forceEnabled to forceDefault.  No other changes are permitted. |
 | forcedInform      | Cannot be changed. |
 | description       | Can be prefixed, extended or replaced via use of the action attribute (@sec:description-modifications).  When changing the description, behavioral backwards compatibility MUST be preserved. |
-| syntax/hidden     | Cannot be changed. |
-| syntax/secured    | Cannot be changed. |
+| syntax/hidden     | Can be replaced with secured. |
+| syntax/secured    | Can replace hidden. |
 | syntax/command    | Cannot be changed. |
 | syntax/list       | Can add or modify the list element in the following ways:\
 - Can convert a non-list string parameter to a list provided that an empty string was already a valid value with the appropriate meaning.\
 - Can adjust limits on numbers of items, and on the list size, provided that the new rules do not permit any values that were not valid for the previous version of the parameter. |
 | syntax/int etc.\
-syntax/dataType     | Can make any change that follows the base type restriction rules of @sec:base-type-restriction, e.g. can add enumerations. |
+syntax/dataType     | Can make any change that expands the value space, e.g. can extend ranges or add enumerations. |
 | syntax/default    | A default can be added if the parameter did not already have one. |
 
 Most of the above requirements are non-normative, because it has to be
@@ -3027,14 +2947,179 @@ description elements.
 In the case of **prefix** and **append**, processing tools SHOULD insert
 a line break between the existing description and the new text.
 
+### Versions
+
+::: note :::
+
+This section assumes use of DM Schema v1.10 or a later version. DM Schema v1.10 tightened various rules governing attribute usage, and relaxed others.
+
+:::
+
+@sec:data-model-versions explains how Root and Service Object versions are specified, and @sec:profile-versions explains how Profile versions are specified. In brief:
+
+* Root and Service Object versions are specified via the model element's name attribute (@sec:model-elements)
+* Profile versions are specified via the profile element's name attribute (@sec:profile-elements)
+
+For example, this defines version 2.0 of the Device Root Object and version 1 of its Baseline profile.
+
+```
+<model name="Device:2.0">
+  <object name="Device.">
+    ...
+  </object>
+  <profile name="Baseline:1">
+    ...
+  </profile>
+</model>
+```
+
+The version attribute specifies the data model version (of the form m.n or m.n.p) in which a given item was first defined. It is mandatory in the following cases:
+
+* On model definitions when the corrigendum number (p) is greater than zero (because the model element's name attribute can't indicate an m.n.p version)
+* On all object and profile definitions (this is checked by schema validation)
+* On all other item definitions (parameters, enumerations, patterns, commands, events, arguments) that were defined in a later version than their parent
+
+The version attribute is sometimes needed in the following case:
+
+* On a component reference, in which case it's a "clamp version", which means that any component item versions less than the clamp version are set to the clamp version
+
+The version attribute is forbidden in the following cases:
+
+* On item definitions (other than objects and profiles) that were defined in the same version as their parent
+* When using the base attribute to modify an existing definition (this is checked by schema validation)
+
+These rules mean that the earlier example was in fact invalid due to missing object and profile version attributes. This extended example fixes the problems.
+
+```
+<model name="Device:2.1">
+  <object name="Device." version="2.0">
+    ...
+    <command name="Reboot()" version="2.1">
+      ...
+    </command>
+    <event name="Boot!">
+      ...
+    </event>
+  </object>
+  <profile name="Baseline:1" version="2.0">
+    ...
+  </profile>
+  <profile name="Baseline:2" base="Baseline:1" version="2.1">
+    ...
+  </profile>
+</model>
+```
+
 ## DM Schema
 
 The normative version of the DM Schema can be found at
-<http://www.broadband-forum.org/cwmp/cwmp-datamodel-1-6.xsd>. Please be
+<https://www.broadband-forum.org/cwmp-datamodel-schema>. Please be
 aware that a new version of the DM Schema might be published at any
 time, in which case the version referenced in this document would become
 out of date. Any conflict MUST be resolved in favor of the normative
 version on the web site.
+
+## DMR Schema
+
+The DMR Schema is a non-normative XML Schema that can be used to give hints to
+processing tools that generate reports from DM Instances.
+
+The DMR Schema can be found at <https://www.broadband-forum.org/cwmp-datamodel-report-schema>.
+It's usually used as follows, with a `dmr` ("Data Model Report") prefix.
+
+```
+<dm:document
+    xmlns:dmr="urn:broadband-forum-org:cwmp:datamodel-report-1-0"
+    xsi:schemaLocation="
+      urn:broadband-forum-org:cwmp:datamodel-report-1-0
+      https://www.broadband-forum.org/cwmp/cwmp-datamodel-report-1-0.xsd">
+```
+
+Most DMR attributes are booleans, for which a true value enables some special
+behavior.
+
+::: {.list-table widths=1,1,8} :::
+
+DMR Schema Usage {#tbl:dmr-schema-usage}
+
+* - Attribute
+  - Data Type
+  - Description
+
+* - Schema version
+  - string (m.n)
+  - Indicates how paragraphs are wrapped:
+    * \< 1.0 : Each line is a paragraph; paragraphs do not need to separated by
+      blank lines
+    * \>= 1.0 : Like markdown; paragraphs can be multiple lines and are
+      separated by blank lines
+
+* - dmr:customNumEntriesParameter
+  - boolean
+  - Indicates that a parameter name deliberately violates numEntriesParameter
+    naming rules
+
+* - dmr:fixedObject
+  - boolean
+  - Indicates that an object is fixed, so shouldn't (for example) warn about
+    any writable parameters that it might contain
+
+* - dmr:hideDeleted
+  - boolean
+  - Indicates that, if an item has been deleted, it should always be hidden in
+    the report, e.g. not even shown in strikeout
+
+* - dmr:noDiscriminatorParameter
+  - boolean
+  - Indicates that a union object has no discriminator parameter, so shouldn't
+    issue a warning
+
+* - dmr:noUnionObject
+  - boolean
+  - Indicates that a discriminator parameter enum value doesn't correspond to a
+    union object, so shouldn't issue a warning
+
+* - dmr:noUniqueKeys
+  - boolean
+  - Indicates that an object has no unique keys, so shouldn't (for example)
+    warn about the lack of unique keys
+
+* - dmr:noUnitsTemplate
+  - boolean
+  - Indicates that a parameter description doesn't contain a {{units}}
+    template, so shouldn't warn about its absence
+
+* - dmr:previousParameter
+  - string
+  - Previous parameter location hint
+    * This can be used when adding a parameter (or command or event) to an
+      existing object
+    * It specifies the name of the existing parameter (or command or event)
+        that should ideally precede the new one in the report
+    * Use an empty to string to request insertion at the beginning
+
+* - dmr:previousObject
+  - string
+  - Previous object location hint
+    * This can be used when adding an object
+    * It specifies the name of the existing object that should ideally
+      precede the new one in the report
+    * Use an empty to string to request insertion at the beginning
+
+* - dmr:previousProfile
+  - string
+  - Previous profile location hint
+    * This can be used when adding a profile
+    * It specifies the name of the existing profile that should ideally precede
+      the new one in the report
+    * Use an empty to string to request insertion at the beginning
+
+* - dmr:version
+  - string (m.n)
+  - Do not use this!
+    * Use the version attribute instead
+
+:::
 
 # CWMP Device Type XML Schema {.annex1}
 
@@ -3154,7 +3239,7 @@ compatibility, standard feature names, once added, MUST NOT ever be
 deleted.
 
 The normative version of the DT Features Schema can be found at
-<http://www.broadband-forum.org/cwmp/cwmp-devicetype-features.xsd>.
+<https://www.broadband-forum.org/cwmp-devicetype-features-schema>.
 Please be aware that a new version of the DT Features Schema might be
 published at any time, in which case the version referenced in this
 document would become out of date. Any conflict MUST be resolved in
@@ -3163,7 +3248,7 @@ favor of the normative version on the web site.
 ## DT Schema
 
 The normative version of the DT Schema can be found at
-<http://www.broadband-forum.org/cwmp/cwmp-devicetype-1-3.xsd>. Please be
+<https://www.broadband-forum.org/cwmp-devicetype-schema>. Please be
 aware that a new version of the DT Schema might be published at any
 time, in which case the version referenced in this document would become
 out of date. Any conflict MUST be resolved in favor of the normative
@@ -3219,27 +3304,23 @@ or profile) and MUST NOT contain hyphens or non-initial underscores.
 
 ### DM and DMR Schema Versions
 
-The file SHOULD use the most recent approved versions of the DM and DMR
-Schemas.
-
-*Note -- the DMR Schema is a non-normative XML Schema that can be used
-to give hints to processing tools that generate reports from DM
-Instances.*
+The file SHOULD use the most recent approved versions of the DM
+Schema (@sec:dm-schema) and the DMR Schema (@sec:dmr-schema).
 
 ### SchemaLocation Attribute
 
 The top-level `xsi:schemaLocation` attribute defines the location of all of the
 referenced BBF-published XML Schemas. All URLs MUST be absolute ones that
 reference the published XML Schema on the
-[BBF web site](https://cwmp-data-models.broadband-forum.org).
+[BBF web site](https://www.broadband-forum.org/cwmp).
 
 Example:
 
 ```
     xsi:schemaLocation="urn:broadband-forum-org:cwmp:datamodel-1-5
-                          http://www.broadband-forum.org/cwmp/cwmp-datamodel-1-5.xsd
+                          https://www.broadband-forum.org/cwmp/cwmp-datamodel-1-5.xsd
                         urn:broadband-forum-org:cwmp:datamodel-report-0-1
-                          http://www.broadband-forum.org/cwmp/cwmp-datamodel-report.xsd"
+                          https://www.broadband-forum.org/cwmp/cwmp-datamodel-report.xsd"
 ```
 
 ### Spec Attribute

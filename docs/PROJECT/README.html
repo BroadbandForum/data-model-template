@@ -1,0 +1,50 @@
+<!-- do not edit! this file was created from PROJECT.yaml by project-parser.py -->
+<h1
+id="tr-106-data-model-template-for-cwmp-endpoints-and-usp-agents">TR-106:
+Data Model Template for CWMP Endpoints and USP Agents</h1>
+<p><em>How to use the data model schema to understand and develop
+CWMP/USP data models</em></p>
+<p>See <a href="https://data-model-template.broadband-forum.org"
+class="uri">https://data-model-template.broadband-forum.org</a> for the
+current TR-106 specification.</p>
+<p>TR-106 specifies data model guidelines to be followed by all <a
+href="https://www.broadband-forum.org/technical/download/TR-069.pdf">CWMP</a>
+(TR-069) Endpoints and <a href="https://usp.technology">USP</a> (TR-369)
+Agents. These guidelines include:</p>
+<ul>
+<li>Structural requirements for the data hierarchy</li>
+<li>Requirements for versioning of data models</li>
+<li>Requirements for defining profiles</li>
+</ul>
+<p>As part of this data modeling framework, TR-106 defines two XML
+Schemas:</p>
+<ul>
+<li><p>The <em>Data Modeling (DM) Schema</em>, which is used for
+defining all CWMP and USP data models. This makes data model definitions
+rigorous, and helps to reduce the danger that different implementations
+will interpret data model definitions in different ways.</p></li>
+<li><p>The <em>Device Type (DT) Schema</em>, that allows a device to
+describe its supported CWMP data models. This description is both
+specific and detailed, allowing a Controller to know exactly what is
+supported by the device, including any vendor-specific objects and
+parameters. USP uses a different mechanism (GetSupportedDM message) for
+the same purpose; this mechanism is specified in <a
+href="https://usp.technology">TR-369</a>.</p></li>
+</ul>
+<p>The TR-106 GitHub repository contains <a
+href="https://github.com/BroadbandForum/data-model-template/tree/master/schemas">the
+above schemas</a>, <a
+href="https://github.com/BroadbandForum/data-model-template/tree/master/support">support
+files</a> (e.g., common bibliographic references and data types), and
+the <a
+href="https://github.com/BroadbandForum/data-model-template/tree/master/specification">TR-106
+specification source</a>. The rendered GitHub Pages documentation can be
+found at <a href="https://data-model-template.broadband-forum.org"
+class="uri">https://data-model-template.broadband-forum.org</a>.</p>
+<p>The TR-106 schemas and support files are also available at the <a
+href="https://cwmp-data-models.broadband-forum.org">CWMP data models</a>
+and <a href="https://usp-data-models.broadband-forum.org">USP data
+models</a> sites. These sites present integrated views of the CWMP and
+USP versions of the standard data models, and provide a convenient way
+of viewing current and past versions of the schemas and support files in
+context.</p>

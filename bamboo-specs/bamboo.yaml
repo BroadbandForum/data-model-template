@@ -3,94 +3,12 @@ version: 2
 
 plan:
   project-key: BUSDM
-  name: WT-106 develop
-  key: DMSUPPDEV
-
-branches:
-  # XXX always create new branch
-  #create:
-  #  for-new-branch: \w+/\w+/(\D|\d[^.]).*
-  create: for-new-branch
-  delete:
-    after-deleted-days: 7
-    after-inactive-days: 180
-  link-to-jira: true
-
-stages:
-  - Default Stage:
-      jobs:
-        - Default Job
-
-Default Job:
-  docker:
-    broadbandforum/report-pl:develop
-
-  tasks:
-    - checkout:
-        repository: wt-106-develop
-        path: WT-106
-    - checkout:
-        repository: install-develop
-        path: install
-    - script: |
-        make --directory=WT-106 SUBDIRSEXCLUDE=specification test.report-pl
-        make --directory=WT-106 test.pandoc PANDOCPDFENGINEDELAY=5000
-        pdf=$(install/bin/bamboo-pdf-name.sh -p WT-106)
-        /bin/rm -f WT-106/docs/WT-106-*.pdf
-        /bin/cp -pf WT-106/docs/index.pdf WT-106/docs/$pdf
-    - test-parser:
-        type: junit
-        test-results:
-          - WT-106/docs/*-tests.xml
-
-  artifacts:
-    - name: all
-      location: WT-106
-      pattern: '**'
-      required: true
-      shared: true
-    - name: data-model-template
-      location: WT-106/docs
-      pattern: '**'
-      required: false
-      shared: false
-    - name: HTML
-      location: WT-106
-      pattern: '**/*.html'
-      required: false
-      shared: false
-    - name: PDF
-      location: WT-106/docs
-      pattern: 'WT-106-*.pdf'
-      required: false
-      shared: false
-    - name: XML
-      location: WT-106
-      pattern: '**/*.xml'
-      required: false
-      shared: false
-    - name: XSD
-      location: WT-106
-      pattern: '**/*.xsd'
-      required: false
-      shared: false
-
-# XXX ignore the DMSUPPREL plan (I'm not sure that this is working)
-...
-
----
-version: 2
-
-plan:
-  project-key: BUSDM
-  name: WT-106 release 1.11
+  name: WT-106 release 1.12
   key: DMSUPPREL
 
 branches:
-  # XXX I'm not sure that the disable is working, so suppress branch creation
-  #create:
-  #  for-new-branch: \w+/\w+/\d\..*
-  create: manually
+  create:
+    for-new-branch: \w+/\w+/\d\..*
   delete:
     after-deleted-days: 7
     after-inactive-days: 180
@@ -103,13 +21,12 @@ stages:
 
 Default Job:
   docker:
-    # XXX should be latest but temporarily use develop because we need
-    #     the latest pandoc version
     broadbandforum/report-pl:develop
 
   tasks:
+    - clean
     - checkout:
-        repository: wt-106-release-1-11
+        repository: wt-106-release-1-12
         path: WT-106
     - checkout:
         repository: install-develop
@@ -131,28 +48,33 @@ Default Job:
       pattern: '**'
       required: true
       shared: true
+
+    - name: PROJECT
+      location: WT-106/docs/PROJECT
+      pattern: '**'
+      required: false
+      shared: false
+
     - name: data-model-template
       location: WT-106/docs
       pattern: '**'
       required: false
       shared: false
+
     - name: HTML
-      location: WT-106
-      pattern: '**/*.html'
+      location: WT-106/support/docs
+      pattern: '*.html'
       required: false
       shared: false
+
+    - name: DOCX
+      location: WT-106/docs
+      pattern: '*.docx'
+      required: false
+      shared: false
+
     - name: PDF
       location: WT-106/docs
       pattern: 'WT-106-*.pdf'
-      required: false
-      shared: false
-    - name: XML
-      location: WT-106
-      pattern: '**/*.xml'
-      required: false
-      shared: false
-    - name: XSD
-      location: WT-106
-      pattern: '**/*.xsd'
       required: false
       shared: false

@@ -1,0 +1,71 @@
+# do not edit! this file was created from PROJECT.yaml by project-parser.py
+
+# BBF-specific metadata; cf. Word properties
+bbfNumber: TR-106
+bbfTitle: Data Model Template for CWMP Endpoints and USP Agents
+bbfIssue: Issue
+bbfVersion: 1 Amendment 12
+bbfMonth: June
+bbfYear: 2023
+bbfType: Technical Report
+bbfStatus: ''
+bbfContrib: ''
+bbfMajor: 1
+bbfMinor: 12
+bbfPatch: 0
+bbfDraft: ''
+bbfBuild: ''
+
+# other top-level variables
+notice: tr
+reponame: data-model-template
+"tagline": |-
+  How to use the data model schema to understand and develop CWMP/USP
+  data models
+"summary": |
+  See <https://data-model-template.broadband-forum.org> for the
+  current TR-106 specification.
+"description": |
+  TR-106 specifies data model guidelines to be followed by all [CWMP] (TR-069)
+  Endpoints and [USP] (TR-369) Agents. These guidelines include:
+
+  * Structural requirements for the data hierarchy
+  * Requirements for versioning of data models
+  * Requirements for defining profiles
+
+  As part of this data modeling framework, TR-106 defines two XML Schemas:
+
+  * The *Data Modeling (DM) Schema*, which is used for defining all CWMP and
+    USP data models. This makes data model definitions rigorous, and helps to
+    reduce the danger that different implementations will interpret data
+    model definitions in different ways.
+
+  * The *Device Type (DT) Schema*, that allows a device to describe its
+    supported CWMP data models. This description is both specific and
+    detailed, allowing a Controller to know exactly what is supported by the
+    device, including any vendor-specific objects and parameters. USP uses a
+    different mechanism (GetSupportedDM message) for the same purpose; this
+    mechanism is specified in [TR-369][USP].
+
+  The TR-106 GitHub repository contains [the above schemas][schemas],
+  [support files][support] (e.g., common bibliographic references and
+  data types), and the [TR-106 specification source][specification].
+  The rendered GitHub Pages documentation can be found at
+  <https://data-model-template.broadband-forum.org>.
+
+  The TR-106 schemas and support files are also available at the
+  [CWMP data models] and [USP data models] sites. These sites present
+  integrated views of the CWMP and USP versions of the standard data
+  models, and provide a convenient way of viewing current and past
+  versions of the schemas and support files in context.
+
+  [BBF]: https://www.broadband-forum.org
+  [CWMP]: https://www.broadband-forum.org/technical/download/TR-069.pdf
+  [CWMP data models]: https://cwmp-data-models.broadband-forum.org
+  [USP]: https://usp.technology
+  [USP data models]: https://usp-data-models.broadband-forum.org
+  [schemas]: https://github.com/BroadbandForum/data-model-template/tree/master/schemas
+  [support]: https://github.com/BroadbandForum/data-model-template/tree/master/support
+  [specification]: https://github.com/BroadbandForum/data-model-template/tree/master/specification
+bbfWorkArea: Broadband User Services
+bbfProjectStream: ''
