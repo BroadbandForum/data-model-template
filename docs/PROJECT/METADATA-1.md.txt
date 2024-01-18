@@ -1,8 +1,11 @@
 <!-- do not edit! this file was created from PROJECT.yaml by project-parser.py -->
 
-### Issue History {.unnumbered .unlisted .new-page}
+::: {.new-page}
+:::
 
-::: {.list-table .bbf-revision-history aligns=l,l,l,l widths=14,14,14,65}
+### Issue History {.unnumbered .unlisted}
+
+::: {.list-table .issue-history aligns=l,l,l,l widths=14,14,14,65}
 
 * - Issue Number
   - Approval Date
@@ -69,7 +72,7 @@
     * Added Annex defining additional requirements for BBF standard data
       models
 
-* - Amendment 7
+* - Amendment 7+
   - September 2014
   -
   - * Support file updates; document not updated
@@ -125,6 +128,11 @@
       contracted
     * Added a new section on the DMR (Data Model Report) Schema
 
+* - [Amendment 13][TR-106 Amendment 13]
+  - January 2024
+  -
+  - * Clarified the requirements regarding vendor-specific prefixes
+
 :::
 
 ### %bbfWorkArea% Work Area Directors {.unnumbered .unlisted}
@@ -135,12 +143,13 @@
 ### %bbfProjectStream% Project Stream Leaders {.unnumbered .unlisted}
 
 * Daniel Egger, Axiros
-* William Lupton, Broadband Forum
+* Matthieu Anne, Orange
 
 [TR-106 Amendment 1]: https://www.broadband-forum.org/download/TR-106_Amendment-1.pdf
 [TR-106 Amendment 10]: https://www.broadband-forum.org/download/TR-106_Amendment-10.pdf
 [TR-106 Amendment 11]: https://www.broadband-forum.org/download/TR-106_Amendment-11.pdf
 [TR-106 Amendment 12]: https://www.broadband-forum.org/download/TR-106_Amendment-12.pdf
+[TR-106 Amendment 13]: https://www.broadband-forum.org/download/TR-106_Amendment-13.pdf
 [TR-106 Amendment 2]: https://www.broadband-forum.org/download/TR-106_Amendment-2.pdf
 [TR-106 Amendment 3]: https://www.broadband-forum.org/download/TR-106_Amendment-3.pdf
 [TR-106 Amendment 4]: https://www.broadband-forum.org/download/TR-106_Amendment-4.pdf

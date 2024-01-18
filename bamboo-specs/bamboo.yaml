@@ -3,7 +3,7 @@ version: 2
 
 plan:
   project-key: BUSDM
-  name: WT-106 release 1.12
+  name: WT-106 release 1.13
   key: DMSUPPREL
 
 branches:
@@ -26,17 +26,14 @@ Default Job:
   tasks:
     - clean
     - checkout:
-        repository: wt-106-release-1-12
+        repository: wt-106-release-1-13
         path: WT-106
     - checkout:
         repository: install-develop
         path: install
     - script: |
         make --directory=WT-106 SUBDIRSEXCLUDE=specification test.report-pl
-        make --directory=WT-106 test.pandoc PANDOCPDFENGINEDELAY=5000
-        pdf=$(install/bin/bamboo-pdf-name.sh -p WT-106)
-        /bin/rm -f WT-106/docs/WT-106-*.pdf
-        /bin/cp -pf WT-106/docs/index.pdf WT-106/docs/$pdf
+        make --directory=WT-106 test.pandoc
     - test-parser:
         type: junit
         test-results:

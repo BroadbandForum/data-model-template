@@ -112,6 +112,22 @@ resources:
 # this is a dictionary, typically keyed by vi.a.c revisions
 # XXX need to ensure that we cover the YANG multi-tag case
 versions:
+  v1.13.0:
+    date: 2024-01-18
+    changes:
+      specification:
+        text: |
+          * Clarified the requirements regarding vendor-specific prefixes
+      dm-types:
+        resname: tr-106-types.xml
+        text: |
+          * Added an *Alias* component to reduce cut-and-paste in the data models
+          * Added an *Order* type to reduce cut-and-paste in the data models
+      dm-bibrefs:
+        resname: tr-069-biblio.xml
+        text: |
+          * Added more bibrefs
+
   v1.12.0:
     date: 2023-06-14
     editors:
@@ -491,4 +507,4 @@ WADs:
 PS:
 PSLs:
   - Daniel Egger, Axiros
-  - William Lupton, Broadband Forum
+  - Matthieu Anne, Orange

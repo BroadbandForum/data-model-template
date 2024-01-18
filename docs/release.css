@@ -1,2 +1,2 @@
 /* values defined in this file can be updated when building or deploying */
-span.release::before { content: "(1.12.0-5)"; }
+span.release::before { content: "(WT-106 release 1.13-180)"; }

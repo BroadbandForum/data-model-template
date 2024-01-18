@@ -941,7 +941,7 @@ The name of a vendor-specific parameter, object, command, or event that is not c
 
 > X\_<VENDOR\>\_VendorSpecificName
 
-In this definition <VENDOR\> is a unique vendor identifier, which MAY
+In this definition <VENDOR\> is a unique vendor identifier, which MUST
 be either an OUI or a domain name. The OUI or domain name used for a
 given vendor-specific parameter MUST be one that is assigned to the
 organization that defined this parameter (which is not necessarily the
@@ -949,7 +949,7 @@ same as the vendor of the Agent). An OUI is an organizationally unique
 identifier as defined in [@OUI], which MUST be formatted as a
 six-hexadecimal-digit string using all upper-case letters and including
 any leading zeros. A domain name MUST be upper case with each dot (".")
-replaced with a hyphen or underscore.
+replaced with a hyphen.
 
 The VendorSpecificName MUST NOT contain a "." (period) or a space
 character.

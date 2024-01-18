@@ -5,6 +5,20 @@
 See <https://data-model-template.broadband-forum.org> for the
 current TR-106 specification.
 
+## 2024-01-18: [TR-106 Amendment 13]
+
+*Tag: [v1.13.0]*
+
+### TR-106 Document
+* Clarified the requirements regarding vendor-specific prefixes
+
+### Data Model Data Types
+* Added an *Alias* component to reduce cut-and-paste in the data models
+* Added an *Order* type to reduce cut-and-paste in the data models
+
+### Data Model Bibliographic References
+* Added more bibrefs
+
 ## 2023-06-14: [TR-106 Amendment 12]
 
 *Tag: [v1.12.0]*
@@ -142,7 +156,7 @@ current TR-106 specification.
 ### [XML Catalog](https://en.wikipedia.org/wiki/XML_catalog)
 * Original
 
-## 2014-09-17: TR-106 Amendment 7
+## 2014-09-17: TR-106 Amendment 7+
 
 *Tag: [v1.7.0+]*
 
@@ -270,6 +284,7 @@ current TR-106 specification.
 [TR-106 Amendment 10]: https://www.broadband-forum.org/download/TR-106_Amendment-10.pdf
 [TR-106 Amendment 11]: https://www.broadband-forum.org/download/TR-106_Amendment-11.pdf
 [TR-106 Amendment 12]: https://www.broadband-forum.org/download/TR-106_Amendment-12.pdf
+[TR-106 Amendment 13]: https://www.broadband-forum.org/download/TR-106_Amendment-13.pdf
 [TR-106 Amendment 2]: https://www.broadband-forum.org/download/TR-106_Amendment-2.pdf
 [TR-106 Amendment 3]: https://www.broadband-forum.org/download/TR-106_Amendment-3.pdf
 [TR-106 Amendment 4]: https://www.broadband-forum.org/download/TR-106_Amendment-4.pdf
@@ -290,3 +305,4 @@ current TR-106 specification.
 [v1.10.0]: https://github.com/BroadbandForum/data-model-template/releases/tag/v1.10.0
 [v1.11.0]: https://github.com/BroadbandForum/data-model-template/releases/tag/v1.11.0
 [v1.12.0]: https://github.com/BroadbandForum/data-model-template/releases/tag/v1.12.0
+[v1.13.0]: https://github.com/BroadbandForum/data-model-template/releases/tag/v1.13.0

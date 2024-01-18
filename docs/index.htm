@@ -14,8 +14,11 @@ understand and develop CWMP/USP data models" />
     div.columns{display: flex; gap: min(4vw, 1.5em);}
     div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
     ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
       width: 0.8em;
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
@@ -97,6 +100,7 @@ understand and develop CWMP/USP data models" />
   <!-- Automatic hover links styles -->
   <style>
   :root {
+      --hoverlink-gap: 0.2em;
       --hoverlink-size: 0.9em;
   }
 
@@ -104,13 +108,11 @@ understand and develop CWMP/USP data models" />
       text-decoration: none;
   }
 
-  .hoverlink::before {
-      content: " ";
-  }
-
   .hoverlink::after {
+      position: absolute;
       display: inline-block;
       content: "";
+      margin-left: var(--hoverlink-gap);
       width: var(--hoverlink-size);
       height: var(--hoverlink-size);
       background-size: var(--hoverlink-size) var(--hoverlink-size);
@@ -128,9 +130,9 @@ understand and develop CWMP/USP data models" />
 <header id="title-block-header">
 <h1 class="title auto-hoverlink" id="title">TR-106 – Data Model Template
 for CWMP Endpoints and USP Agents</h1>
-<p class="subtitle">Issue: 1 Amendment 12 <span
-class="release"></span></p>
-<p class="date">Issue Date: June 2023</p>
+<p class="subtitle">Issue: 1 Amendment 13 <span id="section"
+class="release auto-hoverlink"></span></p>
+<p class="date">Issue Date: January 2024</p>
 </header>
 <nav id="SIDEBAR" role="doc-toc">
 <ul>
@@ -468,9 +470,12 @@ ALL SUCH ASSERTIONS THAT HAVE OR MAY BE MADE ARE SO LISTED.</p>
 include the notices, legends, and other provisions set forth on this
 page.</p>
 <!-- do not edit! this file was created from PROJECT.yaml by project-parser.py -->
-<h3 class="unnumbered unlisted new-page auto-hoverlink"
-data-info="header" id="sec:issue-history">Issue History</h3>
-<table class="bbf-revision-history" style="width:100%;">
+<div class="new-page">
+
+</div>
+<h3 class="unnumbered unlisted auto-hoverlink" data-info="header"
+id="sec:issue-history">Issue History</h3>
+<table class="issue-history" style="width:100%;">
 <colgroup>
 <col style="width: 13%" />
 <col style="width: 13%" />
@@ -603,7 +608,7 @@ models</li>
 </ul></td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Amendment 7</td>
+<td style="text-align: left;">Amendment 7+</td>
 <td style="text-align: left;">September 2014</td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><ul>
@@ -692,6 +697,16 @@ contracted</li>
 <li>Added a new section on the DMR (Data Model Report) Schema</li>
 </ul></td>
 </tr>
+<tr class="odd">
+<td style="text-align: left;"><a
+href="https://www.broadband-forum.org/download/TR-106_Amendment-13.pdf">Amendment
+13</a></td>
+<td style="text-align: left;">January 2024</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><ul>
+<li>Clarified the requirements regarding vendor-specific prefixes</li>
+</ul></td>
+</tr>
 </tbody>
 </table>
 <h3 class="unnumbered unlisted auto-hoverlink" data-info="header"
@@ -706,7 +721,7 @@ id="sec:bbfprojectstream-project-stream-leaders"> Project Stream
 Leaders</h3>
 <ul>
 <li>Daniel Egger, Axiros</li>
-<li>William Lupton, Broadband Forum</li>
+<li>Matthieu Anne, Orange</li>
 </ul>
 <h1 class="unnumbered new-page auto-hoverlink" data-info="header"
 id="sec:executive-summary">Executive Summary</h1>
@@ -765,7 +780,7 @@ Device:2.12. TR-157 is therefore also DEPRECATED.</p>
 Introduction</h1>
 <p><strong>CWMP</strong></p>
 <p>TR-069 <span class="citation" data-cites="TR-069"><a
-href="#ref-TR-069" role="doc-biblioref">[7]</a></span> defines the
+href="#ref-TR-069" role="doc-biblioref">[1]</a></span> defines the
 generic requirements of the CPE WAN Management Protocol (CWMP) methods
 which can be applied to any CWMP Endpoint. It is intended to support a
 variety of different functionalities to manage a collection of CPE,
@@ -788,8 +803,7 @@ id="img:cwmp-positioning-in-the-end-to-end-architecture"
 alt="CWMP Positioning in the End-to-End Architecture" />
 <figcaption><div class="auto-hoverlink"
 data-anchor="fig:cwmp-positioning">
-Figure 1:
-CWMP Positioning in the End-to-End Architecture
+Figure 1: CWMP Positioning in the End-to-End Architecture
 </div></figcaption>
 </figure>
 <p>The ACS is a server that resides in the network and manages devices
@@ -821,8 +835,7 @@ network of smart applications, such as an automated smart home.</p>
 alt="USP Architecture Overview" />
 <figcaption><div class="auto-hoverlink"
 data-anchor="fig:usp-architecture">
-Figure 2:
-USP Architecture Overview
+Figure 2: USP Architecture Overview
 </div></figcaption>
 </figure>
 <p>USP was designed in a modular manner, and can make use of the CWMP
@@ -834,9 +847,9 @@ model schema in both the context of CWMP and USP.</p>
 <p><a href="#fig:spec-structure" class="figure">Figure 3</a> shows the
 overall specification structure for the CWMP <span class="citation"
 data-cites="TR-069"><a href="#ref-TR-069"
-role="doc-biblioref">[7]</a></span> and USP <span class="citation"
+role="doc-biblioref">[1]</a></span> and USP <span class="citation"
 data-cites="TR-369"><a href="#ref-TR-369"
-role="doc-biblioref">[11]</a></span> family of standards (as currently
+role="doc-biblioref">[13]</a></span> family of standards (as currently
 defined). Please note that this will gradually become out of date as new
 documents are published.</p>
 <figure id="fig:spec-structure">
@@ -844,15 +857,14 @@ documents are published.</p>
 alt="Specification Structure" />
 <figcaption><div class="auto-hoverlink"
 data-anchor="fig:spec-structure">
-Figure 3:
-Specification Structure
+Figure 3: Specification Structure
 </div></figcaption>
 </figure>
 <p>TR-069 <span class="citation" data-cites="TR-069"><a
-href="#ref-TR-069" role="doc-biblioref">[7]</a></span> defines the
+href="#ref-TR-069" role="doc-biblioref">[1]</a></span> defines the
 generic requirements of the CWMP methods which can be applied to any
 CWMP Endpoint. TR-369 <span class="citation" data-cites="TR-369"><a
-href="#ref-TR-369" role="doc-biblioref">[11]</a></span> does the same
+href="#ref-TR-369" role="doc-biblioref">[13]</a></span> does the same
 for USP Agents. TR-106 (this document) specifies a baseline object
 structure to be supported by any CWMP Endpoint or USP Agent (referred to
 generically as an <em>Agent</em>). It specifies how to structure and
@@ -863,7 +875,7 @@ defined in their own specifications.</p>
 <p>For a particular type of device, it is expected that the baseline
 defined in a document such as TR-181i2 <span class="citation"
 data-cites="TR-181i2"><a href="#ref-TR-181i2"
-role="doc-biblioref">[10]</a></span> would be augmented with additional
+role="doc-biblioref">[4]</a></span> would be augmented with additional
 objects and parameters specific to the device type. The data model used
 in any Agent MUST follow the guidelines described in this document.
 These guidelines include the following aspects:</p>
@@ -888,7 +900,7 @@ with an ACS.</p>
 <p>Please note that USP uses a different mechanism (GetSupportedDM
 message) for the same purpose. It is specified in TR-369 <span
 class="citation" data-cites="TR-369"><a href="#ref-TR-369"
-role="doc-biblioref">[11]</a></span>.</p></li>
+role="doc-biblioref">[13]</a></span>.</p></li>
 </ul>
 <h2 class="auto-hoverlink" data-info="header" id="sec:terminology">1.1
 Terminology</h2>
@@ -926,9 +938,9 @@ that have code support in the current firmware.</td>
 <td><strong>CPE</strong></td>
 <td>Customer Premises Equipment; refers (as appropriate) to any
 <em>CWMP</em>-enabled <span class="citation" data-cites="TR-069"><a
-href="#ref-TR-069" role="doc-biblioref">[7]</a></span> or
+href="#ref-TR-069" role="doc-biblioref">[1]</a></span> or
 <em>USP</em>-enabled <span class="citation" data-cites="TR-369"><a
-href="#ref-TR-369" role="doc-biblioref">[11]</a></span> device and
+href="#ref-TR-369" role="doc-biblioref">[13]</a></span> device and
 therefore covers both Internet Gateway devices and LAN-side end
 devices.</td>
 </tr>
@@ -964,7 +976,7 @@ code support in the <em>CPE</em>.</td>
 <td><strong>CWMP</strong></td>
 <td><em>CPE</em> WAN Management Protocol. Defined in TR-069 <span
 class="citation" data-cites="TR-069"><a href="#ref-TR-069"
-role="doc-biblioref">[7]</a></span>, CWMP is a communication protocol
+role="doc-biblioref">[1]</a></span>, CWMP is a communication protocol
 between an <em>ACS</em> and CWMP-enabled <em>CPE</em> that defines a
 mechanism for secure auto-configuration of a <em>CPE</em> and other
 <em>CPE</em> management functions in a common framework.</td>
@@ -994,7 +1006,7 @@ in or referenced by the <em>DM Schema</em>.</td>
 <td><strong>DM Schema</strong></td>
 <td>Data Model Schema. This is the XML Schema <span class="citation"
 data-cites="XML-Schema-Primer"><a href="#ref-XML-Schema-Primer"
-role="doc-biblioref">[12]</a></span> that is used for defining data
+role="doc-biblioref">[11]</a></span> that is used for defining data
 models for use with <em>CWMP</em> and <em>USP</em>.</td>
 </tr>
 <tr class="even">
@@ -1011,7 +1023,7 @@ class="heading">Section 2.1.2</a>).</td>
 <td><strong>DT Schema</strong></td>
 <td>Device Type Schema. This is the XML Schema <span class="citation"
 data-cites="XML-Schema-Primer"><a href="#ref-XML-Schema-Primer"
-role="doc-biblioref">[12]</a></span> that is used for describing a
+role="doc-biblioref">[11]</a></span> that is used for describing a
 <em>Device</em>’s <em>Supported Data Model</em>. This concept is useful
 for both CWMP and USP as an offline design tool, but only CWMP uses it
 at run-time (via the SupportedDataModel Object; see <a
@@ -1170,7 +1182,7 @@ id="sec:document-conventions">1.2 Document Conventions</h2>
 “SHOULD”, “SHOULD NOT”, “RECOMMENDED”, “MAY”, and “OPTIONAL” in this
 document are to be interpreted as described in <span class="citation"
 data-cites="RFC2119"><a href="#ref-RFC2119"
-role="doc-biblioref">[3]</a></span>.</p>
+role="doc-biblioref">[6]</a></span>.</p>
 <h1 class="auto-hoverlink" data-info="header" id="sec:architecture">2
 Architecture</h1>
 <p>All elements described hereunder apply to both CWMP and USP, unless
@@ -1184,10 +1196,10 @@ Agent.</p>
 will be called “Device.”.</p>
 <p>The Root Object contains three types of sub-elements: the Objects
 defined in TR-181i2 <span class="citation" data-cites="TR-181i2"><a
-href="#ref-TR-181i2" role="doc-biblioref">[10]</a></span>, Components
+href="#ref-TR-181i2" role="doc-biblioref">[4]</a></span>, Components
 defined in TR-181i2 or other specifications such as TR-143 <span
 class="citation" data-cites="TR-143"><a href="#ref-TR-143"
-role="doc-biblioref">[9]</a></span>, and a single “Services” object that
+role="doc-biblioref">[3]</a></span>, and a single “Services” object that
 contains all Service Objects associated with specific services.</p>
 <p>A single Agent might include more than one Service Object. For
 example, a device that serves both as a VoIP endpoint and a game device,
@@ -1196,7 +1208,7 @@ might include both VoIP-specific and game-specific Service Objects.</p>
 type of Service Object. An example of when this might be appropriate is
 an Agent that provides an instance of the TR-140 <span class="citation"
 data-cites="TR-140"><a href="#ref-TR-140"
-role="doc-biblioref">[8]</a></span> StorageService for each of the
+role="doc-biblioref">[2]</a></span> StorageService for each of the
 device’s attached disks.</p>
 <h3 class="auto-hoverlink" data-info="header"
 id="sec:data-hierarchy-requirements">2.1.1 Data Hierarchy
@@ -1239,7 +1251,7 @@ have code support in the Agent.</p></li>
 Parameters that currently exist.</p></li>
 </ul>
 <p>TR-181i2 <span class="citation" data-cites="TR-181i2"><a
-href="#ref-TR-181i2" role="doc-biblioref">[10]</a></span> defines a
+href="#ref-TR-181i2" role="doc-biblioref">[4]</a></span> defines a
 SupportedDataModel Object that allows an Agent to indicate its Supported
 Data Model to a Controller, which assists the Controller in managing
 that device.</p>
@@ -1253,7 +1265,7 @@ URLs.</p></li>
 </ol>
 <p>This object is not used with USP. TR-369 <span class="citation"
 data-cites="TR-369"><a href="#ref-TR-369"
-role="doc-biblioref">[11]</a></span> defines the GetSupportedDM message
+role="doc-biblioref">[13]</a></span> defines the GetSupportedDM message
 to provide this information.</p>
 <h3 class="auto-hoverlink" data-info="header"
 id="sec:mount-points-and-mountable-objects">2.1.3 Mount Points and
@@ -1265,7 +1277,7 @@ define only a few Mount Points, but (starting with DM Schema v1.10) all
 top-level Objects other than Mount Points are Mountable Objects.</p>
 <p>For example, the TR-181i2 <span class="citation"
 data-cites="TR-181i2"><a href="#ref-TR-181i2"
-role="doc-biblioref">[10]</a></span> Device:2 Data Model currently
+role="doc-biblioref">[4]</a></span> Device:2 Data Model currently
 defines these three Mount Points:</p>
 <ol type="1">
 <li>Device.Node.{i}.</li>
@@ -1422,13 +1434,13 @@ that it might manage. This feature is now provided:</p>
 <ul>
 <li><p>For CWMP, by the TR-181i2 <span class="citation"
 data-cites="TR-181i2"><a href="#ref-TR-181i2"
-role="doc-biblioref">[10]</a></span> SupportedDataModel object (see <a
+role="doc-biblioref">[4]</a></span> SupportedDataModel object (see <a
 href="#sec:the-supported-data-model-and-the-instantiated-data-model"
 class="heading">Section 2.1.2</a>) and associated Device Type XML
 documents (DT Instances).</p></li>
 <li><p>For USP, by the TR-369 <span class="citation"
 data-cites="TR-369"><a href="#ref-TR-369"
-role="doc-biblioref">[11]</a></span> GetSupportedDM message.</p></li>
+role="doc-biblioref">[13]</a></span> GetSupportedDM message.</p></li>
 </ul>
 <p>A profile is a named collection of requirements associated with a
 given object. An Agent can adhere to zero or more profiles. Adherence to
@@ -1512,7 +1524,7 @@ profile.</td>
 characters MUST be letters, digits, underscores or hyphens. The terms
 “letter” and “digit” are as defined in the XML specification <span
 class="citation" data-cites="XML"><a href="#ref-XML"
-role="doc-biblioref">[Appendix B/1]</a></span>.</p>
+role="doc-biblioref">[9, Appendix B]</a></span>.</p>
 <p>Hyphens can easily be confused with the discretionary hyphens that
 are sometimes inserted by hyphenation algorithms. For this reason,
 ProfileName SHOULD NOT include any hyphens. In BBF standards,
@@ -1605,9 +1617,9 @@ value MAY specify further requirements relating to the item; such
 requirements MAY override general Agent or Controller requirements
 regarding DEPRECATED elements specified in TR-069 <span class="citation"
 data-cites="TR-069"><a href="#ref-TR-069"
-role="doc-biblioref">[7]</a></span> or TR-369 <span class="citation"
+role="doc-biblioref">[1]</a></span> or TR-369 <span class="citation"
 data-cites="TR-369"><a href="#ref-TR-369"
-role="doc-biblioref">[11]</a></span>.</p></li>
+role="doc-biblioref">[13]</a></span>.</p></li>
 </ol>
 <p>Agent requirements:</p>
 <ol type="1">
@@ -1681,7 +1693,7 @@ node in the hierarchy MUST start with a letter or underscore, and
 subsequent characters MUST be letters, digits, underscores or hyphens.
 The terms “letter” and “digit” are as defined in the XML specification
 <span class="citation" data-cites="XML"><a href="#ref-XML"
-role="doc-biblioref">[Appendix B/1]</a></span>.</p>
+role="doc-biblioref">[9, Appendix B]</a></span>.</p>
 <p>Hyphens can easily be confused with the discretionary hyphens that
 are sometimes inserted by hyphenation algorithms. For this reason, the
 names of nodes in the hierarchy SHOULD NOT include any hyphens.
@@ -1747,8 +1759,8 @@ NOT be followed with a separator. Individual items in a comma-separated
 list MUST NOT include a whitespace or comma character within them. Any
 whitespace or comma characters within an item value MUST be escaped
 using percent-encoding as specified in RFC 3986 <span class="citation"
-data-cites="RFC3986"><a href="#ref-RFC3986"
-role="doc-biblioref">[2.1/5]</a></span>.</p>
+data-cites="RFC3986"><a href="#ref-RFC3986" role="doc-biblioref">[8,
+section 2.1]</a></span>.</p>
 <p>It is possible to create a list of lists, although other solutions
 SHOULD be preferred when possible. If a string contains a list of lists,
 the rules of the previous paragraph imply that the comma separators of
@@ -1772,7 +1784,7 @@ to contain comma-separated lists of object Path Names), the
 representation of the object name MUST NOT include a trailing “dot.” An
 example of a parameter of this kind in the TR-181i2 <span
 class="citation" data-cites="TR-181i2"><a href="#ref-TR-181i2"
-role="doc-biblioref">[10]</a></span> Device:2 data model is
+role="doc-biblioref">[4]</a></span> Device:2 data model is
 Device.InterfaceStack.{i}.LowerLayer. For this parameter, the following
 is an example of a properly formed value:</p>
 <p><code>Device.Ethernet.Interface.1</code></p>
@@ -1821,16 +1833,15 @@ the form:</p>
 <p>X_&lt;VENDOR&gt;_VendorSpecificName</p>
 </blockquote>
 <p>In this definition &lt;VENDOR&gt; is a unique vendor identifier,
-which MAY be either an OUI or a domain name. The OUI or domain name used
-for a given vendor-specific parameter MUST be one that is assigned to
-the organization that defined this parameter (which is not necessarily
-the same as the vendor of the Agent). An OUI is an organizationally
-unique identifier as defined in <span class="citation"
-data-cites="OUI"><a href="#ref-OUI" role="doc-biblioref">[2]</a></span>,
+which MUST be either an OUI or a domain name. The OUI or domain name
+used for a given vendor-specific parameter MUST be one that is assigned
+to the organization that defined this parameter (which is not
+necessarily the same as the vendor of the Agent). An OUI is an
+organizationally unique identifier as defined in <span class="citation"
+data-cites="OUI"><a href="#ref-OUI" role="doc-biblioref">[5]</a></span>,
 which MUST be formatted as a six-hexadecimal-digit string using all
 upper-case letters and including any leading zeros. A domain name MUST
-be upper case with each dot (“.”) replaced with a hyphen or
-underscore.</p>
+be upper case with each dot (“.”) replaced with a hyphen.</p>
 <p>The VendorSpecificName MUST NOT contain a “.” (period) or a space
 character.</p>
 <blockquote>
@@ -1863,79 +1874,82 @@ published at <a href="https://www.broadband-forum.org"
 class="uri">https://www.broadband-forum.org</a>. The following documents
 are referenced by this specification.</p>
 <div id="refs" class="references csl-bib-body" role="list">
-<div id="ref-XML" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[1] </div><div
-class="csl-right-inline"><em>Extensible Markup Language (XML) 1.0
-(Fourth Edition)</em>, W3C, 2008, <a
-href="https://www.w3.org/TR/REC-xml">https://www.w3.org/TR/REC-xml</a></div>
-</div>
-<div id="ref-OUI" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[2] </div><div
-class="csl-right-inline"><em>Organizationally Unique Identifiers
-(OUIs)</em>, IEEE, <a
-href="https://standards.ieee.org/faqs/OUI.html">https://standards.ieee.org/faqs/OUI.html</a></div>
-</div>
-<div id="ref-RFC2119" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[3] </div><div class="csl-right-inline"><a
-href="https://tools.ietf.org/html/rfc2119">RFC 2119</a>, <em>Key words
-for use in RFCs to Indicate Requirement Levels</em>, IETF, 1997</div>
-</div>
-<div id="ref-RFC2648" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[4] </div><div class="csl-right-inline"><a
-href="https://tools.ietf.org/html/rfc2648">RFC 2648</a>, <em>A URN
-Namespace for IETF Documents</em>, IETF, 1999</div>
-</div>
-<div id="ref-RFC3986" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[5] </div><div class="csl-right-inline"><a
-href="https://tools.ietf.org/html/rfc3986">RFC 3986</a>, <em>Uniform
-Resource Identifier (URI): Generic Syntax</em>, IETF, 2005</div>
-</div>
-<div id="ref-SOAP" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[6] </div><div
-class="csl-right-inline"><em>Simple Object Access Protocol (SOAP)
-1.1</em>, W3C, 2000, <a
-href="https://www.w3.org/TR/2000/NOTE-SOAP-20000508">https://www.w3.org/TR/2000/NOTE-SOAP-20000508</a></div>
-</div>
 <div id="ref-TR-069" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[7] </div><div class="csl-right-inline"><a
-href="https://www.broadband-forum.org/technical/download/TR-069.pdf">TR-069
-Amendment 6 Corrigendum 1</a>, <em>CPE WAN Management Protocol</em>,
-Broadband Forum, 2020</div>
+<div class="csl-left-margin">[1] </div><div
+class="csl-right-inline">TR-069 Amendment 6 Corrigendum 1, <em><a
+href="https://www.broadband-forum.org/technical/download/TR-069.pdf">CPE
+WAN Management Protocol</a></em>, Broadband Forum, 2020</div>
 </div>
 <div id="ref-TR-140" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[8] </div><div class="csl-right-inline"><a
-href="https://www.broadband-forum.org/technical/download/TR-140.pdf">TR-140
-Amendment 3</a>, <em>TR-069 Data Model for Storage Service Enabled
-Devices</em>, Broadband Forum, 2017</div>
+<div class="csl-left-margin">[2] </div><div
+class="csl-right-inline">TR-140 Amendment 3, <em><a
+href="https://www.broadband-forum.org/technical/download/TR-140.pdf">TR-069
+Data Model for Storage Service Enabled Devices</a></em>, Broadband
+Forum, 2017</div>
 </div>
 <div id="ref-TR-143" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[9] </div><div class="csl-right-inline"><a
-href="https://www.broadband-forum.org/technical/download/TR-143.pdf">TR-143
-Amendment 1 Corrigendum 1</a>, <em>Enabling Network Throughput
-Performance Tests and Statistical Monitoring</em>, Broadband Forum,
-2015</div>
+<div class="csl-left-margin">[3] </div><div
+class="csl-right-inline">TR-143 Amendment 1 Corrigendum 1, <em><a
+href="https://www.broadband-forum.org/technical/download/TR-143.pdf">Enabling
+Network Throughput Performance Tests and Statistical
+Monitoring</a></em>, Broadband Forum, 2015</div>
 </div>
 <div id="ref-TR-181i2" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[10] </div><div class="csl-right-inline"><a
-href="https://usp-data-models.broadband-forum.org#Device:2">TR-181 Issue
-2</a>, <em>Device Data Model</em>, Broadband Forum</div>
+<div class="csl-left-margin">[4] </div><div
+class="csl-right-inline">TR-181 Issue 2, <em><a
+href="https://usp-data-models.broadband-forum.org#Device:2">Device Data
+Model</a></em>, Broadband Forum</div>
 </div>
-<div id="ref-TR-369" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[11] </div><div class="csl-right-inline"><a
-href="https://usp.technology/specification">TR-369</a>, <em>User
-Services Platform</em></div>
+<div id="ref-OUI" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[5] </div><div
+class="csl-right-inline"><em><a
+href="https://standards.ieee.org/faqs/OUI.html">Organizationally Unique
+Identifiers (OUIs)</a></em>, IEEE</div>
+</div>
+<div id="ref-RFC2119" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[6] </div><div class="csl-right-inline">RFC
+2119, <em><a href="https://tools.ietf.org/html/rfc2119">Key words for
+use in RFCs to Indicate Requirement Levels</a></em>, IETF, 1997</div>
+</div>
+<div id="ref-RFC2648" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[7] </div><div class="csl-right-inline">RFC
+2648, <em><a href="https://tools.ietf.org/html/rfc2648">A URN Namespace
+for IETF Documents</a></em>, IETF, 1999</div>
+</div>
+<div id="ref-RFC3986" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[8] </div><div class="csl-right-inline">RFC
+3986, <em><a href="https://tools.ietf.org/html/rfc3986">Uniform Resource
+Identifier (URI): Generic Syntax</a></em>, IETF, 2005</div>
+</div>
+<div id="ref-XML" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[9] </div><div
+class="csl-right-inline"><em><a
+href="https://www.w3.org/TR/REC-xml">Extensible Markup Language (XML)
+1.0 (Fourth Edition)</a></em>, W3C, 2008</div>
+</div>
+<div id="ref-SOAP" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[10] </div><div
+class="csl-right-inline"><em><a
+href="https://www.w3.org/TR/2000/NOTE-SOAP-20000508">Simple Object
+Access Protocol (SOAP) 1.1</a></em>, W3C, 2000</div>
 </div>
 <div id="ref-XML-Schema-Primer" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[12] </div><div
-class="csl-right-inline"><em>XML Schema Part 0: Primer Second
-Edition</em>, W3C, 2004, <a
-href="https://www.w3.org/TR/xmlschema-0">https://www.w3.org/TR/xmlschema-0</a></div>
+<div class="csl-left-margin">[11] </div><div
+class="csl-right-inline"><em><a
+href="https://www.w3.org/TR/xmlschema-0">XML Schema Part 0: Primer
+Second Edition</a></em>, W3C, 2004</div>
 </div>
 <div id="ref-XML-Schema-Datatypes" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[12] </div><div
+class="csl-right-inline"><em><a
+href="https://www.w3.org/TR/xmlschema-2">XML Schema Part 2: Datatypes
+Second Edition</a></em>, W3C, 2004</div>
+</div>
+<div id="ref-TR-369" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[13] </div><div
-class="csl-right-inline"><em>XML Schema Part 2: Datatypes Second
-Edition</em>, W3C, 2004, <a
-href="https://www.w3.org/TR/xmlschema-2">https://www.w3.org/TR/xmlschema-2</a></div>
+class="csl-right-inline">TR-369, <em><a
+href="https://usp.technology/specification">User Services
+Platform</a></em></div>
 </div>
 </div>
 <h1 class="annex1 auto-hoverlink" data-info="header"
@@ -1945,11 +1959,11 @@ Definition XML Schema</h1>
 id="sec:introduction-1">A.1 Introduction</h2>
 <p>The CWMP Data Model Definition XML Schema <span class="citation"
 data-cites="XML-Schema-Primer"><a href="#ref-XML-Schema-Primer"
-role="doc-biblioref">[12]</a></span>, or DM Schema, is used for defining
+role="doc-biblioref">[11]</a></span>, or DM Schema, is used for defining
 CWMP <span class="citation" data-cites="TR-069"><a href="#ref-TR-069"
-role="doc-biblioref">[7]</a></span> and USP <span class="citation"
+role="doc-biblioref">[1]</a></span> and USP <span class="citation"
 data-cites="TR-369"><a href="#ref-TR-369"
-role="doc-biblioref">[11]</a></span> data models, and is specified in <a
+role="doc-biblioref">[13]</a></span> data models, and is specified in <a
 href="#sec:description-modifications" class="heading">A.2.12.6</a>.</p>
 <p>DM Schema instance documents can contain any or all of the
 following:</p>
@@ -2080,7 +2094,7 @@ locating the DM Instance are as follows:</p>
 <ul>
 <li><p>It MUST be a URL adhering to RFC 3986 <span class="citation"
 data-cites="RFC3986"><a href="#ref-RFC3986"
-role="doc-biblioref">[5]</a></span>.</p></li>
+role="doc-biblioref">[8]</a></span>.</p></li>
 <li><p>If the URL includes a scheme, it MUST be http, https or
 ftp.</p></li>
 <li><p>If the URL includes an authority, it MUST NOT include
@@ -2121,7 +2135,7 @@ requirement.</p></li>
 <li><p>For specifications issued by other standards organizations, or by
 vendors, it SHOULD be of a standard form if one is defined. For example,
 RFC 2648 <span class="citation" data-cites="RFC2648"><a
-href="#ref-RFC2648" role="doc-biblioref">[4]</a></span> specifies a
+href="#ref-RFC2648" role="doc-biblioref">[7]</a></span> specifies a
 syntax for referencing RFCs.</p></li>
 <li><p>Note that processing tools are likely to assume that all files
 that share a spec value are related to each other. Therefore, use of
@@ -3020,9 +3034,9 @@ id="sec:html-example">A.2.2.5 HTML Example</h4>
 <h3 class="annex3 auto-hoverlink" data-info="header"
 id="sec:data-types">A.2.3 Data Types</h3>
 <p>CWMP <span class="citation" data-cites="TR-069"><a href="#ref-TR-069"
-role="doc-biblioref">[7]</a></span> and USP <span class="citation"
+role="doc-biblioref">[1]</a></span> and USP <span class="citation"
 data-cites="TR-369"><a href="#ref-TR-369"
-role="doc-biblioref">[11]</a></span> data models support only the
+role="doc-biblioref">[13]</a></span> data models support only the
 primitive data types listed in the last row of <a
 href="#tbl:xml-named-data-types" class="table">Table 3</a> “on the
 wire”. However, the DM Schema allows data types to be derived from the
@@ -3166,7 +3180,7 @@ id="sec:data-type-facets">A.2.3.3 Data Type Facets</h4>
 units.</p>
 <p>Note that XML Schema <span class="citation"
 data-cites="XML-Schema-Primer"><a href="#ref-XML-Schema-Primer"
-role="doc-biblioref">[12]</a></span> also associates facets with data
+role="doc-biblioref">[11]</a></span> also associates facets with data
 types. The XML Schema and DM Schema concepts are the same, but the set
 of facets is not identical.</p>
 <p>The DM Schema defines the following facets (normative requirements
@@ -3235,7 +3249,7 @@ href="#sec:reference-facets" class="heading">A.2.3.7</a>).</td>
 types). Pattern value syntax is the same as for XML Schema regular
 expressions. See <span class="citation"
 data-cites="XML-Schema-Datatypes"><a href="#ref-XML-Schema-Datatypes"
-role="doc-biblioref">[F/13]</a></span>.</td>
+role="doc-biblioref">[12, section F]</a></span>.</td>
 </tr>
 <tr class="even">
 <td>units</td>
@@ -5552,7 +5566,7 @@ Schema</h1>
 id="sec:introduction-2">B.1 Introduction</h2>
 <p>The CWMP Device Type XML Schema <span class="citation"
 data-cites="XML-Schema-Primer"><a href="#ref-XML-Schema-Primer"
-role="doc-biblioref">[12]</a></span>, or DT Schema, is used for
+role="doc-biblioref">[11]</a></span>, or DT Schema, is used for
 describing a device’s supported data model.</p>
 <p>DT Schema instance documents can contain the following:</p>
 <ul>
@@ -5605,7 +5619,7 @@ locating the DM Instance are as follows:</p>
 <ul>
 <li><p>It MUST be a URL adhering to RFC 3986 <span class="citation"
 data-cites="RFC3986"><a href="#ref-RFC3986"
-role="doc-biblioref">[5]</a></span>.</p></li>
+role="doc-biblioref">[8]</a></span>.</p></li>
 <li><p>If the URL includes a scheme, it MUST be http, https or
 ftp.</p></li>
 <li><p>If the URL includes an authority, it MUST NOT include
@@ -5715,9 +5729,9 @@ the (inclusive) range 32-126.</p>
 <p><em>Note – writing LF (LINE FEED) for <code>#xA</code> and
 <code>CR</code> (CARRIAGE RETURN) for <code>#xD</code>, the XML
 specification <span class="citation" data-cites="XML"><a href="#ref-XML"
-role="doc-biblioref">[2.11/1]</a></span> states that XML processors have
-to behave as if all CR LF sequences, or any CR characters not followed
-by LF, are translated to LF.</em></p>
+role="doc-biblioref">[9, section 2.11]</a></span> states that XML
+processors have to behave as if all CR LF sequences, or any CR
+characters not followed by LF, are translated to LF.</em></p>
 <p><em>Note – TAB (<code>#x9</code>) is not permitted. This is because
 no standard indentation level is defined for TAB characters, so the
 indentation is ambiguous when there is a mixture of SPACE
@@ -6024,7 +6038,7 @@ Which Profiles are included depends on whether it is a full or partial
 id="sec:data-model-definition">I.4 Data Model Definition</h2>
 <p>Parameters make use of a limited subset of the default SOAP data
 types <span class="citation" data-cites="SOAP"><a href="#ref-SOAP"
-role="doc-biblioref">[6]</a></span>. The notation used to represent
+role="doc-biblioref">[10]</a></span>. The notation used to represent
 these types within the report is listed in the following table.</p>
 <table>
 <colgroup>
@@ -6102,7 +6116,7 @@ value will be in one of the ranges.</td>
 <td>dateTime</td>
 <td>The subset of the ISO 8601 date-time format defined by the SOAP
 dateTime type <span class="citation" data-cites="SOAP"><a
-href="#ref-SOAP" role="doc-biblioref">[6]</a></span>.</td>
+href="#ref-SOAP" role="doc-biblioref">[10]</a></span>.</td>
 </tr>
 <tr class="odd">
 <td>base64</td>
