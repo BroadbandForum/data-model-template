@@ -1,5 +1,6 @@
 make[1]: Entering directory '/mnt/ebs/bamboo-agent-home-alpha/xml-data/build-dir/BUSDM-DMSUPPREL-JOB1/WT-106'
 rm -f   
+rm -f 
 rm -f ./docs/README.md ./docs/CHANGELOG.md ./docs/METADATA-1.yaml ./docs/METADATA.yaml ./docs/METADATA-1.md ./docs/METADATA.md ./docs/METADATA-1.mk ./docs/METADATA.mk  ./docs/PROJECT.yaml.outputs
 rm -f -r  ./docs/PROJECT
 make[1]: Leaving directory '/mnt/ebs/bamboo-agent-home-alpha/xml-data/build-dir/BUSDM-DMSUPPREL-JOB1/WT-106'

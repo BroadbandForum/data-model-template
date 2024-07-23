@@ -1,0 +1,951 @@
+---
+comment: |
+  The report tool doesn't yet generate HTML directly. To generate HTML, use the
+  `markdown` format to generate markdown, and then run [pandoc] to generate HTML.
+
+  The `markdown` format generates an extended version of [commonmark]
+  (referred to as commonmark_x). To process it, you need to install the 
+  following:
+
+  * pandoc 3.0 or later: This might already be installed, or you might 
+  be able to install it using the OS package manager. If not, you can get it 
+  from <https://github.com/jgm/pandoc/releases>
+
+  * list-table filter: Get this from 
+  <https://github.com/pandoc-ext/list-table>
+
+  * logging library: Get this from
+  <https://github.com/pandoc-ext/logging>
+
+  * custom HTML writer: Get this from
+  <https://github.com/BroadbandForum/pandoc-html-writer>
+
+  Assuming that you've already installed pandoc, and that you want to process
+  `model.md`, you can do this:
+
+      % git clone https://github.com/pandoc-ext/list-table
+      Cloning into 'list-table'...
+      ...
+      % ln -s list-table/list-table.lua
+
+      % git clone https://github.com/pandoc-ext/logging
+      Cloning into 'logging'...
+      ...
+      % ln -s logging/logging.lua 
+
+      % git clone https://github.com/BroadbandForum/pandoc-html-writer
+      Cloning into 'pandoc-html-writer'...
+      ...
+      % ln -s pandoc-html-writer/html-writer.lua
+      % ln -s pandoc-html-writer/html-derived-writer.lua
+
+      % report.py model.xml --format markdown --output model.md
+
+      % pandoc model.md --standalone --from commonmark_x \
+          --lua-filter list-table.lua --to html-derived-writer.lua \
+          --output model.html
+
+  Refer to the pandoc documentation for more information, e.g., on how to
+  avoid the need for the soft links.
+
+  [commonmark]: https://commonmark.org
+  [pandoc]: https://pandoc.org
+title: ''
+pagetitle: tr-106-types.xml
+lang: en-us
+document-css: false
+header-includes:
+  - |
+    <!-- Sidebar ToC styles -->
+    <style>
+    @media screen and (min-width: 60em) {
+        body {
+            display: flex;
+            align-items: stretch;
+            margin: 0px;
+            /* XXX this is experimental; may need to insert zero-width spaces */
+            overflow-wrap: break-word;
+        }
+
+        #main {
+            flex: 4 2 auto;
+            overflow: auto;
+            order: 2;
+            padding: 5px;
+        }
+
+        #TOC {
+            position: sticky;
+            order: 1;
+            flex: 1 0 auto;
+            margin: 0 0;
+            top: 0px;
+            left: 0px;
+            height: 100vh;
+            line-height: 1.4;
+            resize: horizontal;
+            font-size: larger;
+            overflow: auto;
+            border-right: 1px solid #73AD21;
+            padding: 5px;
+            max-width: 20%;
+        }
+
+        #TOC ul {
+            margin: 0.35em 0;
+            padding: 0 0 0 1em;
+            list-style-type: none;
+        }
+
+        #TOC ul ul {
+            margin: 0.25em 0;
+        }
+
+        #TOC ul ul ul {
+            margin: 0.15em 0;
+        }
+
+        #TOC {
+            z-index: 1;
+        }
+    }
+    </style>
+
+    <!-- ToC expansion and contraction script -->
+    <script>
+    window.addEventListener('DOMContentLoaded', function() {
+        var expandables = document.getElementsByClassName('expandable');
+        for (i = 0; i < expandables.length; i++) {
+            expandables[i].addEventListener('click', function() {
+                this.parentElement.querySelector('.collapsed').classList
+                    .toggle('expanded');
+                this.classList.toggle('collapsible');
+            });
+        }
+    });
+    </script>
+
+    <!-- ToC expansion and contraction styles -->
+    <style>
+    .expandable {
+        cursor: pointer;
+        user-select: none;
+        display: list-item;
+        /* Circled Plus + non-breakable space */
+        list-style-type: "\2295\A0";
+    }
+
+    .collapsible {
+        /* Circled Minus + non-breakable space */
+        list-style-type: "\2296\A0";
+    }
+
+    .collapsed {
+        display: none;
+    }
+
+    .expanded {
+        display: grid; /* needed by the 'order' property */
+    }
+    </style>
+
+    <!-- ToC sorting script (works for object names and profile headers) -->
+    <script>
+    window.addEventListener('DOMContentLoaded', function() {
+        /* 'A.B.' -> {prefix: '', name: 'A.B.', 'version': ''}
+           '_Baseline:1' -> {prefix: '_', name: 'Baseline', version: '1'} */
+        var regex = /^(?<prefix>_?)(?<name>[^:]*)(:?)(?<version>\d*)/;
+        var lists = document.getElementsByClassName('ordered');
+        for (var i = 0; i < lists.length; i++) {
+            var items = lists[i].children;
+            var temp = [];
+            for (var j = 0; j < items.length; j++) {
+                /* this assumes that the first child contains the text */
+                temp.push([j, items[j].children[0].innerText]);
+            }
+            temp.sort((a, b) => {
+                /* 'Notation' (which is used for profiles) must come first */
+                var a1 = a[1] == 'Notation' ? ' Notation' : a[1];
+                var b1 = b[1] == 'Notation' ? ' Notation' : b[1];
+                var a1_groups = a1.match(regex).groups;
+                var b1_groups = b1.match(regex).groups;
+                var a1_tuple =  [
+                    a1_groups.name.toLowerCase() + (a1_groups.prefix || '~'),
+                    parseInt(a1_groups.version || 0)];
+                var b1_tuple =  [
+                    b1_groups.name.toLowerCase() + (b1_groups.prefix || '~'),
+                    parseInt(b1_groups.version || 0)];
+                return a1_tuple < b1_tuple ? -1 : a1_tuple > b1_tuple ? 1 : 0;
+            });
+            temp.forEach((order_text, j) => {
+                var k = order_text[0];
+                items[k].style.order = j;
+            });
+        }
+    });
+    </script>
+
+    <!-- Automatic title generation (from anchor ids) script
+         XXX only works for non-deprecated object parameters and doesn't
+             show correct full paths; should get rid of it? -->
+    <script>
+    window.addEventListener('DOMContentLoaded', function() {
+        var pars = document.getElementsByClassName('parameter');
+        var regex = /\w\.\w+:[0-9.]+\./;
+        for (var i = 0; i < pars.length; i++) {
+            if (pars[i].firstElementChild && pars[i].firstElementChild.
+                    firstElementChild) {
+                pars[i].firstElementChild.title =
+                    pars[i].firstElementChild.firstElementChild.id.
+                    replace(regex, '');
+            }
+        }
+    });
+    </script>
+
+    <!-- Automatic on-hover link generation script -->
+    <script>
+    window.addEventListener('DOMContentLoaded', function() {
+        var hoverlink = null;
+
+        var anchors = document.querySelectorAll('td span[id]:not(:empty)');
+        for (var i = 0; i < anchors.length; i++) {
+          var cell = anchors[i].parentElement;
+
+          cell.addEventListener('mouseenter', event => {
+            var target = event.target;
+            var anchor = target.querySelector('span[id]:not(:empty)');
+
+            /* derive the item type from the row's first class item,
+             * which might have a leading 'deprecated-' etc. and
+             * might also contain additional hyphens */
+            var itemType = (target.parentElement.classList.item(0) || 'item').
+                replace(/^\w+-/, '').replace(/-/g, ' ');
+
+            if (hoverlink) {
+              hoverlink.remove();
+              hoverlink = null;
+            }
+
+            hoverlink = document.createElement('a');
+            hoverlink.href = '#' + anchor.id;
+            hoverlink.className = 'hoverlink';
+            hoverlink.title = 'Permalink to this ' + itemType;
+            target.appendChild(hoverlink);
+          });
+
+          cell.addEventListener('mouseleave', () => {
+            if (hoverlink) {
+              hoverlink.remove();
+              hoverlink = null;
+            }
+          });
+        }
+    });
+    </script>
+
+    <!-- Hoverlink styles -->
+    <style>
+    :root {
+        --hoverlink-size: 0.9em;
+    }
+
+    .hoverlink {
+        text-decoration: none;
+    }
+
+    .hoverlink::after {
+        position: absolute;
+        display: inline-block;
+        content: "";
+        width: var(--hoverlink-size);
+        height: var(--hoverlink-size);
+        background-size: var(--hoverlink-size) var(--hoverlink-size);
+        background-image: url(data:image/png;base64,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);
+    }
+    </style>
+
+    <!-- Table body expansion and contraction script -->
+    <script>
+    window.addEventListener('DOMContentLoaded', function() {
+        var showables = document.getElementsByClassName('showable');
+        for (var i = 0; i < showables.length; i++) {
+            var showable = showables[i];
+            showable.addEventListener('click', function() {
+                this.classList.toggle('show');
+            });
+        }
+
+        showables = document.getElementsByClassName('showable2');
+        for (var i = 0; i < showables.length; i++) {
+            var showable = showables[i];
+            showable.addEventListener('click', function(event) {
+                this.classList.toggle('show2');
+                event.stopPropagation();
+            });
+        }
+    });
+    </script>
+
+    <!-- Table body expansion and contraction styles -->
+    <style>
+    .chevron {
+        color: var(--link-color);
+        cursor: pointer;
+    }
+
+    .chevron::before {
+        /* Single Right-Pointing Angle Quotation Mark */
+        content: "\00203A ";
+    }
+
+    .chevron .click::after {
+        content: " Click to show/hide...";
+    }
+
+    .hide {
+        display: none;
+    }
+
+    .show tr {
+        display: table-row;
+    }
+
+    .show td div, .show ul, .show ol {
+        display: block;
+    }
+
+    .show td span {
+        display: inline;
+    }
+
+    .show2 *.hide {
+        display: none;
+    }
+
+    </style>
+
+    <!-- Global styles (that affect the entire document) -->
+    <style>
+    /* light mode support */
+    @media (prefers-color-scheme: light) {
+      :root {
+        --background-color: white;
+        --foreground-color: black;
+        --diff-background-color: aliceblue;
+        --link-color: blue;
+        --parameter-color: white;
+        --object-color: #ffff99;
+        --command-color: #66cdaa;
+        --event-color: #66cdaa;
+        --argument-container-color: silver;
+        --argument-object-color: pink;
+        --argument-parameter-color: #ffe4e1;
+        --mountable-object-color: #b3e0ff;
+        --mountpoint-object-color: #4db8ff;
+        --stripe-direction: 90deg;
+        --stripe-stop-point-1: 1%;
+        --stripe-stop-point-2: 2%;
+        --stripe-color-deprecated: #eeeeee;
+        --stripe-color-obsoleted: #dddddd;
+        --stripe-color-deleted: #cccccc;
+      }
+    }
+
+    /* dark mode support */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --background-color: black;
+        --foreground-color: white;
+        --diff-background-color: #0f0700;
+        --link-color: lightblue;
+        --parameter-color: black;
+        --object-color: #bbbb44;
+        --command-color: #56bd9a;
+        --event-color: #56bd9a;
+        --argument-container-color: #777777;
+        --argument-object-color: #dfa0ab;
+        --argument-parameter-color: #bfa4a1;
+        --mountable-object-color: #b3e0ff;
+        --mountpoint-object-color: #3da8ef;
+        --stripe-color-deprecated: #555555;
+        --stripe-color-obsoleted: #444444;
+        --stripe-color-deleted: #333333;
+      }
+      .hoverlink {
+        filter: invert(1);
+      }
+    }
+
+    body, table {
+        background-color: var(--background-color);
+        color: var(--foreground-color);
+        font-family: helvetica, arial, sans-serif;
+        font-size: 9pt;
+    }
+
+    h1 {
+        font-size: 14pt;
+    }
+
+    h2 {
+        font-size: 12pt;
+    }
+
+    h3 {
+        font-size: 10pt;
+    }
+
+    a:link, a:visited {
+        color: var(--link-color);
+    }
+
+    sup {
+        vertical-align: super;
+    }
+
+    table {
+        text-align: left;
+        vertical-align: top;
+    }
+
+    td, th {
+        padding: 2px;
+        text-align: left;
+        vertical-align: top;
+    }
+
+    /* this is intended for hoverlinks */
+    td span {
+        padding-right: 2px;
+    }
+
+    table.middle-width {
+        width: 60%;
+    }
+
+    table.full-width {
+        width: 100%;
+    }
+
+    thead th {
+        background-color: #999999;
+    }
+
+    table.partial-border {
+        border-left-style: hidden;
+        border-right-style: hidden;
+        border-collapse: collapse;
+    }
+
+    table.partial-border th,
+    table.partial-border td {
+        border-style: solid;
+        border-width: 1px;
+        border-color: lightgray;
+    }
+
+    td > div,
+    td > p {
+        margin-block-start: 0;
+        margin-block-end: 1em;
+    }
+
+    td > div:last-of-type,
+    td > p:last-of-type {
+        margin-block-end: 0;
+    }
+
+    .centered {
+        text-align: center;
+    }
+
+    .inserted {
+        color: blue;
+    }
+
+    .removed {
+        color: red;
+        text-decoration: line-through;
+    }
+
+    /* XXX this is a bad name */
+    .diffs {
+        background-color: var(--diff-background-color);
+        opacity: 0.8;
+    }
+
+    .parameter {
+        background-color: var(--parameter-color);
+    }
+
+    .deprecated-parameter {
+        background-image: repeating-linear-gradient(
+            var(--stripe-direction),
+            var(--parameter-color),
+            var(--parameter-color) var(--stripe-stop-point-1),
+            var(--stripe-color-deprecated) var(--stripe-stop-point-1),
+            var(--stripe-color-deprecated) var(--stripe-stop-point-2));
+    }
+
+    .obsoleted-parameter {
+        background-image: repeating-linear-gradient(
+            var(--stripe-direction),
+            var(--parameter-color),
+            var(--parameter-color) var(--stripe-stop-point-1),
+            var(--stripe-color-obsoleted) var(--stripe-stop-point-1),
+            var(--stripe-color-obsoleted) var(--stripe-stop-point-2));
+    }
+
+    .deleted-parameter {
+        background-image: repeating-linear-gradient(
+            var(--stripe-direction),
+            var(--parameter-color),
+            var(--parameter-color) var(--stripe-stop-point-1),
+            var(--stripe-color-deleted) var(--stripe-stop-point-1),
+            var(--stripe-color-deleted) var(--stripe-stop-point-2));
+    }
+
+    .object {
+        background-color: var(--object-color);
+    }
+
+    .deprecated-object {
+        background-image: repeating-linear-gradient(
+            var(--stripe-direction),
+            var(--object-color),
+            var(--object-color) var(--stripe-stop-point-1),
+            var(--stripe-color-deprecated) var(--stripe-stop-point-1),
+            var(--stripe-color-deprecated) var(--stripe-stop-point-2));
+    }
+
+    .obsoleted-object {
+        background-image: repeating-linear-gradient(
+            var(--stripe-direction),
+            var(--object-color),
+            var(--object-color) var(--stripe-stop-point-1),
+            var(--stripe-color-obsoleted) var(--stripe-stop-point-1),
+            var(--stripe-color-obsoleted) var(--stripe-stop-point-2));
+    }
+
+    .deleted-object {
+        background-image: repeating-linear-gradient(
+            var(--stripe-direction),
+            var(--object-color),
+            var(--object-color) var(--stripe-stop-point-1),
+            var(--stripe-color-deleted) var(--stripe-stop-point-1),
+            var(--stripe-color-deleted) var(--stripe-stop-point-2));
+    }
+
+    .command {
+        background-color: var(--command-color);
+    }
+
+    .deprecated-command {
+        background-image: repeating-linear-gradient(
+            var(--stripe-direction),
+            var(--command-color),
+            var(--command-color) var(--stripe-stop-point-1),
+            var(--stripe-color-deprecated) var(--stripe-stop-point-1),
+            var(--stripe-color-deprecated) var(--stripe-stop-point-2));
+    }
+
+    .obsoleted-command {
+        background-image: repeating-linear-gradient(
+            var(--stripe-direction),
+            var(--command-color),
+            var(--command-color) var(--stripe-stop-point-1),
+            var(--stripe-color-obsoleted) var(--stripe-stop-point-1),
+            var(--stripe-color-obsoleted) var(--stripe-stop-point-2));
+    }
+
+    .deleted-command {
+        background-image: repeating-linear-gradient(
+            var(--stripe-direction),
+            var(--command-color),
+            var(--command-color) var(--stripe-stop-point-1),
+            var(--stripe-color-deleted) var(--stripe-stop-point-1),
+            var(--stripe-color-deleted) var(--stripe-stop-point-2));
+    }
+
+    .event {
+        background-color: var(--event-color);
+    }
+
+    .deprecated-event {
+        background-image: repeating-linear-gradient(
+            var(--stripe-direction),
+            var(--event-color),
+            var(--event-color) var(--stripe-stop-point-1),
+            var(--stripe-color-deprecated) var(--stripe-stop-point-1),
+            var(--stripe-color-deprecated) var(--stripe-stop-point-2));
+    }
+
+    .obsoleted-event {
+        background-image: repeating-linear-gradient(
+            var(--stripe-direction),
+            var(--event-color),
+            var(--event-color) var(--stripe-stop-point-1),
+            var(--stripe-color-obsoleted) var(--stripe-stop-point-1),
+            var(--stripe-color-obsoleted) var(--stripe-stop-point-2));
+    }
+
+    .deleted-event {
+        background-image: repeating-linear-gradient(
+            var(--stripe-direction),
+            var(--event-color),
+            var(--event-color) var(--stripe-stop-point-1),
+            var(--stripe-color-deleted) var(--stripe-stop-point-1),
+            var(--stripe-color-deleted) var(--stripe-stop-point-2));
+    }
+
+    .argument-container {
+        background-color: var(--argument-container-color);
+    }
+
+    .deprecated-argument-container {
+        background-image: repeating-linear-gradient(
+            var(--stripe-direction),
+            var(--argument-container-color),
+            var(--argument-container-color) var(--stripe-stop-point-1),
+            var(--stripe-color-deprecated) var(--stripe-stop-point-1),
+            var(--stripe-color-deprecated) var(--stripe-stop-point-2));
+    }
+
+    .obsoleted-argument-container {
+        background-image: repeating-linear-gradient(
+            var(--stripe-direction),
+            var(--argument-container-color),
+            var(--argument-container-color) var(--stripe-stop-point-1),
+            var(--stripe-color-obsoleted) var(--stripe-stop-point-1),
+            var(--stripe-color-obsoleted) var(--stripe-stop-point-2));
+    }
+
+    .deleted-argument-container {
+        background-image: repeating-linear-gradient(
+            var(--stripe-direction),
+            var(--argument-container-color),
+            var(--argument-container-color) var(--stripe-stop-point-1),
+            var(--stripe-color-deleted) var(--stripe-stop-point-1),
+            var(--stripe-color-deleted) var(--stripe-stop-point-2));
+    }
+
+    .argument-parameter {
+        background-color: var(--argument-parameter-color);
+    }
+
+    .deprecated-argument-parameter {
+        background-image: repeating-linear-gradient(
+            var(--stripe-direction),
+            var(--argument-parameter-color),
+            var(--argument-parameter-color) var(--stripe-stop-point-1),
+            var(--stripe-color-deprecated) var(--stripe-stop-point-1),
+            var(--stripe-color-deprecated) var(--stripe-stop-point-2));
+    }
+
+    .obsoleted-argument-parameter {
+        background-image: repeating-linear-gradient(
+            var(--stripe-direction),
+            var(--argument-parameter-color),
+            var(--argument-parameter-color) var(--stripe-stop-point-1),
+            var(--stripe-color-obsoleted) var(--stripe-stop-point-1),
+            var(--stripe-color-obsoleted) var(--stripe-stop-point-2));
+    }
+
+    .deleted-argument-parameter {
+        background-image: repeating-linear-gradient(
+            var(--stripe-direction),
+            var(--argument-parameter-color),
+            var(--argument-parameter-color) var(--stripe-stop-point-1),
+            var(--stripe-color-deleted) var(--stripe-stop-point-1),
+            var(--stripe-color-deleted) var(--stripe-stop-point-2));
+    }
+
+    .argument-object {
+        background-color: var(--argument-object-color);
+    }
+
+    .deprecated-argument-object {
+        background-image: repeating-linear-gradient(
+            var(--stripe-direction),
+            var(--argument-object-color),
+            var(--argument-object-color) var(--stripe-stop-point-1),
+            var(--stripe-color-deprecated) var(--stripe-stop-point-1),
+            var(--stripe-color-deprecated) var(--stripe-stop-point-2));
+    }
+
+    .obsoleted-argument-object {
+        background-image: repeating-linear-gradient(
+            var(--stripe-direction),
+            var(--argument-object-color),
+            var(--argument-object-color) var(--stripe-stop-point-1),
+            var(--stripe-color-obsoleted) var(--stripe-stop-point-1),
+            var(--stripe-color-obsoleted) var(--stripe-stop-point-2));
+    }
+
+    .deleted-argument-object {
+        background-image: repeating-linear-gradient(
+            var(--stripe-direction),
+            var(--argument-object-color),
+            var(--argument-object-color) var(--stripe-stop-point-1),
+            var(--stripe-color-deleted) var(--stripe-stop-point-1),
+            var(--stripe-color-deleted) var(--stripe-stop-point-2));
+    }
+
+    .mountable-object {
+        background-color: var(--mountable-object-color);
+    }
+
+    .deprecated-mountable-object {
+        background-image: repeating-linear-gradient(
+            var(--stripe-direction),
+            var(--mountable-object-color),
+            var(--mountable-object-color) var(--stripe-stop-point-1),
+            var(--stripe-color-deprecated) var(--stripe-stop-point-1),
+            var(--stripe-color-deprecated) var(--stripe-stop-point-2));
+    }
+
+    .obsoleted-mountable-object {
+        background-image: repeating-linear-gradient(
+            var(--stripe-direction),
+            var(--mountable-object-color),
+            var(--mountable-object-color) var(--stripe-stop-point-1),
+            var(--stripe-color-obsoleted) var(--stripe-stop-point-1),
+            var(--stripe-color-obsoleted) var(--stripe-stop-point-2));
+    }
+
+    .deleted-mountable-object {
+        background-image: repeating-linear-gradient(
+            var(--stripe-direction),
+            var(--mountable-object-color),
+            var(--mountable-object-color) var(--stripe-stop-point-1),
+            var(--stripe-color-deleted) var(--stripe-stop-point-1),
+            var(--stripe-color-deleted) var(--stripe-stop-point-2));
+    }
+
+    .mountpoint-object {
+        background-color: var(--mountpoint-object-color);
+    }
+
+    .deprecated-mountpoint-object {
+        background-image: repeating-linear-gradient(
+            var(--stripe-direction),
+            var(--mountpoint-object-color),
+            var(--mountpoint-object-color) var(--stripe-stop-point-1),
+            var(--stripe-color-deprecated) var(--stripe-stop-point-1),
+            var(--stripe-color-deprecated) var(--stripe-stop-point-2));
+    }
+
+    .obsoleted-mountpoint-object {
+        background-image: repeating-linear-gradient(
+            var(--stripe-direction),
+            var(--mountpoint-object-color),
+            var(--mountpoint-object-color) var(--stripe-stop-point-1),
+            var(--stripe-color-obsoleted) var(--stripe-stop-point-1),
+            var(--stripe-color-obsoleted) var(--stripe-stop-point-2));
+    }
+
+    .deleted-mountpoint-object {
+        background-image: repeating-linear-gradient(
+            var(--stripe-direction),
+            var(--mountpoint-object-color),
+            var(--mountpoint-object-color) var(--stripe-stop-point-1),
+            var(--stripe-color-deleted) var(--stripe-stop-point-1),
+            var(--stripe-color-deleted) var(--stripe-stop-point-2));
+    }
+    </style>
+
+    <!-- Local styles (that affect only data model tables) -->
+    <style>
+    /* center column 2 (Base Type) */
+    .data-type-table th:nth-child(2),
+    .data-type-table td:nth-child(2) {
+        text-align: center;
+    }
+
+    /* center columns 3 (Write), 5 (Object Default), 6 (Version) */
+    .data-model-table th:nth-child(3),
+    .data-model-table td:nth-child(3),
+    .data-model-table th:nth-child(5),
+    .data-model-table td:nth-child(5),
+    .data-model-table th:nth-child(6),
+    .data-model-table td:nth-child(6)
+    {
+        text-align: center;
+    }
+
+    .data-model-table th,
+    .data-model-table td {
+        hyphenate-character: "";
+    }
+
+    /* word wrap/break column 1 (Name) */
+    .data-model-table td:first-child {
+        word-wrap: break-word;
+        word-break: break-all;
+        min-width: 27ch;
+    }
+
+    /* word wrap/break column 2 (Base Type) */
+    .data-model-table td:nth-child(2) {
+        word-wrap: break-word;
+        word-break: break-all;
+        min-width: 12ch;
+    }
+
+    /* word wrap/break column 3 (Write) */
+    .data-model-table td:nth-child(3) {
+        min-width: 1ch;
+    }
+
+    /* word wrap/break column 5 (Object Default) */
+    .data-model-table td:nth-child(5) {
+        word-wrap: break-word;
+        word-break: break-all;
+        min-width: 12ch;
+    }
+
+    /* word wrap/break column 6 (Version) */
+    .data-model-table td:nth-child(6) {
+        min-width: 6ch;
+    }
+
+    /* center column 1 (Abbreviation) */
+    .profile-notation-table th:nth-child(1),
+    .profile-notation-table td:nth-child(1) {
+        text-align: center;
+    }
+
+    /* center column 2 (Requirement) */
+    .profile-requirements-table th:nth-child(2),
+    .profile-requirements-table td:nth-child(2) {
+        text-align: center;
+    }
+    </style>
+---
+
+:::::: {#main}
+
+{.list-table .full-width widths=3,22,50,25 header-rows=0}
+- - []{colspan=2}[![Broadband Forum](https://www.broadband-forum.org/images/logo-broadband-forum.gif){width=100%}](https://www.broadband-forum.org)
+
+  - []{.centered rowspan=2}
+
+    # TR-069 Data Model Data Types {.unnumbered .unlisted}
+
+
+
+    # [tr-106-types.xml](./#tr-106-types.xml) {.unnumbered .unlisted}
+
+  - []{rowspan=2}
+
+- -
+  - ### DATA MODEL DEFINITION {.unnumbered .unlisted}
+
+# License
+
+Copyright (c) 2008-2023, Broadband Forum
+
+The undersigned members have elected to grant the copyright to
+their contributed material used in this software:\
+&nbsp;&nbsp;&nbsp;&nbsp;Copyright (c) 2017-2018 ARRIS Enterprises, LLC.
+
+Redistribution and use in source and binary forms, with or
+without modification, are permitted provided that the following
+conditions are met:
+
+1. Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above
+   copyright notice, this list of conditions and the following
+   disclaimer in the documentation and/or other materials
+   provided with the distribution.
+
+3. Neither the name of the copyright holder nor the names of its
+   contributors may be used to endorse or promote products
+   derived from this software without specific prior written
+   permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND
+CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
+STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+The above license is used as a license under copyright only.
+Please reference the Forum IPR Policy for patent licensing terms
+<https://www.broadband-forum.org/ipr-policy>.
+
+Any moral rights which are necessary to exercise under the above
+license grant are also deemed granted under this license.
+
+# References
+
+{.list-table header-rows=0}
+- - [[[IANA-uri-schemes]{#R.IANA-uri-schemes}]](https://www.iana.org/assignments/uri-schemes)
+  - IANA Uniform Resource Identifier (URI) Schemes Registry, *Uniform Resource Identifier (URI) Schemes*, IANA.
+
+- - [[[IEEE_EUI64]{#R.IEEE_EUI64}]](https://standards.ieee.org/regauth/oui/tutorials/EUI64.html)
+  - Guidelines for 64-bit Global Identifier (EUI-64) Registration Authority, *Guidelines for 64-bit Global Identifier (EUI-64) Registration Authority*, IEEE, March 1997.
+
+- - [[[RFC3986]{#R.RFC3986}]](https://www.rfc-editor.org/rfc/rfc3986)
+  - RFC 3986, *Uniform Resource Identifier (URI): Generic Syntax*, IETF.
+
+- - [[[RFC4007]{#R.RFC4007}]](https://www.rfc-editor.org/rfc/rfc4007)
+  - RFC 4007, *IPv6 Scoped Address Architecture*, IETF.
+
+- - [[[RFC4122]{#R.RFC4122}]](https://www.rfc-editor.org/rfc/rfc4122)
+  - RFC 4122, *A Universally Unique IDentifier (UUID) URN Namespace*, IETF, 2005.
+
+- - [[[RFC4291]{#R.RFC4291}]](https://www.rfc-editor.org/rfc/rfc4291)
+  - RFC 4291, *IP Version 6 Addressing Architecture*, IETF, 2006.
+
+- - [[[RFC4632]{#R.RFC4632}]](https://www.rfc-editor.org/rfc/rfc4632)
+  - RFC 4632, *Classless Inter-domain Routing (CIDR): The Internet Address Assignment
+    and Aggregation Plan*, IETF, 2006.
+
+- - [[[RFC7159]{#R.RFC7159}]](https://www.rfc-editor.org/rfc/rfc7159)
+  - RFC7159, *The JavaScript Object Notation (JSON) Data Interchange Format*, IETF, March 2014.
+
+- - [[[RFC7230]{#R.RFC7230}]](https://www.rfc-editor.org/rfc/rfc7230)
+  - RFC 7230, *Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing*, IETF, June 2014.
+
+- - [[[RFC7252]{#R.RFC7252}]](https://www.rfc-editor.org/rfc/rfc7252)
+  - RFC 7252, *The Constrained Application Protocol (CoAP)*, IETF, June 2014.
+
+- - [[[RFC8141]{#R.RFC8141}]](https://www.rfc-editor.org/rfc/rfc8141)
+  - RFC 8141, *Uniform Resource Names (URNs)*, IETF, April 2017.
+
+- - [[[SOAP1.1]{#R.SOAP1.1}]](https://www.w3.org/TR/2000/NOTE-SOAP-20000508)
+  - Simple Object Access Protocol (SOAP) 1.1, W3C.
+
+- - [[[TR-069]{#R.TR-069}]](https://www.broadband-forum.org/download/TR-069.pdf)
+  - TR-069 Amendment 6, *CPE WAN Management Protocol*, Broadband Forum, April 2018.
+
+- - [[[ZigBee2007]{#R.ZigBee2007}]](https://csa-iot.org/all-solutions/zigbee)
+  - ZigBee 2007 Specification, *ZigBee 2007 Specification*, ZigBee Alliance, October 2007.
+
+---
+
+Generated by [Broadband Forum](https://www.broadband-forum.org) [bbfreport](https://pypi.org/project/bbfreport) v2.2.0 (2024-07-23 version) on 2024-07-23 at 09:37:45 UTC.\
+report.py --include ../../install/cwmp/ --output docs/tr-106-types.md --format markdown tr-106-types.xml
+
+::::::
+
+::: {#TOC}
+
+# Table of Contents
+
+{.collapsed .expanded}
+* [References]
+
+:::

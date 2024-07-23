@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  TR-069 Device Type Schema (DT Schema) v1.10
+  TR-069 Device Type Schema (DT Schema) v1.14
 
   Copyright (c) 2009-2023, Broadband Forum
 
@@ -52,13 +52,13 @@
 
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" vc:minVersion="1.1"
-  xmlns:tns="urn:broadband-forum-org:cwmp:devicetype-1-10"
-  xmlns:dm="urn:broadband-forum-org:cwmp:datamodel-1-10"
+  xmlns:tns="urn:broadband-forum-org:cwmp:devicetype-1-14"
+  xmlns:dm="urn:broadband-forum-org:cwmp:datamodel-1-14"
   xmlns:dtf="urn:broadband-forum-org:cwmp:devicetype-features"
-  targetNamespace="urn:broadband-forum-org:cwmp:devicetype-1-10" elementFormDefault="unqualified"
+  targetNamespace="urn:broadband-forum-org:cwmp:devicetype-1-14" elementFormDefault="unqualified"
   attributeFormDefault="unqualified">
-  <xs:import namespace="urn:broadband-forum-org:cwmp:datamodel-1-10"
-    schemaLocation="https://www.broadband-forum.org/cwmp/cwmp-datamodel-1-10.xsd"/>
+  <xs:import namespace="urn:broadband-forum-org:cwmp:datamodel-1-14"
+    schemaLocation="https://www.broadband-forum.org/cwmp/cwmp-datamodel-1-14.xsd"/>
   <xs:import namespace="urn:broadband-forum-org:cwmp:devicetype-features"
     schemaLocation="https://www.broadband-forum.org/cwmp/cwmp-devicetype-features.xsd"/>
   <!-- Simple types -->

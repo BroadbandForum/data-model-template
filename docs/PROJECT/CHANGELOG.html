@@ -24,9 +24,6 @@
     .display.math{display: block; text-align: center; margin: 0.5rem auto;}
   </style>
   <link rel="stylesheet" href="bbf.css" />
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
 </head>
 <body>
 <header id="title-block-header">
@@ -38,23 +35,70 @@ Template Change Log</h1>
 <p>See <a href="https://data-model-template.broadband-forum.org"
 class="uri">https://data-model-template.broadband-forum.org</a> for the
 current TR-106 specification.</p>
+<h2 id="tr-106-amendment-14">2024-07-23: <a
+href="https://www.broadband-forum.org/download/TR-106_Amendment-14.pdf">TR-106
+Amendment 14</a></h2>
+<p><em>Tag: <a
+href="https://github.com/BroadbandForum/data-model-template/releases/tag/v1.14.0">v1.14.0</a></em></p>
+<h3 id="tr-106-document">TR-106 Document</h3>
+<ul>
+<li>Added access type guidance</li>
+<li>Documented the dmr:noNameCheck attribute</li>
+<li>Documented the decimal datatype</li>
+<li>Documented the list value defaults</li>
+<li>Documented markdown syntax (and switch from MediaWiki)</li>
+<li>Cosmetic changes</li>
+</ul>
+<h3 id="dm-data-model-definition-schema-dm-schema">DM Data Model
+Definition Schema (DM Schema)</h3>
+<ul>
+<li>Starting from this version, the DM schema version will be the same
+as the specification version</li>
+<li>Removed the status attribute’s default</li>
+<li>Supported virtual components</li>
+<li>Permitted changing the version of an existing parameter (sometimes
+needed when using components to define multiple parameters)</li>
+</ul>
+<h3 id="data-model-report-schema-dmr-schema">Data Model Report Schema
+(DMR Schema)</h3>
+<ul>
+<li>Added <em>noNameCheck</em> to suppress name checks (used for items
+that knowingly disobey the rules)</li>
+</ul>
+<h3 id="data-model-data-types">Data Model Data Types</h3>
+<ul>
+<li>Updated <em>Alias</em> component to be virtual (with different CWMP
+and USP versions)</li>
+</ul>
+<h3 id="data-model-bibliographic-references">Data Model Bibliographic
+References</h3>
+<ul>
+<li>Fixed IPDR reference links</li>
+<li>Added more bibrefs</li>
+</ul>
+<h3 id="device-type-schema-dt-schema">Device Type Schema (DT
+Schema)</h3>
+<ul>
+<li>Starting from this version, the DT schema version will be the same
+as the specification version</li>
+</ul>
 <h2 id="tr-106-amendment-13">2024-01-18: <a
 href="https://www.broadband-forum.org/download/TR-106_Amendment-13.pdf">TR-106
 Amendment 13</a></h2>
 <p><em>Tag: <a
 href="https://github.com/BroadbandForum/data-model-template/releases/tag/v1.13.0">v1.13.0</a></em></p>
-<h3 id="tr-106-document">TR-106 Document</h3>
+<h3 id="tr-106-document-1">TR-106 Document</h3>
 <ul>
 <li>Clarified the requirements regarding vendor-specific prefixes</li>
 </ul>
-<h3 id="data-model-data-types">Data Model Data Types</h3>
+<h3 id="data-model-data-types-1">Data Model Data Types</h3>
 <ul>
 <li>Added an <em>Alias</em> component to reduce cut-and-paste in the
 data models</li>
 <li>Added an <em>Order</em> type to reduce cut-and-paste in the data
 models</li>
 </ul>
-<h3 id="data-model-bibliographic-references">Data Model Bibliographic
+<h3 id="data-model-bibliographic-references-1">Data Model Bibliographic
 References</h3>
 <ul>
 <li>Added more bibrefs</li>
@@ -64,7 +108,7 @@ href="https://www.broadband-forum.org/download/TR-106_Amendment-12.pdf">TR-106
 Amendment 12</a></h2>
 <p><em>Tag: <a
 href="https://github.com/BroadbandForum/data-model-template/releases/tag/v1.12.0">v1.12.0</a></em></p>
-<h3 id="tr-106-document-1">TR-106 Document</h3>
+<h3 id="tr-106-document-2">TR-106 Document</h3>
 <ul>
 <li>Updated the <em>Mountable Object</em> and <em>Mount Point</em>
 descriptions to indicate that all top-level objects (other than mount
@@ -86,7 +130,7 @@ basic rule is that the value space can only be expanded, never
 contracted</li>
 <li>Added a new section on the DMR (Data Model Report) Schema</li>
 </ul>
-<h3 id="dm-data-model-definition-schema-dm-schema">DM Data Model
+<h3 id="dm-data-model-definition-schema-dm-schema-1">DM Data Model
 Definition Schema (DM Schema)</h3>
 <ul>
 <li>Supported XSD v1.1, which allows more rigorous validation, e.g., use
@@ -107,7 +151,7 @@ be used on elements where they make sense</li>
 <li>Fixed a few bugs, e.g., added a <em>template</em> element uniqueness
 check</li>
 </ul>
-<h3 id="data-model-report-schema-dmr-schema">Data Model Report Schema
+<h3 id="data-model-report-schema-dmr-schema-1">Data Model Report Schema
 (DMR Schema)</h3>
 <ul>
 <li>Added <em>noUnitsTemplate</em> to suppress “missing
@@ -115,7 +159,7 @@ check</li>
 <li>Added <em>previousCommand</em> and <em>previousEvent</em>
 attributes</li>
 </ul>
-<h3 id="device-type-schema-dt-schema">Device Type Schema (DT
+<h3 id="device-type-schema-dt-schema-1">Device Type Schema (DT
 Schema)</h3>
 <ul>
 <li>Updated to reference latest published DM Schema version (v1.10)</li>
@@ -127,7 +171,7 @@ href="https://www.broadband-forum.org/download/TR-106_Amendment-11.pdf">TR-106
 Amendment 11</a></h2>
 <p><em>Tag: <a
 href="https://github.com/BroadbandForum/data-model-template/releases/tag/v1.11.0">v1.11.0</a></em></p>
-<h3 id="tr-106-document-2">TR-106 Document</h3>
+<h3 id="tr-106-document-3">TR-106 Document</h3>
 <ul>
 <li>Clarified <em>forcedEnabled</em> and <em>forceDefaultEnabled</em>
 for USP</li>
@@ -135,7 +179,7 @@ for USP</li>
 <li>Documented new description templates</li>
 <li>Documented new <em>secured</em> attribute</li>
 </ul>
-<h3 id="dm-data-model-definition-schema-dm-schema-1">DM Data Model
+<h3 id="dm-data-model-definition-schema-dm-schema-2">DM Data Model
 Definition Schema (DM Schema)</h3>
 <ul>
 <li>Allowed the <em>version</em> attribute in component references</li>
@@ -145,7 +189,7 @@ event argument objects</li>
 arguments</li>
 <li>Added <em>secured</em> attribute</li>
 </ul>
-<h3 id="data-model-report-schema-dmr-schema-1">Data Model Report Schema
+<h3 id="data-model-report-schema-dmr-schema-2">Data Model Report Schema
 (DMR Schema)</h3>
 <ul>
 <li>Changed version number to <em>1-0</em>, which indicates new
@@ -154,7 +198,7 @@ markdown-friendly wrapped descriptions</li>
 <em>noDiscriminatorParameter</em> and <em>noUnionObject</em> to suppress
 various warnings</li>
 </ul>
-<h3 id="device-type-schema-dt-schema-1">Device Type Schema (DT
+<h3 id="device-type-schema-dt-schema-2">Device Type Schema (DT
 Schema)</h3>
 <ul>
 <li>Updated to reference latest published DM Schema version (v1.9)</li>
@@ -164,18 +208,18 @@ href="https://www.broadband-forum.org/download/TR-106_Amendment-10.pdf">TR-106
 Amendment 10</a></h2>
 <p><em>Tag: <a
 href="https://github.com/BroadbandForum/data-model-template/releases/tag/v1.10.0">v1.10.0</a></em></p>
-<h3 id="tr-106-document-3">TR-106 Document</h3>
+<h3 id="tr-106-document-4">TR-106 Document</h3>
 <ul>
 <li>Converted document to markdown</li>
 <li>Various editorial improvements</li>
 </ul>
-<h3 id="dm-data-model-definition-schema-dm-schema-2">DM Data Model
+<h3 id="dm-data-model-definition-schema-dm-schema-3">DM Data Model
 Definition Schema (DM Schema)</h3>
 <ul>
 <li>Allowed command attributes, e.g. mandatory, in component
 definitions</li>
 </ul>
-<h3 id="device-type-schema-dt-schema-2">Device Type Schema (DT
+<h3 id="device-type-schema-dt-schema-3">Device Type Schema (DT
 Schema)</h3>
 <ul>
 <li>Updated to reference latest published DM Schema version (v1.8)</li>
@@ -187,24 +231,24 @@ href="https://github.com/BroadbandForum/data-model-template/releases/tag/v1.9.0"
 <ul>
 <li>Schema updates; document not updated</li>
 </ul>
-<h3 id="dm-data-model-definition-schema-dm-schema-3">DM Data Model
+<h3 id="dm-data-model-definition-schema-dm-schema-4">DM Data Model
 Definition Schema (DM Schema)</h3>
 <ul>
 <li>Supported implementation defaults, version attribute, description
 templates, writeOnceReadOnly access type and the decimal datatype</li>
 </ul>
-<h3 id="device-type-schema-dt-schema-3">Device Type Schema (DT
+<h3 id="device-type-schema-dt-schema-4">Device Type Schema (DT
 Schema)</h3>
 <ul>
 <li>Updated to reference latest published DM Schema version (v1.7)</li>
 </ul>
-<h3 id="data-model-data-types-1">Data Model Data Types</h3>
+<h3 id="data-model-data-types-2">Data Model Data Types</h3>
 <ul>
 <li>Added datatypes from versioned files</li>
 <li>Added CWMP and USP versions of the Alias datatype</li>
 <li>Added URI, URL and URL datatypes</li>
 </ul>
-<h3 id="data-model-bibliographic-references-1">Data Model Bibliographic
+<h3 id="data-model-bibliographic-references-2">Data Model Bibliographic
 References</h3>
 <ul>
 <li>Added references from versioned files (grouped by category and
@@ -220,13 +264,13 @@ href="https://www.broadband-forum.org/download/TR-106_Amendment-8.pdf">TR-106
 Amendment 8</a></h2>
 <p><em>Tag: <a
 href="https://github.com/BroadbandForum/data-model-template/releases/tag/v1.8.0">v1.8.0</a></em></p>
-<h3 id="tr-106-document-4">TR-106 Document</h3>
+<h3 id="tr-106-document-5">TR-106 Document</h3>
 <ul>
 <li>Added support of USP (mountable objects)</li>
 <li>Removed references to obsolete data models</li>
 <li>Moved device requirements to TR-069</li>
 </ul>
-<h3 id="dm-data-model-definition-schema-dm-schema-4">DM Data Model
+<h3 id="dm-data-model-definition-schema-dm-schema-5">DM Data Model
 Definition Schema (DM Schema)</h3>
 <ul>
 <li>Supported USP commands, events and mount points</li>
@@ -247,14 +291,14 @@ href="https://www.broadband-forum.org/download/TR-106_Amendment-7.pdf">TR-106
 Amendment 7</a></h2>
 <p><em>Tag: <a
 href="https://github.com/BroadbandForum/data-model-template/releases/tag/v1.7.0">v1.7.0</a></em></p>
-<h3 id="tr-106-document-5">TR-106 Document</h3>
+<h3 id="tr-106-document-6">TR-106 Document</h3>
 <ul>
 <li>Added descriptions of new features in DM Schema (v1.4 &amp; v1.5)
 and DT Schema (v1.2 &amp; v1.3)</li>
 <li>Added Annex defining additional requirements for BBF standard data
 models</li>
 </ul>
-<h3 id="dm-data-model-definition-schema-dm-schema-5">DM Data Model
+<h3 id="dm-data-model-definition-schema-dm-schema-6">DM Data Model
 Definition Schema (DM Schema)</h3>
 <ul>
 <li>Added <em>profile/<span class="citation"
@@ -265,7 +309,7 @@ data-cites="minVersion">@minVersion</span></em> attribute</li>
 <em>list</em> facet in named data type definitions</li>
 <li>Several other minor updates and clarifications</li>
 </ul>
-<h3 id="device-type-schema-dt-schema-4">Device Type Schema (DT
+<h3 id="device-type-schema-dt-schema-5">Device Type Schema (DT
 Schema)</h3>
 <ul>
 <li>Many minor updates and clarifications</li>
@@ -275,18 +319,18 @@ href="https://www.broadband-forum.org/download/TR-106_Amendment-6.pdf">TR-106
 Amendment 6</a></h2>
 <p><em>Tag: <a
 href="https://github.com/BroadbandForum/data-model-template/releases/tag/v1.6.0">v1.6.0</a></em></p>
-<h3 id="tr-106-document-6">TR-106 Document</h3>
+<h3 id="tr-106-document-7">TR-106 Document</h3>
 <ul>
 <li>Removed definition of proxying, now defined in TR-069</li>
 <li>Removed Common objects</li>
 <li>Alias Parameter Requirements added</li>
 </ul>
-<h3 id="dm-data-model-definition-schema-dm-schema-6">DM Data Model
+<h3 id="dm-data-model-definition-schema-dm-schema-7">DM Data Model
 Definition Schema (DM Schema)</h3>
 <ul>
 <li>Added top-level <em>file</em> attribute</li>
 </ul>
-<h3 id="device-type-schema-dt-schema-5">Device Type Schema (DT
+<h3 id="device-type-schema-dt-schema-6">Device Type Schema (DT
 Schema)</h3>
 <ul>
 <li>Added top-level UUID data type and attribute</li>
@@ -296,13 +340,13 @@ href="https://www.broadband-forum.org/download/TR-106_Amendment-5.pdf">TR-106
 Amendment 5</a></h2>
 <p><em>Tag: <a
 href="https://github.com/BroadbandForum/data-model-template/releases/tag/v1.5.0">v1.5.0</a></em></p>
-<h3 id="tr-106-document-7">TR-106 Document</h3>
+<h3 id="tr-106-document-8">TR-106 Document</h3>
 <ul>
 <li>Replaced definitions of named data types such as IPAddress with
 references to normative XML</li>
 <li>Minor changes to DM Schema (v1.3) and DT Schema (v1.1)</li>
 </ul>
-<h3 id="dm-data-model-definition-schema-dm-schema-7">DM Data Model
+<h3 id="dm-data-model-definition-schema-dm-schema-8">DM Data Model
 Definition Schema (DM Schema)</h3>
 <ul>
 <li>Relaxed some referential constraints (in the light of
@@ -312,7 +356,7 @@ data-cites="action">@action</span></em> prefix option</li>
 <li>Added <em>syntax/<span class="citation"
 data-cites="command">@command</span></em></li>
 </ul>
-<h3 id="device-type-schema-dt-schema-6">Device Type Schema (DT
+<h3 id="device-type-schema-dt-schema-7">Device Type Schema (DT
 Schema)</h3>
 <ul>
 <li>Minor changes tracking DM Schema v1.3 changes</li>
@@ -322,11 +366,11 @@ href="https://www.broadband-forum.org/download/TR-106_Amendment-4.pdf">TR-106
 Amendment 4</a></h2>
 <p><em>Tag: <a
 href="https://github.com/BroadbandForum/data-model-template/releases/tag/v1.4.0">v1.4.0</a></em></p>
-<h3 id="tr-106-document-8">TR-106 Document</h3>
+<h3 id="tr-106-document-9">TR-106 Document</h3>
 <ul>
 <li>Moved data model definitions to TR-181 Issue 1</li>
 </ul>
-<h3 id="dm-data-model-definition-schema-dm-schema-8">DM Data Model
+<h3 id="dm-data-model-definition-schema-dm-schema-9">DM Data Model
 Definition Schema (DM Schema)</h3>
 <ul>
 <li>Distinguished functional and non-functional keys</li>
@@ -337,11 +381,11 @@ href="https://www.broadband-forum.org/download/TR-106_Amendment-3.pdf">TR-106
 Amendment 3</a></h2>
 <p><em>Tag: <a
 href="https://github.com/BroadbandForum/data-model-template/releases/tag/v1.3.0">v1.3.0</a></em></p>
-<h3 id="tr-106-document-9">TR-106 Document</h3>
+<h3 id="tr-106-document-10">TR-106 Document</h3>
 <ul>
 <li>Addition of device type XML Schema</li>
 </ul>
-<h3 id="dm-data-model-definition-schema-dm-schema-9">DM Data Model
+<h3 id="dm-data-model-definition-schema-dm-schema-10">DM Data Model
 Definition Schema (DM Schema)</h3>
 <ul>
 <li>Made <em>import/<span class="citation"
@@ -349,12 +393,12 @@ data-cites="file">@file</span></em> optional</li>
 <li>Supported <em>range/<span class="citation"
 data-cites="step">@step</span></em></li>
 </ul>
-<h3 id="data-model-report-schema-dmr-schema-2">Data Model Report Schema
+<h3 id="data-model-report-schema-dmr-schema-3">Data Model Report Schema
 (DMR Schema)</h3>
 <ul>
 <li>Added <em>noUniqueKeys</em></li>
 </ul>
-<h3 id="device-type-schema-dt-schema-7">Device Type Schema (DT
+<h3 id="device-type-schema-dt-schema-8">Device Type Schema (DT
 Schema)</h3>
 <ul>
 <li>Original</li>
@@ -369,7 +413,7 @@ href="https://www.broadband-forum.org/download/TR-106_Amendment-2.pdf">TR-106
 Amendment 2</a></h2>
 <p><em>Tag: <a
 href="https://github.com/BroadbandForum/data-model-template/releases/tag/v1.2.0">v1.2.0</a></em></p>
-<h3 id="tr-106-document-10">TR-106 Document</h3>
+<h3 id="tr-106-document-11">TR-106 Document</h3>
 <ul>
 <li>Addition of data model definition XML Schema and normative XML
 common object and component definitions</li>
@@ -378,12 +422,12 @@ common object and component definitions</li>
 <ul>
 <li>Minor clarifications</li>
 </ul>
-<h3 id="dm-data-model-definition-schema-dm-schema-10">DM Data Model
+<h3 id="dm-data-model-definition-schema-dm-schema-11">DM Data Model
 Definition Schema (DM Schema)</h3>
 <ul>
 <li>Original</li>
 </ul>
-<h3 id="data-model-report-schema-dmr-schema-3">Data Model Report Schema
+<h3 id="data-model-report-schema-dmr-schema-4">Data Model Report Schema
 (DMR Schema)</h3>
 <ul>
 <li>Original</li>
@@ -391,7 +435,7 @@ Definition Schema (DM Schema)</h3>
 <h2 id="tr-106-amendment-1">2006-11-01: <a
 href="https://www.broadband-forum.org/download/TR-106_Amendment-1.pdf">TR-106
 Amendment 1</a></h2>
-<h3 id="tr-106-document-11">TR-106 Document</h3>
+<h3 id="tr-106-document-12">TR-106 Document</h3>
 <ul>
 <li>Clarification of original document</li>
 </ul>
@@ -403,7 +447,7 @@ Amendment 1</a></h2>
 <h2 id="tr-106-issue-1">2005-09-01: <a
 href="https://www.broadband-forum.org/download/TR-106_Issue-1.pdf">TR-106
 Issue 1</a></h2>
-<h3 id="tr-106-document-12">TR-106 Document</h3>
+<h3 id="tr-106-document-13">TR-106 Document</h3>
 <ul>
 <li>Original</li>
 </ul>

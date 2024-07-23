@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  Data Model Definition Schema (DM Schema) v1.10
+  Data Model Definition Schema (DM Schema) v1.14
 
-  Copyright (c) 2008-2022, Broadband Forum
+  Copyright (c) 2008-2024, Broadband Forum
 
   Redistribution and use in source and binary forms, with or
   without modification, are permitted provided that the following
@@ -65,9 +65,9 @@
 
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" vc:minVersion="1.1"
-  xmlns:tns="urn:broadband-forum-org:cwmp:datamodel-1-10"
+  xmlns:tns="urn:broadband-forum-org:cwmp:datamodel-1-14"
   xmlns:dmr="urn:broadband-forum-org:cwmp:datamodel-report-1-0"
-  targetNamespace="urn:broadband-forum-org:cwmp:datamodel-1-10" elementFormDefault="unqualified"
+  targetNamespace="urn:broadband-forum-org:cwmp:datamodel-1-14" elementFormDefault="unqualified"
   attributeFormDefault="unqualified">
   <xs:import namespace="urn:broadband-forum-org:cwmp:datamodel-report-1-0"
     schemaLocation="https://www.broadband-forum.org/cwmp/cwmp-datamodel-report-1-0.xsd"/>
@@ -816,7 +816,8 @@ The units facet MUST NOT be specified for data types that are not numeric, i.e. 
             <xs:documentation>MUST specify version if the item was defined in a later version than its parent.</xs:documentation>
           </xs:annotation>
         </xs:attribute>
-        <xs:attribute name="status" type="tns:Status" default="current"/>
+        <xs:attribute name="status" type="tns:Status"/>
+        <xs:attribute ref="dmr:noNameCheck"/>
         <xs:attribute ref="dmr:noUnitsTemplate"/>
         <xs:attribute ref="dmr:previousCommand"/>
         <xs:attribute ref="dmr:previousEvent"/>
@@ -836,6 +837,11 @@ The units facet MUST NOT be specified for data types that are not numeric, i.e. 
           <xs:annotation>
             <xs:documentation>MUST be unique within the parent object (this is checked by schema validation).
 MUST reference an existing parameter.</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="version" type="tns:Version">
+          <xs:annotation>
+            <xs:documentation>MUST specify version if the item was defined in a later version than its parent.</xs:documentation>
           </xs:annotation>
         </xs:attribute>
         <xs:attribute name="status" type="tns:Status"/>
@@ -913,7 +919,8 @@ MUST reference an existing parameter.</xs:documentation>
               If the object is a table (see maxEntries), the final part of the name MUST be "{i}.".</xs:documentation>
           </xs:annotation>
         </xs:attribute>
-        <xs:attribute name="status" type="tns:Status" default="current"/>
+        <xs:attribute name="status" type="tns:Status"/>
+        <xs:attribute ref="dmr:noNameCheck"/>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
@@ -939,7 +946,7 @@ MUST reference an existing parameter.</xs:documentation>
     <xs:sequence>
       <xs:element name="description" type="tns:Description" minOccurs="0"/>
     </xs:sequence>
-    <xs:attribute name="status" type="tns:Status" default="current"/>
+    <xs:attribute name="status" type="tns:Status"/>
     <xs:anyAttribute namespace="##other"/>
   </xs:complexType>
   <xs:complexType name="BaseSyntax">
@@ -1174,8 +1181,14 @@ MUST reference an existing parameter.</xs:documentation>
         <xs:documentation>MUST be unique within the document, including imported components (this is checked by schema validation).</xs:documentation>
       </xs:annotation>
     </xs:attribute>
-    <xs:attribute name="status" type="tns:Status" default="current"/>
+    <xs:attribute name="virtual" type="xs:boolean" default="false">
+      <xs:annotation>
+        <xs:documentation>If true, the first non-virtual component in the call stack (if found) will be expanded rather than the virtual component.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="status" type="tns:Status"/>
     <xs:attribute name="id" type="tns:OpaqueID"/>
+    <xs:attribute ref="dmr:noNameCheck"/>
     <xs:anyAttribute namespace="##other"/>
   </xs:complexType>
   <xs:complexType name="ComponentObjectDef">
@@ -1313,7 +1326,7 @@ Cannot begin with a lower-case letter, in order to avoid confusion with built-in
         <xs:documentation>MUST be present if and only if deriving from a non-built-in data type.  See A.2.3.1.</xs:documentation>
       </xs:annotation>
     </xs:attribute>
-    <xs:attribute name="status" type="tns:Status" default="current"/>
+    <xs:attribute name="status" type="tns:Status"/>
     <xs:attribute name="id" type="tns:OpaqueID"/>
     <xs:anyAttribute namespace="##other"/>
   </xs:complexType>
@@ -1380,6 +1393,7 @@ Specify "prefix" to prefix to the previous description, "append" to append to th
             <xs:documentation>MUST specify version if the item was defined in a later version than its parent.</xs:documentation>
           </xs:annotation>
         </xs:attribute>
+        <xs:attribute ref="dmr:noNameCheck"/>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
@@ -1641,8 +1655,9 @@ The optional ref attribute MAY be used in order to avoid name conflicts between 
       </xs:annotation>
     </xs:attribute>
     <xs:attribute name="isService" type="xs:boolean" default="false"/>
-    <xs:attribute name="status" type="tns:Status" default="current"/>
+    <xs:attribute name="status" type="tns:Status"/>
     <xs:attribute name="id" type="tns:OpaqueID"/>
+    <xs:attribute ref="dmr:noNameCheck"/>
     <xs:anyAttribute namespace="##other"/>
   </xs:complexType>
   <xs:complexType name="ModelCommandBase">
@@ -1675,7 +1690,7 @@ The optional ref attribute MAY be used in order to avoid name conflicts between 
           </xs:annotation>
         </xs:attribute>
         <xs:attribute name="async" type="xs:boolean" use="required"/>
-        <xs:attribute name="status" type="tns:Status" default="current"/>
+        <xs:attribute name="status" type="tns:Status"/>
         <xs:attribute ref="dmr:noUnitsTemplate"/>
         <xs:attribute ref="dmr:previousCommand"/>
         <xs:attribute ref="dmr:previousEvent"/>
@@ -1755,7 +1770,7 @@ MUST reference an existing command.</xs:documentation>
             <xs:documentation>MUST specify version if the item was defined in a later version than its parent.</xs:documentation>
           </xs:annotation>
         </xs:attribute>
-        <xs:attribute name="status" type="tns:Status" default="current"/>
+        <xs:attribute name="status" type="tns:Status"/>
         <xs:attribute ref="dmr:noUnitsTemplate"/>
         <xs:attribute ref="dmr:previousCommand"/>
         <xs:attribute ref="dmr:previousEvent"/>
@@ -1969,8 +1984,9 @@ MUST be present if and only if defining a new profile.</xs:documentation>
       </xs:annotation>
     </xs:attribute>
     <xs:attribute name="version" type="tns:Version" use="required"/>
-    <xs:attribute name="status" type="tns:Status" default="current"/>
+    <xs:attribute name="status" type="tns:Status"/>
     <xs:attribute name="id" type="tns:OpaqueID"/>
+    <xs:attribute ref="dmr:noNameCheck"/>
     <xs:anyAttribute namespace="##other"/>
   </xs:complexType>
   <xs:complexType name="ProfileCommand">
@@ -1989,7 +2005,7 @@ MUST be present if and only if defining a new profile.</xs:documentation>
             <xs:element name="parameter">
               <xs:complexType>
                 <xs:attribute name="ref" type="tns:ParameterName"/>
-                <xs:attribute name="status" type="tns:Status" default="current"/>
+                <xs:attribute name="status" type="tns:Status"/>
               </xs:complexType>
             </xs:element>
             <xs:element name="object">
@@ -1998,12 +2014,12 @@ MUST be present if and only if defining a new profile.</xs:documentation>
                   <xs:element name="parameter">
                     <xs:complexType>
                       <xs:attribute name="ref" type="tns:ParameterName"/>
-                      <xs:attribute name="status" type="tns:Status" default="current"/>
+                      <xs:attribute name="status" type="tns:Status"/>
                     </xs:complexType>
                   </xs:element>
                 </xs:sequence>
                 <xs:attribute name="ref" type="tns:ObjectName"/>
-                <xs:attribute name="status" type="tns:Status" default="current"/>
+                <xs:attribute name="status" type="tns:Status"/>
               </xs:complexType>
             </xs:element>
           </xs:choice>
@@ -2015,7 +2031,7 @@ MUST be present if and only if defining a new profile.</xs:documentation>
             <xs:element name="parameter">
               <xs:complexType>
                 <xs:attribute name="ref" type="tns:ParameterName"/>
-                <xs:attribute name="status" type="tns:Status" default="current"/>
+                <xs:attribute name="status" type="tns:Status"/>
               </xs:complexType>
             </xs:element>
             <xs:element name="object">
@@ -2024,12 +2040,12 @@ MUST be present if and only if defining a new profile.</xs:documentation>
                   <xs:element name="parameter">
                     <xs:complexType>
                       <xs:attribute name="ref" type="tns:ParameterName"/>
-                      <xs:attribute name="status" type="tns:Status" default="current"/>
+                      <xs:attribute name="status" type="tns:Status"/>
                     </xs:complexType>
                   </xs:element>
                 </xs:sequence>
                 <xs:attribute name="ref" type="tns:ObjectName"/>
-                <xs:attribute name="status" type="tns:Status" default="current"/>
+                <xs:attribute name="status" type="tns:Status"/>
               </xs:complexType>
             </xs:element>
           </xs:choice>
@@ -2037,7 +2053,7 @@ MUST be present if and only if defining a new profile.</xs:documentation>
       </xs:element>
     </xs:sequence>
     <xs:attribute name="ref" type="tns:CommandName" use="required"/>
-    <xs:attribute name="status" type="tns:Status" default="current"/>
+    <xs:attribute name="status" type="tns:Status"/>
     <xs:anyAttribute namespace="##other"/>
   </xs:complexType>
   <xs:complexType name="ProfileEvent">
@@ -2054,7 +2070,7 @@ MUST be present if and only if defining a new profile.</xs:documentation>
         <xs:element name="parameter">
           <xs:complexType>
             <xs:attribute name="ref" type="tns:ParameterName"/>
-            <xs:attribute name="status" type="tns:Status" default="current"/>
+            <xs:attribute name="status" type="tns:Status"/>
           </xs:complexType>
         </xs:element>
         <xs:element name="object">
@@ -2063,18 +2079,18 @@ MUST be present if and only if defining a new profile.</xs:documentation>
               <xs:element name="parameter">
                 <xs:complexType>
                   <xs:attribute name="ref" type="tns:ParameterName"/>
-                  <xs:attribute name="status" type="tns:Status" default="current"/>
+                  <xs:attribute name="status" type="tns:Status"/>
                 </xs:complexType>
               </xs:element>
             </xs:sequence>
             <xs:attribute name="ref" type="tns:ObjectName"/>
-            <xs:attribute name="status" type="tns:Status" default="current"/>
+            <xs:attribute name="status" type="tns:Status"/>
           </xs:complexType>
         </xs:element>
       </xs:choice>
     </xs:sequence>
     <xs:attribute name="ref" type="tns:EventName" use="required"/>
-    <xs:attribute name="status" type="tns:Status" default="current"/>
+    <xs:attribute name="status" type="tns:Status"/>
     <xs:anyAttribute namespace="##other"/>
   </xs:complexType>
   <xs:complexType name="ProfileObject">
@@ -2105,7 +2121,7 @@ MUST be present if and only if defining a new profile.</xs:documentation>
     </xs:sequence>
     <xs:attribute name="ref" type="tns:ObjectName" use="required"/>
     <xs:attribute name="requirement" type="tns:ProfileObjectAccess" use="required"/>
-    <xs:attribute name="status" type="tns:Status" default="current"/>
+    <xs:attribute name="status" type="tns:Status"/>
     <xs:anyAttribute namespace="##other"/>
   </xs:complexType>
   <xs:complexType name="ProfileParameter">
@@ -2121,7 +2137,7 @@ MUST be present if and only if defining a new profile.</xs:documentation>
     </xs:sequence>
     <xs:attribute name="ref" type="tns:ParameterName" use="required"/>
     <xs:attribute name="requirement" type="tns:ParameterAccess" use="required"/>
-    <xs:attribute name="status" type="tns:Status" default="current"/>
+    <xs:attribute name="status" type="tns:Status"/>
     <xs:anyAttribute namespace="##other"/>
   </xs:complexType>
   <xs:complexType name="DecimalRangeFacet">
@@ -2330,7 +2346,7 @@ Where the specification is a BBF document, the file naming rules specified in A.
       <xs:field xpath="@ref"/>
     </xs:keyref>
     <xs:keyref name="componentRef" refer="tns:componentName">
-      <xs:selector xpath=".//component"/>
+      <xs:selector xpath=".//component/component | .//model/component | .//object/component | .//input/component | .//output/component | .//event/component"/>
       <xs:field xpath="@ref"/>
     </xs:keyref>
     <xs:keyref name="modelBase" refer="tns:modelName">

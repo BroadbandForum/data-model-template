@@ -29,6 +29,17 @@ yq eval ./../install/pandoc/defaults/docx-defaults.yaml
 yq eval ./../install/pandoc/defaults/_codebraid_preview.yaml
 yq eval ./../install/pandoc/defaults/htm-defaults.yaml
 yq eval ./../install/pandoc/defaults/codebraid-defaults.yaml
+yq eval ./../install/pandoc/csl/ieee-extra-csl.yaml
+yq eval ./../install/pandoc/csl/iso-extra-csl.yaml
+yq eval ./../install/pandoc/csl/iana-extra-csl.yaml
+yq eval ./../install/pandoc/csl/grpc-extra-csl.yaml
+yq eval ./../install/pandoc/csl/mef-extra-csl.yaml
+yq eval ./../install/pandoc/csl/ietf-extra-csl.yaml
+yq eval ./../install/pandoc/csl/3gpp-extra-csl.yaml
+yq eval ./../install/pandoc/csl/ansi-extra-csl.yaml
+yq eval ./../install/pandoc/csl/itu-extra-csl.yaml
+yq eval ./../install/pandoc/csl/w3c-extra-csl.yaml
+yq eval ./../install/pandoc/csl/sff-extra-csl.yaml
 yq eval ./bamboo-specs/bamboo.yaml
 yq eval ./PROJECT.yaml
 yq eval ./support/dm-units.yaml
@@ -93,21 +104,33 @@ make[2]: Nothing to be done for 'all'.
 make[2]: Leaving directory '/mnt/ebs/bamboo-agent-home-alpha/xml-data/build-dir/BUSDM-DMSUPPREL-JOB1/WT-106/schemas'
 make -C support all
 make[2]: Entering directory '/mnt/ebs/bamboo-agent-home-alpha/xml-data/build-dir/BUSDM-DMSUPPREL-JOB1/WT-106/support'
-report.pl --exitcode=fatals --include=../../install/cwmp/ --noautomodel --loglevel=error --allbibrefs --report=html --outfile=docs/tr-069-biblio.html tr-069-biblio.xml
-report.pl --exitcode=fatals --include=../../install/cwmp/ --noautomodel --loglevel=error --report=html --outfile=docs/tr-106-abbr.html tr-106-abbr.xml
-report.pl --exitcode=fatals --include=../../install/cwmp/ --noautomodel --loglevel=error --report=html --outfile=docs/tr-106-glossary.html tr-106-glossary.xml
-report.pl --exitcode=fatals --include=../../install/cwmp/ --noautomodel --loglevel=error --alldatatypes --report=html --outfile=docs/tr-106-types.html tr-106-types.xml
+PYTHONPATH=../../WT-354/ ../../WT-354/bin/report.py  --include=../../install/cwmp/ --format=markdown --output=docs/tr-069-biblio.md tr-069-biblio.xml
+pandoc --data-dir=../../install/pandoc/ --standalone --from=commonmark_x --resource-path=../../install/pandoc/ --lua-filter=list-table.lua --to=html-derived-writer.lua --output=docs/tr-069-biblio.html docs/tr-069-biblio.md
+PYTHONPATH=../../WT-354/ ../../WT-354/bin/report.py  --include=../../install/cwmp/ --format=markdown --output=docs/tr-106-abbr.md tr-106-abbr.xml
+pandoc --data-dir=../../install/pandoc/ --standalone --from=commonmark_x --resource-path=../../install/pandoc/ --lua-filter=list-table.lua --to=html-derived-writer.lua --output=docs/tr-106-abbr.html docs/tr-106-abbr.md
+PYTHONPATH=../../WT-354/ ../../WT-354/bin/report.py  --include=../../install/cwmp/ --format=markdown --output=docs/tr-106-glossary.md tr-106-glossary.xml
+WARNING:lint:Agent: {{gloref}}: missing id argument
+WARNING:lint:Controller: {{gloref}}: missing id argument
+WARNING:lint:Endpoint: {{gloref}}: missing id argument
+WARNING:lint:Object: {{gloref}}: missing id argument
+WARNING:lint:Object: {{gloref}}: missing id argument
+WARNING:lint:Object: {{gloref}}: missing id argument
+WARNING:lint:Service Element: {{gloref}}: missing id argument
+pandoc --data-dir=../../install/pandoc/ --standalone --from=commonmark_x --resource-path=../../install/pandoc/ --lua-filter=list-table.lua --to=html-derived-writer.lua --output=docs/tr-106-glossary.html docs/tr-106-glossary.md
+PYTHONPATH=../../WT-354/ ../../WT-354/bin/report.py  --include=../../install/cwmp/ --format=markdown --output=docs/tr-106-types.md tr-106-types.xml
+WARNING:lint:Alias-2-0: name contains a hyphen or underscore
+pandoc --data-dir=../../install/pandoc/ --standalone --from=commonmark_x --resource-path=../../install/pandoc/ --lua-filter=list-table.lua --to=html-derived-writer.lua --output=docs/tr-106-types.html docs/tr-106-types.md
 make[2]: Leaving directory '/mnt/ebs/bamboo-agent-home-alpha/xml-data/build-dir/BUSDM-DMSUPPREL-JOB1/WT-106/support'
 make -C specification all
 make[2]: Entering directory '/mnt/ebs/bamboo-agent-home-alpha/xml-data/build-dir/BUSDM-DMSUPPREL-JOB1/WT-106/specification'
 'CNAME' -> '../docs/CNAME'
-sed -e '/span\.release::before/s|{ *content:.*; *}|{ content: "(release-1.13-180)"; }|' -e 's|${USERDATA}|../../install/pandoc/|g' -e 's|${PROJECTYAMLTARGETDIR}|../docs|g' -e 's|${TARGETDIR}|../docs|g' <../../install/pandoc/css/release.css >../docs/release.css
-sed -e '/span\.release::before/s|{ *content:.*; *}|{ content: "(release-1.13-180)"; }|' -e 's|${USERDATA}|../../install/pandoc/|g' -e 's|${PROJECTYAMLTARGETDIR}|../docs|g' -e 's|${TARGETDIR}|../docs|g' <../../install/pandoc/defaults/json-defaults.yaml >../docs/json-defaults.yaml
-sed -e '/span\.release::before/s|{ *content:.*; *}|{ content: "(release-1.13-180)"; }|' -e 's|${USERDATA}|../../install/pandoc/|g' -e 's|${PROJECTYAMLTARGETDIR}|../docs|g' -e 's|${TARGETDIR}|../docs|g' <../../install/pandoc/defaults/docx-defaults.yaml >../docs/docx-defaults.yaml
-sed -e '/span\.release::before/s|{ *content:.*; *}|{ content: "(release-1.13-180)"; }|' -e 's|${USERDATA}|../../install/pandoc/|g' -e 's|${PROJECTYAMLTARGETDIR}|../docs|g' -e 's|${TARGETDIR}|../docs|g' <../../install/pandoc/defaults/pdf-defaults.yaml >../docs/pdf-defaults.yaml
-sed -e '/span\.release::before/s|{ *content:.*; *}|{ content: "(release-1.13-180)"; }|' -e 's|${USERDATA}|../../install/pandoc/|g' -e 's|${PROJECTYAMLTARGETDIR}|../docs|g' -e 's|${TARGETDIR}|../docs|g' <../../install/pandoc/defaults/typst-defaults.yaml >../docs/typst-defaults.yaml
-sed -e '/span\.release::before/s|{ *content:.*; *}|{ content: "(release-1.13-180)"; }|' -e 's|${USERDATA}|../../install/pandoc/|g' -e 's|${PROJECTYAMLTARGETDIR}|../docs|g' -e 's|${TARGETDIR}|../docs|g' <../../install/pandoc/custom/typst-template.typ >../docs/typst-template.typ
-sed -e '/span\.release::before/s|{ *content:.*; *}|{ content: "(release-1.13-180)"; }|' -e 's|${USERDATA}|../../install/pandoc/|g' -e 's|${PROJECTYAMLTARGETDIR}|../docs|g' -e 's|${TARGETDIR}|../docs|g' <../../install/pandoc/custom/typst-stringify.typ >../docs/typst-stringify.typ
+sed -e '/span\.release::before/s|{ *content:.*; *}|{ content: "(release-1.14-210)"; }|' -e 's|${USERDATA}|../../install/pandoc/|g' -e 's|${PROJECTYAMLTARGETDIR}|../docs|g' -e 's|${TARGETDIR}|../docs|g' <../../install/pandoc/css/release.css >../docs/release.css
+sed -e '/span\.release::before/s|{ *content:.*; *}|{ content: "(release-1.14-210)"; }|' -e 's|${USERDATA}|../../install/pandoc/|g' -e 's|${PROJECTYAMLTARGETDIR}|../docs|g' -e 's|${TARGETDIR}|../docs|g' <../../install/pandoc/defaults/json-defaults.yaml >../docs/json-defaults.yaml
+sed -e '/span\.release::before/s|{ *content:.*; *}|{ content: "(release-1.14-210)"; }|' -e 's|${USERDATA}|../../install/pandoc/|g' -e 's|${PROJECTYAMLTARGETDIR}|../docs|g' -e 's|${TARGETDIR}|../docs|g' <../../install/pandoc/defaults/docx-defaults.yaml >../docs/docx-defaults.yaml
+sed -e '/span\.release::before/s|{ *content:.*; *}|{ content: "(release-1.14-210)"; }|' -e 's|${USERDATA}|../../install/pandoc/|g' -e 's|${PROJECTYAMLTARGETDIR}|../docs|g' -e 's|${TARGETDIR}|../docs|g' <../../install/pandoc/defaults/pdf-defaults.yaml >../docs/pdf-defaults.yaml
+sed -e '/span\.release::before/s|{ *content:.*; *}|{ content: "(release-1.14-210)"; }|' -e 's|${USERDATA}|../../install/pandoc/|g' -e 's|${PROJECTYAMLTARGETDIR}|../docs|g' -e 's|${TARGETDIR}|../docs|g' <../../install/pandoc/defaults/typst-defaults.yaml >../docs/typst-defaults.yaml
+sed -e '/span\.release::before/s|{ *content:.*; *}|{ content: "(release-1.14-210)"; }|' -e 's|${USERDATA}|../../install/pandoc/|g' -e 's|${PROJECTYAMLTARGETDIR}|../docs|g' -e 's|${TARGETDIR}|../docs|g' <../../install/pandoc/custom/typst-template.typ >../docs/typst-template.typ
+sed -e '/span\.release::before/s|{ *content:.*; *}|{ content: "(release-1.14-210)"; }|' -e 's|${USERDATA}|../../install/pandoc/|g' -e 's|${PROJECTYAMLTARGETDIR}|../docs|g' -e 's|${TARGETDIR}|../docs|g' <../../install/pandoc/custom/typst-stringify.typ >../docs/typst-stringify.typ
 '../../install/pandoc/css/bbf.css' -> '../docs/bbf.css'
 '../../install/pandoc/css/bbflogo-bw.png' -> '../docs/bbflogo-bw.png'
 '../../install/pandoc/css/bbflogo-reverse-dark.png' -> '../docs/bbflogo-reverse-dark.png'
@@ -127,14 +150,12 @@ sed -e '/span\.release::before/s|{ *content:.*; *}|{ content: "(release-1.13-180
 'images/figure-2.png' -> '../docs/images/figure-2.png'
 'images/figure-3.png' -> '../docs/images/figure-3.png'
 'images/figure-4.png' -> '../docs/images/figure-4.png'
-pandoc --data-dir=../../install/pandoc/ --defaults=../docs/json-defaults.yaml --metadata-file=../docs/METADATA-1.yaml index.md --output=../docs/index.json
+pandoc --data-dir=../../install/pandoc/ --defaults=../docs/json-defaults.yaml --metadata-file=../docs/METADATA.yaml index.md --output=../docs/index.json
 pandoc --data-dir=../../install/pandoc/ --defaults=htm-defaults.yaml   --css=toc.css  --toc ../docs/index.json --output=../docs/index.htm
 pandoc --data-dir=../../install/pandoc/ --defaults=html-defaults.yaml    --css=toc.css --toc ../docs/index.json --output=../docs/index.html
 pandoc --data-dir=../../install/pandoc/ --defaults=../docs/docx-defaults.yaml --toc ../docs/index.json --output=../docs/index.docx
 pandoc --data-dir=../../install/pandoc/ --defaults=../docs/typst-defaults.yaml ../docs/index.json --output=../docs/index.typ
 typst compile ../docs/index.typ ../docs/index.pdf
-downloading @preview/tablex:0.0.7
- 37.4 KiB /  37.4 KiB (100 %)  37.4 KiB/s in  0s ETA:  0s
-'../docs/index.pdf' -> '../docs/WT-106-release-1.13-180.pdf'
+'../docs/index.pdf' -> '../docs/WT-106-release-1.14-210.pdf'
 make[2]: Leaving directory '/mnt/ebs/bamboo-agent-home-alpha/xml-data/build-dir/BUSDM-DMSUPPREL-JOB1/WT-106/specification'
 make[1]: Leaving directory '/mnt/ebs/bamboo-agent-home-alpha/xml-data/build-dir/BUSDM-DMSUPPREL-JOB1/WT-106'

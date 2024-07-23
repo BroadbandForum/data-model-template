@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<testsuites disabled="0" errors="0" failures="0" tests="3" time="0.0">
+	<testsuite disabled="0" errors="0" failures="0" name="xmlschema-validate-py" skipped="0" tests="3" time="0">
+		<testcase name="unknown-error"/>
+		<testcase name="xmlschema-validate"/>
+		<testcase name="xmlschema-validate-file-not-found-in"/>
+	</testsuite>
+</testsuites>
+

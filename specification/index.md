@@ -6,7 +6,7 @@ status: ''
 # navigation buttons shown on each page header
 buttons:
 - label: HTML
-  title: '%bbfNumber% Single-file HTML'
+  title: '%bbfNumber% Simple HTML'
   url: index.htm
 - label: PDF
   title: '%bbfNumber% PDF'
@@ -16,99 +16,21 @@ buttons:
 - label: USP Data Models
   url: https://usp-data-models.broadband-forum.org
 
-# references assume use of bbf.csl; please follow the existing style
+# bibliographic references
 references:
+- id: CommonMark
+  call-number: CommonMark
+  title: Specification Version 0.31.2
+  issued: {year: 2024, month: 01}
+  URL: https://spec.commonmark.org/0.31.2
 
-- id: RFC2119
-  call-number: RFC 2119
-  title: Key words for use in RFCs to Indicate Requirement Levels
-  publisher: IETF
-  issued: {year: 1997}
-  URL: https://tools.ietf.org/html/rfc2119
-
-- id: RFC2648
-  call-number: RFC 2648
-  title: A URN Namespace for IETF Documents
-  publisher: IETF
-  issued: {year: 1999}
-  URL: https://tools.ietf.org/html/rfc2648
-
-- id: RFC3986
-  call-number: RFC 3986
-  title: 'Uniform Resource Identifier (URI): Generic Syntax'
-  publisher: IETF
-  issued: {year: 2005}
-  URL: https://tools.ietf.org/html/rfc3986
-
-- id: TR-069
-  call-number: TR-069 Amendment 6 Corrigendum 1
-  title: CPE WAN Management Protocol
-  publisher: Broadband Forum
-  issued: {year: 2020}
-  URL: https://www.broadband-forum.org/technical/download/TR-069.pdf
-
-- id: TR-140
-  call-number: TR-140 Amendment 3
-  title: TR-069 Data Model for Storage Service Enabled Devices
-  publisher: Broadband Forum
-  issued: {year: 2017}
-  URL: https://www.broadband-forum.org/technical/download/TR-140.pdf
-
-- id: TR-143
-  call-number: TR-143 Amendment 1 Corrigendum 1
-  title: Enabling Network Throughput Performance Tests and Statistical Monitoring
-  publisher: Broadband Forum
-  issued: {year: 2015}
-  URL: https://www.broadband-forum.org/technical/download/TR-143.pdf
-
-- id: TR-181i2
-  call-number: TR-181 Issue 2
-  title: Device Data Model
-  publisher: Broadband Forum
-  URL: https://usp-data-models.broadband-forum.org#Device:2
-
-- id: TR-369
-  call-number: TR-369
-  title: User Services Platform
-  URL: https://usp.technology/specification
-
-- id: OUI
-  title: Organizationally Unique Identifiers (OUIs)
-  publisher: IEEE
-  URL: https://standards.ieee.org/faqs/OUI.html
-
-- id: SOAP
-  title: Simple Object Access Protocol (SOAP) 1.1
-  publisher: W3C
-  issued: {year: 2000}
-  URL: https://www.w3.org/TR/2000/NOTE-SOAP-20000508
-
-- id: XML
-  title: Extensible Markup Language (XML) 1.0 (Fourth Edition)
-  publisher: W3C
-  issued: {year: 2008}
-  URL: https://www.w3.org/TR/REC-xml
-
-- id: XML-Schema-Primer
-  title: 'XML Schema Part 0: Primer Second Edition'
-  publisher: W3C
-  issued: {year: 2004}
-  URL: https://www.w3.org/TR/xmlschema-0
-
-- id: XML-Schema-Datatypes
-  title: 'XML Schema Part 2: Datatypes Second Edition'
-  publisher: W3C
-  issued: {year: 2004}
-  URL: https://www.w3.org/TR/xmlschema-2
-
-# end of metadata
----
+...
 
 !include cover-page.md
 
 !include %notice%-notice.md
 
-!include METADATA-%bbfMajor%.md
+!include METADATA.md
 
 # Executive Summary {.unnumbered .new-page}
 
@@ -262,9 +184,9 @@ The following terminology is used throughout this %bbfType%.
 | **Data Model**                     | A hierarchical set of *Objects*, *Parameters*, *Commands* and/or *Events* that define the managed *Objects* accessible via a particular *Agent*.
 | **Device**                         | Used here as a synonym for *CPE*.
 | **DM Instance**                    | Data Model Schema instance document. This is an XML document that conforms to the *DM Schema* and to any additional rules specified in or referenced by the *DM Schema*.
-| **DM Schema**                      | Data Model Schema. This is the XML Schema [@XML-Schema-Primer] that is used for defining data models for use with *CWMP* and *USP*.
+| **DM Schema**                      | Data Model Schema. This is the XML Schema [@REC-xmlschema-0] that is used for defining data models for use with *CWMP* and *USP*.
 | **DT Instance**                    | Device Type Schema instance document. This is an XML document that conforms to the *DT Schema* and to any additional rules specified in or referenced by the *DT Schema*. This concept is useful for both CWMP and USP as an offline design tool, but only CWMP uses it at run-time (via the SupportedDataModel Object; see @sec:the-supported-data-model-and-the-instantiated-data-model).
-| **DT Schema**                      | Device Type Schema. This is the XML Schema [@XML-Schema-Primer] that is used for describing a *Device*'s *Supported Data Model*. This concept is useful for both CWMP and USP as an offline design tool, but only CWMP uses it at run-time (via the SupportedDataModel Object; see @sec:the-supported-data-model-and-the-instantiated-data-model).
+| **DT Schema**                      | Device Type Schema. This is the XML Schema [@REC-xmlschema-0] that is used for describing a *Device*'s *Supported Data Model*. This concept is useful for both CWMP and USP as an offline design tool, but only CWMP uses it at run-time (via the SupportedDataModel Object; see @sec:the-supported-data-model-and-the-instantiated-data-model).
 | **Event**                          | An indication that something of interest has happened that requires the *Agent* to notify the *Controller*.
 | **Instantiated Data Model**        | The *Data Model* that currently exists on an individual *CPE*. This refers to the *Object* instances, *Parameters*, *Commands* and/or *Events* that currently exist within the data model. It can be thought of as the *Current Supported Data Model* with all the "{i}" placeholders expanded to be the actual *Instance Numbers*. For example, "Device.Services.ABCService.{i}." in the *Current Supported Data Model* might correspond to "Device.Services.ABCService.1." and "Device.Services.ABCService.2." in the *Instantiated Data Model*.
 | **Instance Alias**                 | A writeable string that uniquely identifies an instance within a *Multi-Instance Object*
@@ -619,7 +541,7 @@ ProfileName            Refers to any version of the profile. Baseline
 ProfileName MUST start with a letter or underscore, and subsequent
 characters MUST be letters, digits, underscores or hyphens. The terms
 "letter" and "digit" are as defined in the XML
-specification [@XML, {Appendix B}].
+specification [@REC-xml, {Appendix B}].
 
 Hyphens can easily be confused with the discretionary hyphens that are
 sometimes inserted by hyphenation algorithms. For this reason,
@@ -800,7 +722,7 @@ Parameter names MUST be treated as case sensitive. The name of each node
 in the hierarchy MUST start with a letter or underscore, and subsequent
 characters MUST be letters, digits, underscores or hyphens. The terms
 "letter" and "digit" are as defined in the XML
-specification [@XML, {Appendix B}].
+specification [@REC-xml, {Appendix B}].
 
 Hyphens can easily be confused with the discretionary hyphens that are
 sometimes inserted by hyphenation algorithms. For this reason, the names
@@ -839,9 +761,9 @@ type.
 
 If absolute time is not available to the Agent, it SHOULD instead
 indicate the relative time since boot, where the boot time is assumed to
-be the beginning of the first day of January of year 1, or `0001 01
-01T00:00:00`. For example, 2 days, 3 hours, 4 minutes and 5 seconds since
-boot would be expressed as `0001 01 03T03:04:05`. Relative time since boot
+be the beginning of the first day of January of year 1, or `0001-01-01T00:00:00`.
+For example, 2 days, 3 hours, 4 minutes and 5 seconds since
+boot would be expressed as `0001-01-03T03:04:05`. Relative time since boot
 MUST be expressed using an untimezoned representation. Any untimezoned
 value with a year value less than 1000 MUST be interpreted as a relative
 time since boot.
@@ -931,6 +853,36 @@ determines the maximum length. For strings in which the content is a
 list, the maximum number of items and the individual item lengths can
 help to determine the maximum string length.
 
+## Access Types
+
+In the data model objects, tables, and parameters can have different levels of access, namely read-only, write-once-read-only and read-write.
+
+### Single-Instance Objects
+
+These are read-only because they represent fixed entities where you can't add or delete instances. E.g. Stats object.
+
+### Multi-Instance Objects or Tables
+
+These can be either read-only or read-write depending on their use case.
+For reporting purposes, where data should remain static, it's best to keep them read-only.
+
+For example, a session table representing who is currently accessing the server and from where. This information is managed by the service itself. No other service or remote Controller should be able to add instances to or delete them from the table. Therefore it is better to restrict it to read-only.
+
+For configurations where updates are necessary, they should be set as read-write.
+
+For example, a table storing user configuration. An admin may need to be able to add or delete users (table-instances). So this object should be read-write.
+
+### Parameters
+
+Like objects and tables, parameters can also be set as read-only or read-write based on their intended use.
+For reporting, parameters are often set as read-only.
+
+For example, a parameter defining the number of received packets. This should be read-only.
+
+On the other hand, for configurations where services or remote Controllers need to modify settings or parameters should be set as read-write.
+
+For example, a parameter defining the ports that should be closed. An administrator might need to adjust this value; it's read-write.
+
 ## Vendor-Specific Elements
 
 A vendor MAY extend the standardized data model with vendor-specific
@@ -1001,7 +953,7 @@ are referenced by this specification.
 
 ## Introduction
 
-The CWMP Data Model Definition XML Schema [@XML-Schema-Primer], or DM Schema, is used
+The CWMP Data Model Definition XML Schema [@REC-xmlschema-0], or DM Schema, is used
 for defining CWMP [@TR-069] and USP [@TR-369] data models, and is specified in
 @sec:description-modifications.
 
@@ -1249,7 +1201,7 @@ can be accessed at
 
 Many elements have descriptions, and the same rules apply to all
 description elements in the DM Schema. A description is free text which
-can contain a limited amount of MediaWiki-like markup as specified in
+can contain a limited amount of markdown-like markup as specified in
 @sec:markup.
 
 #### Character Set
@@ -1313,63 +1265,154 @@ And:
 
 #### Markup
 
-The pre-processed description can contain the following markup, which is
-inspired by, but is not identical to, MediaWiki markup. All DM Instance
-processing tools SHOULD support this markup to the best of their
-ability.
+::: note :::
 
-: XML Description Markup {#tbl:xml-description-markup}
+The markup was originally inspired by MediaWiki, but now (additionally)
+supports some markdown features. DM Instance processing tools SHOULD continue
+to support the legacy MediaWiki markup for the time being.
 
-|     Name          |     Markup Example  |   Description                                                                                            |
-|-------------------|---------------------|----------------------------------------------------------------------------------------------------------|
-| Italics           | `''italic text''`   | Two apostrophes on each side of some text will result in the contained text being emphasized in italics. |
-| Bold              | `'''bold text'''`   | Three apostrophes on each side of some text will result in the contained text being emphasized in bold. |
-| Bold italics      | `'''''b+i text'''''`| Five apostrophes on each side of some text will result in the contained text being emphasized in bold italics. |
-| Paragraph         | This paragraph just ended. | A line break is interpreted as a paragraph break. |
-| Bulleted lists    | `* level one`\
-`** level two`\
-`* level one again`\
-`** level two again`\
-`*** level three`\
-`*: level one continued`\
-`outside of list`                         | A line starting with one or more asterisks (*) denotes a bulleted list entry, whose indent depth is proportional to the number of asterisks specified.\
-If the asterisks are followed by a colon (:), the previous item at that level is continued, as shown.\
-An empty line, or a line that starts with a character other than an   asterisk, indicates the end of the list. |\
+:::
 
-| Numbered lists    | ` # level one`\
-`## level two`\
-`# level one again`\
-`## level two again`\
-`### level three`\
-`#: level one continued`\
-`outside of list`                         | A line starting with one or more number signs (#) denotes a numbered list entry.\
-All other conventions defined for bulleted lists apply here (using # rather than *), except that numbered list entries are prefixed with an integer decoration rather than a bullet. |\
+XML description elements can contain the markup that's described below. All DM Instance
+processing tools SHOULD support this markup to the best of their ability.
 
-| Indented lists    | `: level one`\
-`:: level two`\
-`: level one again`\
-`:: level two again`\
-`::: level three`\
-`outside of list`                         | A line starting with one or more colons (:) denotes an indented list entry.\
-All other conventions defined for bulleted lists apply here (using : rather than *), except that indented list entries have no prefix decoration, and item continuation is not needed. |\
+The markup explanations below are very brief and don't always tell the whole truth.
+For further details and examples, please see the CommonMark Spec @CommonMark
+(but don't assume that all of CommonMark is supported).
 
-| Verbatim          | code example:\
-` if (something)`\
-` {`\
-`    /* do something */`\
-` } else {`\
-`    /* do other */`\
-` }`                                      | A block of lines each of which starts with a space is to be formatted exactly as typed, preferably in a fixed width font.\
-This allows code fragments, simple tables etc. to be included in descriptions.\
-Note that the pre-processing rules of @sec:description-pre-processing imply that it is not possible to process an entire description as verbatim text (because all the leading whitespace would be removed). This is not expected to be a problem in practice. |\
+::: list-table :::
 
-| Hyperlinks        | `https://www.broadband-forum.org` | URL links are specified as plain old text (no special markup). |\
+XML Description Markup
 
-| Templates         | `{{bibref|1|section 2}}`\
-`{{section|table}}`\
-`{{param|Enable}}`\
-`{{enum|Error}}`                     | Text enclosed in double curly braces ({}) is a template reference, which is replaced by template-dependent text.\
-@sec:description-templates specifies the standard templates. |
+* - Name
+  - Markup Example
+  - Description
+
+* - Italics
+  -     *italic text*
+        _also italic text_
+  - A single `*` or `_` on each side of some text will result in the contained text being
+    emphasized in *italics*.
+
+    **Legacy**: Two apostrophes, e.g. `''italic text''`.
+
+* - Bold
+  -     **bold text**
+        __also bold text__
+  - Double `**` or `__` on each side of some text will result in the contained text being
+    emphasized in **bold**.
+
+    **Legacy**: Three apostrophes, e.g. `'''bold text'''`.
+
+* - Bold italics
+  -     ***b+i text***
+        ___b+i text___
+  - Triple `***` or `___` on each side of some text will result in the contained text being
+    emphasized in ***bold italics***.
+
+    **Legacy**: Five apostrophes, e.g. `'''''b+i text'''''`.
+
+* - Code
+  -     `code`
+  - A single `` ` `` on each side of some text will result in the contained text being shown in a `monospace` font.
+
+    **Legacy**: Not supported.
+
+* - Paragraph
+  -     This is a
+        paragraph.
+
+        This is another.
+  - Paragraphs can occupy multiple lines and are terminated by blank lines.
+
+    **Legacy**: Depends on the [DMR Schema] version. For v0.1 (which is no longer widely
+    used) each line is a paragraph, whereas for v1.0 paragraphs are as for markdown.
+
+* - Bulleted lists
+  -     * level one
+          - level two
+        * level one again
+          - level two again
+            + level three
+
+        outside of list
+  - Lines starting `* `, `- ` or `+ ` introduce a bulleted list entry. Indented lines
+    define nested bulleted list entries.
+
+    List entries can occupy multiple lines and can consist of multiple paragraphs.
+
+    **Legacy**: Lines start with `*`, `**`, `***` etc.
+
+* - Numbered lists
+  -     1. level one
+           1.  level two
+        2. level one again
+           1. level two again
+              1. level three
+        outside of list
+  - Lines starting `n. ` (where `n` is a number) introduce a numbered list entry (`n`
+    on the first item is the starting number, and subsequent `n` are ignored). Indented
+    lines define nested numbered list entries.
+
+    List entries can occupy multiple lines and can consist of multiple paragraphs.
+
+    **Legacy**: Lines start with `#`, `##`, `###` etc..
+
+* - Block quotes
+  -     > level one
+
+        >> level two
+
+        > level one again
+
+        >> level two again
+
+        >>> level three
+
+        outside of list
+  - Lines starting `>`, `>>` etc. are block quotes. The number of `>` characters defines
+    the nesting level (there can be whitespace after each `>` character).
+
+    Only lines that follow blank lines can be recognised as block quotes.
+
+    **Legacy**: Lines start with `:`, `::`, `:::` etc..
+
+* - Verbatim
+  -     Here's some code:
+
+            if (something)
+            {
+              /* do something */
+            } else {
+              /* do other */
+            }
+  - A block of lines each of which starts with four spaces will be formatted exactly
+    as typed, in a monospace font. The block of lines has to be preceded by a blank line.
+
+    This allows code fragments, simple tables etc. to be included in descriptions.
+
+    Alternatively, add a `` ``` `` line both before and after the block of lines. In this case the preceding blank line is unnecessary.
+
+    **Legacy**: Only a single leading space is needed (and the preceding blank line isn't needed).
+
+* - Hyperlinks
+  -     <https://www.broadband-forum.org>
+  - URLs enclosed in angle brackets will be converted to links.
+
+    **Legacy**: URLs are automatically converted to hyperlinks.
+
+* - Templates
+  -     {{bibref|1|section 2}}`
+        {{section|table}}
+       {{param|Enable}}
+       {{enum|Error}}
+  - Text enclosed in double curly braces (`{}`) is a template reference, which is
+    replaced by template-dependent text. @sec:description-templates specifies the
+    standard templates.
+
+    **Legacy**: Identical.
+
+:::
 
 #### Templates {#description-templates}
 
@@ -1634,75 +1677,107 @@ Markup examples:\
 
 #### HTML Example
 
-
-This includes examples of most of the markup and templates.
+This includes examples of most of the markup and some of the templates.
 
 ```
-    <model name="Goo:1.1" base="Goo:1.0">
-      <object name="GooTop." access="readOnly" minEntries="1" maxEntries="1">
-        <parameter name="ExampleParam" access="readOnly">
-          <description>
-    {{section|Introduction}}This is an ''example'' parameter that
-    illustrates many of the '''formatting''' templates. For
-    '''''example''''', this references {{bibref|TR-106a1|section 3.2}}.
+  <model name="Goo:1.0">
+    <object name="GooTop." version="1.0">
+      <description>
+        Top-level object.
+      </description>
+      <parameter name="ExampleParam" access="readOnly">
+        <description>
+          This is an ''example'' parameter that illustrates many of the
+          **formatting** templates. ***For example***, this references
+          {{bibref|TR-106a1|section 3.2}}.
 
-    {{section|Usage}}This parameter is called {{object}}{{param}}. One can
-    also reference other parameters in the same object, such as
-    {{param|OtherParameter}}, and indicate that the parameter value is
-    measured in {{units}}.
+          This parameter is called {{object}}.{{param}}. One can
+          also reference other parameters in the same object, such as
+          {{param|OtherParam}}, and indicate that the parameter value is
+          measured in {{units}}.
 
-    One can also include bulleted lists:
-    * level one
-    ** level two
-    * level one again
-    ** level two again
-    *** level three
-    *: level one continued
+          One can also include bulleted lists:
+          * level one
+            - level two
+          * level one again
+            - level two again
+              + level three
 
-    and numbered lists:
-    # level one
-    ## level two
-    # level one again
-    ## level two again
-    ### level three
-    #: level one continued
+          and numbered lists:
+          1. level one
+             1. level two
+          2. level one again
+             1. level two again
+                1. level three
 
-    and indented lists
-    : level one
-    :: level two
-    : level one again
-    :: level two again
-    ::: level three
+          and block quotes
+          > level one
 
-    and hyperlinks such as https://www.google.com
+          >> level two
 
-    and code examples:
-     if (something) {
-       /* do something */
-     } else {
-       /* do other */
-     }
+          > level one again
 
-    If the parameter was Boolean, one could refer to its values {{false}}
-    and {{true}}.
+          >> level two again
 
-    One can refer to its enumerations individually, e.g. {{enum|Disabled}},
-    or to other parameters' enumerations, such as {{enum|Value|OtherParam}},
-    or can list them all. {{enum}}
+          >>> level three
 
-    Finally, if there were any patterns they could be listed too. {{pattern}}
-          </description>
-          <syntax>
-            <string>
-              <enumeration value="A"/>
-              <enumeration value="B"/>
-              <units value="packets"/>
-            </string>
-          </syntax>
-        </parameter>
+          and hyperlinks such as &lt;https://www.google.com&gt;.
+
+          and code examples:
+
+              if (something) {
+                /* do something */
+              } else {
+                /* do other */
+              }
+        </description>
+        <syntax>
+          <unsignedInt>
+            <units value="packets"/>
+          </unsignedInt>
+        </syntax>
+      </parameter>
+      <parameter name="EnumParam">
+        <description>
+          If the parameter was Boolean, one could refer to its values {{false}}
+          and {{true}}.
+
+          One can refer to its enumerations individually, e.g. {{enum|Disabled}},
+          or to other parameters' enumerations, such as {{enum|Value|OtherParam}},
+          or can list them all. {{enum}}
+        </description>
+        <syntax>
+          <string>
+            <enumeration value="Disabled"/>
+            <enumeration value="Enabled"/>
+          </string>
+        </syntax>
+      </parameter>
+      <parameter name="PatternParam">
+        <description>
+          Finally, if there were any patterns they could be listed too. {{pattern}}
+        </description>
+        <syntax>
+          <string>
+            <pattern value="\d{8}"/>
+          </string>
+        </syntax>
+      </parameter>
+      <parameter name="OtherParam">
+        <description>
+          Other parameter.
+        </description>
+        <syntax>
+          <string>
+            <enumeration value="Value"/>
+          </string>
+        </syntax>
+      </parameter>
+    </object>
+  </model>
 ```
 
-The resulting HTML would look something like this:
+The resulting HTML looks like this:
 
 ![](images/figure-4.png)
 
@@ -1748,6 +1823,7 @@ default   | Data type facets (@sec:data-type-facets).  These are permitted only 
 | base64\
 boolean\
 dateTime\
+decimal\
 hexBinary\
 int\
 long\
@@ -1807,7 +1883,7 @@ defined. For example:
 A facet specifies some aspect of a data type, e.g. its size, range or
 units.
 
-Note that XML Schema [@XML-Schema-Primer] also associates facets with data types. The
+Note that XML Schema [@REC-xmlschema-0] also associates facets with data types. The
 XML Schema and DM Schema concepts are the same, but the set of facets is
 not identical.
 
@@ -1826,13 +1902,8 @@ Note that the size facet is also used to specify the size range for list-valued 
 | range            | Value ranges and step (default step is 1) for the data type (applies to numeric data types and their derived types). |
 | enumeration      | Enumerations for the data type (applies to string and its derived types). |
 | enumerationRef   | Enumerations for the data type, obtained at run-time from the value of a specified parameter (applies to string and its derived types; @sec:reference-facets). |
-| pattern          | Patterns for the data type (applies to string and its derived types). Pattern value syntax is the same as for XML Schema regular expressions. See [@XML-Schema-Datatypes, {Section F}]. |
+| pattern          | Patterns for the data type (applies to string and its derived types). Pattern value syntax is the same as for XML Schema regular expressions. See [@REC-xmlschema-2, {Section F}]. |
 | units            | Units for the data type (applies to numeric data types and their derived types). |
-| default          | Object, factory, implementation or parameter default.\
-- Object defaults apply only to parameters that can be created as a result of adding an Object.\
-- Factory defaults apply to all parameters (if a factory default is specified, it also acts as object default for applicable parameters).\
-- Implementation defaults apply to all parameters (they are informational defaults that are likely after a reset or if no other value is available).\
-- Parameter defaults apply only to command and event arguments. |
 
 It is important to note that the enumeration facet does not necessarily
 define all the valid values for a data type. This is for the following
@@ -1879,12 +1950,14 @@ normal           This is a hybrid scope which usually gives the desired behavior
                    the top of the naming hierarchy.\
                  - If the path begins with a dot, it is relative to the Mount Point
                    (if mounted), or the Root or Service Object (otherwise).\
-                 - Otherwise, the path is relative to the current object (c.f.
+                 - Otherwise, the path is relative to the current object (see
                    scope=object).
 
 model            The path is relative to the Root or Service Object.
 
 object           The path is relative to the current object.
+
+absolute         The path is an absolute path, and will be used as is.
 
 ----------------------------------------------------------------------------------
 
@@ -1998,7 +2071,7 @@ values are defined as follows:
 
 -   **unsignedInt, unsignedLong:** 0
 
--   **int, long:** -1
+-   **int, long, decimal:** -1
 
 -   **boolean:** false
 
@@ -2073,6 +2146,7 @@ Possible values are as follows:\
 - **base64**: only a base64 parameter can be referenced\
 - **boolean**: only a boolean parameter can be referenced\
 - **dateTime**: only a dateTime parameter can be referenced\
+- **decimal**: only a decimal (or int, long, unsignedInt or unsignedLong) parameter can be referenced\
 - **hexBinary**: only a hexBinary parameter can be referenced\
 - **integer**: only an integer (int, long, unsignedInt or unsignedLong) parameter can be referenced\
 - **int**: only an int parameter can be referenced\
@@ -2087,11 +2161,12 @@ In addition, a parameter whose data type is derived from the specified data type
 \ \ `boolean`\
 \ \ `dateTime`\
 \ \ `hexBinary`\
-\ \ `integer`\
-\ \ \ \ `long`\
-\ \ \ \ \ \ `int`\
-\ \ \ \ `unsignedLong`\
-\ \ \ \ \ \ `unsignedInt`\
+\ \ `decimal` \
+\ \ \ `integer`\
+\ \ \ \ \ `long`\
+\ \ \ \ \ \ \ `int`\
+\ \ \ \ \ `unsignedLong`\
+\ \ \ \ \ \ \ `unsignedInt`\
 \ \ `string`\
 Note that any and integer are not valid parameter data types.  They are included in order to support "can reference any data type" and "can reference any numeric data type". |
 | refType                | Specifies the reference type (@sec:reference-types): weak or strong. |
@@ -2572,8 +2647,8 @@ requirements are specified in the schema).
 | access            | Whether the parameter is writable (readWrite), read-only (readOnly), or writable once then read-only (writeOnceReadOnly). |
 | version           | The data model version (of the form m.n or m.n.p) in which this parameter was first defined.  This MUST be present if, and only if, it's a later version than the parent object's version (@sec:versions). |
 | status            | The parameter's {current, deprecated, obsoleted, deleted} status.  This defaults to current, and so is not likely to be specified for a new parameter. |
-| activeNotify      | The parameter's {normal, forceEnabled, forceDefault, canDeny} Active Notification status.  This defaults to normal, and so is not often specified for a new parameter.\
-Note that in USP, forceEnabled and forceDefault are not applicable and thus are equivalent to normal. |
+| activeNotify      | The parameter's {normal, forceEnabled, forceDefaultEnabled, canDeny} Active Notification status.  This defaults to normal, and so is not often specified for a new parameter.\
+Note that in USP, forceEnabled and forceDefaultEnabled are not applicable and thus are equivalent to normal. |
 | forcedInform      | For CWMP only, the parameter's Forced Inform status.  This defaults to False, and so is not often specified for a new parameter. |
 | description       | The parameter's description (@sec:descriptions). |
 | syntax            | The parameter's syntax (@sec:parameter-syntax). |
@@ -2605,6 +2680,7 @@ Note that a list-valued parameter is always a string as far as the protocol is c
 | base64\
 boolean\
 dateTime\
+decimal\
 hexBinary\
 int\
 long\
@@ -2613,6 +2689,12 @@ unsignedInt\
 unsignedLong         | If the parameter is of a primitive data type, specifies a primitive data type reference, e.g. \<int>.  If the parameter data type is derived from a   primitive data type, specifies an anonymous primitive data type definition (@sec:anonymous-data-types), e.g. \<int>\<range maxInclusive="255"/>\</int>.  Each primitive data type element   supports only the facets (@sec:data-type-facets) that are appropriate to that data type. |
 | dataType           | If the parameter is of a named data type, specifies a named data type (@sec:named-data-types) reference, e.g. \<dataType ref="IPAddress"/>.\
 If the parameter data type is derived from a named data type, specifies an anonymous named data type (@sec:anonymous-data-types) definition, e.g. \<dataType base="IPAddress">\<size   maxLength="15"/>\</dataType> |
+| default          | Object, factory, implementation or parameter default.\
+- Object defaults apply only to parameters that can be created as a result of adding an Object.\
+- Factory defaults apply to all parameters (if a factory default is specified, it also acts as object default for applicable parameters).\
+- Implementation defaults apply to all parameters (they are informational defaults that are likely after a reset or if no other value is available).\
+- Parameter defaults apply only to command and event arguments.\
+If the parameter is list-valued, the default value has to be placed within square brackets, e.g. \<default type="object" value="[1,2,3]"/>. |
 
 ### Commands (USP Only)
 
@@ -2824,7 +2906,7 @@ The following rules govern parameter modifications.
 | access            | Can be "promoted" from readOnly to readWrite or writeOnceReadOnly. |
 | version           | Cannot be changed. |
 | status            | Can be "promoted" to a "higher" value, where the lowest to highest ordering is: current, deprecated, obsoleted, deleted.  For example, current can be changed to deprecated, and obsoleted can be changed to deleted, but deleted cannot be changed back to obsoleted.  When promoting status, the deprecation, obsoletion and deletion rules of @sec:deprecated-and-obsoleted-items MUST be obeyed. |
-| activeNotify      | Can be changed from forceEnabled to forceDefault.  No other changes are permitted. |
+| activeNotify      | Can be changed from forceEnabled to forceDefaultEnabled.  No other changes are permitted. |
 | forcedInform      | Cannot be changed. |
 | description       | Can be prefixed, extended or replaced via use of the action attribute (@sec:description-modifications).  When changing the description, behavioral backwards compatibility MUST be preserved. |
 | syntax/hidden     | Can be replaced with secured. |
@@ -3074,6 +3156,10 @@ DMR Schema Usage {#tbl:dmr-schema-usage}
   - Indicates that a union object has no discriminator parameter, so shouldn't
     issue a warning
 
+* - dmr:noNameCheck
+  - boolean
+  - Indicates that the name won't be checked against [Vendor-specific Elements] and [Data Model Item Names] naming rules
+
 * - dmr:noUnionObject
   - boolean
   - Indicates that a discriminator parameter enum value doesn't correspond to a
@@ -3125,7 +3211,7 @@ DMR Schema Usage {#tbl:dmr-schema-usage}
 
 ## Introduction
 
-The CWMP Device Type XML Schema [@XML-Schema-Primer], or DT Schema, is used for
+The CWMP Device Type XML Schema [@REC-xmlschema-0], or DT Schema, is used for
 describing a device's supported data model.
 
 DT Schema instance documents can contain the following:
@@ -3277,7 +3363,7 @@ representation is 10 (`#xA`), 13 (`#xD`) or is in the (inclusive) range
 32-126.
 
 *Note -- writing LF (LINE FEED) for `#xA` and `CR` (CARRIAGE RETURN) for
-`#xD`, the XML specification [@XML, {Section 2.11}] states that XML
+`#xD`, the XML specification [@REC-xml, {Section 2.11}] states that XML
 processors have to behave as if all CR LF sequences, or any CR
 characters not followed by LF, are translated to LF.*
 
@@ -3592,7 +3678,7 @@ Each HTML data model report contains the following sections:
 
 ## Data Model Definition
 
-Parameters make use of a limited subset of the default SOAP data types [@SOAP]. The
+Parameters make use of a limited subset of the default SOAP data types [@NOTE-SOAP-20000508]. The
 notation used to represent these types within the report is
 listed in the following table.
 
@@ -3601,6 +3687,8 @@ listed in the following table.
 | object            | A container for parameters and/or other objects.  The full Path Name of a parameter is given by the parameter name appended to the full Path Name of   the object it is contained within. |\
 
 | string            | For strings, a minimum and maximum allowed length can be indicated using the form string(Min:Max), where Min and Max are the minimum and maximum string length in characters.  If either Min or Max are missing, this indicates no limit, and if Min is missing the colon can also be omitted, as in string(Max).  Multiple   comma-separated ranges can be specified, in which case the string length will be in one of the ranges. |\
+
+| decimal           | Decimal number, with optional sign and optional fractional part.  For some decimal types, a value range is given using the form decimal(Min:Max) or decimal(Min:Max step Step) where the Min and Max values are inclusive.  If either Min or Max are missing, this indicates no limit.  If Step is missing, this indicates a step of 1.0.  Multiple comma-separated ranges can be specified, in which case the value will be in one of the ranges. |\
 
 | int               | Integer in the range -2147483648 to +2147483647, inclusive.  For some int types, a value range is given using the form int(Min:Max) or int(Min:Max step Step) where the Min and Max values are inclusive.  If either Min or Max are missing, this indicates no limit.  If Step is missing, this indicates a step of 1.  Multiple comma-separated ranges can be specified, in which case the value will be in one of the ranges. |\
 
@@ -3612,7 +3700,7 @@ listed in the following table.
 
 | boolean           | Boolean, where the allowed values are "0" or "1" (or equivalently, "true" or "false"). |\
 
-| dateTime          | The subset of the ISO 8601 date-time format defined by the SOAP dateTime type [@SOAP]. |\
+| dateTime          | The subset of the ISO 8601 date-time format defined by the SOAP dateTime type [@NOTE-SOAP-20000508]. |\
 
 | base64            | Base64 encoded binary (no line-length limitation).  A minimum and maximum allowed length can be indicated using the form base64(Min:Max), where Min and Max are the minimum and maximum length in characters before Base64 encoding.  If either Min or Max are missing, this indicates no limit, and if Min is missing the colon can also be omitted, as in base64(Max).  Multiple comma-separate ranges can be specified, in which case the length MUST be in one of the ranges. |\
 

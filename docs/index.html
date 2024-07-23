@@ -30,6 +30,7 @@ understand and develop CWMP/USP data models"/>
     div.csl-bib-body { }
     div.csl-entry {
       clear: both;
+      margin-bottom: 0em;
     }
     .hanging-indent div.csl-entry {
       margin-left:2em;
@@ -274,7 +275,7 @@ understand and develop CWMP/USP data models</h2>
     <p></p>
     <p></p>
     <div class="project-buttons">
-      <a class="btn" href="index.htm" title="TR-106 Single-file
+      <a class="btn" href="index.htm" title="TR-106 Simple
 HTML">HTML</a>
       <a class="btn" href="index.pdf" title="TR-106 PDF">PDF</a>
       <a class="btn" href="https://cwmp-data-models.broadband-forum.org">CWMP
@@ -288,9 +289,9 @@ Data Models</a>
     <header id="title-block-header" class="cover-only">
       <h1 class="title auto-hoverlink" id="title">TR-106 – Data Model
 Template for CWMP Endpoints and USP Agents</h1>
-      <p class="subtitle">Issue: 1 Amendment 13 <span id="section"
+      <p class="subtitle">Issue: 1 Amendment 14 <span id="section"
 class="release auto-hoverlink"></span></p>
-      <p class="date">Issue Date: January 2024</p>
+      <p class="date">Issue Date: July 2024</p>
     </header>
     <nav id="NAVTOP" role="doc-toc">
 <p><a href="#sec:cover-page">Cover Page</a> | <a
@@ -372,7 +373,15 @@ Parameters that Reference Parameters or Objects</a></li>
 <li><a href="#sec:default-maximum-string-length">3.2.5 Default Maximum
 String Length</a></li>
 </ul></li>
-<li><a href="#sec:vendor-specific-elements">3.3 Vendor-Specific
+<li><a href="#sec:access-types">3.3 Access Types</a>
+<ul>
+<li><a href="#sec:single-instance-objects">3.3.1 Single-Instance
+Objects</a></li>
+<li><a href="#sec:multi-instance-objects-or-tables">3.3.2 Multi-Instance
+Objects or Tables</a></li>
+<li><a href="#sec:parameters">3.3.3 Parameters</a></li>
+</ul></li>
+<li><a href="#sec:vendor-specific-elements">3.4 Vendor-Specific
 Elements</a></li>
 </ul></li>
 <li><a href="#sec:normative-references">4 Normative References</a></li>
@@ -396,7 +405,7 @@ Glossary, Abbreviations, Bibliography and Templates</a></li>
 <li><a href="#sec:components">A.2.5 Components</a></li>
 <li><a href="#sec:model-elements">A.2.6 Root and Service
 Objects</a></li>
-<li><a href="#sec:parameters">A.2.7 Parameters</a></li>
+<li><a href="#sec:parameters-1">A.2.7 Parameters</a></li>
 <li><a href="#sec:commands-usp-only">A.2.8 Commands (USP Only)</a></li>
 <li><a href="#sec:events-usp-only">A.2.9 Events (USP Only)</a></li>
 <li><a href="#sec:objects">A.2.10 Objects</a></li>
@@ -521,7 +530,15 @@ Parameters that Reference Parameters or Objects</a></li>
 <li><a href="#sec:default-maximum-string-length">3.2.5 Default Maximum
 String Length</a></li>
 </ul></li>
-<li><a href="#sec:vendor-specific-elements">3.3 Vendor-Specific
+<li><a href="#sec:access-types">3.3 Access Types</a>
+<ul>
+<li><a href="#sec:single-instance-objects">3.3.1 Single-Instance
+Objects</a></li>
+<li><a href="#sec:multi-instance-objects-or-tables">3.3.2 Multi-Instance
+Objects or Tables</a></li>
+<li><a href="#sec:parameters">3.3.3 Parameters</a></li>
+</ul></li>
+<li><a href="#sec:vendor-specific-elements">3.4 Vendor-Specific
 Elements</a></li>
 </ul></li>
 <li><a href="#sec:normative-references">4 Normative References</a></li>
@@ -545,7 +562,7 @@ Glossary, Abbreviations, Bibliography and Templates</a></li>
 <li><a href="#sec:components">A.2.5 Components</a></li>
 <li><a href="#sec:model-elements">A.2.6 Root and Service
 Objects</a></li>
-<li><a href="#sec:parameters">A.2.7 Parameters</a></li>
+<li><a href="#sec:parameters-1">A.2.7 Parameters</a></li>
 <li><a href="#sec:commands-usp-only">A.2.8 Commands (USP Only)</a></li>
 <li><a href="#sec:events-usp-only">A.2.9 Events (USP Only)</a></li>
 <li><a href="#sec:objects">A.2.10 Objects</a></li>
@@ -970,22 +987,44 @@ href="https://www.broadband-forum.org/download/TR-106_Amendment-13.pdf">Amendmen
 <li>Clarified the requirements regarding vendor-specific prefixes</li>
 </ul></td>
 </tr>
+<tr class="even">
+<td style="text-align: left;"><a
+href="https://www.broadband-forum.org/download/TR-106_Amendment-14.pdf">Amendment
+14</a></td>
+<td style="text-align: left;">July 2024</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><ul>
+<li>Added access type guidance</li>
+<li>Documented the dmr:noNameCheck attribute</li>
+<li>Documented the decimal datatype</li>
+<li>Documented the list value defaults</li>
+<li>Documented markdown syntax (and switch from MediaWiki)</li>
+<li>Cosmetic changes</li>
+</ul></td>
+</tr>
 </tbody>
 </table>
-<h3 class="unnumbered unlisted auto-hoverlink" data-info="header"
-id="sec:bbfworkarea-work-area-directors">Broadband User Services Work
-Area Directors</h3>
+<p>Comments or questions about this Broadband Forum Technical Report
+should be directed to <a href="mailto:info@broadband-forum.org"
+class="email">info@broadband-forum.org</a>.</p>
+<section id="sec:bbfworkarea-work-area-directors"
+class="unnumbered unlisted auto-hoverlink nobreak" data-info="header">
+<h3 class="unnumbered unlisted auto-hoverlink"
+data-info="header">Broadband User Services Work Area Directors</h3>
 <ul>
 <li>Jason Walls, QA Cafe</li>
-<li>John Blackford, CommScope</li>
+<li>John Blackford, Vantiva</li>
 </ul>
-<h3 class="unnumbered unlisted auto-hoverlink" data-info="header"
-id="sec:bbfprojectstream-project-stream-leaders"> Project Stream
-Leaders</h3>
+</section>
+<section id="sec:bbfprojectstream-project-stream-leaders"
+class="unnumbered unlisted auto-hoverlink nobreak" data-info="header">
+<h3 class="unnumbered unlisted auto-hoverlink" data-info="header">
+Project Stream Leaders</h3>
 <ul>
 <li>Daniel Egger, Axiros</li>
 <li>Matthieu Anne, Orange</li>
 </ul>
+</section>
 </section>
 <section id="sec:executive-summary"
 class="unnumbered new-page auto-hoverlink new-section hidden"
@@ -1077,7 +1116,7 @@ id="img:cwmp-positioning-in-the-end-to-end-architecture"
 alt="CWMP Positioning in the End-to-End Architecture" />
 <figcaption><div class="auto-hoverlink"
 data-anchor="fig:cwmp-positioning">
-Figure 1: CWMP Positioning in the End-to-End Architecture
+Figure 1 – CWMP Positioning in the End-to-End Architecture
 </div></figcaption>
 </figure>
 <p>The ACS is a server that resides in the network and manages devices
@@ -1109,7 +1148,7 @@ network of smart applications, such as an automated smart home.</p>
 alt="USP Architecture Overview" />
 <figcaption><div class="auto-hoverlink"
 data-anchor="fig:usp-architecture">
-Figure 2: USP Architecture Overview
+Figure 2 – USP Architecture Overview
 </div></figcaption>
 </figure>
 <p>USP was designed in a modular manner, and can make use of the CWMP
@@ -1123,7 +1162,7 @@ overall specification structure for the CWMP <span class="citation"
 data-cites="TR-069"><a href="#ref-TR-069"
 role="doc-biblioref">[1]</a></span> and USP <span class="citation"
 data-cites="TR-369"><a href="#ref-TR-369"
-role="doc-biblioref">[13]</a></span> family of standards (as currently
+role="doc-biblioref">[5]</a></span> family of standards (as currently
 defined). Please note that this will gradually become out of date as new
 documents are published.</p>
 <figure id="fig:spec-structure">
@@ -1131,16 +1170,16 @@ documents are published.</p>
 alt="Specification Structure" />
 <figcaption><div class="auto-hoverlink"
 data-anchor="fig:spec-structure">
-Figure 3: Specification Structure
+Figure 3 – Specification Structure
 </div></figcaption>
 </figure>
 <p>TR-069 <span class="citation" data-cites="TR-069"><a
 href="#ref-TR-069" role="doc-biblioref">[1]</a></span> defines the
 generic requirements of the CWMP methods which can be applied to any
 CWMP Endpoint. TR-369 <span class="citation" data-cites="TR-369"><a
-href="#ref-TR-369" role="doc-biblioref">[13]</a></span> does the same
-for USP Agents. TR-106 (this document) specifies a baseline object
-structure to be supported by any CWMP Endpoint or USP Agent (referred to
+href="#ref-TR-369" role="doc-biblioref">[5]</a></span> does the same for
+USP Agents. TR-106 (this document) specifies a baseline object structure
+to be supported by any CWMP Endpoint or USP Agent (referred to
 generically as an <em>Agent</em>). It specifies how to structure and
 define data models, which are collections of objects and parameters on
 which the generic methods act to configure, diagnose, and monitor the
@@ -1174,7 +1213,7 @@ with an ACS.</p>
 <p>Please note that USP uses a different mechanism (GetSupportedDM
 message) for the same purpose. It is specified in TR-369 <span
 class="citation" data-cites="TR-369"><a href="#ref-TR-369"
-role="doc-biblioref">[13]</a></span>.</p></li>
+role="doc-biblioref">[5]</a></span>.</p></li>
 </ul>
 <h2 class="auto-hoverlink" data-info="header" id="sec:terminology">1.1
 Terminology</h2>
@@ -1214,7 +1253,7 @@ that have code support in the current firmware.</td>
 <em>CWMP</em>-enabled <span class="citation" data-cites="TR-069"><a
 href="#ref-TR-069" role="doc-biblioref">[1]</a></span> or
 <em>USP</em>-enabled <span class="citation" data-cites="TR-369"><a
-href="#ref-TR-369" role="doc-biblioref">[13]</a></span> device and
+href="#ref-TR-369" role="doc-biblioref">[5]</a></span> device and
 therefore covers both Internet Gateway devices and LAN-side end
 devices.</td>
 </tr>
@@ -1279,7 +1318,7 @@ in or referenced by the <em>DM Schema</em>.</td>
 <tr class="odd">
 <td><strong>DM Schema</strong></td>
 <td>Data Model Schema. This is the XML Schema <span class="citation"
-data-cites="XML-Schema-Primer"><a href="#ref-XML-Schema-Primer"
+data-cites="REC-xmlschema-0"><a href="#ref-REC-xmlschema-0"
 role="doc-biblioref">[11]</a></span> that is used for defining data
 models for use with <em>CWMP</em> and <em>USP</em>.</td>
 </tr>
@@ -1296,7 +1335,7 @@ class="heading">Section 2.1.2</a>).</td>
 <tr class="odd">
 <td><strong>DT Schema</strong></td>
 <td>Device Type Schema. This is the XML Schema <span class="citation"
-data-cites="XML-Schema-Primer"><a href="#ref-XML-Schema-Primer"
+data-cites="REC-xmlschema-0"><a href="#ref-REC-xmlschema-0"
 role="doc-biblioref">[11]</a></span> that is used for describing a
 <em>Device</em>’s <em>Supported Data Model</em>. This concept is useful
 for both CWMP and USP as an offline design tool, but only CWMP uses it
@@ -1577,7 +1616,7 @@ URLs.</p></li>
 </ol>
 <p>This object is not used with USP. TR-369 <span class="citation"
 data-cites="TR-369"><a href="#ref-TR-369"
-role="doc-biblioref">[13]</a></span> defines the GetSupportedDM message
+role="doc-biblioref">[5]</a></span> defines the GetSupportedDM message
 to provide this information.</p>
 <h3 class="auto-hoverlink" data-info="header"
 id="sec:mount-points-and-mountable-objects">2.1.3 Mount Points and
@@ -1752,7 +1791,7 @@ class="heading">Section 2.1.2</a>) and associated Device Type XML
 documents (DT Instances).</p></li>
 <li><p>For USP, by the TR-369 <span class="citation"
 data-cites="TR-369"><a href="#ref-TR-369"
-role="doc-biblioref">[13]</a></span> GetSupportedDM message.</p></li>
+role="doc-biblioref">[5]</a></span> GetSupportedDM message.</p></li>
 </ul>
 <p>A profile is a named collection of requirements associated with a
 given object. An Agent can adhere to zero or more profiles. Adherence to
@@ -1835,8 +1874,8 @@ profile.</td>
 <p>ProfileName MUST start with a letter or underscore, and subsequent
 characters MUST be letters, digits, underscores or hyphens. The terms
 “letter” and “digit” are as defined in the XML specification <span
-class="citation" data-cites="XML"><a href="#ref-XML"
-role="doc-biblioref">[9, Appendix B]</a></span>.</p>
+class="citation" data-cites="REC-xml"><a href="#ref-REC-xml"
+role="doc-biblioref">[10, Appendix B]</a></span>.</p>
 <p>Hyphens can easily be confused with the discretionary hyphens that
 are sometimes inserted by hyphenation algorithms. For this reason,
 ProfileName SHOULD NOT include any hyphens. In BBF standards,
@@ -1931,7 +1970,7 @@ regarding DEPRECATED elements specified in TR-069 <span class="citation"
 data-cites="TR-069"><a href="#ref-TR-069"
 role="doc-biblioref">[1]</a></span> or TR-369 <span class="citation"
 data-cites="TR-369"><a href="#ref-TR-369"
-role="doc-biblioref">[13]</a></span>.</p></li>
+role="doc-biblioref">[5]</a></span>.</p></li>
 </ol>
 <p>Agent requirements:</p>
 <ol type="1">
@@ -2008,7 +2047,15 @@ Parameters that Reference Parameters or Objects</a></li>
 <li><a href="#sec:default-maximum-string-length">3.2.5 Default Maximum
 String Length</a></li>
 </ul></li>
-<li><a href="#sec:vendor-specific-elements">3.3 Vendor-Specific
+<li><a href="#sec:access-types">3.3 Access Types</a>
+<ul>
+<li><a href="#sec:single-instance-objects">3.3.1 Single-Instance
+Objects</a></li>
+<li><a href="#sec:multi-instance-objects-or-tables">3.3.2 Multi-Instance
+Objects or Tables</a></li>
+<li><a href="#sec:parameters">3.3.3 Parameters</a></li>
+</ul></li>
+<li><a href="#sec:vendor-specific-elements">3.4 Vendor-Specific
 Elements</a></li>
 </ul>
 <h2 class="auto-hoverlink" data-info="header"
@@ -2024,8 +2071,8 @@ character.</p>
 node in the hierarchy MUST start with a letter or underscore, and
 subsequent characters MUST be letters, digits, underscores or hyphens.
 The terms “letter” and “digit” are as defined in the XML specification
-<span class="citation" data-cites="XML"><a href="#ref-XML"
-role="doc-biblioref">[9, Appendix B]</a></span>.</p>
+<span class="citation" data-cites="REC-xml"><a href="#ref-REC-xml"
+role="doc-biblioref">[10, Appendix B]</a></span>.</p>
 <p>Hyphens can easily be confused with the discretionary hyphens that
 are sometimes inserted by hyphenation algorithms. For this reason, the
 names of nodes in the hierarchy SHOULD NOT include any hyphens.
@@ -2063,9 +2110,9 @@ this type.</p>
 <p>If absolute time is not available to the Agent, it SHOULD instead
 indicate the relative time since boot, where the boot time is assumed to
 be the beginning of the first day of January of year 1, or
-<code>0001 01 01T00:00:00</code>. For example, 2 days, 3 hours, 4
+<code>0001-01-01T00:00:00</code>. For example, 2 days, 3 hours, 4
 minutes and 5 seconds since boot would be expressed as
-<code>0001 01 03T03:04:05</code>. Relative time since boot MUST be
+<code>0001-01-03T03:04:05</code>. Relative time since boot MUST be
 expressed using an untimezoned representation. Any untimezoned value
 with a year value less than 1000 MUST be interpreted as a relative time
 since boot.</p>
@@ -2152,8 +2199,45 @@ in which the content is a pattern, the longest possible matching value
 determines the maximum length. For strings in which the content is a
 list, the maximum number of items and the individual item lengths can
 help to determine the maximum string length.</p>
+<h2 class="auto-hoverlink" data-info="header" id="sec:access-types">3.3
+Access Types</h2>
+<p>In the data model objects, tables, and parameters can have different
+levels of access, namely read-only, write-once-read-only and
+read-write.</p>
+<h3 class="auto-hoverlink" data-info="header"
+id="sec:single-instance-objects">3.3.1 Single-Instance Objects</h3>
+<p>These are read-only because they represent fixed entities where you
+can’t add or delete instances. E.g. Stats object.</p>
+<h3 class="auto-hoverlink" data-info="header"
+id="sec:multi-instance-objects-or-tables">3.3.2 Multi-Instance Objects
+or Tables</h3>
+<p>These can be either read-only or read-write depending on their use
+case. For reporting purposes, where data should remain static, it’s best
+to keep them read-only.</p>
+<p>For example, a session table representing who is currently accessing
+the server and from where. This information is managed by the service
+itself. No other service or remote Controller should be able to add
+instances to or delete them from the table. Therefore it is better to
+restrict it to read-only.</p>
+<p>For configurations where updates are necessary, they should be set as
+read-write.</p>
+<p>For example, a table storing user configuration. An admin may need to
+be able to add or delete users (table-instances). So this object should
+be read-write.</p>
+<h3 class="auto-hoverlink" data-info="header" id="sec:parameters">3.3.3
+Parameters</h3>
+<p>Like objects and tables, parameters can also be set as read-only or
+read-write based on their intended use. For reporting, parameters are
+often set as read-only.</p>
+<p>For example, a parameter defining the number of received packets.
+This should be read-only.</p>
+<p>On the other hand, for configurations where services or remote
+Controllers need to modify settings or parameters should be set as
+read-write.</p>
+<p>For example, a parameter defining the ports that should be closed. An
+administrator might need to adjust this value; it’s read-write.</p>
 <h2 class="auto-hoverlink" data-info="header"
-id="sec:vendor-specific-elements">3.3 Vendor-Specific Elements</h2>
+id="sec:vendor-specific-elements">3.4 Vendor-Specific Elements</h2>
 <p>A vendor MAY extend the standardized data model with vendor-specific
 elements (parameters, objects, commands, events). Vendor-specific
 elements MAY be defined either in a separate naming hierarchy or within
@@ -2170,10 +2254,11 @@ used for a given vendor-specific parameter MUST be one that is assigned
 to the organization that defined this parameter (which is not
 necessarily the same as the vendor of the Agent). An OUI is an
 organizationally unique identifier as defined in <span class="citation"
-data-cites="OUI"><a href="#ref-OUI" role="doc-biblioref">[5]</a></span>,
-which MUST be formatted as a six-hexadecimal-digit string using all
-upper-case letters and including any leading zeros. A domain name MUST
-be upper case with each dot (“.”) replaced with a hyphen.</p>
+data-cites="OUI"><a href="#ref-OUI"
+role="doc-biblioref">[14]</a></span>, which MUST be formatted as a
+six-hexadecimal-digit string using all upper-case letters and including
+any leading zeros. A domain name MUST be upper case with each dot (“.”)
+replaced with a hyphen.</p>
 <p>The VendorSpecificName MUST NOT contain a “.” (period) or a space
 character.</p>
 <blockquote>
@@ -2208,83 +2293,98 @@ References</h1>
 published at <a href="https://www.broadband-forum.org"
 class="uri">https://www.broadband-forum.org</a>. The following documents
 are referenced by this specification.</p>
-<div id="refs" class="references csl-bib-body" role="list">
+<div id="refs" class="references csl-bib-body" data-entry-spacing="0"
+role="list">
 <div id="ref-TR-069" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[1] </div><div
 class="csl-right-inline">TR-069 Amendment 6 Corrigendum 1, <em><a
-href="https://www.broadband-forum.org/technical/download/TR-069.pdf">CPE
+href="https://www.broadband-forum.org/download/TR-069_Amendment-6_Corrigendum-1.pdf">CPE
 WAN Management Protocol</a></em>, Broadband Forum, 2020</div>
 </div>
 <div id="ref-TR-140" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[2] </div><div
 class="csl-right-inline">TR-140 Amendment 3, <em><a
-href="https://www.broadband-forum.org/technical/download/TR-140.pdf">TR-069
+href="https://www.broadband-forum.org/download/TR-140_Amendment-3.pdf">TR-069
 Data Model for Storage Service Enabled Devices</a></em>, Broadband
 Forum, 2017</div>
 </div>
 <div id="ref-TR-143" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[3] </div><div
-class="csl-right-inline">TR-143 Amendment 1 Corrigendum 1, <em><a
-href="https://www.broadband-forum.org/technical/download/TR-143.pdf">Enabling
+class="csl-right-inline">TR-143 Amendment 1 Corrigendum 2, <em><a
+href="https://www.broadband-forum.org/download/TR-143_Amendment-1_Corrigendum-2.pdf">Enabling
 Network Throughput Performance Tests and Statistical
-Monitoring</a></em>, Broadband Forum, 2015</div>
+Monitoring</a></em>, Broadband Forum, 2023</div>
 </div>
 <div id="ref-TR-181i2" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[4] </div><div
-class="csl-right-inline">TR-181 Issue 2, <em><a
-href="https://usp-data-models.broadband-forum.org#Device:2">Device Data
-Model</a></em>, Broadband Forum</div>
+class="csl-right-inline">TR-181 Issue 2 Amendment 17, <em><a
+href="https://www.broadband-forum.org/download/TR-181_Issue-2_Amendment-17.pdf">Device
+Data Model for CWMP Endpoints and USP Agents</a></em>, Broadband Forum,
+2024</div>
 </div>
-<div id="ref-OUI" class="csl-entry" role="listitem">
+<div id="ref-TR-369" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[5] </div><div
-class="csl-right-inline"><em><a
-href="https://standards.ieee.org/faqs/OUI.html">Organizationally Unique
-Identifiers (OUIs)</a></em>, IEEE</div>
+class="csl-right-inline">TR-369 Amendment 3 Corrigendum 1, <em><a
+href="https://www.broadband-forum.org/download/TR-369_Amendment-3_Corrigendum-1.pdf">User
+Services Platform (USP)</a></em>, Broadband Forum, 2023</div>
 </div>
 <div id="ref-RFC2119" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[6] </div><div class="csl-right-inline">RFC
-2119, <em><a href="https://tools.ietf.org/html/rfc2119">Key words for
-use in RFCs to Indicate Requirement Levels</a></em>, IETF, 1997</div>
+2119, <em><a href="https://www.rfc-editor.org/rfc/rfc2119.html">Key
+words for use in <span>RFCs</span> to <span>Indicate</span>
+<span>Requirement</span> <span>Levels</span></a></em>, IETF, 1997</div>
 </div>
 <div id="ref-RFC2648" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[7] </div><div class="csl-right-inline">RFC
-2648, <em><a href="https://tools.ietf.org/html/rfc2648">A URN Namespace
-for IETF Documents</a></em>, IETF, 1999</div>
+2648, <em><a href="https://www.rfc-editor.org/rfc/rfc2648.html">A
+<span>URN</span> <span>Namespace</span> for <span>IETF</span>
+<span>Documents</span></a></em>, IETF, 1999</div>
 </div>
 <div id="ref-RFC3986" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[8] </div><div class="csl-right-inline">RFC
-3986, <em><a href="https://tools.ietf.org/html/rfc3986">Uniform Resource
-Identifier (URI): Generic Syntax</a></em>, IETF, 2005</div>
+3986, <em><a href="https://www.rfc-editor.org/rfc/rfc3986.html">Uniform
+<span>Resource</span> <span>Identifier</span> <span>(URI):</span>
+<span>Generic</span> <span>Syntax</span></a></em>, IETF, 2005</div>
 </div>
-<div id="ref-XML" class="csl-entry" role="listitem">
+<div id="ref-NOTE-SOAP-20000508" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[9] </div><div
-class="csl-right-inline"><em><a
-href="https://www.w3.org/TR/REC-xml">Extensible Markup Language (XML)
-1.0 (Fourth Edition)</a></em>, W3C, 2008</div>
+class="csl-right-inline">NOTE-SOAP-20000508, <em><a
+href="http://www.w3.org/TR/2000/NOTE-SOAP-20000508">Simple
+<span>Object</span> <span>Access</span> <span>Protocol</span>
+<span>(SOAP)</span> 1.1</a></em>, W3C, 2000</div>
 </div>
-<div id="ref-SOAP" class="csl-entry" role="listitem">
+<div id="ref-REC-xml" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[10] </div><div
-class="csl-right-inline"><em><a
-href="https://www.w3.org/TR/2000/NOTE-SOAP-20000508">Simple Object
-Access Protocol (SOAP) 1.1</a></em>, W3C, 2000</div>
+class="csl-right-inline">REC-xml-20081126, <em><a
+href="https://www.w3.org/TR/2008/REC-xml-20081126">Extensible
+<span>Markup</span> <span>Language</span> <span>(XML)</span> 1.0
+<span>(Fifth</span> <span>Edition)</span></a></em>, W3C, 2008</div>
 </div>
-<div id="ref-XML-Schema-Primer" class="csl-entry" role="listitem">
+<div id="ref-REC-xmlschema-0" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[11] </div><div
-class="csl-right-inline"><em><a
-href="https://www.w3.org/TR/xmlschema-0">XML Schema Part 0: Primer
-Second Edition</a></em>, W3C, 2004</div>
+class="csl-right-inline">REC-xmlschema-0-20041028, <em><a
+href="https://www.w3.org/TR/2004/REC-xmlschema-0-20041028">XML
+<span>Schema</span> <span>Part</span> 0: <span>Primer</span>
+<span>Second</span> <span>Edition</span></a></em>, W3C, 2004</div>
 </div>
-<div id="ref-XML-Schema-Datatypes" class="csl-entry" role="listitem">
+<div id="ref-REC-xmlschema-2" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[12] </div><div
-class="csl-right-inline"><em><a
-href="https://www.w3.org/TR/xmlschema-2">XML Schema Part 2: Datatypes
-Second Edition</a></em>, W3C, 2004</div>
+class="csl-right-inline">REC-xmlschema-2-20041028, <em><a
+href="https://www.w3.org/TR/2004/REC-xmlschema-2-20041028">XML
+<span>Schema</span> <span>Part</span> 2: <span>Datatypes</span>
+<span>Second</span> <span>Edition</span></a></em>, W3C, 2004</div>
 </div>
-<div id="ref-TR-369" class="csl-entry" role="listitem">
+<div id="ref-CommonMark" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[13] </div><div
-class="csl-right-inline">TR-369, <em><a
-href="https://usp.technology/specification">User Services
-Platform</a></em></div>
+class="csl-right-inline">CommonMark, <em><a
+href="https://spec.commonmark.org/0.31.2">Specification Version
+0.31.2</a></em>, 2024</div>
+</div>
+<div id="ref-OUI" class="csl-entry" role="listitem">
+<a href="https://standards.ieee.org/faqs/regauth"><div
+class="csl-left-margin">[14]</div><div
+class="csl-right-inline">Organizationally Unique Identifiers
+(OUIs)</div></a>
 </div>
 </div>
 </section>
@@ -2310,7 +2410,7 @@ Glossary, Abbreviations, Bibliography and Templates</a></li>
 <li><a href="#sec:components">A.2.5 Components</a></li>
 <li><a href="#sec:model-elements">A.2.6 Root and Service
 Objects</a></li>
-<li><a href="#sec:parameters">A.2.7 Parameters</a></li>
+<li><a href="#sec:parameters-1">A.2.7 Parameters</a></li>
 <li><a href="#sec:commands-usp-only">A.2.8 Commands (USP Only)</a></li>
 <li><a href="#sec:events-usp-only">A.2.9 Events (USP Only)</a></li>
 <li><a href="#sec:objects">A.2.10 Objects</a></li>
@@ -2324,12 +2424,12 @@ Objects</a></li>
 <h2 class="annex2 auto-hoverlink" data-info="header"
 id="sec:introduction-1">A.1 Introduction</h2>
 <p>The CWMP Data Model Definition XML Schema <span class="citation"
-data-cites="XML-Schema-Primer"><a href="#ref-XML-Schema-Primer"
+data-cites="REC-xmlschema-0"><a href="#ref-REC-xmlschema-0"
 role="doc-biblioref">[11]</a></span>, or DM Schema, is used for defining
 CWMP <span class="citation" data-cites="TR-069"><a href="#ref-TR-069"
 role="doc-biblioref">[1]</a></span> and USP <span class="citation"
 data-cites="TR-369"><a href="#ref-TR-369"
-role="doc-biblioref">[13]</a></span> data models, and is specified in <a
+role="doc-biblioref">[5]</a></span> data models, and is specified in <a
 href="#sec:description-modifications" class="heading">A.2.12.6</a>.</p>
 <p>DM Schema instance documents can contain any or all of the
 following:</p>
@@ -2434,7 +2534,7 @@ pattern “<code>[\c-[:\.]]</code>”, which means “any character permitted
 in an XML name, except for a colon and a dot”.</p></li>
 <li><p>It follows the vendor-specific parameter name requirements of <a
 href="#sec:vendor-specific-elements" class="heading">Section
-3.3</a>.</p></li>
+3.4</a>.</p></li>
 </ul>
 <p>The question of the location of the definitive normative information
 therefore arises. The answer is as follows:</p>
@@ -2555,7 +2655,7 @@ class="uri">https://www.broadband-forum.org/cwmp/tr-181-2-11-0.xml</a>.</p>
 id="sec:descriptions">A.2.2 Descriptions</h3>
 <p>Many elements have descriptions, and the same rules apply to all
 description elements in the DM Schema. A description is free text which
-can contain a limited amount of MediaWiki-like markup as specified in <a
+can contain a limited amount of markdown-like markup as specified in <a
 href="#sec:markup" class="heading">A.2.2.3</a>.</p>
 <h4 class="annex4 auto-hoverlink" data-info="header"
 id="sec:character-set">A.2.2.1 Character Set</h4>
@@ -2604,20 +2704,25 @@ both the following:</p>
     This is the fourth line.</code></pre>
 <h4 class="annex4 auto-hoverlink" data-info="header"
 id="sec:markup">A.2.2.3 Markup</h4>
-<p>The pre-processed description can contain the following markup, which
-is inspired by, but is not identical to, MediaWiki markup. All DM
-Instance processing tools SHOULD support this markup to the best of
-their ability.</p>
+<div class="note">
+<p>The markup was originally inspired by MediaWiki, but now
+(additionally) supports some markdown features. DM Instance processing
+tools SHOULD continue to support the legacy MediaWiki markup for the
+time being.</p>
+</div>
+<p>XML description elements can contain the markup that’s described
+below. All DM Instance processing tools SHOULD support this markup to
+the best of their ability.</p>
+<p>The markup explanations below are very brief and don’t always tell
+the whole truth. For further details and examples, please see the
+CommonMark Spec <span class="citation" data-cites="CommonMark"><a
+href="#ref-CommonMark" role="doc-biblioref">[13]</a></span> (but don’t
+assume that all of CommonMark is supported).</p>
 <table id="tbl:xml-description-markup">
 <caption><div class="auto-hoverlink"
 data-anchor="tbl:xml-description-markup">
-Table 1: XML Description Markup
+Table 1 – XML Description Markup
 </div></caption>
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 14%" />
-<col style="width: 72%" />
-</colgroup>
 <thead>
 <tr class="header">
 <th>Name</th>
@@ -2627,108 +2732,149 @@ Table 1: XML Description Markup
 </thead>
 <tbody>
 <tr class="odd">
-<td>Italics</td>
-<td><code>''italic text''</code></td>
-<td>Two apostrophes on each side of some text will result in the
-contained text being emphasized in italics.</td>
+<td><p>Italics</p></td>
+<td><pre><code>*italic text*
+_also italic text_</code></pre></td>
+<td><p>A single <code>*</code> or <code>_</code> on each side of some
+text will result in the contained text being emphasized in
+<em>italics</em>.</p>
+<p><strong>Legacy</strong>: Two apostrophes,
+e.g. <code>''italic text''</code>.</p></td>
 </tr>
 <tr class="even">
-<td>Bold</td>
-<td><code>'''bold text'''</code></td>
-<td>Three apostrophes on each side of some text will result in the
-contained text being emphasized in bold.</td>
+<td><p>Bold</p></td>
+<td><pre><code>**bold text**
+__also bold text__</code></pre></td>
+<td><p>Double <code>**</code> or <code>__</code> on each side of some
+text will result in the contained text being emphasized in
+<strong>bold</strong>.</p>
+<p><strong>Legacy</strong>: Three apostrophes,
+e.g. <code>'''bold text'''</code>.</p></td>
 </tr>
 <tr class="odd">
-<td>Bold italics</td>
-<td><code>'''''b+i text'''''</code></td>
-<td>Five apostrophes on each side of some text will result in the
-contained text being emphasized in bold italics.</td>
+<td><p>Bold italics</p></td>
+<td><pre><code>***b+i text***
+___b+i text___</code></pre></td>
+<td><p>Triple <code>***</code> or <code>___</code> on each side of some
+text will result in the contained text being emphasized in
+<strong><em>bold italics</em></strong>.</p>
+<p><strong>Legacy</strong>: Five apostrophes,
+e.g. <code>'''''b+i text'''''</code>.</p></td>
 </tr>
 <tr class="even">
-<td>Paragraph</td>
-<td>This paragraph just ended.</td>
-<td>A line break is interpreted as a paragraph break.</td>
+<td><p>Code</p></td>
+<td><pre><code>`code`</code></pre></td>
+<td><p>A single <code>`</code> on each side of some text will result in
+the contained text being shown in a <code>monospace</code> font.</p>
+<p><strong>Legacy</strong>: Not supported.</p></td>
 </tr>
 <tr class="odd">
-<td>Bulleted lists</td>
-<td><code>* level one</code><br />
-<code>** level two</code><br />
-<code>* level one again</code><br />
-<code>** level two again</code><br />
-<code>*** level three</code><br />
-<code>*: level one continued</code><br />
-<code>outside of list</code></td>
-<td>A line starting with one or more asterisks (*) denotes a bulleted
-list entry, whose indent depth is proportional to the number of
-asterisks specified.<br />
-If the asterisks are followed by a colon (:), the previous item at that
-level is continued, as shown.<br />
-An empty line, or a line that starts with a character other than an
-asterisk, indicates the end of the list.</td>
+<td><p>Paragraph</p></td>
+<td><pre><code>This is a
+paragraph.
+
+This is another.</code></pre></td>
+<td><p>Paragraphs can occupy multiple lines and are terminated by blank
+lines.</p>
+<p><strong>Legacy</strong>: Depends on the <a href="#sec:dmr-schema"
+class="heading">DMR Schema</a> version. For v0.1 (which is no longer
+widely used) each line is a paragraph, whereas for v1.0 paragraphs are
+as for markdown.</p></td>
 </tr>
 <tr class="even">
-<td>Numbered lists</td>
-<td><code># level one</code><br />
-<code>## level two</code><br />
-<code># level one again</code><br />
-<code>## level two again</code><br />
-<code>### level three</code><br />
-<code>#: level one continued</code><br />
-<code>outside of list</code></td>
-<td>A line starting with one or more number signs (#) denotes a numbered
-list entry.<br />
-All other conventions defined for bulleted lists apply here (using #
-rather than *), except that numbered list entries are prefixed with an
-integer decoration rather than a bullet.</td>
+<td><p>Bulleted lists</p></td>
+<td><pre><code>* level one
+  - level two
+* level one again
+  - level two again
+    + level three
+
+outside of list</code></pre></td>
+<td><p>Lines starting <code>*</code>, <code>-</code> or <code>+</code>
+introduce a bulleted list entry. Indented lines define nested bulleted
+list entries.</p>
+<p>List entries can occupy multiple lines and can consist of multiple
+paragraphs.</p>
+<p><strong>Legacy</strong>: Lines start with <code>*</code>,
+<code>**</code>, <code>***</code> etc.</p></td>
 </tr>
 <tr class="odd">
-<td>Indented lists</td>
-<td><code>: level one</code><br />
-<code>:: level two</code><br />
-<code>: level one again</code><br />
-<code>:: level two again</code><br />
-<code>::: level three</code><br />
-<code>outside of list</code></td>
-<td>A line starting with one or more colons (:) denotes an indented list
-entry.<br />
-All other conventions defined for bulleted lists apply here (using :
-rather than *), except that indented list entries have no prefix
-decoration, and item continuation is not needed.</td>
+<td><p>Numbered lists</p></td>
+<td><pre><code>1. level one
+   1.  level two
+2. level one again
+   1. level two again
+      1. level three
+outside of list</code></pre></td>
+<td><p>Lines starting <code>n.</code> (where <code>n</code> is a number)
+introduce a numbered list entry (<code>n</code> on the first item is the
+starting number, and subsequent <code>n</code> are ignored). Indented
+lines define nested numbered list entries.</p>
+<p>List entries can occupy multiple lines and can consist of multiple
+paragraphs.</p>
+<p><strong>Legacy</strong>: Lines start with <code>#</code>,
+<code>##</code>, <code>###</code> etc..</p></td>
 </tr>
 <tr class="even">
-<td>Verbatim</td>
-<td>code example:<br />
-<code>if (something)</code><br />
-<code>{</code><br />
-<code>/* do something */</code><br />
-<code>} else {</code><br />
-<code>/* do other */</code><br />
-<code>}</code></td>
-<td>A block of lines each of which starts with a space is to be
-formatted exactly as typed, preferably in a fixed width font.<br />
-This allows code fragments, simple tables etc. to be included in
-descriptions.<br />
-Note that the pre-processing rules of <a
-href="#sec:description-pre-processing" class="heading">A.2.2.2</a> imply
-that it is not possible to process an entire description as verbatim
-text (because all the leading whitespace would be removed). This is not
-expected to be a problem in practice.</td>
+<td><p>Block quotes</p></td>
+<td><pre><code>&gt; level one
+
+&gt;&gt; level two
+
+&gt; level one again
+
+&gt;&gt; level two again
+
+&gt;&gt;&gt; level three
+
+outside of list</code></pre></td>
+<td><p>Lines starting <code>&gt;</code>, <code>&gt;&gt;</code> etc. are
+block quotes. The number of <code>&gt;</code> characters defines the
+nesting level (there can be whitespace after each <code>&gt;</code>
+character).</p>
+<p>Only lines that follow blank lines can be recognised as block
+quotes.</p>
+<p><strong>Legacy</strong>: Lines start with <code>:</code>,
+<code>::</code>, <code>:::</code> etc..</p></td>
 </tr>
 <tr class="odd">
-<td>Hyperlinks</td>
-<td><code>https://www.broadband-forum.org</code></td>
-<td>URL links are specified as plain old text (no special markup).</td>
+<td><p>Verbatim</p></td>
+<td><pre><code>Here&#39;s some code:
+
+    if (something)
+    {
+      /* do something */
+    } else {
+      /* do other */
+    }</code></pre></td>
+<td><p>A block of lines each of which starts with four spaces will be
+formatted exactly as typed, in a monospace font. The block of lines has
+to be preceded by a blank line.</p>
+<p>This allows code fragments, simple tables etc. to be included in
+descriptions.</p>
+<p>Alternatively, add a <code>```</code> line both before and after the
+block of lines. In this case the preceding blank line is
+unnecessary.</p>
+<p><strong>Legacy</strong>: Only a single leading space is needed (and
+the preceding blank line isn’t needed).</p></td>
 </tr>
 <tr class="even">
-<td>Templates</td>
-<td><code>{{bibref|1|section 2}}</code><br />
-<code>{{section|table}}</code><br />
-<code>{{param|Enable}}</code><br />
-<code>{{enum|Error}}</code></td>
-<td>Text enclosed in double curly braces ({}) is a template reference,
-which is replaced by template-dependent text.<br />
-<a href="#sec:description-templates" class="heading">A.2.2.4</a>
-specifies the standard templates.</td>
+<td><p>Hyperlinks</p></td>
+<td><pre><code>&lt;https://www.broadband-forum.org&gt;</code></pre></td>
+<td><p>URLs enclosed in angle brackets will be converted to links.</p>
+<p><strong>Legacy</strong>: URLs are automatically converted to
+hyperlinks.</p></td>
+</tr>
+<tr class="odd">
+<td><p>Templates</p></td>
+<td><pre><code>{{bibref|1|section 2}}`
+{{section|table}}</code></pre>
+<p>{{param|Enable}} {{enum|Error}}</p></td>
+<td><p>Text enclosed in double curly braces (<code>{}</code>) is a
+template reference, which is replaced by template-dependent text. <a
+href="#sec:description-templates" class="heading">A.2.2.4</a> specifies
+the standard templates.</p>
+<p><strong>Legacy</strong>: Identical.</p></td>
 </tr>
 </tbody>
 </table>
@@ -2758,11 +2904,11 @@ explanation that the parameter value is hidden.</p>
 <p>The following standard templates are defined. Any vendor-specific
 template names MUST obey the rules of <a
 href="#sec:vendor-specific-elements" class="heading">Section
-3.3</a>.</p>
+3.4</a>.</p>
 <table id="tbl:xml-description-templates">
 <caption><div class="auto-hoverlink"
 data-anchor="tbl:xml-description-templates">
-Table 2: XML Description Templates
+Table 2 – XML Description Templates
 </div></caption>
 <colgroup>
 <col style="width: 15%" />
@@ -3332,77 +3478,111 @@ class="heading">A.2.3.5</a>), e.g. <code>{{empty}}</code>,
 </table>
 <h4 class="annex4 auto-hoverlink" data-info="header"
 id="sec:html-example">A.2.2.5 HTML Example</h4>
-<p>This includes examples of most of the markup and templates.</p>
-<pre><code>    &lt;model name=&quot;Goo:1.1&quot; base=&quot;Goo:1.0&quot;&gt;
-      &lt;object name=&quot;GooTop.&quot; access=&quot;readOnly&quot; minEntries=&quot;1&quot; maxEntries=&quot;1&quot;&gt;
-        &lt;parameter name=&quot;ExampleParam&quot; access=&quot;readOnly&quot;&gt;
-          &lt;description&gt;
-    {{section|Introduction}}This is an &#39;&#39;example&#39;&#39; parameter that
-    illustrates many of the &#39;&#39;&#39;formatting&#39;&#39;&#39; templates. For
-    &#39;&#39;&#39;&#39;&#39;example&#39;&#39;&#39;&#39;&#39;, this references {{bibref|TR-106a1|section 3.2}}.
+<p>This includes examples of most of the markup and some of the
+templates.</p>
+<pre><code>  &lt;model name=&quot;Goo:1.0&quot;&gt;
+    &lt;object name=&quot;GooTop.&quot; version=&quot;1.0&quot;&gt;
+      &lt;description&gt;
+        Top-level object.
+      &lt;/description&gt;
+      &lt;parameter name=&quot;ExampleParam&quot; access=&quot;readOnly&quot;&gt;
+        &lt;description&gt;
+          This is an &#39;&#39;example&#39;&#39; parameter that illustrates many of the
+          **formatting** templates. ***For example***, this references
+          {{bibref|TR-106a1|section 3.2}}.
 
-    {{section|Usage}}This parameter is called {{object}}{{param}}. One can
-    also reference other parameters in the same object, such as
-    {{param|OtherParameter}}, and indicate that the parameter value is
-    measured in {{units}}.
+          This parameter is called {{object}}.{{param}}. One can
+          also reference other parameters in the same object, such as
+          {{param|OtherParam}}, and indicate that the parameter value is
+          measured in {{units}}.
 
-    One can also include bulleted lists:
-    * level one
-    ** level two
-    * level one again
-    ** level two again
-    *** level three
-    *: level one continued
+          One can also include bulleted lists:
+          * level one
+            - level two
+          * level one again
+            - level two again
+              + level three
 
-    and numbered lists:
-    # level one
-    ## level two
-    # level one again
-    ## level two again
-    ### level three
-    #: level one continued
+          and numbered lists:
+          1. level one
+             1. level two
+          2. level one again
+             1. level two again
+                1. level three
 
-    and indented lists
-    : level one
-    :: level two
-    : level one again
-    :: level two again
-    ::: level three
+          and block quotes
+          &gt; level one
 
-    and hyperlinks such as https://www.google.com
+          &gt;&gt; level two
 
-    and code examples:
-     if (something) {
-       /* do something */
-     } else {
-       /* do other */
-     }
+          &gt; level one again
 
-    If the parameter was Boolean, one could refer to its values {{false}}
-    and {{true}}.
+          &gt;&gt; level two again
 
-    One can refer to its enumerations individually, e.g. {{enum|Disabled}},
-    or to other parameters&#39; enumerations, such as {{enum|Value|OtherParam}},
-    or can list them all. {{enum}}
+          &gt;&gt;&gt; level three
 
-    Finally, if there were any patterns they could be listed too. {{pattern}}
-          &lt;/description&gt;
-          &lt;syntax&gt;
-            &lt;string&gt;
-              &lt;enumeration value=&quot;A&quot;/&gt;
-              &lt;enumeration value=&quot;B&quot;/&gt;
-              &lt;units value=&quot;packets&quot;/&gt;
-            &lt;/string&gt;
-          &lt;/syntax&gt;
-        &lt;/parameter&gt;</code></pre>
-<p>The resulting HTML would look something like this:</p>
+          and hyperlinks such as &amp;lt;https://www.google.com&amp;gt;.
+
+          and code examples:
+
+              if (something) {
+                /* do something */
+              } else {
+                /* do other */
+              }
+        &lt;/description&gt;
+        &lt;syntax&gt;
+          &lt;unsignedInt&gt;
+            &lt;units value=&quot;packets&quot;/&gt;
+          &lt;/unsignedInt&gt;
+        &lt;/syntax&gt;
+      &lt;/parameter&gt;
+      &lt;parameter name=&quot;EnumParam&quot;&gt;
+        &lt;description&gt;
+          If the parameter was Boolean, one could refer to its values {{false}}
+          and {{true}}.
+
+          One can refer to its enumerations individually, e.g. {{enum|Disabled}},
+          or to other parameters&#39; enumerations, such as {{enum|Value|OtherParam}},
+          or can list them all. {{enum}}
+        &lt;/description&gt;
+        &lt;syntax&gt;
+          &lt;string&gt;
+            &lt;enumeration value=&quot;Disabled&quot;/&gt;
+            &lt;enumeration value=&quot;Enabled&quot;/&gt;
+          &lt;/string&gt;
+        &lt;/syntax&gt;
+      &lt;/parameter&gt;
+      &lt;parameter name=&quot;PatternParam&quot;&gt;
+        &lt;description&gt;
+          Finally, if there were any patterns they could be listed too. {{pattern}}
+        &lt;/description&gt;
+        &lt;syntax&gt;
+          &lt;string&gt;
+            &lt;pattern value=&quot;\d{8}&quot;/&gt;
+          &lt;/string&gt;
+        &lt;/syntax&gt;
+      &lt;/parameter&gt;
+      &lt;parameter name=&quot;OtherParam&quot;&gt;
+        &lt;description&gt;
+          Other parameter.
+        &lt;/description&gt;
+        &lt;syntax&gt;
+          &lt;string&gt;
+            &lt;enumeration value=&quot;Value&quot;/&gt;
+          &lt;/string&gt;
+        &lt;/syntax&gt;
+      &lt;/parameter&gt;
+    &lt;/object&gt;
+  &lt;/model&gt;</code></pre>
+<p>The resulting HTML looks like this:</p>
 <p><img src="images/figure-4.png" /></p>
 <h3 class="annex3 auto-hoverlink" data-info="header"
 id="sec:data-types">A.2.3 Data Types</h3>
 <p>CWMP <span class="citation" data-cites="TR-069"><a href="#ref-TR-069"
 role="doc-biblioref">[1]</a></span> and USP <span class="citation"
 data-cites="TR-369"><a href="#ref-TR-369"
-role="doc-biblioref">[13]</a></span> data models support only the
+role="doc-biblioref">[5]</a></span> data models support only the
 primitive data types listed in the last row of <a
 href="#tbl:xml-named-data-types" class="table">Table 3</a> “on the
 wire”. However, the DM Schema allows data types to be derived from the
@@ -3418,7 +3598,7 @@ schema).</p>
 <table id="tbl:xml-named-data-types">
 <caption><div class="auto-hoverlink"
 data-anchor="tbl:xml-named-data-types">
-Table 3: XML Named Data Types
+Table 3 – XML Named Data Types
 </div></caption>
 <colgroup>
 <col style="width: 8%" />
@@ -3487,6 +3667,7 @@ specified.</td>
 <td>base64<br />
 boolean<br />
 dateTime<br />
+decimal<br />
 hexBinary<br />
 int<br />
 long<br />
@@ -3545,7 +3726,7 @@ id="sec:data-type-facets">A.2.3.3 Data Type Facets</h4>
 <p>A facet specifies some aspect of a data type, e.g. its size, range or
 units.</p>
 <p>Note that XML Schema <span class="citation"
-data-cites="XML-Schema-Primer"><a href="#ref-XML-Schema-Primer"
+data-cites="REC-xmlschema-0"><a href="#ref-REC-xmlschema-0"
 role="doc-biblioref">[11]</a></span> also associates facets with data
 types. The XML Schema and DM Schema concepts are the same, but the set
 of facets is not identical.</p>
@@ -3554,7 +3735,7 @@ are specified in the schema):</p>
 <table id="tbl:xml-data-type-facets">
 <caption><div class="auto-hoverlink"
 data-anchor="tbl:xml-data-type-facets">
-Table 4: XML Data Type Facets
+Table 4 – XML Data Type Facets
 </div></caption>
 <colgroup>
 <col style="width: 18%" />
@@ -3613,27 +3794,14 @@ href="#sec:reference-facets" class="heading">A.2.3.7</a>).</td>
 <td>pattern</td>
 <td>Patterns for the data type (applies to string and its derived
 types). Pattern value syntax is the same as for XML Schema regular
-expressions. See <span class="citation"
-data-cites="XML-Schema-Datatypes"><a href="#ref-XML-Schema-Datatypes"
-role="doc-biblioref">[12, section F]</a></span>.</td>
+expressions. See <span class="citation" data-cites="REC-xmlschema-2"><a
+href="#ref-REC-xmlschema-2" role="doc-biblioref">[12, section
+F]</a></span>.</td>
 </tr>
 <tr class="even">
 <td>units</td>
 <td>Units for the data type (applies to numeric data types and their
 derived types).</td>
-</tr>
-<tr class="odd">
-<td>default</td>
-<td>Object, factory, implementation or parameter default.<br />
-- Object defaults apply only to parameters that can be created as a
-result of adding an Object.<br />
-- Factory defaults apply to all parameters (if a factory default is
-specified, it also acts as object default for applicable
-parameters).<br />
-- Implementation defaults apply to all parameters (they are
-informational defaults that are likely after a reset or if no other
-value is available).<br />
-- Parameter defaults apply only to command and event arguments.</td>
 </tr>
 </tbody>
 </table>
@@ -3642,7 +3810,7 @@ necessarily define all the valid values for a data type. This is for the
 following reasons:</p>
 <ul>
 <li><p>As specified in <a href="#sec:vendor-specific-elements"
-class="heading">Section 3.3</a>, vendors are allowed to add additional
+class="heading">Section 3.4</a>, vendors are allowed to add additional
 enumeration values.</p></li>
 <li><p>A future version of a data model may need to add additional
 enumeration values.</p></li>
@@ -3674,7 +3842,7 @@ Name applies.</p>
 <table id="tbl:path-name-scope-definition">
 <caption><div class="auto-hoverlink"
 data-anchor="tbl:path-name-scope-definition">
-Table 5: Path Name Scope Definition
+Table 5 – Path Name Scope Definition
 </div></caption>
 <colgroup>
 <col style="width: 20%" />
@@ -3695,7 +3863,7 @@ the desired behavior:<br />
 top of the naming hierarchy.<br />
 - If the path begins with a dot, it is relative to the Mount Point (if
 mounted), or the Root or Service Object (otherwise).<br />
-- Otherwise, the path is relative to the current object (c.f.
+- Otherwise, the path is relative to the current object (see
 scope=object).</td>
 </tr>
 <tr class="even">
@@ -3707,6 +3875,11 @@ Service Object.</td>
 <td style="text-align: left;">object</td>
 <td style="text-align: left;">The path is relative to the current
 object.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">absolute</td>
+<td style="text-align: left;">The path is an absolute path, and will be
+used as is.</td>
 </tr>
 </tbody>
 </table>
@@ -3814,7 +3987,7 @@ null values are defined as follows:</p>
 <li><p><strong>base64, hexBinary, string:</strong> an empty
 string</p></li>
 <li><p><strong>unsignedInt, unsignedLong:</strong> 0</p></li>
-<li><p><strong>int, long:</strong> -1</p></li>
+<li><p><strong>int, long, decimal:</strong> -1</p></li>
 <li><p><strong>boolean:</strong> false</p></li>
 <li><p><strong>dateTime:</strong> 0001-01-01T00:00:00Z (the Unknown
 Time; see <a href="#sec:date-and-time-rules" class="heading">Section
@@ -3870,7 +4043,7 @@ are relevant (normative requirements are specified in the schema).</p>
 <table id="tbl:pathref-facet-definition">
 <caption><div class="auto-hoverlink"
 data-anchor="tbl:pathref-facet-definition">
-Table 6: PathRef Facet Definition
+Table 6 – PathRef Facet Definition
 </div></caption>
 <colgroup>
 <col style="width: 17%" />
@@ -3926,6 +4099,8 @@ referenced<br />
 referenced<br />
 - <strong>dateTime</strong>: only a dateTime parameter can be
 referenced<br />
+- <strong>decimal</strong>: only a decimal (or int, long, unsignedInt or
+unsignedLong) parameter can be referenced<br />
 - <strong>hexBinary</strong>: only a hexBinary parameter can be
 referenced<br />
 - <strong>integer</strong>: only an integer (int, long, unsignedInt or
@@ -3949,11 +4124,12 @@ version of the XML Schema type hierarchy) is as follows:<br />
   <code>boolean</code><br />
   <code>dateTime</code><br />
   <code>hexBinary</code><br />
-  <code>integer</code><br />
-    <code>long</code><br />
-      <code>int</code><br />
-    <code>unsignedLong</code><br />
-      <code>unsignedInt</code><br />
+  <code>decimal</code><br />
+   <code>integer</code><br />
+     <code>long</code><br />
+       <code>int</code><br />
+     <code>unsignedLong</code><br />
+       <code>unsignedInt</code><br />
   <code>string</code><br />
 Note that any and integer are not valid parameter data types. They are
 included in order to support “can reference any data type” and “can
@@ -3972,7 +4148,7 @@ schema).</p>
 <table id="tbl:instanceref-facet-definition">
 <caption><div class="auto-hoverlink"
 data-anchor="tbl:instanceref-facet-definition">
-Table 7: InstanceRef Facet Definition
+Table 7 – InstanceRef Facet Definition
 </div></caption>
 <colgroup>
 <col style="width: 17%" />
@@ -4012,7 +4188,7 @@ schema).</p>
 <table id="tbl:enumerationref-facet-definition">
 <caption><div class="auto-hoverlink"
 data-anchor="tbl:enumerationref-facet-definition">
-Table 8: EnumerationRef Facet Definition
+Table 8 – EnumerationRef Facet Definition
 </div></caption>
 <colgroup>
 <col style="width: 17%" />
@@ -4145,7 +4321,7 @@ follows:</p>
 <table id="tbl:xml-facet-inheritance-rules">
 <caption><div class="auto-hoverlink"
 data-anchor="tbl:xml-facet-inheritance-rules">
-Table 9: XML Facet Inheritance Rules
+Table 9 – XML Facet Inheritance Rules
 </div></caption>
 <colgroup>
 <col style="width: 17%" />
@@ -4328,7 +4504,7 @@ schema).</p>
 <table id="tbl:xml-glossary-items">
 <caption><div class="auto-hoverlink"
 data-anchor="tbl:xml-glossary-items">
-Table 10: XML Glossary Items
+Table 10 – XML Glossary Items
 </div></caption>
 <colgroup>
 <col style="width: 18%" />
@@ -4363,7 +4539,7 @@ schema).</p>
 <table id="tbl:xml-abbreviation-items">
 <caption><div class="auto-hoverlink"
 data-anchor="tbl:xml-abbreviation-items">
-Table 11: XML Abbreviation Items
+Table 11 – XML Abbreviation Items
 </div></caption>
 <colgroup>
 <col style="width: 18%" />
@@ -4399,7 +4575,7 @@ schema).</p>
 <table id="tbl:xml-bibliographic-references">
 <caption><div class="auto-hoverlink"
 data-anchor="tbl:xml-bibliographic-references">
-Table 12: XML Bibliographic References
+Table 12 – XML Bibliographic References
 </div></caption>
 <colgroup>
 <col style="width: 18%" />
@@ -4472,7 +4648,7 @@ schema).</p>
 <table id="tbl:xml-template-elements">
 <caption><div class="auto-hoverlink"
 data-anchor="tbl:xml-template-elements">
-Table 13: XML Template Elements
+Table 13 – XML Template Elements
 </div></caption>
 <colgroup>
 <col style="width: 18%" />
@@ -4514,7 +4690,7 @@ are relevant (normative requirements are specified in the schema).</p>
 <table id="tbl:xml-component-definition">
 <caption><div class="auto-hoverlink"
 data-anchor="tbl:xml-component-definition">
-Table 14: XML Component Definition
+Table 14 – XML Component Definition
 </div></caption>
 <colgroup>
 <col style="width: 19%" />
@@ -4544,7 +4720,7 @@ component.</td>
 <tr class="even">
 <td>parameter</td>
 <td>The component’s top-level parameter definitions (<a
-href="#sec:parameters" class="heading">A.2.7</a>).</td>
+href="#sec:parameters" class="heading">Section 3.3.3</a>).</td>
 </tr>
 <tr class="odd">
 <td>object</td>
@@ -4608,7 +4784,7 @@ relevant (normative requirements are specified in the schema).</p>
 <table id="tbl:xml-root-and-service-objects">
 <caption><div class="auto-hoverlink"
 data-anchor="tbl:xml-root-and-service-objects">
-Table 15: XML Root and Service Objects
+Table 15 – XML Root and Service Objects
 </div></caption>
 <colgroup>
 <col style="width: 14%" />
@@ -4655,7 +4831,7 @@ href="#sec:components" class="heading">A.2.5</a>).</td>
 <tr class="odd">
 <td>parameter</td>
 <td>The model’s top-level parameter definitions (<a
-href="#sec:parameters" class="heading">A.2.7</a>).</td>
+href="#sec:parameters" class="heading">Section 3.3.3</a>).</td>
 </tr>
 <tr class="even">
 <td>object</td>
@@ -4684,7 +4860,7 @@ Object.</p>
       maxEntries=&quot;unbounded&quot;/&gt;
     &lt;/model&gt;</code></pre>
 <h3 class="annex3 auto-hoverlink" data-info="header"
-id="sec:parameters">A.2.7 Parameters</h3>
+id="sec:parameters-1">A.2.7 Parameters</h3>
 <p>Parameters are defined using the parameter element, which can occur
 within component, model and object elements. When defining a new
 parameter, the following attributes and elements are relevant (normative
@@ -4692,7 +4868,7 @@ requirements are specified in the schema).</p>
 <table id="tbl:xml-parameter-definition">
 <caption><div class="auto-hoverlink"
 data-anchor="tbl:xml-parameter-definition">
-Table 16: XML Parameter Definition
+Table 16 – XML Parameter Definition
 </div></caption>
 <colgroup>
 <col style="width: 14%" />
@@ -4730,11 +4906,11 @@ parameter.</td>
 </tr>
 <tr class="odd">
 <td>activeNotify</td>
-<td>The parameter’s {normal, forceEnabled, forceDefault, canDeny} Active
-Notification status. This defaults to normal, and so is not often
+<td>The parameter’s {normal, forceEnabled, forceDefaultEnabled, canDeny}
+Active Notification status. This defaults to normal, and so is not often
 specified for a new parameter.<br />
-Note that in USP, forceEnabled and forceDefault are not applicable and
-thus are equivalent to normal.</td>
+Note that in USP, forceEnabled and forceDefaultEnabled are not
+applicable and thus are equivalent to normal.</td>
 </tr>
 <tr class="even">
 <td>forcedInform</td>
@@ -4762,7 +4938,7 @@ are specified in the schema).</p>
 <table id="tbl:xml-parameter-syntax">
 <caption><div class="auto-hoverlink"
 data-anchor="tbl:xml-parameter-syntax">
-Table 17: XML Parameter Syntax
+Table 17 – XML Parameter Syntax
 </div></caption>
 <colgroup>
 <col style="width: 14%" />
@@ -4818,6 +4994,7 @@ refers to the individual list items, not to the parameter value.</td>
 <td>base64<br />
 boolean<br />
 dateTime<br />
+decimal<br />
 hexBinary<br />
 int<br />
 long<br />
@@ -4844,6 +5021,22 @@ an anonymous named data type (<a href="#sec:anonymous-data-types"
 class="heading">A.2.3.2</a>) definition, e.g. &lt;dataType
 base=“IPAddress”&gt;&lt;size maxLength=“15”/&gt;&lt;/dataType&gt;</td>
 </tr>
+<tr class="odd">
+<td>default</td>
+<td>Object, factory, implementation or parameter default.<br />
+- Object defaults apply only to parameters that can be created as a
+result of adding an Object.<br />
+- Factory defaults apply to all parameters (if a factory default is
+specified, it also acts as object default for applicable
+parameters).<br />
+- Implementation defaults apply to all parameters (they are
+informational defaults that are likely after a reset or if no other
+value is available).<br />
+- Parameter defaults apply only to command and event arguments.<br />
+If the parameter is list-valued, the default value has to be placed
+within square brackets, e.g. &lt;default type=“object”
+value=“[1,2,3]”/&gt;.</td>
+</tr>
 </tbody>
 </table>
 <h3 class="annex3 auto-hoverlink" data-info="header"
@@ -4857,7 +5050,7 @@ commands.</p>
 <table id="tbl:xml-command-definition">
 <caption><div class="auto-hoverlink"
 data-anchor="tbl:xml-command-definition">
-Table 18: XML Command Definition
+Table 18 – XML Command Definition
 </div></caption>
 <colgroup>
 <col style="width: 14%" />
@@ -4914,7 +5107,7 @@ arguments (respectively).</p>
 <table id="tbl:xml-command-input-output-arguments-definition">
 <caption><div class="auto-hoverlink"
 data-anchor="tbl:xml-command-input-output-arguments-definition">
-Table 19: XML Command Input / Output Arguments Definition
+Table 19 – XML Command Input / Output Arguments Definition
 </div></caption>
 <colgroup>
 <col style="width: 14%" />
@@ -4936,7 +5129,7 @@ class="heading">A.2.5</a>).</td>
 <tr class="even">
 <td>parameter</td>
 <td>The command’s parameter arguments (<a href="#sec:parameters"
-class="heading">A.2.7</a>).</td>
+class="heading">Section 3.3.3</a>).</td>
 </tr>
 <tr class="odd">
 <td>object</td>
@@ -5006,7 +5199,7 @@ by the event (<a href="#sec:components" class="heading">A.2.5</a>).</td>
 <tr class="even">
 <td>parameter</td>
 <td>The event’s parameter arguments (<a href="#sec:parameters"
-class="heading">A.2.7</a>).</td>
+class="heading">Section 3.3.3</a>).</td>
 </tr>
 <tr class="odd">
 <td>object</td>
@@ -5035,7 +5228,7 @@ specified in the schema).</p>
 <table id="tbl:xml-object-definition">
 <caption><div class="auto-hoverlink"
 data-anchor="tbl:xml-object-definition">
-Table 20: XML Object Definition
+Table 20 – XML Object Definition
 </div></caption>
 <colgroup>
 <col style="width: 14%" />
@@ -5121,7 +5314,7 @@ href="#sec:components" class="heading">A.2.5</a>).</td>
 <tr class="even">
 <td>parameter</td>
 <td>The object’s parameter definitions (<a href="#sec:parameters"
-class="heading">A.2.7</a>).</td>
+class="heading">Section 3.3.3</a>).</td>
 </tr>
 <tr class="odd">
 <td>command</td>
@@ -5142,7 +5335,7 @@ relevant (normative requirements are specified in the schema).</p>
 <table id="tbl:xml-table-definition">
 <caption><div class="auto-hoverlink"
 data-anchor="tbl:xml-table-definition">
-Table 21: XML Table Definition
+Table 21 – XML Table Definition
 </div></caption>
 <colgroup>
 <col style="width: 14%" />
@@ -5234,7 +5427,7 @@ requirements are specified in the schema).</p>
 <table id="tbl:xml-profile-definition">
 <caption><div class="auto-hoverlink"
 data-anchor="tbl:xml-profile-definition">
-Table 22: XML Profile Definition
+Table 22 – XML Profile Definition
 </div></caption>
 <colgroup>
 <col style="width: 14%" />
@@ -5323,7 +5516,7 @@ id="sec:parameter-modifications">A.2.12.1 Parameter Modifications</h4>
 <table id="tbl:xml-parameter-modification">
 <caption><div class="auto-hoverlink"
 data-anchor="tbl:xml-parameter-modification">
-Table 23: XML Parameter Modification
+Table 23 – XML Parameter Modification
 </div></caption>
 <colgroup>
 <col style="width: 14%" />
@@ -5357,8 +5550,8 @@ href="#sec:deprecated-and-obsoleted-items" class="heading">Section
 </tr>
 <tr class="even">
 <td>activeNotify</td>
-<td>Can be changed from forceEnabled to forceDefault. No other changes
-are permitted.</td>
+<td>Can be changed from forceEnabled to forceDefaultEnabled. No other
+changes are permitted.</td>
 </tr>
 <tr class="odd">
 <td>forcedInform</td>
@@ -5417,7 +5610,7 @@ id="sec:command-modifications-usp-only">A.2.12.2 Command Modifications
 <table id="tbl:xml-command-modification">
 <caption><div class="auto-hoverlink"
 data-anchor="tbl:xml-command-modification">
-Table 24: XML Command Modification
+Table 24 – XML Command Modification
 </div></caption>
 <colgroup>
 <col style="width: 14%" />
@@ -5480,7 +5673,7 @@ Only)</h4>
 <table id="tbl:xml-event-modification">
 <caption><div class="auto-hoverlink"
 data-anchor="tbl:xml-event-modification">
-Table 25: XML Event Modification
+Table 25 – XML Event Modification
 </div></caption>
 <colgroup>
 <col style="width: 14%" />
@@ -5541,7 +5734,7 @@ id="sec:object-modifications">A.2.12.4 Object Modifications</h4>
 <table id="tbl:xml-object-modification">
 <caption><div class="auto-hoverlink"
 data-anchor="tbl:xml-object-modification">
-Table 26: XML Object Modification
+Table 26 – XML Object Modification
 </div></caption>
 <colgroup>
 <col style="width: 14%" />
@@ -5631,7 +5824,7 @@ elements.</p>
 <table id="tbl:xml-profile-modification">
 <caption><div class="auto-hoverlink"
 data-anchor="tbl:xml-profile-modification">
-Table 27: XML Profile Modification
+Table 27 – XML Profile Modification
 </div></caption>
 <colgroup>
 <col style="width: 14%" />
@@ -5680,7 +5873,7 @@ all description elements.</p>
 <table id="tbl:xml-description-modification">
 <caption><div class="auto-hoverlink"
 data-anchor="tbl:xml-description-modification">
-Table 28: XML Description Modification
+Table 28 – XML Description Modification
 </div></caption>
 <colgroup>
 <col style="width: 14%" />
@@ -5813,7 +6006,7 @@ Report”) prefix.</p>
 special behavior.</p>
 <table id="tbl:dmr-schema-usage">
 <caption><div class="auto-hoverlink" data-anchor="tbl:dmr-schema-usage">
-Table 29: DMR Schema Usage
+Table 29 – DMR Schema Usage
 </div></caption>
 <colgroup>
 <col style="width: 10%" />
@@ -5864,24 +6057,32 @@ hidden in the report, e.g. not even shown in strikeout</td>
 shouldn’t issue a warning</td>
 </tr>
 <tr class="even">
+<td>dmr:noNameCheck</td>
+<td>boolean</td>
+<td>Indicates that the name won’t be checked against <a
+href="#sec:vendor-specific-elements" class="heading">Vendor-specific
+Elements</a> and <a href="#sec:data-model-item-names"
+class="heading">Data Model Item Names</a> naming rules</td>
+</tr>
+<tr class="odd">
 <td>dmr:noUnionObject</td>
 <td>boolean</td>
 <td>Indicates that a discriminator parameter enum value doesn’t
 correspond to a union object, so shouldn’t issue a warning</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>dmr:noUniqueKeys</td>
 <td>boolean</td>
 <td>Indicates that an object has no unique keys, so shouldn’t (for
 example) warn about the lack of unique keys</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>dmr:noUnitsTemplate</td>
 <td>boolean</td>
 <td>Indicates that a parameter description doesn’t contain a {{units}}
 template, so shouldn’t warn about its absence</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>dmr:previousParameter</td>
 <td>string</td>
 <td>Previous parameter location hint
@@ -5893,7 +6094,7 @@ event) that should ideally precede the new one in the report</li>
 <li>Use an empty to string to request insertion at the beginning</li>
 </ul></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>dmr:previousObject</td>
 <td>string</td>
 <td>Previous object location hint
@@ -5904,7 +6105,7 @@ precede the new one in the report</li>
 <li>Use an empty to string to request insertion at the beginning</li>
 </ul></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>dmr:previousProfile</td>
 <td>string</td>
 <td>Previous profile location hint
@@ -5915,7 +6116,7 @@ precede the new one in the report</li>
 <li>Use an empty to string to request insertion at the beginning</li>
 </ul></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>dmr:version</td>
 <td>string (m.n)</td>
 <td>Do not use this!
@@ -5943,7 +6144,7 @@ Instances</a></li>
 <h2 class="annex2 auto-hoverlink" data-info="header"
 id="sec:introduction-2">B.1 Introduction</h2>
 <p>The CWMP Device Type XML Schema <span class="citation"
-data-cites="XML-Schema-Primer"><a href="#ref-XML-Schema-Primer"
+data-cites="REC-xmlschema-0"><a href="#ref-REC-xmlschema-0"
 role="doc-biblioref">[11]</a></span>, or DT Schema, is used for
 describing a device’s supported data model.</p>
 <p>DT Schema instance documents can contain the following:</p>
@@ -6055,7 +6256,7 @@ standard features is as follows:</p>
 MUST begin with <code>X_&lt;VENDOR&gt;_</code>, where
 <code>&lt;VENDOR&gt;</code> MUST be as defined in <a
 href="#sec:vendor-specific-elements" class="heading">Section
-3.3</a>.</p>
+3.4</a>.</p>
 <p>This example feature declaration illustrates the use of
 annotation:</p>
 <pre><code>    &lt;feature name=&quot;DNSServer&quot;&gt;
@@ -6134,10 +6335,10 @@ representation is 10 (<code>#xA</code>), 13 (<code>#xD</code>) or is in
 the (inclusive) range 32-126.</p>
 <p><em>Note – writing LF (LINE FEED) for <code>#xA</code> and
 <code>CR</code> (CARRIAGE RETURN) for <code>#xD</code>, the XML
-specification <span class="citation" data-cites="XML"><a href="#ref-XML"
-role="doc-biblioref">[9, section 2.11]</a></span> states that XML
-processors have to behave as if all CR LF sequences, or any CR
-characters not followed by LF, are translated to LF.</em></p>
+specification <span class="citation" data-cites="REC-xml"><a
+href="#ref-REC-xml" role="doc-biblioref">[10, section 2.11]</a></span>
+states that XML processors have to behave as if all CR LF sequences, or
+any CR characters not followed by LF, are translated to LF.</em></p>
 <p><em>Note – TAB (<code>#x9</code>) is not permitted. This is because
 no standard indentation level is defined for TAB characters, so the
 indentation is ambiguous when there is a mixture of SPACE
@@ -6452,9 +6653,10 @@ Which Profiles are included depends on whether it is a full or partial
 <h2 class="appendix2 auto-hoverlink" data-info="header"
 id="sec:data-model-definition">I.4 Data Model Definition</h2>
 <p>Parameters make use of a limited subset of the default SOAP data
-types <span class="citation" data-cites="SOAP"><a href="#ref-SOAP"
-role="doc-biblioref">[10]</a></span>. The notation used to represent
-these types within the report is listed in the following table.</p>
+types <span class="citation" data-cites="NOTE-SOAP-20000508"><a
+href="#ref-NOTE-SOAP-20000508" role="doc-biblioref">[9]</a></span>. The
+notation used to represent these types within the report is listed in
+the following table.</p>
 <table>
 <colgroup>
 <col style="width: 14%" />
@@ -6484,6 +6686,16 @@ specified, in which case the string length will be in one of the
 ranges.</td>
 </tr>
 <tr class="odd">
+<td>decimal</td>
+<td>Decimal number, with optional sign and optional fractional part. For
+some decimal types, a value range is given using the form
+decimal(Min:Max) or decimal(Min:Max step Step) where the Min and Max
+values are inclusive. If either Min or Max are missing, this indicates
+no limit. If Step is missing, this indicates a step of 1.0. Multiple
+comma-separated ranges can be specified, in which case the value will be
+in one of the ranges.</td>
+</tr>
+<tr class="even">
 <td>int</td>
 <td>Integer in the range -2147483648 to +2147483647, inclusive. For some
 int types, a value range is given using the form int(Min:Max) or
@@ -6492,7 +6704,7 @@ either Min or Max are missing, this indicates no limit. If Step is
 missing, this indicates a step of 1. Multiple comma-separated ranges can
 be specified, in which case the value will be in one of the ranges.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>long</td>
 <td>Long integer in the range -9223372036854775808 to
 9223372036854775807, inclusive. For some long types, a value range is
@@ -6502,7 +6714,7 @@ indicates no limit. If Step is missing, this indicates a step of 1.
 Multiple comma-separated ranges can be specified, in which case the
 value will be in one of the ranges.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>unsignedInt</td>
 <td>Unsigned integer in the range 0 to 4294967295, inclusive. For some
 unsignedInt types, a value range is given using the form
@@ -6512,7 +6724,7 @@ indicates no limit. If Step is missing, this indicates a step of 1.
 Multiple comma-separated ranges can be specified, in which case the
 value will be in one of the ranges.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>unsignedLong</td>
 <td>Unsigned long integer in the range 0 to 18446744073709551615,
 inclusive. For some unsignedLong types, a value range is given using the
@@ -6522,18 +6734,18 @@ indicates no limit. If Step is missing, this indicates a step of 1.
 Multiple comma-separated ranges can be specified, in which case the
 value will be in one of the ranges.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>boolean</td>
 <td>Boolean, where the allowed values are “0” or “1” (or equivalently,
 “true” or “false”).</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>dateTime</td>
 <td>The subset of the ISO 8601 date-time format defined by the SOAP
-dateTime type <span class="citation" data-cites="SOAP"><a
-href="#ref-SOAP" role="doc-biblioref">[10]</a></span>.</td>
+dateTime type <span class="citation" data-cites="NOTE-SOAP-20000508"><a
+href="#ref-NOTE-SOAP-20000508" role="doc-biblioref">[9]</a></span>.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>base64</td>
 <td>Base64 encoded binary (no line-length limitation). A minimum and
 maximum allowed length can be indicated using the form base64(Min:Max),
@@ -6543,7 +6755,7 @@ no limit, and if Min is missing the colon can also be omitted, as in
 base64(Max). Multiple comma-separate ranges can be specified, in which
 case the length MUST be in one of the ranges.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>hexBinary</td>
 <td>Hex encoded binary. A minimum and maximum allowed length can be
 indicated using the form hexBinary(Min:Max), where Min and Max are the

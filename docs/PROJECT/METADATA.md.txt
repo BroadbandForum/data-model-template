@@ -133,23 +133,44 @@
   -
   - * Clarified the requirements regarding vendor-specific prefixes
 
+* - [Amendment 14][TR-106 Amendment 14]
+  - July 2024
+  -
+  - * Added access type guidance
+    * Documented the dmr:noNameCheck attribute
+    * Documented the decimal datatype
+    * Documented the list value defaults
+    * Documented markdown syntax (and switch from MediaWiki)
+    * Cosmetic changes
+
 :::
+
+Comments or questions about this Broadband Forum Technical Report should be directed to <info@broadband-forum.org>.
+
+::: nobreak
 
 ### %bbfWorkArea% Work Area Directors {.unnumbered .unlisted}
 
 * Jason Walls, QA Cafe
-* John Blackford, CommScope
+* John Blackford, Vantiva
+
+:::
+
+::: nobreak
 
 ### %bbfProjectStream% Project Stream Leaders {.unnumbered .unlisted}
 
 * Daniel Egger, Axiros
 * Matthieu Anne, Orange
 
+:::
+
 [TR-106 Amendment 1]: https://www.broadband-forum.org/download/TR-106_Amendment-1.pdf
 [TR-106 Amendment 10]: https://www.broadband-forum.org/download/TR-106_Amendment-10.pdf
 [TR-106 Amendment 11]: https://www.broadband-forum.org/download/TR-106_Amendment-11.pdf
 [TR-106 Amendment 12]: https://www.broadband-forum.org/download/TR-106_Amendment-12.pdf
 [TR-106 Amendment 13]: https://www.broadband-forum.org/download/TR-106_Amendment-13.pdf
+[TR-106 Amendment 14]: https://www.broadband-forum.org/download/TR-106_Amendment-14.pdf
 [TR-106 Amendment 2]: https://www.broadband-forum.org/download/TR-106_Amendment-2.pdf
 [TR-106 Amendment 3]: https://www.broadband-forum.org/download/TR-106_Amendment-3.pdf
 [TR-106 Amendment 4]: https://www.broadband-forum.org/download/TR-106_Amendment-4.pdf

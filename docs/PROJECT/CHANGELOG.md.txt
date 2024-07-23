@@ -5,6 +5,42 @@
 See <https://data-model-template.broadband-forum.org> for the
 current TR-106 specification.
 
+## 2024-07-23: [TR-106 Amendment 14]
+
+*Tag: [v1.14.0]*
+
+### TR-106 Document
+* Added access type guidance
+* Documented the dmr:noNameCheck attribute
+* Documented the decimal datatype
+* Documented the list value defaults
+* Documented markdown syntax (and switch from MediaWiki)
+* Cosmetic changes
+
+### DM Data Model Definition Schema (DM Schema)
+* Starting from this version, the DM schema version will be the
+  same as the specification version
+* Removed the status attribute's default
+* Supported virtual components
+* Permitted changing the version of an existing parameter (sometimes
+  needed when using components to define multiple parameters)
+
+### Data Model Report Schema (DMR Schema)
+* Added *noNameCheck* to suppress name checks (used for items
+  that knowingly disobey the rules)
+
+### Data Model Data Types
+* Updated *Alias* component to be virtual (with different CWMP
+  and USP versions)
+
+### Data Model Bibliographic References
+* Fixed IPDR reference links
+* Added more bibrefs
+
+### Device Type Schema (DT Schema)
+* Starting from this version, the DT schema version will be the
+  same as the specification version
+
 ## 2024-01-18: [TR-106 Amendment 13]
 
 *Tag: [v1.13.0]*
@@ -13,7 +49,8 @@ current TR-106 specification.
 * Clarified the requirements regarding vendor-specific prefixes
 
 ### Data Model Data Types
-* Added an *Alias* component to reduce cut-and-paste in the data models
+* Added an *Alias* component to reduce cut-and-paste in the data
+  models
 * Added an *Order* type to reduce cut-and-paste in the data models
 
 ### Data Model Bibliographic References
@@ -285,6 +322,7 @@ current TR-106 specification.
 [TR-106 Amendment 11]: https://www.broadband-forum.org/download/TR-106_Amendment-11.pdf
 [TR-106 Amendment 12]: https://www.broadband-forum.org/download/TR-106_Amendment-12.pdf
 [TR-106 Amendment 13]: https://www.broadband-forum.org/download/TR-106_Amendment-13.pdf
+[TR-106 Amendment 14]: https://www.broadband-forum.org/download/TR-106_Amendment-14.pdf
 [TR-106 Amendment 2]: https://www.broadband-forum.org/download/TR-106_Amendment-2.pdf
 [TR-106 Amendment 3]: https://www.broadband-forum.org/download/TR-106_Amendment-3.pdf
 [TR-106 Amendment 4]: https://www.broadband-forum.org/download/TR-106_Amendment-4.pdf
@@ -306,3 +344,4 @@ current TR-106 specification.
 [v1.11.0]: https://github.com/BroadbandForum/data-model-template/releases/tag/v1.11.0
 [v1.12.0]: https://github.com/BroadbandForum/data-model-template/releases/tag/v1.12.0
 [v1.13.0]: https://github.com/BroadbandForum/data-model-template/releases/tag/v1.13.0
+[v1.14.0]: https://github.com/BroadbandForum/data-model-template/releases/tag/v1.14.0

@@ -3,7 +3,7 @@ version: 2
 
 plan:
   project-key: BUSDM
-  name: WT-106 release 1.13
+  name: WT-106 release 1.14
   key: DMSUPPREL
 
 branches:
@@ -21,18 +21,26 @@ stages:
 
 Default Job:
   docker:
-    broadbandforum/report-pl:develop
+    image: broadbandforum/pandoc:latest
+    docker-run-arguments:
+      - --user=bamboo
 
   tasks:
     - clean
     - checkout:
-        repository: wt-106-release-1-13
+        repository: wt-106-release-1-14
         path: WT-106
+    - checkout:
+        repository: wt-354-develop
+        path: WT-354
     - checkout:
         repository: install-develop
         path: install
     - script: |
-        make --directory=WT-106 SUBDIRSEXCLUDE=specification test.report-pl
+        make --directory=WT-106 SUBDIRSEXCLUDE=specification \
+            XMLSCHEMAVALIDATE=$PWD/WT-354/bin/xmlschema-validate.py \
+            test.xmlschema-validate
+        make --directory=WT-106 SUBDIRSEXCLUDE=specification test.report-py
         make --directory=WT-106 test.pandoc
     - test-parser:
         type: junit

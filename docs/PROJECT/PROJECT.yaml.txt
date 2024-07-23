@@ -112,6 +112,47 @@ resources:
 # this is a dictionary, typically keyed by vi.a.c revisions
 # XXX need to ensure that we cover the YANG multi-tag case
 versions:
+  v1.14.0:
+    date: 2024-07-23
+    changes:
+      specification:
+        text: |
+          * Added access type guidance
+          * Documented the dmr:noNameCheck attribute
+          * Documented the decimal datatype
+          * Documented the list value defaults
+          * Documented markdown syntax (and switch from MediaWiki)
+          * Cosmetic changes
+      dm-schema:
+        resname: cwmp-datamodel-1-14.xsd
+        text: |
+          * Starting from this version, the DM schema version will be the
+            same as the specification version
+          * Removed the status attribute's default
+          * Supported virtual components
+          * Permitted changing the version of an existing parameter (sometimes
+            needed when using components to define multiple parameters)
+      dmr-schema:
+        resname: cwmp-datamodel-report-1-0.xsd
+        text: |
+          * Added *noNameCheck* to suppress name checks (used for items
+            that knowingly disobey the rules)
+      dm-types:
+        resname: tr-106-types.xml
+        text: |
+          * Updated *Alias* component to be virtual (with different CWMP
+            and USP versions)
+      dm-bibrefs:
+        resname: tr-069-biblio.xml
+        text: |
+          * Fixed IPDR reference links
+          * Added more bibrefs
+      dt-schema:
+        resname: cwmp-devicetype-1-14.xsd
+        text: |
+          * Starting from this version, the DT schema version will be the
+            same as the specification version
+
   v1.13.0:
     date: 2024-01-18
     changes:
@@ -121,7 +162,8 @@ versions:
       dm-types:
         resname: tr-106-types.xml
         text: |
-          * Added an *Alias* component to reduce cut-and-paste in the data models
+          * Added an *Alias* component to reduce cut-and-paste in the data
+            models
           * Added an *Order* type to reduce cut-and-paste in the data models
       dm-bibrefs:
         resname: tr-069-biblio.xml
@@ -500,7 +542,7 @@ versions:
 WA: Broadband User Services
 WADs:
   - Jason Walls, QA Cafe
-  - John Blackford, CommScope
+  - John Blackford, Vantiva
 
 # Project Stream and Project Stream Leaders
 # here the PS is empty
