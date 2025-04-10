@@ -112,6 +112,29 @@ resources:
 # this is a dictionary, typically keyed by vi.a.c revisions
 # XXX need to ensure that we cover the YANG multi-tag case
 versions:
+  v1.15.0:
+    date: 2025-04-10
+    changes:
+      dm-schema:
+        resname: cwmp-datamodel-1-15.xsd
+        text: |
+          * Allow versions with 3 components
+          * Allow overriding Command version
+          * Allow overriding Event version
+      dt-schema:
+        resname: cwmp-devicetype-1-15.xsd
+        text: |
+          * No changes
+      dm-types:
+        resname: tr-106-types.xml
+        text: |
+          * Add new PLMNId type
+      dm-bibrefs:
+        resname: tr-069-biblio.xml
+        text: |
+          * Add more bibrefs
+          * Update some dates for existing references
+
   v1.14.0:
     date: 2024-07-23
     changes:

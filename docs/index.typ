@@ -1,11 +1,5 @@
-// Some definitions presupposed by pandoc's typst output.
-#let horizontalrule = [
-  #line(start: (25%,0%), end: (75%,0%))
-]
+#let horizontalrule = line(start: (25%,0%), end: (75%,0%))
 
-#let endnote(num, contents) = [
-  #stack(dir: ltr, spacing: 3pt, super[#num], contents)
-]
 #show terms: it => {
   it.children
     .map(child => [
@@ -15,13 +9,31 @@
     .join()
 }
 
+#set table(
+  inset: 6pt,
+  stroke: none
+)
+
+#show figure.where(
+  kind: table
+): set figure.caption(position: top)
+
+#show figure.where(
+  kind: image
+): set figure.caption(position: bottom)
+
 #import "typst-template.typ": *
+
+#set smartquote(enabled: false)
 
 #show: doc => conf(
   title: [TR\-106 –
 Data Model Template for CWMP Endpoints and USP Agents],
-  date: [Issue Date: July 2024],
+  subtitle: [Issue: 1 Amendment 15 #bbf-release[]],
+  date: [Issue Date: April 2025],
+  pagenumbering: none,
   cols: 1,
+  linenumbering: none,
   info: (
     PYTHONDIR: [..\/..\/install\/pandoc\/\/..\/python],
     analyticstag: [],
@@ -35,20 +47,20 @@ Data Model Template for CWMP Endpoints and USP Agents],
     bbfIssue: [Issue],
     bbfMajor: [1],
     bbfMicro: [0],
-    bbfMinor: [14],
-    bbfMonth: [July],
+    bbfMinor: [15],
+    bbfMonth: [April],
     bbfNumber: [TR\-106],
     bbfPatch: [0],
     bbfProjectStream: [],
     bbfStatus: [],
     bbfTitle: [Data Model Template for CWMP Endpoints and USP Agents],
     bbfType: [Technical Report],
-    bbfVersion: [1 Amendment 14],
+    bbfVersion: [1 Amendment 15],
     bbfWorkArea: [Broadband User Services],
-    bbfYear: [2024],
+    bbfYear: [2025],
     citation-style: [bbf.csl],
-    copydate: [2024],
-    date: [Issue Date: July 2024],
+    copydate: [2025],
+    date: [Issue Date: April 2025],
     description: [TR\-106 specifies data model guidelines to be followed
 by all
 #link("https://www.broadband-forum.org/technical/download/TR-069.pdf")[CWMP]
@@ -132,7 +144,7 @@ Data Model Template for CWMP Endpoints and USP Agents],
     shortname: [TR\-106],
     siteurl: [index.html],
     status: [],
-    subtitle: [Issue: 1 Amendment 14 #bbf-release[]<section>],
+    subtitle: [Issue: 1 Amendment 15 #bbf-release[]],
     summary: [See
 #link("https://data-model-template.broadband-forum.org")[https:\/\/data\-model\-template.broadband\-forum.org]
 for the current TR\-106 specification.
@@ -164,12 +176,12 @@ Data Model Template for CWMP Endpoints and USP Agents],
 
 // scale = 1 will size the image at 1px = 1pt
 #let bbf-image-scale = 1
-#let bbf-image(scale: bbf-image-scale, ..args) = style(styles => {
+#let bbf-image(scale: bbf-image-scale, ..args) = context {
   let named = args.named()
   if "width" in named or "height" in named {
     image(..args)
   } else {
-    let (width, height) = measure(image(..args), styles)
+    let (width, height) = measure(image(..args))
     layout(page => {
       // XXX should allow control over this hard-coded (1.0, 0.9)
       let (max_width, max_height) = (1.0 * page.width, 0.9 * page.height)
@@ -187,7 +199,7 @@ Data Model Template for CWMP Endpoints and USP Agents],
       image(..args, width: new_width, height: new_height)
     })
   }
-})
+}
 
 #bbf-new-page[
 #heading(level: 3, outlined: false)[
@@ -274,6 +286,8 @@ the notices, legends, and other provisions set forth on this page.
   #show table.cell.where(y: 0): strong
   #set par(justify: false)
   #set text(hyphenate: true)
+  #show regex("\>,"): "," + sym.zws
+  #show regex("\>\."): "." + sym.zws
   #table(
     columns: (auto, auto, auto, auto),
     align: (left, left, left, left),
@@ -472,6 +486,12 @@ the notices, legends, and other provisions set forth on this page.
     - Documented the list value defaults
     - Documented markdown syntax (and switch from MediaWiki)
     - Cosmetic changes
+    ],
+    [Amendment 15
+    ],
+    [April 2025
+    ], [],
+    [- Document not updated
     ]
   )
 ]
@@ -480,17 +500,12 @@ Comments or questions about this Broadband Forum Technical Report should
 be directed to
 #link("mailto:info@broadband-forum.org")[info\@broadband\-forum.org].
 
-#bbf-nobreak[
-
 #heading(level: 3, outlined: false)[
   Broadband User Services Work Area Directors
 ] <sec:bbfworkarea-work-area-directors>
 
 - Jason Walls, QA Cafe
 - John Blackford, Vantiva
-]
-
-#bbf-nobreak[
 
 #heading(level: 3, outlined: false)[
   Project Stream Leaders
@@ -498,7 +513,6 @@ be directed to
 
 - Daniel Egger, Axiros
 - Matthieu Anne, Orange
-]
 
 #pagebreak()
 
@@ -703,6 +717,8 @@ The following terminology is used throughout this Technical Report.
 #[
   #set par(justify: false)
   #set text(hyphenate: true)
+  #show regex("\>,"): "," + sym.zws
+  #show regex("\>\."): "." + sym.zws
   #table(
     columns: (auto, auto),
     align: (auto, auto),
@@ -1178,6 +1194,8 @@ versions:
   #show table.cell.where(y: 0): strong
   #set par(justify: false)
   #set text(hyphenate: true)
+  #show regex("\>,"): "," + sym.zws
+  #show regex("\>\."): "." + sym.zws
   #block(
     width: 100.00%)[
     #table(
@@ -1293,6 +1311,8 @@ versions:
   #show table.cell.where(y: 0): strong
   #set par(justify: false)
   #set text(hyphenate: true)
+  #show regex("\>,"): "," + sym.zws
+  #show regex("\>\."): "." + sym.zws
   #block(
     width: 100.00%)[
     #table(
@@ -1781,16 +1801,15 @@ Broadband Forum, 2023]
 
 #bbf-csl-entry[
 #bbf-csl-left-margin[\[4\] ]#bbf-csl-right-inline[TR\-181 Issue 2
-Amendment 17,
-#emph[#link("https://www.broadband-forum.org/download/TR-181_Issue-2_Amendment-17.pdf")[Device
+Amendment 18 Corrigendum 1,
+#emph[#link("https://www.broadband-forum.org/download/TR-181_Issue-2_Amendment-18_Corrigendum-1.pdf")[Device
 Data Model for CWMP Endpoints and USP Agents]];, Broadband Forum, 2024]
 ] <ref-TR-181i2>
 
 #bbf-csl-entry[
-#bbf-csl-left-margin[\[5\] ]#bbf-csl-right-inline[TR\-369 Amendment 3
-Corrigendum 1,
-#emph[#link("https://www.broadband-forum.org/download/TR-369_Amendment-3_Corrigendum-1.pdf")[User
-Services Platform (USP)]];, Broadband Forum, 2023]
+#bbf-csl-left-margin[\[5\] ]#bbf-csl-right-inline[TR\-369 Amendment 4,
+#emph[#link("https://www.broadband-forum.org/download/TR-369_Amendment-4.pdf")[User
+Services Platform (USP)]];, Broadband Forum, 2024]
 ] <ref-TR-369>
 
 #bbf-csl-entry[
@@ -2173,6 +2192,8 @@ CommonMark is supported).
   #show table.cell.where(y: 0): strong
   #align(left)[#set par(justify: false)
   #set text(hyphenate: true)
+  #show regex("\>,"): "," + sym.zws
+  #show regex("\>\."): "." + sym.zws
   #table(
     columns: (auto, auto, auto),
     align: (auto, auto, auto),
@@ -2374,11 +2395,11 @@ CommonMark is supported).
 
     ],
     [```
-    {{bibref|1|section 2}}`
+    {{bibref|1|section 2}}
     {{section|table}}
+    {{param|Enable}}
+    {{enum|Error}}
     ```
-    {{param|Enable}} {{enum|Error}}
-
     ],
     [Text enclosed in double curly braces (`{}`) is a template
     reference, which is replaced by template\-dependent text.
@@ -2430,6 +2451,8 @@ template names MUST obey the rules of
   #show table.cell.where(y: 0): strong
   #align(left)[#set par(justify: false)
   #set text(hyphenate: true)
+  #show regex("\>,"): "," + sym.zws
+  #show regex("\>\."): "." + sym.zws
   #table(
     columns: (auto, auto, auto),
     align: (auto, auto, auto),
@@ -3150,6 +3173,8 @@ schema).
   #show table.cell.where(y: 0): strong
   #align(left)[#set par(justify: false)
   #set text(hyphenate: true)
+  #show regex("\>,"): "," + sym.zws
+  #show regex("\>\."): "." + sym.zws
   #table(
     columns: (auto, auto),
     align: (auto, auto),
@@ -3296,6 +3321,8 @@ specified in the schema):
   #show table.cell.where(y: 0): strong
   #align(left)[#set par(justify: false)
   #set text(hyphenate: true)
+  #show regex("\>,"): "," + sym.zws
+  #show regex("\>\."): "." + sym.zws
   #table(
     columns: (auto, auto),
     align: (auto, auto),
@@ -3402,6 +3429,8 @@ applies.
   #show table.cell.where(y: 0): strong
   #align(left)[#set par(justify: false)
   #set text(hyphenate: true)
+  #show regex("\>,"): "," + sym.zws
+  #show regex("\>\."): "." + sym.zws
   #table(
     columns: (auto, auto),
     align: (left, left),
@@ -3588,6 +3617,8 @@ are relevant (normative requirements are specified in the schema).
   #show table.cell.where(y: 0): strong
   #align(left)[#set par(justify: false)
   #set text(hyphenate: true)
+  #show regex("\>,"): "," + sym.zws
+  #show regex("\>\."): "." + sym.zws
   #table(
     columns: (auto, auto),
     align: (auto, auto),
@@ -3692,6 +3723,8 @@ schema).
   #show table.cell.where(y: 0): strong
   #align(left)[#set par(justify: false)
   #set text(hyphenate: true)
+  #show regex("\>,"): "," + sym.zws
+  #show regex("\>\."): "." + sym.zws
   #table(
     columns: (auto, auto),
     align: (auto, auto),
@@ -3735,6 +3768,8 @@ schema).
   #show table.cell.where(y: 0): strong
   #align(left)[#set par(justify: false)
   #set text(hyphenate: true)
+  #show regex("\>,"): "," + sym.zws
+  #show regex("\>\."): "." + sym.zws
   #table(
     columns: (auto, auto),
     align: (auto, auto),
@@ -3879,6 +3914,8 @@ for each facet are as follows:
   #show table.cell.where(y: 0): strong
   #align(left)[#set par(justify: false)
   #set text(hyphenate: true)
+  #show regex("\>,"): "," + sym.zws
+  #show regex("\>\."): "." + sym.zws
   #table(
     columns: (auto, auto),
     align: (auto, auto),
@@ -4076,6 +4113,8 @@ are relevant (normative requirements are specified in the schema).
   #show table.cell.where(y: 0): strong
   #align(left)[#set par(justify: false)
   #set text(hyphenate: true)
+  #show regex("\>,"): "," + sym.zws
+  #show regex("\>\."): "." + sym.zws
   #table(
     columns: (auto, auto),
     align: (auto, auto),
@@ -4114,6 +4153,8 @@ are relevant (normative requirements are specified in the schema).
   #show table.cell.where(y: 0): strong
   #align(left)[#set par(justify: false)
   #set text(hyphenate: true)
+  #show regex("\>,"): "," + sym.zws
+  #show regex("\>\."): "." + sym.zws
   #table(
     columns: (auto, auto),
     align: (auto, auto),
@@ -4154,6 +4195,8 @@ schema).
   #show table.cell.where(y: 0): strong
   #align(left)[#set par(justify: false)
   #set text(hyphenate: true)
+  #show regex("\>,"): "," + sym.zws
+  #show regex("\>\."): "." + sym.zws
   #table(
     columns: (auto, auto),
     align: (auto, auto),
@@ -4233,6 +4276,8 @@ schema).
   #show table.cell.where(y: 0): strong
   #align(left)[#set par(justify: false)
   #set text(hyphenate: true)
+  #show regex("\>,"): "," + sym.zws
+  #show regex("\>\."): "." + sym.zws
   #table(
     columns: (auto, auto),
     align: (auto, auto),
@@ -4280,6 +4325,8 @@ relevant (normative requirements are specified in the schema).
   #show table.cell.where(y: 0): strong
   #align(left)[#set par(justify: false)
   #set text(hyphenate: true)
+  #show regex("\>,"): "," + sym.zws
+  #show regex("\>\."): "." + sym.zws
   #table(
     columns: (auto, auto),
     align: (auto, auto),
@@ -4382,6 +4429,8 @@ relevant (normative requirements are specified in the schema).
   #show table.cell.where(y: 0): strong
   #align(left)[#set par(justify: false)
   #set text(hyphenate: true)
+  #show regex("\>,"): "," + sym.zws
+  #show regex("\>\."): "." + sym.zws
   #table(
     columns: (auto, auto),
     align: (auto, auto),
@@ -4472,6 +4521,8 @@ requirements are specified in the schema).
   #show table.cell.where(y: 0): strong
   #align(left)[#set par(justify: false)
   #set text(hyphenate: true)
+  #show regex("\>,"): "," + sym.zws
+  #show regex("\>\."): "." + sym.zws
   #table(
     columns: (auto, auto),
     align: (auto, auto),
@@ -4542,6 +4593,8 @@ are specified in the schema).
   #show table.cell.where(y: 0): strong
   #align(left)[#set par(justify: false)
   #set text(hyphenate: true)
+  #show regex("\>,"): "," + sym.zws
+  #show regex("\>\."): "." + sym.zws
   #table(
     columns: (auto, auto),
     align: (auto, auto),
@@ -4657,6 +4710,8 @@ commands.
   #show table.cell.where(y: 0): strong
   #align(left)[#set par(justify: false)
   #set text(hyphenate: true)
+  #show regex("\>,"): "," + sym.zws
+  #show regex("\>\."): "." + sym.zws
   #table(
     columns: (auto, auto),
     align: (auto, auto),
@@ -4712,6 +4767,8 @@ arguments (respectively).
   #show table.cell.where(y: 0): strong
   #align(left)[#set par(justify: false)
   #set text(hyphenate: true)
+  #show regex("\>,"): "," + sym.zws
+  #show regex("\>\."): "." + sym.zws
   #table(
     columns: (auto, auto),
     align: (auto, auto),
@@ -4765,6 +4822,8 @@ to CWMP.
   #show table.cell.where(y: 0): strong
   #set par(justify: false)
   #set text(hyphenate: true)
+  #show regex("\>,"): "," + sym.zws
+  #show regex("\>\."): "." + sym.zws
   #table(
     columns: (auto, auto),
     align: (auto, auto),
@@ -4841,6 +4900,8 @@ specified in the schema).
   #show table.cell.where(y: 0): strong
   #align(left)[#set par(justify: false)
   #set text(hyphenate: true)
+  #show regex("\>,"): "," + sym.zws
+  #show regex("\>\."): "." + sym.zws
   #table(
     columns: (auto, auto),
     align: (auto, auto),
@@ -4951,6 +5012,8 @@ relevant (normative requirements are specified in the schema).
   #show table.cell.where(y: 0): strong
   #align(left)[#set par(justify: false)
   #set text(hyphenate: true)
+  #show regex("\>,"): "," + sym.zws
+  #show regex("\>\."): "." + sym.zws
   #table(
     columns: (auto, auto),
     align: (auto, auto),
@@ -5048,6 +5111,8 @@ specified in the schema).
   #show table.cell.where(y: 0): strong
   #align(left)[#set par(justify: false)
   #set text(hyphenate: true)
+  #show regex("\>,"): "," + sym.zws
+  #show regex("\>\."): "." + sym.zws
   #table(
     columns: (auto, auto),
     align: (auto, auto),
@@ -5143,6 +5208,8 @@ The following rules govern parameter modifications.
   #show table.cell.where(y: 0): strong
   #align(left)[#set par(justify: false)
   #set text(hyphenate: true)
+  #show regex("\>,"): "," + sym.zws
+  #show regex("\>\."): "." + sym.zws
   #table(
     columns: (auto, auto),
     align: (auto, auto),
@@ -5238,6 +5305,8 @@ The following rules govern command modifications.
   #show table.cell.where(y: 0): strong
   #align(left)[#set par(justify: false)
   #set text(hyphenate: true)
+  #show regex("\>,"): "," + sym.zws
+  #show regex("\>\."): "." + sym.zws
   #table(
     columns: (auto, auto),
     align: (auto, auto),
@@ -5304,6 +5373,8 @@ The following rules govern command modifications.
   #show table.cell.where(y: 0): strong
   #align(left)[#set par(justify: false)
   #set text(hyphenate: true)
+  #show regex("\>,"): "," + sym.zws
+  #show regex("\>\."): "." + sym.zws
   #table(
     columns: (auto, auto),
     align: (auto, auto),
@@ -5368,6 +5439,8 @@ The following rules govern object modifications.
   #show table.cell.where(y: 0): strong
   #align(left)[#set par(justify: false)
   #set text(hyphenate: true)
+  #show regex("\>,"): "," + sym.zws
+  #show regex("\>\."): "." + sym.zws
   #table(
     columns: (auto, auto),
     align: (auto, auto),
@@ -5462,6 +5535,8 @@ elements.
   #show table.cell.where(y: 0): strong
   #align(left)[#set par(justify: false)
   #set text(hyphenate: true)
+  #show regex("\>,"): "," + sym.zws
+  #show regex("\>\."): "." + sym.zws
   #table(
     columns: (auto, auto),
     align: (auto, auto),
@@ -5514,6 +5589,8 @@ description elements.
   #show table.cell.where(y: 0): strong
   #align(left)[#set par(justify: false)
   #set text(hyphenate: true)
+  #show regex("\>,"): "," + sym.zws
+  #show regex("\>\."): "." + sym.zws
   #table(
     columns: (auto, auto),
     align: (auto, auto),
@@ -5658,6 +5735,8 @@ special behavior.
   #show table.cell.where(y: 0): strong
   #align(left)[#set par(justify: false)
   #set text(hyphenate: true)
+  #show regex("\>,"): "," + sym.zws
+  #show regex("\>\."): "." + sym.zws
   #table(
     columns: (auto, auto, auto),
     align: (auto, auto, auto),
@@ -5866,6 +5945,8 @@ features is as follows:
   #show table.cell.where(y: 0): strong
   #set par(justify: false)
   #set text(hyphenate: true)
+  #show regex("\>,"): "," + sym.zws
+  #show regex("\>\."): "." + sym.zws
   #table(
     columns: (auto, auto),
     align: (auto, auto),
@@ -6282,6 +6363,8 @@ Each HTML data model report contains the following sections:
 #[
   #set par(justify: false)
   #set text(hyphenate: true)
+  #show regex("\>,"): "," + sym.zws
+  #show regex("\>\."): "." + sym.zws
   #table(
     columns: (auto, auto),
     align: (auto, auto),
@@ -6344,6 +6427,8 @@ these types within the report is listed in the following table.
   #show table.cell.where(y: 0): strong
   #set par(justify: false)
   #set text(hyphenate: true)
+  #show regex("\>,"): "," + sym.zws
+  #show regex("\>\."): "." + sym.zws
   #table(
     columns: (auto, auto),
     align: (auto, auto),

@@ -143,27 +143,24 @@
     * Documented markdown syntax (and switch from MediaWiki)
     * Cosmetic changes
 
+* - Amendment 15
+  - April 2025
+  -
+  - * Document not updated
+
 :::
 
 Comments or questions about this Broadband Forum Technical Report should be directed to <info@broadband-forum.org>.
-
-::: nobreak
 
 ### %bbfWorkArea% Work Area Directors {.unnumbered .unlisted}
 
 * Jason Walls, QA Cafe
 * John Blackford, Vantiva
 
-:::
-
-::: nobreak
-
 ### %bbfProjectStream% Project Stream Leaders {.unnumbered .unlisted}
 
 * Daniel Egger, Axiros
 * Matthieu Anne, Orange
-
-:::
 
 [TR-106 Amendment 1]: https://www.broadband-forum.org/download/TR-106_Amendment-1.pdf
 [TR-106 Amendment 10]: https://www.broadband-forum.org/download/TR-106_Amendment-10.pdf

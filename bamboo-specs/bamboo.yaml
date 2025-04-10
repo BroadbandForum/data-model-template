@@ -3,7 +3,7 @@ version: 2
 
 plan:
   project-key: BUSDM
-  name: WT-106 release 1.14
+  name: WT-106 release 1.15
   key: DMSUPPREL
 
 branches:
@@ -28,10 +28,10 @@ Default Job:
   tasks:
     - clean
     - checkout:
-        repository: wt-106-release-1-14
+        repository: wt-106-release-1-15
         path: WT-106
     - checkout:
-        repository: wt-354-develop
+        repository: wt-354-release-2-3
         path: WT-354
     - checkout:
         repository: install-develop

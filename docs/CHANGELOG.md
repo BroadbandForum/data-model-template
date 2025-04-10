@@ -5,6 +5,25 @@
 See <https://data-model-template.broadband-forum.org> for the
 current TR-106 specification.
 
+## 2025-04-10: TR-106 Amendment 15
+
+*Tag: [v1.15.0]*
+
+### DM Data Model Definition Schema (DM Schema)
+* Allow versions with 3 components
+* Allow overriding Command version
+* Allow overriding Event version
+
+### Device Type Schema (DT Schema)
+* No changes
+
+### Data Model Data Types
+* Add new PLMNId type
+
+### Data Model Bibliographic References
+* Add more bibrefs
+* Update some dates for existing references
+
 ## 2024-07-23: [TR-106 Amendment 14]
 
 *Tag: [v1.14.0]*
@@ -345,3 +364,4 @@ current TR-106 specification.
 [v1.12.0]: https://github.com/BroadbandForum/data-model-template/releases/tag/v1.12.0
 [v1.13.0]: https://github.com/BroadbandForum/data-model-template/releases/tag/v1.13.0
 [v1.14.0]: https://github.com/BroadbandForum/data-model-template/releases/tag/v1.14.0
+[v1.15.0]: https://github.com/BroadbandForum/data-model-template/releases/tag/v1.15.0

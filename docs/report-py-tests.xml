@@ -1,7 +1,20 @@
 <?xml version="1.0" ?>
-<testsuites disabled="0" errors="1" failures="1" tests="280" time="0.0">
-	<testsuite disabled="0" errors="1" failures="1" name="report-py" skipped="0" tests="280" time="0">
+<testsuites disabled="0" errors="0" failures="0" tests="304" time="0.0">
+	<testsuite disabled="0" errors="0" failures="0" name="report-py" skipped="0" tests="304" time="0">
+		<testcase name="commonmark-cant-compare-with"/>
+		<testcase name="commonmark-duplicate-attribute"/>
+		<testcase name="commonmark-duplicate-attribute-2"/>
+		<testcase name="commonmark-duplicate-identifier"/>
+		<testcase name="commonmark-link-reference"/>
+		<testcase name="commonmark-non-existent"/>
+		<testcase name="commonmark-unexpected-multi-word-attr-value"/>
 		<testcase name="content-cant-compare-with"/>
+		<testcase name="content-corrupt-stack"/>
+		<testcase name="content-corrupt-stack-2"/>
+		<testcase name="content-corrupt-stack-3"/>
+		<testcase name="content-in"/>
+		<testcase name="content-in-2"/>
+		<testcase name="content-missing"/>
 		<testcase name="csv-format-unsupported-access"/>
 		<testcase name="depend-format-can-only-generate-dependencies-for-a-single-file"/>
 		<testcase name="diff-transform-invalid-operation"/>
@@ -10,13 +23,15 @@
 		<testcase name="diff-transform-need-two-models-to-compute-diffs"/>
 		<testcase name="difflint-transform-cant-add-to-existing-profile-defined-in"/>
 		<testcase name="difflint-transform-cant-change-profile-requirement-from-defined-in-to"/>
+		<testcase name="difflint-transform-first-model-is-newer-than-second-model"/>
 		<testcase name="difflint-transform-invalid-version-added-in"/>
 		<testcase name="difflint-transform-missing-version-added-in-inherited"/>
-		<testcase name="difflint-transform-model-supplied-need-2"/>
+		<testcase name="difflint-transform-need-2-models-to-compare-but-found-only"/>
 		<testcase name="difflint-transform-need-two-files-old-and-new-on-the-command-line-were-supplied"/>
 		<testcase name="difflint-transform-no-inherited-version"/>
 		<testcase name="difflint-transform-removed-should-instead-mark-as-deprecated"/>
 		<testcase name="difflint-transform-version-decreased-from-in-to-in"/>
+		<testcase name="difflint-transform-version-increased-from-in-to-in"/>
 		<testcase name="difftext-format-has-too-few-args"/>
 		<testcase name="edit-transform-comment"/>
 		<testcase name="edit-transform-import"/>
@@ -108,13 +123,7 @@
 		<testcase name="macro-macro"/>
 		<testcase name="macro-macro-name-has-leading-and-or-trailing-whitespace"/>
 		<testcase name="macro-macro-was-redefined"/>
-		<testcase name="macro-missing-argument">
-			<error type="error" message="macro-missing-argument">WARNING:lint:Agent: {{gloref}}: missing id argument
-WARNING:lint:Controller: {{gloref}}: missing id argument
-WARNING:lint:Endpoint: {{gloref}}: missing id argument
-WARNING:lint:Object: {{gloref}}: missing id argument
-WARNING:lint:Service Element: {{gloref}}: missing id argument</error>
-		</testcase>
+		<testcase name="macro-missing-argument"/>
 		<testcase name="macro-recursive"/>
 		<testcase name="macro-returned-no-result"/>
 		<testcase name="macro-unexpected-argument-after"/>
@@ -130,6 +139,10 @@ WARNING:lint:Service Element: {{gloref}}: missing id argument</error>
 		<testcase name="macros-factory-default-not-specified"/>
 		<testcase name="macros-id-is-not-defined"/>
 		<testcase name="macros-implementation-default-not-specified"/>
+		<testcase name="macros-index"/>
+		<testcase name="macros-index-2"/>
+		<testcase name="macros-index-3"/>
+		<testcase name="macros-index-4"/>
 		<testcase name="macros-invalid-option"/>
 		<testcase name="macros-invalid-style"/>
 		<testcase name="macros-invalid-whitespace-macro-name-not"/>
@@ -153,6 +166,8 @@ WARNING:lint:Service Element: {{gloref}}: missing id argument</error>
 		<testcase name="macros-only-valid-in-not-in-descriptions"/>
 		<testcase name="macros-only-valid-in-parameter-and-object-descriptions"/>
 		<testcase name="macros-parameter-default-not-specified"/>
+		<testcase name="macros-parameter-doesnt-have-any-ranges"/>
+		<testcase name="macros-parameter-doesnt-have-any-sizes"/>
 		<testcase name="macros-parameter-is-not-a-list"/>
 		<testcase name="macros-parameter-is-not-a-reference"/>
 		<testcase name="macros-parameter-is-not-of-a-named-data-type"/>
@@ -164,15 +179,23 @@ WARNING:lint:Service Element: {{gloref}}: missing id argument</error>
 		<testcase name="macros-trailing-i-ignored-in-targetparent-targettype"/>
 		<testcase name="macros-undefined-unique-key-parameter"/>
 		<testcase name="macros-unsupported-reference-type"/>
-		<testcase name="markdown-format-cant-generate-when-multiple-files-are-specified-on-the-command-line"/>
-		<testcase name="markdown-format-only-valid-as-div-or-span-argument"/>
-		<testcase name="markdown-format-unexpected-keyword-arguments"/>
+		<testcase name="main-failed-to-create-transform"/>
+		<testcase name="main-has-an-unknown-file-extension-need-to-specify-format"/>
+		<testcase name="main-invalid-choice-choose-from"/>
+		<testcase name="main-loglevel-value-is-deprecated-replace-with"/>
+		<testcase name="main-loglevels-are-missing-from-loglevel-map"/>
+		<testcase name="main-these-options-are-deprecated"/>
+		<testcase name="main-transforms-were-specified-so-cant-auto-add-transform-will-be-ignored"/>
+		<testcase name="main-youre-using-python-you-must-use-at-least-python"/>
+		<testcase name="markdown-only-valid-as-div-or-span-argument"/>
+		<testcase name="markdown-unexpected-keyword-arguments"/>
 		<testcase name="node-absolute-path-doesnt-start-with"/>
 		<testcase name="node-cant-find-component"/>
 		<testcase name="node-cant-find-file"/>
 		<testcase name="node-cant-find-in"/>
 		<testcase name="node-cant-import"/>
 		<testcase name="node-data-type-isnt-derived-from-anything"/>
+		<testcase name="node-duplicate-replaces-original-defined-in-xml"/>
 		<testcase name="node-facets-text"/>
 		<testcase name="node-falling-back-on-instance-in-path"/>
 		<testcase name="node-file-missing-attribute"/>
@@ -218,7 +241,7 @@ WARNING:lint:Service Element: {{gloref}}: missing id argument</error>
 		<testcase name="plugin-deprecated-old-style-file-name"/>
 		<testcase name="plugin-duplicate-plugin-ignoring-already-registered"/>
 		<testcase name="plugin-invalid-canonical-plugin-name-did-you-get-it-from-get-canonical-name"/>
-		<testcase name="plugin-please-ask-plugin-authors-to-fix-these-invalid-options-option-names-need-to-begin-plugin"/>
+		<testcase name="plugin-invalid-plugin-argument-names-must-begin-with-plugin"/>
 		<testcase name="plugin-unexpected-keyword-arguments"/>
 		<testcase name="plugin-unexpected-non-matching-file-name"/>
 		<testcase name="plugin-unsupported-plugin-type-so-cant-look-up-its-plugin-class"/>
@@ -258,21 +281,14 @@ WARNING:lint:Service Element: {{gloref}}: missing id argument</error>
 		<testcase name="pyxb-parser"/>
 		<testcase name="pyxb-parser-cant-find-xmlns-cwmp-datamodel-n-m-file-isnt-a-dm-instance"/>
 		<testcase name="relref-transform-cant-resolve"/>
-		<testcase name="report-invalid-choice-choose-from"/>
-		<testcase name="report-loglevel-value-is-deprecated-replace-with"/>
-		<testcase name="report-loglevels-are-missing-from-loglevel-map"/>
-		<testcase name="report-these-options-are-deprecated"/>
-		<testcase name="report-transform-or-format-requested-early-exit"/>
-		<testcase name="report-youre-using-python-you-must-use-at-least-python"/>
 		<testcase name="split-transform-already-visited"/>
 		<testcase name="status-transform"/>
-		<testcase name="unknown-error">
-			<failure type="failure" message="unknown-error">WARNING:lint:Alias-2-0: name contains a hyphen or underscore</failure>
-		</testcase>
+		<testcase name="unknown-error"/>
 		<testcase name="used-transform-numentriesparameter-already-used-by"/>
 		<testcase name="utility-excess-values-missing-from-levels"/>
 		<testcase name="utility-invalid-default"/>
-		<testcase name="utility-is-not-mnp"/>
+		<testcase name="utility-version-is-invalid"/>
+		<testcase name="utility-version-must-have-2-or-3-levels"/>
 		<testcase name="version-transform-mismatched-dmr-version-and-version-attributes-dmr-version-retained"/>
 		<testcase name="version-transform-mismatched-dmr-version-and-version-attributes-dmr-version-retained-2"/>
 		<testcase name="version-transform-version-less-than-parent-version"/>

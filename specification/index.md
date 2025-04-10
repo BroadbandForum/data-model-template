@@ -1402,10 +1402,10 @@ XML Description Markup
     **Legacy**: URLs are automatically converted to hyperlinks.
 
 * - Templates
-  -     {{bibref|1|section 2}}`
+  -     {{bibref|1|section 2}}
         {{section|table}}
-       {{param|Enable}}
-       {{enum|Error}}
+        {{param|Enable}}
+        {{enum|Error}}
   - Text enclosed in double curly braces (`{}`) is a template reference, which is
     replaced by template-dependent text. @sec:description-templates specifies the
     standard templates.
