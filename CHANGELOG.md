@@ -5,6 +5,22 @@
 See <https://data-model-template.broadband-forum.org> for the
 current TR-106 specification.
 
+## 2025-11-11: TR-106 Amendment 16
+
+*Tag: [v1.16.0]*
+
+### DM Data Model Definition Schema (DM Schema)
+* No changes
+
+### Device Type Schema (DT Schema)
+* Allow device type files to use writeOnceReadOnly parameter access
+
+### Data Model Data Types
+* No changes
+
+### Data Model Bibliographic References
+* Add more bibrefs
+
 ## 2025-04-10: TR-106 Amendment 15
 
 *Tag: [v1.15.0]*
@@ -365,3 +381,4 @@ current TR-106 specification.
 [v1.13.0]: https://github.com/BroadbandForum/data-model-template/releases/tag/v1.13.0
 [v1.14.0]: https://github.com/BroadbandForum/data-model-template/releases/tag/v1.14.0
 [v1.15.0]: https://github.com/BroadbandForum/data-model-template/releases/tag/v1.15.0
+[v1.16.0]: https://github.com/BroadbandForum/data-model-template/releases/tag/v1.16.0

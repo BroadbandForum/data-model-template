@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
-<testsuites disabled="0" errors="0" failures="0" tests="304" time="0.0">
-	<testsuite disabled="0" errors="0" failures="0" name="report-py" skipped="0" tests="304" time="0">
+<testsuites disabled="0" errors="0" failures="0" tests="305" time="0.0">
+	<testsuite disabled="0" errors="0" failures="0" name="report-py" skipped="0" tests="305" time="0">
 		<testcase name="commonmark-cant-compare-with"/>
 		<testcase name="commonmark-duplicate-attribute"/>
 		<testcase name="commonmark-duplicate-attribute-2"/>
@@ -204,6 +204,7 @@
 		<testcase name="node-id-missing-attribute-2"/>
 		<testcase name="node-id-missing-attribute-3"/>
 		<testcase name="node-import"/>
+		<testcase name="node-import-has-missing-spec-attribute"/>
 		<testcase name="node-invalid-configuration"/>
 		<testcase name="node-invalid-configuration-2"/>
 		<testcase name="node-invalid-direct-facet-only-valid-in-derived-types"/>

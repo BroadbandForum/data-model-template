@@ -148,6 +148,11 @@
   -
   - * Document not updated
 
+* - Amendment 16
+  - November 2025
+  -
+  - * Document not updated
+
 :::
 
 Comments or questions about this Broadband Forum Technical Report should be directed to <info@broadband-forum.org>.
@@ -159,7 +164,7 @@ Comments or questions about this Broadband Forum Technical Report should be dire
 
 ### %bbfProjectStream% Project Stream Leaders {.unnumbered .unlisted}
 
-* Daniel Egger, Axiros
+* Daniel Egger
 * Matthieu Anne, Orange
 
 [TR-106 Amendment 1]: https://www.broadband-forum.org/download/TR-106_Amendment-1.pdf

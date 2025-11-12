@@ -29,8 +29,8 @@
 #show: doc => conf(
   title: [TR\-106 –
 Data Model Template for CWMP Endpoints and USP Agents],
-  subtitle: [Issue: 1 Amendment 15 #bbf-release[]],
-  date: [Issue Date: April 2025],
+  subtitle: [Issue: 1 Amendment 16 #bbf-release[]],
+  date: [Issue Date: November 2025],
   pagenumbering: none,
   cols: 1,
   linenumbering: none,
@@ -47,20 +47,20 @@ Data Model Template for CWMP Endpoints and USP Agents],
     bbfIssue: [Issue],
     bbfMajor: [1],
     bbfMicro: [0],
-    bbfMinor: [15],
-    bbfMonth: [April],
+    bbfMinor: [16],
+    bbfMonth: [November],
     bbfNumber: [TR\-106],
     bbfPatch: [0],
     bbfProjectStream: [],
     bbfStatus: [],
     bbfTitle: [Data Model Template for CWMP Endpoints and USP Agents],
     bbfType: [Technical Report],
-    bbfVersion: [1 Amendment 15],
+    bbfVersion: [1 Amendment 16],
     bbfWorkArea: [Broadband User Services],
     bbfYear: [2025],
     citation-style: [bbf.csl],
     copydate: [2025],
-    date: [Issue Date: April 2025],
+    date: [Issue Date: November 2025],
     description: [TR\-106 specifies data model guidelines to be followed
 by all
 #link("https://www.broadband-forum.org/technical/download/TR-069.pdf")[CWMP]
@@ -144,7 +144,7 @@ Data Model Template for CWMP Endpoints and USP Agents],
     shortname: [TR\-106],
     siteurl: [index.html],
     status: [],
-    subtitle: [Issue: 1 Amendment 15 #bbf-release[]],
+    subtitle: [Issue: 1 Amendment 16 #bbf-release[]],
     summary: [See
 #link("https://data-model-template.broadband-forum.org")[https:\/\/data\-model\-template.broadband\-forum.org]
 for the current TR\-106 specification.
@@ -492,6 +492,12 @@ the notices, legends, and other provisions set forth on this page.
     [April 2025
     ], [],
     [- Document not updated
+    ],
+    [Amendment 16
+    ],
+    [November 2025
+    ], [],
+    [- Document not updated
     ]
   )
 ]
@@ -511,7 +517,7 @@ be directed to
   Project Stream Leaders
 ] <sec:bbfprojectstream-project-stream-leaders>
 
-- Daniel Egger, Axiros
+- Daniel Egger
 - Matthieu Anne, Orange
 
 #pagebreak()
@@ -1801,9 +1807,9 @@ Broadband Forum, 2023]
 
 #bbf-csl-entry[
 #bbf-csl-left-margin[\[4\] ]#bbf-csl-right-inline[TR\-181 Issue 2
-Amendment 18 Corrigendum 1,
-#emph[#link("https://www.broadband-forum.org/download/TR-181_Issue-2_Amendment-18_Corrigendum-1.pdf")[Device
-Data Model for CWMP Endpoints and USP Agents]];, Broadband Forum, 2024]
+Amendment 19 Corrigendum 1,
+#emph[#link("https://www.broadband-forum.org/download/TR-181_Issue-2_Amendment-19_Corrigendum-1.pdf")[Device
+Data Model for CWMP Endpoints and USP Agents]];, Broadband Forum, 2025]
 ] <ref-TR-181i2>
 
 #bbf-csl-entry[

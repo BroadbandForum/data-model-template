@@ -112,6 +112,26 @@ resources:
 # this is a dictionary, typically keyed by vi.a.c revisions
 # XXX need to ensure that we cover the YANG multi-tag case
 versions:
+  v1.16.0:
+    date: 2025-11-11
+    changes:
+      dm-schema:
+        resname: cwmp-datamodel-1-16.xsd
+        text: |
+          * No changes
+      dt-schema:
+        resname: cwmp-devicetype-1-16.xsd
+        text: |
+          * Allow device type files to use writeOnceReadOnly parameter access
+      dm-types:
+        resname: tr-106-types.xml
+        text: |
+          * No changes
+      dm-bibrefs:
+        resname: tr-069-biblio.xml
+        text: |
+          * Add more bibrefs
+
   v1.15.0:
     date: 2025-04-10
     changes:
@@ -571,5 +591,5 @@ WADs:
 # here the PS is empty
 PS:
 PSLs:
-  - Daniel Egger, Axiros
+  - Daniel Egger
   - Matthieu Anne, Orange

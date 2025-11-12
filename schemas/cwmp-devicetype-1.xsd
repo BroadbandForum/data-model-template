@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  TR-069 Device Type Schema (DT Schema) v1.15
+  TR-069 Device Type Schema (DT Schema) v1.16
 
-  Copyright (c) 2009-2024, Broadband Forum
+  Copyright (c) 2009-2025, Broadband Forum
 
   Redistribution and use in source and binary forms, with or
   without modification, are permitted provided that the following
@@ -52,13 +52,13 @@
 
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" vc:minVersion="1.1"
-  xmlns:tns="urn:broadband-forum-org:cwmp:devicetype-1-15"
-  xmlns:dm="urn:broadband-forum-org:cwmp:datamodel-1-15"
+  xmlns:tns="urn:broadband-forum-org:cwmp:devicetype-1-16"
+  xmlns:dm="urn:broadband-forum-org:cwmp:datamodel-1-16"
   xmlns:dtf="urn:broadband-forum-org:cwmp:devicetype-features"
-  targetNamespace="urn:broadband-forum-org:cwmp:devicetype-1-15" elementFormDefault="unqualified"
+  targetNamespace="urn:broadband-forum-org:cwmp:devicetype-1-16" elementFormDefault="unqualified"
   attributeFormDefault="unqualified">
-  <xs:import namespace="urn:broadband-forum-org:cwmp:datamodel-1-15"
-    schemaLocation="https://www.broadband-forum.org/cwmp/cwmp-datamodel-1-15.xsd"/>
+  <xs:import namespace="urn:broadband-forum-org:cwmp:datamodel-1-16"
+    schemaLocation="https://www.broadband-forum.org/cwmp/cwmp-datamodel-1-16.xsd"/>
   <xs:import namespace="urn:broadband-forum-org:cwmp:devicetype-features"
     schemaLocation="https://www.broadband-forum.org/cwmp/cwmp-devicetype-features.xsd"/>
   <!-- Simple types -->
@@ -412,7 +412,7 @@
       <xs:any namespace="##other" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
     <xs:attribute name="ref" type="dm:ParameterName" use="required"/>
-    <xs:attribute name="access" type="dm:ReadWriteAccess" use="required"/>
+    <xs:attribute name="access" type="dm:ParameterAccess" use="required"/>
     <xs:attribute name="activeNotify" type="tns:ActiveNotify" default="normal"/>
     <xs:anyAttribute namespace="##other"/>
   </xs:complexType>

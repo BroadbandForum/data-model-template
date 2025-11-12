@@ -1,24 +1,24 @@
-make[1]: Entering directory '/mnt/ebs/bamboo-agent-home-alpha/xml-data/build-dir/BUSDM-DMSUPPREL-JOB1/WT-106'
+make[1]: Entering directory '/opt/atlassian/pipelines/agent/build/WT-106'
 make -C schemas lint
-make[2]: Entering directory '/mnt/ebs/bamboo-agent-home-alpha/xml-data/build-dir/BUSDM-DMSUPPREL-JOB1/WT-106/schemas'
+make[2]: Entering directory '/opt/atlassian/pipelines/agent/build/WT-106/schemas'
 make[2]: Nothing to be done for 'lint'.
-make[2]: Leaving directory '/mnt/ebs/bamboo-agent-home-alpha/xml-data/build-dir/BUSDM-DMSUPPREL-JOB1/WT-106/schemas'
+make[2]: Leaving directory '/opt/atlassian/pipelines/agent/build/WT-106/schemas'
 make -C support lint
-make[2]: Entering directory '/mnt/ebs/bamboo-agent-home-alpha/xml-data/build-dir/BUSDM-DMSUPPREL-JOB1/WT-106/support'
+make[2]: Entering directory '/opt/atlassian/pipelines/agent/build/WT-106/support'
 make[2]: Nothing to be done for 'lint'.
-make[2]: Leaving directory '/mnt/ebs/bamboo-agent-home-alpha/xml-data/build-dir/BUSDM-DMSUPPREL-JOB1/WT-106/support'
-make[1]: Leaving directory '/mnt/ebs/bamboo-agent-home-alpha/xml-data/build-dir/BUSDM-DMSUPPREL-JOB1/WT-106'
-make[1]: Entering directory '/mnt/ebs/bamboo-agent-home-alpha/xml-data/build-dir/BUSDM-DMSUPPREL-JOB1/WT-106'
+make[2]: Leaving directory '/opt/atlassian/pipelines/agent/build/WT-106/support'
+make[1]: Leaving directory '/opt/atlassian/pipelines/agent/build/WT-106'
+make[1]: Entering directory '/opt/atlassian/pipelines/agent/build/WT-106'
 make -C schemas difflint
-make[2]: Entering directory '/mnt/ebs/bamboo-agent-home-alpha/xml-data/build-dir/BUSDM-DMSUPPREL-JOB1/WT-106/schemas'
+make[2]: Entering directory '/opt/atlassian/pipelines/agent/build/WT-106/schemas'
 make[2]: Nothing to be done for 'difflint'.
-make[2]: Leaving directory '/mnt/ebs/bamboo-agent-home-alpha/xml-data/build-dir/BUSDM-DMSUPPREL-JOB1/WT-106/schemas'
+make[2]: Leaving directory '/opt/atlassian/pipelines/agent/build/WT-106/schemas'
 make -C support difflint
-make[2]: Entering directory '/mnt/ebs/bamboo-agent-home-alpha/xml-data/build-dir/BUSDM-DMSUPPREL-JOB1/WT-106/support'
+make[2]: Entering directory '/opt/atlassian/pipelines/agent/build/WT-106/support'
 make[2]: Nothing to be done for 'difflint'.
-make[2]: Leaving directory '/mnt/ebs/bamboo-agent-home-alpha/xml-data/build-dir/BUSDM-DMSUPPREL-JOB1/WT-106/support'
-make[1]: Leaving directory '/mnt/ebs/bamboo-agent-home-alpha/xml-data/build-dir/BUSDM-DMSUPPREL-JOB1/WT-106'
-make[1]: Entering directory '/mnt/ebs/bamboo-agent-home-alpha/xml-data/build-dir/BUSDM-DMSUPPREL-JOB1/WT-106'
+make[2]: Leaving directory '/opt/atlassian/pipelines/agent/build/WT-106/support'
+make[1]: Leaving directory '/opt/atlassian/pipelines/agent/build/WT-106'
+make[1]: Entering directory '/opt/atlassian/pipelines/agent/build/WT-106'
 PYTHONPATH=./../install/python/ ./../install/bin/project-parser.py --outdir=./docs --loglevel=1 PROJECT.yaml 2>&1 >docs/PROJECT.yaml.outputs || true
 INFO:project-parser:created WT-106 project (valid)
 INFO:project-parser:validated projects
@@ -73,23 +73,23 @@ pandoc --data-dir=./../install/pandoc/ --standalone --metadata-file=bbf-metadata
 cp -p ./docs/METADATA-1.mk docs/PROJECT/METADATA-1.mk.txt
 cp -p ./docs/METADATA.mk docs/PROJECT/METADATA.mk.txt
 make -C schemas all
-make[2]: Entering directory '/mnt/ebs/bamboo-agent-home-alpha/xml-data/build-dir/BUSDM-DMSUPPREL-JOB1/WT-106/schemas'
+make[2]: Entering directory '/opt/atlassian/pipelines/agent/build/WT-106/schemas'
 mkdir -p docs/
-make[2]: Leaving directory '/mnt/ebs/bamboo-agent-home-alpha/xml-data/build-dir/BUSDM-DMSUPPREL-JOB1/WT-106/schemas'
+make[2]: Leaving directory '/opt/atlassian/pipelines/agent/build/WT-106/schemas'
 make -C support all
-make[2]: Entering directory '/mnt/ebs/bamboo-agent-home-alpha/xml-data/build-dir/BUSDM-DMSUPPREL-JOB1/WT-106/support'
+make[2]: Entering directory '/opt/atlassian/pipelines/agent/build/WT-106/support'
 mkdir -p docs/
 PYTHONPATH=../../WT-354/ ../../WT-354/bin/report.py --include=../../install/cwmp/   --all --format=html --output=docs/tr-069-biblio.html tr-069-biblio.xml
 PYTHONPATH=../../WT-354/ ../../WT-354/bin/report.py --include=../../install/cwmp/   --all --format=html --output=docs/tr-106-abbr.html tr-106-abbr.xml
 PYTHONPATH=../../WT-354/ ../../WT-354/bin/report.py --include=../../install/cwmp/   --all --format=html --output=docs/tr-106-glossary.html tr-106-glossary.xml
 PYTHONPATH=../../WT-354/ ../../WT-354/bin/report.py --include=../../install/cwmp/   --all --format=html --output=docs/tr-106-types.html tr-106-types.xml
-make[2]: Leaving directory '/mnt/ebs/bamboo-agent-home-alpha/xml-data/build-dir/BUSDM-DMSUPPREL-JOB1/WT-106/support'
-make[1]: Leaving directory '/mnt/ebs/bamboo-agent-home-alpha/xml-data/build-dir/BUSDM-DMSUPPREL-JOB1/WT-106'
-make[1]: Entering directory '/mnt/ebs/bamboo-agent-home-alpha/xml-data/build-dir/BUSDM-DMSUPPREL-JOB1/WT-106'
+make[2]: Leaving directory '/opt/atlassian/pipelines/agent/build/WT-106/support'
+make[1]: Leaving directory '/opt/atlassian/pipelines/agent/build/WT-106'
+make[1]: Entering directory '/opt/atlassian/pipelines/agent/build/WT-106'
 make -C schemas checkspec
-make[2]: Entering directory '/mnt/ebs/bamboo-agent-home-alpha/xml-data/build-dir/BUSDM-DMSUPPREL-JOB1/WT-106/schemas'
-make[2]: Leaving directory '/mnt/ebs/bamboo-agent-home-alpha/xml-data/build-dir/BUSDM-DMSUPPREL-JOB1/WT-106/schemas'
+make[2]: Entering directory '/opt/atlassian/pipelines/agent/build/WT-106/schemas'
+make[2]: Leaving directory '/opt/atlassian/pipelines/agent/build/WT-106/schemas'
 make -C support checkspec
-make[2]: Entering directory '/mnt/ebs/bamboo-agent-home-alpha/xml-data/build-dir/BUSDM-DMSUPPREL-JOB1/WT-106/support'
-make[2]: Leaving directory '/mnt/ebs/bamboo-agent-home-alpha/xml-data/build-dir/BUSDM-DMSUPPREL-JOB1/WT-106/support'
-make[1]: Leaving directory '/mnt/ebs/bamboo-agent-home-alpha/xml-data/build-dir/BUSDM-DMSUPPREL-JOB1/WT-106'
+make[2]: Entering directory '/opt/atlassian/pipelines/agent/build/WT-106/support'
+make[2]: Leaving directory '/opt/atlassian/pipelines/agent/build/WT-106/support'
+make[1]: Leaving directory '/opt/atlassian/pipelines/agent/build/WT-106'
