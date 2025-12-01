@@ -5,6 +5,13 @@
 See <https://data-model-template.broadband-forum.org> for the
 current TR-106 specification.
 
+## 2025-12-01: TR-106 Amendment 16 Corrigendum 1
+
+*Tag: [v1.16.1]*
+
+### Data Model Bibliographic References
+* Add more bibrefs
+
 ## 2025-11-11: TR-106 Amendment 16
 
 *Tag: [v1.16.0]*
@@ -382,3 +389,4 @@ current TR-106 specification.
 [v1.14.0]: https://github.com/BroadbandForum/data-model-template/releases/tag/v1.14.0
 [v1.15.0]: https://github.com/BroadbandForum/data-model-template/releases/tag/v1.15.0
 [v1.16.0]: https://github.com/BroadbandForum/data-model-template/releases/tag/v1.16.0
+[v1.16.1]: https://github.com/BroadbandForum/data-model-template/releases/tag/v1.16.1

@@ -153,6 +153,11 @@
   -
   - * Document not updated
 
+* - Amendment 16 Corrigendum 1
+  - December 2025
+  -
+  - * Document not updated
+
 :::
 
 Comments or questions about this Broadband Forum Technical Report should be directed to <info@broadband-forum.org>.

@@ -29,8 +29,8 @@
 #show: doc => conf(
   title: [TR\-106 –
 Data Model Template for CWMP Endpoints and USP Agents],
-  subtitle: [Issue: 1 Amendment 16 #bbf-release[]],
-  date: [Issue Date: November 2025],
+  subtitle: [Issue: 1 Amendment 16 Corrigendum 1 #bbf-release[]],
+  date: [Issue Date: December 2025],
   pagenumbering: none,
   cols: 1,
   linenumbering: none,
@@ -48,19 +48,19 @@ Data Model Template for CWMP Endpoints and USP Agents],
     bbfMajor: [1],
     bbfMicro: [0],
     bbfMinor: [16],
-    bbfMonth: [November],
+    bbfMonth: [December],
     bbfNumber: [TR\-106],
-    bbfPatch: [0],
+    bbfPatch: [1],
     bbfProjectStream: [],
     bbfStatus: [],
     bbfTitle: [Data Model Template for CWMP Endpoints and USP Agents],
     bbfType: [Technical Report],
-    bbfVersion: [1 Amendment 16],
+    bbfVersion: [1 Amendment 16 Corrigendum 1],
     bbfWorkArea: [Broadband User Services],
     bbfYear: [2025],
     citation-style: [bbf.csl],
     copydate: [2025],
-    date: [Issue Date: November 2025],
+    date: [Issue Date: December 2025],
     description: [TR\-106 specifies data model guidelines to be followed
 by all
 #link("https://www.broadband-forum.org/technical/download/TR-069.pdf")[CWMP]
@@ -144,7 +144,7 @@ Data Model Template for CWMP Endpoints and USP Agents],
     shortname: [TR\-106],
     siteurl: [index.html],
     status: [],
-    subtitle: [Issue: 1 Amendment 16 #bbf-release[]],
+    subtitle: [Issue: 1 Amendment 16 Corrigendum 1 #bbf-release[]],
     summary: [See
 #link("https://data-model-template.broadband-forum.org")[https:\/\/data\-model\-template.broadband\-forum.org]
 for the current TR\-106 specification.
@@ -496,6 +496,12 @@ the notices, legends, and other provisions set forth on this page.
     [Amendment 16
     ],
     [November 2025
+    ], [],
+    [- Document not updated
+    ],
+    [Amendment 16 Corrigendum 1
+    ],
+    [December 2025
     ], [],
     [- Document not updated
     ]
