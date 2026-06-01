@@ -1,97 +1,52 @@
 make[1]: Entering directory '/opt/atlassian/pipelines/agent/build/WT-106'
-yq eval ./../install/cwmp/dm-units.yaml
-yq eval ./../install/pandoc/metadata/no-title-metadata.yaml
-yq eval ./../install/pandoc/metadata/bbf-metadata.yaml
-yq eval ./../install/pandoc/csl/bbf-extra-csl.yaml
-yq eval ./../install/pandoc/csl/iana-extra-csl.yaml
-yq eval ./../install/pandoc/csl/itu-extra-csl.yaml
-yq eval ./../install/pandoc/csl/ansi-extra-csl.yaml
-yq eval ./../install/pandoc/csl/3gpp-extra-csl.yaml
-yq eval ./../install/pandoc/csl/grpc-extra-csl.yaml
-yq eval ./../install/pandoc/csl/misc-extra-csl.yaml
-yq eval ./../install/pandoc/csl/w3c-extra-csl.yaml
-yq eval ./../install/pandoc/csl/ietf-extra-csl.yaml
-yq eval ./../install/pandoc/csl/ieee-extra-csl.yaml
-yq eval ./../install/pandoc/csl/iso-extra-csl.yaml
-yq eval ./../install/pandoc/csl/mef-extra-csl.yaml
-yq eval ./../install/pandoc/csl/sff-extra-csl.yaml
-yq eval ./../install/pandoc/csl/etsi-extra-csl.yaml
-yq eval ./../install/pandoc/csl/gsma-extra-csl.yaml
-yq eval ./../install/pandoc/defaults/codebraid-defaults.yaml
-yq eval ./../install/pandoc/defaults/docx-defaults.yaml
-yq eval ./../install/pandoc/defaults/htm-defaults.yaml
-yq eval ./../install/pandoc/defaults/html-defaults.yaml
-yq eval ./../install/pandoc/defaults/pdf-defaults.yaml
-yq eval ./../install/pandoc/defaults/typst-defaults.yaml
-yq eval ./../install/pandoc/defaults/_codebraid_preview.yaml
-yq eval ./../install/pandoc/defaults/common-defaults.yaml
-yq eval ./../install/pandoc/defaults/json-defaults.yaml
-yq eval ./../install/projectyaml/WT-196/PROJECT.yaml
-yq eval ./../install/projectyaml/WT-098/PROJECT.yaml
-yq eval ./../install/projectyaml/WT-181/PROJECT.yaml
-yq eval ./../install/projectyaml/usp-data-models/PROJECT.yaml
-yq eval ./../install/projectyaml/WT-106/PROJECT.yaml
-yq eval ./../install/projectyaml/WT-262/PROJECT.yaml
-yq eval ./../install/projectyaml/DTP-069/PROJECT.yaml
 yq eval ./../install/projectyaml/WT-369/PROJECT.yaml
-yq eval ./../install/projectyaml/WT-104/PROJECT.yaml
-yq eval ./../install/projectyaml/WT-069/PROJECT.yaml
-yq eval ./../install/projectyaml/WT-157/PROJECT.yaml
-yq eval ./../install/projectyaml/WT-232/PROJECT.yaml
-yq eval ./../install/projectyaml/WT-124/PROJECT.yaml
-yq eval ./../install/projectyaml/WT-140/PROJECT.yaml
-yq eval ./../install/projectyaml/WT-143/PROJECT.yaml
 yq eval ./../install/projectyaml/WT-135/PROJECT.yaml
+yq eval ./../install/projectyaml/WT-196/PROJECT.yaml
+yq eval ./../install/projectyaml/DTP-069/PROJECT.yaml
+yq eval ./../install/projectyaml/WT-232/PROJECT.yaml
+yq eval ./../install/projectyaml/WT-140/PROJECT.yaml
+yq eval ./../install/projectyaml/WT-262/PROJECT.yaml
 yq eval ./../install/projectyaml/cwmp-data-models/PROJECT.yaml
 yq eval ./../install/projectyaml/DTP-469/PROJECT.yaml
+yq eval ./../install/projectyaml/WT-143/PROJECT.yaml
+yq eval ./../install/projectyaml/WT-124/PROJECT.yaml
+yq eval ./../install/projectyaml/WT-181/PROJECT.yaml
+yq eval ./../install/projectyaml/WT-157/PROJECT.yaml
+yq eval ./../install/projectyaml/WT-104/PROJECT.yaml
+yq eval ./../install/projectyaml/WT-069/PROJECT.yaml
+yq eval ./../install/projectyaml/WT-106/PROJECT.yaml
+yq eval ./../install/projectyaml/WT-098/PROJECT.yaml
+yq eval ./../install/projectyaml/usp-data-models/PROJECT.yaml
+yq eval ./../install/cwmp/dm-units.yaml
+yq eval ./../install/pandoc/csl/iana-extra-csl.yaml
+yq eval ./../install/pandoc/csl/ietf-extra-csl.yaml
+yq eval ./../install/pandoc/csl/etsi-extra-csl.yaml
+yq eval ./../install/pandoc/csl/ieee-extra-csl.yaml
+yq eval ./../install/pandoc/csl/iso-extra-csl.yaml
+yq eval ./../install/pandoc/csl/w3c-extra-csl.yaml
+yq eval ./../install/pandoc/csl/mef-extra-csl.yaml
+yq eval ./../install/pandoc/csl/3gpp-extra-csl.yaml
+yq eval ./../install/pandoc/csl/itu-extra-csl.yaml
+yq eval ./../install/pandoc/csl/sff-extra-csl.yaml
+yq eval ./../install/pandoc/csl/ansi-extra-csl.yaml
+yq eval ./../install/pandoc/csl/gsma-extra-csl.yaml
+yq eval ./../install/pandoc/csl/grpc-extra-csl.yaml
+yq eval ./../install/pandoc/csl/bbf-extra-csl.yaml
+yq eval ./../install/pandoc/csl/misc-extra-csl.yaml
+yq eval ./../install/pandoc/metadata/no-title-metadata.yaml
+yq eval ./../install/pandoc/metadata/bbf-metadata.yaml
+yq eval ./../install/pandoc/defaults/html-defaults.yaml
+yq eval ./../install/pandoc/defaults/common-defaults.yaml
+yq eval ./../install/pandoc/defaults/typst-defaults.yaml
+yq eval ./../install/pandoc/defaults/json-defaults.yaml
+yq eval ./../install/pandoc/defaults/docx-defaults.yaml
+yq eval ./../install/pandoc/defaults/pdf-defaults.yaml
+yq eval ./../install/pandoc/defaults/htm-defaults.yaml
+yq eval ./../install/pandoc/defaults/_codebraid_preview.yaml
+yq eval ./../install/pandoc/defaults/codebraid-defaults.yaml
 yq eval ./PROJECT.yaml
-yq eval ./bitbucket-pipelines.yml
-yq eval ./install/cwmp/dm-units.yaml
-yq eval ./install/pandoc/metadata/no-title-metadata.yaml
-yq eval ./install/pandoc/metadata/bbf-metadata.yaml
-yq eval ./install/pandoc/csl/bbf-extra-csl.yaml
-yq eval ./install/pandoc/csl/iana-extra-csl.yaml
-yq eval ./install/pandoc/csl/itu-extra-csl.yaml
-yq eval ./install/pandoc/csl/ansi-extra-csl.yaml
-yq eval ./install/pandoc/csl/3gpp-extra-csl.yaml
-yq eval ./install/pandoc/csl/grpc-extra-csl.yaml
-yq eval ./install/pandoc/csl/misc-extra-csl.yaml
-yq eval ./install/pandoc/csl/w3c-extra-csl.yaml
-yq eval ./install/pandoc/csl/ietf-extra-csl.yaml
-yq eval ./install/pandoc/csl/ieee-extra-csl.yaml
-yq eval ./install/pandoc/csl/iso-extra-csl.yaml
-yq eval ./install/pandoc/csl/mef-extra-csl.yaml
-yq eval ./install/pandoc/csl/sff-extra-csl.yaml
-yq eval ./install/pandoc/csl/etsi-extra-csl.yaml
-yq eval ./install/pandoc/csl/gsma-extra-csl.yaml
-yq eval ./install/pandoc/defaults/codebraid-defaults.yaml
-yq eval ./install/pandoc/defaults/docx-defaults.yaml
-yq eval ./install/pandoc/defaults/htm-defaults.yaml
-yq eval ./install/pandoc/defaults/html-defaults.yaml
-yq eval ./install/pandoc/defaults/pdf-defaults.yaml
-yq eval ./install/pandoc/defaults/typst-defaults.yaml
-yq eval ./install/pandoc/defaults/_codebraid_preview.yaml
-yq eval ./install/pandoc/defaults/common-defaults.yaml
-yq eval ./install/pandoc/defaults/json-defaults.yaml
-yq eval ./install/projectyaml/WT-196/PROJECT.yaml
-yq eval ./install/projectyaml/WT-098/PROJECT.yaml
-yq eval ./install/projectyaml/WT-181/PROJECT.yaml
-yq eval ./install/projectyaml/usp-data-models/PROJECT.yaml
-yq eval ./install/projectyaml/WT-106/PROJECT.yaml
-yq eval ./install/projectyaml/WT-262/PROJECT.yaml
-yq eval ./install/projectyaml/DTP-069/PROJECT.yaml
-yq eval ./install/projectyaml/WT-369/PROJECT.yaml
-yq eval ./install/projectyaml/WT-104/PROJECT.yaml
-yq eval ./install/projectyaml/WT-069/PROJECT.yaml
-yq eval ./install/projectyaml/WT-157/PROJECT.yaml
-yq eval ./install/projectyaml/WT-232/PROJECT.yaml
-yq eval ./install/projectyaml/WT-124/PROJECT.yaml
-yq eval ./install/projectyaml/WT-140/PROJECT.yaml
-yq eval ./install/projectyaml/WT-143/PROJECT.yaml
-yq eval ./install/projectyaml/WT-135/PROJECT.yaml
-yq eval ./install/projectyaml/cwmp-data-models/PROJECT.yaml
-yq eval ./install/projectyaml/DTP-469/PROJECT.yaml
 yq eval ./support/dm-units.yaml
+yq eval ./bitbucket-pipelines.yml
 make[1]: Leaving directory '/opt/atlassian/pipelines/agent/build/WT-106'
 make[1]: Entering directory '/opt/atlassian/pipelines/agent/build/WT-106'
 PYTHONPATH=./../install/python/ ./../install/bin/project-parser.py --outdir=./docs --loglevel=1 PROJECT.yaml 2>&1 >docs/PROJECT.yaml.outputs || true
@@ -161,13 +116,13 @@ make[2]: Leaving directory '/opt/atlassian/pipelines/agent/build/WT-106/support'
 make -C specification all
 make[2]: Entering directory '/opt/atlassian/pipelines/agent/build/WT-106/specification'
 'CNAME' -> '../docs/CNAME'
-sed -e '/span\.release::before/s|{ *content:.*; *}|{ content: "(release-1.16)"; }|' -e 's|${USERDATA}|../../install/pandoc/|g' -e 's|${PROJECTYAMLTARGETDIR}|../docs|g' -e 's|${TARGETDIR}|../docs|g' <../../install/pandoc/css/release.css >../docs/release.css
-sed -e '/span\.release::before/s|{ *content:.*; *}|{ content: "(release-1.16)"; }|' -e 's|${USERDATA}|../../install/pandoc/|g' -e 's|${PROJECTYAMLTARGETDIR}|../docs|g' -e 's|${TARGETDIR}|../docs|g' <../../install/pandoc/defaults/json-defaults.yaml >../docs/json-defaults.yaml
-sed -e '/span\.release::before/s|{ *content:.*; *}|{ content: "(release-1.16)"; }|' -e 's|${USERDATA}|../../install/pandoc/|g' -e 's|${PROJECTYAMLTARGETDIR}|../docs|g' -e 's|${TARGETDIR}|../docs|g' <../../install/pandoc/defaults/docx-defaults.yaml >../docs/docx-defaults.yaml
-sed -e '/span\.release::before/s|{ *content:.*; *}|{ content: "(release-1.16)"; }|' -e 's|${USERDATA}|../../install/pandoc/|g' -e 's|${PROJECTYAMLTARGETDIR}|../docs|g' -e 's|${TARGETDIR}|../docs|g' <../../install/pandoc/defaults/pdf-defaults.yaml >../docs/pdf-defaults.yaml
-sed -e '/span\.release::before/s|{ *content:.*; *}|{ content: "(release-1.16)"; }|' -e 's|${USERDATA}|../../install/pandoc/|g' -e 's|${PROJECTYAMLTARGETDIR}|../docs|g' -e 's|${TARGETDIR}|../docs|g' <../../install/pandoc/defaults/typst-defaults.yaml >../docs/typst-defaults.yaml
-sed -e '/span\.release::before/s|{ *content:.*; *}|{ content: "(release-1.16)"; }|' -e 's|${USERDATA}|../../install/pandoc/|g' -e 's|${PROJECTYAMLTARGETDIR}|../docs|g' -e 's|${TARGETDIR}|../docs|g' <../../install/pandoc/custom/typst-template.typ >../docs/typst-template.typ
-sed -e '/span\.release::before/s|{ *content:.*; *}|{ content: "(release-1.16)"; }|' -e 's|${USERDATA}|../../install/pandoc/|g' -e 's|${PROJECTYAMLTARGETDIR}|../docs|g' -e 's|${TARGETDIR}|../docs|g' <../../install/pandoc/custom/typst-stringify.typ >../docs/typst-stringify.typ
+sed -e '/span\.release::before/s|{ *content:.*; *}|{ content: "(release-1.17)"; }|' -e 's|${USERDATA}|../../install/pandoc/|g' -e 's|${PROJECTYAMLTARGETDIR}|../docs|g' -e 's|${TARGETDIR}|../docs|g' <../../install/pandoc/css/release.css >../docs/release.css
+sed -e '/span\.release::before/s|{ *content:.*; *}|{ content: "(release-1.17)"; }|' -e 's|${USERDATA}|../../install/pandoc/|g' -e 's|${PROJECTYAMLTARGETDIR}|../docs|g' -e 's|${TARGETDIR}|../docs|g' <../../install/pandoc/defaults/json-defaults.yaml >../docs/json-defaults.yaml
+sed -e '/span\.release::before/s|{ *content:.*; *}|{ content: "(release-1.17)"; }|' -e 's|${USERDATA}|../../install/pandoc/|g' -e 's|${PROJECTYAMLTARGETDIR}|../docs|g' -e 's|${TARGETDIR}|../docs|g' <../../install/pandoc/defaults/docx-defaults.yaml >../docs/docx-defaults.yaml
+sed -e '/span\.release::before/s|{ *content:.*; *}|{ content: "(release-1.17)"; }|' -e 's|${USERDATA}|../../install/pandoc/|g' -e 's|${PROJECTYAMLTARGETDIR}|../docs|g' -e 's|${TARGETDIR}|../docs|g' <../../install/pandoc/defaults/pdf-defaults.yaml >../docs/pdf-defaults.yaml
+sed -e '/span\.release::before/s|{ *content:.*; *}|{ content: "(release-1.17)"; }|' -e 's|${USERDATA}|../../install/pandoc/|g' -e 's|${PROJECTYAMLTARGETDIR}|../docs|g' -e 's|${TARGETDIR}|../docs|g' <../../install/pandoc/defaults/typst-defaults.yaml >../docs/typst-defaults.yaml
+sed -e '/span\.release::before/s|{ *content:.*; *}|{ content: "(release-1.17)"; }|' -e 's|${USERDATA}|../../install/pandoc/|g' -e 's|${PROJECTYAMLTARGETDIR}|../docs|g' -e 's|${TARGETDIR}|../docs|g' <../../install/pandoc/custom/typst-template.typ >../docs/typst-template.typ
+sed -e '/span\.release::before/s|{ *content:.*; *}|{ content: "(release-1.17)"; }|' -e 's|${USERDATA}|../../install/pandoc/|g' -e 's|${PROJECTYAMLTARGETDIR}|../docs|g' -e 's|${TARGETDIR}|../docs|g' <../../install/pandoc/custom/typst-stringify.typ >../docs/typst-stringify.typ
 '../../install/pandoc/css/bbf.css' -> '../docs/bbf.css'
 '../../install/pandoc/css/bbflogo-bw.png' -> '../docs/bbflogo-bw.png'
 '../../install/pandoc/css/bbflogo-reverse-dark.png' -> '../docs/bbflogo-reverse-dark.png'
@@ -192,10 +147,22 @@ pandoc --data-dir=../../install/pandoc/ --defaults=html-defaults.yaml    --css=t
 pandoc --data-dir=../../install/pandoc/ --defaults=../docs/docx-defaults.yaml --toc ../docs/index.json --output=../docs/index.docx
 pandoc --data-dir=../../install/pandoc/ --defaults=../docs/typst-defaults.yaml ../docs/index.json --output=../docs/index.typ
 typst compile ../docs/index.typ ../docs/index.pdf
+warning: `plus.circle` is deprecated, use `plus.o` instead
+   ┌─ ../docs/typst-stringify.typ:13:34
+   │
+13 │         comps.push(" " + sym.plus.circle + " ")
+   │                                   ^^^^^^
+
+warning: `plus.circle` is deprecated, use `plus.o` instead
+   ┌─ ../docs/typst-stringify.typ:22:34
+   │
+22 │         comps.push(" " + sym.plus.circle + " ")
+   │                                   ^^^^^^
+
 warning: unknown font family: arial
-    ┌─ ../docs/typst-template.typ:379:17
+    ┌─ ../docs/typst-template.typ:378:17
     │
-379 │            font: font,
+378 │            font: font,
     │                  ^^^^
 
 make[2]: Leaving directory '/opt/atlassian/pipelines/agent/build/WT-106/specification'

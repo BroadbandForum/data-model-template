@@ -771,7 +771,12 @@ time since boot.
 If the time is unknown or not applicable, the following value
 representing "Unknown Time" MUST be used: `0001-01-01T00:00:00Z`. For an
 infinite timeline, the following value representing "Infinite Time" MUST
-be used: `9999-12-31T23:59:59Z`.
+be used: `9999-12-31T23:59:59Z`. For dateTime parameters that are
+defined to support fractional second precision, the Unknown Time and
+Infinite Time values SHOULD be represented with the same precision as is
+supported for other values of the parameter. For example, if a parameter
+is reported with microsecond precision, `0001-01-01T00:00:00.000000Z`
+would be the representation of the Unknown Time.
 
 Any dateTime value other than one expressing relative time since boot
 (as described above) MUST use UTC timezoned representation (that is, it
@@ -874,7 +879,7 @@ For example, a table storing user configuration. An admin may need to be able to
 
 ### Parameters
 
-Like objects and tables, parameters can also be set as read-only or read-write based on their intended use.
+Like objects and tables, parameters can also be set as read-only, read-write or write-once-read-only based on their intended use.
 For reporting, parameters are often set as read-only.
 
 For example, a parameter defining the number of received packets. This should be read-only.
@@ -882,6 +887,11 @@ For example, a parameter defining the number of received packets. This should be
 On the other hand, for configurations where services or remote Controllers need to modify settings or parameters should be set as read-write.
 
 For example, a parameter defining the ports that should be closed. An administrator might need to adjust this value; it's read-write.
+
+A parameter can also be write-once-read-only.
+This access type is intended for USP and does not have a direct equivalent in CWMP.
+When a write-once-read-only parameter appears in a CWMP data model, its access should be treated as read-write.
+It is up to the CWMP Agent to mimic the write-once behavior.
 
 ## Vendor-Specific Elements
 
@@ -1445,235 +1455,318 @@ explanation that the parameter value is hidden.
 The following standard templates are defined. Any vendor-specific
 template names MUST obey the rules of @sec:vendor-specific-elements.
 
-: XML Description Templates {#tbl:xml-description-templates}
+:::list-table
+XML Description Templates {#tbl:xml-description-templates}
 
-| Name               |     Markup Definition |     Description                                                                         |
-|--------------------|-----------------------|-----------------------------------------------------------------------------------------|
-| Glossary reference | `{{gloref|id}}`         | Glossary reference. The id argument MUST match the id attribute of one of the current file's (or an imported file's) top-level glossary element's item elements (@sec:glossary).\
-Typically, processing tools will (a) validate the id, and (b) replace the template reference with something like "id".\
-Markup examples:\
-`{{gloref|Parameter}}` |\
+* - Name
+  - Markup Definition
+  - Description
 
-| Abbreviation reference | `{{abbref|id}}` | Abbreviation reference. The id argument MUST match the id attribute of one of the current file's (or an imported file's) top-level abbreviations element's item elements (@sec:abbreviations).\
-Typically, processing tools will (a) validate the id, and (b) replace the template reference with something like "id".\
-Markup examples:\
-`{{abbref|CWMP}}` |\
+* - Glossary reference
+  - `{{gloref|id}}`
+  - Glossary reference. The id argument MUST match the id attribute of one of the current file's (or an imported file's) top-level glossary element's item elements (@sec:glossary).\
+    Typically, processing tools will (a) validate the id, and (b) replace the template reference with something like "id".
 
-| Approval date | `{{appdate|date}}` | The date on which this file was approved.\
-The date argument SHOULD be of the form "day month year" where "day" is the OPTIONAL day number (no leading zero), "month" is the full (capitalized) month name, and "year" is the year (including century).\
-Markup examples:\
-`{{appdate|5 November 2011}}`\
-`{{appdate|November 2012}}` |\
+    Markup examples:\
+    `{{gloref|Parameter}}`
 
-| Document name | `{{docname|name}}` | The DM Instance name or title.\
-The name argument MUST distinguish this file from other different files but not from other versions of the same file or data model.\
-Markup examples:\
-`{{docname|Device Data Model for TR-069}}` |\
+* - Abbreviation reference
+  - `{{abbref|id}}`
+  - Abbreviation reference. The id argument MUST match the id attribute of one of the current file's (or an imported file's) top-level abbreviations element's item elements (@sec:abbreviations).\
+    Typically, processing tools will (a) validate the id, and (b) replace the template reference with something like "id".
 
-| TR name | `{{trname|name}}` | The name and version of the corresponding Word / PDF document.\
-The name argument MUST identify the Word / PDF document corresponding to this DM Instance, and be of the form "TR-nnnixaycz" as defined in @sec:bibliography.\
-Markup examples:\
-`{{trname|TR-181i2a5}}` |\
+    Markup examples:\
+    `{{abbref|CWMP}}`
 
-| XML reference | `{{xmlref|ref}}`\
-`{{xmlref|ref|label}}` | A reference to this or another DM Instance.\
-The ref argument MUST identify a DM Instance and be the filename part of the referenced DM Instance (a) optionally omitting the corrigendum number, and (b) omitting the trailing ".xml".\
-The OPTIONAL label argument MAY be used by processing tools as a user-visible label; if it is omitted, processing tools will derive the label from the value of the ref   argument.\
-Typically, processing tools will (a) validate the reference, and (b) replace the template reference with the label, possibly rendered in a distinctive font, and (if referencing a different file) a hyperlink.\
-Markup examples:\
-`{{xmlref|tr-181-2-5}}`\
-`{{xmlref|tr-196-2-0-1|Corrigendum 1}}` |\
+* - Approval date
+  - `{{appdate|date}}`
+  - The date on which this file was approved.\
+    The date argument SHOULD be of the form "day month year" where "day" is the OPTIONAL day number (no leading zero), "month" is the full (capitalized) month name, and "year" is the year (including century).
 
-| Bibliographic reference | `{{bibref|id}}`\
-`{{bibref|id|section}}` | A bibliographic reference.\
-The id argument MUST match the id attribute of one of the current file's (or an imported file's) top-level bibliography element's reference elements (@sec:bibliography).\
-The OPTIONAL section argument specifies the section number, including any leading "section", "annex" or "appendix" text.\
-Typically, processing tools will (a) validate the id, and (b) replace the template reference with something like "[id] section".\
-Markup examples:\
-`{{bibref|RFC3986}}`\
-`{{bibref|RFC3986|Section 3}}` |\
+    Markup examples:\
+    `{{appdate|5 November 2011}}`\
+    `{{appdate|November 2012}}`
 
-| Template reference | `{{template|id}}` | A template element reference.\
-The id argument MUST match the id attribute of one of the current file's (or an imported file's) top-level template elements (@sec:template-elements).\
-Markup examples:\
-`{{template|BULK-DATA-HTTP-REF}}` |\
+* - Document name
+  - `{{docname|name}}`
+  - The DM Instance name or title.\
+      The name argument MUST distinguish this file from other different files but not from other versions of the same file or data model.
 
-| Section separator | `{{section|category}}`\
-`{{section}}` | The beginning or end of a section or category. This is a way of splitting the description into sections.\
-If the category argument is present, this marks the end of the previous section (if any), and the beginning of a section of the specified category. The "table", "row" and "examples" categories are reserved for the obvious purposes.\
-If the category argument is absent, this marks the end of the previous section (if any). Typically, processing tools will (a) validate the category, and (b) replace the template reference with a section marker.\
-Markup examples:\
-`{{section|table}}`\
-`{{section|row}}`\
-`{{section|examples}}` |\
+      Markup examples:\
+      `{{docname|Device Data Model for TR-069}}`
 
-| Number of entries parameter description | `{{numentries}}` | A description of a "NumberOfEntries" parameter.\
+* - TR name
+  - `{{trname|name}}`
+  - The name and version of the corresponding Word / PDF document.\
+    The name argument MUST identify the Word / PDF document corresponding to this DM Instance, and be of the form "TR-nnnixaycz" as defined in @sec:bibliography.
+
+    Markup examples:\
+    `{{trname|TR-181i2a5}}`
+
+* - XML reference
+  - `{{xmlref|ref}}`\
+`{{xmlref|ref|label}}`
+  - A reference to this or another DM Instance.\
+    The ref argument MUST identify a DM Instance and be the filename part of the referenced DM Instance (a) optionally omitting the corrigendum number, and (b) omitting the trailing ".xml".\
+    The OPTIONAL label argument MAY be used by processing tools as a user-visible label; if it is omitted, processing tools will derive the label from the value of the ref   argument.\
+    Typically, processing tools will (a) validate the reference, and (b) replace the template reference with the label, possibly rendered in a distinctive font, and (if referencing a different file) a hyperlink.
+
+    Markup examples:\
+    `{{xmlref|tr-181-2-5}}`\
+    `{{xmlref|tr-196-2-0-1|Corrigendum 1}}`
+
+* - Bibliographic reference
+  - `{{bibref|id}}`\
+`{{bibref|id|section}}`
+  - A bibliographic reference.\
+    The id argument MUST match the id attribute of one of the current file's (or an imported file's) top-level bibliography element's reference elements (@sec:bibliography).\
+    The OPTIONAL section argument specifies the section number, including any leading "section", "annex" or "appendix" text.\
+    Typically, processing tools will (a) validate the id, and (b) replace the template reference with something like "[id] section".
+
+    Markup examples:\
+    `{{bibref|RFC3986}}`\
+    `{{bibref|RFC3986|Section 3}}`
+
+* - Template reference
+  - `{{template|id}}`
+  - A template element reference.\
+    The id argument MUST match the id attribute of one of the current file's (or an imported file's) top-level template elements (@sec:template-elements).
+
+    Markup examples:\
+    `{{template|BULK-DATA-HTTP-REF}}`
+
+* - Section separator
+  - `{{section|category}}`\
+`{{section}}`
+  - The beginning or end of a section or category. This is a way of splitting the description into sections.\
+    If the category argument is present, this marks the end of the previous section (if any), and the beginning of a section of the specified category. The "table", "row" and "examples" categories are reserved for the obvious purposes.\
+    If the category argument is absent, this marks the end of the previous section (if any). Typically, processing tools will (a) validate the category, and (b) replace the template reference with a section marker.
+
+    Markup examples:\
+    `{{section|table}}`\
+    `{{section|row}}`\
+    `{{section|examples}}`
+
+* - Number of entries parameter description
+  - `{{numentries}}`
+  - A description of a "NumberOfEntries" parameter.\
 This template SHOULD be used for all such parameters.  It will be expanded to something like "The number of entries in the \<table> table.".\
-In most cases, the description will consist only of `{{numentries}}` but it MAY be followed by additional text if desired. |\
+In most cases, the description will consist only of `{{numentries}}` but it MAY be followed by additional text if desired.
 
-| Deprecated, obsoleted or deleted indication | `{{deprecated|version|reason}}`\
+* - Deprecated, obsoleted or deleted indication
+  - `{{deprecated|version|reason}}`\
 `{{obsoleted|version}}`\
 `{{obsoleted|version|reason}}`\
 `{{deleted|version}}`\
-`{{deleted|version|reason}}` | An indication that a parameter, command, event, object, enumeration value or pattern was deprecated (or obsoleted or deleted) in the specified data model version, for the specified reason.\
-The reason argument is a fragment of text that SHOULD be incorporated into the template expansion. It's OPTIONAL when obsoleting or deleting an item.\
-Typically, processing tools will (a) validate that use of the template is consistent with the item status, (b) check for late (overdue) or too-early item status transitions, and (c) replace the template reference with text of the form "This \<itemType> was \<transition> in \<version> \<reason>." (where \<itemType> is parameter, object etc., and \<transition> is the capitalized template name, i.e. DEPRECATED, OBSOLETED or DELETED). |\
+`{{deleted|version|reason}}`
+  - An indication that a parameter, command, event, object, enumeration value or pattern was deprecated (or obsoleted or deleted) in the specified data model version, for the specified reason.\
+    The reason argument is a fragment of text that SHOULD be incorporated into the template expansion. It's OPTIONAL when obsoleting or deleting an item.\
+    Typically, processing tools will (a) validate that use of the template is consistent with the item status, (b) check for late (overdue) or too-early item status transitions, and (c) replace the template reference with text of the form "This \<itemType> was \<transition> in \<version> \<reason>." (where \<itemType> is parameter, object etc., and \<transition> is the capitalized template name, i.e. DEPRECATED, OBSOLETED or DELETED).
 
-| Parameter, command, event and object reference | `{{param}}`\
-`{{param|ref}}`\
-`{{param|ref|scope}}`\
-`{{command}}`\
-`{{command|ref}}`\
-`{{command|ref|scope}}`\
-`{{event}}`\
-`{{event|ref}}`\
-`{{event|ref|scope}}`\
-`{{object}}`\
-`{{object|ref}}`\
-`{{object|ref|scope}}` | A reference to the specified parameter, command, event or object.\
-The OPTIONAL ref and scope arguments reference the specified item (scope defaults to normal). Item names SHOULD adhere to the rules of @sec:reference-path-names.\
-The scope argument can include a deprecated, obsoleted or deleted status, e.g. it might be deprecated or normal,deprecated. Such a status value can be specified in order to suppress processing tool warnings when an item references a "more deprecated" item. For example, `{{param|ref|deprecated}}` allows a non-deprecated item to reference a deprecated parameter without a warning.\
-Typically, processing tools will (a) validate the reference, and (b) replace the template reference with the ref argument or, if it is omitted, the current item name, possibly rendered in a distinctive font.\
-Processing tools can use the scope to convert a relative path into an absolute path in order, for example, to generate a hyperlink.\
-Markup examples:\
-`{{param|Enable}}`\
-`{{command|Reset()}}`\
-`{{event|Boot!}}`\
-`{{object|Stats.}}` |\
+* - Parameter, command, event and object reference
+  - `{{param}}`\
+    `{{param|ref}}`\
+    `{{param|ref|scope}}`\
+    `{{command}}`\
+    `{{command|ref}}`\
+    `{{command|ref|scope}}`\
+    `{{event}}`\
+    `{{event|ref}}`\
+    `{{event|ref|scope}}`\
+    `{{object}}`\
+    `{{object|ref}}`\
+    `{{object|ref|scope}}`
+  - A reference to the specified parameter, command, event or object.\
+    The OPTIONAL ref and scope arguments reference the specified item (scope defaults to normal). Item names SHOULD adhere to the rules of @sec:reference-path-names.\
+    The scope argument can include a deprecated, obsoleted or deleted status, e.g. it might be deprecated or normal,deprecated. Such a status value can be specified in order to suppress processing tool warnings when an item references a "more deprecated" item. For example, `{{param|ref|deprecated}}` allows a non-deprecated item to reference a deprecated parameter without a warning.\
+    Typically, processing tools will (a) validate the reference, and (b) replace the template reference with the ref argument or, if it is omitted, the current item name, possibly rendered in a distinctive font.\
+    Processing tools can use the scope to convert a relative path into an absolute path in order, for example, to generate a hyperlink.
 
-| Profile reference | `{{profile|ref}}`\
-`{{profile}}` | A reference to the specified profile.\
-The OPTIONAL ref argument references a profile.\
-Typically, processing tools will (a) validate the reference, and (b) replace the template reference with the ref argument or, if it is omitted, the current profile name, possibly rendered in a distinctive font.\
-Markup examples:\
-`{{profile|Baseline:1}}`\
-`{{profile}}`|\
+    Markup examples:\
+    `{{param|Enable}}`\
+    `{{command|Reset()}}`\
+    `{{event|Boot!}}`\
+    `{{object|Stats.}}`
 
-| List description | `{{list}}`\
-`{{list|arg}}`\
-`{{nolist}}` | A description of the current parameter's list attributes.\
-This template SHOULD only be used within the description of a list-valued parameter (@sec:parameter-syntax).\
-This is a hint to processing tools to replace the template reference with a description of the parameter's list attributes.  This overrides processing tools' expected default behavior (unless suppressed by `{{nolist}}`) of describing the list attributes before the rest of the description.\
-The OPTIONAL argument specifies a fragment of text that describes the list and SHOULD be incorporated into the template expansion.\
-Typically processing tools will generate text of the form "Comma-separated list of \<dataType>." or "Comma-separated list of \<dataType>, \<arg>.". |\
+* - Profile reference
+  - `{{profile|ref}}`\
+`{{profile}}`
+  - A reference to the specified profile.\
+    The OPTIONAL ref argument references a profile.\
+    Typically, processing tools will (a) validate the reference, and (b) replace the template reference with the ref argument or, if it is omitted, the current profile name, possibly rendered in a distinctive font.
 
-| Reference description | `{{reference}}`\
-`{{reference|arg}}`\
-`{{reference|arg|opts}}`\
-`{{noreference}}` | A description of the object or parameter that is referenced by the current parameter.\
-This template SHOULD only be used within the description of a reference parameter (@sec:reference-facets).\
-This is a hint to processing tools to replace the template reference with a description of the parameter's reference attributes. This overrides processing tools' expected default behavior (unless suppressed by `{{noreference}}`) of describing the reference attributes after the list attributes (for a list-valued parameter) or before the rest of the description (otherwise).\
-The OPTIONAL arg argument is relevant only for a pathRef; it specifies a fragment of text that describes the referenced item and SHOULD be incorporated into the template expansion.\
-The OPTIONAL opts argument is a comma-separated list of keywords that give additional information about the reference and can affect the generated text.  The following keywords are currently defined:\
-- **ignore**: ignore any non-existent targetParents; this is useful when a parameter references different objects in different data models.\
-- **delete**: this object (the referencing object) and the referenced object have the same lifetime, so this object will always be deleted when the referenced object is deleted; therefore the reference can never be null.\
-Typically processing tools will generate text of the form "The value MUST be the full path name of \<arg>...", in which the generated text can be expected to be sensitive to whether or not the parameter is list-valued.\
-Markup examples:\
-`{{reference|a protocol object}}`\
-`{{reference|all Host table entries|ignore}}` |\
+    Markup examples:\
+    `{{profile|Baseline:1}}`\
+    `{{profile}}`
 
-| Named data type | `{{datatype}}`\
-`{{datatype|arg}}`\
-`{{nodatatype}}` | A description of the current parameter's named data type.\
-This template SHOULD only be used within the description of a parameter of a named data type (@sec:named-data-types).\
-This is a hint to processing tools to replace the template reference with an indication of the parameter's named data type, possibly including additional details or a hyperlink to such details.  This overrides processing tools' expected default behavior (unless suppressed by `{{nodatatype}}`) of describing the named data type before the rest of the description.\
-The OPTIONAL argument affects how the data type is described. If it has the literal value "expand", processing tools SHOULD replace the template reference with the actual description of the named data type (as opposed to referencing the description of the named data type). |\
+* - List description
+  - `{{list}}`\
+    `{{list|arg}}`\
+    `{{nolist}}`
+  - A description of the current parameter's list attributes.\
+    This template SHOULD only be used within the description of a list-valued parameter (@sec:parameter-syntax).\
+    This is a hint to processing tools to replace the template reference with a description of the parameter's list attributes.  This overrides processing tools' expected default behavior (unless suppressed by `{{nolist}}`) of describing the list attributes before the rest of the description.\
+    The OPTIONAL argument specifies a fragment of text that describes the list and SHOULD be incorporated into the template expansion.\
+    Typically processing tools will generate text of the form "Comma-separated list of \<dataType>." or "Comma-separated list of \<dataType>, \<arg>.".
 
-| Profile description | `{{profdesc}}`\
-`{{noprofdesc}}` | An auto-generated description of a profile.\
-This template SHOULD only be used within the description of a profile (@sec:profile-elements).\
-This is a hint to processing tools to replace the template reference with a description of the profile.  This overrides processing tools' expected default behavior (unless suppressed by `{{noprofdesc}}`) of describing the profile before the rest of the description.\
-Typically processing tools will generate text of the form "This table defines the \<profile:v> profile for the \<object:m> object. The minimum REQUIRED version for this profile is \<object:m.n>." (or more complex text if the profile is based on or extends other profiles). |\
+* - Reference description
+  - `{{reference}}`\
+    `{{reference|arg}}`\
+    `{{reference|arg|opts}}`\
+    `{{noreference}}`
+  - A description of the object or parameter that is referenced by the current parameter.\
+    This template SHOULD only be used within the description of a reference parameter (@sec:reference-facets).\
+    This is a hint to processing tools to replace the template reference with a description of the parameter's reference attributes. This overrides processing tools' expected default behavior (unless suppressed by `{{noreference}}`) of describing the reference attributes after the list attributes (for a list-valued parameter) or before the rest of the description (otherwise).\
+    The OPTIONAL arg argument is relevant only for a pathRef; it specifies a fragment of text that describes the referenced item and SHOULD be incorporated into the template expansion.\
+    The OPTIONAL opts argument is a comma-separated list of keywords that give additional information about the reference and can affect the generated text.  The following keywords are currently defined:\
+    - **ignore**: ignore any non-existent targetParents; this is useful when a parameter references different objects in different data models.\
+    - **delete**: this object (the referencing object) and the referenced object have the same lifetime, so this object will always be deleted when the referenced object is deleted; therefore the reference can never be null.\
+    Typically processing tools will generate text of the form "The value MUST be the full path name of \<arg>...", in which the generated text can be expected to be sensitive to whether or not the parameter is list-valued.
 
-| Enumeration reference | `{{enum|value}}`\
-`{{enum|value|param}}`\
-`{{enum|value|param|scope}}`\
-`{{enum}}`\
-`{{noenum}}` | A reference to the specified enumeration value.\
-The OPTIONAL value argument specifies one of the enumeration values for the referenced parameter.  If present, it MUST be a valid enumeration value for that parameter.\
-The OPTIONAL param and scope arguments identify the referenced parameter (scope defaults to normal).  If present, param SHOULD adhere to the rules of @sec:reference-path-names.  If omitted, the current parameter is assumed.\
-If the arguments are omitted, this is a hint to processing tools to replace the template reference with a list of the parameter's enumerations, possibly preceded by text such as "Enumeration of:".  This overrides processing tools' expected default behavior (unless suppressed by `{{noenum}}`) of listing the parameter's enumerations after the rest of the description.\
-Otherwise, typically processing tools will (a) validate that the enumeration value is valid, and (b) replace the template reference with the value and/or param arguments, appropriately formatted and with the value possibly rendered in a distinctive font. Processing tools can use the scope to convert a relative path into an absolute path in order, for example, to generate a hyperlink.\
-Markup examples:\
-`{{enum|None}}`\
-`{{enum|None|OtherParam}}` |\
+    Markup examples:\
+    `{{reference|a protocol object}}`\
+    `{{reference|all Host table entries|ignore}}`
 
-| Pattern reference | `{{pattern|value}}`\
-`{{pattern|value|param}}`\
-`{{pattern|value|param|scope}}`\
-`{{pattern}}`\
-`{{nopattern}}` | A reference to the specified pattern value.\
-The OPTIONAL value argument specifies one of the pattern values for the referenced parameter.  If present, it MUST be a valid pattern value for that parameter.  The OPTIONAL param and scope arguments identify the referenced parameter (scope defaults to normal).  If present, param SHOULD adhere to the rules of @sec:reference-path-names. If omitted, the current parameter is   assumed.\
-If the arguments are omitted, this is a hint to processing tools to replace the template reference with a list of the parameter's patterns, possibly preceded by text such as "Possible   patterns:".  This overrides processing tools' expected default behavior (unless suppressed by `{{nopattern}}`) of listing the parameter's patterns after the rest of the description.\
-Otherwise, typically processing tools will (a) validate that the pattern value is valid, and (b) replace the template reference with the value and/or param arguments, appropriately formatted and with the value possibly rendered in a distinctive font. Processing tools can use the scope to convert a relative path into an absolute path in order, for example, to generate a hyperlink.\
-Markup examples:\
-`{{pattern|None}}`\
-`{{pattern|None|OtherParam}}` | \
+* - Named data type
+  - `{{datatype}}`\
+    `{{datatype|arg}}`\
+    `{{nodatatype}}`
+  - A description of the current parameter's named data type.\
+    This template SHOULD only be used within the description of a parameter of a named data type (@sec:named-data-types).\
+    This is a hint to processing tools to replace the template reference with an indication of the parameter's named data type, possibly including additional details or a hyperlink to such details.  This overrides processing tools' expected default behavior (unless suppressed by `{{nodatatype}}`) of describing the named data type before the rest of the description.\
+    The OPTIONAL argument affects how the data type is described. If it has the literal value "expand", processing tools SHOULD replace the template reference with the actual description of the named data type (as opposed to referencing the description of the named data type).
 
-| Hidden value | `{{hidden}}`\
-`{{hidden|value}}`\
-`{{nohidden}}` | Text explaining that the value of the current parameter is hidden. This template SHOULD only be used within the description of a hidden parameter (@sec:parameter-syntax).\
-This is a hint to processing tools to replace the template reference with text explaining that the value of the current parameter is hidden.  This overrides processing tools' expected default behavior (unless suppressed by `{{nohidden}}`) of placing this text after the rest of the description.\
-The OPTIONAL argument indicates the value that is returned when the current parameter is read.  If omitted this defaults to the expansion of the `{{null}}` template.\
-Typically, processing tools will generate text of the form "When read, this parameter returns \<arg>, regardless of the actual value.". |\
+* - Profile description
+  - `{{profdesc}}`\
+    `{{noprofdesc}}`
+  - An auto-generated description of a profile.\
+    This template SHOULD only be used within the description of a profile (@sec:profile-elements).\
+    This is a hint to processing tools to replace the template reference with a description of the profile.  This overrides processing tools' expected default behavior (unless suppressed by `{{noprofdesc}}`) of describing the profile before the rest of the description.\
+    Typically processing tools will generate text of the form "This table defines the \<profile:v> profile for the \<object:m> object. The minimum REQUIRED version for this profile is \<object:m.n>." (or more complex text if the profile is based on or extends other profiles).
 
-| Secured value | `{{secured}}`\
-`{{secured|value}}`\
-`{{nosecured}}` | Text explaining that the value of the current parameter is secured. This template SHOULD only be used within the description of a secured parameter (@sec:parameter-syntax).\
-This is a hint to processing tools to replace the template reference with text explaining that the value of the current parameter is secured.  This overrides processing tools' expected default behavior (unless suppressed by `{{nosecured}}`) of placing this text after the rest of the description.\
-The OPTIONAL argument indicates the value that is returned when the Controller is not permitted to see the value.  If omitted this defaults to the expansion of the `{{null}}` template.\
-Typically, processing tools will generate text of the form "When read, this parameter returns \<arg>, regardless of the actual value, unless the Controller has a 'secured' role.". |\
+* - Enumeration reference
+  - `{{enum|value}}`\
+    `{{enum|value|param}}`\
+    `{{enum|value|param|scope}}`\
+    `{{enum}}`\
+    `{{noenum}}`
+  - A reference to the specified enumeration value.\
+    The OPTIONAL value argument specifies one of the enumeration values for the referenced parameter.  If present, it MUST be a valid enumeration value for that parameter.\
+    The OPTIONAL param and scope arguments identify the referenced parameter (scope defaults to normal).  If present, param SHOULD adhere to the rules of @sec:reference-path-names.  If omitted, the current parameter is assumed.\
+    If the arguments are omitted, this is a hint to processing tools to replace the template reference with a list of the parameter's enumerations, possibly preceded by text such as "Enumeration of:".  This overrides processing tools' expected default behavior (unless suppressed by `{{noenum}}`) of listing the parameter's enumerations after the rest of the description.\
+    Otherwise, typically processing tools will (a) validate that the enumeration value is valid, and (b) replace the template reference with the value and/or param arguments, appropriately formatted and with the value possibly rendered in a distinctive font. Processing tools can use the scope to convert a relative path into an absolute path in order, for example, to generate a hyperlink.
 
-| Command parameter | `{{command}}`\
-`{{nocommand}}` | Text explaining that the current parameter is a command parameter that triggers an Agent action.  This template SHOULD only be used within the description of such a command parameter (@sec:parameter-syntax).\
-This is a hint to processing tools to replace the template reference with text explaining that the current parameter is a command parameter that always reads back as `{{null}}`.  This overrides processing tools' expected default behavior (unless suppressed by `{{nocommand}}`) of placing this text after the rest of the description.   Typically, processing tools will generate text of the form "The value is not part of the device configuration and is always `{{null}}` when read.".\
-Note that the same `{{command}}` template can also be used by a USP command to refer to itself. |\
+    Markup examples:\
+    `{{enum|None}}`\
+    `{{enum|None|OtherParam}}`
 
-| Factory default value | `{{factory}}`\
-`{{nofactory}}` | Text listing the factory default for the current parameter.   This template SHOULD only be used within the description of a parameter that has a factory default value.\
-This is a hint to processing tools to replace the template reference with text listing the factory default value.  This overrides processing tools' expected default behavior (unless suppressed by `{{nofactory}}`) of placing this text after the rest of the description. Typically, processing tools will generate text of  the form "The factory default value MUST be \<value>.". |\
+* - Pattern reference
+  - `{{pattern|value}}`\
+    `{{pattern|value|param}}`\
+    `{{pattern|value|param|scope}}`\
+    `{{pattern}}`\
+    `{{nopattern}}`
+  - A reference to the specified pattern value.\
+    The OPTIONAL value argument specifies one of the pattern values for the referenced parameter.  If present, it MUST be a valid pattern value for that parameter.  The OPTIONAL param and scope arguments identify the referenced parameter (scope defaults to normal).  If present, param SHOULD adhere to the rules of @sec:reference-path-names. If omitted, the current parameter is   assumed.\
+    If the arguments are omitted, this is a hint to processing tools to replace the template reference with a list of the parameter's patterns, possibly preceded by text such as "Possible   patterns:".  This overrides processing tools' expected default behavior (unless suppressed by `{{nopattern}}`) of listing the parameter's patterns after the rest of the description.\
+    Otherwise, typically processing tools will (a) validate that the pattern value is valid, and (b) replace the template reference with the value and/or param arguments, appropriately formatted and with the value possibly rendered in a distinctive font. Processing tools can use the scope to convert a relative path into an absolute path in order, for example, to generate a hyperlink.
 
-| Implementation default value | `{{impldef}}`\
-`{{noimpldef}}` | Text listing the implementation default for the current parameter.  This template SHOULD only be used within the description of a parameter that has an implementation default value.\
-This is a hint to processing tools to replace the template reference with text listing the implementation default value.  This overrides processing tools' expected default behavior (unless suppressed by `{{noimpldef}}`) of placing this text after the rest of the description. Typically, processing tools will generate text of  the form "The default value SHOULD be \<value>.". |\
+    Markup examples:\
+    `{{pattern|None}}`\
+    `{{pattern|None|OtherParam}}`
 
-| Parameter default value | `{{paramdef}}`\
-`{{noparamdef}}` | Text listing the parameter default for the current argument.  This template SHOULD only be used within the description of an argument that has a parameter default value.\
-This is a hint to processing tools to replace the template reference with text listing the parameter default value.  This overrides processing tools' expected default behavior (unless suppressed by `{{noparamdef}}`) of placing this text after the rest of the description. Typically, processing tools will generate text of the form "The default value MUST be \<value>.". |\
+* - Hidden value
+  - `{{hidden}}`\
+    `{{hidden|value}}`\
+    `{{nohidden}}`
+  - Text explaining that the value of the current parameter is hidden. This template SHOULD only be used within the description of a hidden parameter (@sec:parameter-syntax).\
+      This is a hint to processing tools to replace the template reference with text explaining that the value of the current parameter is hidden.  This overrides processing tools' expected default behavior (unless suppressed by `{{nohidden}}`) of placing this text after the rest of the description.\
+      The OPTIONAL argument indicates the value that is returned when the current parameter is read.  If omitted this defaults to the expansion of the `{{null}}` template.\
+    Typically, processing tools will generate text of the form "When read, this parameter returns \<arg>, regardless of the actual value.".
 
-| Unique keys description | `{{keys}}`\
-`{{nokeys}}` | A description of the current object's unique keys.\
-This template SHOULD only be used within the description of a Multi-Instance Object (table) that defines one or more unique keys (@sec:tables).\
-This is a hint to processing tools to replace the template reference with a description of the object's unique keys. This overrides processing tools' expected default behavior (unless suppressed by `{{nokeys}}`) of describing the unique keys after the description. |\
+* - Secured value
+  - `{{secured}}`\
+    `{{secured|value}}`\
+    `{{nosecured}}`
+  - Text explaining that the value of the current parameter is secured. This template SHOULD only be used within the description of a secured parameter (@sec:parameter-syntax).\
+      This is a hint to processing tools to replace the template reference with text explaining that the value of the current parameter is secured.  This overrides processing tools' expected default behavior (unless suppressed by `{{nosecured}}`) of placing this text after the rest of the description.\
+    The OPTIONAL argument indicates the value that is returned when the Controller is not permitted to see the value.  If omitted this defaults to the expansion of the `{{null}}` template.\
+    Typically, processing tools will generate text of the form "When read, this parameter returns \<arg>, regardless of the actual value, unless the Controller has a 'secured' role.".
 
-| Units reference | `{{units}}` | The parameter's units string.\
-Typically, processing tools will (a) check that the parameter has a units string, and (b) substitute the value of its units   string. |\
+* - Command parameter
+  - `{{command}}`\
+    `{{nocommand}}`
+  - Text explaining that the current parameter is a command parameter that triggers an Agent action.  This template SHOULD only be used within the description of such a command parameter (@sec:parameter-syntax).\
+    This is a hint to processing tools to replace the template reference with text explaining that the current parameter is a command parameter that always reads back as `{{null}}`.  This overrides processing tools' expected default behavior (unless suppressed by `{{nocommand}}`) of placing this text after the rest of the description. Typically, processing tools will generate text of the form "The value is not part of the device configuration and is always `{{null}}` when read.".\
+    Note that the same `{{command}}` template can also be used by a USP command to refer to itself.
 
-| Boolean values | `{{false}}`\
-`{{true}}` | Boolean values.\
-Typically, processing tools will substitute the value False or True, possibly rendered in a distinctive font. |\
+* - Factory default value
+  - `{{factory}}`\
+    `{{nofactory}}`
+  - Text listing the factory default for the current parameter.   This template SHOULD only be used within the description of a parameter that has a factory default value.\
+    This is a hint to processing tools to replace the template reference with text listing the factory default value.  This overrides processing tools' expected default behavior (unless suppressed by `{{nofactory}}`) of placing this text after the rest of the description. Typically, processing tools will generate text of  the form "The factory default value MUST be \<value>.".
 
-| Discriminator parameter description | `{{union}}`\
-`{{nounion}}` | Text explaining the available options and use for the sub-objects which are part of the union.\
-This template SHOULD only be used within the description of (a) a parameter referenced as a discriminatorParameter, or (b) an object that references a discriminatorParameter (@sec:tables).\
-This is a hint to processing tools to replace the template reference with text explaining the union and possible choices of sub-objects. This overrides processing tools' expected default behavior (unless suppressed by `{{nounion}}`) of placing this text after the rest of the description.\
-Typically, processing tools will generate text of the form (a) "This parameter discriminates between the \<objects> union objects.", or (b) "This object MUST be present if, and only if, \<param> is \<object>.", but it MAY be followed by additional text, explaining the use of the available options, if desired. |\
+* - Implementation default value
+  - `{{impldef}}`\
+    `{{noimpldef}}`
+  - Text listing the implementation default for the current parameter.  This template SHOULD only be used within the description of a parameter that has an implementation default value.\
+    This is a hint to processing tools to replace the template reference with text listing the implementation default value.  This overrides processing tools' expected default behavior (unless suppressed by `{{noimpldef}}`) of placing this text after the rest of the description. Typically, processing tools will generate text of  the form "The default value SHOULD be \<value>.".
 
-| Miscellaneous | `{{issue|descr}}`\
-`{{issue|opts|descr}}` | An open issue.\
-If only one argument is supplied, it is descr, which describes the open issue.  If two arguments are supplied, they are opts and descr.\
-The OPTIONAL opts argument is a comma-separated list of options:\
-- The first list item is an issue category that defaults to "XXX".\
-- The second list item is an issue status that defaults to an empty string. Any non-empty status implies that the issue has been resolved.\
-Typically, processing tools will assign a unique ID, e.g. a separate counter for each category of issue, and replace the template reference with the issue category, ID, status and description, possibly rendered in a distinctive font.\
-Markup examples:\
-`{{issue|Will be labeled XXX.}}`\
-`{{issue|IPsec|Will be labeled IPsec.}}`\
-`{{issue|DNS,fixed|Resolved DNS issue.}}` |\
+* - Parameter default value
+  - `{{paramdef}}`\
+    `{{noparamdef}}`
+  - Text listing the parameter default for the current argument.  This template SHOULD only be used within the description of an argument that has a parameter default value.\
+    This is a hint to processing tools to replace the template reference with text listing the parameter default value.  This overrides processing tools' expected default behavior (unless suppressed by `{{noparamdef}}`) of placing this text after the rest of the description. Typically, processing tools will generate text of the form "The default value MUST be \<value>.".
 
-| | `{{empty}}` | Represents an empty string. Typically, processing tools will render such values in a distinctive font, possibly using standard wording, such as <Empty> or "an empty string". |\
+* - Unique keys description
+  - `{{keys}}`\
+    `{{nokeys}}`
+  - A description of the current object's unique keys.\
+    This template SHOULD only be used within the description of a Multi-Instance Object (table) that defines one or more unique keys (@sec:tables).\
+    This is a hint to processing tools to replace the template reference with a description of the object's unique keys. This overrides processing tools' expected default behavior (unless suppressed by `{{nokeys}}`) of describing the unique keys after the description.
 
-| | `{{null}}` | Expands to the appropriate null value for the current parameter's data type (@sec:null-values-and-references), e.g. `{{empty}}`, `{{false}}` or 0. |
+* - Units reference
+  - `{{units}}`
+  - The parameter's units string.\
+    Typically, processing tools will (a) check that the parameter has a units string, and (b) substitute the value of its units string.
+
+* - Boolean values
+  - `{{false}}`\
+    `{{true}}`
+  - Boolean values.\
+    Typically, processing tools will substitute the value False or True, possibly rendered in a distinctive font.
+
+* - Discriminator parameter description
+  - `{{union}}`\
+    `{{nounion}}`
+  - Text explaining the available options and use for the sub-objects which are part of the union.\
+    This template SHOULD only be used within the description of (a) a parameter referenced as a discriminatorParameter, or (b) an object that references a discriminatorParameter (@sec:tables).\
+    This is a hint to processing tools to replace the template reference with text explaining the union and possible choices of sub-objects. This overrides processing tools' expected default behavior (unless suppressed by `{{nounion}}`) of placing this text after the rest of the description.\
+    Typically, processing tools will generate text of the form (a) "This parameter discriminates between the \<objects> union objects.", or (b) "This object MUST be present if, and only if, \<param> is \<object>.", but it MAY be followed by additional text, explaining the use of the available options, if desired.
+
+* - Miscellaneous
+  - `{{issue|descr}}`\
+    `{{issue|opts|descr}}`
+  - An open issue.\
+    If only one argument is supplied, it is descr, which describes the open issue.  If two arguments are supplied, they are opts and descr.\
+    The OPTIONAL opts argument is a comma-separated list of options:\
+    - The first list item is an issue category that defaults to "XXX".\
+    - The second list item is an issue status that defaults to an empty string. Any non-empty status implies that the issue has been resolved.\
+    Typically, processing tools will assign a unique ID, e.g. a separate counter for each category of issue, and replace the template reference with the issue category, ID, status and description, possibly rendered in a distinctive font.
+
+    Markup examples:\
+    `{{issue|Will be labeled XXX.}}`\
+    `{{issue|IPsec|Will be labeled IPsec.}}`\
+    `{{issue|DNS,fixed|Resolved DNS issue.}}`
+
+* -
+  - `{{empty}}`
+  - Represents an empty string. Typically, processing tools will render such values in a distinctive font, possibly using standard wording, such as <Empty> or "an empty string".
+
+* -
+  - `{{null}}`
+  - Expands to the appropriate null value for the current parameter's data type (@sec:null-values-and-references), e.g. `{{empty}}`, `{{false}}` or 0.
+:::
 
 #### HTML Example
 
@@ -1797,39 +1890,48 @@ When defining a new named data type, the following attributes and
 elements are relevant (normative requirements are specified in the
 schema).
 
-: XML Named Data Types {#tbl:xml-named-data-types}
+:::list-table
+XML Named Data Types {#tbl:xml-named-data-types}
 
-| Name    | Description                                                                                   |
-|---------|-----------------------------------------------------------------------------------------------|
-| name    | The data type name. |
-| base    | The base type name, i.e. name of the data type from which this data type is derived.  This is used only where the base type is itself a named data type, not a primitive type. |
-| status  | The data type's {current, deprecated, obsoleted, deleted} status.  This defaults to current, and so is not likely to be specified for a new data type. |
-| description | The data type's description (@sec:descriptions). |
-| list\
-minItems\
-maxItems\
-nestedBrackets\
-size      | If the data type is list-valued, details of the list value.  This allows specification of the maximum and minimum number of items in the list, and of nested list behavior, and also supports a size facet for the list (@sec:data-type-facets).\
-Note that a list-valued data type is always a string as far as the protocol is concerned.  For a list, the rest of the data type specification refers to the individual list items, not to the   parameter value. |
-| size\
-pathRef\
-instanceRef\
-range\
-enumeration\
-enumerationRef\
-pattern\
-units\
-default   | Data type facets (@sec:data-type-facets).  These are permitted only when the base type is a named data type, i.e. when the base attribute is specified. |
-| base64\
-boolean\
-dateTime\
-decimal\
-hexBinary\
-int\
-long\
-string\
-unsignedInt\
-unsignedLong | Primitive data type definition.  These are permitted only when the base type is primitive.  There is an element for each primitive data type, and each element supports only the facets (@sec:data-type-facets) that are appropriate to that data type. |
+* - Name
+  - Description
+* - name
+  - The data type name.
+* - base
+  - The base type name, i.e. name of the data type from which this data type is derived.  This is used only where the base type is itself a named data type, not a primitive type.
+* - status
+  - The data type's {current, deprecated, obsoleted, deleted} status.  This defaults to current, and so is not likely to be specified for a new data type.
+* - description
+  - The data type's description (@sec:descriptions).
+* - list\
+    minItems\
+    maxItems\
+    nestedBrackets\
+    size
+  - If the data type is list-valued, details of the list value.  This allows specification of the maximum and minimum number of items in the list, and of nested list behavior, and also supports a size facet for the list (@sec:data-type-facets).\
+    Note that a list-valued data type is always a string as far as the protocol is concerned.  For a list, the rest of the data type specification refers to the individual list items, not to the parameter value.
+* - size\
+    pathRef\
+    instanceRef\
+    range\
+    enumeration\
+    enumerationRef\
+    pattern\
+    units\
+    default
+  - Data type facets (@sec:data-type-facets).  These are permitted only when the base type is a named data type, i.e. when the base attribute is specified.
+* - base64\
+    boolean\
+    dateTime\
+    decimal\
+    hexBinary\
+    int\
+    long\
+    string\
+    unsignedInt\
+    unsignedLong
+  - Primitive data type definition.  These are permitted only when the base type is primitive.  There is an element for each primitive data type, and each element supports only the facets (@sec:data-type-facets) that are appropriate to that data type.
+:::
 
 For example:
 
@@ -1890,20 +1992,37 @@ not identical.
 The DM Schema defines the following facets (normative requirements are
 specified in the schema):
 
-: XML Data Type Facets {#tbl:xml-data-type-facets}
+:::list-table
+XML Data Type Facets {#tbl:xml-data-type-facets}
 
-| Name             |     Description                                                              |
-|------------------|------------------------------------------------------------------------------|
-| size             | Size ranges for the data type (applies to string, base64, hexBinary and their derived types). Note that the size facet always refers to the actual value, not to the base64- or hexBinary-encoded value.  Prior to the definition of the DM Schema, the maximum sizes of base64 parameters referred to the base64-encoded values.\
+* - Name
+  - Description
+
+* - size
+  - Size ranges for the data type (applies to string, base64, hexBinary and their derived types). Note that the size facet always refers to the actual value, not to the base64- or hexBinary-encoded value.  Prior to the definition of the DM Schema, the maximum sizes of base64 parameters referred to the base64-encoded values.\
 Processing tools that generate reports from DM Instances SHOULD include explicit clarification of whether the size ranges refer to the actual or encoded values.\
-Note that the size facet is also used to specify the size range for list-valued parameters, which are always strings (@sec:parameter-syntax). |
-| pathRef          | Details of how to reference parameters and objects via their Path Names (applies to string and its derived types;  @sec:reference-facets). |
-| instanceRef      | Details of how to reference object instances (table rows) via their Instance Numbers (applies to int, unsignedInt and their derived types; @sec:reference-facets). |
-| range            | Value ranges and step (default step is 1) for the data type (applies to numeric data types and their derived types). |
-| enumeration      | Enumerations for the data type (applies to string and its derived types). |
-| enumerationRef   | Enumerations for the data type, obtained at run-time from the value of a specified parameter (applies to string and its derived types; @sec:reference-facets). |
-| pattern          | Patterns for the data type (applies to string and its derived types). Pattern value syntax is the same as for XML Schema regular expressions. See [@REC-xmlschema-2, {Section F}]. |
-| units            | Units for the data type (applies to numeric data types and their derived types). |
+Note that the size facet is also used to specify the size range for list-valued parameters, which are always strings (@sec:parameter-syntax).
+
+* - pathRef
+  - Details of how to reference parameters and objects via their Path Names (applies to string and its derived types;  @sec:reference-facets).
+
+* - instanceRef
+  - Details of how to reference object instances (table rows) via their Instance Numbers (applies to int, unsignedInt and their derived types; @sec:reference-facets).
+
+* - range
+  - Value ranges and step (default step is 1) for the data type (applies to numeric data types and their derived types).
+
+* - enumeration
+  - Enumerations for the data type (applies to string and its derived types).
+
+* - enumerationRef
+  - Enumerations for the data type, obtained at run-time from the value of a specified parameter (applies to string and its derived types; @sec:reference-facets).
+* - pattern
+  - Patterns for the data type (applies to string and its derived types). Pattern value syntax is the same as for XML Schema regular expressions. See [@REC-xmlschema-2, {Section F}].
+
+* - units
+  - Units for the data type (applies to numeric data types and their derived types).
+:::
 
 It is important to note that the enumeration facet does not necessarily
 define all the valid values for a data type. This is for the following
@@ -2126,75 +2245,105 @@ parameter or object. There are three sorts of reference:
 When defining a path reference, the following attributes and elements
 are relevant (normative requirements are specified in the schema).
 
-: PathRef Facet Definition {#tbl:pathref-facet-definition}
 
-| Name                    | Description                                                                                                       |
-|-------------------------|-------------------------------------------------------------------------------------------------------------------|
-| targetParent            | An XML list of Path Names that can restrict the set of parameters and objects that can be referenced.  If the list is empty (the default), then   anything can be referenced.  Otherwise, only the immediate children of one of the specified objects can be referenced.\
-A "{i}" placeholder in a Path Name acts as a wild card, e.g. "Device.DSL.BondingGroup.{i}.BondedChannel.{i}.Ethernet.".  Path Names cannot contain explicit Instance Identifiers. |
-| targetParentScope       | Specifies the point in the naming hierarchy relative to which targetParent applies (@sec:reference-path-names): normal (default), model or object. |
-| targetType              | Specifies what types of item can be referenced:\
-- **any**: any parameter or object can be referenced (default)\
-- **parameter**: any parameter can be referenced\
-- **object**: any object can be referenced\
-- **single**: any single-instance object can be referenced\
-- **table**: any Multi-Instance Object (table) can be referenced\
-- **row**: any Multi-Instance Object (table) instance (row) can be referenced |
-| targetDataType          | Specifies the valid data types for the referenced parameter.  Is relevant only when targetType is any or parameter.\
-Possible values are as follows:\
-- **any**: a parameter of any data type can be referenced (default)\
-- **base64**: only a base64 parameter can be referenced\
-- **boolean**: only a boolean parameter can be referenced\
-- **dateTime**: only a dateTime parameter can be referenced\
-- **decimal**: only a decimal (or int, long, unsignedInt or unsignedLong) parameter can be referenced\
-- **hexBinary**: only a hexBinary parameter can be referenced\
-- **integer**: only an integer (int, long, unsignedInt or unsignedLong) parameter can be referenced\
-- **int**: only an int parameter can be referenced\
-- **long**: only a long (or int) parameter can be referenced\
-- **string**: only a string parameter can be referenced\
-- **unsignedInt**: only an unsignedInt parameter can be referenced\
-- **unsignedLong**: only an unsignedLong (or unsignedInt) parameter can be referenced\
-- **\<named data type>**: only a parameter of the named data type can be referenced\
-In addition, a parameter whose data type is derived from the specified data type can be referenced.  The built-in type hierarchy (a simplified version of the XML Schema type hierarchy) is as follows:\
-`any`\
-\ \ `base64`\
-\ \ `boolean`\
-\ \ `dateTime`\
-\ \ `hexBinary`\
-\ \ `decimal` \
-\ \ \ `integer`\
-\ \ \ \ \ `long`\
-\ \ \ \ \ \ \ `int`\
-\ \ \ \ \ `unsignedLong`\
-\ \ \ \ \ \ \ `unsignedInt`\
-\ \ `string`\
-Note that any and integer are not valid parameter data types.  They are included in order to support "can reference any data type" and "can reference any numeric data type". |
-| refType                | Specifies the reference type (@sec:reference-types): weak or strong. |
+:::list-table
+PathRef Facet Definition {#tbl:pathref-facet-definition}
+
+* - Name
+  - Description
+
+* - targetParent
+  - An XML list of Path Names that can restrict the set of parameters and objects that can be referenced.  If the list is empty (the default), then   anything can be referenced.  Otherwise, only the immediate children of one of the specified objects can be referenced.\
+    A "{i}" placeholder in a Path Name acts as a wild card, e.g. "Device.DSL.BondingGroup.{i}.BondedChannel.{i}.Ethernet.".  Path Names cannot contain explicit Instance Identifiers.
+
+* - targetParentScope
+  - Specifies the point in the naming hierarchy relative to which targetParent applies (@sec:reference-path-names): normal (default), model or object.
+
+* - targetType
+  - Specifies what types of item can be referenced:\
+    - **any**: any parameter or object can be referenced (default)\
+    - **parameter**: any parameter can be referenced\
+    - **object**: any object can be referenced\
+    - **single**: any single-instance object can be referenced\
+    - **table**: any Multi-Instance Object (table) can be referenced\
+    - **row**: any Multi-Instance Object (table) instance (row) can be referenced
+
+* - targetDataType
+  - Specifies the valid data types for the referenced parameter.  Is relevant only when targetType is any or parameter.\
+    Possible values are as follows:\
+    - **any**: a parameter of any data type can be referenced (default)\
+    - **base64**: only a base64 parameter can be referenced\
+    - **boolean**: only a boolean parameter can be referenced\
+    - **dateTime**: only a dateTime parameter can be referenced\
+    - **decimal**: only a decimal (or int, long, unsignedInt or unsignedLong) parameter can be referenced\
+    - **hexBinary**: only a hexBinary parameter can be referenced\
+    - **integer**: only an integer (int, long, unsignedInt or unsignedLong) parameter can be referenced\
+    - **int**: only an int parameter can be referenced\
+    - **long**: only a long (or int) parameter can be referenced\
+    - **string**: only a string parameter can be referenced\
+    - **unsignedInt**: only an unsignedInt parameter can be referenced\
+    - **unsignedLong**: only an unsignedLong (or unsignedInt) parameter can be referenced\
+    - **\<named data type>**: only a parameter of the named data type can be referenced\
+    In addition, a parameter whose data type is derived from the specified data type can be referenced.  The built-in type hierarchy (a simplified version of the XML Schema type hierarchy) is as follows:\
+    `any`\
+    \ \ `base64`\
+    \ \ `boolean`\
+    \ \ `dateTime`\
+    \ \ `hexBinary`\
+    \ \ `decimal` \
+    \ \ \ `integer`\
+    \ \ \ \ \ `long`\
+    \ \ \ \ \ \ \ `int`\
+    \ \ \ \ \ `unsignedLong`\
+    \ \ \ \ \ \ \ `unsignedInt`\
+    \ \ `string`\
+    Note that any and integer are not valid parameter data types.  They are included in order to support "can reference any data type" and "can reference any numeric data type".
+
+* - refType
+  - Specifies the reference type (@sec:reference-types): weak or strong.
+:::
+
 When defining an instance reference, the following attributes and
 elements are relevant (normative requirements are specified in the
 schema).
 
-: InstanceRef Facet Definition {#tbl:instanceref-facet-definition}
+:::list-table
+InstanceRef Facet Definition {#tbl:instanceref-facet-definition}
 
-| Name                    | Description                                                                                                       |
-|-------------------------|-------------------------------------------------------------------------------------------------------------------|
-| targetParent            | Specifies the Path Name of the Multi-Instance Object (table) of which an instance (row) is being referenced.\
-"{i}" placeholders and explicit Instance Identifiers are not permitted in the Path Name. targetParentScope can be used to specify Path Names relative to the Root or Service Object or the current object. |
-| targetParentScope       | Specifies the point in the naming hierarchy relative to which targetParent applies (@sec:reference-path-names): normal (default), model or object. |
-| refType                 | Specifies the reference type (@sec:reference-types): weak or strong. |
+* - Name
+  - Description
+
+* - targetParent
+  - Specifies the Path Name of the Multi-Instance Object (table) of which an instance (row) is being referenced.\
+    "{i}" placeholders and explicit Instance Identifiers are not permitted in the Path Name. targetParentScope can be used to specify Path Names relative to the Root or Service Object or the current object.
+
+* - targetParentScope
+  - Specifies the point in the naming hierarchy relative to which targetParent applies (@sec:reference-path-names): normal (default), model or object.
+
+* - refType
+  - Specifies the reference type (@sec:reference-types): weak or strong.
+:::
 
 When defining an enumeration reference, the following attributes and
 elements are relevant (normative requirements are specified in the
 schema).
 
-: EnumerationRef Facet Definition {#tbl:enumerationref-facet-definition}
+:::list-table
+EnumerationRef Facet Definition {#tbl:enumerationref-facet-definition}
 
-| Name                    | Description                                                                                                       |
-|-------------------------|-------------------------------------------------------------------------------------------------------------------|
-| targetParam             | Specifies the Path Name of the list-valued parameter whose current value indicates the valid enumerations for this parameter. |
-| targetParamScope        | Specifies the point in the naming hierarchy relative to which targetParam applies (@sec:reference-path-names): normal (default), model or object. |
-| nullValue               | Specifies the parameter value that indicates that none of the values of the referenced parameter currently apply (if not specified, no such value is designated).\
-Note that if this parameter is list-valued then nullValue is not relevant, because this condition will be indicated by an empty list. |
+* - Name
+  - Description
+
+* - targetParam
+  - Specifies the Path Name of the list-valued parameter whose current value indicates the valid enumerations for this parameter.
+
+* - targetParamScope
+  - Specifies the point in the naming hierarchy relative to which targetParam applies (@sec:reference-path-names): normal (default), model or object.
+
+* - nullValue
+  - Specifies the parameter value that indicates that none of the values of the referenced parameter currently apply (if not specified, no such value is designated).\
+    Note that if this parameter is list-valued then nullValue is not relevant, because this condition will be indicated by an empty list.
+:::
 
 The following examples illustrate the various possible types of
 reference.
@@ -2305,31 +2454,53 @@ The examples of @sec:named-data-types considered only the size facet, but in gen
 all facets that are applicable to the data type have to be considered.
 The base type restriction requirements for each facet are as follows:
 
-: XML Facet Inheritance Rules {#tbl:xml-facet-inheritance-rules}
+:::list-table
+XML Facet Inheritance Rules {#tbl:xml-facet-inheritance-rules}
 
-| Facet                   | Requirements                                                                                                  |
-|-------------------------|-------------------------------------------------------------------------------------------------------------------|
-| size                    | The derived data type can define sizes in any way, provided that the new sizes do not permit any values that are not valid for the base type. |
-| pathRef                 | The derived data type can modify the data type in the following ways:\
-- By "promoting" status to a "higher" value, where the lowest to highest ordering is: current, deprecated, obsoleted, deleted.  For example, current can be changed to deprecated, and obsoleted can be changed to deleted, but deleted cannot be changed back to obsoleted.  When promoting status, the deprecation, obsoletion and deletion rules of @sec:deprecated-and-obsoleted-items MUST be obeyed.\
-- By changing targetParent to narrow the set of possible parent objects.\
-- By changing targetType to narrow the set of possible target types.\
-- By changing targetDataType to narrow the set of possible target data types. |
-| instanceRef             | The derived data type can modify the data type in the following ways:\
-- By "promoting" status to a "higher" value, as described for pathRef.\
-- By changing targetParent to narrow the set of possible parent objects. |
-| range                   | The derived data type can define ranges in any way, provided that the new ranges do not permit any values that are not valid for the base type. |
-| enumeration             | The derived data type can modify existing enumeration values in the following ways:\
-- By "promoting" access from readOnly to readWrite or writeOnceReadOnly.\
-- By "promoting" status to a "higher" value, as described for pathRef.\
-- By "promoting" optional from False to True.\
-- By adding a code, if none was previously specified.\
-- By using the action attribute to prefix, extend or replace the description (see below and @sec:description-modifications).\
-The derived data type can add new enumeration values. |
-| enumerationRef          | The derived data type can modify the data type by "promoting" status to a "higher" value, as described for pathRef. |
-| pattern                 | The derived data type can modify existing pattern values by changing access, status, optional and description exactly as for enumerations.\
-The derived data type can add new patterns and/or replace existing patterns with new patterns, provided that the new patterns do not permit any values that are not valid for the base type.  For example a single pattern "[AB]" could be replaced with "A" and "B", but "C" could not be added. |
-| units                   | The derived data type can add units if the base type did not specify any. |
+* - Facet
+  - Requirements
+
+* - size
+  - The derived data type can define sizes in any way, provided that the new sizes do not permit any values that are not valid for the base type.
+
+* - pathRef
+  - The derived data type can modify the data type in the following ways:
+
+    - By "promoting" status to a "higher" value, where the lowest to highest ordering is: current, deprecated, obsoleted, deleted.  For example, current can be changed to deprecated, and obsoleted can be changed to deleted, but deleted cannot be changed back to obsoleted.  When promoting status, the deprecation, obsoletion and deletion rules of @sec:deprecated-and-obsoleted-items MUST be obeyed.\
+    - By changing targetParent to narrow the set of possible parent objects.\
+    - By changing targetType to narrow the set of possible target types.\
+    - By changing targetDataType to narrow the set of possible target data types.
+
+* - instanceRef
+  - The derived data type can modify the data type in the following ways:
+
+    - By "promoting" status to a "higher" value, as described for pathRef.\
+    - By changing targetParent to narrow the set of possible parent objects.
+
+* - range
+  - The derived data type can define ranges in any way, provided that the new ranges do not permit any values that are not valid for the base type.
+
+* - enumeration
+  - The derived data type can modify existing enumeration values in the following ways:
+
+    - By "promoting" access from read-only to read-write or write-once-read-only.
+    - By "promoting" status to a "higher" value, as described for pathRef.
+    - By "promoting" optional from False to True.
+    - By adding a code, if none was previously specified.
+    - By using the action attribute to prefix, extend or replace the description (see below and @sec:description-modifications).
+
+    The derived data type can add new enumeration values.
+
+* - enumerationRef
+  - The derived data type can modify the data type by "promoting" status to a "higher" value, as described for pathRef.
+
+* - pattern
+  - The derived data type can modify existing pattern values by changing access, status, optional and description exactly as for enumerations.\
+    The derived data type can add new patterns and/or replace existing patterns with new patterns, provided that the new patterns do not permit any values that are not valid for the base type.  For example a single pattern "[AB]" could be replaced with "A" and "B", but "C" could not be added.
+
+* - units
+  - The derived data type can add units if the base type did not specify any.
+:::
 
 Most of the above requirements are non-normative, because it has to be
 possible to correct errors. For example, if the base type supports a
@@ -2639,19 +2810,48 @@ within component, model and object elements. When defining a new
 parameter, the following attributes and elements are relevant (normative
 requirements are specified in the schema).
 
-: XML Parameter Definition {#tbl:xml-parameter-definition}
+:::{.list-table .valign-top aligns=l,l}
+  XML Parameter Definition {#tbl:xml-parameter-definition}
 
-| Name              | Description                                                                                                 |
-|-------------------|-------------------------------------------------------------------------------------------------------------|
-| name              | The parameter name (@sec:general-notation). |
-| access            | Whether the parameter is writable (readWrite), read-only (readOnly), or writable once then read-only (writeOnceReadOnly). |
-| version           | The data model version (of the form m.n or m.n.p) in which this parameter was first defined.  This MUST be present if, and only if, it's a later version than the parent object's version (@sec:versions). |
-| status            | The parameter's {current, deprecated, obsoleted, deleted} status.  This defaults to current, and so is not likely to be specified for a new parameter. |
-| activeNotify      | The parameter's {normal, forceEnabled, forceDefaultEnabled, canDeny} Active Notification status.  This defaults to normal, and so is not often specified for a new parameter.\
-Note that in USP, forceEnabled and forceDefaultEnabled are not applicable and thus are equivalent to normal. |
-| forcedInform      | For CWMP only, the parameter's Forced Inform status.  This defaults to False, and so is not often specified for a new parameter. |
-| description       | The parameter's description (@sec:descriptions). |
-| syntax            | The parameter's syntax (@sec:parameter-syntax). |
+   * - Name
+     - Description
+
+   * - name
+     - The parameter name (@sec:general-notation).
+
+   * - access
+     - Whether the parameter is read-write, read-only, or write-once-read-only.
+  
+   * - version
+     - The data model version (of the form m.n or m.n.p) in which this parameter was first defined.  This MUST be present if, and only if, it's a later version than the parent object's version (@sec:versions).
+
+   * - status
+     - The parameter's {current, deprecated, obsoleted, deleted} status.  This defaults to current, and so is not likely to be specified for a new parameter.
+
+   * - activeNotify
+     - The parameter's Active Notification status. This attribute determines whether the Controller can enable active notification for the parameter.
+       It can take one of the following values:
+
+       * normal: The Controller can enable or disable active notification for this parameter. This is the default value.
+       * forceEnabled: Active notification is always enabled for this parameter. The Controller cannot disable it.
+       * forceDefaultEnabled: Active notification is enabled by default for this parameter. The Controller can disable it.
+       * canDeny: The Agent MAY deny a request from the Controller to enable active notification for this parameter.
+
+       The canDeny value is intended for parameters that change very frequently (e.g., statistics or counters), where sending notifications for every change would generate excessive network traffic and system load.
+
+       This value SHOULD be used sparingly and only for parameters where denying notifications has a clear justification.
+       It SHOULD NOT be used for configuration parameters, where Controllers need to track changes, or for parameters like `Alias` that change infrequently.
+
+   * - forcedInform
+     - For CWMP only, the parameter's Forced Inform status.  This defaults to False, and so is not often specified for a new parameter.
+
+   * - description
+     - The parameter's description (@sec:descriptions).
+
+   * - Syntax
+     - The parameter's syntax (@sec:parameter-syntax).
+:::
+
 
 #### Parameter Syntax
 
@@ -2660,41 +2860,58 @@ only within parameter elements. When defining a new parameter, the
 following attributes and elements are relevant (normative requirements
 are specified in the schema).
 
-: XML Parameter Syntax {#tbl:xml-parameter-syntax}
+:::list-table
+XML Parameter Syntax {#tbl:xml-parameter-syntax}
 
-| Name              | Description                                                                                                 |
-|-------------------|-------------------------------------------------------------------------------------------------------------|
-| hidden            | Whether the value is hidden on readback.  This defaults to False, and so is not often specified for a new parameter.\
-Setting both hidden and secured to True is not permitted. |
-| secured           | For USP, whether the value is secured, i.e. is hidden on readback unless the Controller has a "secured" role. This defaults to False.\
-For CWMP, behaves the same as hidden (CWMP has no concept of a "secured" role).\
-Setting both hidden and secured to True is not permitted. |
-| command           | For CWMP only, whether setting the parameter triggers an Agent action as opposed to changing the configuration. This defaults to False.\
-Note that this is an CWMP-only attribute (not an element) and is   different from the USP-only command element (@sec:commands-usp-only). |
-| list\
-minItems\
-maxItems\
-nestedBrackets\
-size                | If the parameter is list-valued, details of the list value.  This allows specification of the maximum and minimum number of items in the list, and of nested list behavior, and also supports a size facet for the list (@sec:data-type-facets).\
-Note that a list-valued parameter is always a string as far as the protocol is concerned.  For a list, the rest of the syntax specification refers to the individual list items, not to the parameter value. |
-| base64\
-boolean\
-dateTime\
-decimal\
-hexBinary\
-int\
-long\
-string\
-unsignedInt\
-unsignedLong         | If the parameter is of a primitive data type, specifies a primitive data type reference, e.g. \<int>.  If the parameter data type is derived from a   primitive data type, specifies an anonymous primitive data type definition (@sec:anonymous-data-types), e.g. \<int>\<range maxInclusive="255"/>\</int>.  Each primitive data type element   supports only the facets (@sec:data-type-facets) that are appropriate to that data type. |
-| dataType           | If the parameter is of a named data type, specifies a named data type (@sec:named-data-types) reference, e.g. \<dataType ref="IPAddress"/>.\
-If the parameter data type is derived from a named data type, specifies an anonymous named data type (@sec:anonymous-data-types) definition, e.g. \<dataType base="IPAddress">\<size   maxLength="15"/>\</dataType> |
-| default          | Object, factory, implementation or parameter default.\
-- Object defaults apply only to parameters that can be created as a result of adding an Object.\
-- Factory defaults apply to all parameters (if a factory default is specified, it also acts as object default for applicable parameters).\
-- Implementation defaults apply to all parameters (they are informational defaults that are likely after a reset or if no other value is available).\
-- Parameter defaults apply only to command and event arguments.\
-If the parameter is list-valued, the default value has to be placed within square brackets, e.g. \<default type="object" value="[1,2,3]"/>. |
+* - Name
+  - Description
+
+* - hidden
+  - Whether the value is hidden on readback.  This defaults to False, and so is not often specified for a new parameter.\
+    Setting both hidden and secured to True is not permitted.
+
+* - secured
+  - For USP, whether the value is secured, i.e. is hidden on readback unless the Controller has a "secured" role. This defaults to False.\
+    For CWMP, behaves the same as hidden (CWMP has no concept of a "secured" role).\
+    Setting both hidden and secured to True is not permitted.
+
+* - command
+  - For CWMP only, whether setting the parameter triggers an Agent action as opposed to changing the configuration. This defaults to False.\
+    Note that this is an CWMP-only attribute (not an element) and is   different from the USP-only command element (@sec:commands-usp-only).
+
+* - list\
+    minItems\
+    maxItems\
+    nestedBrackets\
+    size
+  - If the parameter is list-valued, details of the list value.  This allows specification of the maximum and minimum number of items in the list, and of nested list behavior, and also supports a size facet for the list (@sec:data-type-facets).\
+    Note that a list-valued parameter is always a string as far as the protocol is concerned.  For a list, the rest of the syntax specification refers to the individual list items, not to the parameter value.
+
+* - base64\
+    boolean\
+    dateTime\
+    decimal\
+    hexBinary\
+    int\
+    long\
+    string\
+    unsignedInt\
+    unsignedLong
+  - If the parameter is of a primitive data type, specifies a primitive data type reference, e.g. \<int>.  If the parameter data type is derived from a   primitive data type, specifies an anonymous primitive data type definition (@sec:anonymous-data-types), e.g. \<int>\<range maxInclusive="255"/>\</int>.  Each primitive data type element   supports only the facets (@sec:data-type-facets) that are appropriate to that data type.
+
+* - dataType
+  - If the parameter is of a named data type, specifies a named data type (@sec:named-data-types) reference, e.g. \<dataType ref="IPAddress"/>.\
+    If the parameter data type is derived from a named data type, specifies an anonymous named data type (@sec:anonymous-data-types) definition, e.g. \<dataType base="IPAddress">\<size   maxLength="15"/>\</dataType>
+
+* - default
+  - Object, factory, implementation or parameter default.
+    - Object defaults apply only to parameters that can be created as a result of adding an Object.
+    - Factory defaults apply to all parameters (if a factory default is specified, it also acts as object default for applicable parameters).
+    - Implementation defaults apply to all parameters (they are informational defaults that are likely after a reset or if no other value is available).
+    - Parameter defaults apply only to command and event arguments.
+
+    If the parameter is list-valued, the default value has to be placed within square brackets, e.g. \<default type="object" value="[1,2,3]"/>.
+:::
 
 ### Commands (USP Only)
 
@@ -2781,44 +2998,88 @@ component and model elements. When defining a new object, the following
 attributes and elements are relevant (normative requirements are
 specified in the schema).
 
-: XML Object Definition {#tbl:xml-object-definition}
+:::list-table
 
-| Name              | Description                                                                                                 |
-|-------------------|-------------------------------------------------------------------------------------------------------------|
-| name              | The object name, specified as a partial path (@sec:general-notation). |
-| access            | Whether object instances can be Added or Deleted (readWrite) or not (readOnly).  Adding or deleting instances is meaningful only for a Multi-Instance Object (table). |
-| minEntries        | The minimum number of instances of this object (always less than or equal to maxEntries). |
-| maxEntries        | The maximum number of instances of this object (can be "unbounded").  minEntries and maxEntries allow the object to be placed into one of three categories:\
-- **minEntries=0, maxEntries=1**: single-instance object which might not be allowed to exist, e.g. because only one of it and another object can exist at the same time.  Note that this is not the same thing as an optional object (in a sense, all objects are optional; requirements are specified via profiles).  For an object with minEntries=0, maxEntries=1, the description MUST explain why it might not be allowed to exist, e.g. referencing the other objects that constrain it.\
-- **minEntries=1, maxEntries=1**: single-instance object that is always allowed to exist.\
-- **All other cases**: Multi-Instance Object (table) (@sec:tables). |
-| mountType         | For USP only, denotes whether this object is a Mountable Object, a Mount Point, or none. Possible values are:\
-- **mountPoint**: this object is a Mount Point.\
-- **mountable**: this object is a Mountable Object. Such an object has to be a direct child of the Root or Service Object (DEPRECATED in DM Schema v1.10 because Mountable Objects are now determined automatically).\
-**none**: this object is neither a Mountable Object nor a Mount Point (DEPRECATED in DM Schema v1.10, and no longer the default, because Mountable Objects are now determined automatically). |
-| version           | The data model version (of the form m.n or m.n.p) in which this object was first defined.  This MUST be specified, even if it's the same as the parent model or object's version (@sec:versions). |
-| status            | The object's {current, deprecated, obsoleted, deleted} status.  This defaults to current, and so is not likely to be specified for a new object. |
-| description       | The object's description (@sec:descriptions). |
-| component         | The components that are referenced (included) by the object (@sec:components). |
-| parameter         | The object's parameter definitions (@sec:parameters). |
-| command           | For USP only, the object's command definitions (@sec:commands-usp-only). |
-| event             | For USP only, the object's event definitions (@sec:events-usp-only). |
+XML Object Definition {#tbl:xml-object-definition}
+
+* - Name
+  - Description
+
+* - name
+  - The object name, specified as a partial path (@sec:general-notation).
+
+* - access
+  - Whether object instances can be Added or Deleted (read-write) or not (read-only).  Adding or deleting instances is meaningful only for a Multi-Instance Object (table).
+
+* - minEntries
+  - The minimum number of instances of this object (always less than or equal to maxEntries).
+
+* - maxEntries
+  - The maximum number of instances of this object (can be "unbounded").  minEntries and maxEntries allow the object to be placed into one of three categories:
+
+    - **minEntries=0, maxEntries=1**: single-instance object which might not be allowed to exist, e.g. because only one of it and another object can exist at the same time.  Note that this is not the same thing as an optional object (in a sense, all objects are optional; requirements are specified via profiles).  For an object with minEntries=0, maxEntries=1, the description MUST explain why it might not be allowed to exist, e.g. referencing the other objects that constrain it.\
+    - **minEntries=1, maxEntries=1**: single-instance object that is always allowed to exist.\
+
+    - **All other cases**: Multi-Instance Object (table) (@sec:tables).
+
+* - mountType
+  - For USP only, denotes whether this object is a Mountable Object, a Mount Point, or none. Possible values are:
+
+    - **mountPoint**: this object is a Mount Point.\
+    - **mountable**: this object is a Mountable Object. Such an object has to be a direct child of the Root or Service Object (DEPRECATED in DM Schema v1.10 because Mountable Objects are now determined automatically).
+
+    **none**: this object is neither a Mountable Object nor a Mount Point (DEPRECATED in DM Schema v1.10, and no longer the default, because Mountable Objects are now determined automatically).
+
+* - version
+  - The data model version (of the form m.n or m.n.p) in which this object was first defined.  This MUST be specified, even if it's the same as the parent model or object's version (@sec:versions).
+
+* - status
+  - The object's {current, deprecated, obsoleted, deleted} status.  This defaults to current, and so is not likely to be specified for a new object.
+
+* - description
+  - The object's description (@sec:descriptions).
+
+* - component
+  - The components that are referenced (included) by the object (@sec:components).
+
+* - parameter
+  - The object's parameter definitions (@sec:parameters).
+
+* - command
+  - For USP only, the object's command definitions (@sec:commands-usp-only).
+
+* - event
+  - For USP only, the object's event definitions (@sec:events-usp-only).
+:::
 
 #### Tables
 
 If an object is a table, several other attributes and elements are
 relevant (normative requirements are specified in the schema).
 
-: XML Table Definition {#tbl:xml-table-definition}
+:::list-table
+ XML Table Definition {#tbl:xml-table-definition}
 
-| Name              | Description                                                                                                 |
-|-------------------|-------------------------------------------------------------------------------------------------------------|
-| name              | For a table, the last part of the name has to be "{i}." (@sec:general-notation). |
-| numEntriesParameter | The name of the parameter (in the parent object) that contains the number of entries in the table.  Such a parameter is needed whenever there is a variable number of entries, i.e. whenever maxEntries is unbounded or is greater than minEntries. |
-| enableParameter   | For CWMP only, the name of the parameter (in each table entry) that enables and disables that table entry.  Such a parameter is needed whenever access is readWrite (so the Controller might be able to create entries) and at least one uniqueKey element that defines a functional key is present. |
-| uniqueKey         | An element that specifies a unique key by referencing those parameters that constitute the unique key (all of these parameters are single-valued, i.e. not list-valued).\
-In CWMP only, for a non-functional key, or if the table has no enableParameter, the uniqueness requirement always applies; for a functional key, and if the table has an enableParameter, the uniqueness requirement applies only to enabled table entries. |
-| discriminatorParameter | The name of the parameter (in the parent object) that selects which of the available objects that are part of the same union to use. Such a discriminator parameter is needed whenever there are multiple alternative sub-objects, i.e. objects where minEntries=0 and maxEntries=1. |
+* - Name
+  - Description
+
+* - name
+  - For a table, the last part of the name has to be "{i}." (@sec:general-notation).
+
+* - numEntriesParameter
+  - The name of the parameter (in the parent object) that contains the number of entries in the table.  Such a parameter is needed whenever there is a variable number of entries, i.e. whenever maxEntries is unbounded or is greater than minEntries.
+
+* - enableParameter
+  - For CWMP only, the name of the parameter (in each table entry) that enables and disables that table entry.  Such a parameter is needed whenever access is read-write (so the Controller might be able to create entries) and at least one uniqueKey element that defines a functional key is present.
+
+* - uniqueKey
+  - An element that specifies a unique key by referencing those parameters that constitute the unique key. If a key is list-valued, the value MUST conceptually be regarded as a set when being compared, i.e. the comparison has to ignore the item order and any repeated items. For example, a list-valued key with the value "a,b,a" would be considered equal to "b,a".
+
+    In CWMP only, for a non-functional key, or if the table has no enableParameter, the uniqueness requirement always applies; for a functional key, and if the table has an enableParameter, the uniqueness requirement applies only to enabled table entries.
+
+* - discriminatorParameter
+  - The name of the parameter (in the parent object) that selects which of the available objects that are part of the same union to use. Such a discriminator parameter is needed whenever there are multiple alternative sub-objects, i.e. objects where minEntries=0 and maxEntries=1.
+:::
 
 Each unique key is either functional or non-functional:
 
@@ -2899,25 +3160,52 @@ but there are rules. These rules are not specified in the DM Schema.
 
 The following rules govern parameter modifications.
 
-: XML Parameter Modification {#tbl:xml-parameter-modification}
+:::list-table
+XML Parameter Modification {#tbl:xml-parameter-modification}
 
-| Name              | Description                                                                                                 |
-|-------------------|-------------------------------------------------------------------------------------------------------------|
-| access            | Can be "promoted" from readOnly to readWrite or writeOnceReadOnly. |
-| version           | Cannot be changed. |
-| status            | Can be "promoted" to a "higher" value, where the lowest to highest ordering is: current, deprecated, obsoleted, deleted.  For example, current can be changed to deprecated, and obsoleted can be changed to deleted, but deleted cannot be changed back to obsoleted.  When promoting status, the deprecation, obsoletion and deletion rules of @sec:deprecated-and-obsoleted-items MUST be obeyed. |
-| activeNotify      | Can be changed from forceEnabled to forceDefaultEnabled.  No other changes are permitted. |
-| forcedInform      | Cannot be changed. |
-| description       | Can be prefixed, extended or replaced via use of the action attribute (@sec:description-modifications).  When changing the description, behavioral backwards compatibility MUST be preserved. |
-| syntax/hidden     | Can be replaced with secured. |
-| syntax/secured    | Can replace hidden. |
-| syntax/command    | Cannot be changed. |
-| syntax/list       | Can add or modify the list element in the following ways:\
-- Can convert a non-list string parameter to a list provided that an empty string was already a valid value with the appropriate meaning.\
-- Can adjust limits on numbers of items, and on the list size, provided that the new rules do not permit any values that were not valid for the previous version of the parameter. |
-| syntax/int etc.\
-syntax/dataType     | Can make any change that expands the value space, e.g. can extend ranges or add enumerations. |
-| syntax/default    | A default can be added if the parameter did not already have one. |
+* - Name
+  - Description
+
+* - access
+  - Can be "promoted" from read-only to read-write or write-once-read-only.
+
+* - version
+  - Cannot be changed.
+
+* - status
+  - Can be "promoted" to a "higher" value, where the lowest to highest ordering is: current, deprecated, obsoleted, deleted.  For example, current can be changed to deprecated, and obsoleted can be changed to deleted, but deleted cannot be changed back to obsoleted.  When promoting status, the deprecation, obsoletion and deletion rules of @sec:deprecated-and-obsoleted-items MUST be obeyed.
+
+* - activeNotify
+  - Can be changed from forceEnabled to forceDefaultEnabled.  No other changes are permitted.
+
+* - forcedInform
+  - Cannot be changed.
+
+* - description
+  - Can be prefixed, extended or replaced via use of the action attribute (@sec:description-modifications).  When changing the description, behavioral backwards compatibility MUST be preserved.
+
+* - syntax/hidden
+  - Can be replaced with secured.
+
+* - syntax/secured
+  - Can replace hidden.
+
+* - syntax/command
+  - Cannot be changed.
+
+* - syntax/list
+  - Can add or modify the list element in the following ways:
+
+    - Can convert a non-list string parameter to a list provided that an empty string was already a valid value with the appropriate meaning.
+    - Can adjust limits on numbers of items, and on the list size, provided that the new rules do not permit any values that were not valid for the previous version of the parameter.
+
+* - syntax/int etc.\
+    syntax/dataType
+  - Can make any change that expands the value space, e.g. can extend ranges or add enumerations.
+
+* - syntax/default
+  - A default can be added if the parameter did not already have one.
+:::
 
 Most of the above requirements are non-normative, because it has to be
 possible to correct errors in a previous version of a parameter.
@@ -2972,7 +3260,7 @@ The following rules govern object modifications.
 
 | Name              | Description                                                                                                 |
 |-------------------|-------------------------------------------------------------------------------------------------------------|
-| access            | Can be "promoted" from readOnly to readWrite. |
+| access            | Can be "promoted" from read-only to read-write. |
 | minEntries        | Cannot be changed. |
 | maxEntries        | Cannot be changed. |
 | numEntriesParameter | Cannot be changed, unless was previously missing, in which case can be added. |
@@ -3016,15 +3304,20 @@ profile is modified in a way that contravenes the above rules.
 The following rules govern description modifications. They apply to all
 description elements.
 
-: XML Description Modification {#tbl:xml-description-modification}
+:::list-table
+XML Description Modification {#tbl:xml-description-modification}
 
-| Name              | Description                                                                                                 |
-|-------------------|-------------------------------------------------------------------------------------------------------------|
-| action            | Determines how the description will be modified; allowed values are:\
-- **create**: create a new description (this is the default but is of course not permitted when modifying a description).\
-- **replace**: replace the existing description with the new text.\
-- **append**: append the new text to the existing description.\
-- **prefix**: prefix the existing description with the new text. |
+* - Name
+  - Description
+
+* - action
+  - Determines how the description will be modified; allowed values are:
+
+    - **create**: create a new description (this is the default but is of course not permitted when modifying a description).
+    - **replace**: replace the existing description with the new text.
+    - **append**: append the new text to the existing description.
+    - **prefix**: prefix the existing description with the new text.
+:::
 
 In the case of **prefix** and **append**, processing tools SHOULD insert
 a line break between the existing description and the new text.
@@ -3174,6 +3467,11 @@ DMR Schema Usage {#tbl:dmr-schema-usage}
   - boolean
   - Indicates that a parameter description doesn't contain a {{units}}
     template, so shouldn't warn about its absence
+
+* - dmr:noVersionCheck
+  - boolean
+  - Indicates that the version won't be checked when comparing with the previous data
+    model version (it can be useful when fixing incorrect version attributes)
 
 * - dmr:previousParameter
   - string
@@ -3383,10 +3681,33 @@ reference is no different from direct use of the referenced character
 
 ### Data Model Item Names
 
-All data model item names, i.e. data type, component, data model,
+#. All data model item names, i.e. data type, component, data model,
 object, parameter and profile names, MUST start with an upper-case
 letter (or an underscore for an internal data type, component, model
 or profile) and MUST NOT contain hyphens or non-initial underscores.
+Example: `DeviceInfo` (valid), `_InternalModel` (valid), `device-info` (invalid), `Device_Info` (invalid).
+
+#. Acronyms within data model item names MUST be written in upper-case letters.
+Example: `IPAddressList` (valid), `IpAddressList` (invalid).
+
+#. Parameter names that represent a list MUST indicate plurality, either through a plural noun or by using a suffix such as List.
+Example: `UserNames` (valid), `UserName` (invalid), `IPAddressList` (valid), `ListOfParameters`(valid).
+
+#. Object names that represent a multi-instance object (table) MUST be expressed in the singular form.
+Example: `.User.{i}.` (valid), `.Users.{i}.` (invalid).
+
+#. Parameter names MUST follow the PascalCase naming convention.
+Example: `IPRangeList` (valid), `ip_range_list` (invalid), `IpRangeList` (invalid).
+
+#. Enumeration values MUST follow the PascalCase naming convention.
+Example: `RegistrationInProgress` (valid), `Registrationinprogress` (invalid).
+
+#. Enumeration values representing acronyms MUST be written in upper-case letters.
+Example: `HTTP` (valid), `Gps` (invalid).
+
+#. Enumeration values representing an error MUST be prefixed with Error_. The word following the prefix MUST use PascalCase.
+Underscores MUST NOT be used except to separate the Error_ prefix from the error condition.
+Examples: `Error_Timeout` (valid), `Error_CannotResolveHost` (valid), `ErrorTimeout` (invalid), `Errorcannotresolvehost` (invalid).
 
 ### DM and DMR Schema Versions
 
@@ -3676,35 +3997,51 @@ Each HTML data model report contains the following sections:
 | Inform and Notification Requirements | Lists those Parameters within the report that are: forced inform parameters, forced active notification parameters, and parameters for which active notification can be denied. |
 | Profile Definitions | Profile definitions, showing Object and Parameter requirements. Which Profiles are included depends on whether it is a full or partial (last only) report. |
 
+
 ## Data Model Definition
 
 Parameters make use of a limited subset of the default SOAP data types [@NOTE-SOAP-20000508]. The
 notation used to represent these types within the report is
 listed in the following table.
 
-| Type              | Description                                                                                                 |
-|-------------------|-------------------------------------------------------------------------------------------------------------|
-| object            | A container for parameters and/or other objects.  The full Path Name of a parameter is given by the parameter name appended to the full Path Name of   the object it is contained within. |\
+:::list-table
 
-| string            | For strings, a minimum and maximum allowed length can be indicated using the form string(Min:Max), where Min and Max are the minimum and maximum string length in characters.  If either Min or Max are missing, this indicates no limit, and if Min is missing the colon can also be omitted, as in string(Max).  Multiple   comma-separated ranges can be specified, in which case the string length will be in one of the ranges. |\
+* - Type
+  - Description
 
-| decimal           | Decimal number, with optional sign and optional fractional part.  For some decimal types, a value range is given using the form decimal(Min:Max) or decimal(Min:Max step Step) where the Min and Max values are inclusive.  If either Min or Max are missing, this indicates no limit.  If Step is missing, this indicates a step of 1.0.  Multiple comma-separated ranges can be specified, in which case the value will be in one of the ranges. |\
+* - object
+  - A container for parameters and/or other objects.  The full Path Name of a parameter is given by the parameter name appended to the full Path Name of   the object it is contained within.
 
-| int               | Integer in the range -2147483648 to +2147483647, inclusive.  For some int types, a value range is given using the form int(Min:Max) or int(Min:Max step Step) where the Min and Max values are inclusive.  If either Min or Max are missing, this indicates no limit.  If Step is missing, this indicates a step of 1.  Multiple comma-separated ranges can be specified, in which case the value will be in one of the ranges. |\
+* - string
+  - For strings, a minimum and maximum allowed length can be indicated using the form string(Min:Max), where Min and Max are the minimum and maximum string length in characters.  If either Min or Max are missing, this indicates no limit, and if Min is missing the colon can also be omitted, as in string(Max).  Multiple   comma-separated ranges can be specified, in which case the string length will be in one of the ranges.
 
-| long              | Long integer in the range -9223372036854775808 to 9223372036854775807, inclusive. For some long types, a value range is given using the form long(Min:Max) or long(Min:Max step Step), where the Min and Max values are inclusive.  If either Min or Max are missing, this indicates no limit. If Step is missing, this indicates a step of 1.  Multiple comma-separated ranges can be   specified, in which case the value will be in one of the ranges. |\
+* - decimal
+  - Decimal number, with optional sign and optional fractional part.  For some decimal types, a value range is given using the form decimal(Min:Max) or decimal(Min:Max step Step) where the Min and Max values are inclusive.  If either Min or Max are missing, this indicates no limit.  If Step is missing, this indicates a step of 1.0.  Multiple comma-separated ranges can be specified, in which case the value will be in one of the ranges.
 
-| unsignedInt       | Unsigned integer in the range 0 to 4294967295, inclusive.  For some unsignedInt types, a value range is given using the form unsignedInt(Min:Max) or unsigned(Min:Max step Step), where the Min and Max values are inclusive.  If either Min or Max are missing, this indicates no limit.  If Step is missing, this indicates a step of 1.  Multiple comma-separated ranges can be specified, in which case the value will be in one of the ranges. |\
+* - int
+  - Integer in the range -2147483648 to +2147483647, inclusive.  For some int types, a value range is given using the form int(Min:Max) or int(Min:Max step Step) where the Min and Max values are inclusive.  If either Min or Max are missing, this indicates no limit.  If Step is missing, this indicates a step of 1.  Multiple comma-separated ranges can be specified, in which case the value will be in one of the ranges.
 
-| unsignedLong      | Unsigned long integer in the range 0 to 18446744073709551615, inclusive.  For some unsignedLong types, a value range is given using the form unsignedLong(Min:Max) or unsignedLong(Min:Max step Step), where the Min and Max values are inclusive.  If either Min or Max are missing, this indicates no limit. If Step is   missing, this indicates a step of 1.  Multiple comma-separated ranges can be specified, in which case the value will be in one of the ranges. |\
+* - long
+  - Long integer in the range -9223372036854775808 to 9223372036854775807, inclusive. For some long types, a value range is given using the form long(Min:Max) or long(Min:Max step Step), where the Min and Max values are inclusive.  If either Min or Max are missing, this indicates no limit. If Step is missing, this indicates a step of 1.  Multiple comma-separated ranges can be   specified, in which case the value will be in one of the ranges.
 
-| boolean           | Boolean, where the allowed values are "0" or "1" (or equivalently, "true" or "false"). |\
+* - unsignedInt
+  - Unsigned integer in the range 0 to 4294967295, inclusive.  For some unsignedInt types, a value range is given using the form unsignedInt(Min:Max) or unsigned(Min:Max step Step), where the Min and Max values are inclusive.  If either Min or Max are missing, this indicates no limit.  If Step is missing, this indicates a step of 1.  Multiple comma-separated ranges can be specified, in which case the value will be in one of the ranges.
 
-| dateTime          | The subset of the ISO 8601 date-time format defined by the SOAP dateTime type [@NOTE-SOAP-20000508]. |\
+* - unsignedLong
+  - Unsigned long integer in the range 0 to 18446744073709551615, inclusive.  For some unsignedLong types, a value range is given using the form unsignedLong(Min:Max) or unsignedLong(Min:Max step Step), where the Min and Max values are inclusive.  If either Min or Max are missing, this indicates no limit. If Step is   missing, this indicates a step of 1.  Multiple comma-separated ranges can be specified, in which case the value will be in one of the ranges.
 
-| base64            | Base64 encoded binary (no line-length limitation).  A minimum and maximum allowed length can be indicated using the form base64(Min:Max), where Min and Max are the minimum and maximum length in characters before Base64 encoding.  If either Min or Max are missing, this indicates no limit, and if Min is missing the colon can also be omitted, as in base64(Max).  Multiple comma-separate ranges can be specified, in which case the length MUST be in one of the ranges. |\
+* - boolean
+  - Boolean, where the allowed values are "0" or "1" (or equivalently, "true" or "false").
 
-| hexBinary         | Hex encoded binary.  A minimum and maximum allowed length can be indicated using the form hexBinary(Min:Max), where Min and Max are the minimum and maximum length in characters before Hex Binary encoding.  If either Min or Max are missing, this indicates no limit, and if Min is missing the colon can also be omitted, as   in hexBinary(Max).  Multiple comma-separated ranges can be specified, in which case the length MUST be in one of the ranges. |
+* - dateTime
+  - The subset of the ISO 8601 date-time format defined by the SOAP dateTime type [@NOTE-SOAP-20000508].
+
+* - base64
+  - Base64 encoded binary (no line-length limitation).  A minimum and maximum allowed length can be indicated using the form base64(Min:Max), where Min and Max are the minimum and maximum length in characters before Base64 encoding.  If either Min or Max are missing, this indicates no limit, and if Min is missing the colon can also be omitted, as in base64(Max).  Multiple comma-separate ranges can be specified, in which case the length MUST be in one of the ranges.
+
+* - hexBinary
+  - Hex encoded binary.  A minimum and maximum allowed length can be indicated using the form hexBinary(Min:Max), where Min and Max are the minimum and maximum length in characters before Hex Binary encoding.  If either Min or Max are missing, this indicates no limit, and if Min is missing the colon can also be omitted, as   in hexBinary(Max).  Multiple comma-separated ranges can be specified, in which case the length MUST be in one of the ranges.
+:::
 
 Note: A Parameter that is defined to be one of the named data types, is
 reported as such at the beginning of the Parameter's description via a

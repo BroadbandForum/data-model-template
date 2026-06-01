@@ -112,8 +112,37 @@ resources:
 # this is a dictionary, typically keyed by vi.a.c revisions
 # XXX need to ensure that we cover the YANG multi-tag case
 versions:
+  v1.17.0:
+    date: 2026-06-01
+    changes:
+      specification:
+        text: |
+          * Clarify the usage of list parameters as unique keys.
+          * Add the write-once-read-only access type description for parameters.
+          * Add naming requirements to data model item (acronyms, lists, multi-instance objects, etc.).
+          * Add description of the dmr:noVersionCheck attribute.
+          * Clarify the usage of microseconds for unknown time formatting.
+      dm-schema:
+        resname: cwmp-datamodel-1-17.xsd
+        text: |
+          * Relax syntax rules to simplifythe use of default element.
+          * Add the possibility to use dmr:noVersionCheck attribute.
+      dt-schema:
+        resname: cwmp-devicetype-1-17.xsd
+        text: |
+          * Relax syntax rules to simplify the use of default element.
+      dm-types:
+        resname: tr-106-types.xml
+        text: |
+          * Add FileURI dataType.
+          * Add FileDescriptorPassing dataType.
+      dm-bibrefs:
+        resname: tr-069-biblio.xml
+        text: |
+          * Add more bibrefs
+
   v1.16.1:
-   date: 2025-12-01
+   date: 2025-11-26
    changes:
      dm-bibrefs:
        resname: tr-069-biblio.xml

@@ -5,7 +5,32 @@
 See <https://data-model-template.broadband-forum.org> for the
 current TR-106 specification.
 
-## 2025-12-01: TR-106 Amendment 16 Corrigendum 1
+## 2026-06-01: [TR-106 Amendment 17]
+
+*Tag: [v1.17.0]*
+
+### TR-106 Document
+* Clarify the usage of list parameters as unique keys.
+* Add the write-once-read-only access type description for parameters.
+* Add naming requirements to data model item (acronyms, lists, multi-instance objects, etc.).
+* Add description of the dmr:noVersionCheck attribute.
+* Clarify the usage of microseconds for unknown time formatting.
+
+### DM Data Model Definition Schema (DM Schema)
+* Relax syntax rules to simplifythe use of default element.
+* Add the possibility to use dmr:noVersionCheck attribute.
+
+### Device Type Schema (DT Schema)
+* Relax syntax rules to simplify the use of default element.
+
+### Data Model Data Types
+* Add FileURI dataType.
+* Add FileDescriptorPassing dataType.
+
+### Data Model Bibliographic References
+* Add more bibrefs
+
+## 2025-11-26: TR-106 Amendment 16 Corrigendum 1
 
 *Tag: [v1.16.1]*
 
@@ -365,6 +390,7 @@ current TR-106 specification.
 [TR-106 Amendment 12]: https://www.broadband-forum.org/download/TR-106_Amendment-12.pdf
 [TR-106 Amendment 13]: https://www.broadband-forum.org/download/TR-106_Amendment-13.pdf
 [TR-106 Amendment 14]: https://www.broadband-forum.org/download/TR-106_Amendment-14.pdf
+[TR-106 Amendment 17]: https://www.broadband-forum.org/download/TR-106_Amendment-17.pdf
 [TR-106 Amendment 2]: https://www.broadband-forum.org/download/TR-106_Amendment-2.pdf
 [TR-106 Amendment 3]: https://www.broadband-forum.org/download/TR-106_Amendment-3.pdf
 [TR-106 Amendment 4]: https://www.broadband-forum.org/download/TR-106_Amendment-4.pdf
@@ -390,3 +416,4 @@ current TR-106 specification.
 [v1.15.0]: https://github.com/BroadbandForum/data-model-template/releases/tag/v1.15.0
 [v1.16.0]: https://github.com/BroadbandForum/data-model-template/releases/tag/v1.16.0
 [v1.16.1]: https://github.com/BroadbandForum/data-model-template/releases/tag/v1.16.1
+[v1.17.0]: https://github.com/BroadbandForum/data-model-template/releases/tag/v1.17.0

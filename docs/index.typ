@@ -29,8 +29,8 @@
 #show: doc => conf(
   title: [TR\-106 –
 Data Model Template for CWMP Endpoints and USP Agents],
-  subtitle: [Issue: 1 Amendment 16 Corrigendum 1 #bbf-release[]],
-  date: [Issue Date: December 2025],
+  subtitle: [Issue: 1 Amendment 17 #bbf-release[]],
+  date: [Issue Date: June 2026],
   pagenumbering: none,
   cols: 1,
   linenumbering: none,
@@ -47,20 +47,20 @@ Data Model Template for CWMP Endpoints and USP Agents],
     bbfIssue: [Issue],
     bbfMajor: [1],
     bbfMicro: [0],
-    bbfMinor: [16],
-    bbfMonth: [December],
+    bbfMinor: [17],
+    bbfMonth: [June],
     bbfNumber: [TR\-106],
-    bbfPatch: [1],
+    bbfPatch: [0],
     bbfProjectStream: [],
     bbfStatus: [],
     bbfTitle: [Data Model Template for CWMP Endpoints and USP Agents],
     bbfType: [Technical Report],
-    bbfVersion: [1 Amendment 16 Corrigendum 1],
+    bbfVersion: [1 Amendment 17],
     bbfWorkArea: [Broadband User Services],
-    bbfYear: [2025],
+    bbfYear: [2026],
     citation-style: [bbf.csl],
-    copydate: [2025],
-    date: [Issue Date: December 2025],
+    copydate: [2026],
+    date: [Issue Date: June 2026],
     description: [TR\-106 specifies data model guidelines to be followed
 by all
 #link("https://www.broadband-forum.org/technical/download/TR-069.pdf")[CWMP]
@@ -144,7 +144,7 @@ Data Model Template for CWMP Endpoints and USP Agents],
     shortname: [TR\-106],
     siteurl: [index.html],
     status: [],
-    subtitle: [Issue: 1 Amendment 16 Corrigendum 1 #bbf-release[]],
+    subtitle: [Issue: 1 Amendment 17 #bbf-release[]],
     summary: [See
 #link("https://data-model-template.broadband-forum.org")[https:\/\/data\-model\-template.broadband\-forum.org]
 for the current TR\-106 specification.
@@ -501,9 +501,22 @@ the notices, legends, and other provisions set forth on this page.
     ],
     [Amendment 16 Corrigendum 1
     ],
-    [December 2025
+    [November 2025
     ], [],
     [- Document not updated
+    ],
+    [#link("https://www.broadband-forum.org/download/TR-106_Amendment-17.pdf")[Amendment
+    17]
+    ],
+    [June 2026
+    ], [],
+    [- Clarify the usage of list parameters as unique keys.
+    - Add the write\-once\-read\-only access type description for
+      parameters.
+    - Add naming requirements to data model item (acronyms, lists,
+      multi\-instance objects, etc.).
+    - Add description of the dmr:noVersionCheck attribute.
+    - Clarify the usage of microseconds for unknown time formatting.
     ]
   )
 ]
@@ -886,111 +899,58 @@ The following terminology is used throughout this Technical Report.
     declare it to be a #emph[Mount Point];. Starting with #emph[DM
     Schema]; v1.10 (TR\-106 Amendment 12), all qualifying
     #emph[Objects]; are automatically regarded as #emph[Mountable
-    Objects.]; \
-    For example, the TR\-181 Device:2 #emph[Data Model];’s
-    Device.DeviceInfo. object is (a) a direct child of the Device.
-    #emph[Root Object];, and (b) not declared as a #emph[Mount Point];,
-    so it’s a #emph[Mountable Object];. \
-    This concept does not apply to CWMP.
-    ],
-    [#strong[Mount Point];
-    ],
-    [An #emph[Object]; whose #emph[DM Instance]; specifies (via a
-    mountType\="mountPoint" attribute) that all #emph[Mountable
-    Objects]; are conceptually its direct children. \
-    For example, the TR\-181 Device:2 #emph[Data Model];’s #emph[DM
-    Instance]; specifies that Device.ProxiedDevice.{i}. is a #emph[Mount
-    Point];. This means that Device.ProxiedDevice.{i}.ABC. conceptually
-    exists for all Mountable Objects ABC. \
-    This concept does not apply to CWMP.
-    ],
-    [#strong[Multi\-Instance Object];
-    ],
-    [An #emph[Object]; that can have multiple instances, all of which
-    are located at the same level within the name hierarchy. Each
-    instance is identified by an #emph[Instance Identifier];.
-    ],
-    [#strong[Object];
-    ],
-    [An internal node in the name hierarchy, i.e., a node that can have
-    #emph[Object];, #emph[Parameter];, #emph[Command]; and\/or
-    #emph[Event]; children. An #emph[Object]; name is a #emph[Path
-    Name];.
-    ],
-    [#strong[Parameter];
-    ],
-    [A name\-value pair that represents part of a #emph[CPE]; or
-    #emph[USP Agent];’s configuration or status. A Parameter name is a
-    #emph[Path Name];.
-    ],
-    [#strong[Path Name];
-    ],
-    [A name that has a hierarchical structure similar to files in a
-    directory, with each level separated by a "." (dot). References an
-    #emph[Object];, #emph[Parameter,]; #emph[Command]; or #emph[Event];.
-    ],
-    [#strong[Profile];
-    ],
-    [A named collection of requirements relating to a given #emph[Root
-    Object];, #emph[Service Object]; or #emph[Component];.
-    ],
-    [#strong[RPC];
-    ],
-    [Remote Procedure Call.
-    ],
-    [#strong[Root Object];
-    ],
-    [The top\-level #emph[Object]; of a #emph[CPE];’s #emph[Data Model];
-    that contains all of the manageable #emph[Objects];. The name of the
-    Root #emph[Object]; is "Device.".
-    ],
-    [#strong[Service Element];
-    ],
-    [A Service Element represents a piece of service functionality that
-    is exposed by an Agent, usually represented by one or more Objects.
-    ],
-    [#strong[Service Object];
-    ],
-    [The top\-most #emph[Object]; associated with a specific service
-    within which all #emph[Objects];, #emph[Parameters,];
-    #emph[Commands]; and #emph[Events]; associated with the service are
-    contained.
-    ],
-    [#strong[Supported Data Model];
-    ],
-    [Refers to either #emph[Base Supported Data Model]; or #emph[Current
-    Supported Data Model];, depending on the context.
-    ],
-    [#strong[URI];
-    ],
-    [Uniform Resource Identifier.
-    ],
-    [#strong[URL];
-    ],
-    [Uniform Resource Locator.
-    ],
-    [#strong[USP];
-    ],
-    [Universal Service Platform. Defined in TR\-369, USP is an evolution
-    of CWMP that allows applications to manipulate Service Elements in a
-    network of Controllers and Agents.
-    ],
-    [#strong[USP Agent];
-    ],
-    [A USP Agent is a USP Endpoint that exposes Service Elements to one
-    or more USP Controllers.
-    ],
-    [#strong[USP Controller];
-    ],
-    [A USP Controller is a USP Endpoint that manipulates Service
-    Elements through one or more USP Agents.
-    ],
-    [#strong[USP Endpoint];
-    ],
-    [A USP Endpoint is a termination point for a USP message.
+    Objects.];\\
     ]
   )
 ]
+
+For example, the TR\-181 Device:2 #emph[Data Model];’s
+Device.DeviceInfo. object is (a) a direct child of the Device.
+#emph[Root Object];, and (b) not declared as a #emph[Mount Point];, so
+it’s a #emph[Mountable Object];. \
+This concept does not apply to CWMP. | #strong[Mount Point]; | An
+#emph[Object]; whose #emph[DM Instance]; specifies (via a
+mountType\="mountPoint" attribute) that all #emph[Mountable Objects];
+are conceptually its direct children. \
+For example, the TR\-181 Device:2 #emph[Data Model];’s #emph[DM
+Instance]; specifies that Device.ProxiedDevice.{i}. is a #emph[Mount
+Point];. This means that Device.ProxiedDevice.{i}.ABC. conceptually
+exists for all Mountable Objects ABC. \
+This concept does not apply to CWMP. | #strong[Multi\-Instance Object];
+| An #emph[Object]; that can have multiple instances, all of which are
+located at the same level within the name hierarchy. Each instance is
+identified by an #emph[Instance Identifier];. | #strong[Object]; | An
+internal node in the name hierarchy, i.e., a node that can have
+#emph[Object];, #emph[Parameter];, #emph[Command]; and\/or #emph[Event];
+children. An #emph[Object]; name is a #emph[Path Name];. |
+#strong[Parameter]; | A name\-value pair that represents part of a
+#emph[CPE]; or #emph[USP Agent];’s configuration or status. A Parameter
+name is a #emph[Path Name];. | #strong[Path Name]; | A name that has a
+hierarchical structure similar to files in a directory, with each level
+separated by a "." (dot). References an #emph[Object];,
+#emph[Parameter,]; #emph[Command]; or #emph[Event];. | #strong[Profile];
+| A named collection of requirements relating to a given #emph[Root
+Object];, #emph[Service Object]; or #emph[Component];. | #strong[RPC]; |
+Remote Procedure Call. | #strong[Root Object]; | The top\-level
+#emph[Object]; of a #emph[CPE];’s #emph[Data Model]; that contains all
+of the manageable #emph[Objects];. The name of the Root #emph[Object];
+is "Device.". | #strong[Service Element]; | A Service Element represents
+a piece of service functionality that is exposed by an Agent, usually
+represented by one or more Objects. | #strong[Service Object]; | The
+top\-most #emph[Object]; associated with a specific service within which
+all #emph[Objects];, #emph[Parameters,]; #emph[Commands]; and
+#emph[Events]; associated with the service are contained. |
+#strong[Supported Data Model]; | Refers to either #emph[Base Supported
+Data Model]; or #emph[Current Supported Data Model];, depending on the
+context. | #strong[URI]; | Uniform Resource Identifier. | #strong[URL];
+| Uniform Resource Locator. | #strong[USP]; | Universal Service
+Platform. Defined in TR\-369, USP is an evolution of CWMP that allows
+applications to manipulate Service Elements in a network of Controllers
+and Agents. | #strong[USP Agent]; | A USP Agent is a USP Endpoint that
+exposes Service Elements to one or more USP Controllers. | #strong[USP
+Controller]; | A USP Controller is a USP Endpoint that manipulates
+Service Elements through one or more USP Agents. | #strong[USP
+Endpoint]; | A USP Endpoint is a termination point for a USP message.
 
 == 1.2 Document Conventions <sec:document-conventions>
 
@@ -1571,7 +1531,12 @@ interpreted as a relative time since boot.
 If the time is unknown or not applicable, the following value
 representing "Unknown Time" MUST be used: `0001-01-01T00:00:00Z`. For an
 infinite timeline, the following value representing "Infinite Time" MUST
-be used: `9999-12-31T23:59:59Z`.
+be used: `9999-12-31T23:59:59Z`. For dateTime parameters that are
+defined to support fractional second precision, the Unknown Time and
+Infinite Time values SHOULD be represented with the same precision as is
+supported for other values of the parameter. For example, if a parameter
+is reported with microsecond precision, `0001-01-01T00:00:00.000000Z`
+would be the representation of the Unknown Time.
 
 Any dateTime value other than one expressing relative time since boot
 (as described above) MUST use UTC timezoned representation (that is, it
@@ -1687,9 +1652,9 @@ read\-write.
 
 === 3.3.3 Parameters <sec:parameters>
 
-Like objects and tables, parameters can also be set as read\-only or
-read\-write based on their intended use. For reporting, parameters are
-often set as read\-only.
+Like objects and tables, parameters can also be set as read\-only,
+read\-write or write\-once\-read\-only based on their intended use. For
+reporting, parameters are often set as read\-only.
 
 For example, a parameter defining the number of received packets. This
 should be read\-only.
@@ -1700,6 +1665,12 @@ read\-write.
 
 For example, a parameter defining the ports that should be closed. An
 administrator might need to adjust this value; it’s read\-write.
+
+A parameter can also be write\-once\-read\-only. This access type is
+intended for USP and does not have a direct equivalent in CWMP. When a
+write\-once\-read\-only parameter appears in a CWMP data model, its
+access should be treated as read\-write. It is up to the CWMP Agent to
+mimic the write\-once behavior.
 
 == 3.4 Vendor\-Specific Elements <sec:vendor-specific-elements>
 
@@ -2477,68 +2448,90 @@ template names MUST obey the rules of
     [Description
     ]),
     [Glossary reference
+
     ],
     [`{{gloref|id}}`
+
     ],
     [Glossary reference. The id argument MUST match the id attribute of
     one of the current file’s (or an imported file’s) top\-level
     glossary element’s item elements (#link(<sec:glossary>)[A.2.4.1]). \
     Typically, processing tools will (a) validate the id, and (b)
-    replace the template reference with something like "id". \
+    replace the template reference with something like "id".
+
     Markup examples: \
     `{{gloref|Parameter}}`
+
     ],
     [Abbreviation reference
+
     ],
     [`{{abbref|id}}`
+
     ],
     [Abbreviation reference. The id argument MUST match the id attribute
     of one of the current file’s (or an imported file’s) top\-level
     abbreviations element’s item elements
     (#link(<sec:abbreviations>)[A.2.4.2]). \
     Typically, processing tools will (a) validate the id, and (b)
-    replace the template reference with something like "id". \
+    replace the template reference with something like "id".
+
     Markup examples: \
     `{{abbref|CWMP}}`
+
     ],
     [Approval date
+
     ],
     [`{{appdate|date}}`
+
     ],
     [The date on which this file was approved. \
     The date argument SHOULD be of the form "day month year" where "day"
     is the OPTIONAL day number (no leading zero), "month" is the full
     (capitalized) month name, and "year" is the year (including
-    century). \
+    century).
+
     Markup examples: \
     `{{appdate|5 November 2011}}` \
     `{{appdate|November 2012}}`
+
     ],
     [Document name
+
     ],
     [`{{docname|name}}`
+
     ],
     [The DM Instance name or title. \
     The name argument MUST distinguish this file from other different
-    files but not from other versions of the same file or data model. \
+    files but not from other versions of the same file or data model.
+
     Markup examples: \
     `{{docname|Device Data Model for TR-069}}`
+
     ],
     [TR name
+
     ],
     [`{{trname|name}}`
+
     ],
     [The name and version of the corresponding Word \/ PDF document. \
     The name argument MUST identify the Word \/ PDF document
     corresponding to this DM Instance, and be of the form
-    "TR\-nnnixaycz" as defined in #link(<sec:bibliography>)[A.2.4.3]. \
+    "TR\-nnnixaycz" as defined in #link(<sec:bibliography>)[A.2.4.3].
+
     Markup examples: \
     `{{trname|TR-181i2a5}}`
+
     ],
     [XML reference
+
     ],
     [`{{xmlref|ref}}` \
     `{{xmlref|ref|label}}`
+
     ],
     [A reference to this or another DM Instance. \
     The ref argument MUST identify a DM Instance and be the filename
@@ -2550,15 +2543,19 @@ template names MUST obey the rules of
     Typically, processing tools will (a) validate the reference, and (b)
     replace the template reference with the label, possibly rendered in
     a distinctive font, and (if referencing a different file) a
-    hyperlink. \
+    hyperlink.
+
     Markup examples: \
     `{{xmlref|tr-181-2-5}}` \
     `{{xmlref|tr-196-2-0-1|Corrigendum 1}}`
+
     ],
     [Bibliographic reference
+
     ],
     [`{{bibref|id}}` \
     `{{bibref|id|section}}`
+
     ],
     [A bibliographic reference. \
     The id argument MUST match the id attribute of one of the current
@@ -2568,26 +2565,33 @@ template names MUST obey the rules of
     including any leading "section", "annex" or "appendix" text. \
     Typically, processing tools will (a) validate the id, and (b)
     replace the template reference with something like "\[id\] section".
-    \
+
     Markup examples: \
     `{{bibref|RFC3986}}` \
     `{{bibref|RFC3986|Section 3}}`
+
     ],
     [Template reference
+
     ],
     [`{{template|id}}`
+
     ],
     [A template element reference. \
     The id argument MUST match the id attribute of one of the current
     file’s (or an imported file’s) top\-level template elements
-    (#link(<sec:template-elements>)[A.2.4.4]). \
+    (#link(<sec:template-elements>)[A.2.4.4]).
+
     Markup examples: \
     `{{template|BULK-DATA-HTTP-REF}}`
+
     ],
     [Section separator
+
     ],
     [`{{section|category}}` \
     `{{section}}`
+
     ],
     [The beginning or end of a section or category. This is a way of
     splitting the description into sections. \
@@ -2598,11 +2602,13 @@ template names MUST obey the rules of
     If the category argument is absent, this marks the end of the
     previous section (if any). Typically, processing tools will (a)
     validate the category, and (b) replace the template reference with a
-    section marker. \
+    section marker.
+
     Markup examples: \
     `{{section|table}}` \
     `{{section|row}}` \
     `{{section|examples}}`
+
     ],
     [Number of entries parameter description
     ],
@@ -2638,6 +2644,7 @@ template names MUST obey the rules of
     template name, i.e.~DEPRECATED, OBSOLETED or DELETED).
     ],
     [Parameter, command, event and object reference
+
     ],
     [`{{param}}` \
     `{{param|ref}}` \
@@ -2651,6 +2658,7 @@ template names MUST obey the rules of
     `{{object}}` \
     `{{object|ref}}` \
     `{{object|ref|scope}}`
+
     ],
     [A reference to the specified parameter, command, event or object. \
     The OPTIONAL ref and scope arguments reference the specified item
@@ -2667,27 +2675,33 @@ template names MUST obey the rules of
     omitted, the current item name, possibly rendered in a distinctive
     font. \
     Processing tools can use the scope to convert a relative path into
-    an absolute path in order, for example, to generate a hyperlink. \
+    an absolute path in order, for example, to generate a hyperlink.
+
     Markup examples: \
     `{{param|Enable}}` \
     `{{command|Reset()}}` \
     `{{event|Boot!}}` \
     `{{object|Stats.}}`
+
     ],
     [Profile reference
+
     ],
     [`{{profile|ref}}` \
     `{{profile}}`
+
     ],
     [A reference to the specified profile. \
     The OPTIONAL ref argument references a profile. \
     Typically, processing tools will (a) validate the reference, and (b)
     replace the template reference with the ref argument or, if it is
     omitted, the current profile name, possibly rendered in a
-    distinctive font. \
+    distinctive font.
+
     Markup examples: \
     `{{profile|Baseline:1}}` \
     `{{profile}}`
+
     ],
     [List description
     ],
@@ -2732,17 +2746,17 @@ template names MUST obey the rules of
     The OPTIONAL opts argument is a comma\-separated list of keywords
     that give additional information about the reference and can affect
     the generated text. The following keywords are currently defined: \
-    \- #strong[ignore];: ignore any non\-existent targetParents; this is
-    useful when a parameter references different objects in different
-    data models. \
-    \- #strong[delete];: this object (the referencing object) and the
-    referenced object have the same lifetime, so this object will always
-    be deleted when the referenced object is deleted; therefore the
-    reference can never be null. \
-    Typically processing tools will generate text of the form "The value
-    MUST be the full path name of \<arg>…", in which the generated text
-    can be expected to be sensitive to whether or not the parameter is
-    list\-valued. \
+    - #strong[ignore];: ignore any non\-existent targetParents; this is
+      useful when a parameter references different objects in different
+      data models. \
+    - #strong[delete];: this object (the referencing object) and the
+      referenced object have the same lifetime, so this object will
+      always be deleted when the referenced object is deleted; therefore
+      the reference can never be null. \
+      Typically processing tools will generate text of the form "The
+      value MUST be the full path name of \<arg>…", in which the
+      generated text can be expected to be sensitive to whether or not
+      the parameter is list\-valued.
     Markup examples: \
     `{{reference|a protocol object}}` \
     `{{reference|all Host table entries|ignore}}`
@@ -2788,12 +2802,14 @@ template names MUST obey the rules of
     profiles).
     ],
     [Enumeration reference
+
     ],
     [`{{enum|value}}` \
     `{{enum|value|param}}` \
     `{{enum|value|param|scope}}` \
     `{{enum}}` \
     `{{noenum}}`
+
     ],
     [A reference to the specified enumeration value. \
     The OPTIONAL value argument specifies one of the enumeration values
@@ -2814,18 +2830,22 @@ template names MUST obey the rules of
     with the value and\/or param arguments, appropriately formatted and
     with the value possibly rendered in a distinctive font. Processing
     tools can use the scope to convert a relative path into an absolute
-    path in order, for example, to generate a hyperlink. \
+    path in order, for example, to generate a hyperlink.
+
     Markup examples: \
     `{{enum|None}}` \
     `{{enum|None|OtherParam}}`
+
     ],
     [Pattern reference
+
     ],
     [`{{pattern|value}}` \
     `{{pattern|value|param}}` \
     `{{pattern|value|param|scope}}` \
     `{{pattern}}` \
     `{{nopattern}}`
+
     ],
     [A reference to the specified pattern value. \
     The OPTIONAL value argument specifies one of the pattern values for
@@ -2846,10 +2866,12 @@ template names MUST obey the rules of
     the value and\/or param arguments, appropriately formatted and with
     the value possibly rendered in a distinctive font. Processing tools
     can use the scope to convert a relative path into an absolute path
-    in order, for example, to generate a hyperlink. \
+    in order, for example, to generate a hyperlink.
+
     Markup examples: \
     `{{pattern|None}}` \
     `{{pattern|None|OtherParam}}`
+
     ],
     [Hidden value
     ],
@@ -3021,15 +3043,14 @@ template names MUST obey the rules of
     open issue. If two arguments are supplied, they are opts and descr.
     \
     The OPTIONAL opts argument is a comma\-separated list of options: \
-    \- The first list item is an issue category that defaults to "XXX".
-    \
-    \- The second list item is an issue status that defaults to an empty
-    string. Any non\-empty status implies that the issue has been
-    resolved. \
-    Typically, processing tools will assign a unique ID, e.g.~a separate
-    counter for each category of issue, and replace the template
-    reference with the issue category, ID, status and description,
-    possibly rendered in a distinctive font. \
+    - The first list item is an issue category that defaults to "XXX". \
+    - The second list item is an issue status that defaults to an empty
+      string. Any non\-empty status implies that the issue has been
+      resolved. \
+      Typically, processing tools will assign a unique ID, e.g.~a
+      separate counter for each category of issue, and replace the
+      template reference with the issue category, ID, status and
+      description, possibly rendered in a distinctive font.
     Markup examples: \
     `{{issue|Will be labeled XXX.}}` \
     `{{issue|IPsec|Will be labeled IPsec.}}` \
@@ -3660,61 +3681,60 @@ are relevant (normative requirements are specified in the schema).
     [targetType
     ],
     [Specifies what types of item can be referenced: \
-    \- #strong[any];: any parameter or object can be referenced
-    (default) \
-    \- #strong[parameter];: any parameter can be referenced \
-    \- #strong[object];: any object can be referenced \
-    \- #strong[single];: any single\-instance object can be referenced \
-    \- #strong[table];: any Multi\-Instance Object (table) can be
-    referenced \
-    \- #strong[row];: any Multi\-Instance Object (table) instance (row)
-    can be referenced
+    - #strong[any];: any parameter or object can be referenced (default)
+      \
+    - #strong[parameter];: any parameter can be referenced \
+    - #strong[object];: any object can be referenced \
+    - #strong[single];: any single\-instance object can be referenced \
+    - #strong[table];: any Multi\-Instance Object (table) can be
+      referenced \
+    - #strong[row];: any Multi\-Instance Object (table) instance (row)
+      can be referenced
     ],
     [targetDataType
     ],
     [Specifies the valid data types for the referenced parameter. Is
     relevant only when targetType is any or parameter. \
     Possible values are as follows: \
-    \- #strong[any];: a parameter of any data type can be referenced
-    (default) \
-    \- #strong[base64];: only a base64 parameter can be referenced \
-    \- #strong[boolean];: only a boolean parameter can be referenced \
-    \- #strong[dateTime];: only a dateTime parameter can be referenced \
-    \- #strong[decimal];: only a decimal (or int, long, unsignedInt or
-    unsignedLong) parameter can be referenced \
-    \- #strong[hexBinary];: only a hexBinary parameter can be referenced
-    \
-    \- #strong[integer];: only an integer (int, long, unsignedInt or
-    unsignedLong) parameter can be referenced \
-    \- #strong[int];: only an int parameter can be referenced \
-    \- #strong[long];: only a long (or int) parameter can be referenced
-    \
-    \- #strong[string];: only a string parameter can be referenced \
-    \- #strong[unsignedInt];: only an unsignedInt parameter can be
-    referenced \
-    \- #strong[unsignedLong];: only an unsignedLong (or unsignedInt)
-    parameter can be referenced \
-    \- #strong[\<named data type>];: only a parameter of the named data
-    type can be referenced \
-    In addition, a parameter whose data type is derived from the
-    specified data type can be referenced. The built\-in type hierarchy
-    (a simplified version of the XML Schema type hierarchy) is as
-    follows: \
-    `any` \
-    ~~`base64` \
-    ~~`boolean` \
-    ~~`dateTime` \
-    ~~`hexBinary` \
-    ~~`decimal` \
-    ~~~`integer` \
-    ~~~~~`long` \
-    ~~~~~~~`int` \
-    ~~~~~`unsignedLong` \
-    ~~~~~~~`unsignedInt` \
-    ~~`string` \
-    Note that any and integer are not valid parameter data types. They
-    are included in order to support "can reference any data type" and
-    "can reference any numeric data type".
+    - #strong[any];: a parameter of any data type can be referenced
+      (default) \
+    - #strong[base64];: only a base64 parameter can be referenced \
+    - #strong[boolean];: only a boolean parameter can be referenced \
+    - #strong[dateTime];: only a dateTime parameter can be referenced \
+    - #strong[decimal];: only a decimal (or int, long, unsignedInt or
+      unsignedLong) parameter can be referenced \
+    - #strong[hexBinary];: only a hexBinary parameter can be referenced
+      \
+    - #strong[integer];: only an integer (int, long, unsignedInt or
+      unsignedLong) parameter can be referenced \
+    - #strong[int];: only an int parameter can be referenced \
+    - #strong[long];: only a long (or int) parameter can be referenced \
+    - #strong[string];: only a string parameter can be referenced \
+    - #strong[unsignedInt];: only an unsignedInt parameter can be
+      referenced \
+    - #strong[unsignedLong];: only an unsignedLong (or unsignedInt)
+      parameter can be referenced \
+    - #strong[\<named data type>];: only a parameter of the named data
+      type can be referenced \
+      In addition, a parameter whose data type is derived from the
+      specified data type can be referenced. The built\-in type
+      hierarchy (a simplified version of the XML Schema type hierarchy)
+      is as follows: \
+      `any` \
+      ~~`base64` \
+      ~~`boolean` \
+      ~~`dateTime` \
+      ~~`hexBinary` \
+      ~~`decimal` \
+      ~~~`integer` \
+      ~~~~~`long` \
+      ~~~~~~~`int` \
+      ~~~~~`unsignedLong` \
+      ~~~~~~~`unsignedInt` \
+      ~~`string` \
+      Note that any and integer are not valid parameter data types. They
+      are included in order to support "can reference any data type" and
+      "can reference any numeric data type".
     ],
     [refType
     ],
@@ -3944,31 +3964,36 @@ for each facet are as follows:
     base type.
     ],
     [pathRef
+
     ],
     [The derived data type can modify the data type in the following
-    ways: \
-    \- By "promoting" status to a "higher" value, where the lowest to
-    highest ordering is: current, deprecated, obsoleted, deleted. For
-    example, current can be changed to deprecated, and obsoleted can be
-    changed to deleted, but deleted cannot be changed back to obsoleted.
-    When promoting status, the deprecation, obsoletion and deletion
-    rules of #link(<sec:deprecated-and-obsoleted-items>)[Section 2.4]
-    MUST be obeyed. \
-    \- By changing targetParent to narrow the set of possible parent
-    objects. \
-    \- By changing targetType to narrow the set of possible target
-    types. \
-    \- By changing targetDataType to narrow the set of possible target
-    data types.
+    ways:
+
+    - By "promoting" status to a "higher" value, where the lowest to
+      highest ordering is: current, deprecated, obsoleted, deleted. For
+      example, current can be changed to deprecated, and obsoleted can
+      be changed to deleted, but deleted cannot be changed back to
+      obsoleted. When promoting status, the deprecation, obsoletion and
+      deletion rules of
+      #link(<sec:deprecated-and-obsoleted-items>)[Section 2.4] MUST be
+      obeyed. \
+    - By changing targetParent to narrow the set of possible parent
+      objects. \
+    - By changing targetType to narrow the set of possible target types.
+      \
+    - By changing targetDataType to narrow the set of possible target
+      data types.
     ],
     [instanceRef
+
     ],
     [The derived data type can modify the data type in the following
-    ways: \
-    \- By "promoting" status to a "higher" value, as described for
-    pathRef. \
-    \- By changing targetParent to narrow the set of possible parent
-    objects.
+    ways:
+
+    - By "promoting" status to a "higher" value, as described for
+      pathRef. \
+    - By changing targetParent to narrow the set of possible parent
+      objects.
     ],
     [range
     ],
@@ -3977,19 +4002,22 @@ for each facet are as follows:
     base type.
     ],
     [enumeration
+
     ],
     [The derived data type can modify existing enumeration values in the
-    following ways: \
-    \- By "promoting" access from readOnly to readWrite or
-    writeOnceReadOnly. \
-    \- By "promoting" status to a "higher" value, as described for
-    pathRef. \
-    \- By "promoting" optional from False to True. \
-    \- By adding a code, if none was previously specified. \
-    \- By using the action attribute to prefix, extend or replace the
-    description (see below and
-    #link(<sec:description-modifications>)[A.2.12.6]). \
+    following ways:
+
+    - By "promoting" access from read\-only to read\-write or
+      write\-once\-read\-only.
+    - By "promoting" status to a "higher" value, as described for
+      pathRef.
+    - By "promoting" optional from False to True.
+    - By adding a code, if none was previously specified.
+    - By using the action attribute to prefix, extend or replace the
+      description (see below and
+      #link(<sec:description-modifications>)[A.2.12.6]).
     The derived data type can add new enumeration values.
+
     ],
     [enumerationRef
     ],
@@ -4537,7 +4565,7 @@ requirements are specified in the schema).
   #show regex("\>\."): "." + sym.zws
   #table(
     columns: (auto, auto),
-    align: (auto, auto),
+    align: (left+top, left+top),
     fill: bbf-table-fill.with(columns: 2, header-rows: 1),
     table.header(
     [Name
@@ -4550,8 +4578,8 @@ requirements are specified in the schema).
     ],
     [access
     ],
-    [Whether the parameter is writable (readWrite), read\-only
-    (readOnly), or writable once then read\-only (writeOnceReadOnly).
+    [Whether the parameter is read\-write, read\-only, or
+    write\-once\-read\-only.
     ],
     [version
     ],
@@ -4567,12 +4595,30 @@ requirements are specified in the schema).
     new parameter.
     ],
     [activeNotify
+
     ],
-    [The parameter’s {normal, forceEnabled, forceDefaultEnabled,
-    canDeny} Active Notification status. This defaults to normal, and so
-    is not often specified for a new parameter. \
-    Note that in USP, forceEnabled and forceDefaultEnabled are not
-    applicable and thus are equivalent to normal.
+    [The parameter’s Active Notification status. This attribute
+    determines whether the Controller can enable active notification for
+    the parameter. It can take one of the following values:
+
+    - normal: The Controller can enable or disable active notification
+      for this parameter. This is the default value.
+    - forceEnabled: Active notification is always enabled for this
+      parameter. The Controller cannot disable it.
+    - forceDefaultEnabled: Active notification is enabled by default for
+      this parameter. The Controller can disable it.
+    - canDeny: The Agent MAY deny a request from the Controller to
+      enable active notification for this parameter.
+    The canDeny value is intended for parameters that change very
+    frequently (e.g., statistics or counters), where sending
+    notifications for every change would generate excessive network
+    traffic and system load.
+
+    This value SHOULD be used sparingly and only for parameters where
+    denying notifications has a clear justification. It SHOULD NOT be
+    used for configuration parameters, where Controllers need to track
+    changes, or for parameters like `Alias` that change infrequently.
+
     ],
     [forcedInform
     ],
@@ -4583,7 +4629,7 @@ requirements are specified in the schema).
     ],
     [The parameter’s description (#link(<sec:descriptions>)[A.2.2]).
     ],
-    [syntax
+    [Syntax
     ],
     [The parameter’s syntax (#link(<sec:parameter-syntax>)[A.2.7.1]).
     ]
@@ -4688,16 +4734,16 @@ are specified in the schema).
     ],
     [default
     ],
-    [Object, factory, implementation or parameter default. \
-    \- Object defaults apply only to parameters that can be created as a
-    result of adding an Object. \
-    \- Factory defaults apply to all parameters (if a factory default is
-    specified, it also acts as object default for applicable
-    parameters). \
-    \- Implementation defaults apply to all parameters (they are
-    informational defaults that are likely after a reset or if no other
-    value is available). \
-    \- Parameter defaults apply only to command and event arguments. \
+    [Object, factory, implementation or parameter default.
+    - Object defaults apply only to parameters that can be created as a
+      result of adding an Object.
+    - Factory defaults apply to all parameters (if a factory default is
+      specified, it also acts as object default for applicable
+      parameters).
+    - Implementation defaults apply to all parameters (they are
+      informational defaults that are likely after a reset or if no
+      other value is available).
+    - Parameter defaults apply only to command and event arguments.
     If the parameter is list\-valued, the default value has to be placed
     within square brackets, e.g.~\<default type\="object"
     value\="\[1,2,3\]"\/>.
@@ -4805,7 +4851,7 @@ arguments (respectively).
     [The command’s object arguments (#link(<sec:objects>)[A.2.10]).
     ]
   )]
-] <tbl:xml-command-input-output-arguments-definition>
+] <tbl:xml-command-input--output-arguments-definition>
 
 Command argument parameter \/ object elements are similar to the
 corresponding data model parameter \/ object elements but support
@@ -4930,9 +4976,9 @@ specified in the schema).
     ],
     [access
     ],
-    [Whether object instances can be Added or Deleted (readWrite) or not
-    (readOnly). Adding or deleting instances is meaningful only for a
-    Multi\-Instance Object (table).
+    [Whether object instances can be Added or Deleted (read\-write) or
+    not (read\-only). Adding or deleting instances is meaningful only
+    for a Multi\-Instance Object (table).
     ],
     [minEntries
     ],
@@ -4940,36 +4986,41 @@ specified in the schema).
     equal to maxEntries).
     ],
     [maxEntries
+
     ],
     [The maximum number of instances of this object (can be
     "unbounded"). minEntries and maxEntries allow the object to be
-    placed into one of three categories: \
-    \- #strong[minEntries\=0, maxEntries\=1];: single\-instance object
-    which might not be allowed to exist, e.g.~because only one of it and
-    another object can exist at the same time. Note that this is not the
-    same thing as an optional object (in a sense, all objects are
-    optional; requirements are specified via profiles). For an object
-    with minEntries\=0, maxEntries\=1, the description MUST explain why
-    it might not be allowed to exist, e.g.~referencing the other objects
-    that constrain it. \
-    \- #strong[minEntries\=1, maxEntries\=1];: single\-instance object
-    that is always allowed to exist. \
-    \- #strong[All other cases];: Multi\-Instance Object (table)
-    (#link(<sec:tables>)[A.2.10.1]).
+    placed into one of three categories:
+
+    - #strong[minEntries\=0, maxEntries\=1];: single\-instance object
+      which might not be allowed to exist, e.g.~because only one of it
+      and another object can exist at the same time. Note that this is
+      not the same thing as an optional object (in a sense, all objects
+      are optional; requirements are specified via profiles). For an
+      object with minEntries\=0, maxEntries\=1, the description MUST
+      explain why it might not be allowed to exist, e.g.~referencing the
+      other objects that constrain it. \
+    - #strong[minEntries\=1, maxEntries\=1];: single\-instance object
+      that is always allowed to exist. \
+    - #strong[All other cases];: Multi\-Instance Object (table)
+      (#link(<sec:tables>)[A.2.10.1]).
     ],
     [mountType
+
     ],
     [For USP only, denotes whether this object is a Mountable Object, a
-    Mount Point, or none. Possible values are: \
-    \- #strong[mountPoint];: this object is a Mount Point. \
-    \- #strong[mountable];: this object is a Mountable Object. Such an
-    object has to be a direct child of the Root or Service Object
-    (DEPRECATED in DM Schema v1.10 because Mountable Objects are now
-    determined automatically). \
+    Mount Point, or none. Possible values are:
+
+    - #strong[mountPoint];: this object is a Mount Point. \
+    - #strong[mountable];: this object is a Mountable Object. Such an
+      object has to be a direct child of the Root or Service Object
+      (DEPRECATED in DM Schema v1.10 because Mountable Objects are now
+      determined automatically).
     #strong[none];: this object is neither a Mountable Object nor a
     Mount Point (DEPRECATED in DM Schema v1.10, and no longer the
     default, because Mountable Objects are now determined
     automatically).
+
     ],
     [version
     ],
@@ -5051,19 +5102,25 @@ relevant (normative requirements are specified in the schema).
     ],
     [For CWMP only, the name of the parameter (in each table entry) that
     enables and disables that table entry. Such a parameter is needed
-    whenever access is readWrite (so the Controller might be able to
+    whenever access is read\-write (so the Controller might be able to
     create entries) and at least one uniqueKey element that defines a
     functional key is present.
     ],
     [uniqueKey
+
     ],
     [An element that specifies a unique key by referencing those
-    parameters that constitute the unique key (all of these parameters
-    are single\-valued, i.e.~not list\-valued). \
+    parameters that constitute the unique key. If a key is list\-valued,
+    the value MUST conceptually be regarded as a set when being
+    compared, i.e.~the comparison has to ignore the item order and any
+    repeated items. For example, a list\-valued key with the value
+    "a,b,a" would be considered equal to "b,a".
+
     In CWMP only, for a non\-functional key, or if the table has no
     enableParameter, the uniqueness requirement always applies; for a
     functional key, and if the table has an enableParameter, the
     uniqueness requirement applies only to enabled table entries.
+
     ],
     [discriminatorParameter
     ],
@@ -5233,7 +5290,8 @@ The following rules govern parameter modifications.
     ]),
     [access
     ],
-    [Can be "promoted" from readOnly to readWrite or writeOnceReadOnly.
+    [Can be "promoted" from read\-only to read\-write or
+    write\-once\-read\-only.
     ],
     [version
     ],
@@ -5278,14 +5336,16 @@ The following rules govern parameter modifications.
     [Cannot be changed.
     ],
     [syntax\/list
+
     ],
-    [Can add or modify the list element in the following ways: \
-    \- Can convert a non\-list string parameter to a list provided that
-    an empty string was already a valid value with the appropriate
-    meaning. \
-    \- Can adjust limits on numbers of items, and on the list size,
-    provided that the new rules do not permit any values that were not
-    valid for the previous version of the parameter.
+    [Can add or modify the list element in the following ways:
+
+    - Can convert a non\-list string parameter to a list provided that
+      an empty string was already a valid value with the appropriate
+      meaning.
+    - Can adjust limits on numbers of items, and on the list size,
+      provided that the new rules do not permit any values that were not
+      valid for the previous version of the parameter.
     ],
     [syntax\/int etc. \
     syntax\/dataType
@@ -5464,7 +5524,7 @@ The following rules govern object modifications.
     ]),
     [access
     ],
-    [Can be "promoted" from readOnly to readWrite.
+    [Can be "promoted" from read\-only to read\-write.
     ],
     [minEntries
     ],
@@ -5613,17 +5673,18 @@ description elements.
     [Description
     ]),
     [action
+
     ],
     [Determines how the description will be modified; allowed values
-    are: \
-    \- #strong[create];: create a new description (this is the default
-    but is of course not permitted when modifying a description). \
-    \- #strong[replace];: replace the existing description with the new
-    text. \
-    \- #strong[append];: append the new text to the existing
-    description. \
-    \- #strong[prefix];: prefix the existing description with the new
-    text.
+    are:
+
+    - #strong[create];: create a new description (this is the default
+      but is of course not permitted when modifying a description).
+    - #strong[replace];: replace the existing description with the new
+      text.
+    - #strong[append];: append the new text to the existing description.
+    - #strong[prefix];: prefix the existing description with the new
+      text.
     ]
   )]
 ] <tbl:xml-description-modification>
@@ -5827,6 +5888,14 @@ special behavior.
     ],
     [Indicates that a parameter description doesn’t contain a {{units}}
     template, so shouldn’t warn about its absence
+    ],
+    [dmr:noVersionCheck
+    ],
+    [boolean
+    ],
+    [Indicates that the version won’t be checked when comparing with the
+    previous data model version (it can be useful when fixing incorrect
+    version attributes)
     ],
     [dmr:previousParameter
     ],
@@ -6082,10 +6151,35 @@ reference is no different from direct use of the referenced character
 #bbf-annex3[
 === C.3.1 Data Model Item Names <sec:data-model-item-names>]
 
-All data model item names, i.e.~data type, component, data model,
-object, parameter and profile names, MUST start with an upper\-case
-letter (or an underscore for an internal data type, component, model or
-profile) and MUST NOT contain hyphens or non\-initial underscores.
++ All data model item names, i.e.~data type, component, data model,
+  object, parameter and profile names, MUST start with an upper\-case
+  letter (or an underscore for an internal data type, component, model
+  or profile) and MUST NOT contain hyphens or non\-initial underscores.
+  Example: `DeviceInfo` (valid), `_InternalModel` (valid), `device-info`
+  (invalid), `Device_Info` (invalid).
++ Acronyms within data model item names MUST be written in upper\-case
+  letters. Example: `IPAddressList` (valid), `IpAddressList` (invalid).
++ Parameter names that represent a list MUST indicate plurality, either
+  through a plural noun or by using a suffix such as List. Example:
+  `UserNames` (valid), `UserName` (invalid), `IPAddressList` (valid),
+  `ListOfParameters`(valid).
++ Object names that represent a multi\-instance object (table) MUST be
+  expressed in the singular form. Example: `.User.{i}.` (valid),
+  `.Users.{i}.` (invalid).
++ Parameter names MUST follow the PascalCase naming convention. Example:
+  `IPRangeList` (valid), `ip_range_list` (invalid), `IpRangeList`
+  (invalid).
++ Enumeration values MUST follow the PascalCase naming convention.
+  Example: `RegistrationInProgress` (valid), `Registrationinprogress`
+  (invalid).
++ Enumeration values representing acronyms MUST be written in
+  upper\-case letters. Example: `HTTP` (valid), `Gps` (invalid).
++ Enumeration values representing an error MUST be prefixed with
+  Error\_. The word following the prefix MUST use PascalCase.
+  Underscores MUST NOT be used except to separate the Error\_ prefix
+  from the error condition. Examples: `Error_Timeout` (valid),
+  `Error_CannotResolveHost` (valid), `ErrorTimeout` (invalid),
+  `Errorcannotresolvehost` (invalid).
 
 #bbf-annex3[
 === C.3.2 DM and DMR Schema Versions <sec:dm-and-dmr-schema-versions>]
