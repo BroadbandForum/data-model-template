@@ -14,10 +14,13 @@ understand and develop CWMP/USP data models"/>
     /* Default styles provided by pandoc.
     ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
     */
-    code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     /* The extra [class] is a hack that increases specificity enough to
        override a similar rule in reveal.js */
@@ -28,7 +31,6 @@ understand and develop CWMP/USP data models"/>
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
     }
-    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
     /* CSS for citations */
     div.csl-bib-body { }
     div.csl-entry {
@@ -292,9 +294,9 @@ Data Models</a>
     <header id="title-block-header" class="cover-only">
       <h1 class="title auto-hoverlink" id="title">TR-106 – Data Model
 Template for CWMP Endpoints and USP Agents</h1>
-      <p class="subtitle">Issue: 1 Amendment 17 <span
+      <p class="subtitle">Issue: 1 Amendment 18 <span
 class="release"></span></p>
-      <p class="date">Issue Date: June 2026</p>
+      <p class="date">Issue Date: November 2026</p>
     </header>
     <nav id="NAVTOP" role="doc-toc">
 <p><a href="#sec:cover-page">Cover Page</a> | <a
@@ -758,7 +760,7 @@ page.</p>
 </div>
 <h3 class="unnumbered unlisted auto-hoverlink" data-info="header"
 id="sec:issue-history">Issue History</h3>
-<table class="issue-history" style="width:100%;">
+<table class="issue-history" style="width:99%;">
 <colgroup>
 <col style="width: 13%" />
 <col style="width: 13%" />
@@ -1045,6 +1047,16 @@ multi-instance objects, etc.).</li>
 <li>Clarify the usage of microseconds for unknown time formatting.</li>
 </ul></td>
 </tr>
+<tr>
+<td style="text-align: left;"><a
+href="https://www.broadband-forum.org/download/TR-106_Amendment-18.pdf">Amendment
+18</a></td>
+<td style="text-align: left;">November 2026</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><ul>
+<li>Update some macro definitions and template descriptions</li>
+</ul></td>
+</tr>
 </tbody>
 </table>
 <p>Comments or questions about this Broadband Forum Technical Report
@@ -1259,10 +1271,6 @@ Terminology</h2>
 <p>The following terminology is used throughout this Technical
 Report.</p>
 <table>
-<colgroup>
-<col style="width: 24%" />
-<col style="width: 75%" />
-</colgroup>
 <tbody>
 <tr>
 <td><strong>ACS</strong></td>
@@ -1413,8 +1421,8 @@ or an <em>Instance Alias</em>.</td>
 </tr>
 <tr>
 <td><strong>Instance Number</strong></td>
-<td>A read-only positive integer (&gt;=1) that uniquely identifies an
-instance within a <em>Multi-Instance Object.</em></td>
+<td>A read-only positive integer () that uniquely identifies an instance
+within a <em>Multi-Instance Object.</em></td>
 </tr>
 <tr>
 <td><strong>Mountable Object</strong></td>
@@ -1422,60 +1430,112 @@ instance within a <em>Multi-Instance Object.</em></td>
 Object</em> or <em>Service Object</em>, but whose <em>DM Instance</em>
 does not declare it to be a <em>Mount Point</em>. Starting with <em>DM
 Schema</em> v1.10 (TR-106 Amendment 12), all qualifying <em>Objects</em>
-are automatically regarded as <em>Mountable Objects.</em>\</td>
-</tr>
-</tbody>
-</table>
-<p>For example, the TR-181 Device:2 <em>Data Model</em>’s
+are automatically regarded as <em>Mountable Objects.</em><br />
+For example, the TR-181 Device:2 <em>Data Model</em>’s
 Device.DeviceInfo. object is (a) a direct child of the Device. <em>Root
 Object</em>, and (b) not declared as a <em>Mount Point</em>, so it’s a
-<em>Mountable Object</em>.<br />
-This concept does not apply to CWMP. | <strong>Mount Point</strong> | An
-<em>Object</em> whose <em>DM Instance</em> specifies (via a
+<em>Mountable Object.</em><br />
+This concept does not apply to CWMP.</td>
+</tr>
+<tr>
+<td><strong>Mount Point</strong></td>
+<td>An <em>Object</em> whose <em>DM Instance</em> specifies (via a
 mountType=“mountPoint” attribute) that all <em>Mountable Objects</em>
 are conceptually its direct children.<br />
 For example, the TR-181 Device:2 <em>Data Model</em>’s <em>DM
 Instance</em> specifies that Device.ProxiedDevice.{i}. is a <em>Mount
 Point</em>. This means that Device.ProxiedDevice.{i}.ABC. conceptually
 exists for all Mountable Objects ABC.<br />
-This concept does not apply to CWMP. | <strong>Multi-Instance
-Object</strong> | An <em>Object</em> that can have multiple instances,
-all of which are located at the same level within the name hierarchy.
-Each instance is identified by an <em>Instance Identifier</em>. |
-<strong>Object</strong> | An internal node in the name hierarchy, i.e.,
-a node that can have <em>Object</em>, <em>Parameter</em>,
-<em>Command</em> and/or <em>Event</em> children. An <em>Object</em> name
-is a <em>Path Name</em>. | <strong>Parameter</strong> | A name-value
-pair that represents part of a <em>CPE</em> or <em>USP Agent</em>’s
-configuration or status. A Parameter name is a <em>Path Name</em>. |
-<strong>Path Name</strong> | A name that has a hierarchical structure
-similar to files in a directory, with each level separated by a “.”
-(dot). References an <em>Object</em>, <em>Parameter,</em>
-<em>Command</em> or <em>Event</em>. | <strong>Profile</strong> | A named
-collection of requirements relating to a given <em>Root Object</em>,
-<em>Service Object</em> or <em>Component</em>. | <strong>RPC</strong> |
-Remote Procedure Call. | <strong>Root Object</strong> | The top-level
-<em>Object</em> of a <em>CPE</em>’s <em>Data Model</em> that contains
-all of the manageable <em>Objects</em>. The name of the Root
-<em>Object</em> is “Device.”. | <strong>Service Element</strong> | A
-Service Element represents a piece of service functionality that is
-exposed by an Agent, usually represented by one or more Objects. |
-<strong>Service Object</strong> | The top-most <em>Object</em>
-associated with a specific service within which all <em>Objects</em>,
-<em>Parameters,</em> <em>Commands</em> and <em>Events</em> associated
-with the service are contained. | <strong>Supported Data Model</strong>
-| Refers to either <em>Base Supported Data Model</em> or <em>Current
-Supported Data Model</em>, depending on the context. |
-<strong>URI</strong> | Uniform Resource Identifier. |
-<strong>URL</strong> | Uniform Resource Locator. | <strong>USP</strong>
-| Universal Service Platform. Defined in TR-369, USP is an evolution of
-CWMP that allows applications to manipulate Service Elements in a
-network of Controllers and Agents. | <strong>USP Agent</strong> | A USP
-Agent is a USP Endpoint that exposes Service Elements to one or more USP
-Controllers. | <strong>USP Controller</strong> | A USP Controller is a
-USP Endpoint that manipulates Service Elements through one or more USP
-Agents. | <strong>USP Endpoint</strong> | A USP Endpoint is a
-termination point for a USP message.</p>
+This concept does not apply to CWMP.</td>
+</tr>
+<tr>
+<td><strong>Multi-Instance Object</strong></td>
+<td>An <em>Object</em> that can have multiple instances, all of which
+are located at the same level within the name hierarchy. Each instance
+is identified by an <em>Instance Identifier</em>.</td>
+</tr>
+<tr>
+<td><strong>Object</strong></td>
+<td>An internal node in the name hierarchy, i.e., a node that can have
+<em>Object</em>, <em>Parameter</em>, <em>Command</em> and/or
+<em>Event</em> children. An <em>Object</em> name is a <em>Path
+Name</em>.</td>
+</tr>
+<tr>
+<td><strong>Parameter</strong></td>
+<td>A name-value pair that represents part of a <em>CPE</em> or <em>USP
+Agent</em>’s configuration or status. A Parameter name is a <em>Path
+Name</em>.</td>
+</tr>
+<tr>
+<td><strong>Path Name</strong></td>
+<td>A name that has a hierarchical structure similar to files in a
+directory, with each level separated by a “.” (dot). References an
+<em>Object</em>, <em>Parameter,</em> <em>Command</em> or
+<em>Event</em>.</td>
+</tr>
+<tr>
+<td><strong>Profile</strong></td>
+<td>A named collection of requirements relating to a given <em>Root
+Object</em>, <em>Service Object</em> or <em>Component</em>.</td>
+</tr>
+<tr>
+<td><strong>RPC</strong></td>
+<td>Remote Procedure Call.</td>
+</tr>
+<tr>
+<td><strong>Root Object</strong></td>
+<td>The top-level <em>Object</em> of a <em>CPE</em>’s <em>Data
+Model</em> that contains all of the manageable <em>Objects</em>. The
+name of the Root <em>Object</em> is “Device.”.</td>
+</tr>
+<tr>
+<td><strong>Service Element</strong></td>
+<td>A Service Element represents a piece of service functionality that
+is exposed by an Agent, usually represented by one or more Objects.</td>
+</tr>
+<tr>
+<td><strong>Service Object</strong></td>
+<td>The top-most <em>Object</em> associated with a specific service
+within which all <em>Objects</em>, <em>Parameters,</em>
+<em>Commands</em> and/or <em>Events</em> associated with the service are
+contained.</td>
+</tr>
+<tr>
+<td><strong>Supported Data Model</strong></td>
+<td>Refers to either <em>Base Supported Data Model</em> or <em>Current
+Supported Data Model</em>, depending on the context.</td>
+</tr>
+<tr>
+<td><strong>URI</strong></td>
+<td>Uniform Resource Identifier.</td>
+</tr>
+<tr>
+<td><strong>URL</strong></td>
+<td>Uniform Resource Locator.</td>
+</tr>
+<tr>
+<td><strong>USP</strong></td>
+<td>Universal Service Platform. Defined in TR-369, USP is an evolution
+of CWMP that allows applications to manipulate Service Elements in a
+network of Controllers and Agents.</td>
+</tr>
+<tr>
+<td><strong>USP Agent</strong></td>
+<td>A USP Agent is a USP Endpoint that exposes Service Elements to one
+or more USP Controllers.</td>
+</tr>
+<tr>
+<td><strong>USP Controller</strong></td>
+<td>A USP Controller is a USP Endpoint that manipulates Service Elements
+through one or more USP Agents.</td>
+</tr>
+<tr>
+<td><strong>USP Endpoint</strong></td>
+<td>A USP Endpoint is a termination point for a USP message.</td>
+</tr>
+</tbody>
+</table>
 <h2 class="auto-hoverlink" data-info="header"
 id="sec:document-conventions">1.2 Document Conventions</h2>
 <p>The key words “MUST”, “MUST NOT”, “REQUIRED”, “SHALL”, “SHALL NOT”,
@@ -2910,6 +2970,11 @@ href="#sec:vendor-specific-elements" class="heading">Section
 data-anchor="tbl:xml-description-templates">
 Table 2 – XML Description Templates
 </div></caption>
+<colgroup>
+<col style="width: 12%" />
+<col style="width: 25%" />
+<col style="width: 62%" />
+</colgroup>
 <thead>
 <tr>
 <th>Name</th>
@@ -2920,559 +2985,757 @@ Table 2 – XML Description Templates
 <tbody>
 <tr>
 <td><p>Glossary reference</p></td>
-<td><p><code>{{gloref|id}}</code></p></td>
-<td><p>Glossary reference. The id argument MUST match the id attribute
-of one of the current file’s (or an imported file’s) top-level glossary
-element’s item elements (<a href="#sec:glossary"
-class="heading">A.2.4.1</a>).<br />
-Typically, processing tools will (a) validate the id, and (b) replace
-the template reference with something like “id”.</p>
-<p>Markup examples:<br />
-<code>{{gloref|Parameter}}</code></p></td>
+<td><pre><code>{{gloref|id}}</code></pre></td>
+<td><p>Glossary reference.</p>
+<p>The id argument MUST match the id attribute of one of the current
+file’s (or an imported file’s) top-level glossary element’s item
+elements (<a href="#sec:glossary" class="heading">A.2.4.1</a>).</p>
+<p>Typically, processing tools will</p>
+<ol type="a">
+<li>validate the id</li>
+<li>replace the template reference with something like “id”</li>
+</ol>
+<p>Markup examples:</p>
+<pre><code>{{gloref|Parameter}}</code></pre></td>
 </tr>
 <tr>
 <td><p>Abbreviation reference</p></td>
-<td><p><code>{{abbref|id}}</code></p></td>
-<td><p>Abbreviation reference. The id argument MUST match the id
-attribute of one of the current file’s (or an imported file’s) top-level
-abbreviations element’s item elements (<a href="#sec:abbreviations"
-class="heading">A.2.4.2</a>).<br />
-Typically, processing tools will (a) validate the id, and (b) replace
-the template reference with something like “id”.</p>
-<p>Markup examples:<br />
-<code>{{abbref|CWMP}}</code></p></td>
+<td><pre><code>{{abbref|id}}</code></pre></td>
+<td><p>Abbreviation reference.</p>
+<p>The id argument MUST match the id attribute of one of the current
+file’s (or an imported file’s) top-level abbreviations element’s item
+elements (<a href="#sec:abbreviations" class="heading">A.2.4.2</a>).</p>
+<p>Typically, processing tools will</p>
+<ol type="a">
+<li>validate the id</li>
+<li>replace the template reference with something like “id”</li>
+</ol>
+<p>Markup examples:</p>
+<pre><code>{{abbref|CWMP}}</code></pre></td>
 </tr>
 <tr>
-<td><p>Approval date</p></td>
-<td><p><code>{{appdate|date}}</code></p></td>
-<td><p>The date on which this file was approved.<br />
-The date argument SHOULD be of the form “day month year” where “day” is
-the OPTIONAL day number (no leading zero), “month” is the full
+<td><p>Approval date [OBSOLETE]</p></td>
+<td><pre><code>{{appdate|date}}</code></pre></td>
+<td><p>The date on which this file was approved.</p>
+<p>The date argument SHOULD be of the form “day month year” where “day”
+is the OPTIONAL day number (no leading zero), “month” is the full
 (capitalized) month name, and “year” is the year (including
 century).</p>
-<p>Markup examples:<br />
-<code>{{appdate|5 November 2011}}</code><br />
-<code>{{appdate|November 2012}}</code></p></td>
+<p>Markup examples:</p>
+<pre><code>{{appdate|5 November 2011}}
+{{appdate|November 2012}}</code></pre></td>
 </tr>
 <tr>
-<td><p>Document name</p></td>
-<td><p><code>{{docname|name}}</code></p></td>
-<td><p>The DM Instance name or title.<br />
-The name argument MUST distinguish this file from other different files
-but not from other versions of the same file or data model.</p>
-<p>Markup examples:<br />
-<code>{{docname|Device Data Model for TR-069}}</code></p></td>
+<td><p>Document name [OBSOLETE]</p></td>
+<td><pre><code>{{docname|name}}</code></pre></td>
+<td><p>The DM Instance name or title.</p>
+<p>The name argument MUST distinguish this file from other different
+files but not from other versions of the same file or data model.</p>
+<p>Markup examples:</p>
+<pre><code>{{docname|Device Data Model for TR-069}}</code></pre></td>
 </tr>
 <tr>
-<td><p>TR name</p></td>
-<td><p><code>{{trname|name}}</code></p></td>
+<td><p>TR name [OBSOLETE]</p></td>
+<td><pre><code>{{trname|name}}</code></pre></td>
 <td><p>The name and version of the corresponding Word / PDF
-document.<br />
-The name argument MUST identify the Word / PDF document corresponding to
-this DM Instance, and be of the form “TR-nnnixaycz” as defined in <a
+document.</p>
+<p>The name argument MUST identify the Word / PDF document corresponding
+to this DM Instance, and be of the form “TR-nnnixaycz” as defined in <a
 href="#sec:bibliography" class="heading">A.2.4.3</a>.</p>
-<p>Markup examples:<br />
-<code>{{trname|TR-181i2a5}}</code></p></td>
+<p>Markup examples:</p>
+<pre><code>{{trname|TR-181i2a5}}</code></pre></td>
 </tr>
 <tr>
-<td><p>XML reference</p></td>
-<td><p><code>{{xmlref|ref}}</code><br />
-<code>{{xmlref|ref|label}}</code></p></td>
-<td><p>A reference to this or another DM Instance.<br />
-The ref argument MUST identify a DM Instance and be the filename part of
-the referenced DM Instance (a) optionally omitting the corrigendum
-number, and (b) omitting the trailing “.xml”.<br />
-The OPTIONAL label argument MAY be used by processing tools as a
+<td><p>XML reference [OBSOLETE]</p></td>
+<td><pre><code>{{xmlref|ref}}
+{{xmlref|ref|label}}</code></pre></td>
+<td><p>A reference to this or another DM Instance.</p>
+<p>The ref argument MUST identify a DM Instance and be the filename part
+of the referenced DM Instance</p>
+<ol type="a">
+<li>optionally omitting the corrigendum number</li>
+<li>omitting the trailing “.xml”</li>
+</ol>
+<p>The OPTIONAL label argument MAY be used by processing tools as a
 user-visible label; if it is omitted, processing tools will derive the
-label from the value of the ref argument.<br />
-Typically, processing tools will (a) validate the reference, and (b)
-replace the template reference with the label, possibly rendered in a
-distinctive font, and (if referencing a different file) a hyperlink.</p>
-<p>Markup examples:<br />
-<code>{{xmlref|tr-181-2-5}}</code><br />
-<code>{{xmlref|tr-196-2-0-1|Corrigendum 1}}</code></p></td>
+label from the value of the ref argument.</p>
+<p>Typically, processing tools will</p>
+<ol type="a">
+<li>validate the reference</li>
+<li>replace the template reference with the label, possibly rendered in
+a distinctive font, and (if referencing a different file) a
+hyperlink</li>
+</ol>
+<p>Markup examples:</p>
+<pre><code>{{xmlref|tr-181-2-5}}
+{{xmlref|tr-196-2-0-1|Corrigendum 1}}</code></pre></td>
 </tr>
 <tr>
 <td><p>Bibliographic reference</p></td>
-<td><p><code>{{bibref|id}}</code><br />
-<code>{{bibref|id|section}}</code></p></td>
-<td><p>A bibliographic reference.<br />
-The id argument MUST match the id attribute of one of the current file’s
-(or an imported file’s) top-level bibliography element’s reference
-elements (<a href="#sec:bibliography"
-class="heading">A.2.4.3</a>).<br />
-The OPTIONAL section argument specifies the section number, including
-any leading “section”, “annex” or “appendix” text.<br />
-Typically, processing tools will (a) validate the id, and (b) replace
-the template reference with something like “[id] section”.</p>
-<p>Markup examples:<br />
-<code>{{bibref|RFC3986}}</code><br />
-<code>{{bibref|RFC3986|Section 3}}</code></p></td>
+<td><pre><code>{{bibref|id}}
+{{bibref|id|section}}</code></pre></td>
+<td><p>A bibliographic reference.</p>
+<p>The id argument MUST match the id attribute of one of the current
+file’s (or an imported file’s) top-level bibliography element’s
+reference elements (<a href="#sec:bibliography"
+class="heading">A.2.4.3</a>).</p>
+<p>The OPTIONAL section argument specifies the section number, including
+any leading “section”, “annex” or “appendix” text.</p>
+<p>Typically, processing tools will</p>
+<ol type="a">
+<li>validate the id</li>
+<li>replace the template reference with something like “[id]
+section”</li>
+</ol>
+<p>Markup examples:</p>
+<pre><code>{{bibref|RFC3986}}
+{{bibref|RFC3986|Section 3}}</code></pre></td>
 </tr>
 <tr>
 <td><p>Template reference</p></td>
-<td><p><code>{{template|id}}</code></p></td>
-<td><p>A template element reference.<br />
-The id argument MUST match the id attribute of one of the current file’s
-(or an imported file’s) top-level template elements (<a
+<td><pre><code>{{template|id}}
+{{templ|id}}</code></pre></td>
+<td><p>A template element reference.</p>
+<p>The id argument MUST match the id attribute of one of the current
+file’s (or an imported file’s) top-level template elements (<a
 href="#sec:template-elements" class="heading">A.2.4.4</a>).</p>
-<p>Markup examples:<br />
-<code>{{template|BULK-DATA-HTTP-REF}}</code></p></td>
+<p>The <code>{{templ|id}}</code> form is OBSOLETE and SHOULD NOT be
+used.</p>
+<p>Markup examples:</p>
+<pre><code>{{template|BULK-DATA-HTTP-REF}}</code></pre></td>
 </tr>
 <tr>
 <td><p>Section separator</p></td>
-<td><p><code>{{section|category}}</code><br />
-<code>{{section}}</code></p></td>
+<td><pre><code>{{section|category}}
+{{section}}</code></pre></td>
 <td><p>The beginning or end of a section or category. This is a way of
-splitting the description into sections.<br />
-If the category argument is present, this marks the end of the previous
-section (if any), and the beginning of a section of the specified
-category. The “table”, “row” and “examples” categories are reserved for
-the obvious purposes.<br />
-If the category argument is absent, this marks the end of the previous
-section (if any). Typically, processing tools will (a) validate the
-category, and (b) replace the template reference with a section
-marker.</p>
-<p>Markup examples:<br />
-<code>{{section|table}}</code><br />
-<code>{{section|row}}</code><br />
-<code>{{section|examples}}</code></p></td>
+splitting the description into sections.</p>
+<p>If the category argument is present, this marks the end of the
+previous section (if any), and the beginning of a section of the
+specified category. The “table”, “row” and “examples” categories are
+reserved for the obvious purposes.</p>
+<p>If the category argument is absent, this marks the end of the
+previous section (if any). Typically, processing tools will</p>
+<ol type="a">
+<li>validate the category</li>
+<li>replace the template reference with a section marker</li>
+</ol>
+<p>Markup examples:</p>
+<pre><code>{{section|table}}
+{{section|row}}
+{{section|examples}}</code></pre></td>
 </tr>
 <tr>
-<td>Number of entries parameter description</td>
-<td><code>{{numentries}}</code></td>
-<td>A description of a “NumberOfEntries” parameter.<br />
-This template SHOULD be used for all such parameters. It will be
+<td><p>Number of entries parameter description</p></td>
+<td><pre><code>{{numentries}}</code></pre></td>
+<td><p>A description of a “NumberOfEntries” parameter.</p>
+<p>This template SHOULD be used for all such parameters. It will be
 expanded to something like “The number of entries in the &lt;table&gt;
-table.”.<br />
-In most cases, the description will consist only of
+table.”.</p>
+<p>In most cases, the description will consist only of
 <code>{{numentries}}</code> but it MAY be followed by additional text if
-desired.</td>
+desired.</p></td>
 </tr>
 <tr>
-<td>Deprecated, obsoleted or deleted indication</td>
-<td><code>{{deprecated|version|reason}}</code><br />
-<code>{{obsoleted|version}}</code><br />
-<code>{{obsoleted|version|reason}}</code><br />
-<code>{{deleted|version}}</code><br />
-<code>{{deleted|version|reason}}</code></td>
-<td>An indication that a parameter, command, event, object, enumeration
-value or pattern was deprecated (or obsoleted or deleted) in the
-specified data model version, for the specified reason.<br />
-The reason argument is a fragment of text that SHOULD be incorporated
+<td><p>Deprecated, obsoleted or deleted indication</p></td>
+<td><pre><code>{{deprecated|version|reason}}
+{{obsoleted|version}}
+{{obsoleted|version|reason}}
+{{deleted|version}}
+{{deleted|version|reason}}</code></pre></td>
+<td><p>An indication that a parameter, command, event, object,
+enumeration value or pattern was deprecated (or obsoleted or deleted) in
+the specified data model version, for the specified reason.</p>
+<p>The reason argument is a fragment of text that SHOULD be incorporated
 into the template expansion. It’s OPTIONAL when obsoleting or deleting
-an item.<br />
-Typically, processing tools will (a) validate that use of the template
-is consistent with the item status, (b) check for late (overdue) or
-too-early item status transitions, and (c) replace the template
-reference with text of the form “This &lt;itemType&gt; was
-&lt;transition&gt; in &lt;version&gt; &lt;reason&gt;.” (where
-&lt;itemType&gt; is parameter, object etc., and &lt;transition&gt; is
-the capitalized template name, i.e. DEPRECATED, OBSOLETED or
-DELETED).</td>
+an item.</p>
+<p>Typically, processing tools will</p>
+<ol type="a">
+<li>validate that use of the template is consistent with the item
+status</li>
+<li>check for late (overdue) or too-early item status transitions</li>
+<li>replace the template reference with text of the form “This
+&lt;itemType&gt; was &lt;transition&gt; in &lt;version&gt;
+&lt;reason&gt;.” (where &lt;itemType&gt; is parameter, object etc., and
+&lt;transition&gt; is the capitalized template name, i.e. DEPRECATED,
+OBSOLETED or DELETED)</li>
+</ol></td>
 </tr>
 <tr>
 <td><p>Parameter, command, event and object reference</p></td>
-<td><p><code>{{param}}</code><br />
-<code>{{param|ref}}</code><br />
-<code>{{param|ref|scope}}</code><br />
-<code>{{command}}</code><br />
-<code>{{command|ref}}</code><br />
-<code>{{command|ref|scope}}</code><br />
-<code>{{event}}</code><br />
-<code>{{event|ref}}</code><br />
-<code>{{event|ref|scope}}</code><br />
-<code>{{object}}</code><br />
-<code>{{object|ref}}</code><br />
-<code>{{object|ref|scope}}</code></p></td>
+<td><pre><code>{{param}}
+{{param|ref}}
+{{param|ref|scope}}
+{{command}}
+{{command|ref}}
+{{command|ref|scope}}
+{{event}}
+{{event|ref}}
+{{event|ref|scope}}
+{{object}}
+{{object|ref}}
+{{object|ref|scope}}</code></pre></td>
 <td><p>A reference to the specified parameter, command, event or
-object.<br />
-The OPTIONAL ref and scope arguments reference the specified item (scope
-defaults to normal). Item names SHOULD adhere to the rules of <a
-href="#sec:reference-path-names" class="heading">A.2.3.4</a>.<br />
-The scope argument can include a deprecated, obsoleted or deleted
+object.</p>
+<p>The OPTIONAL ref and scope arguments reference the specified item
+(scope defaults to normal). Item names SHOULD adhere to the rules of <a
+href="#sec:reference-path-names" class="heading">A.2.3.4</a>.</p>
+<p>The scope argument can include a deprecated, obsoleted or deleted
 status, e.g. it might be deprecated or normal,deprecated. Such a status
 value can be specified in order to suppress processing tool warnings
 when an item references a “more deprecated” item. For example,
 <code>{{param|ref|deprecated}}</code> allows a non-deprecated item to
-reference a deprecated parameter without a warning.<br />
-Typically, processing tools will (a) validate the reference, and (b)
-replace the template reference with the ref argument or, if it is
+reference a deprecated parameter without a warning.</p>
+<p>Typically, processing tools will</p>
+<ol type="a">
+<li>validate the reference</li>
+<li>replace the template reference with the ref argument or, if it is
 omitted, the current item name, possibly rendered in a distinctive
-font.<br />
-Processing tools can use the scope to convert a relative path into an
+font</li>
+</ol>
+<p>Processing tools can use the scope to convert a relative path into an
 absolute path in order, for example, to generate a hyperlink.</p>
-<p>Markup examples:<br />
-<code>{{param|Enable}}</code><br />
-<code>{{command|Reset()}}</code><br />
-<code>{{event|Boot!}}</code><br />
-<code>{{object|Stats.}}</code></p></td>
+<p>Markup examples:</p>
+<pre><code>{{param|Enable}}
+{{command|Reset()}}
+{{event|Boot!}}
+{{object|Stats.}}</code></pre></td>
 </tr>
 <tr>
 <td><p>Profile reference</p></td>
-<td><p><code>{{profile|ref}}</code><br />
-<code>{{profile}}</code></p></td>
-<td><p>A reference to the specified profile.<br />
-The OPTIONAL ref argument references a profile.<br />
-Typically, processing tools will (a) validate the reference, and (b)
-replace the template reference with the ref argument or, if it is
+<td><pre><code>{{profile|ref}}
+{{profile}}</code></pre></td>
+<td><p>A reference to the specified profile.</p>
+<p>The OPTIONAL ref argument references a profile.</p>
+<p>Typically, processing tools will</p>
+<ol type="a">
+<li>validate the reference</li>
+<li>replace the template reference with the ref argument or, if it is
 omitted, the current profile name, possibly rendered in a distinctive
-font.</p>
-<p>Markup examples:<br />
-<code>{{profile|Baseline:1}}</code><br />
-<code>{{profile}}</code></p></td>
+font</li>
+</ol>
+<p>Markup examples:</p>
+<pre><code>{{profile|Baseline:1}}
+{{profile}}</code></pre></td>
 </tr>
 <tr>
-<td>List description</td>
-<td><code>{{list}}</code><br />
-<code>{{list|arg}}</code><br />
-<code>{{nolist}}</code></td>
-<td>A description of the current parameter’s list attributes.<br />
-This template SHOULD only be used within the description of a
+<td><p>List description</p></td>
+<td><pre><code>{{list}}
+{{list|arg}}
+{{nolist}}</code></pre></td>
+<td><p>A description of the current parameter’s list attributes.</p>
+<p>This template SHOULD only be used within the description of a
 list-valued parameter (<a href="#sec:parameter-syntax"
-class="heading">A.2.7.1</a>).<br />
-This is a hint to processing tools to replace the template reference
+class="heading">A.2.7.1</a>).</p>
+<p>This is a hint to processing tools to replace the template reference
 with a description of the parameter’s list attributes. This overrides
 processing tools’ expected default behavior (unless suppressed by
 <code>{{nolist}}</code>) of describing the list attributes before the
-rest of the description.<br />
-The OPTIONAL argument specifies a fragment of text that describes the
-list and SHOULD be incorporated into the template expansion.<br />
-Typically processing tools will generate text of the form
+rest of the description.</p>
+<p>The OPTIONAL argument specifies a fragment of text that describes the
+list and SHOULD be incorporated into the template expansion.</p>
+<p>Typically, processing tools will generate text of the form
 “Comma-separated list of &lt;dataType&gt;.” or “Comma-separated list of
-&lt;dataType&gt;, &lt;arg&gt;.”.</td>
+&lt;dataType&gt;, &lt;arg&gt;.”.</p></td>
 </tr>
 <tr>
-<td>Reference description</td>
-<td><code>{{reference}}</code><br />
-<code>{{reference|arg}}</code><br />
-<code>{{reference|arg|opts}}</code><br />
-<code>{{noreference}}</code></td>
-<td>A description of the object or parameter that is referenced by the
-current parameter.<br />
-This template SHOULD only be used within the description of a reference
-parameter (<a href="#sec:reference-facets"
-class="heading">A.2.3.7</a>).<br />
-This is a hint to processing tools to replace the template reference
+<td><p>Reference description</p></td>
+<td><pre><code>{{reference}}
+{{reference|arg}}
+{{reference|arg|opts}}
+{{noreference}}</code></pre></td>
+<td><p>A description of the object or parameter that is referenced by
+the current parameter.</p>
+<p>This template SHOULD only be used within the description of a
+reference parameter (<a href="#sec:reference-facets"
+class="heading">A.2.3.7</a>).</p>
+<p>This is a hint to processing tools to replace the template reference
 with a description of the parameter’s reference attributes. This
 overrides processing tools’ expected default behavior (unless suppressed
 by <code>{{noreference}}</code>) of describing the reference attributes
 after the list attributes (for a list-valued parameter) or before the
-rest of the description (otherwise).<br />
-The OPTIONAL arg argument is relevant only for a pathRef; it specifies a
-fragment of text that describes the referenced item and SHOULD be
-incorporated into the template expansion.<br />
-The OPTIONAL opts argument is a comma-separated list of keywords that
+rest of the description (otherwise).</p>
+<p>The OPTIONAL arg argument is relevant only for a pathRef; it
+specifies a fragment of text that describes the referenced item and
+SHOULD be incorporated into the template expansion.</p>
+<p>The OPTIONAL opts argument is a comma-separated list of keywords that
 give additional information about the reference and can affect the
-generated text. The following keywords are currently defined:<br />
-
+generated text. The following keywords are currently defined:</p>
 <ul>
 <li><strong>ignore</strong>: ignore any non-existent targetParents; this
 is useful when a parameter references different objects in different
-data models.<br />
-</li>
+data models</li>
 <li><strong>delete</strong>: this object (the referencing object) and
 the referenced object have the same lifetime, so this object will always
 be deleted when the referenced object is deleted; therefore the
-reference can never be null.<br />
-Typically processing tools will generate text of the form “The value
+reference can never be null</li>
+</ul>
+<p>Typically, processing tools will generate text of the form “The value
 MUST be the full path name of &lt;arg&gt;…”, in which the generated text
 can be expected to be sensitive to whether or not the parameter is
-list-valued.</li>
-</ul>
-Markup examples:<br />
-<code>{{reference|a protocol object}}</code><br />
-<code>{{reference|all Host table entries|ignore}}</code></td>
+list-valued.</p>
+<p>Markup examples:</p>
+<pre><code>{{reference|a protocol object}}
+{{reference|all Host table entries|ignore}}</code></pre></td>
 </tr>
 <tr>
-<td>Named data type</td>
-<td><code>{{datatype}}</code><br />
-<code>{{datatype|arg}}</code><br />
-<code>{{nodatatype}}</code></td>
-<td>A description of the current parameter’s named data type.<br />
-This template SHOULD only be used within the description of a parameter
-of a named data type (<a href="#sec:named-data-types"
-class="heading">A.2.3.1</a>).<br />
-This is a hint to processing tools to replace the template reference
+<td><p>Named data type</p></td>
+<td><pre><code>{{datatype}}
+{{datatype|arg}}
+{{nodatatype}}</code></pre></td>
+<td><p>A description of the current parameter’s named data type.</p>
+<p>This template SHOULD only be used within the description of a
+parameter of a named data type (<a href="#sec:named-data-types"
+class="heading">A.2.3.1</a>).</p>
+<p>This is a hint to processing tools to replace the template reference
 with an indication of the parameter’s named data type, possibly
 including additional details or a hyperlink to such details. This
 overrides processing tools’ expected default behavior (unless suppressed
 by <code>{{nodatatype}}</code>) of describing the named data type before
-the rest of the description.<br />
-The OPTIONAL argument affects how the data type is described. If it has
-the literal value “expand”, processing tools SHOULD replace the template
-reference with the actual description of the named data type (as opposed
-to referencing the description of the named data type).</td>
+the rest of the description.</p>
+<p>The OPTIONAL argument affects how the data type is described. If it
+has the literal value “expand”, processing tools SHOULD replace the
+template reference with the actual description of the named data type
+(as opposed to referencing the description of the named data
+type).</p></td>
 </tr>
 <tr>
-<td>Profile description</td>
-<td><code>{{profdesc}}</code><br />
-<code>{{noprofdesc}}</code></td>
-<td>An auto-generated description of a profile.<br />
-This template SHOULD only be used within the description of a profile
-(<a href="#sec:profile-elements" class="heading">A.2.11</a>).<br />
-This is a hint to processing tools to replace the template reference
+<td><p>Profile description</p></td>
+<td><pre><code>{{profdesc}}
+{{noprofdesc}}</code></pre></td>
+<td><p>An auto-generated description of a profile.</p>
+<p>This template SHOULD only be used within the description of a profile
+(<a href="#sec:profile-elements" class="heading">A.2.11</a>).</p>
+<p>This is a hint to processing tools to replace the template reference
 with a description of the profile. This overrides processing tools’
 expected default behavior (unless suppressed by
 <code>{{noprofdesc}}</code>) of describing the profile before the rest
-of the description.<br />
-Typically processing tools will generate text of the form “This table
-defines the &lt;profile:v&gt; profile for the &lt;object:m&gt; object.
-The minimum REQUIRED version for this profile is &lt;object:m.n&gt;.”
-(or more complex text if the profile is based on or extends other
-profiles).</td>
+of the description.</p>
+<p>Typically, processing tools will generate text of the form “This
+table defines the &lt;profile:v&gt; profile for the &lt;object:m&gt;
+object. The minimum REQUIRED version for this profile is
+&lt;object:m.n&gt;.” (or more complex text if the profile is based on or
+extends other profiles).</p></td>
 </tr>
 <tr>
 <td><p>Enumeration reference</p></td>
-<td><p><code>{{enum|value}}</code><br />
-<code>{{enum|value|param}}</code><br />
-<code>{{enum|value|param|scope}}</code><br />
-<code>{{enum}}</code><br />
-<code>{{noenum}}</code></p></td>
-<td><p>A reference to the specified enumeration value.<br />
-The OPTIONAL value argument specifies one of the enumeration values for
-the referenced parameter. If present, it MUST be a valid enumeration
-value for that parameter.<br />
-The OPTIONAL param and scope arguments identify the referenced parameter
-(scope defaults to normal). If present, param SHOULD adhere to the rules
-of <a href="#sec:reference-path-names" class="heading">A.2.3.4</a>. If
-omitted, the current parameter is assumed.<br />
-If the arguments are omitted, this is a hint to processing tools to
+<td><pre><code>{{enum|value}}
+{{enum|value|param}}
+{{enum|value|param|scope}}
+{{enum}}
+{{noenum}}</code></pre></td>
+<td><p>A reference to the specified enumeration value.</p>
+<p>The OPTIONAL value argument specifies one of the enumeration values
+for the referenced parameter. If present, it MUST be a valid enumeration
+value for that parameter.</p>
+<p>The OPTIONAL param and scope arguments identify the referenced
+parameter (scope defaults to normal). If present, param SHOULD adhere to
+the rules of <a href="#sec:reference-path-names"
+class="heading">A.2.3.4</a>. If omitted, the current parameter is
+assumed.</p>
+<p>If the arguments are omitted, this is a hint to processing tools to
 replace the template reference with a list of the parameter’s
 enumerations, possibly preceded by text such as “Enumeration of:”. This
 overrides processing tools’ expected default behavior (unless suppressed
 by <code>{{noenum}}</code>) of listing the parameter’s enumerations
-after the rest of the description.<br />
-Otherwise, typically processing tools will (a) validate that the
+after the rest of the description.</p>
+<p>Otherwise, typically processing tools will (a) validate that the
 enumeration value is valid, and (b) replace the template reference with
 the value and/or param arguments, appropriately formatted and with the
 value possibly rendered in a distinctive font. Processing tools can use
 the scope to convert a relative path into an absolute path in order, for
 example, to generate a hyperlink.</p>
-<p>Markup examples:<br />
-<code>{{enum|None}}</code><br />
-<code>{{enum|None|OtherParam}}</code></p></td>
+<p>Markup examples:</p>
+<pre><code>{{enum|None}}
+{{enum|None|OtherParam}}</code></pre></td>
 </tr>
 <tr>
 <td><p>Pattern reference</p></td>
-<td><p><code>{{pattern|value}}</code><br />
-<code>{{pattern|value|param}}</code><br />
-<code>{{pattern|value|param|scope}}</code><br />
-<code>{{pattern}}</code><br />
-<code>{{nopattern}}</code></p></td>
-<td><p>A reference to the specified pattern value.<br />
-The OPTIONAL value argument specifies one of the pattern values for the
-referenced parameter. If present, it MUST be a valid pattern value for
-that parameter. The OPTIONAL param and scope arguments identify the
+<td><pre><code>{{pattern|value}}
+{{pattern|value|param}}
+{{pattern|value|param|scope}}
+{{pattern}}
+{{nopattern}}</code></pre></td>
+<td><p>A reference to the specified pattern value.</p>
+<p>The OPTIONAL value argument specifies one of the pattern values for
+the referenced parameter. If present, it MUST be a valid pattern value
+for that parameter. The OPTIONAL param and scope arguments identify the
 referenced parameter (scope defaults to normal). If present, param
 SHOULD adhere to the rules of <a href="#sec:reference-path-names"
 class="heading">A.2.3.4</a>. If omitted, the current parameter is
-assumed.<br />
-If the arguments are omitted, this is a hint to processing tools to
+assumed.</p>
+<p>If the arguments are omitted, this is a hint to processing tools to
 replace the template reference with a list of the parameter’s patterns,
 possibly preceded by text such as “Possible patterns:”. This overrides
 processing tools’ expected default behavior (unless suppressed by
 <code>{{nopattern}}</code>) of listing the parameter’s patterns after
-the rest of the description.<br />
-Otherwise, typically processing tools will (a) validate that the pattern
-value is valid, and (b) replace the template reference with the value
-and/or param arguments, appropriately formatted and with the value
-possibly rendered in a distinctive font. Processing tools can use the
-scope to convert a relative path into an absolute path in order, for
-example, to generate a hyperlink.</p>
-<p>Markup examples:<br />
-<code>{{pattern|None}}</code><br />
-<code>{{pattern|None|OtherParam}}</code></p></td>
+the rest of the description.</p>
+<p>Otherwise, typically processing tools will</p>
+<ol type="a">
+<li>validate that the pattern value is valid</li>
+<li>replace the template reference with the value and/or param
+arguments, appropriately formatted and with the value possibly rendered
+in a distinctive font.</li>
+</ol>
+<p>Processing tools can use the scope to convert a relative path into an
+absolute path in order, for example, to generate a hyperlink.</p>
+<p>Markup examples:</p>
+<pre><code>{{pattern|None}}
+{{pattern|None|OtherParam}}</code></pre></td>
 </tr>
 <tr>
-<td>Hidden value</td>
-<td><code>{{hidden}}</code><br />
-<code>{{hidden|value}}</code><br />
-<code>{{nohidden}}</code></td>
-<td>Text explaining that the value of the current parameter is hidden.
-This template SHOULD only be used within the description of a hidden
-parameter (<a href="#sec:parameter-syntax"
-class="heading">A.2.7.1</a>).<br />
-This is a hint to processing tools to replace the template reference
+<td><p>Hidden value</p></td>
+<td><pre><code>{{hidden}}
+{{hidden|value}}
+{{nohidden}}</code></pre></td>
+<td><p>Text explaining that the value of the current parameter is
+hidden. This template SHOULD only be used within the description of a
+hidden parameter (<a href="#sec:parameter-syntax"
+class="heading">A.2.7.1</a>).</p>
+<p>This is a hint to processing tools to replace the template reference
 with text explaining that the value of the current parameter is hidden.
 This overrides processing tools’ expected default behavior (unless
 suppressed by <code>{{nohidden}}</code>) of placing this text after the
-rest of the description.<br />
-The OPTIONAL argument indicates the value that is returned when the
+rest of the description.</p>
+<p>The OPTIONAL argument indicates the value that is returned when the
 current parameter is read. If omitted this defaults to the expansion of
-the <code>{{null}}</code> template.<br />
-Typically, processing tools will generate text of the form “When read,
-this parameter returns &lt;arg&gt;, regardless of the actual
-value.”.</td>
+the <code>{{null}}</code> template.</p>
+<p>Typically, processing tools will generate text of the form “When
+read, this parameter returns &lt;arg&gt;, regardless of the actual
+value.”.</p></td>
 </tr>
 <tr>
-<td>Secured value</td>
-<td><code>{{secured}}</code><br />
-<code>{{secured|value}}</code><br />
-<code>{{nosecured}}</code></td>
-<td>Text explaining that the value of the current parameter is secured.
-This template SHOULD only be used within the description of a secured
-parameter (<a href="#sec:parameter-syntax"
-class="heading">A.2.7.1</a>).<br />
-This is a hint to processing tools to replace the template reference
+<td><p>Secured value</p></td>
+<td><pre><code>{{secured}}
+{{secured|value}}
+{{nosecured}}</code></pre></td>
+<td><p>Text explaining that the value of the current parameter is
+secured. This template SHOULD only be used within the description of a
+secured parameter (<a href="#sec:parameter-syntax"
+class="heading">A.2.7.1</a>).</p>
+<p>This is a hint to processing tools to replace the template reference
 with text explaining that the value of the current parameter is secured.
 This overrides processing tools’ expected default behavior (unless
 suppressed by <code>{{nosecured}}</code>) of placing this text after the
-rest of the description.<br />
-The OPTIONAL argument indicates the value that is returned when the
+rest of the description.</p>
+<p>The OPTIONAL argument indicates the value that is returned when the
 Controller is not permitted to see the value. If omitted this defaults
-to the expansion of the <code>{{null}}</code> template.<br />
-Typically, processing tools will generate text of the form “When read,
-this parameter returns &lt;arg&gt;, regardless of the actual value,
-unless the Controller has a ‘secured’ role.”.</td>
+to the expansion of the <code>{{null}}</code> template.</p>
+<p>Typically, processing tools will generate text of the form “When
+read, this parameter returns &lt;arg&gt;, regardless of the actual
+value, unless the Controller has a ‘secured’ role.”.</p></td>
 </tr>
 <tr>
-<td>Command parameter</td>
-<td><code>{{command}}</code><br />
-<code>{{nocommand}}</code></td>
-<td>Text explaining that the current parameter is a command parameter
+<td><p>Command parameter</p></td>
+<td><pre><code>{{command}}
+{{nocommand}}</code></pre></td>
+<td><p>Text explaining that the current parameter is a command parameter
 that triggers an Agent action. This template SHOULD only be used within
 the description of such a command parameter (<a
-href="#sec:parameter-syntax" class="heading">A.2.7.1</a>).<br />
-This is a hint to processing tools to replace the template reference
+href="#sec:parameter-syntax" class="heading">A.2.7.1</a>).</p>
+<p>This is a hint to processing tools to replace the template reference
 with text explaining that the current parameter is a command parameter
 that always reads back as <code>{{null}}</code>. This overrides
 processing tools’ expected default behavior (unless suppressed by
 <code>{{nocommand}}</code>) of placing this text after the rest of the
-description. Typically, processing tools will generate text of the form
-“The value is not part of the device configuration and is always
-<code>{{null}}</code> when read.”.<br />
-Note that the same <code>{{command}}</code> template can also be used by
-a USP command to refer to itself.</td>
+description.</p>
+<p>Typically, processing tools will generate text of the form “The value
+is not part of the device configuration and is always
+<code>{{null}}</code> when read.”.</p>
+<p>Note that the same <code>{{command}}</code> template can also be used
+by a USP command to refer to itself.</p></td>
 </tr>
 <tr>
-<td>Factory default value</td>
-<td><code>{{factory}}</code><br />
-<code>{{nofactory}}</code></td>
-<td>Text listing the factory default for the current parameter. This
+<td><p>Factory default value</p></td>
+<td><pre><code>{{factory}}
+{{nofactory}}</code></pre></td>
+<td><p>Text listing the factory default for the current parameter. This
 template SHOULD only be used within the description of a parameter that
-has a factory default value.<br />
-This is a hint to processing tools to replace the template reference
+has a factory default value.</p>
+<p>This is a hint to processing tools to replace the template reference
 with text listing the factory default value. This overrides processing
 tools’ expected default behavior (unless suppressed by
 <code>{{nofactory}}</code>) of placing this text after the rest of the
-description. Typically, processing tools will generate text of the form
-“The factory default value MUST be &lt;value&gt;.”.</td>
+description.</p>
+<p>Typically, processing tools will generate text of the form “The
+factory default value MUST be &lt;value&gt;.”.</p></td>
 </tr>
 <tr>
-<td>Implementation default value</td>
-<td><code>{{impldef}}</code><br />
-<code>{{noimpldef}}</code></td>
-<td>Text listing the implementation default for the current parameter.
-This template SHOULD only be used within the description of a parameter
-that has an implementation default value.<br />
-This is a hint to processing tools to replace the template reference
+<td><p>Implementation default value</p></td>
+<td><pre><code>{{impldef}}
+{{noimpldef}}</code></pre></td>
+<td><p>Text listing the implementation default for the current
+parameter. This template SHOULD only be used within the description of a
+parameter that has an implementation default value.</p>
+<p>This is a hint to processing tools to replace the template reference
 with text listing the implementation default value. This overrides
 processing tools’ expected default behavior (unless suppressed by
 <code>{{noimpldef}}</code>) of placing this text after the rest of the
-description. Typically, processing tools will generate text of the form
-“The default value SHOULD be &lt;value&gt;.”.</td>
+description.</p>
+<p>Typically, processing tools will generate text of the form “The
+default value SHOULD be &lt;value&gt;.”.</p></td>
 </tr>
 <tr>
-<td>Parameter default value</td>
-<td><code>{{paramdef}}</code><br />
-<code>{{noparamdef}}</code></td>
-<td>Text listing the parameter default for the current argument. This
+<td><p>Parameter default value</p></td>
+<td><pre><code>{{paramdef}}
+{{noparamdef}}</code></pre></td>
+<td><p>Text listing the parameter default for the current argument. This
 template SHOULD only be used within the description of an argument that
-has a parameter default value.<br />
-This is a hint to processing tools to replace the template reference
+has a parameter default value.</p>
+<p>This is a hint to processing tools to replace the template reference
 with text listing the parameter default value. This overrides processing
 tools’ expected default behavior (unless suppressed by
 <code>{{noparamdef}}</code>) of placing this text after the rest of the
-description. Typically, processing tools will generate text of the form
-“The default value MUST be &lt;value&gt;.”.</td>
+description.</p>
+<p>Typically, processing tools will generate text of the form “The
+default value MUST be &lt;value&gt;.”.</p></td>
 </tr>
 <tr>
-<td>Unique keys description</td>
-<td><code>{{keys}}</code><br />
-<code>{{nokeys}}</code></td>
-<td>A description of the current object’s unique keys.<br />
-This template SHOULD only be used within the description of a
+<td><p>Unique keys description</p></td>
+<td><pre><code>{{keys}}
+{{nokeys}}</code></pre></td>
+<td><p>A description of the current object’s unique keys.</p>
+<p>This template SHOULD only be used within the description of a
 Multi-Instance Object (table) that defines one or more unique keys (<a
-href="#sec:tables" class="heading">A.2.10.1</a>).<br />
-This is a hint to processing tools to replace the template reference
+href="#sec:tables" class="heading">A.2.10.1</a>).</p>
+<p>This is a hint to processing tools to replace the template reference
 with a description of the object’s unique keys. This overrides
 processing tools’ expected default behavior (unless suppressed by
 <code>{{nokeys}}</code>) of describing the unique keys after the
-description.</td>
+description.</p></td>
 </tr>
 <tr>
-<td>Units reference</td>
-<td><code>{{units}}</code></td>
-<td>The parameter’s units string.<br />
-Typically, processing tools will (a) check that the parameter has a
-units string, and (b) substitute the value of its units string.</td>
+<td><p>Range details</p></td>
+<td><pre><code>{{range}}
+{{range|index}}</code></pre></td>
+<td><p>Details of the parameter’s ranges, including parameter units and
+range descriptions (if defined).</p>
+<p>This template SHOULD only be used within the description of a numeric
+parameter.</p>
+<p>The OPTIONAL index parameter is the index (0, 1, …) of the range of
+interest (the first defined range has index 0, the second has index 1,
+etc.). If no index is supplied, details of all ranges are
+returned.</p></td>
 </tr>
 <tr>
-<td>Boolean values</td>
-<td><code>{{false}}</code><br />
-<code>{{true}}</code></td>
-<td>Boolean values.<br />
-Typically, processing tools will substitute the value False or True,
-possibly rendered in a distinctive font.</td>
+<td><p>Size details</p></td>
+<td><pre><code>{{size}}
+{{size|index}}</code></pre></td>
+<td><p>Details of the parameter’s sizes, including size descriptions (if
+defined).</p>
+<p>This template SHOULD only be used within the description of a
+string-valued parameter.</p>
+<p>The OPTIONAL index parameter is the index (0, 1, …) of the size of
+interest (the first defined size has index 0, the second has index 1,
+etc.). If no index is supplied, details of all sizes are
+returned.</p></td>
 </tr>
 <tr>
-<td>Discriminator parameter description</td>
-<td><code>{{union}}</code><br />
-<code>{{nounion}}</code></td>
-<td>Text explaining the available options and use for the sub-objects
-which are part of the union.<br />
-This template SHOULD only be used within the description of (a) a
-parameter referenced as a discriminatorParameter, or (b) an object that
-references a discriminatorParameter (<a href="#sec:tables"
-class="heading">A.2.10.1</a>).<br />
-This is a hint to processing tools to replace the template reference
+<td><p>Units reference</p></td>
+<td><pre><code>{{units}}</code></pre></td>
+<td><p>The parameter’s units string.</p>
+<p>This template SHOULD only be used within the description of a numeric
+parameter.</p>
+<p>Typically, processing tools will</p>
+<ol type="a">
+<li>check that the parameter has a units string</li>
+<li>substitute the value of its units string</li>
+</ol></td>
+</tr>
+<tr>
+<td><p>Id indicator</p></td>
+<td><pre><code>{{showid}}
+{{noshowid}}</code></pre></td>
+<td><p>The value of the current parameter’s id attribute.</p>
+<p>This template SHOULD only be used within the description of a
+parameter.</p>
+<p>Typically, unless suppressed by <code>{{noshowid}}</code>, processing
+tools will (if the id is defined) insert text of the form “[id]” before
+the description.</p></td>
+</tr>
+<tr>
+<td><p>Mount Point indicator</p></td>
+<td><pre><code>{{mount}}
+{{nomount}}</code></pre></td>
+<td><p>An indication of the current object’s mountType attribute
+(intended for drawing attention to Mount Points).</p>
+<p>This template SHOULD only be used within the description of an
+object.</p>
+<p>Typically, unless suppressed by <code>{{nomount}}</code>, processing
+tools will (for Objects that are Mount Points) append explanatory text
+after the description.</p></td>
+</tr>
+<tr>
+<td><p>Minimum parameter value</p></td>
+<td><pre><code>{{minval}}</code></pre></td>
+<td><p>The minimum valid parameter value.</p>
+<p>This template SHOULD only be used within the description of numeric
+parameters.</p>
+<p>Typically, processing tools will</p>
+<ol type="a">
+<li>check that the parameter is numeric</li>
+<li>if the parameter has no defined ranges, substitute the minimum value
+for its data type, perhaps with a “(the minimum valid value)” note</li>
+<li>otherwise, substitute the mininum value of its first range</li>
+</ol></td>
+</tr>
+<tr>
+<td><p>Maximum parameter value</p></td>
+<td><pre><code>{{maxval}}</code></pre></td>
+<td><p>The maximum valid parameter value.</p>
+<p>This template SHOULD only be used within the description of numeric
+parameters.</p>
+<p>Typically, processing tools will</p>
+<ol type="a">
+<li>check that the parameter is numeric</li>
+<li>if the parameter has no defined ranges, substitute the maximum value
+for its data type, perhaps with a “(the maximum valid value)” note</li>
+<li>otherwise, substitute the maxinum value of its last range</li>
+</ol></td>
+</tr>
+<tr>
+<td><p>Forced Inform indicator</p></td>
+<td><pre><code>{{inform}}
+{{noinform}}</code></pre></td>
+<td><p>An indication of the current parameter’s forcedInform attribute
+(intended for drawing attention to parameters with forcedInform =
+True).</p>
+<p>This template SHOULD only be used within the description of a
+parameter.</p>
+<p>Typically, unless suppressed by <code>{{noinform}}</code>, processing
+tools will (for CWMP parameters with forcedInform = True) append
+explanatory text after the description.</p></td>
+</tr>
+<tr>
+<td><p>Active Notify indicator</p></td>
+<td><pre><code>{{notify}}
+{{nonotify}}</code></pre></td>
+<td><p>An indication of the current parameter’s activeNotify attribute
+(intended for drawing attention to parameters with non-empty
+activeNotify).</p>
+<p>This template SHOULD only be used within the description of a
+parameter.</p>
+<p>Typically, unless suppressed by <code>{{nonotify}}</code>, processing
+tools will (for CWMP parameters with non-empty activeNotify) append
+explanatory text after the description.</p></td>
+</tr>
+<tr>
+<td><p>Access indicator</p></td>
+<td><pre><code>{{access}}
+{{noaccess}}</code></pre></td>
+<td><p>An indication of the current parameter’s access level (intended
+for drawing attention to write-only-read-only parameters).</p>
+<p>This template SHOULD only be used within the description of a
+parameter.</p>
+<p>Typically, unless suppressed by <code>{{noaccess}}</code>, processing
+tools will (for write-once-read-only parameters) append explanatory text
+after the description.</p></td>
+</tr>
+<tr>
+<td><p>Async command indicator</p></td>
+<td><pre><code>{{async}}
+{{noasync}}</code></pre></td>
+<td><p>An indication of whether the current command is asynchronous.</p>
+<p>This template SHOULD only be used within the description of a
+command.</p>
+<p>Typically, unless suppressed by <code>{{noasync}}</code>, processing
+tools will (for asynchronous commands) insert text of the form “[ASYNC]”
+before the description.</p></td>
+</tr>
+<tr>
+<td><p>Entries indicator</p></td>
+<td><pre><code>{{entries}}
+{{noentries}}</code></pre></td>
+<td><p>An indication of the current object’s number of entries (intended
+for drawing attention to uncommon cases).</p>
+<p>This template SHOULD only be used within the description of an
+object.</p>
+<p>Typically, unless suppressed by <code>{{noentries}}</code>,
+processing tools will (for Multi-Instance Objects that have minEntries
+!= 0 or maxEntries != unbounded) append explanatory text after the
+description.</p></td>
+</tr>
+<tr>
+<td><p>Mandatory parameter indicator</p></td>
+<td><pre><code>{{mandatory}}
+{{nomandatory}}</code></pre></td>
+<td><p>An indication of whether the current command or event argument
+parameter is mandatory.</p>
+<p>This template SHOULD only be used within the description of a command
+or event argument parameter.</p>
+<p>Typically, unless suppressed by <code>{{nomandatory}}</code>,
+processing tools will (for mandatory argument parameters) insert text of
+the form “[MANDATORY]” before the description.</p></td>
+</tr>
+<tr>
+<td><p>Boolean values</p></td>
+<td><pre><code>{{false}}
+{{true}}</code></pre></td>
+<td><p>Boolean values.</p>
+<p>Typically, processing tools will substitute the value False or True,
+possibly rendered in a distinctive font.</p></td>
+</tr>
+<tr>
+<td><p>Discriminator parameter description</p></td>
+<td><pre><code>{{union}}
+{{nounion}}</code></pre></td>
+<td><p>Text explaining the available options and use for the sub-objects
+which are part of the union.</p>
+<p>This template SHOULD only be used within the description of</p>
+<ol type="a">
+<li>a parameter referenced as a discriminatorParameter, or</li>
+<li>an object that references a discriminatorParameter (<a
+href="#sec:tables" class="heading">A.2.10.1</a>).</li>
+</ol>
+<p>This is a hint to processing tools to replace the template reference
 with text explaining the union and possible choices of sub-objects. This
 overrides processing tools’ expected default behavior (unless suppressed
 by <code>{{nounion}}</code>) of placing this text after the rest of the
-description.<br />
-Typically, processing tools will generate text of the form (a) “This
-parameter discriminates between the &lt;objects&gt; union objects.”, or
-(b) “This object MUST be present if, and only if, &lt;param&gt; is
-&lt;object&gt;.”, but it MAY be followed by additional text, explaining
-the use of the available options, if desired.</td>
+description.</p>
+<p>Typically, processing tools will generate text of the form</p>
+<ol type="a">
+<li>“This parameter discriminates between the &lt;objects&gt; union
+objects.”, or</li>
+<li>“This object MUST be present if, and only if, &lt;param&gt; is
+&lt;object&gt;.”</li>
+</ol>
+<p>but it MAY be followed by additional text, explaining the use of the
+available options, if desired.</p></td>
 </tr>
 <tr>
-<td>Miscellaneous</td>
-<td><code>{{issue|descr}}</code><br />
-<code>{{issue|opts|descr}}</code></td>
-<td>An open issue.<br />
-If only one argument is supplied, it is descr, which describes the open
-issue. If two arguments are supplied, they are opts and descr.<br />
-The OPTIONAL opts argument is a comma-separated list of options:<br />
-
+<td><p>Miscellaneous</p></td>
+<td><pre><code>{{issue|descr}}
+{{issue|opts|descr}}</code></pre></td>
+<td><p>An open issue.</p>
+<p>If only one argument is supplied, it is descr, which describes the
+open issue. If two arguments are supplied, they are opts and descr.</p>
+<p>The OPTIONAL opts argument is a comma-separated list of options:</p>
 <ul>
-<li>The first list item is an issue category that defaults to
-“XXX”.<br />
-</li>
+<li>The first list item is an issue category that defaults to “XXX”</li>
 <li>The second list item is an issue status that defaults to an empty
 string. Any non-empty status implies that the issue has been
-resolved.<br />
-Typically, processing tools will assign a unique ID, e.g. a separate
+resolved.</li>
+</ul>
+<p>Typically, processing tools will assign a unique ID, e.g. a separate
 counter for each category of issue, and replace the template reference
 with the issue category, ID, status and description, possibly rendered
-in a distinctive font.</li>
-</ul>
-Markup examples:<br />
-<code>{{issue|Will be labeled XXX.}}</code><br />
-<code>{{issue|IPsec|Will be labeled IPsec.}}</code><br />
-<code>{{issue|DNS,fixed|Resolved DNS issue.}}</code></td>
+in a distinctive font.</p>
+<p>Markup examples:</p>
+<pre><code>{{issue|Will be labeled XXX.}}
+{{issue|IPsec|Will be labeled IPsec.}}
+{{issue|DNS,fixed|Resolved DNS issue.}}</code></pre></td>
 </tr>
 <tr>
 <td></td>
-<td><code>{{empty}}</code></td>
-<td>Represents an empty string. Typically, processing tools will render
-such values in a distinctive font, possibly using standard wording, such
-as &lt;Empty&gt; or “an empty string”.</td>
+<td><pre><code>{{empty}}</code></pre></td>
+<td><p>Represents an empty string.</p>
+<p>Typically, processing tools will render such values in a distinctive
+font, possibly using standard wording, such as &lt;Empty&gt; or “an
+empty string”.</p></td>
 </tr>
 <tr>
 <td></td>
-<td><code>{{null}}</code></td>
+<td><pre><code>{{null}}</code></pre></td>
 <td>Expands to the appropriate null value for the current parameter’s
 data type (<a href="#sec:null-values-and-references"
 class="heading">A.2.3.5</a>), e.g. <code>{{empty}}</code>,
@@ -5306,8 +5569,7 @@ object that is always allowed to exist.<br />
 <td><p>For USP only, denotes whether this object is a Mountable Object,
 a Mount Point, or none. Possible values are:</p>
 <ul>
-<li><strong>mountPoint</strong>: this object is a Mount Point.<br />
-</li>
+<li><strong>mountPoint</strong>: this object is a Mount Point.</li>
 <li><strong>mountable</strong>: this object is a Mountable Object. Such
 an object has to be a direct child of the Root or Service Object
 (DEPRECATED in DM Schema v1.10 because Mountable Objects are now

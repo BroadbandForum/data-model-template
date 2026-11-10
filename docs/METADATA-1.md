@@ -167,6 +167,11 @@
     * Add description of the dmr:noVersionCheck attribute.
     * Clarify the usage of microseconds for unknown time formatting.
 
+* - [Amendment 18][TR-106 Amendment 18]
+  - November 2026
+  -
+  - * Update some macro definitions and template descriptions
+
 :::
 
 Comments or questions about this Broadband Forum Technical Report should be directed to <info@broadband-forum.org>.
@@ -188,6 +193,7 @@ Comments or questions about this Broadband Forum Technical Report should be dire
 [TR-106 Amendment 13]: https://www.broadband-forum.org/download/TR-106_Amendment-13.pdf
 [TR-106 Amendment 14]: https://www.broadband-forum.org/download/TR-106_Amendment-14.pdf
 [TR-106 Amendment 17]: https://www.broadband-forum.org/download/TR-106_Amendment-17.pdf
+[TR-106 Amendment 18]: https://www.broadband-forum.org/download/TR-106_Amendment-18.pdf
 [TR-106 Amendment 2]: https://www.broadband-forum.org/download/TR-106_Amendment-2.pdf
 [TR-106 Amendment 3]: https://www.broadband-forum.org/download/TR-106_Amendment-3.pdf
 [TR-106 Amendment 4]: https://www.broadband-forum.org/download/TR-106_Amendment-4.pdf

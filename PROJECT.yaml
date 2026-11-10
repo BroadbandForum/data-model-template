@@ -112,6 +112,27 @@ resources:
 # this is a dictionary, typically keyed by vi.a.c revisions
 # XXX need to ensure that we cover the YANG multi-tag case
 versions:
+  v1.18.0:
+    date: 2026-11-09
+    changes:
+      specification:
+        text: |
+          * Update some macro definitions and template descriptions
+      dm-schema:
+        resname: cwmp-datamodel-1-18.xsd
+        text: |
+          * Use negative namespace rules to prevent non DMR namespaces from being used
+          * Prevent units from being specified on commands and events
+          * Require an explicit access attribute on all parameters
+      dt-schema:
+        resname: cwmp-devicetype-1-18.xsd
+        text: |
+          * Use negative namespace rules to prevent non DMR namespaces from being used
+      dm-bibrefs:
+        resname: tr-069-biblio.xml
+        text: |
+          * Add more bibrefs
+
   v1.17.0:
     date: 2026-06-01
     changes:
@@ -125,7 +146,7 @@ versions:
       dm-schema:
         resname: cwmp-datamodel-1-17.xsd
         text: |
-          * Relax syntax rules to simplifythe use of default element.
+          * Relax syntax rules to simplify the use of default element.
           * Add the possibility to use dmr:noVersionCheck attribute.
       dt-schema:
         resname: cwmp-devicetype-1-17.xsd

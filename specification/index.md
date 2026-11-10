@@ -168,52 +168,132 @@ In addition, this document defines two XML Schemas:
 
 The following terminology is used throughout this %bbfType%.
 
-|                                    |
-|------------------------------------|---------------------------------------------------------------------------------------------------------------
-| **ACS**                            | Auto-Configuration Server. This is a component in the broadband network responsible for *CWMP* auto-configuration of the *CPE* for advanced services.
-| **Agent**                          | A generic term that refers (as appropriate) to either a *CWMP Endpoint* or to a *USP Agent*.
-| **BBF**                            | The Broadband Forum.
-| **Base Supported Data Model**      | The *Data Model* that is supported by all *CPE* of a given make, model and firmware version. This refers to the *Objects,* *Parameters, Commands* and/or *Events* that have code support in the current firmware.
-| **CPE**                            | Customer Premises Equipment; refers (as appropriate) to any *CWMP*-enabled [@TR-069] or *USP*-enabled [@TR-369] device and therefore covers both Internet Gateway devices and LAN-side end devices.
-| **Command**                        | A named element allowing a *USP Controller* to execute an operation on a *USP Agent*. This concept does not apply to *CWMP*, which uses *Objects* and/or *Parameters* to simulate operations.
-| **Component**                      | A named collection of *Objects,* *Parameters, Commands, Events* and/or *Profiles* that can be included anywhere within a *Data Model*.
-| **Controller**                     | A generic term that refers (as appropriate) to either a *CWMP ACS* or a *USP Controller*.
-| **Current Supported Data Model**   | The *Data Model* that is currently supported by an individual *CPE*, i.e. the *Base Supported Data Model* plus any additional *Objects*, *Parameters*, *Commands* and/or *Events* supported by extra modules that have been installed on the *CPE*. This refers to the *Objects*, *Parameters,* *Commands* and/or *Events* that have code support in the *CPE*.
-| **CWMP**                           |*CPE* WAN Management Protocol. Defined in TR-069 [@TR-069], CWMP is a communication protocol between an *ACS* and CWMP-enabled *CPE* that defines a mechanism for secure auto-configuration of a *CPE* and other *CPE* management functions in a common framework.
-| **CWMP Endpoint**                  | A *CWMP* termination point used by a CWMP-enabled *CPE* for communication with the *ACS.*
-| **Data Model**                     | A hierarchical set of *Objects*, *Parameters*, *Commands* and/or *Events* that define the managed *Objects* accessible via a particular *Agent*.
-| **Device**                         | Used here as a synonym for *CPE*.
-| **DM Instance**                    | Data Model Schema instance document. This is an XML document that conforms to the *DM Schema* and to any additional rules specified in or referenced by the *DM Schema*.
-| **DM Schema**                      | Data Model Schema. This is the XML Schema [@REC-xmlschema-0] that is used for defining data models for use with *CWMP* and *USP*.
-| **DT Instance**                    | Device Type Schema instance document. This is an XML document that conforms to the *DT Schema* and to any additional rules specified in or referenced by the *DT Schema*. This concept is useful for both CWMP and USP as an offline design tool, but only CWMP uses it at run-time (via the SupportedDataModel Object; see @sec:the-supported-data-model-and-the-instantiated-data-model).
-| **DT Schema**                      | Device Type Schema. This is the XML Schema [@REC-xmlschema-0] that is used for describing a *Device*'s *Supported Data Model*. This concept is useful for both CWMP and USP as an offline design tool, but only CWMP uses it at run-time (via the SupportedDataModel Object; see @sec:the-supported-data-model-and-the-instantiated-data-model).
-| **Event**                          | An indication that something of interest has happened that requires the *Agent* to notify the *Controller*.
-| **Instantiated Data Model**        | The *Data Model* that currently exists on an individual *CPE*. This refers to the *Object* instances, *Parameters*, *Commands* and/or *Events* that currently exist within the data model. It can be thought of as the *Current Supported Data Model* with all the "{i}" placeholders expanded to be the actual *Instance Numbers*. For example, "Device.Services.ABCService.{i}." in the *Current Supported Data Model* might correspond to "Device.Services.ABCService.1." and "Device.Services.ABCService.2." in the *Instantiated Data Model*.
-| **Instance Alias**                 | A writeable string that uniquely identifies an instance within a *Multi-Instance Object*
-| **Instance Identifier**            | A value that uniquely identifies an instance within a *Multi-Instance Object*. It is either an *Instance Number* or an *Instance Alias*.
-| **Instance Number**                | A read-only positive integer (\>=1) that uniquely identifies an instance within a *Multi-Instance Object.*
-| **Mountable Object**               | An *Object* that is a direct child of the *Root Object* or *Service Object*, but whose *DM Instance* does not declare it to be a *Mount Point*. Starting with *DM Schema* v1.10 (TR-106 Amendment 12), all qualifying *Objects* are automatically regarded as *Mountable Objects.*\
-For example, the TR-181 Device:2 *Data Model*'s Device.DeviceInfo. object is (a) a direct child of the Device. *Root Object*, and (b) not declared as a *Mount Point*, so it's a *Mountable Object*.\
-This concept does not apply to CWMP.
-| **Mount Point**                    | An *Object* whose *DM Instance* specifies (via a mountType="mountPoint" attribute) that all *Mountable Objects* are conceptually its direct children.\
-For example, the TR-181 Device:2 *Data Model*'s *DM Instance* specifies that Device.ProxiedDevice.{i}. is a *Mount Point*. This means that Device.ProxiedDevice.{i}.ABC. conceptually exists for all Mountable Objects ABC.\
-This concept does not apply to CWMP.
-| **Multi-Instance Object**          | An *Object* that can have multiple instances, all of which are located at the same level within the name hierarchy. Each instance is identified by an *Instance Identifier*.
-| **Object**                         | An internal node in the name hierarchy, i.e., a node that can have *Object*, *Parameter*, *Command* and/or *Event* children. An *Object* name is a *Path Name*.
-| **Parameter**                      | A name-value pair that represents part of a *CPE* or *USP Agent*'s configuration or status. A Parameter name is a *Path Name*.
-| **Path Name**                      | A name that has a hierarchical structure similar to files in a directory, with each level separated by a "." (dot). References an *Object*, *Parameter,* *Command* or *Event*.
-| **Profile**                        | A named collection of requirements relating to a given *Root Object*, *Service Object* or *Component*.
-| **RPC**                            | Remote Procedure Call.
-| **Root Object**                    | The top-level *Object* of a *CPE*'s *Data Model* that contains all of the manageable *Objects*. The name of the Root *Object* is "Device.".
-| **Service Element**                | A Service Element represents a piece of service functionality that is exposed by an Agent, usually represented by one or more Objects.
-| **Service Object**                 | The top-most *Object* associated with a specific service within which all *Objects*, *Parameters,* *Commands* and *Events* associated with the service are contained.
-| **Supported Data Model**           | Refers to either *Base Supported Data Model* or *Current Supported Data Model*, depending on the context.
-| **URI**                            | Uniform Resource Identifier.
-| **URL**                            | Uniform Resource Locator.
-| **USP**                            | Universal Service Platform. Defined in TR-369, USP is an evolution of CWMP that allows applications to manipulate Service Elements in a network of Controllers and Agents.
-| **USP Agent**                      | A USP Agent is a USP Endpoint that exposes Service Elements to one or more USP Controllers.
-| **USP Controller**                 | A USP Controller is a USP Endpoint that manipulates Service Elements through one or more USP Agents.
-| **USP Endpoint**                   | A USP Endpoint is a termination point for a USP message.
+::: {.list-table header-rows=0}
+* - **ACS**
+  - Auto-Configuration Server. This is a component in the broadband network responsible for *CWMP* auto-configuration of the *CPE* for advanced services.
+
+* - **Agent**
+  - A generic term that refers (as appropriate) to either a *CWMP Endpoint* or to a *USP Agent*.
+
+* - **BBF**
+  - The Broadband Forum.
+
+* - **Base Supported Data Model**
+  - The *Data Model* that is supported by all *CPE* of a given make, model and firmware version. This refers to the *Objects,* *Parameters, Commands* and/or *Events* that have code support in the current firmware.
+
+* - **CPE**
+  - Customer Premises Equipment; refers (as appropriate) to any *CWMP*-enabled [@TR-069] or *USP*-enabled [@TR-369] device and therefore covers both Internet Gateway devices and LAN-side end devices.
+
+* - **Command**
+  - A named element allowing a *USP Controller* to execute an operation on a *USP Agent*. This concept does not apply to *CWMP*, which uses *Objects* and/or *Parameters* to simulate operations.
+
+* - **Component**
+  - A named collection of *Objects,* *Parameters, Commands, Events* and/or *Profiles* that can be included anywhere within a *Data Model*.
+
+* - **Controller**
+  - A generic term that refers (as appropriate) to either a *CWMP ACS* or a *USP Controller*.
+
+* - **Current Supported Data Model**
+  - The *Data Model* that is currently supported by an individual *CPE*, i.e. the *Base Supported Data Model* plus any additional *Objects*, *Parameters*, *Commands* and/or *Events* supported by extra modules that have been installed on the *CPE*. This refers to the *Objects*, *Parameters,* *Commands* and/or *Events* that have code support in the *CPE*.
+
+* - **CWMP**
+  - *CPE* WAN Management Protocol. Defined in TR-069 [@TR-069], CWMP is a communication protocol between an *ACS* and CWMP-enabled *CPE* that defines a mechanism for secure auto-configuration of a *CPE* and other *CPE* management functions in a common framework.
+
+* - **CWMP Endpoint**
+  - A *CWMP* termination point used by a CWMP-enabled *CPE* for communication with the *ACS.*
+
+* - **Data Model**
+  - A hierarchical set of *Objects*, *Parameters*, *Commands* and/or *Events* that define the managed *Objects* accessible via a particular *Agent*.
+
+* - **Device**
+  - Used here as a synonym for *CPE*.
+
+* - **DM Instance**
+  - Data Model Schema instance document. This is an XML document that conforms to the *DM Schema* and to any additional rules specified in or referenced by the *DM Schema*.
+
+* - **DM Schema**
+  - Data Model Schema. This is the XML Schema [@REC-xmlschema-0] that is used for defining data models for use with *CWMP* and *USP*.
+
+* - **DT Instance**
+  - Device Type Schema instance document. This is an XML document that conforms to the *DT Schema* and to any additional rules specified in or referenced by the *DT Schema*. This concept is useful for both CWMP and USP as an offline design tool, but only CWMP uses it at run-time (via the SupportedDataModel Object; see @sec:the-supported-data-model-and-the-instantiated-data-model).
+
+* - **DT Schema**
+  - Device Type Schema. This is the XML Schema [@REC-xmlschema-0] that is used for describing a *Device*'s *Supported Data Model*. This concept is useful for both CWMP and USP as an offline design tool, but only CWMP uses it at run-time (via the SupportedDataModel Object; see @sec:the-supported-data-model-and-the-instantiated-data-model).
+
+* - **Event**
+  - An indication that something of interest has happened that requires the *Agent* to notify the *Controller*.
+
+* - **Instantiated Data Model**
+  - The *Data Model* that currently exists on an individual *CPE*. This refers to the *Object* instances, *Parameters*, *Commands* and/or *Events* that currently exist within the data model. It can be thought of as the *Current Supported Data Model* with all the "{i}" placeholders expanded to be the actual *Instance Numbers*. For example, "Device.Services.ABCService.{i}." in the *Current Supported Data Model* might correspond to "Device.Services.ABCService.1." and "Device.Services.ABCService.2." in the *Instantiated Data Model*.
+
+* - **Instance Alias**
+  - A writeable string that uniquely identifies an instance within a *Multi-Instance Object*
+
+* - **Instance Identifier**
+  - A value that uniquely identifies an instance within a *Multi-Instance Object*. It is either an *Instance Number* or an *Instance Alias*.
+
+* - **Instance Number**
+  - A read-only positive integer (\ge1) that uniquely identifies an instance within a *Multi-Instance Object.*
+
+* - **Mountable Object**
+  - An *Object* that is a direct child of the *Root Object* or *Service Object*, but whose *DM Instance* does not declare it to be a *Mount Point*. Starting with *DM Schema* v1.10 (TR-106 Amendment 12), all qualifying *Objects* are automatically regarded as *Mountable Objects.*\
+    For example, the TR-181 Device:2 *Data Model*'s Device.DeviceInfo. object is (a) a direct child of the Device. *Root Object*, and (b) not declared as a *Mount Point*, so it's a *Mountable Object.*\
+    This concept does not apply to CWMP.
+
+* - **Mount Point**
+  - An *Object* whose *DM Instance* specifies (via a mountType="mountPoint" attribute) that all *Mountable Objects* are conceptually its direct children.\
+    For example, the TR-181 Device:2 *Data Model*'s *DM Instance* specifies that Device.ProxiedDevice.{i}. is a *Mount Point*. This means that Device.ProxiedDevice.{i}.ABC. conceptually exists for all Mountable Objects ABC.\
+    This concept does not apply to CWMP.
+
+* - **Multi-Instance Object**
+  - An *Object* that can have multiple instances, all of which are located at the same level within the name hierarchy. Each instance is identified by an *Instance Identifier*.
+
+* - **Object**
+  - An internal node in the name hierarchy, i.e., a node that can have *Object*, *Parameter*, *Command* and/or *Event* children. An *Object* name is a *Path Name*.
+
+* - **Parameter**
+  - A name-value pair that represents part of a *CPE* or *USP Agent*'s configuration or status. A Parameter name is a *Path Name*.
+
+* - **Path Name**
+  - A name that has a hierarchical structure similar to files in a directory, with each level separated by a "." (dot). References an *Object*, *Parameter,* *Command* or *Event*.
+
+* - **Profile**
+  - A named collection of requirements relating to a given *Root Object*, *Service Object* or *Component*.
+
+* - **RPC**
+  - Remote Procedure Call.
+
+* - **Root Object**
+  - The top-level *Object* of a *CPE*'s *Data Model* that contains all of the manageable *Objects*. The name of the Root *Object* is "Device.".
+
+* - **Service Element**
+  - A Service Element represents a piece of service functionality that is exposed by an Agent, usually represented by one or more Objects.
+
+* - **Service Object**
+  - The top-most *Object* associated with a specific service within which all *Objects*, *Parameters,* *Commands* and/or *Events* associated with the service are contained.
+
+* - **Supported Data Model**
+  - Refers to either *Base Supported Data Model* or *Current Supported Data Model*, depending on the context.
+
+* - **URI**
+  - Uniform Resource Identifier.
+
+* - **URL**
+  - Uniform Resource Locator.
+
+* - **USP**
+  - Universal Service Platform. Defined in TR-369, USP is an evolution of CWMP that allows applications to manipulate Service Elements in a network of Controllers and Agents.
+
+* - **USP Agent**
+  - A USP Agent is a USP Endpoint that exposes Service Elements to one or more USP Controllers.
+
+* - **USP Controller**
+  - A USP Controller is a USP Endpoint that manipulates Service Elements through one or more USP Agents.
+
+* - **USP Endpoint**
+  - A USP Endpoint is a termination point for a USP message.
+
+:::
 
 ## Document Conventions
 
@@ -1455,7 +1535,8 @@ explanation that the parameter value is hidden.
 The following standard templates are defined. Any vendor-specific
 template names MUST obey the rules of @sec:vendor-specific-elements.
 
-:::list-table
+::: {.list-table widths=1,2,5}
+
 XML Description Templates {#tbl:xml-description-templates}
 
 * - Name
@@ -1463,309 +1544,852 @@ XML Description Templates {#tbl:xml-description-templates}
   - Description
 
 * - Glossary reference
-  - `{{gloref|id}}`
-  - Glossary reference. The id argument MUST match the id attribute of one of the current file's (or an imported file's) top-level glossary element's item elements (@sec:glossary).\
-    Typically, processing tools will (a) validate the id, and (b) replace the template reference with something like "id".
 
-    Markup examples:\
-    `{{gloref|Parameter}}`
+  -     {{gloref|id}}
+
+  - Glossary reference.
+
+    The id argument MUST match the id attribute of one of the current file's
+    (or an imported file's) top-level glossary element's item elements
+    (@sec:glossary).
+
+    Typically, processing tools will
+    (a) validate the id
+    (b) replace the template reference with something like "id"
+
+    Markup examples:
+
+        {{gloref|Parameter}}
 
 * - Abbreviation reference
-  - `{{abbref|id}}`
-  - Abbreviation reference. The id argument MUST match the id attribute of one of the current file's (or an imported file's) top-level abbreviations element's item elements (@sec:abbreviations).\
-    Typically, processing tools will (a) validate the id, and (b) replace the template reference with something like "id".
 
-    Markup examples:\
-    `{{abbref|CWMP}}`
+  -     {{abbref|id}}
 
-* - Approval date
-  - `{{appdate|date}}`
-  - The date on which this file was approved.\
-    The date argument SHOULD be of the form "day month year" where "day" is the OPTIONAL day number (no leading zero), "month" is the full (capitalized) month name, and "year" is the year (including century).
+  - Abbreviation reference.
 
-    Markup examples:\
-    `{{appdate|5 November 2011}}`\
-    `{{appdate|November 2012}}`
+    The id argument MUST match the id attribute of one of the current file's
+    (or an imported file's) top-level abbreviations element's item elements
+    (@sec:abbreviations).
 
-* - Document name
-  - `{{docname|name}}`
-  - The DM Instance name or title.\
-      The name argument MUST distinguish this file from other different files but not from other versions of the same file or data model.
+    Typically, processing tools will
+    (a) validate the id
+    (b) replace the template reference with something like "id"
 
-      Markup examples:\
-      `{{docname|Device Data Model for TR-069}}`
+    Markup examples:
 
-* - TR name
-  - `{{trname|name}}`
-  - The name and version of the corresponding Word / PDF document.\
-    The name argument MUST identify the Word / PDF document corresponding to this DM Instance, and be of the form "TR-nnnixaycz" as defined in @sec:bibliography.
+        {{abbref|CWMP}}
 
-    Markup examples:\
-    `{{trname|TR-181i2a5}}`
+* - Approval date [OBSOLETE]
 
-* - XML reference
-  - `{{xmlref|ref}}`\
-`{{xmlref|ref|label}}`
-  - A reference to this or another DM Instance.\
-    The ref argument MUST identify a DM Instance and be the filename part of the referenced DM Instance (a) optionally omitting the corrigendum number, and (b) omitting the trailing ".xml".\
-    The OPTIONAL label argument MAY be used by processing tools as a user-visible label; if it is omitted, processing tools will derive the label from the value of the ref   argument.\
-    Typically, processing tools will (a) validate the reference, and (b) replace the template reference with the label, possibly rendered in a distinctive font, and (if referencing a different file) a hyperlink.
+  -     {{appdate|date}}
 
-    Markup examples:\
-    `{{xmlref|tr-181-2-5}}`\
-    `{{xmlref|tr-196-2-0-1|Corrigendum 1}}`
+  - The date on which this file was approved.
+
+    The date argument SHOULD be of the form "day month year" where "day" is
+    the OPTIONAL day number (no leading zero), "month" is the full
+    (capitalized) month name, and "year" is the year (including century).
+
+    Markup examples:
+
+        {{appdate|5 November 2011}}
+        {{appdate|November 2012}}
+
+* - Document name [OBSOLETE]
+
+  -     {{docname|name}}
+
+  - The DM Instance name or title.
+
+    The name argument MUST distinguish this file from other different files
+    but not from other versions of the same file or data model.
+
+    Markup examples:
+
+        {{docname|Device Data Model for TR-069}}
+
+* - TR name [OBSOLETE]
+
+  -     {{trname|name}}
+
+  - The name and version of the corresponding Word / PDF document.
+
+    The name argument MUST identify the Word / PDF document corresponding to
+    this DM Instance, and be of the form "TR-nnnixaycz" as defined in
+    @sec:bibliography.
+
+    Markup examples:
+
+        {{trname|TR-181i2a5}}
+
+* - XML reference [OBSOLETE]
+
+  -     {{xmlref|ref}}
+        {{xmlref|ref|label}}
+
+  - A reference to this or another DM Instance.
+
+    The ref argument MUST identify a DM Instance and be the filename part of
+    the referenced DM Instance
+    (a) optionally omitting the corrigendum number
+    (b) omitting the trailing ".xml"
+
+    The OPTIONAL label argument MAY be used by processing tools as a
+    user-visible label; if it is omitted, processing tools will derive the
+    label from the value of the ref argument.
+
+    Typically, processing tools will
+    (a) validate the reference
+    (b) replace the template reference with the label, possibly rendered in a
+        distinctive font, and (if referencing a different file) a hyperlink
+
+    Markup examples:
+
+        {{xmlref|tr-181-2-5}}
+        {{xmlref|tr-196-2-0-1|Corrigendum 1}}
 
 * - Bibliographic reference
-  - `{{bibref|id}}`\
-`{{bibref|id|section}}`
-  - A bibliographic reference.\
-    The id argument MUST match the id attribute of one of the current file's (or an imported file's) top-level bibliography element's reference elements (@sec:bibliography).\
-    The OPTIONAL section argument specifies the section number, including any leading "section", "annex" or "appendix" text.\
-    Typically, processing tools will (a) validate the id, and (b) replace the template reference with something like "[id] section".
 
-    Markup examples:\
-    `{{bibref|RFC3986}}`\
-    `{{bibref|RFC3986|Section 3}}`
+  -     {{bibref|id}}
+        {{bibref|id|section}}
+
+  - A bibliographic reference.
+
+    The id argument MUST match the id attribute of one of the current file's
+    (or an imported file's) top-level bibliography element's reference elements
+    (@sec:bibliography).
+
+    The OPTIONAL section argument specifies the section number, including any
+    leading "section", "annex" or "appendix" text.
+
+    Typically, processing tools will
+    (a) validate the id
+    (b) replace the template reference with something like "[id] section"
+
+    Markup examples:
+
+        {{bibref|RFC3986}}
+        {{bibref|RFC3986|Section 3}}
 
 * - Template reference
-  - `{{template|id}}`
-  - A template element reference.\
-    The id argument MUST match the id attribute of one of the current file's (or an imported file's) top-level template elements (@sec:template-elements).
 
-    Markup examples:\
-    `{{template|BULK-DATA-HTTP-REF}}`
+  -     {{template|id}}
+        {{templ|id}}
+
+  - A template element reference.
+
+    The id argument MUST match the id attribute of one of the current file's
+    (or an imported file's) top-level template elements
+    (@sec:template-elements).
+
+    The `{{templ|id}}` form is OBSOLETE and SHOULD NOT be used.
+
+    Markup examples:
+
+        {{template|BULK-DATA-HTTP-REF}}
 
 * - Section separator
-  - `{{section|category}}`\
-`{{section}}`
-  - The beginning or end of a section or category. This is a way of splitting the description into sections.\
-    If the category argument is present, this marks the end of the previous section (if any), and the beginning of a section of the specified category. The "table", "row" and "examples" categories are reserved for the obvious purposes.\
-    If the category argument is absent, this marks the end of the previous section (if any). Typically, processing tools will (a) validate the category, and (b) replace the template reference with a section marker.
 
-    Markup examples:\
-    `{{section|table}}`\
-    `{{section|row}}`\
-    `{{section|examples}}`
+  -     {{section|category}}
+        {{section}}
+
+  - The beginning or end of a section or category. This is a way of splitting
+    the description into sections.
+
+    If the category argument is present, this marks the end of the previous
+    section (if any), and the beginning of a section of the specified category.
+    The "table", "row" and "examples" categories are reserved for the obvious
+    purposes.
+
+    If the category argument is absent, this marks the end of the previous
+    section (if any). Typically, processing tools will
+    (a) validate the category
+    (b) replace the template reference with a section marker
+
+    Markup examples:
+
+        {{section|table}}
+        {{section|row}}
+        {{section|examples}}
 
 * - Number of entries parameter description
-  - `{{numentries}}`
-  - A description of a "NumberOfEntries" parameter.\
-This template SHOULD be used for all such parameters.  It will be expanded to something like "The number of entries in the \<table> table.".\
-In most cases, the description will consist only of `{{numentries}}` but it MAY be followed by additional text if desired.
+
+  -     {{numentries}}
+
+  - A description of a "NumberOfEntries" parameter.
+
+    This template SHOULD be used for all such parameters. It will be expanded
+    to something like "The number of entries in the \<table> table.".
+
+    In most cases, the description will consist only of `{{numentries}}` but
+    it MAY be followed by additional text if desired.
 
 * - Deprecated, obsoleted or deleted indication
-  - `{{deprecated|version|reason}}`\
-`{{obsoleted|version}}`\
-`{{obsoleted|version|reason}}`\
-`{{deleted|version}}`\
-`{{deleted|version|reason}}`
-  - An indication that a parameter, command, event, object, enumeration value or pattern was deprecated (or obsoleted or deleted) in the specified data model version, for the specified reason.\
-    The reason argument is a fragment of text that SHOULD be incorporated into the template expansion. It's OPTIONAL when obsoleting or deleting an item.\
-    Typically, processing tools will (a) validate that use of the template is consistent with the item status, (b) check for late (overdue) or too-early item status transitions, and (c) replace the template reference with text of the form "This \<itemType> was \<transition> in \<version> \<reason>." (where \<itemType> is parameter, object etc., and \<transition> is the capitalized template name, i.e. DEPRECATED, OBSOLETED or DELETED).
+
+  -     {{deprecated|version|reason}}
+        {{obsoleted|version}}
+        {{obsoleted|version|reason}}
+        {{deleted|version}}
+        {{deleted|version|reason}}
+
+  - An indication that a parameter, command, event, object, enumeration value
+    or pattern was deprecated (or obsoleted or deleted) in the specified data
+    model version, for the specified reason.
+
+    The reason argument is a fragment of text that SHOULD be incorporated into
+    the template expansion. It's OPTIONAL when obsoleting or deleting an item.
+
+    Typically, processing tools will
+    (a) validate that use of the template is consistent with the item status
+    (b) check for late (overdue) or too-early item status transitions
+    (c) replace the template reference with text of the form "This \<itemType>
+        was \<transition> in \<version> \<reason>." (where \<itemType> is
+        parameter, object etc., and \<transition> is the capitalized template
+        name, i.e. DEPRECATED, OBSOLETED or DELETED)
 
 * - Parameter, command, event and object reference
-  - `{{param}}`\
-    `{{param|ref}}`\
-    `{{param|ref|scope}}`\
-    `{{command}}`\
-    `{{command|ref}}`\
-    `{{command|ref|scope}}`\
-    `{{event}}`\
-    `{{event|ref}}`\
-    `{{event|ref|scope}}`\
-    `{{object}}`\
-    `{{object|ref}}`\
-    `{{object|ref|scope}}`
-  - A reference to the specified parameter, command, event or object.\
-    The OPTIONAL ref and scope arguments reference the specified item (scope defaults to normal). Item names SHOULD adhere to the rules of @sec:reference-path-names.\
-    The scope argument can include a deprecated, obsoleted or deleted status, e.g. it might be deprecated or normal,deprecated. Such a status value can be specified in order to suppress processing tool warnings when an item references a "more deprecated" item. For example, `{{param|ref|deprecated}}` allows a non-deprecated item to reference a deprecated parameter without a warning.\
-    Typically, processing tools will (a) validate the reference, and (b) replace the template reference with the ref argument or, if it is omitted, the current item name, possibly rendered in a distinctive font.\
-    Processing tools can use the scope to convert a relative path into an absolute path in order, for example, to generate a hyperlink.
 
-    Markup examples:\
-    `{{param|Enable}}`\
-    `{{command|Reset()}}`\
-    `{{event|Boot!}}`\
-    `{{object|Stats.}}`
+  -     {{param}}
+        {{param|ref}}
+        {{param|ref|scope}}
+        {{command}}
+        {{command|ref}}
+        {{command|ref|scope}}
+        {{event}}
+        {{event|ref}}
+        {{event|ref|scope}}
+        {{object}}
+        {{object|ref}}
+        {{object|ref|scope}}
+
+  - A reference to the specified parameter, command, event or object.
+
+    The OPTIONAL ref and scope arguments reference the specified item (scope
+    defaults to normal). Item names SHOULD adhere to the rules of
+    @sec:reference-path-names.
+
+    The scope argument can include a deprecated, obsoleted or deleted status,
+    e.g. it might be deprecated or normal,deprecated. Such a status value can
+    be specified in order to suppress processing tool warnings when an item
+    references a "more deprecated" item. For example, `{{param|ref|deprecated}}`
+    allows a non-deprecated item to reference a deprecated parameter without a
+    warning.
+
+    Typically, processing tools will
+    (a) validate the reference
+    (b) replace the template reference with the ref argument or, if it is
+        omitted, the current item name, possibly rendered in a distinctive
+        font
+
+    Processing tools can use the scope to convert a relative path into an
+    absolute path in order, for example, to generate a hyperlink.
+
+    Markup examples:
+
+        {{param|Enable}}
+        {{command|Reset()}}
+        {{event|Boot!}}
+        {{object|Stats.}}
 
 * - Profile reference
-  - `{{profile|ref}}`\
-`{{profile}}`
-  - A reference to the specified profile.\
-    The OPTIONAL ref argument references a profile.\
-    Typically, processing tools will (a) validate the reference, and (b) replace the template reference with the ref argument or, if it is omitted, the current profile name, possibly rendered in a distinctive font.
 
-    Markup examples:\
-    `{{profile|Baseline:1}}`\
-    `{{profile}}`
+  -     {{profile|ref}}
+        {{profile}}
+
+  - A reference to the specified profile.
+
+    The OPTIONAL ref argument references a profile.
+
+    Typically, processing tools will
+    (a) validate the reference
+    (b) replace the template reference with the ref argument or, if it is
+        omitted, the current profile name, possibly rendered in a distinctive
+        font
+
+    Markup examples:
+
+        {{profile|Baseline:1}}
+        {{profile}}
 
 * - List description
-  - `{{list}}`\
-    `{{list|arg}}`\
-    `{{nolist}}`
-  - A description of the current parameter's list attributes.\
-    This template SHOULD only be used within the description of a list-valued parameter (@sec:parameter-syntax).\
-    This is a hint to processing tools to replace the template reference with a description of the parameter's list attributes.  This overrides processing tools' expected default behavior (unless suppressed by `{{nolist}}`) of describing the list attributes before the rest of the description.\
-    The OPTIONAL argument specifies a fragment of text that describes the list and SHOULD be incorporated into the template expansion.\
-    Typically processing tools will generate text of the form "Comma-separated list of \<dataType>." or "Comma-separated list of \<dataType>, \<arg>.".
+
+  -     {{list}}
+        {{list|arg}}
+        {{nolist}}
+
+  - A description of the current parameter's list attributes.
+
+    This template SHOULD only be used within the description of a list-valued
+    parameter (@sec:parameter-syntax).
+
+    This is a hint to processing tools to replace the template reference with
+    a description of the parameter's list attributes.  This overrides
+    processing tools' expected default behavior (unless suppressed by
+    `{{nolist}}`) of describing the list attributes before the rest of the
+    description.
+
+    The OPTIONAL argument specifies a fragment of text that describes the list
+    and SHOULD be incorporated into the template expansion.
+
+    Typically, processing tools will generate text of the form "Comma-separated
+    list of \<dataType>." or "Comma-separated list of \<dataType>, \<arg>.".
 
 * - Reference description
-  - `{{reference}}`\
-    `{{reference|arg}}`\
-    `{{reference|arg|opts}}`\
-    `{{noreference}}`
-  - A description of the object or parameter that is referenced by the current parameter.\
-    This template SHOULD only be used within the description of a reference parameter (@sec:reference-facets).\
-    This is a hint to processing tools to replace the template reference with a description of the parameter's reference attributes. This overrides processing tools' expected default behavior (unless suppressed by `{{noreference}}`) of describing the reference attributes after the list attributes (for a list-valued parameter) or before the rest of the description (otherwise).\
-    The OPTIONAL arg argument is relevant only for a pathRef; it specifies a fragment of text that describes the referenced item and SHOULD be incorporated into the template expansion.\
-    The OPTIONAL opts argument is a comma-separated list of keywords that give additional information about the reference and can affect the generated text.  The following keywords are currently defined:\
-    - **ignore**: ignore any non-existent targetParents; this is useful when a parameter references different objects in different data models.\
-    - **delete**: this object (the referencing object) and the referenced object have the same lifetime, so this object will always be deleted when the referenced object is deleted; therefore the reference can never be null.\
-    Typically processing tools will generate text of the form "The value MUST be the full path name of \<arg>...", in which the generated text can be expected to be sensitive to whether or not the parameter is list-valued.
 
-    Markup examples:\
-    `{{reference|a protocol object}}`\
-    `{{reference|all Host table entries|ignore}}`
+  -     {{reference}}
+        {{reference|arg}}
+        {{reference|arg|opts}}
+        {{noreference}}
+
+  - A description of the object or parameter that is referenced by the current
+    parameter.
+
+    This template SHOULD only be used within the description of a reference
+    parameter (@sec:reference-facets).
+
+    This is a hint to processing tools to replace the template reference with
+    a description of the parameter's reference attributes. This overrides
+    processing tools' expected default behavior (unless suppressed by
+    `{{noreference}}`) of describing the reference attributes after the list
+    attributes (for a list-valued parameter) or before the rest of the
+    description (otherwise).
+
+    The OPTIONAL arg argument is relevant only for a pathRef; it specifies a
+    fragment of text that describes the referenced item and SHOULD be
+    incorporated into the template expansion.
+
+    The OPTIONAL opts argument is a comma-separated list of keywords that
+    give additional information about the reference and can affect the
+    generated text.  The following keywords are currently defined:
+    - **ignore**: ignore any non-existent targetParents; this is useful when
+      a parameter references different objects in different data models
+    - **delete**: this object (the referencing object) and the referenced
+      object have the same lifetime, so this object will always be deleted
+      when the referenced object is deleted; therefore the reference can never
+      be null
+
+    Typically, processing tools will generate text of the form "The value MUST
+    be the full path name of \<arg>...", in which the generated text can be
+    expected to be sensitive to whether or not the parameter is list-valued.
+
+    Markup examples:
+
+        {{reference|a protocol object}}
+        {{reference|all Host table entries|ignore}}
 
 * - Named data type
-  - `{{datatype}}`\
-    `{{datatype|arg}}`\
-    `{{nodatatype}}`
-  - A description of the current parameter's named data type.\
-    This template SHOULD only be used within the description of a parameter of a named data type (@sec:named-data-types).\
-    This is a hint to processing tools to replace the template reference with an indication of the parameter's named data type, possibly including additional details or a hyperlink to such details.  This overrides processing tools' expected default behavior (unless suppressed by `{{nodatatype}}`) of describing the named data type before the rest of the description.\
-    The OPTIONAL argument affects how the data type is described. If it has the literal value "expand", processing tools SHOULD replace the template reference with the actual description of the named data type (as opposed to referencing the description of the named data type).
+
+  -     {{datatype}}
+        {{datatype|arg}}
+        {{nodatatype}}
+
+  - A description of the current parameter's named data type.
+
+    This template SHOULD only be used within the description of a parameter of
+    a named data type (@sec:named-data-types).
+
+    This is a hint to processing tools to replace the template reference with
+    an indication of the parameter's named data type, possibly including
+    additional details or a hyperlink to such details.  This overrides
+    processing tools' expected default behavior (unless suppressed by
+    `{{nodatatype}}`) of describing the named data type before the rest of
+    the description.
+
+    The OPTIONAL argument affects how the data type is described. If it has
+    the literal value "expand", processing tools SHOULD replace the template
+    reference with the actual description of the named data type (as opposed
+    to referencing the description of the named data type).
 
 * - Profile description
-  - `{{profdesc}}`\
-    `{{noprofdesc}}`
-  - An auto-generated description of a profile.\
-    This template SHOULD only be used within the description of a profile (@sec:profile-elements).\
-    This is a hint to processing tools to replace the template reference with a description of the profile.  This overrides processing tools' expected default behavior (unless suppressed by `{{noprofdesc}}`) of describing the profile before the rest of the description.\
-    Typically processing tools will generate text of the form "This table defines the \<profile:v> profile for the \<object:m> object. The minimum REQUIRED version for this profile is \<object:m.n>." (or more complex text if the profile is based on or extends other profiles).
+
+  -     {{profdesc}}
+        {{noprofdesc}}
+
+  - An auto-generated description of a profile.
+
+    This template SHOULD only be used within the description of a profile
+    (@sec:profile-elements).
+
+    This is a hint to processing tools to replace the template reference with
+    a description of the profile.  This overrides processing tools' expected
+    default behavior (unless suppressed by `{{noprofdesc}}`) of describing
+    the profile before the rest of the description.
+
+    Typically, processing tools will generate text of the form "This table
+    defines the \<profile:v> profile for the \<object:m> object. The minimum
+    REQUIRED version for this profile is \<object:m.n>." (or more complex text
+    if the profile is based on or extends other profiles).
 
 * - Enumeration reference
-  - `{{enum|value}}`\
-    `{{enum|value|param}}`\
-    `{{enum|value|param|scope}}`\
-    `{{enum}}`\
-    `{{noenum}}`
-  - A reference to the specified enumeration value.\
-    The OPTIONAL value argument specifies one of the enumeration values for the referenced parameter.  If present, it MUST be a valid enumeration value for that parameter.\
-    The OPTIONAL param and scope arguments identify the referenced parameter (scope defaults to normal).  If present, param SHOULD adhere to the rules of @sec:reference-path-names.  If omitted, the current parameter is assumed.\
-    If the arguments are omitted, this is a hint to processing tools to replace the template reference with a list of the parameter's enumerations, possibly preceded by text such as "Enumeration of:".  This overrides processing tools' expected default behavior (unless suppressed by `{{noenum}}`) of listing the parameter's enumerations after the rest of the description.\
-    Otherwise, typically processing tools will (a) validate that the enumeration value is valid, and (b) replace the template reference with the value and/or param arguments, appropriately formatted and with the value possibly rendered in a distinctive font. Processing tools can use the scope to convert a relative path into an absolute path in order, for example, to generate a hyperlink.
 
-    Markup examples:\
-    `{{enum|None}}`\
-    `{{enum|None|OtherParam}}`
+  -     {{enum|value}}
+        {{enum|value|param}}
+        {{enum|value|param|scope}}
+        {{enum}}
+        {{noenum}}
+
+  - A reference to the specified enumeration value.
+
+    The OPTIONAL value argument specifies one of the enumeration values for
+    the referenced parameter. If present, it MUST be a valid enumeration
+    value for that parameter.
+
+    The OPTIONAL param and scope arguments identify the referenced parameter
+    (scope defaults to normal). If present, param SHOULD adhere to the rules
+    of @sec:reference-path-names. If omitted, the current parameter is
+    assumed.
+
+    If the arguments are omitted, this is a hint to processing tools to replace
+    the template reference with a list of the parameter's enumerations,
+    possibly preceded by text such as "Enumeration of:".  This overrides
+    processing tools' expected default behavior (unless suppressed by
+    `{{noenum}}`) of listing the parameter's enumerations after the rest of
+    the description.
+
+    Otherwise, typically processing tools will (a) validate that the
+    enumeration value is valid, and (b) replace the template reference with
+    the value and/or param arguments, appropriately formatted and with the
+    value possibly rendered in a distinctive font. Processing tools can use
+    the scope to convert a relative path into an absolute path in order,
+    for example, to generate a hyperlink.
+
+    Markup examples:
+
+        {{enum|None}}
+        {{enum|None|OtherParam}}
 
 * - Pattern reference
-  - `{{pattern|value}}`\
-    `{{pattern|value|param}}`\
-    `{{pattern|value|param|scope}}`\
-    `{{pattern}}`\
-    `{{nopattern}}`
-  - A reference to the specified pattern value.\
-    The OPTIONAL value argument specifies one of the pattern values for the referenced parameter.  If present, it MUST be a valid pattern value for that parameter.  The OPTIONAL param and scope arguments identify the referenced parameter (scope defaults to normal).  If present, param SHOULD adhere to the rules of @sec:reference-path-names. If omitted, the current parameter is   assumed.\
-    If the arguments are omitted, this is a hint to processing tools to replace the template reference with a list of the parameter's patterns, possibly preceded by text such as "Possible   patterns:".  This overrides processing tools' expected default behavior (unless suppressed by `{{nopattern}}`) of listing the parameter's patterns after the rest of the description.\
-    Otherwise, typically processing tools will (a) validate that the pattern value is valid, and (b) replace the template reference with the value and/or param arguments, appropriately formatted and with the value possibly rendered in a distinctive font. Processing tools can use the scope to convert a relative path into an absolute path in order, for example, to generate a hyperlink.
 
-    Markup examples:\
-    `{{pattern|None}}`\
-    `{{pattern|None|OtherParam}}`
+  -     {{pattern|value}}
+        {{pattern|value|param}}
+        {{pattern|value|param|scope}}
+        {{pattern}}
+        {{nopattern}}
+
+  - A reference to the specified pattern value.
+
+    The OPTIONAL value argument specifies one of the pattern values for the
+    referenced parameter.  If present, it MUST be a valid pattern value for
+    that parameter.  The OPTIONAL param and scope arguments identify the
+    referenced parameter (scope defaults to normal). If present, param
+    SHOULD adhere to the rules of @sec:reference-path-names. If omitted, the
+    current parameter is assumed.
+
+    If the arguments are omitted, this is a hint to processing tools to
+    replace the template reference with a list of the parameter's patterns,
+    possibly preceded by text such as "Possible patterns:".  This overrides
+    processing tools' expected default behavior (unless suppressed by
+    `{{nopattern}}`) of listing the parameter's patterns after the rest of the
+    description.
+
+    Otherwise, typically processing tools will
+    (a) validate that the pattern value is valid
+    (b) replace the template reference with the value and/or param arguments,
+        appropriately formatted and with the value possibly rendered in a
+        distinctive font.
+
+    Processing tools can use the scope to convert a relative path into an
+    absolute path in order, for example, to generate a hyperlink.
+
+    Markup examples:
+
+        {{pattern|None}}
+        {{pattern|None|OtherParam}}
 
 * - Hidden value
-  - `{{hidden}}`\
-    `{{hidden|value}}`\
-    `{{nohidden}}`
-  - Text explaining that the value of the current parameter is hidden. This template SHOULD only be used within the description of a hidden parameter (@sec:parameter-syntax).\
-      This is a hint to processing tools to replace the template reference with text explaining that the value of the current parameter is hidden.  This overrides processing tools' expected default behavior (unless suppressed by `{{nohidden}}`) of placing this text after the rest of the description.\
-      The OPTIONAL argument indicates the value that is returned when the current parameter is read.  If omitted this defaults to the expansion of the `{{null}}` template.\
-    Typically, processing tools will generate text of the form "When read, this parameter returns \<arg>, regardless of the actual value.".
+
+  -     {{hidden}}
+        {{hidden|value}}
+        {{nohidden}}
+
+  - Text explaining that the value of the current parameter is hidden. This
+    template SHOULD only be used within the description of a hidden parameter
+    (@sec:parameter-syntax).
+
+    This is a hint to processing tools to replace the template reference with
+    text explaining that the value of the current parameter is hidden.
+    This overrides processing tools' expected default behavior (unless
+    suppressed by `{{nohidden}}`) of placing this text after the rest of the
+    description.
+
+    The OPTIONAL argument indicates the value that is returned when the current
+    parameter is read.  If omitted this defaults to the expansion of the
+    `{{null}}` template.
+
+    Typically, processing tools will generate text of the form "When read,
+    this parameter returns \<arg>, regardless of the actual value.".
 
 * - Secured value
-  - `{{secured}}`\
-    `{{secured|value}}`\
-    `{{nosecured}}`
-  - Text explaining that the value of the current parameter is secured. This template SHOULD only be used within the description of a secured parameter (@sec:parameter-syntax).\
-      This is a hint to processing tools to replace the template reference with text explaining that the value of the current parameter is secured.  This overrides processing tools' expected default behavior (unless suppressed by `{{nosecured}}`) of placing this text after the rest of the description.\
-    The OPTIONAL argument indicates the value that is returned when the Controller is not permitted to see the value.  If omitted this defaults to the expansion of the `{{null}}` template.\
-    Typically, processing tools will generate text of the form "When read, this parameter returns \<arg>, regardless of the actual value, unless the Controller has a 'secured' role.".
+
+  -     {{secured}}
+        {{secured|value}}
+        {{nosecured}}
+
+  - Text explaining that the value of the current parameter is secured. This
+    template SHOULD only be used within the description of a secured parameter
+    (@sec:parameter-syntax).
+
+    This is a hint to processing tools to replace the template reference with
+    text explaining that the value of the current parameter is secured. This
+    overrides processing tools' expected default behavior (unless suppressed by
+    `{{nosecured}}`) of placing this text after the rest of the description.
+
+    The OPTIONAL argument indicates the value that is returned when the
+    Controller is not permitted to see the value.  If omitted this defaults
+    to the expansion of the `{{null}}` template.
+
+    Typically, processing tools will generate text of the form "When read,
+    this parameter returns \<arg>, regardless of the actual value, unless the
+    Controller has a 'secured' role.".
 
 * - Command parameter
-  - `{{command}}`\
-    `{{nocommand}}`
-  - Text explaining that the current parameter is a command parameter that triggers an Agent action.  This template SHOULD only be used within the description of such a command parameter (@sec:parameter-syntax).\
-    This is a hint to processing tools to replace the template reference with text explaining that the current parameter is a command parameter that always reads back as `{{null}}`.  This overrides processing tools' expected default behavior (unless suppressed by `{{nocommand}}`) of placing this text after the rest of the description. Typically, processing tools will generate text of the form "The value is not part of the device configuration and is always `{{null}}` when read.".\
-    Note that the same `{{command}}` template can also be used by a USP command to refer to itself.
+
+  -     {{command}}
+        {{nocommand}}
+
+  - Text explaining that the current parameter is a command parameter that
+    triggers an Agent action.  This template SHOULD only be used within the
+    description of such a command parameter (@sec:parameter-syntax).
+
+    This is a hint to processing tools to replace the template reference with
+    text explaining that the current parameter is a command parameter that
+    always reads back as `{{null}}`. This overrides processing tools' expected
+    default behavior (unless suppressed by `{{nocommand}}`) of placing this
+    text after the rest of the description.
+
+    Typically, processing tools will generate text of the form "The value is
+    not part of the device configuration and is always `{{null}}` when read.".
+
+    Note that the same `{{command}}` template can also be used by a USP command
+    to refer to itself.
 
 * - Factory default value
-  - `{{factory}}`\
-    `{{nofactory}}`
-  - Text listing the factory default for the current parameter.   This template SHOULD only be used within the description of a parameter that has a factory default value.\
-    This is a hint to processing tools to replace the template reference with text listing the factory default value.  This overrides processing tools' expected default behavior (unless suppressed by `{{nofactory}}`) of placing this text after the rest of the description. Typically, processing tools will generate text of  the form "The factory default value MUST be \<value>.".
+
+  -     {{factory}}
+        {{nofactory}}
+
+  - Text listing the factory default for the current parameter. This template
+    SHOULD only be used within the description of a parameter that has a
+    factory default value.
+
+    This is a hint to processing tools to replace the template reference with
+    text listing the factory default value.  This overrides processing tools'
+    expected default behavior (unless suppressed by `{{nofactory}}`) of placing
+    this text after the rest of the description.
+
+    Typically, processing tools will generate text of  the form "The factory
+    default value MUST be \<value>.".
 
 * - Implementation default value
-  - `{{impldef}}`\
-    `{{noimpldef}}`
-  - Text listing the implementation default for the current parameter.  This template SHOULD only be used within the description of a parameter that has an implementation default value.\
-    This is a hint to processing tools to replace the template reference with text listing the implementation default value.  This overrides processing tools' expected default behavior (unless suppressed by `{{noimpldef}}`) of placing this text after the rest of the description. Typically, processing tools will generate text of  the form "The default value SHOULD be \<value>.".
+
+  -     {{impldef}}
+        {{noimpldef}}
+
+  - Text listing the implementation default for the current parameter. This
+    template SHOULD only be used within the description of a parameter that
+    has an implementation default value.
+
+    This is a hint to processing tools to replace the template reference with
+    text listing the implementation default value.  This overrides processing
+    tools' expected default behavior (unless suppressed by `{{noimpldef}}`)
+    of placing this text after the rest of the description.
+
+    Typically, processing tools will generate text of  the form "The default
+    value SHOULD be \<value>.".
 
 * - Parameter default value
-  - `{{paramdef}}`\
-    `{{noparamdef}}`
-  - Text listing the parameter default for the current argument.  This template SHOULD only be used within the description of an argument that has a parameter default value.\
-    This is a hint to processing tools to replace the template reference with text listing the parameter default value.  This overrides processing tools' expected default behavior (unless suppressed by `{{noparamdef}}`) of placing this text after the rest of the description. Typically, processing tools will generate text of the form "The default value MUST be \<value>.".
+
+  -     {{paramdef}}
+        {{noparamdef}}
+
+  - Text listing the parameter default for the current argument.  This template
+    SHOULD only be used within the description of an argument that has a
+    parameter default value.
+
+    This is a hint to processing tools to replace the template reference with
+    text listing the parameter default value. This overrides processing tools'
+    expected default behavior (unless suppressed by `{{noparamdef}}`) of
+    placing this text after the rest of the description.
+
+    Typically, processing tools will generate text of the form "The default
+    value MUST be \<value>.".
 
 * - Unique keys description
-  - `{{keys}}`\
-    `{{nokeys}}`
-  - A description of the current object's unique keys.\
-    This template SHOULD only be used within the description of a Multi-Instance Object (table) that defines one or more unique keys (@sec:tables).\
-    This is a hint to processing tools to replace the template reference with a description of the object's unique keys. This overrides processing tools' expected default behavior (unless suppressed by `{{nokeys}}`) of describing the unique keys after the description.
+
+  -     {{keys}}
+        {{nokeys}}
+
+  - A description of the current object's unique keys.
+
+    This template SHOULD only be used within the description of a
+    Multi-Instance Object (table) that defines one or more unique keys
+    (@sec:tables).
+
+    This is a hint to processing tools to replace the template reference with
+    a description of the object's unique keys. This overrides processing tools'
+    expected default behavior (unless suppressed by `{{nokeys}}`) of
+    describing the unique keys after the description.
+
+* - Range details
+
+  -     {{range}}
+        {{range|index}}
+
+  - Details of the parameter's ranges, including parameter units and range
+    descriptions (if defined).
+
+    This template SHOULD only be used within the description of a numeric
+    parameter.
+
+    The OPTIONAL index parameter is the index (0, 1, ...) of the range of
+    interest (the first defined range has index 0, the second has index 1,
+    etc.). If no index is supplied, details of all ranges are returned.
+
+* - Size details
+
+  -     {{size}}
+        {{size|index}}
+
+  - Details of the parameter's sizes, including size descriptions (if defined).
+
+    This template SHOULD only be used within the description of a string-valued
+    parameter.
+
+    The OPTIONAL index parameter is the index (0, 1, ...) of the size of
+    interest (the first defined size has index 0, the second has index 1,
+    etc.). If no index is supplied, details of all sizes are returned.
+
 
 * - Units reference
-  - `{{units}}`
-  - The parameter's units string.\
-    Typically, processing tools will (a) check that the parameter has a units string, and (b) substitute the value of its units string.
+
+  -     {{units}}
+
+  - The parameter's units string.
+
+    This template SHOULD only be used within the description of a numeric
+    parameter.
+
+    Typically, processing tools will
+    (a) check that the parameter has a units string
+    (b) substitute the value of its units string
+
+* - Id indicator
+
+  -     {{showid}}
+        {{noshowid}}
+
+  - The value of the current parameter's id attribute.
+
+    This template SHOULD only be used within the description of a parameter.
+
+    Typically, unless suppressed by `{{noshowid}}`, processing tools will
+    (if the id is defined) insert text of the form "[id]" before the
+    description.
+
+* - Mount Point indicator
+
+  -     {{mount}}
+        {{nomount}}
+
+  - An indication of the current object's mountType attribute (intended for
+    drawing attention to Mount Points).
+
+    This template SHOULD only be used within the description of an object.
+
+    Typically, unless suppressed by `{{nomount}}`, processing tools will
+    (for Objects that are Mount Points) append explanatory text after the
+    description.
+
+* - Minimum parameter value
+
+  -     {{minval}}
+
+  - The minimum valid parameter value.
+
+    This template SHOULD only be used within the description of numeric
+    parameters.
+
+    Typically, processing tools will
+    (a) check that the parameter is numeric
+    (b) if the parameter has no defined ranges, substitute the minimum value
+        for its data type, perhaps with a "(the minimum valid value)" note
+    (c) otherwise, substitute the mininum value of its first range
+
+* - Maximum parameter value
+
+  -     {{maxval}}
+
+  - The maximum valid parameter value.
+
+    This template SHOULD only be used within the description of numeric
+    parameters.
+
+    Typically, processing tools will
+    (a) check that the parameter is numeric
+    (b) if the parameter has no defined ranges, substitute the maximum value
+        for its data type, perhaps with a "(the maximum valid value)" note
+    (c) otherwise, substitute the maxinum value of its last range
+
+* - Forced Inform indicator
+
+  -     {{inform}}
+        {{noinform}}
+
+  - An indication of the current parameter's forcedInform attribute (intended
+    for drawing attention to parameters with forcedInform = True).
+
+    This template SHOULD only be used within the description of a parameter.
+
+    Typically, unless suppressed by `{{noinform}}`, processing tools will
+    (for CWMP parameters with forcedInform = True) append explanatory text
+    after the description.
+
+* - Active Notify indicator
+
+  -     {{notify}}
+        {{nonotify}}
+
+  - An indication of the current parameter's activeNotify attribute (intended
+    for drawing attention to parameters with non-empty activeNotify).
+
+    This template SHOULD only be used within the description of a parameter.
+
+    Typically, unless suppressed by `{{nonotify}}`, processing tools will
+    (for CWMP parameters with non-empty activeNotify) append explanatory text
+    after the description.
+
+* - Access indicator
+
+  -     {{access}}
+        {{noaccess}}
+
+  - An indication of the current parameter's access level (intended for drawing
+    attention to write-only-read-only parameters).
+
+    This template SHOULD only be used within the description of a parameter.
+
+    Typically, unless suppressed by `{{noaccess}}`, processing tools will
+    (for write-once-read-only parameters) append explanatory text after the
+    description.
+
+* - Async command indicator
+
+  -     {{async}}
+        {{noasync}}
+
+  - An indication of whether the current command is asynchronous.
+
+    This template SHOULD only be used within the description of a command.
+
+    Typically, unless suppressed by `{{noasync}}`, processing tools will
+    (for asynchronous commands) insert text of the form "[ASYNC]" before the
+    description.
+
+* - Entries indicator
+
+  -     {{entries}}
+        {{noentries}}
+
+  - An indication of the current object's number of entries (intended for
+    drawing attention to uncommon cases).
+
+    This template SHOULD only be used within the description of an object.
+
+    Typically, unless suppressed by `{{noentries}}`, processing tools will
+    (for Multi-Instance Objects that have minEntries != 0 or maxEntries !=
+    unbounded) append explanatory text after the description.
+
+* - Mandatory parameter indicator
+
+  -     {{mandatory}}
+        {{nomandatory}}
+
+  - An indication of whether the current command or event argument parameter is
+    mandatory.
+
+    This template SHOULD only be used within the description of a command or
+    event argument parameter.
+
+    Typically, unless suppressed by `{{nomandatory}}`, processing tools will
+    (for mandatory argument parameters) insert text of the form "[MANDATORY]"
+    before the description.
 
 * - Boolean values
-  - `{{false}}`\
-    `{{true}}`
-  - Boolean values.\
-    Typically, processing tools will substitute the value False or True, possibly rendered in a distinctive font.
+
+  -     {{false}}
+        {{true}}
+
+  - Boolean values.
+
+    Typically, processing tools will substitute the value False or True,
+    possibly rendered in a distinctive font.
 
 * - Discriminator parameter description
-  - `{{union}}`\
-    `{{nounion}}`
-  - Text explaining the available options and use for the sub-objects which are part of the union.\
-    This template SHOULD only be used within the description of (a) a parameter referenced as a discriminatorParameter, or (b) an object that references a discriminatorParameter (@sec:tables).\
-    This is a hint to processing tools to replace the template reference with text explaining the union and possible choices of sub-objects. This overrides processing tools' expected default behavior (unless suppressed by `{{nounion}}`) of placing this text after the rest of the description.\
-    Typically, processing tools will generate text of the form (a) "This parameter discriminates between the \<objects> union objects.", or (b) "This object MUST be present if, and only if, \<param> is \<object>.", but it MAY be followed by additional text, explaining the use of the available options, if desired.
+
+  -     {{union}}
+        {{nounion}}
+
+  - Text explaining the available options and use for the sub-objects which are
+    part of the union.
+
+    This template SHOULD only be used within the description of
+    (a) a parameter referenced as a discriminatorParameter, or
+    (b) an object that references a discriminatorParameter (@sec:tables).
+
+    This is a hint to processing tools to replace the template reference with
+    text explaining the union and possible choices of sub-objects. This
+    overrides processing tools' expected default behavior (unless suppressed
+    by `{{nounion}}`) of placing this text after the rest of the description.
+
+    Typically, processing tools will generate text of the form
+    (a) "This parameter discriminates between the \<objects> union objects.",
+        or
+    (b) "This object MUST be present if, and only if, \<param> is \<object>."
+
+    but it MAY be followed by additional text, explaining the use of the
+    available options, if desired.
 
 * - Miscellaneous
-  - `{{issue|descr}}`\
-    `{{issue|opts|descr}}`
-  - An open issue.\
-    If only one argument is supplied, it is descr, which describes the open issue.  If two arguments are supplied, they are opts and descr.\
-    The OPTIONAL opts argument is a comma-separated list of options:\
-    - The first list item is an issue category that defaults to "XXX".\
-    - The second list item is an issue status that defaults to an empty string. Any non-empty status implies that the issue has been resolved.\
-    Typically, processing tools will assign a unique ID, e.g. a separate counter for each category of issue, and replace the template reference with the issue category, ID, status and description, possibly rendered in a distinctive font.
 
-    Markup examples:\
-    `{{issue|Will be labeled XXX.}}`\
-    `{{issue|IPsec|Will be labeled IPsec.}}`\
-    `{{issue|DNS,fixed|Resolved DNS issue.}}`
+  -     {{issue|descr}}
+        {{issue|opts|descr}}
+
+  - An open issue.
+
+    If only one argument is supplied, it is descr, which describes the open
+    issue.  If two arguments are supplied, they are opts and descr.
+
+    The OPTIONAL opts argument is a comma-separated list of options:
+    - The first list item is an issue category that defaults to "XXX"
+    - The second list item is an issue status that defaults to an empty string.
+      Any non-empty status implies that the issue has been resolved.
+
+    Typically, processing tools will assign a unique ID, e.g. a separate
+    counter for each category of issue, and replace the template reference
+    with the issue category, ID, status and description, possibly rendered
+    in a distinctive font.
+
+    Markup examples:
+
+        {{issue|Will be labeled XXX.}}
+        {{issue|IPsec|Will be labeled IPsec.}}
+        {{issue|DNS,fixed|Resolved DNS issue.}}
 
 * -
-  - `{{empty}}`
-  - Represents an empty string. Typically, processing tools will render such values in a distinctive font, possibly using standard wording, such as <Empty> or "an empty string".
+
+  -     {{empty}}
+
+  - Represents an empty string.
+
+    Typically, processing tools will render such values in a distinctive font,
+    possibly using standard wording, such as <Empty> or "an empty string".
 
 * -
-  - `{{null}}`
-  - Expands to the appropriate null value for the current parameter's data type (@sec:null-values-and-references), e.g. `{{empty}}`, `{{false}}` or 0.
+
+  -     {{null}}
+
+  - Expands to the appropriate null value for the current parameter's data
+    type (@sec:null-values-and-references), e.g. `{{empty}}`, `{{false}}` or 0.
+
 :::
 
 #### HTML Example
@@ -2821,7 +3445,7 @@ requirements are specified in the schema).
 
    * - access
      - Whether the parameter is read-write, read-only, or write-once-read-only.
-  
+
    * - version
      - The data model version (of the form m.n or m.n.p) in which this parameter was first defined.  This MUST be present if, and only if, it's a later version than the parent object's version (@sec:versions).
 
@@ -3025,7 +3649,7 @@ XML Object Definition {#tbl:xml-object-definition}
 * - mountType
   - For USP only, denotes whether this object is a Mountable Object, a Mount Point, or none. Possible values are:
 
-    - **mountPoint**: this object is a Mount Point.\
+    - **mountPoint**: this object is a Mount Point.
     - **mountable**: this object is a Mountable Object. Such an object has to be a direct child of the Root or Service Object (DEPRECATED in DM Schema v1.10 because Mountable Objects are now determined automatically).
 
     **none**: this object is neither a Mountable Object nor a Mount Point (DEPRECATED in DM Schema v1.10, and no longer the default, because Mountable Objects are now determined automatically).

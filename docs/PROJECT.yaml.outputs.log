@@ -1,0 +1,10 @@
+INFO:project-parser:created WT-106 project (valid)
+INFO:project-parser:validated projects
+INFO:project-parser:wrote ./docs/README.md
+INFO:project-parser:wrote ./docs/CHANGELOG.md
+INFO:project-parser:wrote ./docs/METADATA-1.yaml
+INFO:project-parser:wrote ./docs/METADATA.yaml
+INFO:project-parser:wrote ./docs/METADATA-1.md
+INFO:project-parser:wrote ./docs/METADATA.md
+INFO:project-parser:wrote ./docs/METADATA-1.mk
+INFO:project-parser:wrote ./docs/METADATA.mk
